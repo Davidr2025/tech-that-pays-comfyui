@@ -18,12 +18,11 @@ RUN git clone --depth 1 https://github.com/kijai/ComfyUI-KJNodes.git && \
 RUN git clone --depth 1 https://github.com/kijai/ComfyUI-WanVideoWrapper.git && \
     pip install --no-cache-dir -r ComfyUI-WanVideoWrapper/requirements.txt
 
-# InfiniteTalk — covers InfiniteTalkAutoSampler
-# Try MeiGen-AI's repo first; if it 404s, fall back to wlsdml1114's fork.
-RUN (git clone --depth 1 https://github.com/MeiGen-AI/ComfyUI-InfiniteTalk.git || \
-     git clone --depth 1 https://github.com/wlsdml1114/ComfyUI-InfiniteTalk.git) && \
-    if [ -f ComfyUI-InfiniteTalk/requirements.txt ]; then \
-        pip install --no-cache-dir -r ComfyUI-InfiniteTalk/requirements.txt; \
+# InfiniteTalk — covers InfiniteTalkAutoSampler + InfiniteTalkAutoSamplerAdvanced
+# This is the package David's locked workflow actually uses (verified via VJUMPK repo)
+RUN git clone --depth 1 https://github.com/vjumpkung/comfyui-infinitetalk-native-sampler.git && \
+    if [ -f comfyui-infinitetalk-native-sampler/requirements.txt ]; then \
+        pip install --no-cache-dir -r comfyui-infinitetalk-native-sampler/requirements.txt; \
     fi
 
 # MelBandRoFormer — covers MelBandRoFormerModelLoader, MelBandRoFormerSampler
