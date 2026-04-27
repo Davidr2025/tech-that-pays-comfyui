@@ -1,0 +1,8 @@
+# Don't commit anything except the Docker build artifacts
+*
+!Dockerfile
+!extra_model_paths.yaml
+!.github
+!.github/**
+!.gitignore
+!BUILD_README.md

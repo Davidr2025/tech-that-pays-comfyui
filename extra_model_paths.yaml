@@ -1,0 +1,28 @@
+# Tells ComfyUI to look in the Runpod Network Volume's comfyui-models/ tree.
+# Mount point on serverless workers: /runpod-volume/
+# Network Volume contents (populated 2026-04-27 via nv_populate.sh):
+#   /runpod-volume/comfyui-models/{checkpoints,vae,loras,...}/
+#
+# ComfyUI automatically reads this file from /comfyui/extra_model_paths.yaml on
+# startup and merges these search paths with its built-in /comfyui/models tree.
+# No symlinks needed.
+
+techThatPaysV2:
+  base_path: /runpod-volume/comfyui-models/
+  checkpoints: checkpoints/
+  clip: clip/
+  clip_vision: clip_vision/
+  configs: configs/
+  controlnet: controlnet/
+  diffusers: diffusers/
+  diffusion_models: diffusion_models/
+  embeddings: embeddings/
+  loras: loras/
+  text_encoders: text_encoders/
+  unet: unet/
+  vae: vae/
+  audio_encoders: audio_encoders/
+  audio_separation: audio_separation/
+  model_patches: model_patches/
+  upscale_models: upscale_models/
+  vae_approx: vae_approx/
