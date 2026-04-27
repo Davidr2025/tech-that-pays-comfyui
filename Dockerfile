@@ -6,6 +6,11 @@
 
 FROM runpod/worker-comfyui:5.8.5-base
 
+# Triton (used by sageattention) JIT-compiles GPU kernels at runtime, needs gcc.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc g++ && \
+    rm -rf /var/lib/apt/lists/*
+
 # Install custom nodes for the InfiniteTalk pipeline.
 # Each is shallow-cloned then has its requirements.txt installed.
 WORKDIR /comfyui/custom_nodes
