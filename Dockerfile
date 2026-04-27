@@ -6,9 +6,13 @@
 
 FROM runpod/worker-comfyui:5.8.5-base
 
-# Triton (used by sageattention) JIT-compiles GPU kernels at runtime, needs gcc.
+# Triton (used by sageattention) JIT-compiles GPU kernels at runtime.
+# Needs full build toolchain + python dev headers + CUDA stub libs.
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc g++ && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        python3-dev \
+        libpython3-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install custom nodes for the InfiniteTalk pipeline.
