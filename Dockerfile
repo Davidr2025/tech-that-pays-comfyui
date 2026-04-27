@@ -31,6 +31,10 @@ RUN git clone --depth 1 https://github.com/kijai/ComfyUI-MelBandRoFormer.git && 
         pip install --no-cache-dir -r ComfyUI-MelBandRoFormer/requirements.txt; \
     fi
 
+# Extra Python deps that KJNodes' PathchSageAttentionKJ + InfiniteTalk samplers need
+# but aren't always pulled in by their requirements.txt
+RUN pip install --no-cache-dir sageattention
+
 # Point ComfyUI at the Network Volume's models dir (mounted at runtime by Runpod)
 COPY extra_model_paths.yaml /comfyui/extra_model_paths.yaml
 
