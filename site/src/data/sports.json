@@ -1,6 +1,31 @@
 {
-  "updatedAt": "2026-07-13T04:45:39.774Z",
+  "updatedAt": "2026-07-13T04:47:02.223Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
-  "items": []
+  "items": [
+    {
+      "team": "Toronto Raptors",
+      "league": "NBA",
+      "event": "Indiana Pacers vs Toronto Raptors",
+      "date": "2026-07-13",
+      "time": "20:30:00",
+      "venue": "Thomas & Mack Center"
+    },
+    {
+      "team": "Toronto Blue Jays",
+      "league": "MLB",
+      "event": "Toronto Blue Jays vs Chicago White Sox",
+      "date": "2026-07-17",
+      "time": "23:15:00",
+      "venue": "Rogers Centre"
+    },
+    {
+      "team": "Toronto FC",
+      "league": "American Major League Soccer",
+      "event": "CF Montréal vs Toronto FC",
+      "date": "2026-07-16",
+      "time": "23:30:00",
+      "venue": "Stade Saputo"
+    }
+  ]
 }
