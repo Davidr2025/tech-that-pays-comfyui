@@ -6,7 +6,26 @@ import places from "../data/places.json";
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
-const cats = places.categories.filter((c) => c.businesses.length > 0);
+// Categories fetched via subcategory queries (e.g. Trades & Home Services)
+// carry a `subcategory` on each business — group those under sub-headings
+// so a resident scanning "Trades" sees Plumbers, Electricians, etc. rather
+// than one undifferentiated grid. Categories without subcategory data
+// render exactly as before (one group, no sub-heading).
+const cats = places.categories
+  .filter((c) => c.businesses.length > 0)
+  .map((cat) => {
+    if (!cat.businesses.some((b) => b.subcategory)) {
+      return { ...cat, groups: [{ label: null, businesses: cat.businesses }] };
+    }
+    const order = [];
+    const byLabel = new Map();
+    for (const b of cat.businesses) {
+      const key = b.subcategory || "Other";
+      if (!byLabel.has(key)) { byLabel.set(key, []); order.push(key); }
+      byLabel.get(key).push(b);
+    }
+    return { ...cat, groups: order.map((label) => ({ label, businesses: byLabel.get(label) })) };
+  });
 const fetched = places.fetchedAt
   ? new Date(places.fetchedAt).toLocaleDateString("en-CA", { dateStyle: "medium", timeZone: "America/Toronto" })
   : null;
@@ -33,27 +52,32 @@ const fetched = places.fetchedAt
     {cats.map((cat) => (
       <section id={cat.slug} style="margin-bottom:2.5rem">
         <h3 style="font-size:1.2rem;margin-bottom:.9rem">{cat.label}</h3>
-        <div class="grid">
-          {cat.businesses.map((b) => (
-            <article class="card biz-card">
-              {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
-              <h3><a href={b.website || b.mapsUrl} target="_blank" rel="noopener">{b.name}</a></h3>
-              {b.rating != null && (
-                <div class="rating">★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span></div>
-              )}
-              <p>{b.address}</p>
-              {b.hours.length > 0 && (
-                <details class="hours-toggle">
-                  <summary>Hours</summary>
-                  <ul>{b.hours.map((h) => <li>{h}</li>)}</ul>
-                </details>
-              )}
-              <div class="meta">
-                <a class="readmore" href={b.mapsUrl} target="_blank" rel="noopener">Map & directions →</a>
-              </div>
-            </article>
-          ))}
-        </div>
+        {cat.groups.map((g) => (
+          <div style="margin-bottom:1.75rem">
+            {g.label && <h4 style="font-size:.95rem;font-weight:700;color:var(--primary);margin:0 0 .6rem">{g.label}</h4>}
+            <div class="grid">
+              {g.businesses.map((b) => (
+                <article class="card biz-card">
+                  {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
+                  <h3><a href={b.website || b.mapsUrl} target="_blank" rel="noopener">{b.name}</a></h3>
+                  {b.rating != null && (
+                    <div class="rating">★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span></div>
+                  )}
+                  <p>{b.address}</p>
+                  {b.hours.length > 0 && (
+                    <details class="hours-toggle">
+                      <summary>Hours</summary>
+                      <ul>{b.hours.map((h) => <li>{h}</li>)}</ul>
+                    </details>
+                  )}
+                  <div class="meta">
+                    <a class="readmore" href={b.mapsUrl} target="_blank" rel="noopener">Map & directions →</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
     ))}
 

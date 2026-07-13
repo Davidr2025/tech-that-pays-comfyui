@@ -142,7 +142,28 @@ export default {
     categories: [
       { slug: "restaurants",  label: "Restaurants",        query: "best restaurants in Mississauga, Ontario" },
       { slug: "cafes",        label: "Cafés & Bakeries",   query: "best cafes and bakeries in Mississauga, Ontario" },
-      { slug: "trades",       label: "Trades & Home Services", query: "top rated plumbers electricians contractors in Mississauga, Ontario" },
+      {
+        // Google's Text Search caps each query at 20 results, so a single
+        // "plumbers electricians contractors" query can never grow past 20.
+        // Splitting into per-trade queries lets this category grow well
+        // beyond that, with each trade type ranked and capped on its own so
+        // no single trade (e.g. painters) crowds out the others.
+        slug: "trades",
+        label: "Trades & Home Services",
+        perSubcategory: 8,
+        subcategories: [
+          { label: "Plumbers",                        query: "best plumbers in Mississauga, Ontario" },
+          { label: "Electricians",                     query: "best electricians in Mississauga, Ontario" },
+          { label: "HVAC & Heating",                   query: "best HVAC heating and air conditioning companies in Mississauga, Ontario" },
+          { label: "Roofers",                          query: "best roofing contractors in Mississauga, Ontario" },
+          { label: "Landscaping & Lawn Care",          query: "best landscaping and lawn care companies in Mississauga, Ontario" },
+          { label: "Painters",                         query: "best house painters in Mississauga, Ontario" },
+          { label: "General Contractors & Renovations", query: "best general contractors and home renovation companies in Mississauga, Ontario" },
+          { label: "Locksmiths",                       query: "best locksmiths in Mississauga, Ontario" },
+          { label: "Appliance Repair",                 query: "best appliance repair services in Mississauga, Ontario" },
+          { label: "Cleaning Services",                query: "best house cleaning services in Mississauga, Ontario" }
+        ]
+      },
       { slug: "real-estate",  label: "Real Estate",        query: "real estate agencies in Mississauga, Ontario" },
       { slug: "health",       label: "Health & Wellness",  query: "clinics dentists physiotherapy in Mississauga, Ontario" },
       { slug: "fitness",      label: "Fitness & Sports",   query: "gyms and fitness studios in Mississauga, Ontario" },

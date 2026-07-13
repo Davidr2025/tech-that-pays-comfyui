@@ -94,14 +94,29 @@ one click in the beehiiv app).
 
 ## Google Places cost estimate
 
-Weekly refresh, 8 categories × 10 results:
+Weekly refresh: 7 simple categories × 10 results, plus Trades & Home
+Services split into 10 trade-specific queries × 8 results each (see below):
 
-- 8 Text Search (Pro SKU) calls/week ≈ **35/month** — free tier is 5,000/month
-- ~80 Place Photo (Essentials SKU) calls/week ≈ **350/month** — free tier is 10,000/month
+- 17 Text Search (Pro SKU) calls/week ≈ **74/month** — free tier is 5,000/month
+- ~150 Place Photo (Essentials SKU) calls/week ≈ **650/month** — free tier is 10,000/month
 
-**Estimated cost: $0/month** (roughly 1% of the free tier). Even daily
-refreshes stay free. Photos are resolved to static Google-hosted URLs during
-the pipeline, so site visitors never trigger API calls.
+**Estimated cost: $0/month** (roughly 1.5% of the Text Search free tier, 6.5%
+of the Photo free tier). Even daily refreshes stay comfortably free. Photos
+are resolved to static Google-hosted URLs during the pipeline, so site
+visitors never trigger API calls.
+
+### Growing a category past 20 results
+
+Google's Text Search caps every query at 20 results — there's no pagination
+past that. `Trades & Home Services` shows how to grow past it: instead of one
+vague query, it's defined as `subcategories` (Plumbers, Electricians, HVAC,
+Roofers, Landscaping, Painters, General Contractors, Locksmiths, Appliance
+Repair, Cleaning) in `site.config.mjs`, each running its own Text Search and
+capped independently (`perSubcategory`, default 8) so one popular trade can't
+crowd out the others. The directory page automatically renders these as
+sub-headings within the category. Apply the same pattern to any other
+category (e.g. split "Health & Wellness" into Dentists/Physio/Clinics) by
+adding a `subcategories` array in place of its `query`.
 
 ## Eventbrite note
 
