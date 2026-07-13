@@ -71,6 +71,7 @@ export default {
       {
         name: "Toronto Star",
         homepage: "https://www.thestar.com/news/gta/",
+        filter: true,
         candidates: [
           "https://www.thestar.com/search/?f=rss&t=article&q=mississauga&l=25&s=start_time&sd=desc",
           "https://news.google.com/rss/search?q=site:thestar.com%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
@@ -79,6 +80,7 @@ export default {
       {
         name: "Google News",
         homepage: "https://news.google.com/search?q=mississauga%20ontario&hl=en-CA&gl=CA&ceid=CA:en",
+        filter: true,
         candidates: [
           "https://news.google.com/rss/search?q=mississauga%20ontario%20when:2d&hl=en-CA&gl=CA&ceid=CA:en"
         ]
