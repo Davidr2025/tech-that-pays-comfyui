@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T04:54:55.777Z",
+  "updatedAt": "2026-07-13T04:58:02.504Z",
   "items": [
     {
       "title": "Bonnie Crombie announces intention to run for mayor of Mississauga",
@@ -18,30 +18,6 @@
       "publishedAt": "2026-07-12T22:06:30.000Z"
     },
     {
-      "title": "Bonnie Crombie to run for mayor of Mississauga again",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQT2JWZVg5QjItTHhSN2lXNmxfSTNKQmRYTkt3dUFnZGd4bDVreHVmV053dFpsZThqcWM2Zno2aVBTdVRRaFBSeWF5RXJjZkpOVU9aT3pQZ0x6NEV6VVNtbXh4T084ckxxVTRuOTE1bUcyMnZHcnI3b251N0JFUUpZaXkxcw?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-12T21:50:22.000Z"
-    },
-    {
-      "title": "Bonnie Crombie to run for mayor of Mississauga, Ont., vying for her old job",
-      "summary": "After a short stint leading the Ontario Liberals, Bonnie Crombie is looking to get her old job back as mayor of Mississauga, Ont.",
-      "url": "https://www.thestar.com/news/ontario/bonnie-crombie-to-run-for-mayor-of-mississauga-ont-vying-for-her-old-job/article_52059e35-3a10-5b3c-b102-f8843d7ef36b.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-12T21:13:00.000Z"
-    },
-    {
-      "title": "Bonnie Crombie confirms she’s running for mayor of Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxObFE1bFFhNXJmYm5BdDhhNnJja1Y2ZmFNNWxlck5xdjdpa3pJOWVrV3pZTTduanBuc2pSWjN3Nm10S3REVG1vUjVLbGJSRXA0cXA2ZlFUZVQzMG9FRVBWWTdGYV93T1A0bVpZWnJ6dlctRklUYW9EdjJPa3JET09zSkhfYTVuWjc0RjB1b09zV3I1d0I0YzdXRW4xcE5wLU9ReVVr?oc=5",
-      "source": "CityNews Toronto",
-      "sourceUrl": "https://toronto.citynews.ca",
-      "publishedAt": "2026-07-12T20:47:00.000Z"
-    },
-    {
       "title": "Tom Kim gets engine back on track with Scottish Open victory",
       "summary": "NORTH BERWICK, Scotland (AP) — Tom Kim played bogey-free during a tight race to the finish Sunday and closed with a 6-under 64 for a two-shot victory in the Scottish Open, his first PGA Tour title since the fall of…",
       "url": "https://www.thestar.com/sports/golf/tom-kim-gets-the-engine-back-on-track-with-a-scottish-open-victory/article_23cb33ca-a89a-56e6-bf15-39c1a748c30e.html",
@@ -56,14 +32,6 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-12T18:05:05.000Z"
-    },
-    {
-      "title": "Bonnie Crombie announces she will run for mayor of Mississauga",
-      "summary": "Crombie ended months of speculation with a Sunday message to a small group of supporters.",
-      "url": "https://www.thestar.com/news/gta/bonnie-crombie-announces-she-will-run-for-mayor-of-mississauga/article_a957230a-dfaa-4bae-8299-b2d10e9a698c.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-12T17:45:00.000Z"
     },
     {
       "title": "Violent coyote attacks leave Whitby parents and pet owners on edge: 'I have never seen so many'",
@@ -96,6 +64,38 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-10T19:26:12.000Z"
+    },
+    {
+      "title": "Learn lifesaving safety tips at Water Safety Awareness Day event",
+      "summary": "",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/learn-lifesaving-safety-tips-at-water-safety-awareness-day-event/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-10T10:40:47.000Z"
+    },
+    {
+      "title": "City of Mississauga to use less road salt and limit parking on streets this winter",
+      "summary": "",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/city-of-mississauga-to-use-less-road-salt-and-limit-parking-on-streets-this-winter/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-10T08:02:55.000Z"
+    },
+    {
+      "title": "Protect your home from flooding this summer",
+      "summary": "",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/protect-your-home-from-flooding-this-summer/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-09T10:47:47.000Z"
+    },
+    {
+      "title": "Severe thunderstorm warning in effect for Mississauga",
+      "summary": "",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/rain-and-possible-thunderstorms-expected-today-in-mississauga/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-09T09:52:15.000Z"
     }
   ]
 }
