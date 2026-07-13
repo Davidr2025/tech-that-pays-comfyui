@@ -1,21 +1,39 @@
 import config from "../site.config.mjs";
 import {
-  fetchText, parseFeed, looksLikeFeed, excerpt, writeData, log, warn
+  fetchText, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn
 } from "./lib/util.mjs";
 
-/** Try each candidate URL until one yields a feed with at least one item. */
+/** WordPress REST API posts endpoint → normalized feed items. */
+function parseWpJson(text) {
+  const arr = JSON.parse(text);
+  if (!Array.isArray(arr)) throw new Error("not a WP REST array");
+  return arr.map((p) => ({
+    title: stripHtml(p.title?.rendered || ""),
+    link: p.link || "",
+    publishedAt: toIso(p.date),
+    description: p.excerpt?.rendered || "",
+    sourceName: "",
+    sourceUrl: ""
+  }));
+}
+
+/** Try each candidate URL until one yields at least one item. */
 async function firstWorkingFeed(src) {
   for (const url of src.candidates) {
     try {
       const text = await fetchText(url);
-      if (!looksLikeFeed(text)) {
+      let items;
+      if (text.trimStart().startsWith("[")) {
+        items = parseWpJson(text);
+      } else if (looksLikeFeed(text)) {
+        items = parseFeed(text).items;
+      } else {
         warn(`news: ${url} responded but is not a feed`);
         continue;
       }
-      const feed = parseFeed(text);
-      const items = feed.items.filter((it) => it.title && it.link);
+      items = items.filter((it) => it.title && it.link);
       if (items.length === 0) {
-        warn(`news: ${url} is a valid feed but has 0 items — trying next candidate`);
+        warn(`news: ${url} is valid but has 0 items — trying next candidate`);
         continue;
       }
       return { url, items };
@@ -25,6 +43,8 @@ async function firstWorkingFeed(src) {
   }
   return null;
 }
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 export async function fetchNews() {
   const { sources, keywords, maxPerSource, maxTotal } = config.news;
@@ -43,26 +63,21 @@ export async function fetchNews() {
         return keywords.some((k) => hay.includes(k));
       });
     }
+    const viaGoogleNews = hit.url.includes("news.google.com");
     items = items.slice(0, maxPerSource).map((it) => {
-      // Google News aggregates many outlets: credit the real publisher from
-      // the per-item <source> tag, and drop the " - Publisher" title suffix.
-      if (src.type === "googlenews") {
-        const publisher = it.sourceName || "Google News";
-        return {
-          title: it.title.replace(new RegExp(`\\s*[-–|]\\s*${publisher.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`), ""),
-          summary: "",
-          url: it.link,
-          source: publisher,
-          sourceUrl: it.sourceUrl || src.homepage,
-          publishedAt: it.publishedAt
-        };
-      }
+      // Google News items carry the real publisher in the <source> tag and
+      // append " - Publisher" to titles; credit the outlet, not Google.
+      const publisher = it.sourceName || src.name;
+      const title = viaGoogleNews
+        ? it.title.replace(new RegExp(`\\s*[-–|]\\s*${escapeRe(publisher)}\\s*$`, "i"), "")
+        : it.title;
       return {
-        title: it.title,
-        summary: excerpt(it.description),
+        title,
+        // Google News "descriptions" are just link lists — no real excerpt
+        summary: viaGoogleNews ? "" : excerpt(it.description),
         url: it.link,
-        source: src.name,
-        sourceUrl: src.homepage,
+        source: publisher,
+        sourceUrl: it.sourceUrl || src.homepage,
         publishedAt: it.publishedAt
       };
     });

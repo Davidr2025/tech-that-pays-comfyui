@@ -39,21 +39,24 @@ export default {
     maxTotal: 12,
     // Sources without `filter` are already Mississauga-specific.
     // Regional sources are keyword-filtered for Mississauga relevance.
+    // Some outlets (insauga, Toronto Star) block/rate-limit direct feed
+    // access, so their headlines are pulled through Google News site:
+    // queries — the visible credit and outbound link still go to the outlet.
     sources: [
       {
         name: "City of Mississauga",
         homepage: "https://www.mississauga.ca/city-of-mississauga-news/",
         candidates: [
-          "https://www.mississauga.ca/city-of-mississauga-news/feed/",
-          "https://www.mississauga.ca/feed/"
+          "https://www.mississauga.ca/wp-json/wp/v2/news?per_page=10&orderby=date&_fields=title,link,date,excerpt",
+          "https://www.mississauga.ca/feed/",
+          "https://news.google.com/rss/search?q=site:mississauga.ca&hl=en-CA&gl=CA&ceid=CA:en"
         ]
       },
       {
         name: "insauga",
         homepage: "https://www.insauga.com/mississauga/",
         candidates: [
-          "https://www.insauga.com/category/mississauga/feed/",
-          "https://www.insauga.com/feed/"
+          "https://news.google.com/rss/search?q=site:insauga.com%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
         ]
       },
       {
@@ -68,10 +71,16 @@ export default {
       {
         name: "Toronto Star",
         homepage: "https://www.thestar.com/news/gta/",
-        filter: true,
         candidates: [
           "https://www.thestar.com/search/?f=rss&t=article&q=mississauga&l=25&s=start_time&sd=desc",
-          "https://www.thestar.com/search/?f=rss&t=article&c=news/gta*&l=25&s=start_time&sd=desc"
+          "https://news.google.com/rss/search?q=site:thestar.com%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
+        ]
+      },
+      {
+        name: "Google News",
+        homepage: "https://news.google.com/search?q=mississauga%20ontario&hl=en-CA&gl=CA&ceid=CA:en",
+        candidates: [
+          "https://news.google.com/rss/search?q=mississauga%20ontario%20when:2d&hl=en-CA&gl=CA&ceid=CA:en"
         ]
       }
     ],

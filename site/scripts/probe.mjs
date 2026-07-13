@@ -1,40 +1,46 @@
-// TEMPORARY diagnostic round 2: find the City news post type and the
-// events-calendar API endpoint. Delete when site.config.mjs is final.
+// TEMPORARY diagnostic round 3: find the events API route on
+// os-prod-api.mississauga.ca. Delete when site.config.mjs is final.
 const UA_BROWSER =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
-async function get(url) {
+async function get(url, extra = {}) {
   const res = await fetch(url, {
     redirect: "follow",
-    headers: { "user-agent": UA_BROWSER, accept: "*/*", "accept-language": "en-CA,en;q=0.9" }
+    headers: {
+      "user-agent": UA_BROWSER,
+      accept: "application/json,*/*",
+      origin: "https://www.mississauga.ca",
+      referer: "https://www.mississauga.ca/events-and-attractions/events-calendar/",
+      ...extra
+    }
   });
   return { status: res.status, type: res.headers.get("content-type"), text: await res.text() };
 }
 
-// 1) events-calendar app.js → look for API URLs
+// 1) dump every quoted string in app.js containing 'event' or 'api'
 try {
-  const app = await get("https://www.mississauga.ca/webapps/mississauga-events-calendar/js/app.js");
-  console.log(`\n===== app.js → HTTP ${app.status} len=${app.text.length}`);
-  const urls = app.text.match(/["'`](https?:\/\/[^"'`\s]+|\/[a-z0-9_\-/.]*(?:api|calendar|event|feed|json)[a-z0-9_\-/.?=&]*)["'`]/gi) || [];
-  console.log("URL-ish strings:\n  " + [...new Set(urls)].slice(0, 60).join("\n  "));
-  const axios = app.text.match(/baseURL[^,}]{0,120}|\.get\(["'`][^"'`]{0,120}|\.post\(["'`][^"'`]{0,120}/g) || [];
-  console.log("HTTP calls:\n  " + [...new Set(axios)].slice(0, 40).join("\n  "));
+  const res = await fetch("https://www.mississauga.ca/webapps/mississauga-events-calendar/js/app.js", {
+    headers: { "user-agent": UA_BROWSER }
+  });
+  const js = await res.text();
+  const strs = js.match(/["'`][^"'`\n]{2,160}["'`]/g) || [];
+  const interesting = [...new Set(strs.filter((s) => /event|api|calendar|list|search|categor/i.test(s)))];
+  console.log("app.js interesting strings:\n  " + interesting.slice(0, 120).join("\n  "));
 } catch (e) {
   console.log("app.js ERROR", e.message);
 }
 
-// 2) WP post types + custom namespace routes
 for (const url of [
-  "https://www.mississauga.ca/wp-json/wp/v2/types",
-  "https://www.mississauga.ca/wp-json/com/v1",
-  "https://www.mississauga.ca/wp-json/wp/v2/posts?per_page=3&_fields=title,link,date,excerpt",
-  "https://www.mississauga.ca/wp-json/wp/v2/news?per_page=3&_fields=title,link,date,excerpt",
-  "https://www.mississauga.ca/wp-json/wp/v2/city-news?per_page=3&_fields=title,link,date,excerpt"
+  "https://os-prod-api.mississauga.ca/api/v1/",
+  "https://os-prod-api.mississauga.ca/api/v1/events",
+  "https://os-prod-api.mississauga.ca/api/v1/events?limit=3",
+  "https://os-prod-api.mississauga.ca/api/v1/event-listing",
+  "https://os-prod-api.mississauga.ca/api/v1/calendar/events"
 ]) {
   try {
     const r = await get(url);
-    console.log(`\n===== ${url} → HTTP ${r.status} ${r.type}`);
-    console.log(r.text.slice(0, 1200));
+    console.log(`\n===== ${url} → HTTP ${r.status} ${r.type} len=${r.text.length}`);
+    console.log(r.text.slice(0, 900));
   } catch (e) {
     console.log(`\n===== ${url} → ERROR ${e.message}`);
   }
