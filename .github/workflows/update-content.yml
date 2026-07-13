@@ -92,27 +92,24 @@ jobs:
           BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      # Free live deploy with zero account setup: publishing the gh-pages
+      # branch auto-enables GitHub Pages on public repos. When you connect
+      # Cloudflare Pages / Netlify / Vercel instead, they redeploy on the
+      # data commit above — these two steps can then be removed.
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: site/dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site/dist
 
-  deploy-github-pages:
-    # Free live deploy with zero account setup. When you connect Cloudflare
-    # Pages / Netlify / Vercel instead, they redeploy automatically on the
-    # data commit above — this job can then be removed.
-    needs: update-and-build
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Verify live URL
+        continue-on-error: true
+        run: |
+          URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          for i in $(seq 1 12); do
+            CODE=$(curl -sL -o /dev/null -w "%{http_code}" "$URL")
+            echo "attempt $i: HTTP $CODE for $URL"
+            [ "$CODE" = "200" ] && { echo "✅ Live at $URL"; exit 0; }
+            sleep 20
+          done
+          echo "::warning::Site not reachable yet — first Pages deploy can take a few minutes, or enable Pages once in Settings → Pages (source: gh-pages branch)."
