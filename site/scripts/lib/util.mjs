@@ -5,8 +5,10 @@ import { fileURLToPath } from "node:url";
 
 export const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "src", "data");
 
+// A browser-like UA: several local outlets sit behind bot-blocking CDNs that
+// 403 non-browser agents even for their public RSS feeds.
 const UA =
-  "MississaugaInsiderBot/1.0 (local-news aggregator; excerpts+attribution only; contact: site owner)";
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
 export function log(msg) {
   console.log(`[pipeline] ${msg}`);
@@ -15,20 +17,37 @@ export function warn(msg) {
   console.warn(`[pipeline] WARN: ${msg}`);
 }
 
-export async function fetchText(url, { timeoutMs = 20000, headers = {} } = {}) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    const res = await fetch(url, {
-      signal: ctrl.signal,
-      redirect: "follow",
-      headers: { "user-agent": UA, accept: "*/*", ...headers }
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.text();
-  } finally {
-    clearTimeout(t);
+export async function fetchText(url, { timeoutMs = 30000, headers = {}, retries = 1 } = {}) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, {
+        signal: ctrl.signal,
+        redirect: "follow",
+        headers: {
+          "user-agent": UA,
+          accept: "*/*",
+          "accept-language": "en-CA,en;q=0.9",
+          ...headers
+        }
+      });
+      if (res.status === 429 || res.status >= 500) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) {
+        clearTimeout(t);
+        throw Object.assign(new Error(`HTTP ${res.status}`), { noRetry: true });
+      }
+      return await res.text();
+    } catch (e) {
+      lastErr = e;
+      if (e.noRetry || attempt === retries) break;
+      await new Promise((r) => setTimeout(r, 2500));
+    } finally {
+      clearTimeout(t);
+    }
   }
+  throw lastErr;
 }
 
 export async function fetchJson(url, opts = {}) {
@@ -115,7 +134,10 @@ export function parseFeed(xmlText) {
         title: stripHtml(textOf(it.title)),
         link: textOf(it.link) || it.link?.["@_href"] || "",
         publishedAt: toIso(textOf(it.pubDate) || textOf(it["dc:date"])),
-        description: textOf(it.description) || textOf(it["content:encoded"]) || ""
+        description: textOf(it.description) || textOf(it["content:encoded"]) || "",
+        // RSS <source> element (Google News feeds carry the real publisher here)
+        sourceName: stripHtml(textOf(it.source)),
+        sourceUrl: it.source?.["@_url"] || ""
       });
     }
     return { title: stripHtml(textOf(channel.title)), items };
