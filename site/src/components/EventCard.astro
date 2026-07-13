@@ -1,0 +1,29 @@
+---
+const { item } = Astro.props;
+const d = item.start ? new Date(item.start) : null;
+const mon = d?.toLocaleDateString("en-CA", { month: "short", timeZone: "America/Toronto" });
+const day = d?.toLocaleDateString("en-CA", { day: "numeric", timeZone: "America/Toronto" });
+const time = d?.toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit", timeZone: "America/Toronto" });
+---
+<article class="card">
+  <div class="event-row">
+    {d && (
+      <div class="event-date" aria-hidden="true">
+        <span class="mon">{mon}</span>
+        <span class="day">{day}</span>
+      </div>
+    )}
+    <div>
+      <h3><a href={item.url} target="_blank" rel="noopener">{item.title}</a></h3>
+      <p>
+        {time && <span>{time}</span>}
+        {item.venue && <span> · {item.venue}</span>}
+      </p>
+    </div>
+  </div>
+  {item.summary && <p>{item.summary}</p>}
+  <div class="meta">
+    <a class="source-badge" href={item.sourceUrl} target="_blank" rel="noopener">{item.source}</a>
+    <a class="readmore" style="margin-left:auto" href={item.url} target="_blank" rel="noopener">Details →</a>
+  </div>
+</article>

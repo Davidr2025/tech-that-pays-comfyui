@@ -1,8 +1,11 @@
-# Don't commit anything except the Docker build artifacts
-*
-!Dockerfile
-!extra_model_paths.yaml
-!.github
-!.github/**
-!.gitignore
-!BUILD_README.md
+# Node / Astro (Mississauga Insider site lives in site/)
+node_modules/
+site/dist/
+site/.astro/
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+*.log

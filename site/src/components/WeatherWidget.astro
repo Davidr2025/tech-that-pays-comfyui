@@ -1,0 +1,31 @@
+---
+import weather from "../data/weather.json";
+const fmt = (d) =>
+  new Date(d + "T12:00:00").toLocaleDateString("en-CA", { weekday: "short", timeZone: "America/Toronto" });
+---
+<div class="widget">
+  <h3>Mississauga Weather</h3>
+  {weather.current ? (
+    <>
+      <div class="weather-now">
+        <span>{weather.current.icon}</span>
+        <span>{weather.current.temp}°C</span>
+        <span class="desc">{weather.current.text} · feels like {weather.current.feelsLike}°</span>
+      </div>
+      <div class="weather-days">
+        {weather.days.slice(1).map((d) => (
+          <div class="d">
+            <div>{fmt(d.date)}</div>
+            <div class="ic">{d.icon}</div>
+            <div><span class="hi">{d.max}°</span> <span class="lo">{d.min}°</span></div>
+          </div>
+        ))}
+      </div>
+      <p style="font-size:.75rem;color:var(--muted);margin:.6rem 0 0">
+        Data: <a href={weather.sourceUrl} target="_blank" rel="noopener">{weather.source}</a>
+      </p>
+    </>
+  ) : (
+    <p class="empty" style="padding:.8rem">Forecast loads on the next content update.</p>
+  )}
+</div>

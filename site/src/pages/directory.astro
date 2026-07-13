@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import config from "../../site.config.mjs";
+import places from "../data/places.json";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const cats = places.categories.filter((c) => c.businesses.length > 0);
+const fetched = places.fetchedAt
+  ? new Date(places.fetchedAt).toLocaleDateString("en-CA", { dateStyle: "medium", timeZone: "America/Toronto" })
+  : null;
+---
+<Base title="Business Directory" description={`Local business directory for ${config.city}: restaurants, trades, real estate, health and more — with ratings, hours and photos.`} current="directory">
+  <section class="section container">
+    <div class="section-head">
+      <h2>{config.city} Business Directory</h2>
+      <span class="sub">{fetched ? `Refreshed weekly · last updated ${fetched}` : "Refreshed weekly"}</span>
+      <a class="more" href={`${base}advertise/`}>List your business →</a>
+    </div>
+
+    {places.sampleData && (
+      <p class="notice">
+        ⚠️ Showing sample listings. Live ratings, hours and photos load automatically from the
+        Google Places API once <code>GOOGLE_PLACES_API_KEY</code> is configured (see <code>.env.example</code>).
+      </p>
+    )}
+
+    <nav class="dir-nav" aria-label="Categories">
+      {cats.map((c) => <a href={`#${c.slug}`}>{c.label}</a>)}
+    </nav>
+
+    {cats.map((cat) => (
+      <section id={cat.slug} style="margin-bottom:2.5rem">
+        <h3 style="font-size:1.2rem;margin-bottom:.9rem">{cat.label}</h3>
+        <div class="grid">
+          {cat.businesses.map((b) => (
+            <article class="card biz-card">
+              {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
+              <h3><a href={b.website || b.mapsUrl} target="_blank" rel="noopener">{b.name}</a></h3>
+              {b.rating != null && (
+                <div class="rating">★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span></div>
+              )}
+              <p>{b.address}</p>
+              {b.hours.length > 0 && (
+                <details class="hours-toggle">
+                  <summary>Hours</summary>
+                  <ul>{b.hours.map((h) => <li>{h}</li>)}</ul>
+                </details>
+              )}
+              <div class="meta">
+                <a class="readmore" href={b.mapsUrl} target="_blank" rel="noopener">Map & directions →</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <p style="font-size:.8rem;color:var(--muted)">{places.attribution}</p>
+  </section>
+</Base>

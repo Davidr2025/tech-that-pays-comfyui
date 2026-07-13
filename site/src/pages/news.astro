@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import NewsCard from "../components/NewsCard.astro";
+import config from "../../site.config.mjs";
+import news from "../data/news.json";
+---
+<Base title="Top News" description={`The latest ${config.city} headlines, curated from local sources with links to the original coverage.`} current="news">
+  <section class="section container">
+    <div class="section-head">
+      <h2>Mississauga News</h2>
+      <span class="sub">Excerpts only — every story links to and credits its original source</span>
+    </div>
+    {news.items.length ? (
+      <div class="grid">{news.items.map((item) => <NewsCard item={item} />)}</div>
+    ) : (
+      <p class="empty">Headlines refresh automatically every 6 hours — the first update lands shortly.</p>
+    )}
+    <p style="font-size:.85rem;color:var(--muted);margin-top:1.5rem">
+      Sources: {config.news.sources.map((s, i) => (
+        <>{i > 0 && " · "}<a href={s.homepage} target="_blank" rel="noopener">{s.name}</a></>
+      ))}
+    </p>
+  </section>
+</Base>

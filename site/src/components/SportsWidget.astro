@@ -1,0 +1,25 @@
+---
+import sports from "../data/sports.json";
+const fmt = (item) => {
+  if (!item.date) return "";
+  const d = new Date(`${item.date}T${item.time || "00:00:00"}Z`);
+  return d.toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "America/Toronto" });
+};
+---
+{sports.items.length > 0 && (
+  <div class="widget">
+    <h3>Local Sports — Next Games</h3>
+    {sports.items.map((it) => (
+      <div class="sports-item">
+        <div>
+          <span class="team">{it.team}</span>
+          <div style="font-size:.82rem;color:var(--muted)">{it.event}</div>
+        </div>
+        <span class="when">{fmt(it)}</span>
+      </div>
+    ))}
+    <p style="font-size:.75rem;color:var(--muted);margin:.6rem 0 0">
+      Data: <a href={sports.sourceUrl} target="_blank" rel="noopener">{sports.source}</a>
+    </p>
+  </div>
+)}

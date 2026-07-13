@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import config from "../../site.config.mjs";
+---
+<Base title="About" description={`About ${config.name} — how we curate, and our commitment to crediting original sources.`} current="about">
+  <section class="section container" style="max-width:760px">
+    <h2>About {config.name}</h2>
+    <p>
+      {config.name} is a local guide to {config.city}, {config.province}: the top news, the best
+      things to do, and the local businesses worth knowing. The site updates itself automatically
+      every 6 hours.
+    </p>
+    <h3>How curation works</h3>
+    <p>
+      News headlines are gathered from public RSS feeds of local outlets. We show only a headline
+      and a short excerpt — <strong>never the full article</strong> — with clear credit and a link
+      to the original publisher, where you should read the full story. Event listings come from the
+      <a href={config.events.city.homepage} target="_blank" rel="noopener">City of Mississauga events calendar</a>.
+      Weather data is from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.
+      Business directory data and photos are from Google Maps.
+    </p>
+    <h3>Sources we curate from</h3>
+    <ul>
+      {config.news.sources.map((s) => (
+        <li><a href={s.homepage} target="_blank" rel="noopener">{s.name}</a></li>
+      ))}
+    </ul>
+    <p>
+      Are you a publisher who'd like content removed or attribution adjusted? Or a business that
+      wants to be featured? <a href="mailto:david@lsfg.ca">Get in touch</a>.
+    </p>
+  </section>
+</Base>

@@ -1,0 +1,27 @@
+---
+import featured from "../data/featured-business.json";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+---
+{featured.enabled && (
+  <section class="section container" id="featured">
+    <div class="section-head">
+      <h2>Featured Business</h2>
+      <span class="sub">Local spotlight</span>
+      <a class="more" href={`${base}advertise/`}>Get featured →</a>
+    </div>
+    <div class="featured">
+      {featured.photo && <img class="photo" src={featured.photo} alt={featured.name} loading="lazy" />}
+      <div class="body">
+        <span class="badge">{featured.badge || "Sponsored"}</span>
+        <h3>{featured.name}</h3>
+        <p style="color:var(--muted);font-size:.85rem;margin:.1rem 0 .4rem">{featured.category}</p>
+        <p>{featured.description}</p>
+        {featured.website && (
+          <a class="cta-btn" href={featured.website} target="_blank" rel="noopener">{featured.cta || "Visit website"} →</a>
+        )}
+      </div>
+    </div>
+  </section>
+)}

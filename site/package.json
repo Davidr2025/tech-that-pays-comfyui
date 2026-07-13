@@ -1,0 +1,19 @@
+{
+  "name": "mississauga-insider",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-updating local news & business site for Mississauga, Ontario",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "update-content": "node scripts/update-content.mjs",
+    "test:beehiiv": "node scripts/test-beehiiv.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.1.1",
+    "fast-xml-parser": "^4.5.0"
+  }
+}

@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import SignupForm from "../components/SignupForm.astro";
+import config from "../../site.config.mjs";
+const contact = "mailto:david@lsfg.ca?subject=Advertising%20on%20Mississauga%20Insider";
+---
+<Base title="Advertise" description={`Put your business in front of ${config.city} locals — featured placements on ${config.name} and in the newsletter.`} current="advertise">
+  <section class="hero">
+    <div class="container">
+      <h1>Reach {config.city} locals who actually live here.</h1>
+      <p class="lede">
+        {config.name} is read by your neighbours — on this site and in the weekly newsletter.
+        Featured placements put your business front and centre.
+      </p>
+      <a class="cta-btn" style="background:var(--accent);color:#1f1300;display:inline-block;padding:.8rem 1.5rem;border-radius:10px;font-weight:800;text-decoration:none" href={contact}>Book a placement →</a>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="grid">
+      <div class="card">
+        <h3>⭐ Featured Business Spotlight</h3>
+        <p>Hero placement on the homepage: your photo, story, and a direct link — plus a mention in the newsletter. One business at a time, so you're never sharing the stage.</p>
+      </div>
+      <div class="card">
+        <h3>📇 Directory Priority Listing</h3>
+        <p>Your business pinned to the top of its directory category with a highlighted card.</p>
+      </div>
+      <div class="card">
+        <h3>📬 Newsletter Sponsorship</h3>
+        <p>Sponsor a weekly edition of the {config.name} newsletter delivered straight to local inboxes.</p>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem">
+      Interested? <a href={contact}>Email us</a> and we'll send current rates and availability.
+    </p>
+  </section>
+</Base>

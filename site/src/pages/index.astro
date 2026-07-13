@@ -1,0 +1,88 @@
+---
+import Base from "../layouts/Base.astro";
+import SignupForm from "../components/SignupForm.astro";
+import NewsCard from "../components/NewsCard.astro";
+import EventCard from "../components/EventCard.astro";
+import FeaturedBusiness from "../components/FeaturedBusiness.astro";
+import WeatherWidget from "../components/WeatherWidget.astro";
+import SportsWidget from "../components/SportsWidget.astro";
+import config from "../../site.config.mjs";
+import news from "../data/news.json";
+import events from "../data/events.json";
+import meta from "../data/meta.json";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+
+const topNews = news.items.slice(0, 6);
+const topEvents = events.items.slice(0, 6);
+
+// "New in Mississauga" — openings & launches auto-detected from headlines
+const openingWords = /\b(open(s|ing|ed)?|launch(es|ed|ing)?|debuts?|coming to|new (restaurant|store|shop|café|cafe|location|park|business))\b/i;
+const openings = news.items.filter((it) => openingWords.test(it.title)).slice(0, 3);
+
+const updated = meta.updatedAt
+  ? new Date(meta.updatedAt).toLocaleString("en-CA", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Toronto" })
+  : null;
+---
+<Base current="home">
+  <section class="hero">
+    <div class="container">
+      <h1>The best of {config.city},<br />delivered while you sleep.</h1>
+      <p class="lede">{config.tagline} Join your neighbours and never miss what's happening in {config.city}.</p>
+      <SignupForm />
+      <p class="fine">Free forever. Unsubscribe anytime. No spam — just {config.city}.</p>
+    </div>
+  </section>
+
+  <section class="section container" id="news">
+    <div class="section-head">
+      <h2>Top News</h2>
+      <span class="sub">Curated from local sources — full stories at the original outlet</span>
+      <a class="more" href={`${base}news/`}>All news →</a>
+    </div>
+    {topNews.length ? (
+      <div class="grid">{topNews.map((item) => <NewsCard item={item} />)}</div>
+    ) : (
+      <p class="empty">Headlines refresh automatically every 6 hours — the first update lands shortly.</p>
+    )}
+  </section>
+
+  <section class="section container" id="events">
+    <div class="section-head">
+      <h2>Top Things to Do</h2>
+      <span class="sub">Next {events.windowDays} days in {config.city}</span>
+      <a class="more" href={`${base}events/`}>All events →</a>
+    </div>
+    {topEvents.length ? (
+      <div class="grid">{topEvents.map((item) => <EventCard item={item} />)}</div>
+    ) : (
+      <p class="empty">Event listings refresh automatically — check back after the next content update.</p>
+    )}
+  </section>
+
+  <FeaturedBusiness />
+
+  {openings.length > 0 && (
+    <section class="section container" id="new-in-town">
+      <div class="section-head">
+        <h2>New in {config.city}</h2>
+        <span class="sub">Openings & launches spotted in the news</span>
+      </div>
+      <div class="grid">{openings.map((item) => <NewsCard item={item} />)}</div>
+    </section>
+  )}
+
+  <section class="section container" id="widgets">
+    <div class="widgets">
+      <WeatherWidget />
+      <SportsWidget />
+    </div>
+    {updated && (
+      <p style="font-size:.78rem;color:var(--muted);margin-top:1rem">
+        Content last updated {updated} · refreshes automatically every 6 hours
+      </p>
+    )}
+  </section>
+</Base>

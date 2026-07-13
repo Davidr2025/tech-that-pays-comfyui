@@ -1,0 +1,41 @@
+{
+  "fetchedAt": null,
+  "sampleData": true,
+  "attribution": "Sample listings (well-known Mississauga businesses). Live ratings, hours & photos load from the Google Places API once GOOGLE_PLACES_API_KEY is configured.",
+  "categories": [
+    {
+      "slug": "restaurants",
+      "label": "Restaurants",
+      "businesses": [
+        { "id": "sample-1", "name": "The Wilcox Gastropub", "rating": null, "reviews": null, "address": "137 Queen St S, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/The+Wilcox+Gastropub+Mississauga", "website": null, "photo": null },
+        { "id": "sample-2", "name": "Paramount Fine Foods", "rating": null, "reviews": null, "address": "2985 Argentia Rd, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Paramount+Fine+Foods+Mississauga", "website": null, "photo": null },
+        { "id": "sample-3", "name": "Union Social Eatery", "rating": null, "reviews": null, "address": "6986 Financial Dr, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Union+Social+Eatery+Mississauga", "website": null, "photo": null },
+        { "id": "sample-4", "name": "Snug Harbour Seafood Restaurant", "rating": null, "reviews": null, "address": "14 Stavebank Rd S, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Snug+Harbour+Mississauga", "website": null, "photo": null }
+      ]
+    },
+    {
+      "slug": "cafes",
+      "label": "Cafés & Bakeries",
+      "businesses": [
+        { "id": "sample-5", "name": "Colossus Greek Taverna Bakery Cafe", "rating": null, "reviews": null, "address": "Port Credit, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/bakery+cafe+Port+Credit+Mississauga", "website": null, "photo": null },
+        { "id": "sample-6", "name": "Brioche Dorée Café", "rating": null, "reviews": null, "address": "Square One, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/cafe+Square+One+Mississauga", "website": null, "photo": null }
+      ]
+    },
+    {
+      "slug": "trades",
+      "label": "Trades & Home Services",
+      "businesses": [
+        { "id": "sample-7", "name": "Sample Plumbing Co.", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/plumber+Mississauga", "website": null, "photo": null },
+        { "id": "sample-8", "name": "Sample Electric Ltd.", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/electrician+Mississauga", "website": null, "photo": null }
+      ]
+    },
+    {
+      "slug": "health",
+      "label": "Health & Wellness",
+      "businesses": [
+        { "id": "sample-9", "name": "Sample Dental Clinic", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/dentist+Mississauga", "website": null, "photo": null },
+        { "id": "sample-10", "name": "Sample Physiotherapy Centre", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/physiotherapy+Mississauga", "website": null, "photo": null }
+      ]
+    }
+  ]
+}

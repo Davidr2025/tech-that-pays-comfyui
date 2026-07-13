@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap is emitted by @astrojs/sitemap at build time
+Sitemap: /sitemap-index.xml

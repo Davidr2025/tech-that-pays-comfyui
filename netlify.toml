@@ -1,0 +1,13 @@
+# Netlify deploy config for the Mississauga Insider site (lives in site/)
+[build]
+  base = "site"
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200

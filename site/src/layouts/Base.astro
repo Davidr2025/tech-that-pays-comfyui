@@ -1,0 +1,118 @@
+---
+import config from "../../site.config.mjs";
+import "../styles/global.css";
+import SignupForm from "../components/SignupForm.astro";
+
+const { title, description = config.description, current = "" } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const pageTitle = title ? `${title} · ${config.name}` : `${config.name} — ${config.tagline}`;
+const c = config.colors;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const nav = [
+  { href: base, label: "Home", key: "home" },
+  { href: `${base}news/`, label: "News", key: "news" },
+  { href: `${base}events/`, label: "Things to Do", key: "events" },
+  { href: `${base}directory/`, label: "Directory", key: "directory" },
+  { href: `${base}advertise/`, label: "Advertise", key: "advertise" },
+  { href: `${base}about/`, label: "About", key: "about" }
+];
+
+const ld = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: config.name,
+  description: config.description,
+  url: Astro.site?.toString()
+};
+---
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="sitemap" href={`${base}sitemap-index.xml`} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={config.name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="Mississauga" />
+    <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    <style set:html={`:root{--primary:${c.primary};--primary-dark:${c.primaryDark};--accent:${c.accent};--accent-dark:${c.accentDark};--bg:${c.bg};--surface:${c.surface};--text:${c.text};--muted:${c.muted};--border:${c.border};}`} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href={base}>{config.name.replace(" Insider", "")}<span class="dot"> Insider</span></a>
+        <nav class="nav" aria-label="Main">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={current === n.key ? "page" : undefined}>{n.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="cols">
+          <div>
+            <div class="brand">{config.name}</div>
+            <p>{config.tagline}</p>
+          </div>
+          <div>
+            <strong>Explore</strong><br />
+            <a href={`${base}news/`}>Top News</a><br />
+            <a href={`${base}events/`}>Things to Do</a><br />
+            <a href={`${base}directory/`}>Business Directory</a>
+          </div>
+          <div>
+            <strong>Work with us</strong><br />
+            <a href={`${base}advertise/`}>Feature your business</a><br />
+            <a href={`${base}about/`}>About & attribution</a>
+          </div>
+        </div>
+        <p class="fine">
+          © {new Date().getFullYear()} {config.name}. Headlines and event listings are curated excerpts —
+          all content is credited and linked to its original source. Made in Mississauga, Ontario.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Sticky newsletter bar (dismissible, remembers choice) -->
+    <div class="sticky-signup" id="sticky-signup" aria-hidden="true">
+      <div class="container">
+        <span class="pitch">📬 Get the best of {config.city} in your inbox — free.</span>
+        <SignupForm compact={true} idSuffix="sticky" />
+        <button class="close" id="sticky-close" aria-label="Dismiss">×</button>
+      </div>
+    </div>
+    <script>
+      const bar = document.getElementById("sticky-signup");
+      const KEY = "mi-sticky-dismissed";
+      if (bar && !localStorage.getItem(KEY)) {
+        let shown = false;
+        addEventListener("scroll", () => {
+          if (!shown && scrollY > 600) {
+            bar.classList.add("visible");
+            bar.setAttribute("aria-hidden", "false");
+            shown = true;
+          }
+        }, { passive: true });
+        document.getElementById("sticky-close")?.addEventListener("click", () => {
+          bar.classList.remove("visible");
+          localStorage.setItem(KEY, "1");
+        });
+      }
+    </script>
+  </body>
+</html>

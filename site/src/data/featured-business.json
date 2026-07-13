@@ -1,0 +1,11 @@
+{
+  "_comment": "FEATURED BUSINESS — paid placement slot. Edit this file (or wire it to Airtable later) and the site updates on the next build. Set enabled=false to hide the section.",
+  "enabled": true,
+  "name": "Your Business Here",
+  "category": "Featured placement",
+  "description": "This premium spotlight goes out to thousands of Mississauga locals on the site and in the Mississauga Insider newsletter. Tell your story, show off your storefront, and link readers straight to you.",
+  "photo": "",
+  "website": "mailto:david@lsfg.ca?subject=Featured%20Business%20on%20Mississauga%20Insider",
+  "cta": "Claim this spot",
+  "badge": "Sponsored"
+}

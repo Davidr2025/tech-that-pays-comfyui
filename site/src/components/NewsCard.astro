@@ -1,0 +1,15 @@
+---
+const { item } = Astro.props;
+const date = item.publishedAt
+  ? new Date(item.publishedAt).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "America/Toronto" })
+  : "";
+---
+<article class="card">
+  <h3><a href={item.url} target="_blank" rel="noopener">{item.title}</a></h3>
+  {item.summary && <p>{item.summary}</p>}
+  <div class="meta">
+    <a class="source-badge" href={item.sourceUrl} target="_blank" rel="noopener" title={`Source: ${item.source}`}>{item.source}</a>
+    {date && <span>{date}</span>}
+    <a class="readmore" style="margin-left:auto" href={item.url} target="_blank" rel="noopener">Read at source →</a>
+  </div>
+</article>

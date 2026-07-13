@@ -1,0 +1,57 @@
+---
+import config from "../../site.config.mjs";
+const { compact = false, idSuffix = "hero" } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+// Serverless endpoint (Cloudflare Pages / Netlify / Vercel). On static-only
+// hosts (e.g. GitHub Pages) the script falls back to the Beehiiv hosted page.
+const endpoint = `${base}api/subscribe`;
+const fallback = config.newsletterUrl;
+---
+<form class="signup" data-endpoint={endpoint} data-fallback={fallback} id={`signup-${idSuffix}`}>
+  <input type="email" name="email" required placeholder="you@example.com"
+    aria-label="Email address" autocomplete="email" />
+  <button type="submit">{compact ? "Subscribe" : "Get the newsletter →"}</button>
+  {!compact && <p class="msg" role="status" aria-live="polite"></p>}
+</form>
+<script>
+  document.querySelectorAll<HTMLFormElement>("form.signup:not([data-bound])").forEach((form) => {
+    form.dataset.bound = "1";
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+      const msg = form.querySelector<HTMLElement>(".msg");
+      const btn = form.querySelector<HTMLButtonElement>("button");
+      const setMsg = (t: string, ok: boolean) => {
+        if (msg) { msg.textContent = t; msg.className = `msg ${ok ? "ok" : "err"}`; }
+        else if (btn) { btn.textContent = ok ? "Subscribed ✓" : "Try again"; }
+      };
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(form.dataset.endpoint!, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok && body.ok) {
+          setMsg("You're in! Check your inbox to confirm. 🎉", true);
+          form.reset();
+        } else {
+          throw new Error(body.error || `HTTP ${res.status}`);
+        }
+      } catch {
+        // Static host or API unavailable → Beehiiv hosted subscribe page
+        const fb = form.dataset.fallback;
+        if (fb) {
+          location.href = `${fb}${fb.includes("?") ? "&" : "?"}email=${encodeURIComponent(email)}`;
+        } else {
+          setMsg("Signup is temporarily unavailable — please try again shortly.", false);
+        }
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+</script>

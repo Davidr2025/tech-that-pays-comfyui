@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+import EventCard from "../components/EventCard.astro";
+import config from "../../site.config.mjs";
+import events from "../data/events.json";
+---
+<Base title="Things to Do" description={`What's on in ${config.city} over the next ${events.windowDays} days — concerts, festivals, family events and more.`} current="events">
+  <section class="section container">
+    <div class="section-head">
+      <h2>Things to Do in {config.city}</h2>
+      <span class="sub">Next {events.windowDays} days · from the {config.events.city.name}</span>
+    </div>
+    {events.items.length ? (
+      <div class="grid">{events.items.map((item) => <EventCard item={item} />)}</div>
+    ) : (
+      <p class="empty">
+        Event listings refresh automatically every 6 hours.
+        Meanwhile, browse the <a href={config.events.city.homepage} target="_blank" rel="noopener">City of Mississauga events calendar</a>.
+      </p>
+    )}
+  </section>
+</Base>
