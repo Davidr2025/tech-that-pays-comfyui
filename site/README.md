@@ -51,9 +51,13 @@ GitHub Actions (every 6 hours)
 
 ## Deploying (all free)
 
-The GitHub Actions workflow already deploys to **GitHub Pages** on every run
-(zero setup). For a nicer domain + working `/api/subscribe` endpoint, connect
-one of:
+The GitHub Actions workflow publishes the built site to the `gh-pages` branch
+on every run. To turn on the free GitHub Pages URL
+(`https://davidr2025.github.io/tech-that-pays-comfyui/`) it takes **one click**:
+repo → Settings → Pages → Source: *Deploy from a branch* → `gh-pages` → Save.
+(GitHub requires an admin to enable Pages; the workflow token can't.)
+
+For a nicer domain + working `/api/subscribe` endpoint, connect one of:
 
 - **Cloudflare Pages (recommended):** dashboard → Workers & Pages → connect this
   repo → root directory `site`, build `npm run build`, output `dist`. The
