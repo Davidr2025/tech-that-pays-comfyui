@@ -59,9 +59,11 @@ async function fetchCityEvents(startISO, endISO) {
       const raw = json.events || [];
       if (raw.length) {
         log(`events: City REST API → ${raw.length} events (via ${url})`);
+        // The Events Calendar prepends a "date @ venue" schedule block to
+        // descriptions — strip it so the excerpt starts at the real text.
         return raw.map((e) => ({
           title: stripHtml(e.title || ""),
-          summary: excerpt(e.description || e.excerpt || ""),
+          summary: excerpt(e.description || e.excerpt || "").replace(/^[^A-Za-z0-9"'(]+/, ""),
           venue: stripHtml(e.venue?.venue || e.venue?.address || ""),
           url: e.url || e.website || city.homepage,
           start: toIso(e.start_date || e.utc_start_date),
