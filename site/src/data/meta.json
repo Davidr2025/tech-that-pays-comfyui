@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-13T22:42:01.014Z",
+  "updatedAt": "2026-07-13T22:45:08.605Z",
   "results": {
     "news": true,
     "events": true,
     "weather": true,
     "sports": true,
-    "places": true
+    "places": false
   }
 }
