@@ -77,7 +77,8 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 
 /* ---------- Sections ---------- */
 .section { padding: 2.75rem 0 .5rem; }
-.section-head { display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1.1rem; }
+.section-head { display: flex; align-items: baseline; gap: .35rem .75rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.section-head h2 { white-space: nowrap; }
 .section-head h2 { font-size: 1.45rem; font-weight: 800; letter-spacing: -.01em; }
 .section-head .sub { color: var(--muted); font-size: .9rem; }
 .section-head .more { margin-left: auto; font-size: .9rem; font-weight: 600; white-space: nowrap; }

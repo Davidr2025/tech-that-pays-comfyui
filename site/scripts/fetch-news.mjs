@@ -85,17 +85,24 @@ export async function fetchNews() {
     all.push(...items);
   }
 
-  // de-dupe by normalized title, newest first
-  const seen = new Set();
-  const deduped = all
-    .filter((it) => {
-      const key = it.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    })
-    .sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))
-    .slice(0, maxTotal);
+  // De-dupe near-identical stories (same event covered by many outlets):
+  // compare sets of significant title words and drop items that overlap
+  // heavily with an already-kept item.
+  const words = (t) =>
+    new Set(t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length > 3));
+  const kept = [];
+  for (const it of all.sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))) {
+    const w = words(it.title);
+    const dup = kept.some((k) => {
+      const kw = words(k.title);
+      let overlap = 0;
+      for (const x of w) if (kw.has(x)) overlap++;
+      return overlap / Math.max(1, Math.min(w.size, kw.size)) > 0.6;
+    });
+    if (!dup) kept.push(it);
+    if (kept.length >= maxTotal) break;
+  }
+  const deduped = kept;
 
   return writeData("news.json", {
     updatedAt: new Date().toISOString(),

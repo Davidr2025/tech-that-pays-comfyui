@@ -97,15 +97,18 @@ export default {
   events: {
     daysAhead: 14,
     maxItems: 12,
+    // Visit Mississauga is the City's official tourism agency — its public
+    // events calendar (The Events Calendar REST API + iCal) is the reliable
+    // machine-readable source. (The city's own events-calendar app sits
+    // behind an API that blocks datacenter IPs.)
     city: {
-      name: "City of Mississauga events calendar",
-      homepage: "https://www.mississauga.ca/events-and-attractions/events-calendar/",
-      // Tried in order: WordPress Events Calendar REST API, then iCal export
+      name: "Visit Mississauga",
+      homepage: "https://www.visitmississauga.ca/events/",
       restCandidates: [
-        "https://www.mississauga.ca/wp-json/tribe/events/v1/events?per_page=50&start_date=__START__&end_date=__END__"
+        "https://www.visitmississauga.ca/wp-json/tribe/events/v1/events?per_page=50&start_date=__START__&end_date=__END__"
       ],
       icalCandidates: [
-        "https://www.mississauga.ca/events-and-attractions/events-calendar/?ical=1"
+        "https://www.visitmississauga.ca/events/?ical=1"
       ]
     },
     // Eventbrite: their PUBLIC event-search API was retired in 2020, so

@@ -66,7 +66,7 @@ async function fetchCityEvents(startISO, endISO) {
           url: e.url || e.website || city.homepage,
           start: toIso(e.start_date || e.utc_start_date),
           end: toIso(e.end_date || e.utc_end_date),
-          source: "City of Mississauga",
+          source: city.name,
           sourceUrl: city.homepage
         }));
       }
@@ -88,7 +88,7 @@ async function fetchCityEvents(startISO, endISO) {
         url: e.url || city.homepage,
         start: e.start,
         end: e.end,
-        source: "City of Mississauga",
+        source: city.name,
         sourceUrl: city.homepage
       }));
     } catch (e) {
