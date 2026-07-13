@@ -1,40 +1,1555 @@
 {
-  "fetchedAt": null,
-  "sampleData": true,
-  "attribution": "Sample listings (well-known Mississauga businesses). Live ratings, hours & photos load from the Google Places API once GOOGLE_PLACES_API_KEY is configured.",
+  "fetchedAt": "2026-07-13T17:59:25.543Z",
+  "sampleData": false,
+  "attribution": "Business data & photos from Google Maps",
   "categories": [
     {
       "slug": "restaurants",
       "label": "Restaurants",
       "businesses": [
-        { "id": "sample-1", "name": "The Wilcox Gastropub", "rating": null, "reviews": null, "address": "137 Queen St S, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/The+Wilcox+Gastropub+Mississauga", "website": null, "photo": null },
-        { "id": "sample-2", "name": "Paramount Fine Foods", "rating": null, "reviews": null, "address": "2985 Argentia Rd, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Paramount+Fine+Foods+Mississauga", "website": null, "photo": null },
-        { "id": "sample-3", "name": "Union Social Eatery", "rating": null, "reviews": null, "address": "6986 Financial Dr, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Union+Social+Eatery+Mississauga", "website": null, "photo": null },
-        { "id": "sample-4", "name": "Snug Harbour Seafood Restaurant", "rating": null, "reviews": null, "address": "14 Stavebank Rd S, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/Snug+Harbour+Mississauga", "website": null, "photo": null }
+        {
+          "id": "ChIJybdnxIxHK4gRiYxHDii5qZA",
+          "name": "The Backyard Smokehouse Mississauga",
+          "rating": 4.4,
+          "reviews": 1408,
+          "address": "4188 Living Arts Dr, Mississauga, ON L5B 0G7, Canada",
+          "hours": [
+            "Monday: 1:00 – 10:00 PM",
+            "Tuesday: 1:00 – 10:00 PM",
+            "Wednesday: 1:00 – 10:00 PM",
+            "Thursday: 1:00 – 10:00 PM",
+            "Friday: 1:00 – 11:00 PM",
+            "Saturday: 1:00 – 11:00 PM",
+            "Sunday: 1:00 – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10424066394215124105&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://thebackyardsmokehouse.ca/bbq-restaurant-mississauga/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPrsJB8u5ltQYfFwtMH170l0eaU8VNBwTou1A2HvoTkk4fI_7Mzjg1WYoIamAty3w0rOy418cN-gpZkB7U7-OOwqrRefvfFajMDIzDXckuqc2fSFM5afJALmhd3ho48LZNJAa-9rgd8APCWUQ=s4800-w640"
+        },
+        {
+          "id": "ChIJu2Gq7V9BK4gRtYxLpl1rpEI",
+          "name": "R Kitchen Restaurant - Mississauga",
+          "rating": 4.8,
+          "reviews": 162,
+          "address": "2295 Battleford Rd, Mississauga, ON L5N 2W8, Canada",
+          "hours": [
+            "Monday: 12:00 – 8:00 PM",
+            "Tuesday: 12:00 – 8:00 PM",
+            "Wednesday: 12:00 – 8:00 PM",
+            "Thursday: 12:00 – 8:00 PM",
+            "Friday: 12:00 – 8:00 PM",
+            "Saturday: 10:00 AM – 8:00 PM",
+            "Sunday: 10:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4802081152649890997&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://rkitchen.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMiMCVg5UNXY8PoZpEdMVrPWqu5vC3-WBGhqlp-Pp1qRrQGMmWS7KF--wgnqOq-rq9Tg3PVjjL_VA2B4qsY1ZFELBlUVCVRzO1AnD-NiFPzIMlQHZMeB4hPBKsMBZaCNDvR15RcMXkuwGS_XQ=s4800-w640"
+        },
+        {
+          "id": "ChIJtWR_nyxHK4gRbUNCTx0guCk",
+          "name": "Scaddabush Italian Kitchen & Bar Square One",
+          "rating": 4.7,
+          "reviews": 16611,
+          "address": "209 Rathburn Rd W, Mississauga, ON L5B 4C1, Canada",
+          "hours": [
+            "Monday: 11:30 AM – 11:00 PM",
+            "Tuesday: 11:30 AM – 11:00 PM",
+            "Wednesday: 11:30 AM – 11:00 PM",
+            "Thursday: 11:30 AM – 11:00 PM",
+            "Friday: 11:30 AM – 12:00 AM",
+            "Saturday: 11:30 AM – 12:00 AM",
+            "Sunday: 11:30 AM – 11:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=3006188061525689197&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.scaddabush.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNUqd218NOIZ46QYYII3rvc2IMeUowDGaMQtOcSupSPqhAYonOqgXWqGglyvDpdMBCPIqmGJyIe0var8tgbZq2dB2JaR5v7M4C4HbU9eQP40iPEkbR4mUPYZ6fJFkVHD-Qg9dUl9ssZzolsOA=s4800-w640"
+        },
+        {
+          "id": "ChIJMUVZkbVHK4gRI6_oRp0h6Mw",
+          "name": "Chiang Mai Mississauga",
+          "rating": 4.8,
+          "reviews": 1063,
+          "address": "285 Enfield Pl #100, Mississauga, ON L5B 3Y6, Canada",
+          "hours": [
+            "Monday: 4:00 – 10:00 PM",
+            "Tuesday: 4:00 – 10:00 PM",
+            "Wednesday: 4:00 – 10:00 PM",
+            "Thursday: 4:00 – 10:00 PM",
+            "Friday: 4:00 – 11:00 PM",
+            "Saturday: 4:00 – 11:00 PM",
+            "Sunday: 4:00 – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=14765088337717407523&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://chiangmai.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjBLxHLEbd96geO0QZ_WmiA92EbTVrokHFmLSW19RZeSYr-JBNAPEhNm4gsNyPZ8olr_8Rn7h7JfwU_3rSa9wGnY8t6dkC3ZXVaEZ9IZbayxxGlYdijDZESyHLOixT5Vl_f8S_bBy-Rt-ze7aaGjBif-0Q=s4800-w640"
+        },
+        {
+          "id": "ChIJJTfBnJRBK4gRTgBS4VHXiwE",
+          "name": "Seau de Crabe Restaurant",
+          "rating": 4.7,
+          "reviews": 2926,
+          "address": "#4, 670 Eglinton Ave W, Mississauga, ON L5R 3V2, Canada",
+          "hours": [
+            "Monday: 12:00 – 10:00 PM",
+            "Tuesday: 12:00 – 10:00 PM",
+            "Wednesday: 12:00 – 10:00 PM",
+            "Thursday: 12:00 – 10:00 PM",
+            "Friday: 12:00 – 11:00 PM",
+            "Saturday: 12:00 – 11:00 PM",
+            "Sunday: 12:00 – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=111419362473279566&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.seaudecrabe.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMuppW2Mxmi44wocQAEaWfeUWnTlIoum0S0DXYC1rSzJ5cGCdo-P_f47oQMve-vLOHi8YgyobxiIzmiykLTOfsj6pTnENwfGuwjUjzamj1Oo5d_AFH8NpdAE_7zDkMicnK5GUeb8uxKGWoGNthnbuK0qQ=s4800-w640"
+        },
+        {
+          "id": "ChIJbb2xBSNHK4gRD6rwiSB65pI",
+          "name": "Simply South Mississauga",
+          "rating": 4.8,
+          "reviews": 3459,
+          "address": "50 Burnhamthorpe Rd W Unit 200B, Mississauga, ON L5B 3C2, Canada",
+          "hours": [
+            "Monday: 12:00 PM – 12:00 AM",
+            "Tuesday: 12:00 PM – 12:00 AM",
+            "Wednesday: 12:00 PM – 12:00 AM",
+            "Thursday: 12:00 PM – 12:00 AM",
+            "Friday: 12:00 PM – 2:00 AM",
+            "Saturday: 8:30 AM – 2:00 AM",
+            "Sunday: 8:30 AM – 12:00 AM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10585282254352722447&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://simplysouth.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjD-Dr6xxyUSd2x7Ye_QfD-E_piaNgS7y_fbqeejKvqa1EcRYN3f6zTqwuxjwI8gqeuYNKWXdz20xnNL4DJgy2vnjpiniGKwRqm2LZduS-yr_3wc3serwfSce-e_w3r6v2vwcEGizvxP4mQcT5ROnFZS=s4800-w640"
+        },
+        {
+          "id": "ChIJI4jmXOs_K4gRfV0KAbrnioE",
+          "name": "Madras Peppers",
+          "rating": 4.6,
+          "reviews": 4064,
+          "address": "285 Enfield Pl R104, Mississauga, ON L5B 3Y6, Canada",
+          "hours": [
+            "Monday: 11:00 AM – 2:00 AM",
+            "Tuesday: 11:00 AM – 2:00 AM",
+            "Wednesday: 11:00 AM – 2:00 AM",
+            "Thursday: 11:00 AM – 2:00 AM",
+            "Friday: 11:00 AM – 2:00 AM",
+            "Saturday: 12:00 PM – 2:00 AM",
+            "Sunday: 12:00 PM – 2:00 AM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=9334527963746164093&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.madraspeppers.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNN9KvdbqIEXVKN7H3dO15XmYlCEUb0-xn9mowfqWmUun2Oq-ws97nlUC3JUFUIav_mv_i61xoUx-5H7F8rJHIQt_8EXPXNAj8AB9cZIDgz8LtxldLVXkyKkOX5FzxblfRAxoYUvUMW2oRx=s4800-w640"
+        },
+        {
+          "id": "ChIJ61G1yy5HK4gR1OXbj2vB0tA",
+          "name": "Reds Square One",
+          "rating": 4.4,
+          "reviews": 5370,
+          "address": "100 City Centre Drive, 815 Square One Dr Unit #2, Mississauga, ON L5B 2C9, Canada",
+          "hours": [
+            "Monday: 11:30 AM – 11:00 PM",
+            "Tuesday: 11:30 AM – 11:00 PM",
+            "Wednesday: 11:30 AM – 11:00 PM",
+            "Thursday: 11:30 AM – 11:00 PM",
+            "Friday: 11:30 AM – 12:00 AM",
+            "Saturday: 11:00 AM – 12:00 AM",
+            "Sunday: 11:00 AM – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15047301972717462996&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://redsrestaurants.com/?locationId=891",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjBEM5rcWRdiF0dUd3b1L_ND-8AftREl0de81uZOufzH-E6hoDPLuOom1I8fjgSzejWG966pXXHidmaAR0UKZhx-C4zoEexEiJvERb6P-SpAgoAdUb9bI_ClGh_x_Pjb8SC-ngUxssdFQP8oWtL3BfTUBg=s4800-w640"
+        },
+        {
+          "id": "ChIJFX6IHSZFK4gRkMwTUn8wbYM",
+          "name": "The Park",
+          "rating": 4.8,
+          "reviews": 278,
+          "address": "1107 Lorne Park Rd, Mississauga, ON L5H 3A1, Canada",
+          "hours": [
+            "Monday: Closed",
+            "Tuesday: 5:00 – 10:00 PM",
+            "Wednesday: 5:00 – 10:00 PM",
+            "Thursday: 5:00 – 10:00 PM",
+            "Friday: 5:00 – 10:00 PM",
+            "Saturday: 5:00 – 10:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=9470278914826030224&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://theparklp.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOZlNGtMK8YBJVAF2oWlhDQ_q086-8_RE_FfIo8Ut7DlyZdoQ7WLQO5HfTgZ2QJQh2yYph8P6gZJOMyGy4z77U1K5IJIAmqTbvvKTh8F_tSgvotnbR2K0wmv74LIaNNGAwCABcwmArapqMV6D0=s4800-w640"
+        },
+        {
+          "id": "ChIJOSwULlxEK4gRAsISxWUqBNY",
+          "name": "Capra's Kitchen",
+          "rating": 4.5,
+          "reviews": 2499,
+          "address": "1834 Lakeshore Rd W, Mississauga, ON L5J 1J7, Canada",
+          "hours": [
+            "Monday: Closed",
+            "Tuesday: 5:00 – 10:00 PM",
+            "Wednesday: 5:00 – 10:00 PM",
+            "Thursday: 11:30 AM – 10:00 PM",
+            "Friday: 11:30 AM – 10:00 PM",
+            "Saturday: 11:00 AM – 10:00 PM",
+            "Sunday: 11:00 AM – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15421497640609825282&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.capraskitchen.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjC4cI6_q4ueZsxrOJbIda4jF3D431xZ56z3Z9O-DQtUmXBioC1puSTGJgHj1xyl3yKYKAPmfbkDO8HO-RzPMwDmJ4OteyX3YUmTGzDL1nWVjfVPDVRq62-zkzqWfjeePhGmnBIXUArchCf0aWI=s4800-w640"
+        }
       ]
     },
     {
       "slug": "cafes",
       "label": "Cafés & Bakeries",
       "businesses": [
-        { "id": "sample-5", "name": "Colossus Greek Taverna Bakery Cafe", "rating": null, "reviews": null, "address": "Port Credit, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/bakery+cafe+Port+Credit+Mississauga", "website": null, "photo": null },
-        { "id": "sample-6", "name": "Brioche Dorée Café", "rating": null, "reviews": null, "address": "Square One, Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/cafe+Square+One+Mississauga", "website": null, "photo": null }
+        {
+          "id": "ChIJdwEoidlGK4gRmXErmr4jV9g",
+          "name": "Lazar Famous Deli & Bakery",
+          "rating": 4.5,
+          "reviews": 3202,
+          "address": "325 Central Pkwy W Unit 12, Mississauga, ON L5B 3X9, Canada",
+          "hours": [
+            "Monday: 6:00 AM – 9:00 PM",
+            "Tuesday: 6:00 AM – 9:00 PM",
+            "Wednesday: 6:00 AM – 9:00 PM",
+            "Thursday: 6:00 AM – 10:00 PM",
+            "Friday: 6:00 AM – 11:00 PM",
+            "Saturday: 6:00 AM – 11:00 PM",
+            "Sunday: 6:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15588967936703558041&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.lazarbakery.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNbvWzOoCbUYXtOXt6O9JSx8AhMtpY-bCVNjZ_DDXZCWot6XMFacjGRFq0Q9lVYSAqdhGRM1F6nKsHehsb1kYEbTyR3c5Z00geONqY-vDVDDqz_5DCl_azfQgRlyXEErkpYlH64vqY8kbZlMGuDhSPJHg=s4800-w640"
+        },
+        {
+          "id": "ChIJ-_SJ0ENHK4gRNlIAdi508vQ",
+          "name": "Crepepresso Dessert Cafe",
+          "rating": 4.9,
+          "reviews": 89,
+          "address": "4070 Living Arts Dr Unit 2, Mississauga, ON L5B 4N3, Canada",
+          "hours": [
+            "Monday: 12:30 PM – 12:00 AM",
+            "Tuesday: 12:30 PM – 12:00 AM",
+            "Wednesday: 12:30 PM – 12:00 AM",
+            "Thursday: 12:30 PM – 12:00 AM",
+            "Friday: 12:30 PM – 12:00 AM",
+            "Saturday: 12:30 PM – 12:00 AM",
+            "Sunday: 12:30 PM – 12:00 AM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=17650297632515445302&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://crepepresso.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNkqzsAYGLq7ywDbRO93uFoa_X1EfKeOXHS1Yn775GEuXeLw0zGKOeofk87besfKpT709stRWSC40P6EWSOMw0sEo22C_AL2CgGz-Eic6BpxX-mojtIJKzGPYtadAnZBLSbluyz4A3bvAw4h-4qo5o8Tg=s4800-w640"
+        },
+        {
+          "id": "ChIJe5ZyoRpIK4gRjvojeVe2Rpo",
+          "name": "La Casa Dolce Bakery & Cafe",
+          "rating": 4.4,
+          "reviews": 1361,
+          "address": "755 Queensway St. E, Unit 101, 755 Queensway E Unit 101, Mississauga, ON L4Y 4C5, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 5:00 PM",
+            "Tuesday: 8:00 AM – 6:00 PM",
+            "Wednesday: 8:00 AM – 6:00 PM",
+            "Thursday: 8:00 AM – 6:00 PM",
+            "Friday: 8:00 AM – 6:00 PM",
+            "Saturday: 8:00 AM – 6:00 PM",
+            "Sunday: 9:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=11116773217021459086&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://lacasadolce.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPh0_RWFDAyVs7WiVvRTm5rlHeIhHCc5IOardTkQU2hPwhhftL8_M7Lglb7Q_eQNqE-tfinzfnTDBoEJbgl0ObwEEXs3UjUqD6xUSy4b4GS1zl2cBYmhUgfBcD_7jep7_SIn5ggfBLHLCiyfe8=s4800-w640"
+        },
+        {
+          "id": "ChIJebyDp6tGK4gRfH6uBFuxMW4",
+          "name": "French Corner Patisserie",
+          "rating": 4.4,
+          "reviews": 1721,
+          "address": "1224 Dundas St W #114, Mississauga, ON L5C 4G7, Canada",
+          "hours": [
+            "Monday: Closed",
+            "Tuesday: 8:00 AM – 7:00 PM",
+            "Wednesday: 8:00 AM – 7:00 PM",
+            "Thursday: 8:00 AM – 7:00 PM",
+            "Friday: 8:00 AM – 7:00 PM",
+            "Saturday: 8:00 AM – 7:00 PM",
+            "Sunday: 8:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=7940322622509579900&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://frenchcornerpatisserie.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZN1Mmb6Ja0Cnw-aF17qrARTQ-TPJMRjGOvhrTqYIVxaatlMgJZFP47SAl7oPFs0jxu4hGqv09SntgaarAhH1UdWG8G3NVc-5dE_B4-L1WpWhqS83_p3ierabMj1tWKHqP10AcUBdoWrzNkc=s4800-w640"
+        },
+        {
+          "id": "ChIJQ_A7R-lDK4gRNH_jrmAYrlI",
+          "name": "The Dough Story",
+          "rating": 4.5,
+          "reviews": 1448,
+          "address": "3535 Odyssey Dr Unit 90, Mississauga, ON L5M 2S4, Canada",
+          "hours": [
+            "Monday: 12:15 – 11:15 PM",
+            "Tuesday: 12:15 – 11:15 PM",
+            "Wednesday: 12:15 – 11:15 PM",
+            "Thursday: 12:15 – 11:15 PM",
+            "Friday: 11:15 AM – 12:15 AM",
+            "Saturday: 11:15 AM – 12:15 AM",
+            "Sunday: 11:15 AM – 11:15 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=5957726160587816756&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.thedoughstory.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjCyl65bLE-hJNfwVyc04xpRwKTgqWDMmjTsb4WKD9PjbYUuA07lVNuqZhZc9yJlmjg1X5WC8q9gthqAkzAB4I64PoncXVCRujFEu4GlKkWukfMEsY6g4UoDp5OzElVKeOTj95BAJxU4136Dsgk=s4800-w640"
+        },
+        {
+          "id": "ChIJadCTavpBK4gRTqWHmSybau8",
+          "name": "Barburu",
+          "rating": 4.6,
+          "reviews": 465,
+          "address": "1000 Burnhamthorpe Rd W, Mississauga, ON L5C 2S4, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 7:00 PM",
+            "Tuesday: 10:00 AM – 7:00 PM",
+            "Wednesday: 10:00 AM – 7:00 PM",
+            "Thursday: 10:00 AM – 7:00 PM",
+            "Friday: 10:00 AM – 8:00 PM",
+            "Saturday: 10:00 AM – 8:00 PM",
+            "Sunday: 10:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=17251771938452776270&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://barburu.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDXzPob8jJpjFS-NaDXfBUHRovJr6hgbd2GKAitEAewP-lFxlzHP9T6GJhHTNvvnIgDu3S9j0ttJPbptS5qSKwU4XcWJTUzxPjrZVFTqNcl6LzVEzCb_42Q3HreKpsndsjWMYyUjaOZn_4IZTQszhDbZA=s4800-w640"
+        },
+        {
+          "id": "ChIJVZ91y7WqUEARptMgxBME6yI",
+          "name": "Town Talk Bakery Cafe",
+          "rating": 4.7,
+          "reviews": 348,
+          "address": "206C Queen St S, Mississauga, ON L5M 1L3, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 5:00 PM",
+            "Tuesday: 9:00 AM – 5:00 PM",
+            "Wednesday: 9:00 AM – 5:00 PM",
+            "Thursday: 9:00 AM – 5:00 PM",
+            "Friday: 9:00 AM – 5:00 PM",
+            "Saturday: 9:00 AM – 5:00 PM",
+            "Sunday: 9:00 AM – 3:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2516109299757929382&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://towntalkbakery.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjCNMoRJgsYPNRF12cyCBry2Kw68b9yeMFoXqkTpgmBEgcm9uRYDg45H-l9La-GXVW7LwK9hDj2EPhqMkXiQckgupgs1WwJlhNrAdw5SglBSRPCAK6Mfn2OHEf4XezHq3xwiLKAWE4kGp1oQ8UhUhH7y=s4800-w640"
+        },
+        {
+          "id": "ChIJkTQGTHRHK4gRk431gqOOprw",
+          "name": "Daan Go Cake Lab",
+          "rating": 4.7,
+          "reviews": 673,
+          "address": "4557 Hurontario St B9, Mississauga, ON L4Z 3M2, Canada",
+          "hours": [
+            "Monday: 12:00 – 7:00 PM",
+            "Tuesday: 12:00 – 7:00 PM",
+            "Wednesday: 12:00 – 7:00 PM",
+            "Thursday: 12:00 – 7:00 PM",
+            "Friday: 12:00 – 7:00 PM",
+            "Saturday: 12:00 – 7:00 PM",
+            "Sunday: 12:00 – 7:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=13593709358192364947&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.daango.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjBYc5DZXTfNwBPLTLTelzUJlM_crZxXbhN4RO2juq69rqOgkLWFu7Q8XziFUHGV4YLsx-DqVfi89jO_d68EmRKZB6qUGhQpGUUDge_hVk9F7X6j8tGHML27RJGXllgD5HXIWQQmJw2Ehaht9So=s4800-w640"
+        },
+        {
+          "id": "ChIJLYF_7nhqK4gRgC1RAYC3aMU",
+          "name": "Buka Maranga Cafe & Catering",
+          "rating": 4.7,
+          "reviews": 1481,
+          "address": "6465 Millcreek Dr, Mississauga, ON L5N 5R3, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 6:00 PM",
+            "Tuesday: 8:00 AM – 11:00 PM",
+            "Wednesday: 8:00 AM – 11:00 PM",
+            "Thursday: 8:00 AM – 11:00 PM",
+            "Friday: 8:00 AM – 11:00 PM",
+            "Saturday: 8:00 AM – 11:00 PM",
+            "Sunday: 9:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=14224821183455505792&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.bukamaranga.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOJ0x_UcNN2xm9zi_uGMH85YGSpr7wfnzrE2iX70ncFSIEYVzxgrugXeM4ZU3LSQ15bcJbyrmtTAywRQMZa4DBxkkVAKshUQEiLA1nOyTg6nq0bWmm0pKkmP4QuONXtXli9aFDGGOcSnMNiWQ=s4800-w640"
+        },
+        {
+          "id": "ChIJK4WTORJDK4gRRLhLoUKeO1w",
+          "name": "The Bakers",
+          "rating": 4.7,
+          "reviews": 748,
+          "address": "3450 Platinum Dr #5, Mississauga, ON L5M 2S4, Canada",
+          "hours": [
+            "Monday: 7:00 AM – 10:00 PM",
+            "Tuesday: 7:00 AM – 10:00 PM",
+            "Wednesday: 7:00 AM – 10:00 PM",
+            "Thursday: 7:00 AM – 10:00 PM",
+            "Friday: 7:00 AM – 10:00 PM",
+            "Saturday: 7:00 AM – 10:00 PM",
+            "Sunday: 7:00 AM – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=6646079684126423108&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.thebakers.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNA7yv9ZFEbk9iu9Nh_6m3LtdSmwR-RDc_k4yNlgJYWD2iDISvgvLum7CIJwwNJ7tutQSIvfNCrdcV2IJ1itlvKY4wIYwrJnuPdgvrDUI_xwDOcTFScY6vOW7C20tbNvshf7VLx0GG7YH2vfXQ=s4800-w640"
+        }
       ]
     },
     {
       "slug": "trades",
       "label": "Trades & Home Services",
       "businesses": [
-        { "id": "sample-7", "name": "Sample Plumbing Co.", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/plumber+Mississauga", "website": null, "photo": null },
-        { "id": "sample-8", "name": "Sample Electric Ltd.", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/electrician+Mississauga", "website": null, "photo": null }
+        {
+          "id": "ChIJc5Zv68tHK4gR2XHTbXhAw74",
+          "name": "Plumber Express Rescue Mississauga",
+          "rating": 5,
+          "reviews": 28,
+          "address": "2 Robert Speck Pkwy #7, Mississauga, ON L4Z 1H8, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=13745901373647712729&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://plumberrapidrescuemississaugaa.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOEdjirRINCe7Q44gxZveaGGjEv005YuvL94y0Hln2IC3UUIJQGImyTH6cxYfYc4EOJ4B2YG5S8aHIxq636jQlfnvJPWsbcHRSVnUy40PVSD7C14_VGvLkhgQnF4it-cVXQ8Gmi5yXgw6cVQ3QlpQqk9A=s4800-w640"
+        },
+        {
+          "id": "ChIJlwBTdSxFK4gRcHov-KsFkFY",
+          "name": "Lorne Park Plumbing",
+          "rating": 5,
+          "reviews": 62,
+          "address": "1107 Lorne Park Rd, Mississauga, ON L5H 3A1, Canada",
+          "hours": [
+            "Monday: 7:00 AM – 8:30 PM",
+            "Tuesday: 7:30 AM – 7:00 PM",
+            "Wednesday: 7:30 AM – 7:00 PM",
+            "Thursday: 8:00 AM – 7:00 PM",
+            "Friday: 8:00 AM – 7:30 PM",
+            "Saturday: 7:00 AM – 7:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=6237491720069544560&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://lorneparkplumbing.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMn7hfifGgYUjDUgUdiu3xWnS13W3AfBK8kmW1Ka2j-TqLG9U20B3D10bjZAU8QpOPgsKOgzHeeMWWA5Q9VFU-gwOHp3vPhSjAAhs1E6cOLxLxVxEXyw1R6_jeh8m8OThUmliYd84UsTH4x424p0U1Afw=s4800-w640"
+        },
+        {
+          "id": "ChIJxQyQY4pBK4gR28DT0x6LPIE",
+          "name": "AY Electrical & Plumbing - Mississauga",
+          "rating": 5,
+          "reviews": 5,
+          "address": "130 Matheson Blvd E, Mississauga, ON L4Z 1Y6, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=9312471094014492891&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": null,
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMNxuSeOMUefE2VWWuf5CV_LPTWI-I6_5pEZyQFDK5z-7fIauMwju0sOn_-ffIpNj05XMyx1pq1x60uQERJWOk5Hu75iQct5X6rM_o0yla0DpEM0AR1iVQUzljhFZWKuIKLK5zNNoNb-eHAUwg=s4800-w640"
+        },
+        {
+          "id": "ChIJxcso3fJHK4gRoA4L6MDf9do",
+          "name": "CDP Plumbing of Mississauga",
+          "rating": 5,
+          "reviews": 40,
+          "address": "3038 Hurontario St, Mississauga, ON L5B 3B9, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15777762889182154400&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://cdpplumbing.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNDxAQ38jcSUQhFBLfSfAUz-6zBohO4pmq4Pz7_da3NaNCFAon7Yncd5SHerhXUw7-cnEBS6K_5FUVp_jIS78Kf4_jod5cPclfq6-agSQ3Dm7Mn3pHJ6oLG2xQJIyImPaSHpSYcRIHNEzPBQ2NtpvQTGg=s4800-w640"
+        },
+        {
+          "id": "ChIJn1laUvhBK4gRK_iE3m4idko",
+          "name": "TheRestorators Plumbing of Mississauga",
+          "rating": 5,
+          "reviews": 48,
+          "address": "5105 Hurontario St #103, Mississauga, ON L4Z 0C9, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=5365513865633527851&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://therestoratorsplumbing.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMKdrOFXMYueokxFU-XlAUO5fUI_5JclLhteFyYhkoaQ9o0GtaOC9exhT0KFZ4GVKJrdTPhu4l2pHojpTTiZ62ZCgwkjGMa_OpJ56r1FzcHzobnqq4qPMp62dWRPqVncwNXdYT6m3tF6RT5_GMSsX8htA=s4800-w640"
+        },
+        {
+          "id": "ChIJWxeFkrA5K4gR7cQkZNxP0ac",
+          "name": "Pryde Group Corp",
+          "rating": 5,
+          "reviews": 199,
+          "address": "4279 Woodington Dr, Mississauga, ON L4Z 1M1, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=12092534282458023149&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://prydegroupcorp.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMeDcTSuMpP494v7ZysZbX6B1xTtUqo3QIcm41O9CScY_9vjYaRfpV5TMwFOfRUjmzRO2y484v7go7SYwQBAKyP7sNsRKTKjfhfokLj9zeJkdQIYJl9gzn9rf7LCtCCRAWTEIU32TzsJmcECA=s4800-w600"
+        },
+        {
+          "id": "ChIJ6RJshiFDK4gRyAtHg-dMeJQ",
+          "name": "Delex Plumbing and Drains",
+          "rating": 5,
+          "reviews": 411,
+          "address": "Unit 100, 4299 Village Centre Ct Suite 106, Mississauga, ON L4Z 1S2, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10698385472042240968&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.delexplumbing.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMxv5l9Y1bAEs9l6TkrhXAMGkjyqhN4uv31QMGfl9VARnlzjxKWChcVbbU6sjvCD_D_mnezPclDNw3-kKo7Zm75s4wz_e_Db7TF5iqtpvnjy-ucWqfcNlTCUJt8z3OKGoKvtLupfjLwiqkKYR1kMnlO=s4800-w640"
+        },
+        {
+          "id": "ChIJP0bwqXQFDIARb2vUUaZaBd0",
+          "name": "Wellington Plumbing drain and electrical",
+          "rating": 5,
+          "reviews": 22,
+          "address": "3225 Victory Crescent, Mississauga, ON L4T 1L7, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15926235327649573743&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.wellingtonpde.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPdoKTaqcCslWA4gZgen8WvCJwV61CCocFj8KDYWST2jESXXdkNAtcM5VkVcw7gULw6CFvFr09dbzrAfcHK80asWboX8lxq-Dr-qWNDM3ra_cQ81bJ55YOjVbyuY6ajCnd0eKd8k5OFhKaE5uNsy5uVAQ=s4800-w640"
+        },
+        {
+          "id": "ChIJidgWjgpFK4gRHtXp1-_GTug",
+          "name": "ClearDrain Plumber Mississauga",
+          "rating": 5,
+          "reviews": 68,
+          "address": "1815 Lakeshore Rd W, Mississauga, ON L5J 1J6, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=16739535598404621598&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://cleardrainplumbermississauga.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMH37fW_6gZuCVJpe0Pl09MjHHEV6xOgNqMVpPLWlK1vjNQn4TsxbUbkN6yjS93N11rq30pGb1BqqQBdYkqumMzNceG-BGYGkLWVcdcOEeIpuHxoEpXUU6tNrbMjyrWHBmMhj7UHiN56D-RzRN2F1YQwg=s4800-w640"
+        }
+      ]
+    },
+    {
+      "slug": "real-estate",
+      "label": "Real Estate",
+      "businesses": [
+        {
+          "id": "ChIJx8CfmGVBK4gRZ9mePEZmywA",
+          "name": "Mississauga Real Estate Agent TEAMAMAN",
+          "rating": 5,
+          "reviews": 102,
+          "address": "30 Eglinton Ave W Unit- C12, Mississauga, ON L5R 0C1, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 9:00 PM",
+            "Tuesday: 9:00 AM – 9:00 PM",
+            "Wednesday: 9:00 AM – 9:00 PM",
+            "Thursday: 9:00 AM – 9:00 PM",
+            "Friday: 9:00 AM – 9:00 PM",
+            "Saturday: 9:00 AM – 9:00 PM",
+            "Sunday: 9:00 AM – 9:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=57251872123050343&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://teamaman.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjAawrmftBWRj3rNFpsinA1rSl5axyr3uvJSTKvtjMXHorU-Xhx8aNyK_Rryw5C3h1rucWaEngBADqqW9JmhplyIoiGOLduZSqGuzL49rNvNvpPUnX55wn2cE4ktagRMezM2vC8nqWmTG8N8Rg=s4800-w640"
+        },
+        {
+          "id": "ChIJaxJQhDxBK4gRdkVLd8ilw2A",
+          "name": "Luna Faisal Realtor - Royal LePage Signature Realty Mississauga",
+          "rating": 4.9,
+          "reviews": 109,
+          "address": "30 Eglinton Ave W #201, Mississauga, ON L5R 3E7, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 10:00 PM",
+            "Tuesday: 9:00 AM – 10:00 PM",
+            "Wednesday: 9:00 AM – 8:00 PM",
+            "Thursday: 9:00 AM – 10:00 PM",
+            "Friday: 9:00 AM – 10:00 PM",
+            "Saturday: 9:00 AM – 10:00 PM",
+            "Sunday: 9:00 AM – 10:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=6972598928513123702&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.lunafaisal.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMOrDGKSLxum2CU6A5BsrFaNdzwyFDlJHaD5OV0PiIxqck_h52xlVyF7_--yS3D9rNKz9-Qg9wLhYBs-Z_acCNXWu5GWzq7_B8XVJpz-MsNTT7k-QPV5i1vYm2CXMYtWedNnD4zV3mggrKB2-0=s4800-w640"
+        },
+        {
+          "id": "ChIJreoPqjFHK4gRHDcADzPugz0",
+          "name": "JOE BATTAGLIA - ReMax Realty Specialists Real Estate Agent",
+          "rating": 5,
+          "reviews": 95,
+          "address": "4310 Sherwoodtowne Blvd #200, Mississauga, ON L4Z 4C4, Canada",
+          "hours": [
+            "Monday: 7:00 AM – 11:00 PM",
+            "Tuesday: 7:00 AM – 11:00 PM",
+            "Wednesday: 7:00 AM – 11:00 PM",
+            "Thursday: 7:00 AM – 11:00 PM",
+            "Friday: 7:00 AM – 11:00 PM",
+            "Saturday: 8:00 AM – 11:00 PM",
+            "Sunday: 8:00 AM – 11:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4432648361325115164&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.battagliateam.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjBzDFMxMbgAi-hqIHWK4rzTR2J_DvHUrngBUtc9J2L_BjPc2Y6x3lFX_RMA2ZlwTl9tqPJYMJcABLnBEMKtFBG1IACXJuXRv36ZsaGaqWWK-HFfITACYX0fLPerI6vvPj68h0lsgKkEun-Ueu3fHutJMQ=s4800-w640"
+        },
+        {
+          "id": "ChIJqRmgOChHK4gRwn_o8dCrwrs",
+          "name": "Team Kalia, Realtors - REMAX Real Estate Centre Inc.",
+          "rating": 4.9,
+          "reviews": 120,
+          "address": "1140 Burnhamthorpe Rd W Ste 141, Mississauga, ON L5C 4E9, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 9:00 PM",
+            "Tuesday: 9:00 AM – 9:00 PM",
+            "Wednesday: 9:00 AM – 9:00 PM",
+            "Thursday: 9:00 AM – 9:00 PM",
+            "Friday: 9:00 AM – 9:00 PM",
+            "Saturday: 10:00 AM – 5:00 PM",
+            "Sunday: 10:00 AM – 4:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=13529565144474484674&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.realestate-ontario.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNE2ZSF1UDa1i8BFnIwqhIJZu4KNw-Ik-I9mjFpsBe6n98TbQ8UXVguHBORRkKmib8Q1lep7DsjoBExXSbOo2Mu_UDMNaiRVqaX0Oi9k6mOb3J7S-XswIRzVUog81xUV3b3W4rq63T_dpMPq6-mSpernQ=s4800-w640"
+        },
+        {
+          "id": "ChIJlRRydSpHK4gR8Py_kNsKF9A",
+          "name": "CITYVIEW Realty Inc., Brokerage",
+          "rating": 4.8,
+          "reviews": 177,
+          "address": "525 Curran Place, Mississauga, ON L5B 0H4, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 8:00 PM",
+            "Tuesday: 10:00 AM – 8:00 PM",
+            "Wednesday: 10:00 AM – 8:00 PM",
+            "Thursday: 10:00 AM – 8:00 PM",
+            "Friday: 10:00 AM – 8:00 PM",
+            "Saturday: 11:00 AM – 5:00 PM",
+            "Sunday: 11:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=14994465422495972592&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.cityviewcondos.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPEmwl25xBLhBgfDHafm-ZBh902ogYCQk3iJ_WhXg0x8gn67H3cMbYr79ZruQ6vxwtkMLvP-U6X901qK_h74pYFSjErdn7J_8UnCXNXlHoBu4CsPbruwXp_FRchwbf44fXi401w2KZzkpbU=s4800-w640"
+        },
+        {
+          "id": "ChIJNS1yR0ZBK4gRLeUKnOJUZjk",
+          "name": "Cynthia Ostos Real Estate Team",
+          "rating": 5,
+          "reviews": 151,
+          "address": "168 Queen St S Ste 106, Mississauga, ON L5M 1K8, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 5:00 PM",
+            "Tuesday: 9:00 AM – 5:00 PM",
+            "Wednesday: 9:00 AM – 5:00 PM",
+            "Thursday: 9:00 AM – 5:00 PM",
+            "Friday: 9:00 AM – 5:00 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4136086640043681069&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.cynthiaostos.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDSZWrECR3OWLGWmVNGqBS6jLHzE8q37-i5N0OscMV1-pghxTVUEIkglXp8DZOpiFb7P2EPLWTU56jMp3S9l969rzNFbbdA5eeyHrajcfAGhZbuoN7dPowIdHJCYuUuVlqDpphmPK0BvHjZ=s4800-w640"
+        },
+        {
+          "id": "ChIJq6qnT5pBK4gRFbP123NKTCM",
+          "name": "Real Estate Experts in Mississauga | Milton & Oakville - Farooq Real Estate Group",
+          "rating": 5,
+          "reviews": 181,
+          "address": "5865 McLaughlin Rd Unit 6, Mississauga, ON L5R 3V5, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 11:00 PM",
+            "Tuesday: 8:00 AM – 11:00 PM",
+            "Wednesday: 8:00 AM – 11:00 PM",
+            "Thursday: 8:00 AM – 11:00 PM",
+            "Friday: 8:00 AM – 11:00 PM",
+            "Saturday: 8:00 AM – 11:00 PM",
+            "Sunday: 8:00 AM – 11:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2543489751029494549&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://teamfarooq.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPLWq5w4LAj61aEH7K8006ejMN-dexjlLgaHk_IZrEWOi3PnsCd9FAmedz8S5rtQ2CuYJd1ppksSw5PfeW7CKU6pfNZpmpeaF-82m9eKh0f9oNClb-kvqdv9RRv8mL7tuz3wfH9Fbt7cPpvBhghTmjmpw=s4800-w640"
+        },
+        {
+          "id": "ChIJm2A-KiRHK4gRAUnWoZjAUTw",
+          "name": "Ameil Gill The Gill Team - Real Estate Agent - Your Home Sold At Your Price Guaranteed Or I'll Buy It*",
+          "rating": 4.9,
+          "reviews": 200,
+          "address": "1140 Burnhamthorpe Rd W Ste 141, Mississauga, ON L5C 0A3, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4346466877171976449&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.thegillteam.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNTUwEyAQl_dmG5e3sxv5AtOaapWI1RzbHdb4l3s7gyXnITAisbqqJ4SwRwe47c7fI435Xhj6MDUbJ11tZPytrhcFwiSGcJ2Jmf12MyJx3qUrnLuZ26b42xBQWklJQGf1-woKmRzZiIskjqMQ=s4800-w640"
+        },
+        {
+          "id": "ChIJxY4KZklBK4gR0zIKdPmw_Og",
+          "name": "Modern Solution Realty Inc | One Percent Lists",
+          "rating": 4.8,
+          "reviews": 277,
+          "address": "3466 Mavis Rd Unit 1, Mississauga, ON L5C 1T8, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=16788488096370537171&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://modernsolution.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZP7y4JMi42E43kN50fvqMObCr2XBGs_cpBb154L4JBxK0BpW-a3CSaZPE4jefCz8cqJk2gyQFB4MFmkIc-f-FNS95PlS3ZEQv77vDTOAk6WNhbbpa3BEhymmOudYEPhhZ_NlplZfT6PDprANBcKK_QX=s4800-w640"
+        },
+        {
+          "id": "ChIJoTXCfBxHK4gRQW27a_bX3yY",
+          "name": "HOME AND BUSINESS REALTY, BROKERAGE",
+          "rating": 5,
+          "reviews": 49,
+          "address": "4080 Confederation Pkwy Unit 202, Mississauga, ON L5B 0G1, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 6:00 PM",
+            "Wednesday: 9:00 AM – 6:00 PM",
+            "Thursday: 9:00 AM – 6:00 PM",
+            "Friday: 9:00 AM – 6:00 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2801194946617109825&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://homeandbusinessrealty.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDIBB-j_5H1FLLhI5XVxzESqso7amHwsjArtEvIM8NbIacl4J2Ar_hueZ0x37hCNBUGxt1-9pXip1NfUNHf6JjBffkbFtA6_ESrcAd07TMiFKx63uOFnzsaLuz0uwIk8-3EHJQ_vRulfS-VhYV9LB4vkQ=s4800-w640"
+        }
       ]
     },
     {
       "slug": "health",
       "label": "Health & Wellness",
       "businesses": [
-        { "id": "sample-9", "name": "Sample Dental Clinic", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/dentist+Mississauga", "website": null, "photo": null },
-        { "id": "sample-10", "name": "Sample Physiotherapy Centre", "rating": null, "reviews": null, "address": "Mississauga, ON", "hours": [], "mapsUrl": "https://www.google.com/maps/search/physiotherapy+Mississauga", "website": null, "photo": null }
+        {
+          "id": "ChIJOfRickZHK4gR25RVuSpjgEc",
+          "name": "OAK Physio & Wellness",
+          "rating": 5,
+          "reviews": 428,
+          "address": "1 City Centre Dr suite 120, Mississauga, ON L5B 1M2, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 8:00 PM",
+            "Tuesday: 8:00 AM – 8:00 PM",
+            "Wednesday: 8:00 AM – 8:00 PM",
+            "Thursday: 8:00 AM – 8:00 PM",
+            "Friday: 8:00 AM – 5:00 PM",
+            "Saturday: 8:00 AM – 5:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=5152227008861017307&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://oakphysiowellness.ca/mississauga/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjAHSjAJyHWHXmg-sedpBnYjNN2OM4nPQrl8Nbw0TqKgPHaEVjupZ1GFlz5BWmX1D1qmQvjGzLqh5JSWo8YzWYl_ppqocaXflkZhsuF_hAgKoPzxEZAvq2RzDgeeYZNDYO-zP9Sxn0YdNS2f5UA=s4800-w640"
+        },
+        {
+          "id": "ChIJ0R_b-tlGK4gRttD_tAR53gQ",
+          "name": "Delta Physiotherapy & Rehab - Central Parkway Mississauga",
+          "rating": 4.8,
+          "reviews": 337,
+          "address": "325 Central Pkwy W unit 38, Mississauga, ON L5B 3X9, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 8:00 PM",
+            "Wednesday: 9:00 AM – 8:00 PM",
+            "Thursday: 9:00 AM – 8:00 PM",
+            "Friday: 9:00 AM – 8:00 PM",
+            "Saturday: 9:00 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=350850882104971446&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.deltaphysiotherapy.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNyDNBwO5n9fTuYAI8DvCOV33pOHzAXl69ZxdJlUPDayHp4i1ZWoMGVIavRd6dEVyAQcZ7g4ntn80QjLMJaKUBQxeNqgXJqEzKqzkuX2W1-XzGb_hi0-1LVMFiULiAVFdAN3IfiCtvpZprz-dKrIUEVuQ=s4800-w640"
+        },
+        {
+          "id": "ChIJ30YRHdNGK4gROvs2twtGTY8",
+          "name": "Om Sai physiotherapy clinic(Mississauga)Inc.",
+          "rating": 4.6,
+          "reviews": 137,
+          "address": "3960 Grand Park Dr Unit#3, Mississauga, ON L5B 4M6, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 7:00 PM",
+            "Tuesday: 10:00 AM – 7:00 PM",
+            "Wednesday: 10:00 AM – 7:00 PM",
+            "Thursday: 10:00 AM – 7:00 PM",
+            "Friday: 10:00 AM – 7:00 PM",
+            "Saturday: 9:00 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10325986536762833722&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://saiphysio.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMYbBZW5CRKrEd1M_oOeIfb6bI69Zpy5QCARNlmeFRGU7woWDMD4zJdjfNn0x9BVokUtP4DKhDegjlyt2ysBcyf6AWfaj3tiegu7xy-bDoOITKM6Obs7JW2qdSJgRkbQ0dgvGo4eUMR0-RWfQ=s4800-w640"
+        },
+        {
+          "id": "ChIJryl1oH1BK4gRTVF2Pf1VbBc",
+          "name": "Total Wellness Clinic",
+          "rating": 5,
+          "reviews": 54,
+          "address": "1 Glenn Hawthorne Blvd Unit 4, Mississauga, ON L5R 4J9, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 7:30 PM",
+            "Tuesday: 9:00 AM – 7:30 PM",
+            "Wednesday: 10:00 AM – 7:30 PM",
+            "Thursday: 10:00 AM – 7:30 PM",
+            "Friday: 9:00 AM – 5:00 PM",
+            "Saturday: 9:00 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=1687818506503344461&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://totalwellnessclinics.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZM9TNRoONo4Gft0bcJX9Rcl1URYLK3ixylGVfpT4a5pKbb-8-GyvjFs5SJEn8XIHNaIxP_0YOAQCdNBe3stCBsCF2m5o2e7UdJ7XkOlq1kEQTpdemJmBXNsGo-1OS8-TgrBNHSWcSE9nwBBIg=s4800-w640"
+        },
+        {
+          "id": "ChIJATAtGIZBK4gRRi_78wDf9Mk",
+          "name": "CBI Health - Mississauga Eglinton",
+          "rating": 4.8,
+          "reviews": 219,
+          "address": "2300 Eglinton Ave W G05, Mississauga, ON L5M 2V8, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 8:00 PM",
+            "Tuesday: 8:00 AM – 8:00 PM",
+            "Wednesday: 8:00 AM – 8:00 PM",
+            "Thursday: 8:00 AM – 8:00 PM",
+            "Friday: 8:00 AM – 4:00 PM",
+            "Saturday: Closed",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=14552501491127234374&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.cbihealth.ca/locations/mississauga-eglinton?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjB8ApY9VrR9S6yVeYR3fCQNFnS5SyP2QX96m1960YludDro7bco66akP8inQmf7lOccQ8BVevxQdaPh11nQcnjSVWPeXqFxiM8MClDsb9Xlj1sOax1864j4iQCVUH3KeQSGwPLZUPSdRFgWMvw1jwQi2g=s4800-w640"
+        },
+        {
+          "id": "ChIJI3j6dQZHK4gRm0ukp6oZxh0",
+          "name": "Milestone Dentistry",
+          "rating": 4.8,
+          "reviews": 796,
+          "address": "4057 Confederation Pkwy, Mississauga, ON L5B 0M2, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 7:00 PM",
+            "Tuesday: 9:00 AM – 7:00 PM",
+            "Wednesday: 9:00 AM – 7:00 PM",
+            "Thursday: 9:00 AM – 7:00 PM",
+            "Friday: 9:00 AM – 7:00 PM",
+            "Saturday: 9:00 AM – 5:00 PM",
+            "Sunday: 9:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2145430493236317083&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.milestonedentistry.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjCv-9hVz_kDB1G2ikJ-TTDG3x3WolwidNVIEia9yk4kZDcsIGQPgBRGOioEEbSRhOaqy4pGaXrTnzNQhbY_nN9LKOYPz1devTSHTcER-VoALrQ7QevKDZJrf-BXTgZNYjJN-h4qWss2y9Y0aDN1KclArA=s4800-w570"
+        },
+        {
+          "id": "ChIJ12-lLMBBK4gRzSfRTmxwVDI",
+          "name": "Curezone Physiotherapy | Heartland, Mississauga",
+          "rating": 4.9,
+          "reviews": 1422,
+          "address": "812 Britannia Rd W Ste 110, Mississauga, ON L5V 0A6, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 8:30 PM",
+            "Tuesday: 9:00 AM – 8:30 PM",
+            "Wednesday: 9:00 AM – 8:30 PM",
+            "Thursday: 9:00 AM – 8:30 PM",
+            "Friday: 9:00 AM – 8:30 PM",
+            "Saturday: 9:00 AM – 5:30 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=3626647210421200845&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.curezonephysiotherapy.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZN9weZQk7ioFT7nZ8PVDbjfITeqCVTT6evM-3kPrBOPhwkYxEdafouaXnpEutocmxscsuYHm9AApC0LNIYT_haIOP4xulMJYKdsljHOhROfWNhK6mRNz---NXTIYsnNc2CidGmzSUB1TXDKBT3vVY1j3A=s4800-w640"
+        },
+        {
+          "id": "ChIJf0vTc3JHK4gRByuF7SdvG00",
+          "name": "City Centre Dentistry",
+          "rating": 5,
+          "reviews": 2215,
+          "address": "1 City Centre Dr, Mississauga, ON L5B 1M2, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 7:00 PM",
+            "Tuesday: 9:00 AM – 7:00 PM",
+            "Wednesday: 9:00 AM – 7:00 PM",
+            "Thursday: 9:00 AM – 7:00 PM",
+            "Friday: 9:00 AM – 7:00 PM",
+            "Saturday: 9:00 AM – 5:00 PM",
+            "Sunday: 9:00 AM – 4:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=5556156782570973959&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://1citycentredentistry.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOcG-JOst5CfK2VUjlv7SJSys7db5BTVUjpf3Zm-K_xpCwlE4QF9GeH94VlEJng_MRmuGKP644MHKZA8nVgpzkdNkrxkWDGoy9cZUgFOsehCtlJKfAEjjPNuEIGhYjyQoA6g4BdesDXZWx4Bg=s4800-w640"
+        },
+        {
+          "id": "ChIJE7Jf5SpHK4gRCidx6lTNNrQ",
+          "name": "Triangle Physiotherapy Mississauga",
+          "rating": 4.8,
+          "reviews": 1274,
+          "address": "4188 Living Arts Dr, Mississauga, ON L5B 0H7, Canada",
+          "hours": [
+            "Monday: 7:30 AM – 8:00 PM",
+            "Tuesday: 8:00 AM – 8:00 PM",
+            "Wednesday: 7:30 AM – 8:00 PM",
+            "Thursday: 8:00 AM – 8:00 PM",
+            "Friday: 7:30 AM – 8:00 PM",
+            "Saturday: 8:00 AM – 1:00 PM",
+            "Sunday: 8:00 AM – 2:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=12985792340163634954&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.trianglephysiotherapy.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjAFL0dvkw0D9f73jiyEtqyZmAagEZvcdmFSAtsa_ZGFNQ-fU96U3RlgK2toLi3a4QH-kvYr72cmfCrMJepqzL9c6xWI4ZazRcWpeZAzVpoCAoEf9PhWOj373ZkxpsIODm_u-ay3TPaMBVX23I0=s4800-w640"
+        },
+        {
+          "id": "ChIJL6yOdnBBK4gRK5vhjzkxZJU",
+          "name": "Rishaan Physio & Wellness Clinic- Physiotherapy Clinic in Mississauga",
+          "rating": 5,
+          "reviews": 82,
+          "address": "5105 Hurontario St Unit No 7, Mississauga, ON L4Z 0C9, Canada",
+          "hours": [
+            "Monday: 11:00 AM – 8:00 PM",
+            "Tuesday: 11:00 AM – 8:00 PM",
+            "Wednesday: 11:00 AM – 8:00 PM",
+            "Thursday: 11:00 AM – 8:00 PM",
+            "Friday: 11:00 AM – 8:00 PM",
+            "Saturday: 11:00 AM – 8:00 PM",
+            "Sunday: 12:00 – 6:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10764783132619152171&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://rishaanphysio.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMhY_O9uwhzyympsMJOJNcLmlIWEVP_AzQIT7UkWj_-9_-ZU62KIVRtFAHN7a0ZYvOHpYTchLsyEJqUno0xaBwnsd0iRsvt6TRdKSAMjNmge8qM_T3kGZhzOkDIVCYPHjHXgANGcNISJ6uVc0WtxecY=s4800-w640"
+        }
+      ]
+    },
+    {
+      "slug": "fitness",
+      "label": "Fitness & Sports",
+      "businesses": [
+        {
+          "id": "ChIJTdHjptJGK4gRJP0NMZ29hxE",
+          "name": "Habitual Fitness & Lifestyle",
+          "rating": 4.9,
+          "reviews": 469,
+          "address": "3611 Mavis Rd, Mississauga, ON L5C 1T7, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=1263186703331228964&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.habitual.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNirNPuksDwZpNzV9egqEnyqnly0Q7b6ddbdGDyuUhsr3PU_Nn4L49cQ8QGh5CxF2T7BjWsiuIxbN0AoGIPIaHesYf97fL0PkYiql84iTsljeOXaFFqz1V-2gxJ__HA2PP5LMwjPRUmfLRIk4A=s4800-w640"
+        },
+        {
+          "id": "ChIJTV3hiJY5K4gRhZtw-Sm6gyw",
+          "name": "Free Bird Gym Mississauga",
+          "rating": 4.8,
+          "reviews": 494,
+          "address": "1331 Crestlawn Dr, Mississauga, ON L4W 2P9, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=3207612049059257221&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://freebirdgym.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNsz5nXbjo-hYiRxcwtQTlr_pRDDqbqdwgq7nbeZ_92cYl5BcD2cARS8HkOmlGdIDjgol5DyXKELeCo7C3WgMgwxdhI3PvyfiKLr01q4GC78oclChqlgaOr6cSb9_d1WayHt_b8SeN5F09qTM8=s4800-w640"
+        },
+        {
+          "id": "ChIJB7-ExzNHK4gR2JzOe5u5kLw",
+          "name": "FS8 Port Credit",
+          "rating": 5,
+          "reviews": 86,
+          "address": "175 Lakeshore Rd W Second Floor, Unit 12, Mississauga, ON L5H 1G4, Canada",
+          "hours": [
+            "Monday: 6:00 AM – 8:00 PM",
+            "Tuesday: 6:00 AM – 8:00 PM",
+            "Wednesday: 6:00 AM – 8:00 PM",
+            "Thursday: 6:00 AM – 8:00 PM",
+            "Friday: 6:00 AM – 7:00 PM",
+            "Saturday: 8:00 AM – 1:00 PM",
+            "Sunday: 8:00 AM – 1:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=13587564153224994008&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://fs8.com/studio/portcredit/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNrH8iszf6vHA3ykO8iNb2R3XM20Zi4lurwwOScl-znJTXer9uHdjpawX74Ndte1wp61DUrxMHL_MtzBtWE7GDZYD98ckNMCpsRuyftI0XSsqXt_OMpbSNjnr106RWN-wqhZQNcA4BTZLDwpw8Djw8i=s4800-w640"
+        },
+        {
+          "id": "ChIJ1XuXWjNHK4gRbv1SPTuBPPE",
+          "name": "Fitness with Kenneth Miller - Certified Personal Trainer",
+          "rating": 5,
+          "reviews": 3,
+          "address": "Hurontario St, Mississauga, ON L5B 2C9, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 9:00 PM",
+            "Tuesday: 10:00 AM – 9:00 PM",
+            "Wednesday: 10:00 AM – 9:00 PM",
+            "Thursday: 10:00 AM – 9:00 PM",
+            "Friday: 10:00 AM – 9:00 PM",
+            "Saturday: 10:00 AM – 9:00 PM",
+            "Sunday: 1:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=17382910753175174510&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://instagram.com/fitnesswithkenneth",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjC1_UMRbMfvtbMrnuhsxB4YFBw_XoeWr2O3SXr5yjdbKAYND4T_kqvRmquARD4USyJ4wUZ4lT2aBeJUiGgIUewwH092l6V_N-f2diENhZ0kJawSJdU3JL8BTcB-z1OorTj3ilEnmR8siz7v-9KpQ6m2=s4800-w640"
+        },
+        {
+          "id": "ChIJKbVsVDJBK4gRcl7RnIdp9k0",
+          "name": "L5 Health & Fitness (L5HF)",
+          "rating": 4.8,
+          "reviews": 109,
+          "address": "8, 780 Burnhamthorpe Rd W #8, Mississauga, ON L5C 3X3, Canada",
+          "hours": [
+            "Monday: 6:00 AM – 8:00 PM",
+            "Tuesday: 6:00 AM – 8:00 PM",
+            "Wednesday: 6:00 AM – 8:00 PM",
+            "Thursday: 6:00 AM – 8:00 PM",
+            "Friday: 6:00 AM – 8:00 PM",
+            "Saturday: 8:00 AM – 12:30 PM",
+            "Sunday: 9:00 AM – 12:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=5617793616363740786&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.l5healthandfitness.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMsvr54RchUjiL8Gemi5mZbUybghw4ZurA_piLatF68tx8FBa72xN_OmCnE2hx0oq8psQJLIr8C68ZPK_5O0wdKLgwkaHaWYDBJHJir0NJw8muQDAU2yq1foz0AMkLg9e6LEJ5-xl3xWiyxpQf27q6I=s4800-w640"
+        },
+        {
+          "id": "ChIJ-USzdptHK4gRSHDiAt2zb4k",
+          "name": "Raw Fitness Health Club",
+          "rating": 4.9,
+          "reviews": 70,
+          "address": "570 Orwell St Unit 1, Mississauga, ON L5G 1H3, Canada",
+          "hours": [
+            "Monday: 7:00 AM – 12:00 AM",
+            "Tuesday: 6:00 AM – 12:00 AM",
+            "Wednesday: 7:00 AM – 11:00 PM",
+            "Thursday: 6:00 AM – 12:00 AM",
+            "Friday: 6:00 AM – 11:00 PM",
+            "Saturday: 8:00 AM – 8:00 PM",
+            "Sunday: 8:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=9903331867428548680&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.rawfitinc.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjAVOSC4BnCnrCgjPyhGNVr494FTQB3it0B0KMHrnNbRR_mmkFu_SNRtn0LHDZ8QQpC5omN-T8Wx7jVhAL5PURWwfixL2W1I8L3o4s2YeJKN9dc_GvvRa_4TBu0s67tI5YKvSCeLI2FHKaOlxn_ok1L8=s4800-w640"
+        },
+        {
+          "id": "ChIJV5okeyZHK4gRaIEftUJlvTc",
+          "name": "J17 Performance Mississauga",
+          "rating": 5,
+          "reviews": 105,
+          "address": "3413 Wolfedale Rd Unit 8, Mississauga, ON L5C 1V8, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 9:00 PM",
+            "Tuesday: 8:00 AM – 9:00 PM",
+            "Wednesday: 8:00 AM – 9:00 PM",
+            "Thursday: 8:00 AM – 9:00 PM",
+            "Friday: 8:00 AM – 9:00 PM",
+            "Saturday: 8:00 AM – 9:00 PM",
+            "Sunday: 8:00 AM – 9:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4016477779865338216&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.j17performance.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNk_A20-dmRSuY8WsWYUhSJhO3qjomGzNunwPJoeLTy2N3RIxU7rxGBFdRAbrP91WWimGY0zJMOOIofTW84a0DFHkAUNn7hT6FtgjO2QqTkUZPvrujQ5HFVdDaKgzjZQavupQelmJ7r8gqA=s4800-w640"
+        },
+        {
+          "id": "ChIJtxArALVDK4gRUl8i16-RYSA",
+          "name": "PowerHouse Gym Mississauga",
+          "rating": 3.9,
+          "reviews": 742,
+          "address": "3450 Ridgeway Dr Unit 17, Mississauga, ON L5L 0A2, Canada",
+          "hours": [
+            "Monday: 6:00 AM – 11:00 PM",
+            "Tuesday: 6:00 AM – 11:00 PM",
+            "Wednesday: 6:00 AM – 11:00 PM",
+            "Thursday: 6:00 AM – 11:00 PM",
+            "Friday: 6:00 AM – 11:00 PM",
+            "Saturday: 7:00 AM – 8:00 PM",
+            "Sunday: 7:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2333306266369285970&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://powerhousegymmississauga.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMotg-h7wOrtGBvaVGbxC85Qyq0afa6sxkffBIWb30gLr1jNeWOGkDTiCws3ZPXGCuMqcYIscrJaV18_8Q6yqTQ1TbiuYQPO3Io5qkoZ1MDWJxxHtPParAP4DWvJVakRPlNOWpF2sVEi6DGNg=s4800-w640"
+        },
+        {
+          "id": "ChIJEZ323X9EK4gR0iET_D2XUI4",
+          "name": "Vive Fitness 24/7 Truscott Mississauga",
+          "rating": 4.8,
+          "reviews": 426,
+          "address": "2425 Truscott Dr #26, Mississauga, ON L5J 2B4, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10254862644000530898&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://vivefitness.com/truscott-mississauga/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZO01p8Cu7VCbRbpWwGBPm_YUys38Qcaopw3mskaoQKJljEDfEZEGWVhf9UyQAYvveazyb1rL_UxpllEBuDVfggy-B_D-ixOhExI9jpLBoMRkV7vrg0Q9A_Cajn0XpLuGNiSB5eHDQDDkSVUlLM=s4800-w640"
+        },
+        {
+          "id": "ChIJeTGJsaRHK4gR766JrN2ee_w",
+          "name": "Vive Fitness 24/7 Applewood Plaza Mississauga",
+          "rating": 4.8,
+          "reviews": 170,
+          "address": "1077 N Service Rd, Mississauga, ON L4Y 1A6, Canada",
+          "hours": [
+            "Monday: Open 24 hours",
+            "Tuesday: Open 24 hours",
+            "Wednesday: Open 24 hours",
+            "Thursday: Open 24 hours",
+            "Friday: Open 24 hours",
+            "Saturday: Open 24 hours",
+            "Sunday: Open 24 hours"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=18193309794612915951&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://vivefitness.com/1077-north-service-rd-mississauga/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZP4ext8XiamjGC7qVKXAEo0EIS6p_KPPP13_V8xhZoziSEyDmkjaMnIrokXvIsndSwofjHYw7mIiGXGOY38WSaxNUMjhzuuw1hU56TFeftdlQviS0HEqvi5W5dqknZB1pIk8qce890AWqKL=s4800-w640"
+        }
+      ]
+    },
+    {
+      "slug": "auto",
+      "label": "Auto Services",
+      "businesses": [
+        {
+          "id": "ChIJlZxK-Q5HK4gRSHVcMiXweSU",
+          "name": "My Garage Inc. Mississauga Mechanic & Auto Repair Shop",
+          "rating": 4.9,
+          "reviews": 194,
+          "address": "3300 Mavis Rd Unit 2, Mississauga, ON L5C 1T8, Canada",
+          "hours": [
+            "Monday: 9:30 AM – 6:00 PM",
+            "Tuesday: 9:30 AM – 6:00 PM",
+            "Wednesday: 9:30 AM – 6:00 PM",
+            "Thursday: 9:30 AM – 6:00 PM",
+            "Friday: 9:30 AM – 6:00 PM",
+            "Saturday: 9:30 AM – 2:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=2700453494134699336&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.mississaugamechanic.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOdyJKVsm6aMErBuFmmhrgxVxvEvttmkmByfyRbGbF6vo93f_4cqdMyBhLrOu3JKq3wuqV9sCzMjwpBL-I-ofDl4QacD9dPgATz6MsDG7Mlt1WU2uSlgYYRCVqWgAJiy95jSQO7OW6zAqLdZ2-KSp5Eiw=s4800-w640"
+        },
+        {
+          "id": "ChIJR4HMTLZGK4gRmExdZWq-p8U",
+          "name": "Jo Auto Service",
+          "rating": 4.9,
+          "reviews": 555,
+          "address": "3211 Wolfedale Rd Unit 3, Mississauga, ON L5C 1V8, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 5:00 PM",
+            "Tuesday: 9:00 AM – 5:00 PM",
+            "Wednesday: 9:00 AM – 5:00 PM",
+            "Thursday: 9:00 AM – 5:00 PM",
+            "Friday: 9:00 AM – 5:00 PM",
+            "Saturday: 9:00 AM – 1:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=14242561710758907032&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://joautoservice.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjBRW1fweNd1o4RR48YwaSk5GEEkV84CtuWsLFxCeND2lNAVNElzgl2ldzWtHZnf4K9WpzchAzynPeWHVKu-UHK6GggD84Ulk5EENMbReQ7xBEUE3CVtGowhEyKDUEXKGHbr4Fo4RZOaXhV89bEENEti3Q=s4800-w516"
+        },
+        {
+          "id": "ChIJpYQJO81HK4gRzn5SUcfb6Xw",
+          "name": "HPower Auto Repair",
+          "rating": 4.9,
+          "reviews": 119,
+          "address": "2458 Haines Rd, Mississauga, ON L4Y 1Y6, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 6:00 PM",
+            "Wednesday: 9:00 AM – 6:00 PM",
+            "Thursday: 9:00 AM – 6:00 PM",
+            "Friday: 9:00 AM – 6:00 PM",
+            "Saturday: 9:00 AM – 4:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=9000966979385982670&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.facebook.com/groups/245621047143427",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMgW3vJb9qj-GWWTKO6luml_CeU0oJM3-rH5JrKpd-t3cA6QcX-_7FnTA0nW1XteJw7V5W5HzdL6IkEZxDc3fWAyemADamjuaExArDRPp3roNSt48hxngRslx5vOb6ly74opZYtuTRiVT49JQ=s4800-w640"
+        },
+        {
+          "id": "ChIJzeUTq3pBK4gRPpuYdyHFFfw",
+          "name": "BHZ Auto - Mechanics in Mississauga | Auto Repairs and Car service | 15+ years Auto dealership experience professionals",
+          "rating": 4.8,
+          "reviews": 50,
+          "address": "3545 Hawkestone Rd #1, Mississauga, ON L5C 2V1, Canada",
+          "hours": [
+            "Monday: 8:30 AM – 6:00 PM",
+            "Tuesday: 8:30 AM – 6:00 PM",
+            "Wednesday: 8:30 AM – 6:00 PM",
+            "Thursday: 8:30 AM – 6:00 PM",
+            "Friday: 8:30 AM – 6:00 PM",
+            "Saturday: 8:30 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=18164641419599846206&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://bhzauto.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDRRIWvL8w23MRYNYLg5YyXD3HHJb-puqW3TQum50bHbAlhht5N34YFFAf1Rm8jWJYG-8LcJ9EQ-08TIRoBkxhYJJo3X1V69UMSy9ZR9XrgTargheolJzILx_3FEx2aFe7I0qUuXOvtyT9xU9k=s4800-w640"
+        },
+        {
+          "id": "ChIJE4F3AcpGK4gR55BMQPvINWE",
+          "name": "TJF Auto Services Inc.",
+          "rating": 4.7,
+          "reviews": 968,
+          "address": "3211 Wolfedale Rd #1, Mississauga, ON L5C 1V8, Canada",
+          "hours": [
+            "Monday: 9:30 AM – 6:00 PM",
+            "Tuesday: 9:30 AM – 6:00 PM",
+            "Wednesday: 9:30 AM – 6:00 PM",
+            "Thursday: 9:30 AM – 6:00 PM",
+            "Friday: 9:30 AM – 6:00 PM",
+            "Saturday: 9:30 AM – 4:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=7004725776885780711&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://tjfauto.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMl4lGaC6jZf8sdnEW56_k3qxR0W62heYfEtWM_rlwFELg9uYImib4_eAB2tVgnRSuIN2ZBti2lBJ5e1A-wsW2mpRy32y5VLdeo_KpsQCaqxkGLouq5VB6XZJzkRmPCmTtu46vE0VrAb0Md=s4800-w640"
+        },
+        {
+          "id": "ChIJX9RvgzRBK4gR1vqWejP4-pY",
+          "name": "Best Auto Repair Service Inc",
+          "rating": 4.5,
+          "reviews": 386,
+          "address": "3635 Hawkestone Rd, Mississauga, ON L5C 2V1, Canada",
+          "hours": [
+            "Monday: 8:30 AM – 6:00 PM",
+            "Tuesday: 8:30 AM – 6:00 PM",
+            "Wednesday: 8:30 AM – 6:00 PM",
+            "Thursday: 8:30 AM – 6:00 PM",
+            "Friday: 8:30 AM – 6:00 PM",
+            "Saturday: 8:30 AM – 4:30 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=10879280749850589910&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": null,
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjC4PGPOcj8lDed1y7xv4Jcw4BiaNQdMqPkAwl22DUA_l7B_F0sTU1M0dHV62Ie2-rR_PQmzRejoCbrqg1-IyVNfFK33ufC1oYy_Uzc057yFOtITS5YykkUH9QcVM8c0uxkBGqJTzWcFSc4IZbo=s4800-w640"
+        },
+        {
+          "id": "ChIJXUs4LiZBK4gRzMjVzo7c87M",
+          "name": "Complete Auto Repair Specialist",
+          "rating": 4.8,
+          "reviews": 95,
+          "address": "3545 Hawkestone Rd #7, Mississauga, ON L5C 2V1, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 6:00 PM",
+            "Wednesday: 9:00 AM – 6:00 PM",
+            "Thursday: 9:00 AM – 6:00 PM",
+            "Friday: 9:00 AM – 6:00 PM",
+            "Saturday: 9:00 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=12966950258043373772&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": null,
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZObIggyWSZSVxPZAnX5Q_Vi7lpSuHPPNAxjB8OhvuQpi_-B1yZf6gbV0Pf4mzSpAKFFUA7e1L8EjWOUzuBz-LbewUFxWzun5jaCx5pgXnMGYS1ACxdui7U3LLGYc1RoqV4Kj4F4iv0eODrN=s4800-w640"
+        },
+        {
+          "id": "ChIJefT6uZ44K4gR2KMKBw5qc18",
+          "name": "Fewster Automotive",
+          "rating": 4.9,
+          "reviews": 227,
+          "address": "1075 Fewster Dr Unit 1, Mississauga, ON L4W 1A2, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 6:00 PM",
+            "Wednesday: 9:00 AM – 6:00 PM",
+            "Thursday: 9:00 AM – 6:00 PM",
+            "Friday: 9:00 AM – 6:00 PM",
+            "Saturday: 9:00 AM – 3:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=6877957664405103576&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://fewsterautomotive.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMa0fGqrmjtgOcna1-Nm3zyLK3vqvCsHobEBN7MPHsMhRZho_IQ9JTBbyMRkXey3yoc-j5bune8azRM-YxPkcGuGcK339d29rmQAwI1ttoVaLbi7Jj2z5HjnWrvwUbQvqEcQ15TYNLM_7kw-nVTPIBI=s4800-w640"
+        },
+        {
+          "id": "ChIJEbzjVfxHK4gR9B8VbnPjMKE",
+          "name": "Karl’s Auto Clinic Inc.",
+          "rating": 5,
+          "reviews": 432,
+          "address": "275 Dundas St E, Mississauga, ON L5A 1X1, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 6:00 PM",
+            "Tuesday: 9:00 AM – 6:00 PM",
+            "Wednesday: 9:00 AM – 6:00 PM",
+            "Thursday: 9:00 AM – 6:00 PM",
+            "Friday: 9:00 AM – 6:00 PM",
+            "Saturday: 8:00 AM – 6:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=11615033523896131572&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": null,
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPZKVhy2U7CxlaOYmgWSrsOOY-uSYx0LBgPve_fI0lHtmgOMa9omWf0monRB9YAuoaw70wsFq4uvJplr19Z9pzKiIu2Z8Ie_7VfBxgGX-mYHLTjGGONbbqADYkP7iCxXKVuqoMjCLLOcYcyuWQkEx1gJQ=s4800-w640"
+        },
+        {
+          "id": "ChIJi3hMNyNBK4gR5wwNMp4zg6o",
+          "name": "NewCastle Auto Repairs",
+          "rating": 4.8,
+          "reviews": 343,
+          "address": "57 Queen St N, Mississauga, ON L5N 1A2, Canada",
+          "hours": [
+            "Monday: 8:00 AM – 7:00 PM",
+            "Tuesday: 8:00 AM – 7:00 PM",
+            "Wednesday: 8:00 AM – 7:00 PM",
+            "Thursday: 8:00 AM – 7:00 PM",
+            "Friday: 8:00 AM – 7:00 PM",
+            "Saturday: 8:00 AM – 4:00 PM",
+            "Sunday: Closed"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=12286720962934410471&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.newcastleautorepairs.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNsMlBG0oVNObdqukkMz2v6T4Y7H4HaDzeMZIG8-kj92quCek-JrRQIw7YKCABxK6IRiBdpQhV6VQmsvMckRpG8dn2CJI4-Mc0JsqNjfFWvurqE8ewwOP0AbZ1mykxOzbVj3NneE7MKsBZwDpHbtp2w7w=s4800-w640"
+        }
+      ]
+    },
+    {
+      "slug": "beauty",
+      "label": "Beauty & Barber",
+      "businesses": [
+        {
+          "id": "ChIJ6_AFbw1HK4gRbJj9o0QijHs",
+          "name": "Man O'Clock Barbershop",
+          "rating": 4.9,
+          "reviews": 3624,
+          "address": "3662 Hurontario St #1, Mississauga, ON L5A 4A1, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 11:00 PM",
+            "Tuesday: 10:00 AM – 11:00 PM",
+            "Wednesday: 10:00 AM – 11:00 PM",
+            "Thursday: 10:00 AM – 11:00 PM",
+            "Friday: 10:00 AM – 11:00 PM",
+            "Saturday: 9:00 AM – 11:00 PM",
+            "Sunday: 9:00 AM – 11:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=8902528241609054316&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://manoclock.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNpVo_fqS-gj4fnLvgJjeUfWocidy3_S8bbUHhdFTA6Mu_s2mlo0R5wkzHASRUWTVIrAIYVYPX54CCR9OmcrDy6GgAzAzdcWITJ2MLlsQn9EnIXfPGKQIgyoSshb93rnezOfQu8A8pTKnGAr06vdJ5hQA=s4800-w640"
+        },
+        {
+          "id": "ChIJAUwgdFtBK4gRilp6NCBKLdg",
+          "name": "Luka Hair Salon& Barber Shop",
+          "rating": 4.9,
+          "reviews": 965,
+          "address": "2555 Erin Centre Blvd #13, Mississauga, ON L5M 5H1, Canada",
+          "hours": [
+            "Monday: 9:30 AM – 9:00 PM",
+            "Tuesday: 9:30 AM – 9:00 PM",
+            "Wednesday: 9:30 AM – 9:00 PM",
+            "Thursday: 9:30 AM – 9:00 PM",
+            "Friday: 9:30 AM – 9:00 PM",
+            "Saturday: 9:30 AM – 9:00 PM",
+            "Sunday: 9:30 AM – 9:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=15577188188324256394&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://lukahairsalon.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOngmSaOSWU_uu3wA-Z_ZJwah2xX3h3JZZmBKP6oGMM2J0U2LfFi97wFa_Tds0_tZgtSPRSDwNxWJlKP8sQpTbMa47em4aCVUW1IBW7V7mLYBGBN2aRW8c79XUBLS5_kCFM9uhUHIjvdQsCTw=s4800-w640"
+        },
+        {
+          "id": "ChIJMY5Wl3xBK4gR98qggqBXtTE",
+          "name": "Leon Fades Barbershop",
+          "rating": 4.9,
+          "reviews": 2173,
+          "address": "1100 Burnhamthorpe Rd W Unit 12, Mississauga, ON L5C 4G4, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 8:00 PM",
+            "Tuesday: 10:00 AM – 8:00 PM",
+            "Wednesday: 10:00 AM – 8:00 PM",
+            "Thursday: 10:00 AM – 8:00 PM",
+            "Friday: 10:00 AM – 8:00 PM",
+            "Saturday: 10:00 AM – 7:00 PM",
+            "Sunday: 10:00 AM – 5:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=3581865425541057271&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://leonfades.co/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjCH985XCgFH1QiEdJiTG2AWDfAVPFXgerydfH2ggWYujHi6qIdDj8SeQqjbd1DjEiXiSnnx-wmN1hhIw1sBPglKaMcXiGzzwOZjqnptmz8kzDqVXAP7AJsmiG8vQTC8ogSC8ec040iIPNIExDE-iT8AQg=s4800-w640"
+        },
+        {
+          "id": "ChIJ8c0rDGhDK4gRjbpoX_zrOPI",
+          "name": "Top Fades Barbershop",
+          "rating": 4.9,
+          "reviews": 936,
+          "address": "3476 Glen Erin Dr #9, Mississauga, ON L5L 3R4, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 8:00 PM",
+            "Tuesday: 10:00 AM – 8:00 PM",
+            "Wednesday: 10:00 AM – 8:00 PM",
+            "Thursday: 10:00 AM – 8:00 PM",
+            "Friday: 10:00 AM – 8:00 PM",
+            "Saturday: 10:00 AM – 8:00 PM",
+            "Sunday: 10:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=17453959825039342221&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://getsquire.com/discover/barbershop/top-fades-barbershop-mississauga?hl=en-CA&gei=1gq7aOquG9Sqw8cP99yoyA8&rwg_token=ACgRB3cbNx5gQsRBLJ49KCokibNURcvTt5-RJddXVE1kTPlQNhzLu4AMB1MtHNm-_nC6RWxR3ZJ-aeA_GU6auK2DlswVkr66jQ%3D%3D",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjChDEGs6cumNMHfFbJKpHQSyK-s1-Na3HmS8fyHjuwRqT6iraVZKcijYS4PlVB3jLaXvjPOeg5WTmWbelAjzHbzXCUinpfVme9HXqaHCZAR8nJBuNJ083zSkBw7umfgxkyNVdG9xKNuxg_-Kg=s4800-w640"
+        },
+        {
+          "id": "ChIJzYDEolQ5K4gRulLw5fWqsWo",
+          "name": "Boss Vibes Barbershop",
+          "rating": 5,
+          "reviews": 4284,
+          "address": "3615 Dixie Rd Unit 6, Mississauga, ON L4Y 4H4, Canada",
+          "hours": [
+            "Monday: 9:30 AM – 7:30 PM",
+            "Tuesday: 9:30 AM – 7:30 PM",
+            "Wednesday: 9:30 AM – 7:30 PM",
+            "Thursday: 9:30 AM – 7:30 PM",
+            "Friday: 9:30 AM – 7:30 PM",
+            "Saturday: 9:30 AM – 7:30 PM",
+            "Sunday: 9:30 AM – 7:30 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=7688114011999589050&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://www.bossvibes.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZMrwBrrly-7lnNeY6US4U_ALcoYC0zDChBqtetjWb6L8zbVTkdvmreCiC7JvtZPJdUM1xXiKL-Uw_T2m_N7N1YOYQ0IBFP9nQWDN_1fVpsBWP9cIFNgHxPkZOpQvOdPs6rGc-zZTudcgNF7Lvg=s4800-w640"
+        },
+        {
+          "id": "ChIJM5VTKCJBK4gRW1L6ukCk8Wc",
+          "name": "King's Chair Barbershop",
+          "rating": 4.9,
+          "reviews": 5776,
+          "address": "50 Bristol Rd E Unit 501A, Mississauga, ON L4Z 3K8, Canada",
+          "hours": [
+            "Monday: 9:00 AM – 8:00 PM",
+            "Tuesday: 9:00 AM – 8:00 PM",
+            "Wednesday: 9:00 AM – 8:00 PM",
+            "Thursday: 9:00 AM – 8:00 PM",
+            "Friday: 9:00 AM – 8:00 PM",
+            "Saturday: 9:00 AM – 8:00 PM",
+            "Sunday: 9:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=7489948253215674971&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://kingschair.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNFDBcC2o6_IuLbSNFf0yyQrDHmArvvvAG28nYOZ8oXXnJVXeHmlC1DViG2KuGoZhkqofLE_UH5_O3xex44GE4KL63pDc5LwE6EdZCrS540S6VdQgx6m0C3kvx14zGR4a21jsHo3-PulkNtz_6btVUWhA=s4800-w382"
+        },
+        {
+          "id": "ChIJe4CsTGxHK4gRJA_XB6cyX_A",
+          "name": "Barbershop Mississauga Coolcutz",
+          "rating": 4.9,
+          "reviews": 1275,
+          "address": "776 Dundas St E, Mississauga, ON L4Y 2B6, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 10:00 PM",
+            "Tuesday: 10:00 AM – 10:00 PM",
+            "Wednesday: 10:00 AM – 10:00 PM",
+            "Thursday: 10:00 AM – 10:00 PM",
+            "Friday: 10:00 AM – 10:00 PM",
+            "Saturday: 10:00 AM – 10:00 PM",
+            "Sunday: 11:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=17320618384862678820&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://squareup.com/appointments/book/d7cg0edbfdpt96/LMGS238MHXR3H/start",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZOmIgZzCY059ogS7hvIRyApAOrT877Ma3rGRnr87PYFDiBgrl8HYj9YPmhwH1f8_uSKj0uAg0w8JO-q6zyTClOvlxNZoYH2fAsrqFX9AKsImuGaV4xu9HMz8ovi-VHXebUdnSkuC6IdN3eaxWh5N7Wq2A=s4800-w640"
+        },
+        {
+          "id": "ChIJX-cKVOhPBUURbJ8qvEE2GwY",
+          "name": "Hairpad Barbershop",
+          "rating": 5,
+          "reviews": 348,
+          "address": "Chair No. 1, Styloria Hair and beauty salon, 592 Rathburn Rd W Unit 3, Mississauga, ON L5B 3A4, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 11:00 PM",
+            "Tuesday: Closed",
+            "Wednesday: 10:00 AM – 11:00 PM",
+            "Thursday: 10:00 AM – 11:00 PM",
+            "Friday: 9:00 AM – 11:00 PM",
+            "Saturday: 9:00 AM – 11:00 PM",
+            "Sunday: 9:00 AM – 11:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=440005044556439404&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://hairpadbarbershop.square.site/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZNMLvDeB313OHGORFYTbUWeAOQiWHf7KDbu-2GGByFaFAVtT-Uximj0j4vF8CzRP-6U8Jo2VDTsxyQOqAb94QmHp_EH0KsLyC9-BX-EWot95CkgC0n4uQW93AN4z65zBjNxEeWnO8JcuHVGXFn__-gz=s4800-w640"
+        },
+        {
+          "id": "ChIJJ5JuVBJBK4gRRozMl3931LM",
+          "name": "FahadFadez Barbershop",
+          "rating": 5,
+          "reviews": 459,
+          "address": "5247 Willowside Ct, Mississauga, ON L5V 2C5, Canada",
+          "hours": [
+            "Monday: 10:00 AM – 8:30 PM",
+            "Tuesday: 10:00 AM – 8:30 PM",
+            "Wednesday: 10:00 AM – 8:30 PM",
+            "Thursday: 10:00 AM – 8:30 PM",
+            "Friday: 10:00 AM – 8:30 PM",
+            "Saturday: 10:00 AM – 8:30 PM",
+            "Sunday: 10:00 AM – 8:30 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=12958113417743076422&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "https://fahadfadezbarbershop.com/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZP2Ez0OyhuIneSk3jtFoyaN4EnS2GXY6Z9lK-JLXuzLaJGCwqupaq0p5FmqK0N-rBnvsH9WTH5GuGGqh261JeofwzlIoc4UvVxigjEvfG-Ou4bwd_6FrjsXrOT9DEOapGMq7oMTZKUP2FEGUw=s4800-w640"
+        },
+        {
+          "id": "ChIJVUGtFFdDK4gRcxnGzuDxBz8",
+          "name": "Golden Cuts Barbershop",
+          "rating": 5,
+          "reviews": 2178,
+          "address": "3480 Platinum Dr Unit 95, Mississauga, ON L5M 2S4, Canada",
+          "hours": [
+            "Monday: 11:00 AM – 8:00 PM",
+            "Tuesday: 10:00 AM – 8:00 PM",
+            "Wednesday: 10:00 AM – 8:00 PM",
+            "Thursday: 10:00 AM – 7:00 PM",
+            "Friday: 10:00 AM – 8:00 PM",
+            "Saturday: 10:00 AM – 8:00 PM",
+            "Sunday: 10:00 AM – 8:00 PM"
+          ],
+          "mapsUrl": "https://maps.google.com/?cid=4541864697070492019&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+          "website": "http://www.goldencuts.ca/",
+          "photo": "https://lh3.googleusercontent.com/place-photos/AJRVUZPe0JPZDyuTTeXLzulmwgdXoyeTHTBurU47pbIgmyqDvYQZJsCdcuI1hsX_z7CL0eZYIFL7TXxayIH2hcNWCtAp8epFtEJdeINoF53krKiNpMowzQbWppc8Ez0jPqVo8f-iOYJyMu7jSRSml89jsOc=s4800-w640"
+        }
       ]
     }
   ]
