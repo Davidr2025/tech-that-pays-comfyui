@@ -1,0 +1,80 @@
+name: Weekly newsletter
+
+on:
+  schedule:
+    # Thursdays 11:00 UTC = 7:00 a.m. Toronto (EDT). Composes the issue from
+    # freshly fetched content and (if configured) pushes it to beehiiv.
+    - cron: "0 11 * * 4"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Delivery mode"
+        type: choice
+        options: [dry-run, draft, publish, schedule]
+        default: dry-run
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter
+  cancel-in-progress: false
+
+jobs:
+  compose-and-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci --no-audit --no-fund
+
+      - name: Refresh content (so the issue is current)
+        working-directory: site
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          EVENTBRITE_API_TOKEN: ${{ secrets.EVENTBRITE_API_TOKEN }}
+        run: node scripts/update-content.mjs
+
+      - name: Compose newsletter
+        working-directory: site
+        run: node scripts/build-newsletter.mjs
+
+      - name: Commit issue preview
+        run: |
+          if git diff --quiet -- site/newsletter site/src/data; then
+            echo "No changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add site/newsletter site/src/data
+            git commit -m "chore(newsletter): weekly issue $(date -u +%F) [skip ci]"
+            git push
+          fi
+
+      - name: Send to beehiiv
+        working-directory: site
+        env:
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+          # Scheduled runs use the repo variable; manual runs use the input.
+          NEWSLETTER_MODE: ${{ inputs.mode || vars.NEWSLETTER_MODE || 'dry-run' }}
+        run: node scripts/send-newsletter.mjs
+
+      - name: Upload issue artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: newsletter-latest
+          path: |
+            site/newsletter/latest.html
+            site/newsletter/latest.json

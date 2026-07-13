@@ -68,6 +68,30 @@ For a nicer domain + working `/api/subscribe` endpoint, connect one of:
 
 Each host redeploys automatically whenever the pipeline commits fresh data.
 
+## Automated weekly newsletter
+
+`.github/workflows/newsletter.yml` runs every **Thursday 7 a.m. Toronto time**:
+it refreshes all content, composes a complete branded issue
+(`npm run build-newsletter` → `site/newsletter/latest.html` + subject/preview
+in `latest.json`), commits it, and delivers it per `NEWSLETTER_MODE`:
+
+| Mode | What happens | Requirement |
+| ---- | ------------ | ----------- |
+| `dry-run` (default) | Issue composed & saved only | none |
+| `draft` | Draft created in beehiiv — you click **Send** | beehiiv Create Post API access |
+| `publish` / `schedule` | Fully hands-off send | beehiiv **Send API** (Enterprise beta — [request access](https://www.beehiiv.com/support/article/29286794539671-how-to-access-the-beehiiv-send-api)) |
+
+Set the mode as a GitHub repo **variable** (`Settings → Secrets and variables →
+Actions → Variables → NEWSLETTER_MODE`). Manual runs: Actions → "Weekly
+newsletter" → Run workflow → pick a mode.
+
+**No Enterprise plan?** Two good options: (1) keep `dry-run` and paste
+`latest.html` into a beehiiv post (2 minutes/week), or (2) connect the
+[official beehiiv MCP](https://www.beehiiv.com/support/article/39255979546263-getting-started-with-the-beehiiv-mcp)
+to Claude and have a weekly Claude routine push the composed issue into a
+beehiiv draft automatically (works on any paid beehiiv plan; publishing stays
+one click in the beehiiv app).
+
 ## Google Places cost estimate
 
 Weekly refresh, 8 categories × 10 results:

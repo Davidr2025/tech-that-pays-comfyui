@@ -9,6 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "update-content": "node scripts/update-content.mjs",
+    "build-newsletter": "node scripts/build-newsletter.mjs",
+    "send-newsletter": "node scripts/send-newsletter.mjs",
     "test:beehiiv": "node scripts/test-beehiiv.mjs"
   },
   "dependencies": {
