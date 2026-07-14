@@ -91,6 +91,36 @@ For a nicer domain + working `/api/subscribe` endpoint, connect one of:
 
 Each host redeploys automatically whenever the pipeline commits fresh data.
 
+### Custom domain (GitHub Pages)
+
+The workflow is wired to serve **mississaugainsider.ca** from GitHub Pages:
+`update-content.yml`'s deploy step sets `cname: mississaugainsider.ca`
+(writes/preserves a `CNAME` file in `gh-pages` on every deploy — without it, a
+fresh deploy can silently drop a manually-set custom domain), and the build
+step sets `SITE_URL`/`BASE_PATH` for a root-served custom domain instead of
+the `<owner>.github.io/<repo>/` project-pages path.
+
+Add these DNS records at your registrar (apex domains can't use a CNAME
+record, so GitHub Pages requires A records to their 4 IPs):
+
+```
+A       @     185.199.108.153
+A       @     185.199.109.153
+A       @     185.199.110.153
+A       @     185.199.111.153
+CNAME   www   davidr2025.github.io.
+```
+
+Once DNS propagates, repo → Settings → Pages will show the domain as
+verified — then enable **Enforce HTTPS** there (GitHub auto-provisions the
+cert, usually within ~15–60 min of DNS resolving).
+
+**Caveat:** GitHub Pages is static-only — it can't run the
+`functions/api/subscribe.js` endpoint the way Cloudflare Pages/Netlify/Vercel
+can. On GitHub Pages, set `newsletterUrl` in `site.config.mjs` to your beehiiv
+hosted subscribe page so the site's subscribe form has somewhere to send
+visitors; without it the form has no working backend on this host.
+
 ## Automated weekly newsletter
 
 `.github/workflows/newsletter.yml` runs every **Thursday 7 a.m. Toronto time**:
@@ -101,19 +131,24 @@ in `latest.json`), commits it, and delivers it per `NEWSLETTER_MODE`:
 | Mode | What happens | Requirement |
 | ---- | ------------ | ----------- |
 | `dry-run` (default) | Issue composed & saved only | none |
-| `draft` | Draft created in beehiiv — you click **Send** | beehiiv Create Post API access |
+| `draft` | Draft created in beehiiv — you click **Send** | beehiiv Create Post API — **included in the free Launch plan** |
 | `publish` / `schedule` | Fully hands-off send | beehiiv **Send API** (Enterprise beta — [request access](https://www.beehiiv.com/support/article/29286794539671-how-to-access-the-beehiiv-send-api)) |
 
 Set the mode as a GitHub repo **variable** (`Settings → Secrets and variables →
 Actions → Variables → NEWSLETTER_MODE`). Manual runs: Actions → "Weekly
 newsletter" → Run workflow → pick a mode.
 
-**No Enterprise plan?** Two good options: (1) keep `dry-run` and paste
-`latest.html` into a beehiiv post (2 minutes/week), or (2) connect the
-[official beehiiv MCP](https://www.beehiiv.com/support/article/39255979546263-getting-started-with-the-beehiiv-mcp)
-to Claude and have a weekly Claude routine push the composed issue into a
-beehiiv draft automatically (works on any paid beehiiv plan; publishing stays
-one click in the beehiiv app).
+**On the free plan:** beehiiv's free Launch plan includes general API access
+(everything except the Send API), so `draft` mode works today — set
+`BEEHIIV_API_KEY` / `BEEHIIV_PUBLICATION_ID` (from beehiiv → Settings → API
+keys) as repo secrets and `NEWSLETTER_MODE=draft` as a repo variable, and the
+pipeline pushes a ready-to-send draft into beehiiv every week automatically.
+Only `publish`/`schedule` need the Enterprise Send API.
+
+Note: the [official beehiiv MCP](https://www.beehiiv.com/support/article/39255979546263-getting-started-with-the-beehiiv-mcp)
+is **read-only on free plans** — write access (creating/pushing drafts via
+MCP) needs a paid beehiiv plan. On free, the direct API path above (`draft`
+mode) is the better option; it already works without any beehiiv upgrade.
 
 ## Google Places cost estimate
 
