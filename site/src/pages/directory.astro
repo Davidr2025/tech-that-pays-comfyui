@@ -34,7 +34,7 @@ const fetched = places.fetchedAt
   <section class="section container">
     <div class="section-head">
       <h2>{config.city} Business Directory</h2>
-      <span class="sub">{fetched ? `Refreshed weekly · last updated ${fetched}` : "Refreshed weekly"}</span>
+      <span class="sub">{fetched ? `Refreshed monthly · last updated ${fetched}` : "Refreshed monthly"}</span>
       <a class="more" href={`${base}advertise/`}>List your business →</a>
     </div>
 
@@ -59,19 +59,13 @@ const fetched = places.fetchedAt
               {g.businesses.map((b) => (
                 <article class="card biz-card">
                   {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
-                  <h3><a href={b.website || b.mapsUrl} target="_blank" rel="noopener">{b.name}</a></h3>
+                  <h3><a href={`${base}directory/${cat.slug}/${b.slug}/`}>{b.name}</a></h3>
                   {b.rating != null && (
                     <div class="rating">★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span></div>
                   )}
                   <p>{b.address}</p>
-                  {b.hours.length > 0 && (
-                    <details class="hours-toggle">
-                      <summary>Hours</summary>
-                      <ul>{b.hours.map((h) => <li>{h}</li>)}</ul>
-                    </details>
-                  )}
                   <div class="meta">
-                    <a class="readmore" href={b.mapsUrl} target="_blank" rel="noopener">Map & directions →</a>
+                    <a class="readmore" href={`${base}directory/${cat.slug}/${b.slug}/`}>View details →</a>
                   </div>
                 </article>
               ))}

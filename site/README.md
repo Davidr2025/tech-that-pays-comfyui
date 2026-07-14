@@ -13,7 +13,7 @@ GitHub Actions (every 6 hours)
        ├─ fetch-events.mjs    City events calendar (REST/iCal) + optional Eventbrite organizers
        ├─ fetch-weather.mjs   Open-Meteo (no key needed)
        ├─ fetch-sports.mjs    TheSportsDB (best effort)
-       └─ fetch-places.mjs    Google Places API — cached, refreshed weekly
+       └─ fetch-places.mjs    Google Places API — cached, refreshed monthly
   └─ commit src/data/*.json → astro build → deploy
 ```
 
@@ -21,10 +21,15 @@ GitHub Actions (every 6 hours)
   with visible source credit and a link out to the original article. Full
   articles are never republished.
 - **Quota-safe:** Places results are cached in `src/data/places.json` and only
-  re-fetched when older than 7 days (`places.cacheDays` in `site.config.mjs`),
+  re-fetched when older than 30 days (`places.cacheDays` in `site.config.mjs`),
   so the API is never hit on page loads.
 - **Failure-safe:** if a feed is down, the previous data is kept — the site
   never goes blank.
+- **Lead-magnet directory:** every business gets its own page on the site
+  (`/directory/<category>/<business-slug>/`, statically generated at build
+  time from `places.json`) instead of linking straight to their website —
+  keeps visitors on the Insider site and gives every listing a "claim this
+  listing" call-to-action pointing at `/advertise/`.
 
 ## Commands (run inside `site/`)
 
@@ -42,6 +47,20 @@ GitHub Actions (every 6 hours)
   [`site.config.mjs`](./site.config.mjs) — one file.
 - **Featured business (paid slot):** edit
   [`src/data/featured-business.json`](./src/data/featured-business.json).
+- **Removing a business from the directory:** the directory is a lead
+  magnet, not user-submitted, so there's no login-protected admin panel —
+  you (or a Claude session) edit
+  [`src/data/excluded-places.json`](./src/data/excluded-places.json)
+  directly on GitHub. Add an entry with the business's Google `place_id`
+  (visible in `src/data/places.json` as each business's `id` field):
+  ```json
+  [{ "id": "ChIJ...", "note": "closed permanently", "excludedAt": "2026-07-14" }]
+  ```
+  Every future pipeline run filters this id out before the per-niche
+  ranking/cap is applied, so a removed business never resurfaces and its
+  slot is backfilled by the next-best real candidate — it takes effect on
+  the next monthly refresh, or immediately if you trigger the workflow
+  manually with `force_places: true`.
 - **API keys:** copy [`.env.example`](./.env.example) to `.env` locally, and add
   the same names as **GitHub Actions secrets** (repo → Settings → Secrets and
   variables → Actions → New repository secret):
@@ -94,29 +113,53 @@ one click in the beehiiv app).
 
 ## Google Places cost estimate
 
-Weekly refresh: 7 simple categories × 10 results, plus Trades & Home
-Services split into 10 trade-specific queries × 8 results each (see below):
+**Correction:** this section previously said the site bills at the Text
+Search **Pro** SKU ($32/1,000, 5,000 free/month). That was wrong — the field
+mask includes `rating`, `userRatingCount`, `regularOpeningHours`, and
+`websiteUri`, all **Enterprise**-tier fields, so every Text Search call here
+is billed at the Enterprise SKU: **$35/1,000 calls, 1,000 free/month**. This
+doesn't change the bottom line below (still $0/month), just the safety
+margin — worth knowing if you ever scale usage up further. Place Photo
+pricing is unaffected: **$7/1,000 calls, 10,000 free/month** (Essentials SKU).
 
-- 17 Text Search (Pro SKU) calls/week ≈ **74/month** — free tier is 5,000/month
-- ~150 Place Photo (Essentials SKU) calls/week ≈ **650/month** — free tier is 10,000/month
+The directory targets ~100 businesses per niche (18 niches: 8 simple
+categories + 10 Trades subcategories) via geographic query-splitting (see
+below), refreshed monthly:
 
-**Estimated cost: $0/month** (roughly 1.5% of the Text Search free tier, 6.5%
-of the Photo free tier). Even daily refreshes stay comfortably free. Photos
-are resolved to static Google-hosted URLs during the pipeline, so site
-visitors never trigger API calls.
+- 18 niches × 9 area variants = **162 Text Search calls/month** → 16.2% of
+  the 1,000/month Enterprise free tier → **$0**
+- 1 photo/business: realistic estimate ~900–1,300 Place Photo calls/month
+  (narrow niches rarely hit the full 100-business ceiling) up to a
+  worst-case ~1,800/month if every niche did → 9–18% of the 10,000/month
+  free tier → **$0** either way
+
+100 per niche is a **ceiling, not a guarantee** — a narrow trade like
+Locksmiths may genuinely have fewer than 100 distinct real businesses in one
+city even after splitting across neighborhoods; broad niches like
+Restaurants are more likely to approach it. Photos are resolved to static
+Google-hosted URLs during the pipeline, so site visitors never trigger API
+calls.
 
 ### Growing a category past 20 results
 
 Google's Text Search caps every query at 20 results — there's no pagination
-past that. `Trades & Home Services` shows how to grow past it: instead of one
-vague query, it's defined as `subcategories` (Plumbers, Electricians, HVAC,
-Roofers, Landscaping, Painters, General Contractors, Locksmiths, Appliance
-Repair, Cleaning) in `site.config.mjs`, each running its own Text Search and
-capped independently (`perSubcategory`, default 8) so one popular trade can't
-crowd out the others. The directory page automatically renders these as
-sub-headings within the category. Apply the same pattern to any other
-category (e.g. split "Health & Wellness" into Dentists/Physio/Clinics) by
-adding a `subcategories` array in place of its `query`.
+past that. This directory grows past it two ways, stackable per category:
+
+1. **By type** (`subcategories`) — `Trades & Home Services` is defined as 10
+   trade-specific queries (Plumbers, Electricians, HVAC, Roofers,
+   Landscaping, Painters, General Contractors, Locksmiths, Appliance Repair,
+   Cleaning) instead of one vague query, each capped independently
+   (`perSubcategory`) so one popular trade can't crowd out the others.
+2. **By geography** (`places.areas`) — every category's query (simple or
+   per-subcategory) is additionally run once per Mississauga neighborhood in
+   `places.areas` and merged by Google's `place_id`, since even a
+   type-specific query still caps at 20 on its own.
+
+The directory page automatically renders subcategory groups as sub-headings.
+Apply the type-splitting pattern to any other category (e.g. split "Health &
+Wellness" into Dentists/Physio/Clinics) by adding a `subcategories` array in
+place of its `query` — the geographic splitting applies automatically to any
+category or subcategory, no extra config needed per-niche.
 
 ## Eventbrite note
 

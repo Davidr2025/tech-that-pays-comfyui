@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       force_places:
-        description: "Force-refresh Google Places cache (ignores weekly TTL)"
+        description: "Force-refresh Google Places cache (ignores monthly TTL)"
         type: boolean
         default: false
   push:
@@ -30,7 +30,7 @@ concurrency:
 jobs:
   update-and-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     # Don't re-run when our own data commit lands ([skip ci] guards this too)
     if: github.event_name != 'push' || github.actor != 'github-actions[bot]'
     steps:

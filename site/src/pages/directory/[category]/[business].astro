@@ -1,0 +1,81 @@
+---
+import Base from "../../../layouts/Base.astro";
+import config from "../../../../site.config.mjs";
+import places from "../../../data/places.json";
+
+// Fully static — one prerendered page per business, generated at build
+// time from places.json. No server/adapter involved.
+export async function getStaticPaths() {
+  return places.categories.flatMap((cat) =>
+    cat.businesses.map((b) => ({
+      params: { category: cat.slug, business: b.slug },
+      props: { business: b, category: cat }
+    }))
+  );
+}
+
+const { business: b, category: cat } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+
+const contact = `mailto:david@lsfg.ca?subject=${encodeURIComponent(
+  `Claim my listing on ${config.name}: ${b.name}`
+)}`;
+const description = `${b.name} — ${b.subcategory || cat.label} in ${config.city}, Ontario.${
+  b.rating != null ? ` Rated ${b.rating.toFixed(1)}★ (${b.reviews?.toLocaleString()} reviews).` : ""
+}`;
+---
+<Base title={b.name} description={description} current="directory">
+  <section class="section container biz-detail">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={`${base}directory/`}>Directory</a>
+      <span>›</span>
+      <a href={`${base}directory/#${cat.slug}`}>{cat.label}</a>
+      {b.subcategory && <><span>›</span><span>{b.subcategory}</span></>}
+      <span>›</span>
+      <span>{b.name}</span>
+    </nav>
+
+    <div class="biz-detail-layout">
+      {b.photo && <img class="biz-detail-hero" src={b.photo} alt={b.name} />}
+
+      <div class="biz-detail-body">
+        {b.subcategory && <span class="tag">{b.subcategory}</span>}
+        <h1>{b.name}</h1>
+        {b.rating != null && (
+          <div class="rating" style="font-size:1.1rem">
+            ★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span>
+          </div>
+        )}
+        <p>{b.address}</p>
+
+        <div class="biz-detail-actions">
+          <a class="cta-btn" href={b.mapsUrl} target="_blank" rel="noopener">Get Directions →</a>
+          {b.phone && <a class="cta-btn secondary" href={`tel:${b.phone.replace(/[^0-9+]/g, "")}`}>{b.phone}</a>}
+        </div>
+
+        {b.hours.length > 0 && (
+          <div class="biz-detail-hours">
+            <h3>Hours</h3>
+            <ul>{b.hours.map((h) => <li>{h}</li>)}</ul>
+          </div>
+        )}
+
+        {b.website && (
+          <p class="biz-detail-website">
+            <a href={b.website} target="_blank" rel="noopener">Visit website →</a>
+          </p>
+        )}
+      </div>
+    </div>
+
+    <div class="biz-detail-cta">
+      <h3>Is this your business?</h3>
+      <p>Get a free upgraded listing — priority placement, your own photos, and a link straight to your site.</p>
+      <a class="cta-btn" href={contact}>Claim this listing →</a>
+    </div>
+
+    <p style="font-size:.8rem;color:var(--muted);margin-top:1.5rem">{places.attribution}</p>
+  </section>
+</Base>

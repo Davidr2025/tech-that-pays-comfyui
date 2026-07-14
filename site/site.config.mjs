@@ -135,10 +135,24 @@ export default {
     teams: ["Raptors 905", "Toronto Raptors", "Toronto Maple Leafs", "Toronto Blue Jays", "Toronto FC"]
   },
 
-  // --- LOCAL BUSINESS DIRECTORY (Google Places API, cached weekly) ---
+  // --- LOCAL BUSINESS DIRECTORY (Google Places API, cached monthly) ---
+  // This directory is a lead magnet: it's meant to be big (~100 businesses
+  // per niche) so you have real prospects to contact about paid placements.
+  // Google's Text Search caps every query at 20 results with no pagination,
+  // so reaching ~100 per niche requires querying the same niche phrased
+  // across several Mississauga neighborhoods and merging by place_id —
+  // `areas` below is that list ("" = city-wide, using the query as-is).
+  // 100 is a CEILING, not a guarantee: narrow niches (e.g. Locksmiths) may
+  // genuinely have fewer than 100 distinct real businesses in one city even
+  // after area-splitting; broad niches (Restaurants) are more likely to
+  // approach it.
   places: {
-    cacheDays: 7,
-    resultsPerCategory: 10,
+    cacheDays: 30,
+    resultsPerCategory: 100,
+    areas: [
+      "", "Port Credit", "Streetsville", "Erin Mills", "Meadowvale",
+      "Clarkson", "Cooksville", "Malton", "Lakeview"
+    ],
     categories: [
       { slug: "restaurants",  label: "Restaurants",        query: "best restaurants in Mississauga, Ontario" },
       { slug: "cafes",        label: "Cafés & Bakeries",   query: "best cafes and bakeries in Mississauga, Ontario" },
@@ -150,7 +164,7 @@ export default {
         // no single trade (e.g. painters) crowds out the others.
         slug: "trades",
         label: "Trades & Home Services",
-        perSubcategory: 8,
+        perSubcategory: 100,
         subcategories: [
           { label: "Plumbers",                        query: "best plumbers in Mississauga, Ontario" },
           { label: "Electricians",                     query: "best electricians in Mississauga, Ontario" },
