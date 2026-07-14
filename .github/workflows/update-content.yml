@@ -2,8 +2,11 @@ name: Update content & deploy site
 
 on:
   schedule:
-    # Every 6 hours — fetches feeds, refreshes data, rebuilds & redeploys
-    - cron: "0 */6 * * *"
+    # Every 6 hours, anchored so one run lands at 6:15am Eastern (10:15 UTC)
+    # — 15min after local outlets' morning news wave, per site.config.mjs's
+    # news.sources. Fixed UTC cron drifts ~1hr during EST months (Nov-Mar),
+    # same caveat as newsletter.yml's "7am Toronto time" cron.
+    - cron: "15 4,10,16,22 * * *"
   workflow_dispatch:
     inputs:
       force_places:

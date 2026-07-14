@@ -7,9 +7,9 @@ listings on a schedule, commits the data, rebuilds and redeploys — hands-off.
 ## How it works
 
 ```
-GitHub Actions (every 6 hours)
+GitHub Actions (every 6 hours, anchored to 6:15am/12:15pm/6:15pm/12:15am ET)
   └─ node scripts/update-content.mjs
-       ├─ fetch-news.mjs      RSS: City of Mississauga, insauga, CBC Toronto, Toronto Star
+       ├─ fetch-news.mjs      RSS: City of Mississauga, insauga, Mississauga.com, CBC Toronto, Toronto Star
        ├─ fetch-events.mjs    City events calendar (REST/iCal) + optional Eventbrite organizers
        ├─ fetch-weather.mjs   Open-Meteo (no key needed)
        ├─ fetch-sports.mjs    TheSportsDB (best effort)
@@ -25,6 +25,10 @@ GitHub Actions (every 6 hours)
   so the API is never hit on page loads.
 - **Failure-safe:** if a feed is down, the previous data is kept — the site
   never goes blank.
+- **Freshness-anchored:** the schedule is timed so a run always lands 15
+  minutes after local outlets' typical morning news wave (~6am Eastern), not
+  just every 6 hours from an arbitrary UTC start — see the cron comment in
+  `.github/workflows/update-content.yml`.
 - **Lead-magnet directory:** every business gets its own page on the site
   (`/directory/<category>/<business-slug>/`, statically generated at build
   time from `places.json`) instead of linking straight to their website —

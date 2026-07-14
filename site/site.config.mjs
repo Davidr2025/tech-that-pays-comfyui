@@ -60,6 +60,16 @@ export default {
         ]
       },
       {
+        name: "Mississauga.com",
+        homepage: "https://www.mississauga.com/",
+        candidates: [
+          // Metroland/Torstar sites often share the same search-RSS pattern
+          // as thestar.com (below) — try the direct feed first.
+          "https://www.mississauga.com/search/?f=rss&t=article&l=25&s=start_time&sd=desc",
+          "https://news.google.com/rss/search?q=site:mississauga.com&hl=en-CA&gl=CA&ceid=CA:en"
+        ]
+      },
+      {
         name: "CBC Toronto",
         homepage: "https://www.cbc.ca/news/canada/toronto",
         filter: true,
