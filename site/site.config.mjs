@@ -60,8 +60,13 @@ export default {
         ]
       },
       {
+        // Despite the name, this outlet also carries syndicated wire/press-
+        // release content (financial services, engineering-firm PR, generic
+        // regional weather alerts) with no Mississauga relevance — filter it
+        // like the GTA-wide sources below.
         name: "Mississauga.com",
         homepage: "https://www.mississauga.com/",
+        filter: true,
         candidates: [
           // Metroland/Torstar sites often share the same search-RSS pattern
           // as thestar.com (below) — try the direct feed first.
