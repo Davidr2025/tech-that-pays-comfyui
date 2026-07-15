@@ -69,7 +69,15 @@ async function fetchMetaDescription(url) {
       html.match(/<meta[^>]+content=["']([^"']*)["'][^>]*property=["']og:description["']/i) ||
       html.match(/<meta[^>]+name=["']description["'][^>]*content=["']([^"']*)["']/i) ||
       html.match(/<meta[^>]+content=["']([^"']*)["'][^>]*name=["']description["']/i);
-    return match ? excerpt(stripHtml(match[1])) : "";
+    if (!match) return "";
+    const desc = excerpt(stripHtml(match[1]));
+    // Google News article links (news.google.com/rss/articles/...) don't
+    // resolve to the publisher's page on a plain HTTP fetch — they land on
+    // Google's own interstitial, whose fixed generic description would
+    // otherwise get shown as if it were about the story. Reject it rather
+    // than display misleading text.
+    if (/aggregated from sources all over the world by google news/i.test(desc)) return "";
+    return desc;
   } catch {
     return "";
   }
