@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T14:40:00.467Z",
+  "updatedAt": "2026-07-15T14:47:27.378Z",
   "items": [
     {
       "title": "Two dead after multi-vehicle crash shuts down part of Highway 401 in Mississauga",
@@ -8,6 +8,14 @@
       "source": "Toronto Star",
       "sourceUrl": "https://www.thestar.com/news/gta/",
       "publishedAt": "2026-07-15T13:45:00.000Z"
+    },
+    {
+      "title": "Mississauga’s air quality affected by wildfire smoke",
+      "summary": "Smoke from forest fires is expected to impact air quality in Mississauga, with conditions that may persist through the day. As smoke levels rise, so do health risks — making it important for residents to stay informed and take steps to protect themselves. Wildfire smoke can travel long distances and differs from typical urban air pollution. It contains fine particles and harmful gases that can enter the lungs and bloodstream, potentially causing inflammation and affecting overall health.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/mississaugas-air-quality-affected-by-wildfire-smoke-2/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-15T08:53:13.000Z"
     },
     {
       "title": "Gun licence applications have surged in the Toronto area since 2016",
@@ -42,14 +50,6 @@
       "publishedAt": "2026-07-15T13:13:42.000Z"
     },
     {
-      "title": "Mississauga’s air quality affected by wildfire smoke",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRExobnZLSkdVN0J0UnVQblE1aWVwLU84ZExqQW41UXlLalN0ZEZZS2htUFJEUFE2OVVmbXFybmg0ZTRGMkk1YXVLNWluX0ZLU3dUanY1Sl9MZlFnR3pPZ285UW5UQm9NYnRNRDNjbGhJVzJXM0JEQkpzU2VNRlpTRlJSMHlJZldUZTBRb0o3bjY1VHJtTGFDN2lpMDhpY2Y1NWxDak5lbGRMdXlHVnh5NA?oc=5",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca",
-      "publishedAt": "2026-07-15T12:53:13.000Z"
-    },
-    {
       "title": "Youth charged after victim sexually assaulted in Mississauga by stranger: Peel police",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPY2l3VkR6XzFNYkFKZjg5RWZHSHBQT0k4VTJSaEt2T1Y4QlhJNlNmRW5TdHpPcW5RRGxJNTNUaE4tbVJ5M2Zfci1QWmxNNTc5Ynl4TkxnYWcyaEtxS1pmUUI0eFpPOWE1VkQxVmtOa2RuMWp0WTVYUFNmTWY4R2l4Vml2YWR3WFhiQVZzTEZvR1dBUUdWcklScXRWY0NxUDBQN0NmbmljT2FNNW83X1Y0Mk5rT3JVN0NKblZaZ2Z4Mm13cVRlWk1QS2xrQmFHYnZSVXlUbG5zVE9BZmkwY01uNnJqdw?oc=5",
@@ -64,14 +64,6 @@
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-07-15T10:10:00.000Z"
-    },
-    {
-      "title": "Bonnie Crombie says she’ll ‘see it through’ if she’s re-elected Mississauga mayor, again",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNcnI0WjY1dXZkZVdYNTNVMmZudlhTT195NEUwWmFlYUlfRkt6RmlnZUdlS2tIYklGcm1YUUNUMjU2SkM3SFp0T3E1Zkw2cDI0TmVCeWVJUU9nMnpVbTF6ajY1Szh5a082YUZPekpHbkpQLXR6bzlBeFRxMEZGbXpQVlBZSHJpQ1FQTzl1M2pNVi1jcXpzV0VzUFZocXRMbXM?oc=5",
-      "source": "The Globe and Mail",
-      "sourceUrl": "https://www.theglobeandmail.com",
-      "publishedAt": "2026-07-15T01:38:11.000Z"
     },
     {
       "title": "Two 35-storey rental towers proposed across from Mississauga Hospital",
@@ -96,6 +88,14 @@
       "source": "Toronto Star",
       "sourceUrl": "https://www.thestar.com/news/gta/",
       "publishedAt": "2026-07-14T15:30:00.000Z"
+    },
+    {
+      "title": "CanadianSME Announces Winners of the 2025 CanadianSME National Small Business Awards",
+      "summary": "MISSISSAUGA, Ontario, July 14, 2026 (GLOBE NEWSWIRE) -- CanadianSME Small Business Magazine is proud to announce the winners of the CanadianSME National Small Business Awards 2025, recognizing the exceptional achievements, innovation, resilience, and contributions of small and medium-sized businesses and…",
+      "url": "https://www.thestar.com/globenewswire/canadiansme-announces-winners-of-the-2025-canadiansme-national-small-business-awards/article_22aa0f11-d969-5ede-b266-c15c1179142b.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com/news/gta/",
+      "publishedAt": "2026-07-14T13:00:00.000Z"
     }
   ]
 }
