@@ -33,7 +33,12 @@
       return;
     }
     titleEl.textContent = item.title || "";
-    summaryEl.textContent = item.summary || "No preview available for this story.";
+    // Attribution goes inline, not just in the badge below — this can't be
+    // mistaken for our own reporting, and it's still the outlet's own
+    // excerpt text, not a rewrite.
+    summaryEl.textContent = item.summary
+      ? `According to ${item.source || "the source"}: ${item.summary}`
+      : "No preview available for this story.";
     sourceEl.textContent = item.source || "";
     dateEl.textContent = item.publishedAt
       ? new Date(item.publishedAt).toLocaleDateString("en-CA", {
