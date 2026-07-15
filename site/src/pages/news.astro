@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import NewsCard from "../components/NewsCard.astro";
+import NewsModal from "../components/NewsModal.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
 ---
@@ -21,4 +22,6 @@ import news from "../data/news.json";
       ))}
     </p>
   </section>
+
+  <NewsModal />
 </Base>

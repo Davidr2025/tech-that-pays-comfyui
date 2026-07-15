@@ -4,12 +4,18 @@ const date = item.publishedAt
   ? new Date(item.publishedAt).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "America/Toronto" })
   : "";
 ---
-<article class="card">
+<article class="card news-card" role="button" tabindex="0" data-news-trigger data-item={JSON.stringify(item)}>
   <h3>{item.title}</h3>
-  {item.summary && <p>{item.summary}</p>}
+  {item.summary && <p class="news-excerpt">{item.summary}</p>}
   <div class="meta">
-    <a class="source-badge" href={item.sourceUrl} target="_blank" rel="noopener" title={`Source: ${item.source}`}>{item.source}</a>
+    <a
+      class="source-badge"
+      href={item.sourceUrl}
+      target="_blank"
+      rel="noopener"
+      title={`Source: ${item.source}`}
+      onclick="event.stopPropagation()"
+    >{item.source}</a>
     {date && <span>{date}</span>}
   </div>
-  <a class="cta-btn secondary news-readmore" href={item.url} target="_blank" rel="noopener">Read full article at {item.source} →</a>
 </article>

@@ -103,8 +103,9 @@ export function stripHtml(html) {
     .trim();
 }
 
-/** Keep 1–2 sentences, max ~240 chars — excerpt only, never full articles. */
-export function excerpt(text, maxLen = 240) {
+/** Keep a few sentences, max ~550 chars (roughly a paragraph) — a bounded
+ *  preview for the reading modal, never anything close to the full article. */
+export function excerpt(text, maxLen = 550) {
   const clean = stripHtml(text);
   if (!clean) return "";
   const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g);
@@ -113,7 +114,7 @@ export function excerpt(text, maxLen = 240) {
     for (const s of sentences) {
       if ((out + s).length > maxLen) break;
       out += s;
-      if (out.split(/[.!?]+\s/).length > 2) break;
+      if (out.split(/[.!?]+\s/).length > 6) break;
     }
   }
   if (!out) out = clean.slice(0, maxLen);

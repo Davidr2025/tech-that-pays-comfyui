@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import SignupForm from "../components/SignupForm.astro";
 import NewsCard from "../components/NewsCard.astro";
+import NewsModal from "../components/NewsModal.astro";
 import EventCard from "../components/EventCard.astro";
 import FeaturedBusiness from "../components/FeaturedBusiness.astro";
 import WeatherWidget from "../components/WeatherWidget.astro";
@@ -85,4 +86,6 @@ const updated = meta.updatedAt
       </p>
     )}
   </section>
+
+  <NewsModal />
 </Base>

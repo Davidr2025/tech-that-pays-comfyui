@@ -1,0 +1,62 @@
+---
+// Shared in-page reading modal for news cards — one instance per page.
+// Populated client-side from the clicked card's data-item JSON so the
+// story can be previewed without navigating away from the site.
+---
+<dialog id="news-modal" class="news-modal">
+  <button class="news-modal-close" type="button" aria-label="Close" data-news-close>&times;</button>
+  <div class="news-modal-body">
+    <h2 data-news-title></h2>
+    <div class="meta">
+      <span class="source-badge" data-news-source></span>
+      <span data-news-date></span>
+    </div>
+    <p data-news-summary></p>
+    <a class="cta-btn" data-news-link target="_blank" rel="noopener"></a>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById("news-modal");
+  const titleEl = dialog?.querySelector("[data-news-title]");
+  const summaryEl = dialog?.querySelector("[data-news-summary]");
+  const sourceEl = dialog?.querySelector("[data-news-source]");
+  const dateEl = dialog?.querySelector("[data-news-date]");
+  const linkEl = dialog?.querySelector("[data-news-link]");
+
+  function openFor(card) {
+    if (!dialog || !titleEl || !summaryEl || !sourceEl || !dateEl || !linkEl) return;
+    let item;
+    try {
+      item = JSON.parse(card.dataset.item || "{}");
+    } catch {
+      return;
+    }
+    titleEl.textContent = item.title || "";
+    summaryEl.textContent = item.summary || "No preview available for this story.";
+    sourceEl.textContent = item.source || "";
+    dateEl.textContent = item.publishedAt
+      ? new Date(item.publishedAt).toLocaleDateString("en-CA", {
+          month: "long", day: "numeric", year: "numeric", timeZone: "America/Toronto"
+        })
+      : "";
+    linkEl.href = item.url || "#";
+    linkEl.textContent = `Read full article at ${item.source || "source"} →`;
+    dialog.showModal();
+  }
+
+  document.querySelectorAll("[data-news-trigger]").forEach((card) => {
+    card.addEventListener("click", () => openFor(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openFor(card);
+      }
+    });
+  });
+
+  dialog?.querySelector("[data-news-close]")?.addEventListener("click", () => dialog.close());
+  dialog?.addEventListener("click", (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+</script>
