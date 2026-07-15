@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-15T04:16:22.951Z",
+  "updatedAt": "2026-07-15T05:29:04.847Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 27,
-    "feelsLike": 28,
+    "feelsLike": 27,
     "text": "Clear",
     "icon": "☀️"
   },
@@ -12,7 +12,7 @@
     {
       "date": "2026-07-15",
       "max": 32,
-      "min": 23,
+      "min": 24,
       "precipChance": 2,
       "text": "Overcast",
       "icon": "☁️"
