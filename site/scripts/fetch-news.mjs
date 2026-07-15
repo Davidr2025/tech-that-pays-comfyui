@@ -11,7 +11,12 @@ function parseWpJson(text) {
     title: stripHtml(p.title?.rendered || ""),
     link: p.link || "",
     publishedAt: toIso(p.date),
-    description: p.excerpt?.rendered || "",
+    // Some WP custom post types (e.g. mississauga.ca's "news") don't have
+    // excerpt support registered, so excerpt.rendered comes back empty even
+    // though the request succeeds — fall back to the full post body; it's
+    // still run through excerpt()'s ~550-char cap downstream like every
+    // other source, never published in full.
+    description: p.excerpt?.rendered || p.content?.rendered || "",
     sourceName: "",
     sourceUrl: ""
   }));

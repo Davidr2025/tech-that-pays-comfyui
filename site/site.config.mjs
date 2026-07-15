@@ -47,7 +47,11 @@ export default {
         name: "City of Mississauga",
         homepage: "https://www.mississauga.ca/city-of-mississauga-news/",
         candidates: [
-          "https://www.mississauga.ca/wp-json/wp/v2/news?per_page=10&orderby=date&_fields=title,link,date,excerpt",
+          // content is requested as a fallback for excerpt — this CPT
+          // appears not to have excerpt support registered (see parseWpJson
+          // in fetch-news.mjs), so excerpt.rendered otherwise comes back
+          // empty even on a successful request.
+          "https://www.mississauga.ca/wp-json/wp/v2/news?per_page=10&orderby=date&_fields=title,link,date,excerpt,content",
           "https://www.mississauga.ca/feed/",
           "https://news.google.com/rss/search?q=site:mississauga.ca&hl=en-CA&gl=CA&ceid=CA:en"
         ]
