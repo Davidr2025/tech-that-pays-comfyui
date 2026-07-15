@@ -6,7 +6,6 @@ const date = item.publishedAt
 ---
 <article class="card news-card" role="button" tabindex="0" data-news-trigger data-item={JSON.stringify(item)}>
   <h3>{item.title}</h3>
-  {item.summary && <p class="news-excerpt">{item.summary}</p>}
   <div class="meta">
     <a
       class="source-badge"

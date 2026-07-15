@@ -90,8 +90,20 @@ export async function fetchNews() {
   // heavily with an already-kept item.
   const words = (t) =>
     new Set(t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length > 3));
+  const dayOf = (iso) => (iso || "").slice(0, 10);
   const kept = [];
-  for (const it of all.sort((a, b) => new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0))) {
+  for (const it of all.sort((a, b) => {
+    // Recency still rules day-to-day, but within the same calendar day
+    // prefer items with a real preview: a source's direct feed can be
+    // temporarily blocked and fall back to the Google News proxy (which
+    // never carries body text), and without this a bad run for one or two
+    // sources can flood the page with "no preview available" cards.
+    const dayCmp = dayOf(b.publishedAt).localeCompare(dayOf(a.publishedAt));
+    if (dayCmp !== 0) return dayCmp;
+    const summaryCmp = (a.summary ? 0 : 1) - (b.summary ? 0 : 1);
+    if (summaryCmp !== 0) return summaryCmp;
+    return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+  })) {
     const w = words(it.title);
     const dup = kept.some((k) => {
       const kw = words(k.title);

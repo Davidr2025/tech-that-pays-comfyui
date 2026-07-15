@@ -103,10 +103,6 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 /* News cards open a reading modal on click */
 .news-card { cursor: pointer; }
 .news-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
-.news-excerpt {
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
-  overflow: hidden;
-}
 
 /* News reading modal */
 .news-modal {
@@ -122,6 +118,10 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   position: absolute; top: 1rem; right: 1.1rem; width: 2rem; height: 2rem; border-radius: 99px;
   border: 1px solid var(--border); background: var(--surface); color: var(--muted);
   font-size: 1.2rem; line-height: 1; cursor: pointer;
+  /* Sits before .news-modal-body in the DOM; both are positioned, so without
+     an explicit stack order the later (body) element paints on top and
+     swallows clicks meant for this button. */
+  z-index: 1;
 }
 .news-modal-close:hover { color: var(--text); border-color: var(--primary); }
 
