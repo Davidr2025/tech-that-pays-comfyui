@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import config from "../../../site.config.mjs";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+
+const guides = (await getCollection("guides")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+<Base title="Guides" description={`Original neighbourhood guides and explainers for ${config.city}, written by ${config.name}.`} current="guides">
+  <section class="section container">
+    <div class="section-head">
+      <h2>Guides</h2>
+      <span class="sub">Original neighbourhood guides and explainers, written by {config.name} — not aggregated from other outlets</span>
+    </div>
+    <div class="grid">
+      {guides.map((g) => (
+        <article class="card">
+          <h3><a href={`${base}guides/${g.id}/`}>{g.data.title}</a></h3>
+          <p>{g.data.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>

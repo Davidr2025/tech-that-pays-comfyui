@@ -91,9 +91,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   transition: box-shadow .15s, transform .15s;
 }
 .card:hover { box-shadow: 0 6px 18px rgb(15 40 70 / .08); transform: translateY(-2px); }
-.card h3 { font-size: 1.02rem; font-weight: 700; }
-.card h3 a { color: var(--text); text-decoration: none; }
-.card h3 a:hover { color: var(--primary); text-decoration: underline; }
+.card h3 { font-size: 1.02rem; font-weight: 700; color: var(--text); }
 .card p { margin: 0; font-size: .92rem; color: var(--muted); }
 .card .meta { display: flex; gap: .5rem; align-items: center; font-size: .8rem; color: var(--muted); margin-top: auto; padding-top: .35rem; }
 .source-badge {
@@ -101,8 +99,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   color: var(--primary); font-weight: 700; font-size: .74rem;
   padding: .15rem .5rem; border-radius: 99px; text-decoration: none;
 }
-.card .readmore { font-size: .85rem; font-weight: 600; text-decoration: none; }
-.card .readmore:hover { text-decoration: underline; }
+.news-readmore { font-size: .82rem; padding: .45rem .8rem; text-align: center; }
 
 /* Event cards */
 .event-date {
@@ -223,6 +220,18 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 @media (max-width: 640px) {
   .biz-detail-hero { max-width: 100%; }
 }
+
+/* Guides */
+.guide-detail h1 { font-size: 1.9rem; margin: .5rem 0 .2rem; }
+.guide-meta { color: var(--muted); font-size: .85rem; margin-bottom: 1.6rem; }
+.prose { max-width: 68ch; font-size: 1rem; line-height: 1.65; }
+.prose h2 { font-size: 1.35rem; margin: 2rem 0 .6rem; }
+.prose h3 { font-size: 1.1rem; margin: 1.6rem 0 .5rem; }
+.prose p { margin: 0 0 1rem; }
+.prose ul, .prose ol { margin: 0 0 1rem; padding-left: 1.3rem; }
+.prose li { margin-bottom: .35rem; }
+.prose a { color: var(--primary); }
+.prose strong { color: var(--text); }
 
 /* Empty state */
 .empty {

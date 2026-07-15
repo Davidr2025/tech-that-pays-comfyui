@@ -35,6 +35,23 @@ GitHub Actions (every 6 hours, anchored to 6:15am/12:15pm/6:15pm/12:15am ET)
   keeps visitors on the Insider site and gives every listing a "claim this
   listing" call-to-action pointing at `/advertise/`.
 
+## Guides (hand-authored, not pipeline-generated)
+
+`/guides/` is a separate, **manually written** section — original
+neighbourhood guides and explainers, not aggregated or paraphrased from other
+outlets' reporting. This is deliberate: rewriting other publishers' articles
+under our own byline (even lightly reworded) is a real copyright/plagiarism
+risk, which is exactly what the news pipeline's "excerpt + credit + link out"
+model above is designed to avoid. Guides exist to give the site original,
+brandable content without that risk.
+
+To add a guide: drop a new `.md` file in `site/src/content/guides/` with
+frontmatter matching the schema in `site/src/content/config.ts`
+(`title`, `description`, `publishDate`, optional `updatedDate`) — it's picked
+up automatically at build time via Astro content collections
+(`src/pages/guides/index.astro` and `[slug].astro`). No pipeline changes, no
+API keys, no scheduled job — just Markdown.
+
 ## Commands (run inside `site/`)
 
 | Command                  | What it does                            |

@@ -1,0 +1,33 @@
+---
+import Base from "../../layouts/Base.astro";
+import config from "../../../site.config.mjs";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((g) => ({ params: { slug: g.id }, props: { guide: g } }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const date = guide.data.publishDate.toLocaleDateString("en-CA", {
+  year: "numeric", month: "long", day: "numeric", timeZone: "America/Toronto"
+});
+---
+<Base title={guide.data.title} description={guide.data.description} current="guides">
+  <section class="section container guide-detail">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={`${base}guides/`}>Guides</a>
+      <span>›</span>
+      <span>{guide.data.title}</span>
+    </nav>
+    <h1>{guide.data.title}</h1>
+    <p class="guide-meta">Published {date} · {config.name}</p>
+    <div class="prose">
+      <Content />
+    </div>
+  </section>
+</Base>
