@@ -51,6 +51,30 @@ async function firstWorkingFeed(src) {
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+/**
+ * Best-effort fallback for items with no real excerpt (mainly Google
+ * News-routed items, whose RSS descriptions are just link lists): fetch the
+ * article page and pull its og:description / meta description. This is
+ * metadata publishers write specifically to be shown as a preview by other
+ * sites (search engines, social shares) — a different, much narrower thing
+ * than scraping article body text, and still run through the same
+ * excerpt() cap. Silently gives up on any failure; a missing preview is a
+ * fine fallback, a broken pipeline run is not.
+ */
+async function fetchMetaDescription(url) {
+  try {
+    const html = await fetchText(url, { timeoutMs: 8000 });
+    const match =
+      html.match(/<meta[^>]+property=["']og:description["'][^>]*content=["']([^"']*)["']/i) ||
+      html.match(/<meta[^>]+content=["']([^"']*)["'][^>]*property=["']og:description["']/i) ||
+      html.match(/<meta[^>]+name=["']description["'][^>]*content=["']([^"']*)["']/i) ||
+      html.match(/<meta[^>]+content=["']([^"']*)["'][^>]*name=["']description["']/i);
+    return match ? excerpt(stripHtml(match[1])) : "";
+  } catch {
+    return "";
+  }
+}
+
 export async function fetchNews() {
   const { sources, keywords, maxPerSource, maxTotal } = config.news;
   const all = [];
@@ -120,6 +144,17 @@ export async function fetchNews() {
     if (kept.length >= maxTotal) break;
   }
   const deduped = kept;
+
+  // Fill in previews for whatever made the final cut with no excerpt yet
+  // (mostly Google News-routed items) via each article's own meta
+  // description, in parallel so one slow site doesn't stall the run.
+  await Promise.all(
+    deduped
+      .filter((it) => !it.summary)
+      .map(async (it) => {
+        it.summary = await fetchMetaDescription(it.url);
+      })
+  );
 
   return writeData("news.json", {
     updatedAt: new Date().toISOString(),
