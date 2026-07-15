@@ -1,28 +1,84 @@
 {
-  "updatedAt": "2026-07-14T16:02:43.962Z",
+  "updatedAt": "2026-07-15T04:16:21.594Z",
   "items": [
     {
-      "title": "Former mayor Bonnie Crombie registers to run again in Mississauga",
+      "title": "Bonnie Crombie says she’ll ‘see it through’ if she’s re-elected Mississauga mayor, again",
       "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOUWIyQ05SYV9uYU9DSFN0SFhIUllPQzBaRnpmYWJWQ29IdVpScmJMT2pDUzMxdWNPUjJReml1Z1U5b3AxdlVQUnVsUnlzOVhySkQyRlV3bGM4azY5NmlyN1V2Mk9vY2lPTWkwTUFhYXhUQ3FSMlNRQXFFNG5fdXdiazRfeS1DV1N2RS1lWUJybEo5cVRs?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNcnI0WjY1dXZkZVdYNTNVMmZudlhTT195NEUwWmFlYUlfRkt6RmlnZUdlS2tIYklGcm1YUUNUMjU2SkM3SFp0T3E1Zkw2cDI0TmVCeWVJUU9nMnpVbTF6ajY1Szh5a082YUZPekpHbkpQLXR6bzlBeFRxMEZGbXpQVlBZSHJpQ1FQTzl1M2pNVi1jcXpzV0VzUFZocXRMbXM?oc=5",
+      "source": "The Globe and Mail",
+      "sourceUrl": "https://www.theglobeandmail.com",
+      "publishedAt": "2026-07-15T01:38:11.000Z"
+    },
+    {
+      "title": "Two 35-storey rental towers proposed across from Mississauga Hospital",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPOHh6WHN1ZFB3RjBZeXg0bldzMXVMalRSc1k4ZWhvaTR6Y0NidnRDQWE4ZkNCM29GdGk0RDVNR2FGa3NtVzFQem92SmpQSkUwZkJxZkhRYmd4NTBwdkZPTGg4TFRRazI2MDlVVHFXd1oxV1dEbHliNDBaSzViODlwalJEamZ4Vm85SlBtZllPdGtlNmhLYzRzQlhzbzVzWUFLMFozWjIwQTBfbGViZjAxdnBSU1hxVDhqcFRiY2toc29kQQ?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-15T00:29:19.000Z"
+    },
+    {
+      "title": "Bird Announces Approximately $1 Billion in Recent Project Awards and Agreements Across Canada",
+      "summary": "MISSISSAUGA, Ontario, July 14, 2026 (GLOBE NEWSWIRE) -- Bird Construction Inc. (TSX: BDT) is pleased to announce recent project awards and agreements with an aggregate value of approximately $1 billion.",
+      "url": "https://www.thestar.com/globenewswire/bird-announces-approximately-1-billion-in-recent-project-awards-and-agreements-across-canada/article_16f140a7-eb80-50b4-a89a-7a9e35b2a5cf.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com/news/gta/",
+      "publishedAt": "2026-07-14T21:05:00.000Z"
+    },
+    {
+      "title": "Young male charged with sex assault in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTHZnMEVCeTJzMjEwZjRHSzBYNDF3Z0JKVHhhYnlaa2luLTJwNzg0NlFRa3NCWXp5bDRRekRlckNFaWhCR3JXOU5QMXlQMi1JNVB0cFByel8wVFduZzRTV2xhVWhUaFAtTll6YnNPNlZFYkhKaWZ5SkNJeHRpUUoyZQ?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-14T15:53:37.000Z"
+      "publishedAt": "2026-07-14T20:53:00.000Z"
+    },
+    {
+      "title": "Looking for work? Mississauga is hiring for 150 hospitality roles at a one-day job fair on July 23",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMkNFdTR3VHNfeU5vNHhzTUVrdzI1Z1ZpaEZ4ZkZ6eXF3eGpWZUxHZ1RERFF1RmdyalU0UDFCQ29nSlExSWJobGtKVlhDTjYxR3VGZlRLXy1UQTNZNkNrMWFieXBfQXI5WmhsOWhTVWI5YkVseWF5eUd6eXRiUGpkQTUzcWlvdkh4djBRV2s1cElGNXdZX2xSZjZ1RllZeVJ5SzRiQzE3UnB1Zw?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-14T19:51:00.000Z"
+    },
+    {
+      "title": "Developer plans its first modular-constructed community in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNZTBpLWNONU9vZWZtOXR4ODY1TzRlVThlQlRlbjM4VFNKd1kwbFNHSS0wRUlHNTdhV0Nnb2NvaUN3cWNMN18yazNRb1dXSVNKbGxpQndETlVqS3R1Ri1rN0FuRk9kLXJoN3BvVWFiejVzMmJHOVVXci02LVlOaER3R1BNbk9pb3ljanlLVVRCUkFRSkNIcC1pa1Bpbw?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-14T18:26:06.000Z"
+    },
+    {
+      "title": "Bonnie Crombie to run for Mississauga mayor on affordability, public safety, and police support",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNR2VnUmg5clpMcHhNQ2ZaVXRMdkdlUk9HTll1a2JNNlJYX1NqMU91U2ZUSWhheVFmUmJKMWQwNFVnbmNyYXdLUFdpaGZJSmJJNFhZamdWRGtpZHVLdElRR215WDlpS1I1WTE4d2xXbUV1SThvcEtlSjVZV1QxWkQzd3JUMTdhMG1HNjRZNjVQVnZMZ2thbkhOQjV4aURDRlRrOTc2cjJzN2NCTHRDYTZHZnUwNE9tT2VDdkI2cnFydUh3enBZd0hKMC00Zw?oc=5",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca",
+      "publishedAt": "2026-07-14T17:28:27.000Z"
+    },
+    {
+      "title": "4 ‘hate-motivated’ attacks target victims in 2 GTA cities; Mississauga man charged",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUGlwa1ZqQlU4ZE0ycWIteUw0eWx4bDBaMjZmdVZmcW9iWDgtUEtyemR6Y3BUbXVoV1Qza2FreTBaeXpuT0kyaU1nbnp0cVFYSFpvWnhGcFM5a1FBekJ3SzhOM3F1Vmx5N0pfMmJJTEVja01RT0NnZzNUbmM2ek1TYjNEM3FiYmRYX2dZS1k3ekNULTNZR05lNGFPMU9zOWRIalVmSkZZMA?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-14T16:21:07.000Z"
     },
     {
       "title": "Weekend motorcycle crash in Mississauga leaves man dead: Peel police",
-      "summary": "m. on July 12 near Argentia and Kitimat roads, say Peel police.",
-      "url": "https://www.mississauga.com/news/weekend-motorcycle-crash-in-mississauga-leaves-man-dead/article_1a375e09-06f5-5d7b-9f8a-304592970b17.html",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOV3NWdjBaUU9oZ1hCWEVJb1pWTzc1YmMzZlZKNk5wd0RzRV9kTldWZUZvdjUxVDQ2Z3BQRlRoT3RVbFhGUzVQSE1tREZKSkUtRUQ4dFRycDFhYTBoVWh1UUduMWVmODZkWlFZaGxUcm4yWGpHejVDbEx5WE0zSTZqVnJTVXRFTmMyNVlsblJHdEttZEVYeXd4V0VWQU50bmItR1BUaXBLal9FUjBGSGVLbEhWN1dvRjVYSmZ3RHZ4NDVObGRHZkFfdThNVk9yMXZpYUxJbw?oc=5",
       "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
+      "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-07-14T15:33:00.000Z"
     },
     {
-      "title": "‘I’m back’: Why Bonnie Crombie is returning to Mississauga politics — and what it means for the race to be mayor",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNZnR2cmRSeVJfdUFVTm1IUmEza1U1Q2c1Smp3SnRneG51am1VM0JjU1Rod201a0k3WC1GT3lmOUJHbjU3XzRVUkdGRGRodUVCYWh1SnAwb0lzUEk5MUFBMndnb2hMekhTR2c2QWQ2U0dqd3RrVHd1VFlOcjBYZGpXV1NSeHpGdFIyeGtDTVRPZE9WdjAxTE5PTTBsS0ktWms1bXVmLU55dFNaOE43amtFVldJeF9rSU9LWTZKemNPUW1Oc005ZGItRHhBVGxrRTZEb1NuUjR3NWF3aWlPQnRlY0dZWS1ubmE5WkJybVBKV29tZllRMGRsYUpJcUlwaTA0cDdXUmtCS21iaEZDUzZZVTFZTHZINHZKSWc?oc=5",
+      "title": "'I'm back': Why Bonnie Crombie is returning to Mississauga politics — and what it means for the race to be mayor",
+      "summary": "\"When I left briefly, it was to elevate our needs at the province,\" Bonnie Crombie told the Star.",
+      "url": "https://www.thestar.com/news/gta/im-back-why-bonnie-crombie-is-returning-to-mississauga-politics--and-what-it-means-for-the-race-to-be-mayor/article_926686b8-1e9a-4ae8-b293-a034ce6a781a.html",
       "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
+      "sourceUrl": "https://www.thestar.com/news/gta/",
       "publishedAt": "2026-07-14T15:30:00.000Z"
     },
     {
@@ -36,66 +92,10 @@
     {
       "title": "CanadianSME Announces Winners of the 2025 CanadianSME National Small Business Awards",
       "summary": "MISSISSAUGA, Ontario, July 14, 2026 (GLOBE NEWSWIRE) -- CanadianSME Small Business Magazine is proud to announce the winners of the CanadianSME National Small Business Awards 2025, recognizing the exceptional achievements, innovation, resil…",
-      "url": "https://www.mississauga.com/globenewswire/canadiansme-announces-winners-of-the-2025-canadiansme-national-small-business-awards/article_b9efcb34-eb73-52a3-9820-78fc37f4903a.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
+      "url": "https://www.thestar.com/globenewswire/canadiansme-announces-winners-of-the-2025-canadiansme-national-small-business-awards/article_22aa0f11-d969-5ede-b266-c15c1179142b.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com/news/gta/",
       "publishedAt": "2026-07-14T13:00:00.000Z"
-    },
-    {
-      "title": "Huge Mississauga festival taking over more cities as other festivals shrink or disappear",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQUENPQk93OW5mZHpERm9zLWpSS2daUXJzSldjQ0lwYzM3SzctUmpRLTl4VHUwODNNUkNfS3RuOWtMREpNbnBteFQ3dXJneGZtZHEyNHc4RUVFQV9UNXJwekhXZENkVW5qUzNLeExyV1BjSV8zUEp3OVFEeG4ydURfN0NLdGV0WEFuQ1hsMk9NcUJNWWJzbkZtU2xiUS1QenhiWDBxRkgyV2VHQlpiQlFfWDFaZw?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-13T21:03:26.000Z"
-    },
-    {
-      "title": "Opinion | He spoke out against a development at Mississauga mall. They sued. He won",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOVzdUYUw2c2ZvbkhLWFRqWndyNjd5ZnJHMnAzWGZ3eWpzWFo5dTBfSkpPU3lPbzI0OWNITGlOSFBXWEtadkRHeXg2U19VV1hmUHhHT1l4MXdxNHJjYlhKWmlhTHk0RGFaSDlWVDlNQ3BkMnNzZzdNVlJ5Q1k2QVlKM3dBVjVMaHhlZjB3R3RHejk0ZUlRM3dIei1LVHlKOFY4TGczaHZ6NmxSZzByNnhIYUVKZWg0eF9IQjg0dlVqUXNOWjVuU3BfWnlaR2NQQjVwbUFKQUwzTEVhdFNacUZ1LXlLUWV3Ny02ai03VXpCRzhCTTZr?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-13T20:37:25.000Z"
-    },
-    {
-      "title": "New traffic signals to go up along LRT route in Mississauga; work will cause delays",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPWWZmTTNvZ2Z2ZW0yblZ3SkN4S2ZTSDQ5aWVrUUJEcm1aTWdvaGdQbW5jWXFWLUEwLUY3OG9oQS10UDNpVXkxMUZfelBvNHo4YU5kR0RkNzRSR0JQbUY0bFZpTkhGTnRvalUyLWdIV240NV9oc0lTaFF6UHVlVk1lOFhuekVBbU1mTFBDMGtjN0FWZVM5NUwzSTZnelhQaEh2SGd5UUYwSUV6bHM?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-13T20:07:41.000Z"
-    },
-    {
-      "title": "Apply to be an Election worker for Mississauga’s 2026 Municipal Election",
-      "summary": "",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/apply-to-be-an-election-worker-for-mississaugas-2026-municipal-election/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-13T13:10:22.000Z"
-    },
-    {
-      "title": "A violent weekend in Toronto, the Mirvish Village development and an AI data centre in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxPdDZyQnZlTkZOT1ZmWDdrdVFvNEZXTjIxMFhsU3FTQW15WnhWOWNfTk1vN0ROM0lLdEYzU2VHVWxGVlRuTGtNOXZITGFOc0ZJamlBZDhUUGpiUzRwQlZHY21GY2VNQlE2N2IxMUJoNTh4UnlPN1NCbzhVR2l4V21IVlBWMVcxaHV5NXN1QUFWLTZvZFdISWpSV28wY1dNb3Q4bFhGOWdTTXp2ckV3WXpadVJZTGZRNG1qM205NkJHM25JTnNianhjaGtpWU1PVERrZ1Uyd24yQ3Q1UXAweVlIby1VTmZSUGxBaEUteUkxOGZyN2VFWEpvNDVSa2wtQ2djNzA4YnlvcXEwblJ3TXloWUd1N05zcnRrMGVN?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-13T12:30:00.000Z"
-    },
-    {
-      "title": "Motorcyclist dead after crash in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5SZ1VGYjRfNXpiOXlza0xFMTM5SVRMTXlINEg5VmhiWHVkc0ZwaGg1ZTBQRnBxQncxOEwzaXA0ckxBQkpRODV4OElrR1lxY0Z0TVNiZ0FQb292Um54YmhVVFU5WUJpWXliQWljMEE3a18wMUt5VXV2Ug?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-13T11:17:10.000Z"
-    },
-    {
-      "title": "Work for the City! Mississauga Sports and Entertainment Centre is hiring",
-      "summary": "",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/work-for-the-city-mississauga-sports-and-entertainment-centre-is-hiring/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-13T11:03:31.000Z"
     }
   ]
 }
