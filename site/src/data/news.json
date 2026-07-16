@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-07-15T23:11:56.588Z",
+  "updatedAt": "2026-07-16T06:30:58.900Z",
   "items": [
+    {
+      "title": "2 dead, 3 injured in Highway 401 crash in Mississauga, OPP says",
+      "summary": "Ontario Provincial Police say two people are dead and three injured after a crash on Highway 401 in Mississauga.",
+      "url": "https://www.cbc.ca/news/canada/toronto/mississauga-crash-9.7271879?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-07-15T23:38:24.000Z"
+    },
     {
       "title": "Mississauga’s air quality affected by wildfire smoke",
       "summary": "Smoke from forest fires is expected to impact air quality in Mississauga, with conditions that may persist through the day. As smoke levels rise, so do health risks — making it important for residents to stay informed and take steps to protect themselves. Wildfire smoke can travel long distances and differs from typical urban air pollution. It contains fine particles and harmful gases that can enter the lungs and bloodstream, potentially causing inflammation and affecting overall health.",
@@ -24,14 +32,6 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-15T23:07:42.000Z"
-    },
-    {
-      "title": "Highway 401 crash leaves two dead, three injured in Mississauga, Ont.",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcEZBeURxNHhZWUN2QXRqTkdNM1I1VVhXcVFjLThtOUtJWkJ5bGwtUE5EYnhhemVydWhWeDNSTkczSUxhRDk0bGFKb3hoR2NkYXc4ekhEQ2JOQldlN2ZJWU9vcVotV0xaN3RQN0FnRlVJM3l0a2o3cHg2TDhwWVZTQnY5RUpzSkIzNHREZjhmc1lrWkFZaWllbEZCOG44Q3ZCTTBvWXp5NV9CLWhkLVkySi1pZ09CUlJPUEhTOEZCY3NFa1p1cl9zZzFkMU5BcWp6VndIaHlxTXh4dk5UeEp2WFRLTXNuZnhN?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-15T20:46:55.000Z"
     },
     {
       "title": "UPDATE: Major highway closures following crash that killed 2 in Mississauga",
@@ -58,15 +58,7 @@
       "publishedAt": "2026-07-15T19:03:34.000Z"
     },
     {
-      "title": "Scooter rider in critical condition following collision in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOEJPa0t3UHNjMUJPY05ITXdhNWtKaTFCR0gwbDFwcWc4N0pJa1J1c2tQMEhNV21yNXFHWXVvZFVCcUd0RnB0c1phM3VfZi1jOF9zTHJ4NXlISGh1MTBiNFNoYnhUWTN0cDc3LUdVOHhqRHdHX3NESHZtUjI1UEgxS0tkN0N5UE9MQ3RDOE5Od0hNTTMyVmk2T1E0bHpya3NzQk94WEJGYndhaWZKc1ZHT29yYjE?oc=5",
-      "source": "CP24",
-      "sourceUrl": "https://www.cp24.com",
-      "publishedAt": "2026-07-15T18:42:59.000Z"
-    },
-    {
-      "title": "UPDATED: Pair from Cambridge, 80 and 53, dead after Wednesday morning crash closes stretches of Highways 401, 410 in Mississauga, say OPP",
+      "title": "Crash closes stretches of Highways 401, 410 in Mississauga",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOaURGZG5yY2Juc2xZRnA0NlZWUlAtMVlYVnFXSzVBZUY0WmVXN2pqajluM1JxVy1WZzRQRXBrdlYwWG5SdGwwU1FybEJNQjQzWUN2N0ZSSUQzUzlkSWFxbDJoZ1V5R3MwaWY1anQyWTlkZkFTcXl0N215NnZNN1RqbmhLY0FjUFdsa2k1ejNRaVotZ1FST2dLQ1dzdUlfd1dVSWxiT2pQeTRVd0pxRWdPd3lKWmhacEpqbzl1Zlp5RmNqRjR2bk1sY0pKUkdzeXlKbkxJaHNkWQ?oc=5",
       "source": "Mississauga.com",
@@ -82,20 +74,28 @@
       "publishedAt": "2026-07-15T15:37:00.000Z"
     },
     {
-      "title": "Two dead after multi-vehicle crash shuts down part of Highway 401 in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxONGRNaV90bmFscE10ZkZZUDB0R190NllMSVR6MUdoQXdiTTdLV08wZWdMT0xkUlBwcXFKRi0xdzdta0YxbkZLLWowUnFqUUVZYlppdUdPbjN0SkxNZEJ4QmFBTUhiTk9ZZkxMS19JdVZ6WlJhYmlZbU1XeG45OEpoWWZYMnplVXFqMkZlSXBiUU1rdHhGSG05ZGtSdWN2Ym14SXMtZFVRLXVDNG15RkV6eFU5NDZxc3J6RmZLRjFaZFFaUjdNdGRDemhRdDhSa21ZTGhzRzd0NnVSVFdjZlF6cnFBcmtCWkx5WkNRNUVrVzJMUEQzbTdqaDliNjN3SWNEeEZiYXBGdHVuZTA?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-15T13:45:00.000Z"
-    },
-    {
       "title": "Youth charged after victim sexually assaulted in Mississauga by stranger: Peel police",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPY2l3VkR6XzFNYkFKZjg5RWZHSHBQT0k4VTJSaEt2T1Y4QlhJNlNmRW5TdHpPcW5RRGxJNTNUaE4tbVJ5M2Zfci1QWmxNNTc5Ynl4TkxnYWcyaEtxS1pmUUI0eFpPOWE1VkQxVmtOa2RuMWp0WTVYUFNmTWY4R2l4Vml2YWR3WFhiQVZzTEZvR1dBUUdWcklScXRWY0NxUDBQN0NmbmljT2FNNW83X1Y0Mk5rT3JVN0NKblZaZ2Z4Mm13cVRlWk1QS2xrQmFHYnZSVXlUbG5zVE9BZmkwY01uNnJqdw?oc=5",
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-07-15T12:19:00.000Z"
+    },
+    {
+      "title": "Smoke warning in effect across Toronto and southern Ontario",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxONGphcDZDYk1Ta2ZkT3JaZEZac1diS2hqWDNXWE1VRmFzZFhENUk4aWw5aDByXzlzNUxha2liU21WWjNhUUptcXNYanM4c0VJeW1KeFpNUWllT1NDYklrZ2dseFpKSzZiU1plRFJyNk5oR2tGQzdneWp2dTZER01qeTZPX3BnOUR2RkhVRw?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-15T10:40:25.000Z"
+    },
+    {
+      "title": "Mississauga event highlights the need for culturally responsive mental health care for MENA communities",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOUExoSTlfMHFGWl9zNUdTYU5aOUJwWEVPNTlRMGhOaXZOQ08ySUl1VVZJTzNfdFp6NE9hT0dMUEZqUjNNOVJPc1ZGSW1iT1Nsc2Z5b0Z4SUdFUHRwSW0zTWU5MDA2UHFzYTlaWjRMbW5yaDhKaHBOeTJ2NG5PaVhMVG1kQzRrSWtwdUFFQWxpRjd6VWZzcnBVZ1B4bWxwMDdxbFlrSDFpeGNjeW4yRlJkMkdKUnAzRGlEbkxLVA?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-15T10:10:00.000Z"
     }
   ]
 }
