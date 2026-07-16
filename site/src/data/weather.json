@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-16T11:53:55.326Z",
+  "updatedAt": "2026-07-16T12:25:23.787Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 21,
     "feelsLike": 21,
-    "text": "Partly cloudy",
-    "icon": "⛅"
+    "text": "Mainly clear",
+    "icon": "🌤️"
   },
   "days": [
     {
