@@ -1,22 +1,14 @@
 {
-  "updatedAt": "2026-07-17T17:31:09.525Z",
+  "updatedAt": "2026-07-17T23:07:28.796Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
     {
-      "team": "Toronto Raptors",
-      "league": "NBA",
-      "event": "Miami Heat vs Toronto Raptors",
-      "date": "2026-07-17",
-      "time": "01:00:00",
-      "venue": "Cox Pavilion"
-    },
-    {
       "team": "Toronto Blue Jays",
       "league": "MLB",
       "event": "Toronto Blue Jays vs Chicago White Sox",
-      "date": "2026-07-17",
-      "time": "23:15:00",
+      "date": "2026-07-18",
+      "time": "19:07:00",
       "venue": "Rogers Centre"
     },
     {
