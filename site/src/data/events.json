@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-07-17T23:07:26.505Z",
+  "updatedAt": "2026-07-18T06:17:35.958Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga 3rd Annual Asian Night Market 2026",
-      "summary": "Join us for the Mississauga 3rd Annual Asian Night Market 2026, returning to Square One Shopping Centre P6 from July 17 to 19, 2026. Located in the heart of one of Canada’s most diverse and vibrant cities, the Mississauga Asian Night Market has quickly become one of the city’s most exciting multicultural summer traditions.",
-      "venue": "Square One Shopping Centre, P6 Parking Lot",
-      "url": "https://www.visitmississauga.ca/event/mississauga-3rd-annual-asian-night-market-2026/",
-      "start": "2026-07-17T17:00:00.000Z",
-      "end": "2026-07-19T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Astronomy in Action",
       "summary": "Astronomy in Action is bringing a planetarium dome to Mississauga! Join this 360-degree immersive experience that turns the dome into a window to the universe. Take a trip to the moon, soar through the rings of Saturn, and visit distant galaxies, all without leaving your seat. There are shows for every explorer, from One World One Sky: Big Bird's Adventure , to The Great Cosmic Journey , a live-presented show that will take you from our home planet to the distant universe and beyond.",
@@ -89,6 +79,16 @@
       "url": "https://www.visitmississauga.ca/event/josh-warrens-groove-circus/",
       "start": "2026-07-25T18:00:00.000Z",
       "end": "2026-07-25T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mosaic Festival 2026",
+      "summary": "The Mosaic Festival is the longest-running multidisciplinary South Asian arts festival in the Greater Toronto Area. Held annually at Mississauga Celebration Square, it is a vibrant, free, two-day celebration of South Asian heritage, featuring a high-energy mix of international headliners, local talent, and immersive cultural experiences.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/mosaic-festival-2026/",
+      "start": "2026-07-31T17:00:00.000Z",
+      "end": "2026-08-01T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
