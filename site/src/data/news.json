@@ -1,6 +1,70 @@
 {
-  "updatedAt": "2026-07-18T11:18:07.569Z",
+  "updatedAt": "2026-07-18T17:13:55.464Z",
   "items": [
+    {
+      "title": "Peel police identify 17-year-old boys as suspects in fatal Brampton shooting",
+      "summary": "Peel police have identified two teenagers as suspects in a fatal shooting in Brampton.",
+      "url": "https://www.cbc.ca/news/canada/toronto/brampton-fatal-shooting-suspects-peel-police-9.7275341?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-07-18T13:08:27.000Z"
+    },
+    {
+      "title": "Red-level tornado warning issued for Halton, Peel regions: Environment Canada",
+      "summary": "Environment Canada said it is tracking a severe thunderstorm just east of Milton that could possibly produce a tornado and move through Oakville and Mississauga.",
+      "url": "https://www.cbc.ca/news/canada/toronto/saturday-smoke-weather-update-gta-toronto-9.7275332?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-07-18T12:32:22.000Z"
+    },
+    {
+      "title": "Severe Thunderstorm and Tornado Watch issued for Mississauga; damaging winds and heavy rain possible today",
+      "summary": "Residents should take cover immediately if threatening weather approaches and continue to monitor weather alerts and local media for updates. Storm conditions are expected to continue through the afternoon across much of southern Ontario. Given the localized nature of thunderstorms and tornadoes, exact impacts and locations can be difficult to predict until storms develop and move into the area. Storm conditions are expected to begin around noon today, with the most significant impacts anticipated through the early afternoon.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/severe-thunderstorm-watch-issued-for-mississauga-damaging-winds-and-heavy-rain-possible-today/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-18T11:46:13.000Z"
+    },
+    {
+      "title": "City outdoor pools and recreation programs resume normal operations as air quality continues to improve",
+      "summary": "Due to wildfires in other parts of Ontario, Mississauga experienced poor air quality and a Very High (10+) Air Quality Health Index (AQHI) last week. As a result, to support public health and safety, outdoor pools, and Mississauga Celebration Square wading pool were closed and some recreation programs were adjusted. Based on reports from Environment and Climate Change Canada (ECCC), air quality is expected to continue improving through the day.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/city-outdoor-pools-and-recreation-programs-resume-normal-operations-as-air-quality-continues-to-improve/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-18T08:23:19.000Z"
+    },
+    {
+      "title": "Tornado warning issued for Milton, Mississauga, Oakville area",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1GN1drN1dOS3hBeVRxRXVJUy1YOUhoVlNqblVrZ25SRk5sYnlndEkxdFFDNTVfVThGMGdSZ3I3cE9OSXpURy1aVWxlQ2NmSFktZkoxdTJvUERWaTZMWHBROGsxbjVJd3pIYlFr?oc=5",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca",
+      "publishedAt": "2026-07-18T16:34:01.000Z"
+    },
+    {
+      "title": "Tornado risk as dangerous thunderstorm targets southern Ontario",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQbUI3WWs5TXBURUJsT0s1ZHVESHZERExUUE9rTV9Ba2Rua05TeUNOVDNRclBwWnM4RTMySEdQdkZ3N1IwaTZXNU9pWDVGQTg3LXhKbmhpTjlXZFA0TU0yaVhaVXJpd2ZST3E5ZE9XcVRYNHZKNUtBcFBYVDNzWHQ0NE5wVnQxQjVlQ2daOW90ZEViZw?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-18T16:09:26.000Z"
+    },
+    {
+      "title": "Peel votes to fund Lakeview Pier–but debate over who really pays exposes deeper rift",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOX0RCb0U5WlFxdGp5bTlPWjdvUm5Vd1BOU05xTG1SeE5XdmdZTGFkZklMWHp0ZXNIUFdqSWFZYy1FU2lzM1dSX0g2bHEzb09DeFc4dExwWFRyQjlVYlZDRDZGTS1sazA3NG9wcF9UMm80MVpWRktmQkpMeUtYOHo3a3V5S0kzUWxEQzhvUmYtMnlTSDVjMVdNdDBTQWREeDN1cVRxT1FDS2szM0RfeC10WTVxNEZQbzRzRVRjRjc5MWFmVm9I?oc=5",
+      "source": "The Pointer",
+      "sourceUrl": "https://thepointer.com",
+      "publishedAt": "2026-07-18T15:33:35.000Z"
+    },
+    {
+      "title": "Nolan’s The Odyssey is making movie history and it all leads back to Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPRFhVenlvWkhZeG9aWnNjenV6WTlwODFVeTNNN0FBcFBGOGppRVJCQmlBWDhPcUptMDFOTkROQkh3eEo5bGdNSHNVOFkwM3l4bnlhRXBTdUxqR0otRXJzOEl4UGU4SG55aS16RV9zRFktVklFZHJ5bDR2SkEzRy1SYlNqOTkxcm15R1hZSmxMWW1TbzBGRXNkVEN6S0pweEZWaWpOMnp3dw?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-18T11:48:21.000Z"
+    },
     {
       "title": "Teen faces attempted murder charge after stabbing inside Mississauga home",
       "summary": "",
@@ -18,22 +82,6 @@
       "publishedAt": "2026-07-18T03:09:03.000Z"
     },
     {
-      "title": "17-year-old arrested in connection with stabbing in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNeFJCRHI3WmpZNExxZUFvNTE3VWZDREM2cXl2VUtDNlg5THFKT0RkWmU4dEoyOU5LVU03blJHSFUxUWNtQnZMRHlEbzBkbFBpMEJCVVFWU1ZEaVVWZXFHTVRDeGRwTEl0N3hHdjdaakZON3REZEpLbTJEYXdrekJ0dWZqU3UtRTVxSWVSSlF5RXdxWEJXd1VlRlUwNDFLd2cweHVIRA?oc=5",
-      "source": "CP24",
-      "sourceUrl": "https://www.cp24.com",
-      "publishedAt": "2026-07-18T00:55:00.000Z"
-    },
-    {
-      "title": "‘It feels performative’: Mississauga residents left with questions about climate plan six years after declaring emergency",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPV2RQbUc1ZWpuRksyNndQMHA2UUkwSm93Ukx4bHg2YTNBS2ROWGwyckJnNmVydjNlcTUtMVVxckc1REhZVW1pT1BsNm1sRjYtUkFkSDJTUEU2ZkVTNUF1c2puZkdIbTEtTzNqVG1MZ2RUT0xPeE1WLWItR2F3QmxWNTBnbGxIMi1UcVlmTnV6U3hFQURzdXhuRUtMVjdpUlhzZGFXV2xqdDdOc0RHZnR2N1oyZGhETjJkUVpmUEJiSmJKbDk2M1JFUmlVSW1jeWdxYldEYzlPeTdaTF96T2t4TkplaC1oUFRzeV9xUHJ4UVd3dw?oc=5",
-      "source": "The Pointer",
-      "sourceUrl": "https://thepointer.com",
-      "publishedAt": "2026-07-17T23:20:09.000Z"
-    },
-    {
       "title": "Life-threatening stabbing shocks quiet neighbourhood in Mississauga",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQdlZOR21TbVNXM3VGVjR5UW8wdU03MkxhVkx3VlZ0RE51TmZKS3dVZUFQQnNkRU5iZ2k5WE9sRm5RclpyUTc5bENxLXNhWHF1QmpidVNiQ2V5Szg2OVZwVUUtRm5JVDN2djNMV3Y5MHk2NzhFaHNxUnNsQnEzTmtFZHBEeTgtU0JWX3VZZ2tyZm5PeXZVSzEw?oc=5",
@@ -42,60 +90,12 @@
       "publishedAt": "2026-07-17T20:14:54.000Z"
     },
     {
-      "title": "Man critically injured in Mississauga stabbing; 17-year-old in custody",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQaF92TklxWkt0dWlndm1IZUlfSVdYdHQ0aHB0N0VTS2VSREdHSVRacS02aE50RUlicGVTVWcxQk4ycWVzU0NWRDNVRC01cFNGSU02UC15elVmTEZ5VS1GYWwyYlozdUVQQWNFejlDM3M2OFRrOWVuNGQzbmNibW50cFZ1SQ?oc=5",
-      "source": "CityNews Toronto",
-      "sourceUrl": "https://toronto.citynews.ca",
-      "publishedAt": "2026-07-17T19:58:00.000Z"
-    },
-    {
-      "title": "78-year-old construction supervisor has no plans to retire from Mississauga company",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQMU1jRkJxaHpaV0VXSVdRQW9fdlBEa0dHTTYzeEpyZUVVRndtZ2p3ZXlzNEpEeVltc3VsS1hLb3RTNVZqOGtTT3dvdW1zajNwNmRpZHZLUHl0SWVCdFA1VzdUMFZ2cGJCUWROX3RmbXgzVFlOaWk1SlZmYUtaSXRRY2RQcVJubll0N2RPZGZ1Y2hUVzNxeWNPS1dnWjJnUGhuTHgtUXNSQmloSjJM?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-17T19:03:56.000Z"
-    },
-    {
       "title": "Local pools shut and outdoor activities cancelled as Mississauga grapples with poor air quality warnings",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPMXJGYVNWUFl2WUpJWVFPdkEzTmdCLU02V3ZHeTd6akJyM3J4RV9tSFdVNHVJLWNVekwwNDJfMVpvaWs4OHh3M29Eck5ibVdSUGloVl9XVl9sUGhWanQteXUwRHhtYTFLMEUwdGpzV0cyMDU5OEc1V2h1NUktb3hGSmlnZWZzbjhhSmxyYmJ6clJvbzJtQWU0S1NiZ2dEWnV5YjN4RURwaVJyUQ?oc=5",
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-07-17T18:12:00.000Z"
-    },
-    {
-      "title": "Mississauga short-term rental licenses plummet nearly 50% amid fine hikes",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPaWFobzRFb2FUcy1CT0MxTnltdEZGU1ptc21PM2YxSEVjdTZYbDBtc2dvYU92NG04NTU2Mk8yektDVm9KNmFwbjFxOXlsWXMyV1VMM29LMlRmSXd0SVVhbzM1b3hNNjZMVm5yenJZZkJZSkpOUEd3djNhZ25ZR0FLYTFibW50UWNIajZweGFRTXJlZmg0Rm1VVVR4QVpvWEp1d0hIaVhab2FCT2RDU0lj?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-17T10:00:00.000Z"
-    },
-    {
-      "title": "City closes outdoor pools and adjusts recreation programs due to poor air quality",
-      "summary": "Due to wildfires in other parts of Ontario, Mississauga continues to experience poor air quality and a Very High (10+) Air Quality Health Index (AQHI) . Based on this rating, residents are advised to avoid strenuous outdoor activities. If you must be outdoors, it is advised to minimize smoke exposure as much as possible, and prioritize keeping cool. Children, older adults, and individuals experiencing symptoms such as coughing or throat irritation should take extra precautions and limit outdoor physical exertion.",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/city-closes-outdoor-pools-and-adjusts-recreation-programs-due-to-poor-air-quality/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-16T11:18:03.000Z"
-    },
-    {
-      "title": "2 Mississauga restaurants and an esthetics spa warned over health-code violations",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNSFotcWhkMnRWcnh5RUFDeElIS2g2bGpDb0pHOVVyNG9OMFU2ODFINnVmdVFIek9XYmpaaDllc2xGSTBnMUZDSWdGd0Noc0l0SldDaktMSkQwUHZFcGw3bVoycElZOU1zQnZSUFp1TjJKRHlCcTlMS0JQem9SMUd6VjNsU2luelQ0TlBmcGZUcXBvZDMtYzk4ejg2R1k0RnZJV3NUWDNFSWFoY0VlUUl6TFh2SzNmUnNub1NKLVNBWXM4Z1QtcG93?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-16T17:15:00.000Z"
-    },
-    {
-      "title": "Poll: 80% of respondents won’t vote for Bonnie Crombie for mayor of Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQY2NsMUlsbVZSMnQwc09JTjFHazJxdnNrVlNmZ0tIMmFQTDZtZ2RNN3NEc0tSZF9jcG5kdDk4RDR5eElyNmcyRUtTU2cyNlhJcEsybXNUQ0ZYcjQzUDJpZmh0UFNiTEs0blhnaHZVRzNaN2U0cENwWmN3SWFWZktMMHZURG1TRmF0VTBfX1FrTW1DQ3g2MEJ6OUR4bHlMNV9nMmpv?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-16T15:14:19.000Z"
     }
   ]
 }
