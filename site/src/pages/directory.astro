@@ -30,7 +30,7 @@ const fetched = places.fetchedAt
   ? new Date(places.fetchedAt).toLocaleDateString("en-CA", { dateStyle: "medium", timeZone: "America/Toronto" })
   : null;
 ---
-<Base title="Business Directory" description={`Local business directory for ${config.city}: restaurants, trades, real estate, health and more — with ratings, hours and photos.`} current="directory">
+<Base title="Business Directory" description={`Local business directory for ${config.city}: restaurants, trades, real estate, health and more, with ratings, hours and photos.`} current="directory">
   <section class="section container">
     <div class="section-head">
       <h2>{config.city} Business Directory</h2>

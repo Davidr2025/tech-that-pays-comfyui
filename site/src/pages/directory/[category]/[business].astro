@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL.endsWith("/")
 const contact = `mailto:david@lsfg.ca?subject=${encodeURIComponent(
   `Claim my listing on ${config.name}: ${b.name}`
 )}`;
-const description = `${b.name} — ${b.subcategory || cat.label} in ${config.city}, Ontario.${
+const description = `${b.name}: ${b.subcategory || cat.label} in ${config.city}, Ontario.${
   b.rating != null ? ` Rated ${b.rating.toFixed(1)}★ (${b.reviews?.toLocaleString()} reviews).` : ""
 }`;
 ---
@@ -72,7 +72,7 @@ const description = `${b.name} — ${b.subcategory || cat.label} in ${config.cit
 
     <div class="biz-detail-cta">
       <h3>Is this your business?</h3>
-      <p>Get a free upgraded listing — priority placement, your own photos, and a link straight to your site.</p>
+      <p>Get a free upgraded listing: priority placement, your own photos, and a link straight to your site.</p>
       <a class="cta-btn" href={contact}>Claim this listing →</a>
     </div>
 

@@ -4,7 +4,7 @@ import EventCard from "../components/EventCard.astro";
 import config from "../../site.config.mjs";
 import events from "../data/events.json";
 ---
-<Base title="Things to Do" description={`What's on in ${config.city} over the next ${events.windowDays} days — concerts, festivals, family events and more.`} current="events">
+<Base title="Things to Do" description={`What's on in ${config.city} over the next ${events.windowDays} days: concerts, festivals, family events and more.`} current="events">
   <section class="section container">
     <div class="section-head">
       <h2>Things to Do in {config.city}</h2>

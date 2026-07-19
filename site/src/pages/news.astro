@@ -9,12 +9,12 @@ import news from "../data/news.json";
   <section class="section container">
     <div class="section-head">
       <h2>Mississauga News</h2>
-      <span class="sub">Excerpts only — every story links to and credits its original source</span>
+      <span class="sub">Excerpts only: every story links to and credits its original source</span>
     </div>
     {news.items.length ? (
       <div class="grid">{news.items.map((item) => <NewsCard item={item} />)}</div>
     ) : (
-      <p class="empty">Headlines refresh automatically every 6 hours — the first update lands shortly.</p>
+      <p class="empty">Headlines refresh automatically every 6 hours. The first update lands shortly.</p>
     )}
     <p style="font-size:.85rem;color:var(--muted);margin-top:1.5rem">
       Sources: {config.news.sources.map((s, i) => (

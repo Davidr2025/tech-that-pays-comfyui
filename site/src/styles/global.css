@@ -33,9 +33,10 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 
 /* ---------- Hero ---------- */
 .hero {
-  /* Background gradient + Mississauga skyline photo set inline (needs the
-     base-path-aware image URL); this covers the fallback and sizing. */
-  background-color: var(--primary-dark);
+  /* Plain gradient fallback for any .hero without a photo (e.g. advertise.astro).
+     The homepage overrides background-image inline with the skyline photo
+     (needs the base-path-aware URL, which CSS alone can't provide). */
+  background-image: linear-gradient(135deg, var(--primary-dark), var(--primary) 70%);
   background-size: cover;
   background-position: center 38%;
   background-repeat: no-repeat;

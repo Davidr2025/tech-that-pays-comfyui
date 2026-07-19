@@ -47,7 +47,7 @@ const fallback = config.newsletterUrl;
         if (fb) {
           location.href = `${fb}${fb.includes("?") ? "&" : "?"}email=${encodeURIComponent(email)}`;
         } else {
-          setMsg("Signup is temporarily unavailable — please try again shortly.", false);
+          setMsg("Signup is temporarily unavailable. Please try again shortly.", false);
         }
       } finally {
         if (btn) btn.disabled = false;

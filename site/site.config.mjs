@@ -6,7 +6,7 @@
 export default {
   // --- Brand (rename freely) ---
   name: "Mississauga Insider",
-  tagline: "Your city, curated. News, events & local gems — every week.",
+  tagline: "Your city, curated. News, events & local gems, every week.",
   description:
     "Mississauga Insider curates the top local news, things to do, and standout local businesses in Mississauga, Ontario. Updated automatically every 6 hours.",
   city: "Mississauga",

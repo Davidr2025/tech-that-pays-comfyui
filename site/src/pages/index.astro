@@ -33,20 +33,20 @@ const updated = meta.updatedAt
       <h1>The best of {config.city},<br />delivered while you sleep.</h1>
       <p class="lede">{config.tagline} Join your neighbours and never miss what's happening in {config.city}.</p>
       <SignupForm />
-      <p class="fine">Free forever. Unsubscribe anytime. No spam — just {config.city}.</p>
+      <p class="fine">Free forever. Unsubscribe anytime. No spam, just {config.city}.</p>
     </div>
   </section>
 
   <section class="section container" id="news">
     <div class="section-head">
       <h2>Top News</h2>
-      <span class="sub">Curated from local sources — full stories at the original outlet</span>
+      <span class="sub">Curated from local sources. Full stories at the original outlet</span>
       <a class="more" href={`${base}news/`}>All news →</a>
     </div>
     {topNews.length ? (
       <div class="grid">{topNews.map((item) => <NewsCard item={item} />)}</div>
     ) : (
-      <p class="empty">Headlines refresh automatically every 6 hours — the first update lands shortly.</p>
+      <p class="empty">Headlines refresh automatically every 6 hours. The first update lands shortly.</p>
     )}
   </section>
 
@@ -59,7 +59,7 @@ const updated = meta.updatedAt
     {topEvents.length ? (
       <div class="grid">{topEvents.map((item) => <EventCard item={item} />)}</div>
     ) : (
-      <p class="empty">Event listings refresh automatically — check back after the next content update.</p>
+      <p class="empty">Event listings refresh automatically. Check back after the next content update.</p>
     )}
   </section>
 

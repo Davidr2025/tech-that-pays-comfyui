@@ -7,7 +7,7 @@ const { title, description = config.description, current = "" } = Astro.props;
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
-const pageTitle = title ? `${title} · ${config.name}` : `${config.name} — ${config.tagline}`;
+const pageTitle = title ? `${title} · ${config.name}` : `${config.name} · ${config.tagline}`;
 const c = config.colors;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
@@ -84,8 +84,8 @@ const ld = {
           </div>
         </div>
         <p class="fine">
-          © {new Date().getFullYear()} {config.name}. Headlines and event listings are curated excerpts —
-          all content is credited and linked to its original source. Made in Mississauga, Ontario.
+          © {new Date().getFullYear()} {config.name}. Headlines and event listings are curated excerpts.
+          All content is credited and linked to its original source. Made in Mississauga, Ontario.
         </p>
       </div>
     </footer>
@@ -93,7 +93,7 @@ const ld = {
     <!-- Sticky newsletter bar (dismissible, remembers choice) -->
     <div class="sticky-signup" id="sticky-signup" aria-hidden="true">
       <div class="container">
-        <span class="pitch">📬 Get the best of {config.city} in your inbox — free.</span>
+        <span class="pitch">📬 Get the best of {config.city} in your inbox, free.</span>
         <SignupForm compact={true} idSuffix="sticky" />
         <button class="close" id="sticky-close" aria-label="Dismiss">×</button>
       </div>
