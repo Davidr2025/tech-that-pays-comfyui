@@ -2,8 +2,13 @@
 import Base from "../layouts/Base.astro";
 import NewsCard from "../components/NewsCard.astro";
 import NewsModal from "../components/NewsModal.astro";
+import AdSlot from "../components/AdSlot.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
+
+const mid = Math.ceil(news.items.length / 2);
+const firstHalf = news.items.slice(0, mid);
+const secondHalf = news.items.slice(mid);
 ---
 <Base title="Top News" description={`The latest ${config.city} headlines, curated from local sources with links to the original coverage.`} current="news">
   <section class="section container">
@@ -11,8 +16,19 @@ import news from "../data/news.json";
       <h2>Mississauga News</h2>
       <span class="sub">Excerpts only: every story links to and credits its original source</span>
     </div>
+
+    <AdSlot id="news-top" variant="banner" />
+
     {news.items.length ? (
-      <div class="grid">{news.items.map((item) => <NewsCard item={item} />)}</div>
+      <>
+        <div class="grid">{firstHalf.map((item) => <NewsCard item={item} />)}</div>
+        {secondHalf.length > 0 && (
+          <>
+            <AdSlot id="news-mid" variant="banner" />
+            <div class="grid">{secondHalf.map((item) => <NewsCard item={item} />)}</div>
+          </>
+        )}
+      </>
     ) : (
       <p class="empty">Headlines refresh automatically every 6 hours. The first update lands shortly.</p>
     )}
