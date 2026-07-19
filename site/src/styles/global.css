@@ -33,7 +33,12 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 
 /* ---------- Hero ---------- */
 .hero {
-  background: linear-gradient(135deg, var(--primary-dark), var(--primary) 70%);
+  /* Background gradient + Mississauga skyline photo set inline (needs the
+     base-path-aware image URL); this covers the fallback and sizing. */
+  background-color: var(--primary-dark);
+  background-size: cover;
+  background-position: center 38%;
+  background-repeat: no-repeat;
   color: #fff;
   padding: 3rem 0 3.25rem;
 }
