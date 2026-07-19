@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-07-19T23:05:20.606Z",
+  "updatedAt": "2026-07-19T23:10:58.807Z",
   "items": [
-    {
-      "title": "Woman dies after being struck by vehicle near Mississauga Hospital",
-      "summary": "A 20-year-old woman is dead after a late-night collision in Mississauga. The driver, who initially fled the scene before returning later, has been released unconditionally.",
-      "url": "https://www.thestar.com/news/gta/woman-dies-after-being-struck-by-vehicle-near-mississauga-hospital/article_c42867d1-7e4e-4732-99fa-f60d6c1d7f67.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-19T17:00:00.000Z"
-    },
     {
       "title": "Driver arrested, female pedestrian dead after being struck by vehicle in Mississauga",
       "summary": "A woman in her 20s has died after being struck by a driver in a vehicle in Mississauga, according to Peel police.",
@@ -18,12 +10,28 @@
       "publishedAt": "2026-07-19T15:09:56.000Z"
     },
     {
+      "title": "Running & Reading Club Mentor: Mississauga- St. Louis",
+      "summary": "Make a Difference After School – Become a Running & Reading Club Mentor!",
+      "url": "https://www.mississauga.com/volunteer-opportunities/on-site/running-reading-club-mentor-mississauga--st-louis/article_5ee44509-b775-5f0e-9c95-c634465d20e5.html",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com/",
+      "publishedAt": "2026-07-19T13:01:34.000Z"
+    },
+    {
       "title": "Air quality warnings lifted for Mississauga, Brampton, Halton and Hamilton",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQWFpzQVgyUVhmMmlLQ2lYRmpSTG94ZkQwZzhORjNqS2Z0R0hVSVlYR2pZN0xMOEFZVS03Z0k1enh3Ni1FbFZfYkRBM3N2eXY5cDV6TGJVNm0teWRaTWFuXzJkZFhoUVNnUVEzZ0ptaWtXMVhlRjNSQlExOE1Ya3RMRm9JQnNuVHp1alBWVWYwRmJiTEtPNjR0d0J6b2V6Zw?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-19T18:25:55.000Z"
+    },
+    {
+      "title": "Woman dies after being struck by vehicle near Mississauga Hospital",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxORk9RUnBSNHBQSFk2eHpub2JHLUZXZUlRS2lGNW4xeXBzZWFkTGpnTW9lSWxrdjVNQTVfWXAtMnVmbTFUNm5mU2g3MTczckFNVzB6VndtcGY1TzJZRkQtczFVMy1CYUVOQjJfTlVJWmhELUV6N3dlVDRmZDlTQ21Eb2laTFN5bWFWSlJkd2VMM2RyTzhUSlRERlBFZ1JuNEhoTk90ZlhONjhtaU1mNTh3Y1BNMzZBWWpiU3ZuVnA0dWtyYlBGbm1YaUhkNVFxSUhnemxFR1NGTFFLQ3BEVW5NUVpySQ?oc=5",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-07-19T17:00:00.000Z"
     },
     {
       "title": "Police update on woman fatally struck by vehicle in Mississauga",
@@ -48,22 +56,6 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-19T11:05:12.000Z"
-    },
-    {
-      "title": "Peel highway closures for planned roadwork on July 19",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOR2I0WWRoRjhLWS1EeVZLbE9EQ1d0VHVaLUJEQnp4VmRXVFNfbEozcjI5bUtOS3JXRFltNUNDRWhKRDdUbXU1YzRVTGszaEowNjUwaDNNVmJ0bEdoT3FzOGs4bzFnTWdxY054MTJmM25WVUxlUElpNHJrTnM2ZnBKTnJPM1Uxd1NNcWdDS04wdjhXcmloTDdoNTBqeUtZTFg5c0Q4SXpHeUpQM2xiMU9HWVVCSGpmcnN3NzVPeUtkSXFYNDdEa3Jxclg4MU9ab2o1Snc?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-19T10:01:37.000Z"
-    },
-    {
-      "title": "Rock the Coliseum returns to Mississauga with two-day free Indie music festival",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNNGJnVlRpYXlGNGpBX3ZoY2JLcEdidEJmaDZsemJETFliWHB4RU1pOEc1MjRwSmtmeldhZFJ6Q05vQW0ycS1rMkZOZDlaeUtUMlF0R0o3T2Jpa2d5MmE2NUVTQzdIMkJ0Um8wVFFEY2dyaFVsUVU0QnFLSzVXUkNzU29DYmZIay15cXdQWnpKelRLbDg4YVJjMVlSd2dZUldpUEQyNEt5NjNVSXBJeWR0V1hpdXVIbHhQVlFJdDBBeDNRYzlzSWlHV2JxdjU4T1o3cjN1eC1RR2hLUVdiUmc?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-19T10:00:00.000Z"
     },
     {
       "title": "Peel police identify 17-year-old brothers as suspects in fatal Brampton shooting",
@@ -96,6 +88,14 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-18T17:12:14.000Z"
+    },
+    {
+      "title": "Teen faces attempted murder charge after stabbing inside Mississauga home",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSEpKQ1RMTU9IRXB1dWltV1U3MnFPd2UwVDdfYUJtQ2sxM0ZqZUpEXzRPenNyelZJcXkwUFZMeEhlYVNhNnFDY0JjM3RzT2J3WUdvRndITTg5b0NyZHMtRWFDRFFIMGI4aDJ5WDBFY0V4aTlPMklYUFYzcWsyU3NaT2V5c242d3JrM2dya1oteG9VUk9lOWVkdDYxTk84Rjg?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-18T03:25:55.000Z"
     }
   ]
 }
