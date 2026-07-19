@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-07-19T18:00:15.628Z",
+  "updatedAt": "2026-07-19T18:08:59.565Z",
   "items": [
-    {
-      "title": "Woman dies after being struck by vehicle near Mississauga Hospital",
-      "summary": "A 20-year-old woman is dead after a late-night collision in Mississauga. The driver, who initially fled the scene before returning later, has been released unconditionally.",
-      "url": "https://www.thestar.com/news/gta/woman-dies-after-being-struck-by-vehicle-near-mississauga-hospital/article_c42867d1-7e4e-4732-99fa-f60d6c1d7f67.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-19T17:00:00.000Z"
-    },
     {
       "title": "Driver arrested, female pedestrian dead after being struck by vehicle in Mississauga",
       "summary": "A woman in her 20s has died after being struck by a driver in a vehicle in Mississauga, according to Peel police.",
@@ -16,6 +8,14 @@
       "source": "CBC Toronto",
       "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
       "publishedAt": "2026-07-19T15:09:56.000Z"
+    },
+    {
+      "title": "Woman dies after being struck by vehicle near Mississauga Hospital",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxORk9RUnBSNHBQSFk2eHpub2JHLUZXZUlRS2lGNW4xeXBzZWFkTGpnTW9lSWxrdjVNQTVfWXAtMnVmbTFUNm5mU2g3MTczckFNVzB6VndtcGY1TzJZRkQtczFVMy1CYUVOQjJfTlVJWmhELUV6N3dlVDRmZDlTQ21Eb2laTFN5bWFWSlJkd2VMM2RyTzhUSlRERlBFZ1JuNEhoTk90ZlhONjhtaU1mNTh3Y1BNMzZBWWpiU3ZuVnA0dWtyYlBGbm1YaUhkNVFxSUhnemxFR1NGTFFLQ3BEVW5NUVpySQ?oc=5",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-07-19T17:00:00.000Z"
     },
     {
       "title": "Police update on woman fatally struck by vehicle in Mississauga",
