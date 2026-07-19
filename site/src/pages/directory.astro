@@ -45,19 +45,34 @@ const fetched = places.fetchedAt
       </p>
     )}
 
+    <div class="dir-search-wrap">
+      <input
+        type="search"
+        id="dir-search"
+        class="dir-search"
+        placeholder="Search businesses, categories, or streets…"
+        aria-label="Search the business directory"
+      />
+    </div>
+
     <nav class="dir-nav" aria-label="Categories">
       {cats.map((c) => <a href={`#${c.slug}`}>{c.label}</a>)}
     </nav>
 
+    <p id="dir-no-results" class="empty" hidden>No businesses match your search. Try a different term.</p>
+
     {cats.map((cat) => (
-      <section id={cat.slug} style="margin-bottom:2.5rem">
+      <section id={cat.slug} class="dir-cat" style="margin-bottom:2.5rem">
         <h3 style="font-size:1.2rem;margin-bottom:.9rem">{cat.label}</h3>
         {cat.groups.map((g) => (
-          <div style="margin-bottom:1.75rem">
+          <div class="dir-group" style="margin-bottom:1.75rem">
             {g.label && <h4 style="font-size:.95rem;font-weight:700;color:var(--primary);margin:0 0 .6rem">{g.label}</h4>}
             <div class="grid">
               {g.businesses.map((b) => (
-                <article class="card biz-card">
+                <article
+                  class="card biz-card"
+                  data-search={`${b.name} ${cat.label} ${g.label || ""} ${b.address || ""}`.toLowerCase()}
+                >
                   {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
                   <h3><a href={`${base}directory/${cat.slug}/${b.slug}/`}>{b.name}</a></h3>
                   {b.rating != null && (
@@ -77,4 +92,32 @@ const fetched = places.fetchedAt
 
     <p style="font-size:.8rem;color:var(--muted)">{places.attribution}</p>
   </section>
+
+  <script>
+    const input = document.getElementById("dir-search");
+    const cards = Array.from(document.querySelectorAll(".biz-card"));
+    const groups = Array.from(document.querySelectorAll(".dir-group"));
+    const cats = Array.from(document.querySelectorAll(".dir-cat"));
+    const noResults = document.getElementById("dir-no-results");
+
+    input?.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      let visibleTotal = 0;
+
+      for (const card of cards) {
+        const match = !q || (card.getAttribute("data-search") || "").includes(q);
+        card.hidden = !match;
+        if (match) visibleTotal++;
+      }
+      for (const group of groups) {
+        const anyVisible = group.querySelector(".biz-card:not([hidden])");
+        group.hidden = !anyVisible;
+      }
+      for (const cat of cats) {
+        const anyVisible = cat.querySelector(".biz-card:not([hidden])");
+        cat.hidden = !anyVisible;
+      }
+      if (noResults) noResults.hidden = visibleTotal > 0;
+    });
+  </script>
 </Base>

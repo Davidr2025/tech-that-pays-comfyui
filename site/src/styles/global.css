@@ -1,5 +1,6 @@
 /* Brand colors come from site.config.mjs → CSS variables set in Base.astro */
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -184,6 +185,13 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 .sports-item .when { color: var(--muted); white-space: nowrap; }
 
 /* Directory */
+.dir-search-wrap { margin: 1rem 0; }
+.dir-search {
+  width: 100%; max-width: 480px; font: inherit; font-size: .95rem;
+  padding: .65rem 1rem; border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--surface); color: var(--text);
+}
+.dir-search:focus { outline: none; border-color: var(--primary); }
 .dir-nav { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
 .dir-nav a {
   background: var(--surface); border: 1px solid var(--border); border-radius: 99px;
