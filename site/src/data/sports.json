@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-07-19T21:34:12.237Z",
+  "updatedAt": "2026-07-19T23:05:23.149Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Chicago White Sox",
-      "date": "2026-07-19",
-      "time": "16:15:00",
+      "event": "Toronto Blue Jays vs Tampa Bay Rays",
+      "date": "2026-07-20",
+      "time": "23:07:00",
       "venue": "Rogers Centre"
     },
     {
