@@ -11,6 +11,7 @@ import AdSlot from "../components/AdSlot.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
 import events from "../data/events.json";
+import recommendations from "../data/recommendations.json";
 import meta from "../data/meta.json";
 
 const base = import.meta.env.BASE_URL.endsWith("/")
@@ -65,6 +66,12 @@ const updated = meta.updatedAt
           <div class="grid">{topEvents.map((item) => <EventCard item={item} />)}</div>
         ) : (
           <p class="empty">Event listings refresh automatically. Check back after the next content update.</p>
+        )}
+        {recommendations.items.length > 0 && (
+          <div class="reco-inline">
+            <h3 class="reco-heading">Free & recommended, any time of year</h3>
+            <div class="grid">{recommendations.items.slice(0, 3).map((item) => <EventCard item={item} />)}</div>
+          </div>
         )}
       </section>
 

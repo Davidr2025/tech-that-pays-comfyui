@@ -91,6 +91,9 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 
 .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
 
+.reco-inline { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.reco-heading { font-size: 1rem; font-weight: 700; margin-bottom: .9rem; }
+
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
   padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .45rem;

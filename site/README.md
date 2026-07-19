@@ -25,6 +25,11 @@ GitHub Actions (every 6 hours, anchored to 6:15am/12:15pm/6:15pm/12:15am ET)
   so the API is never hit on page loads.
 - **Failure-safe:** if a feed is down, the previous data is kept — the site
   never goes blank.
+- **Manually curated content:** [`src/data/recommendations.json`](./src/data/recommendations.json)
+  holds hand-written, evergreen "free things to do" recommendations (nature
+  walks, trails, parks) shown alongside the auto-fetched events on the
+  homepage and `/events/`. It is edited directly and is never touched by the
+  automated pipeline — add, remove or update entries any time.
 - **Freshness-anchored:** the schedule is timed so a run always lands 15
   minutes after local outlets' typical morning news wave (~6am Eastern), not
   just every 6 hours from an arbitrary UTC start — see the cron comment in

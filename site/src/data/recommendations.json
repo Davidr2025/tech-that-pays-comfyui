@@ -1,0 +1,68 @@
+{
+  "_comment": "Hand-curated, evergreen recommendations (free/low-cost things to do). NOT touched by the automated fetch pipeline — edit this file directly to add, remove, or update entries.",
+  "items": [
+    {
+      "title": "Walk the boardwalk at Rattray Marsh Conservation Area",
+      "summary": "A quiet lakeside nature reserve in Clarkson with boardwalk trails through marsh, woodland and beach habitat. One of the last natural shoreline marshes on Lake Ontario, great for birdwatching and an easy, flat walk any time of year.",
+      "venue": "Rattray Marsh Conservation Area, Clarkson",
+      "url": "https://cvc.ca/",
+      "source": "Credit Valley Conservation",
+      "sourceUrl": "https://cvc.ca/",
+      "tag": "Free · Nature"
+    },
+    {
+      "title": "Picnic and lakefront views at Jack Darling Memorial Park",
+      "summary": "A large waterfront park with open lawns, a splash pad, off-leash dog area, and direct access to the Waterfront Trail. Bring a picnic and watch the sailboats out of Lorne Park Yacht Club.",
+      "venue": "Jack Darling Memorial Park, Lorne Park",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Waterfront"
+    },
+    {
+      "title": "Cycle or stroll the Waterfront Trail through Port Credit",
+      "summary": "This stretch of the Lake Ontario Waterfront Trail runs past the Port Credit Lighthouse, marinas and Rotary Park, one of the most scenic free walks or bike rides in the city.",
+      "venue": "Port Credit waterfront",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Waterfront"
+    },
+    {
+      "title": "Find calm at Kariya Park",
+      "summary": "A small Japanese garden in the heart of City Centre, with a koi pond, pagoda and manicured paths. A peaceful, free escape just steps from Square One.",
+      "venue": "Kariya Park, City Centre",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Garden"
+    },
+    {
+      "title": "Hike the Credit River trails at Riverwood",
+      "summary": "Riverwood's trail network winds through forest and meadow along the Credit River, with historic buildings and gardens on site. A favourite for longer nature walks and trail runs.",
+      "venue": "Riverwood Conservancy, Mississauga Road",
+      "url": "https://theriverwoodconservancy.org/",
+      "source": "The Riverwood Conservancy",
+      "sourceUrl": "https://theriverwoodconservancy.org/",
+      "tag": "Free · Nature"
+    },
+    {
+      "title": "Explore Erindale Park's river valley trails",
+      "summary": "One of the city's largest parks, with wooded trails, picnic areas and river access along the Credit River. Good for a longer walk, a run, or an afternoon by the water.",
+      "venue": "Erindale Park, Mississauga Road",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Nature"
+    },
+    {
+      "title": "Wander the Culham Trail through Streetsville",
+      "summary": "A shaded multi-use trail following the Credit River through historic Streetsville, connecting parks, the village core and quiet residential streets. Easy, flat, and free.",
+      "venue": "Culham Trail, Streetsville",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Trail"
+    }
+  ]
+}

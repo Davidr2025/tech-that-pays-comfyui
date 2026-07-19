@@ -14,10 +14,11 @@ const time = d?.toLocaleTimeString("en-CA", { hour: "numeric", minute: "2-digit"
       </div>
     )}
     <div>
+      {item.tag && <span class="tag">{item.tag}</span>}
       <h3><a href={item.url} target="_blank" rel="noopener">{item.title}</a></h3>
       <p>
         {time && <span>{time}</span>}
-        {item.venue && <span> · {item.venue}</span>}
+        {item.venue && <span>{time ? " · " : ""}{item.venue}</span>}
       </p>
     </div>
   </div>

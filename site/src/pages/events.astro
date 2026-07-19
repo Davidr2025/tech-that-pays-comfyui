@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import EventCard from "../components/EventCard.astro";
 import config from "../../site.config.mjs";
 import events from "../data/events.json";
+import recommendations from "../data/recommendations.json";
 ---
 <Base title="Things to Do" description={`What's on in ${config.city} over the next ${events.windowDays} days: concerts, festivals, family events and more.`} current="events">
   <section class="section container">
@@ -19,4 +20,14 @@ import events from "../data/events.json";
       </p>
     )}
   </section>
+
+  {recommendations.items.length > 0 && (
+    <section class="section container" id="free-things">
+      <div class="section-head">
+        <h2>Free Things to Do</h2>
+        <span class="sub">Recommended by the Mississauga Insider team, any time of year</span>
+      </div>
+      <div class="grid">{recommendations.items.map((item) => <EventCard item={item} />)}</div>
+    </section>
+  )}
 </Base>
