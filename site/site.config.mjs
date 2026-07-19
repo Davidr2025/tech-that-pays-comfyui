@@ -135,10 +135,12 @@ export default {
     // Eventbrite: their PUBLIC event-search API was retired in 2020, so
     // location search is no longer possible. Instead, list Eventbrite
     // organizer IDs of Mississauga venues you want to pull from
-    // (requires EVENTBRITE_API_TOKEN). Find organizer IDs in any of the
-    // organizer's Eventbrite page URLs.
+    // (requires EVENTBRITE_API_TOKEN, set as a GitHub Actions repo secret).
+    // Find organizer IDs in any of the organizer's Eventbrite page URLs
+    // (the trailing number, e.g. eventbrite.com/o/some-org-18391797650).
     eventbriteOrganizers: [
-      // e.g. "12345678901"
+      "18391797650", // Streetsville BIA — village events, First Friday Market, etc.
+      "18523231290"  // Mississauga Library — branch programs and events
     ]
   },
 
