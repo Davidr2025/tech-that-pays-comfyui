@@ -4,5 +4,6 @@
   "home-events-weather": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
   "home-sidebar": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
   "news-top": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
-  "news-mid": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" }
+  "news-mid": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
+  "events-mid": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" }
 }
