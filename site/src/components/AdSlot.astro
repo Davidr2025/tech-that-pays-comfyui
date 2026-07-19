@@ -1,0 +1,19 @@
+---
+import adSlots from "../data/ad-slots.json";
+
+const { id, variant = "banner" } = Astro.props;
+const slot = adSlots[id] || { enabled: false };
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+---
+{slot.enabled && slot.image && slot.link ? (
+  <a class={`ad-slot ad-slot-${variant} ad-slot-live`} href={slot.link} target="_blank" rel="noopener sponsored">
+    <img src={slot.image} alt={slot.alt || slot.advertiser || "Advertisement"} loading="lazy" />
+  </a>
+) : (
+  <a class={`ad-slot ad-slot-${variant} ad-slot-placeholder`} href={`${base}advertise/`}>
+    <span class="ad-slot-label">Advertise here</span>
+    <span class="ad-slot-sub">Reach {variant === "sidebar" ? "readers all the way down the page" : "thousands of Mississauga locals"} →</span>
+  </a>
+)}

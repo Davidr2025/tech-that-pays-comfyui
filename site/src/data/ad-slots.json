@@ -1,0 +1,6 @@
+{
+  "_comment": "AD SLOTS: generic display placements (distinct from the single Featured Business hero, which is the story-driven premium spot). Each key is a slot id used by <AdSlot id=...>. When enabled=false (or missing), that slot renders a tasteful 'Advertise Here' placeholder linking to /advertise/ instead of hiding, so it keeps working as a self-promotion CTA until it's sold. To sell a slot: set enabled=true and fill in advertiser, image, link, alt.",
+  "home-news-events": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
+  "home-events-weather": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" },
+  "home-sidebar": { "enabled": false, "advertiser": "", "image": "", "link": "", "alt": "" }
+}

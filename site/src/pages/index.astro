@@ -7,6 +7,7 @@ import EventCard from "../components/EventCard.astro";
 import FeaturedBusiness from "../components/FeaturedBusiness.astro";
 import WeatherWidget from "../components/WeatherWidget.astro";
 import SportsWidget from "../components/SportsWidget.astro";
+import AdSlot from "../components/AdSlot.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
 import events from "../data/events.json";
@@ -37,55 +38,67 @@ const updated = meta.updatedAt
     </div>
   </section>
 
-  <section class="section container" id="news">
-    <div class="section-head">
-      <h2>Top News</h2>
-      <span class="sub">Curated from local sources. Full stories at the original outlet</span>
-      <a class="more" href={`${base}news/`}>All news →</a>
+  <div class="container home-layout">
+    <div class="home-main">
+      <section class="section" id="news">
+        <div class="section-head">
+          <h2>Top News</h2>
+          <span class="sub">Curated from local sources. Full stories at the original outlet</span>
+          <a class="more" href={`${base}news/`}>All news →</a>
+        </div>
+        {topNews.length ? (
+          <div class="grid">{topNews.map((item) => <NewsCard item={item} />)}</div>
+        ) : (
+          <p class="empty">Headlines refresh automatically every 6 hours. The first update lands shortly.</p>
+        )}
+      </section>
+
+      <AdSlot id="home-news-events" variant="banner" />
+
+      <section class="section" id="events">
+        <div class="section-head">
+          <h2>Top Things to Do</h2>
+          <span class="sub">Next {events.windowDays} days in {config.city}</span>
+          <a class="more" href={`${base}events/`}>All events →</a>
+        </div>
+        {topEvents.length ? (
+          <div class="grid">{topEvents.map((item) => <EventCard item={item} />)}</div>
+        ) : (
+          <p class="empty">Event listings refresh automatically. Check back after the next content update.</p>
+        )}
+      </section>
+
+      <AdSlot id="home-events-weather" variant="banner" />
+
+      <FeaturedBusiness />
+
+      {openings.length > 0 && (
+        <section class="section" id="new-in-town">
+          <div class="section-head">
+            <h2>New in {config.city}</h2>
+            <span class="sub">Openings & launches spotted in the news</span>
+          </div>
+          <div class="grid">{openings.map((item) => <NewsCard item={item} />)}</div>
+        </section>
+      )}
+
+      <section class="section" id="widgets">
+        <div class="widgets">
+          <WeatherWidget />
+          <SportsWidget />
+        </div>
+        {updated && (
+          <p style="font-size:.78rem;color:var(--muted);margin-top:1rem">
+            Content last updated {updated} · refreshes automatically every 6 hours
+          </p>
+        )}
+      </section>
     </div>
-    {topNews.length ? (
-      <div class="grid">{topNews.map((item) => <NewsCard item={item} />)}</div>
-    ) : (
-      <p class="empty">Headlines refresh automatically every 6 hours. The first update lands shortly.</p>
-    )}
-  </section>
 
-  <section class="section container" id="events">
-    <div class="section-head">
-      <h2>Top Things to Do</h2>
-      <span class="sub">Next {events.windowDays} days in {config.city}</span>
-      <a class="more" href={`${base}events/`}>All events →</a>
-    </div>
-    {topEvents.length ? (
-      <div class="grid">{topEvents.map((item) => <EventCard item={item} />)}</div>
-    ) : (
-      <p class="empty">Event listings refresh automatically. Check back after the next content update.</p>
-    )}
-  </section>
-
-  <FeaturedBusiness />
-
-  {openings.length > 0 && (
-    <section class="section container" id="new-in-town">
-      <div class="section-head">
-        <h2>New in {config.city}</h2>
-        <span class="sub">Openings & launches spotted in the news</span>
-      </div>
-      <div class="grid">{openings.map((item) => <NewsCard item={item} />)}</div>
-    </section>
-  )}
-
-  <section class="section container" id="widgets">
-    <div class="widgets">
-      <WeatherWidget />
-      <SportsWidget />
-    </div>
-    {updated && (
-      <p style="font-size:.78rem;color:var(--muted);margin-top:1rem">
-        Content last updated {updated} · refreshes automatically every 6 hours
-      </p>
-    )}
-  </section>
+    <aside class="home-sidebar">
+      <AdSlot id="home-sidebar" variant="sidebar" />
+    </aside>
+  </div>
 
   <NewsModal />
 </Base>
