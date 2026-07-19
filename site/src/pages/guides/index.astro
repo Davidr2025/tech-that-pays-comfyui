@@ -1,5 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
+import AdSlot from "../../components/AdSlot.astro";
 import config from "../../../site.config.mjs";
 import { getCollection } from "astro:content";
 
@@ -17,6 +18,9 @@ const guides = (await getCollection("guides")).sort(
       <h2>Guides</h2>
       <span class="sub">Original neighbourhood guides and explainers, written by {config.name}, not aggregated from other outlets</span>
     </div>
+
+    <AdSlot id="guides-top" variant="banner" />
+
     <div class="grid">
       {guides.map((g) => (
         <article class="card">
