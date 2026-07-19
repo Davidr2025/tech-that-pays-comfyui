@@ -2,6 +2,7 @@
 import Base from "../../../layouts/Base.astro";
 import config from "../../../../site.config.mjs";
 import places from "../../../data/places.json";
+import { getCollection } from "astro:content";
 
 // Fully static — one prerendered page per business, generated at build
 // time from places.json. No server/adapter involved.
@@ -22,6 +23,9 @@ const base = import.meta.env.BASE_URL.endsWith("/")
 const contact = `mailto:david@lsfg.ca?subject=${encodeURIComponent(
   `Claim my listing on ${config.name}: ${b.name}`
 )}`;
+const spotlight = (await getCollection("spotlights")).find(
+  (s) => s.data.directoryCategory === cat.slug && s.data.directorySlug === b.slug
+);
 const description = `${b.name}: ${b.subcategory || cat.label} in ${config.city}, Ontario.${
   b.rating != null ? ` Rated ${b.rating.toFixed(1)}★ (${b.reviews?.toLocaleString()} reviews).` : ""
 }`;
@@ -36,6 +40,12 @@ const description = `${b.name}: ${b.subcategory || cat.label} in ${config.city},
       <span>›</span>
       <span>{b.name}</span>
     </nav>
+
+    {spotlight && (
+      <a class="notice biz-spotlight-banner" href={`${base}spotlight/${spotlight.id}/`}>
+        ⭐ Read our full spotlight on {b.name} →
+      </a>
+    )}
 
     <div class="biz-detail-layout">
       {b.photo && <img class="biz-detail-hero" src={b.photo} alt={b.name} />}

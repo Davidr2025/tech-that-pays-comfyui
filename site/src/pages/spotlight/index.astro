@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import config from "../../../site.config.mjs";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+
+const spotlights = (await getCollection("spotlights")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+<Base title="Business Spotlight" description={`Local businesses in ${config.city}, featured in their own words.`} current="spotlight">
+  <section class="section container">
+    <div class="section-head">
+      <h2>Business Spotlight</h2>
+      <span class="sub">Local businesses in {config.city}, featured in their own words</span>
+      <a class="more" href={`${base}advertise/`}>Get spotlighted →</a>
+    </div>
+    {spotlights.length ? (
+      <div class="grid">
+        {spotlights.map((s) => (
+          <article class="card">
+            {s.data.tier === "paid" && <span class="tag">Featured Partner</span>}
+            <h3><a href={`${base}spotlight/${s.id}/`}>{s.data.businessName}</a></h3>
+            <p style="color:var(--muted);font-size:.85rem;margin:.1rem 0 .4rem">{s.data.category}</p>
+            <p>{s.data.description}</p>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <p class="empty">No spotlights published yet, check back soon.</p>
+    )}
+  </section>
+</Base>

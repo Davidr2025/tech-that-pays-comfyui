@@ -1,11 +1,12 @@
 {
-  "_comment": "FEATURED BUSINESS — paid placement slot. Edit this file (or wire it to Airtable later) and the site updates on the next build. Set enabled=false to hide the section.",
-  "enabled": true,
+  "_comment": "FEATURED BUSINESS: paid placement slot (the homepage hero, sold as the Featured Business Spotlight package on /advertise/). Edit this file and the site updates on the next build. Set enabled=false to hide the section. This was left enabled with placeholder content before; disabled until a real paying business is in here. Set spotlightSlug to a real entry's id in src/content/spotlights/ to link this teaser through to the full article.",
+  "enabled": false,
   "name": "Your Business Here",
   "category": "Featured placement",
   "description": "This premium spotlight goes out to thousands of Mississauga locals on the site and in the Mississauga Insider newsletter. Tell your story, show off your storefront, and link readers straight to you.",
   "photo": "",
   "website": "mailto:david@lsfg.ca?subject=Featured%20Business%20on%20Mississauga%20Insider",
   "cta": "Claim this spot",
-  "badge": "Sponsored"
+  "badge": "Sponsored",
+  "spotlightSlug": ""
 }

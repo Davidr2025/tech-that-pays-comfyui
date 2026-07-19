@@ -1,0 +1,60 @@
+---
+import Base from "../../layouts/Base.astro";
+import config from "../../../site.config.mjs";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const spotlights = await getCollection("spotlights");
+  return spotlights.map((s) => ({ params: { slug: s.id }, props: { spotlight: s } }));
+}
+
+const { spotlight: s } = Astro.props;
+const { Content } = await render(s);
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const date = s.data.publishDate.toLocaleDateString("en-CA", {
+  year: "numeric", month: "long", day: "numeric", timeZone: "America/Toronto"
+});
+const directoryUrl = s.data.directoryCategory && s.data.directorySlug
+  ? `${base}directory/${s.data.directoryCategory}/${s.data.directorySlug}/`
+  : null;
+const contact = `mailto:david@lsfg.ca?subject=${encodeURIComponent(
+  `Get my business spotlighted on ${config.name}`
+)}`;
+---
+<Base title={`${s.data.businessName} — Business Spotlight`} description={s.data.description} current="spotlight">
+  <section class="section container guide-detail">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={`${base}spotlight/`}>Business Spotlight</a>
+      <span>›</span>
+      <span>{s.data.businessName}</span>
+    </nav>
+
+    <div class="biz-detail-layout">
+      {s.data.photo && <img class="biz-detail-hero" src={s.data.photo} alt={s.data.businessName} />}
+      <div class="biz-detail-body">
+        {s.data.tier === "paid" && <span class="tag">Featured Partner</span>}
+        <h1>{s.data.title}</h1>
+        <p class="guide-meta">{s.data.category} · Published {date}</p>
+
+        <div class="biz-detail-actions">
+          {directoryUrl && <a class="cta-btn" href={directoryUrl}>View full listing →</a>}
+          {s.data.website && (
+            <a class="cta-btn secondary" href={s.data.website} target="_blank" rel="noopener">Visit website →</a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="biz-detail-cta">
+      <h3>Want your business featured next?</h3>
+      <p>Basic spotlights are free, we just need a good story to tell. Featured Partner spotlights add homepage placement and a mention in the newsletter.</p>
+      <a class="cta-btn" href={contact}>Get spotlighted →</a>
+    </div>
+  </section>
+</Base>

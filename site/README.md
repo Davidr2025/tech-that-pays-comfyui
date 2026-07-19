@@ -52,6 +52,28 @@ up automatically at build time via Astro content collections
 (`src/pages/guides/index.astro` and `[slug].astro`). No pipeline changes, no
 API keys, no scheduled job — just Markdown.
 
+## Business Spotlight (two tiers)
+
+`/spotlight/` is the same hand-authored content-collection pattern as Guides
+(`site/src/content/spotlights/*.md`), but for full articles about one
+business. Two tiers, controlled by the `tier` frontmatter field:
+
+- `tier: basic` (default): a free foot-in-the-door piece, no payment
+  required. Real site content on its own, and useful as something concrete
+  to show a business when pitching them on a paid placement.
+- `tier: paid`: the deliverable for the "Featured Business Spotlight"
+  package on `/advertise/`. Shows a "Featured Partner" tag, and the business
+  should also be set as the homepage hero (`site/src/data/featured-business.json`,
+  set `enabled: true` and `spotlightSlug` to the article's filename so the
+  homepage teaser links through to the full article).
+
+Frontmatter schema (see `site/src/content/config.ts`): `title`,
+`businessName`, `category`, `tier`, `description`, `publishDate`, optional
+`updatedDate`, `website`, `photo`. To cross-link with a business's real
+directory listing, set `directoryCategory` and `directorySlug` to match its
+entry in `places.json` (its category slug and business slug) — the business's
+own directory page then shows a banner linking to the spotlight article.
+
 ## Commands (run inside `site/`)
 
 | Command                  | What it does                            |

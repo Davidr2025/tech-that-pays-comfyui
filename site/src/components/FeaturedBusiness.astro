@@ -18,9 +18,14 @@ const base = import.meta.env.BASE_URL.endsWith("/")
         <h3>{featured.name}</h3>
         <p style="color:var(--muted);font-size:.85rem;margin:.1rem 0 .4rem">{featured.category}</p>
         <p>{featured.description}</p>
-        {featured.website && (
-          <a class="cta-btn" href={featured.website} target="_blank" rel="noopener">{featured.cta || "Visit website"} →</a>
-        )}
+        <div class="biz-detail-actions">
+          {featured.spotlightSlug && (
+            <a class="cta-btn" href={`${base}spotlight/${featured.spotlightSlug}/`}>Read their story →</a>
+          )}
+          {featured.website && (
+            <a class={featured.spotlightSlug ? "cta-btn secondary" : "cta-btn"} href={featured.website} target="_blank" rel="noopener">{featured.cta || "Visit website"} →</a>
+          )}
+        </div>
       </div>
     </div>
   </section>

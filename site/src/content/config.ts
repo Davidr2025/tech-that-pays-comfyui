@@ -13,4 +13,32 @@ const guides = defineCollection({
   })
 });
 
-export const collections = { guides };
+// Business Spotlight articles — two tiers:
+//  - "basic": free foot-in-the-door outreach piece, also just genuine site
+//    content. Produced without a business having paid for anything.
+//  - "paid": the deliverable for the "Featured Business Spotlight" package
+//    on /advertise/ — same article format, plus the business also gets
+//    promoted into the homepage hero slot (see featured-business.json /
+//    FeaturedBusiness.astro's optional spotlightSlug field).
+// Add a new spotlight by dropping a .md file here.
+const spotlights = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/spotlights" }),
+  schema: z.object({
+    title: z.string(),
+    businessName: z.string(),
+    category: z.string(),
+    tier: z.enum(["basic", "paid"]).default("basic"),
+    description: z.string(),
+    publishDate: z.date(),
+    updatedDate: z.date().optional(),
+    website: z.string().optional(),
+    photo: z.string().optional(),
+    // Match a real listing in places.json to cross-link — see
+    // site.config.mjs's `places.categories[].slug` and each business's
+    // `slug` field for the values to use here.
+    directoryCategory: z.string().optional(),
+    directorySlug: z.string().optional()
+  })
+});
+
+export const collections = { guides, spotlights };
