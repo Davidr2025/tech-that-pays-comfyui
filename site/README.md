@@ -198,24 +198,32 @@ in `latest.json`), commits it, and delivers it per `NEWSLETTER_MODE`:
 | Mode | What happens | Requirement |
 | ---- | ------------ | ----------- |
 | `dry-run` (default) | Issue composed & saved only | none |
-| `draft` | Draft created in beehiiv — you click **Send** | beehiiv Create Post API — **included in the free Launch plan** |
-| `publish` / `schedule` | Fully hands-off send | beehiiv **Send API** (Enterprise beta — [request access](https://www.beehiiv.com/support/article/29286794539671-how-to-access-the-beehiiv-send-api)) |
+| `draft` | Draft created in beehiiv — you click **Send** | beehiiv **Enterprise plan** (see below) |
+| `publish` / `schedule` | Fully hands-off send | beehiiv **Enterprise plan** (see below) |
 
 Set the mode as a GitHub repo **variable** (`Settings → Secrets and variables →
 Actions → Variables → NEWSLETTER_MODE`). Manual runs: Actions → "Weekly
 newsletter" → Run workflow → pick a mode.
 
-**On the free plan:** beehiiv's free Launch plan includes general API access
-(everything except the Send API), so `draft` mode works today — set
-`BEEHIIV_API_KEY` / `BEEHIIV_PUBLICATION_ID` (from beehiiv → Settings → API
-keys) as repo secrets and `NEWSLETTER_MODE=draft` as a repo variable, and the
-pipeline pushes a ready-to-send draft into beehiiv every week automatically.
-Only `publish`/`schedule` need the Enterprise Send API.
+**Correction (verified 2026-07-20 against a live free-plan account):** an
+earlier version of this doc said `draft` mode worked on beehiiv's free
+Launch plan. It does not. The Create Post endpoint
+(`POST /v2/publications/{id}/posts`) that both `draft` and `publish`/
+`schedule` depend on returned `403 SEND_API_NOT_ENTERPRISE_PLAN` —
+`"This endpoint is only available on the enterprise plan"` — regardless of
+`status: draft` vs `status: confirmed`. So **all three delivery modes
+currently require beehiiv's Enterprise plan** ([request access](https://www.beehiiv.com/support/article/29286794539671-how-to-access-the-beehiiv-send-api)),
+not just `publish`/`schedule` as previously documented here.
+
+Until then, `dry-run` is the only mode that will succeed — which is fine:
+the workflow still composes a complete, ready-to-send issue every week at
+`site/newsletter/latest.html` (also uploaded as a workflow artifact), you
+just paste it into beehiiv's own editor and hit send manually.
 
 Note: the [official beehiiv MCP](https://www.beehiiv.com/support/article/39255979546263-getting-started-with-the-beehiiv-mcp)
-is **read-only on free plans** — write access (creating/pushing drafts via
-MCP) needs a paid beehiiv plan. On free, the direct API path above (`draft`
-mode) is the better option; it already works without any beehiiv upgrade.
+is also **read-only on free plans** — same Enterprise requirement for
+write access there too, so it isn't a free-plan workaround for the direct
+API path above.
 
 ## Google Places cost estimate
 
