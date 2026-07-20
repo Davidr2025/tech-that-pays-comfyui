@@ -84,6 +84,14 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 }
 .signup-modal-close:hover { color: var(--text); border-color: var(--primary); }
 
+/* Embed-only mode: no form of ours, just the Beehiiv widget + a small
+   text-link safety net. Used on dark backgrounds (e.g. the hero), so the
+   fallback text uses the same light muted tone as .hero .fine rather than
+   the default --muted (which is too low-contrast there). */
+.signup-embed-only { max-width: 34rem; }
+.signup-embed-fallback { font-size: .8rem; color: #b7c9dc; margin: .5rem 0 0; }
+.signup-embed-fallback a { color: #dbe6f2; }
+
 /* Sticky footer signup bar */
 .sticky-signup {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
