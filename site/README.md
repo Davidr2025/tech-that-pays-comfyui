@@ -88,6 +88,7 @@ own directory page then shows a banner linking to the spotlight article.
 | `npm run build`          | build the static site to `dist/`        |
 | `npm run dev`            | local dev server                        |
 | `npm run test:beehiiv`   | send a test subscription to Beehiiv     |
+| `npm run export-csv`     | export the directory as `exports/businesses.csv` |
 
 ## Configuration
 
@@ -109,6 +110,13 @@ own directory page then shows a banner linking to the spotlight article.
   slot is backfilled by the next-best real candidate — it takes effect on
   the next monthly refresh, or immediately if you trigger the workflow
   manually with `force_places: true`.
+- **CSV export for outreach/CRM import:** `npm run export-csv` (also runs
+  automatically as part of the content pipeline) writes every directory
+  business to [`exports/businesses.csv`](./exports/businesses.csv), one row
+  per business with its live profile page URL included — useful for "claim
+  your listing" outreach emails or importing into a CRM (e.g. GHL). Set
+  `SITE_URL` when running manually if it should point somewhere other than
+  the production domain.
 - **API keys:** copy [`.env.example`](./.env.example) to `.env` locally, and add
   the same names as **GitHub Actions secrets** (repo → Settings → Secrets and
   variables → Actions → New repository secret):

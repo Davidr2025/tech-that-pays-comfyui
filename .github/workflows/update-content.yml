@@ -56,6 +56,7 @@ jobs:
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
           EVENTBRITE_API_TOKEN: ${{ secrets.EVENTBRITE_API_TOKEN }}
+          SITE_URL: https://mississaugainsider.ca
         run: |
           if [ "${{ inputs.force_places }}" = "true" ]; then
             node scripts/update-content.mjs --force-places
@@ -65,12 +66,12 @@ jobs:
 
       - name: Commit refreshed data
         run: |
-          if git diff --quiet -- site/src/data; then
+          if git diff --quiet -- site/src/data site/exports; then
             echo "No content changes this run."
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add site/src/data
+            git add site/src/data site/exports
             git commit -m "chore(data): automated content update [skip ci]"
             # A manual dispatch fired right after a push (or two schedules
             # overlapping) can race: both runs check out the same base commit,

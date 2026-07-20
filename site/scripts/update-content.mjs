@@ -13,6 +13,7 @@ import { fetchEvents } from "./fetch-events.mjs";
 import { fetchWeather } from "./fetch-weather.mjs";
 import { fetchSports } from "./fetch-sports.mjs";
 import { fetchPlaces } from "./fetch-places.mjs";
+import { exportCsv } from "./export-csv.mjs";
 
 const forcePlaces = process.argv.includes("--force-places");
 
@@ -40,6 +41,12 @@ writeFileSync(
   join(DATA_DIR, "meta.json"),
   JSON.stringify({ updatedAt: new Date().toISOString(), results }, null, 2) + "\n"
 );
+
+try {
+  exportCsv();
+} catch (e) {
+  console.error(`[pipeline] ERROR in export-csv: ${e.message}`);
+}
 
 const secs = ((Date.now() - started) / 1000).toFixed(1);
 log(`=== done in ${secs}s: ${Object.entries(results).map(([k, v]) => `${k}=${v ? "updated" : "unchanged"}`).join(", ")} ===`);
