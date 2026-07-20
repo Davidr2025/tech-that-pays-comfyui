@@ -15,7 +15,7 @@ export default {
   // Beehiiv hosted subscribe page (fallback when the serverless API
   // isn't available, e.g. on GitHub Pages). Example:
   // "https://your-pub.beehiiv.com/subscribe"
-  newsletterUrl: "",
+  newsletterUrl: "https://mississauga-insider-newsletter.beehiiv.com/",
 
   // --- Brand colors (used as CSS variables across the whole site) ---
   colors: {
