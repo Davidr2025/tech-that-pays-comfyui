@@ -94,8 +94,21 @@ own directory page then shows a banner linking to the spotlight article.
 
 - **Branding, colors, feeds, categories:** everything lives in
   [`site.config.mjs`](./site.config.mjs) — one file.
-- **Featured business (paid slot):** edit
-  [`src/data/featured-business.json`](./src/data/featured-business.json).
+- **Featured business (homepage hero slot):** edit
+  [`src/data/featured-business.json`](./src/data/featured-business.json). One
+  business at a time, shown on the homepage.
+- **Featured directory listings (paid upgrade, any number of businesses):**
+  edit [`src/data/featured-places.json`](./src/data/featured-places.json)
+  directly on GitHub, same pattern as `excluded-places.json` below. Add an
+  entry with the business's Google `place_id`:
+  ```json
+  [{ "id": "ChIJ...", "note": "Featured Business Spotlight package", "featuredAt": "2026-07-20" }]
+  ```
+  That business sorts to the top of its category (and subcategory, e.g.
+  Plumbers within Trades & Home Services) on `/directory/`, ahead of the
+  normal rating sort, with a gold "★ Featured" badge and highlighted card.
+  Takes effect on the next deploy — no pipeline run needed since this is a
+  display-only overlay, not a data refetch.
 - **Removing a business from the directory:** the directory is a lead
   magnet, not user-submitted, so there's no login-protected admin panel —
   you (or a Claude session) edit
