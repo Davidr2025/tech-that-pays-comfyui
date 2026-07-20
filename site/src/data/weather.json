@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-20T13:07:30.081Z",
+  "updatedAt": "2026-07-20T14:53:13.170Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 17,
-    "feelsLike": 18,
+    "temp": 20,
+    "feelsLike": 22,
     "text": "Clear",
     "icon": "☀️"
   },
@@ -19,11 +19,11 @@
     },
     {
       "date": "2026-07-21",
-      "max": 24,
+      "max": 26,
       "min": 18,
-      "precipChance": 80,
-      "text": "Light rain",
-      "icon": "🌦️"
+      "precipChance": 39,
+      "text": "Showers",
+      "icon": "🌧️"
     },
     {
       "date": "2026-07-22",
