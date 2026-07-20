@@ -12,10 +12,16 @@ export default {
   city: "Mississauga",
   province: "Ontario",
 
-  // Beehiiv hosted subscribe page (fallback when the serverless API
-  // isn't available, e.g. on GitHub Pages). Example:
+  // Beehiiv hosted subscribe page (last-resort text link if the inline
+  // embed below can't load, e.g. blocked by an ad blocker). Example:
   // "https://your-pub.beehiiv.com/subscribe"
   newsletterUrl: "https://mississauga-insider-newsletter.beehiiv.com/",
+
+  // Beehiiv "Subscribe form" ID (Audience → Subscribe forms → Get embed
+  // code → the value of data-beehiiv-form). Powers the inline signup
+  // widget used when the serverless /api/subscribe endpoint isn't
+  // available (e.g. on GitHub Pages) — no redirect, submits in place.
+  beehiivFormId: "d19d7ac3-659f-4990-848d-d8db8366ac59",
 
   // --- Brand colors (used as CSS variables across the whole site) ---
   colors: {

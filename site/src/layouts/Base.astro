@@ -48,6 +48,10 @@ const ld = {
     <meta name="geo.region" content="CA-ON" />
     <meta name="geo.placename" content="Mississauga" />
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    <!-- Beehiiv subscribe-form attribution (site-wide, one-time). The form
+         widget itself loads lazily, only if a visitor's signup ever needs
+         the inline-embed fallback — see SignupForm.astro. -->
+    <script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
     <style set:html={`:root{--primary:${c.primary};--primary-dark:${c.primaryDark};--accent:${c.accent};--accent-dark:${c.accentDark};--bg:${c.bg};--surface:${c.surface};--text:${c.text};--muted:${c.muted};--border:${c.border};}`} />
   </head>
   <body>

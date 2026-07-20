@@ -184,9 +184,18 @@ cert, usually within ~15–60 min of DNS resolving).
 
 **Caveat:** GitHub Pages is static-only — it can't run the
 `functions/api/subscribe.js` endpoint the way Cloudflare Pages/Netlify/Vercel
-can. On GitHub Pages, set `newsletterUrl` in `site.config.mjs` to your beehiiv
-hosted subscribe page so the site's subscribe form has somewhere to send
-visitors; without it the form has no working backend on this host.
+can. On GitHub Pages (or any static host), the signup form falls back to
+Beehiiv's own inline "Subscribe form" embed instead: no page navigation, no
+retyping an email, no backend needed. Set `beehiivFormId` in
+`site.config.mjs` (from Beehiiv → Audience → Subscribe forms → **Get embed
+code** → the `data-beehiiv-form` value) and it just works. `newsletterUrl`
+is kept as a last-resort text link shown inside that embed in case a
+visitor's ad blocker stops the widget itself from loading.
+
+Connecting one of the hosts below instead gives the form a true native,
+same-origin backend (`/api/subscribe`) with zero visual difference from a
+first-party form — worth doing later if the embed's third-party styling
+ever becomes a real problem, but not required for a working signup flow.
 
 ## Automated weekly newsletter
 
