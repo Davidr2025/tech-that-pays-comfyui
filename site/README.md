@@ -114,9 +114,11 @@ own directory page then shows a banner linking to the spotlight article.
   automatically as part of the content pipeline) writes every directory
   business to [`exports/businesses.csv`](./exports/businesses.csv), one row
   per business with its live profile page URL included — useful for "claim
-  your listing" outreach emails or importing into a CRM (e.g. GHL). Set
-  `SITE_URL` when running manually if it should point somewhere other than
-  the production domain.
+  your listing" outreach emails or importing into a CRM (e.g. GHL). It also
+  writes the same data split by category (and further chunked at 150 rows)
+  into `exports/by-category/`, which a scheduled job uploads to Google
+  Drive as separate sheets (see below). Set `SITE_URL` when running
+  manually if it should point somewhere other than the production domain.
 - **API keys:** copy [`.env.example`](./.env.example) to `.env` locally, and add
   the same names as **GitHub Actions secrets** (repo → Settings → Secrets and
   variables → Actions → New repository secret):
