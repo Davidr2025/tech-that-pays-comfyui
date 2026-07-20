@@ -1,7 +1,27 @@
 {
-  "updatedAt": "2026-07-19T23:18:36.311Z",
+  "updatedAt": "2026-07-20T02:13:37.336Z",
   "windowDays": 14,
   "items": [
+    {
+      "title": "Water & Urban Gardening: Hacks for Hydration",
+      "summary": "Explore how healthy soil and smart gardening practices can help conserve water while supporting thriving urban gardens.",
+      "venue": "Woodlands Library",
+      "url": "https://www.eventbrite.ca/e/water-urban-gardening-hacks-for-hydration-tickets-1993478462745",
+      "start": "2026-07-21T21:30:00.000Z",
+      "end": "2026-07-21T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Water & Urban Gardening: Hacks for Hydration",
+      "summary": "Explore how healthy soil and smart gardening practices can help conserve water while supporting thriving urban gardens.",
+      "venue": "Burnhamthorpe Library",
+      "url": "https://www.eventbrite.ca/e/water-urban-gardening-hacks-for-hydration-tickets-1993482636228",
+      "start": "2026-07-22T22:30:00.000Z",
+      "end": "2026-07-23T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
     {
       "title": "Bollywood Monster Mashup 2026",
       "summary": "Celebrate the energy and spectacle of Bollywood with one of the biggest South Asian festivals of the summer. From star-studded performances to non-stop music and dance, this is where entertainment takes centre stage. Experience live concerts, electrifying dance performances, and a lineup of artists bringing Bollywood hits and beyond to life. Enjoy delicious food, explore vibrant vendors, and take in a festival atmosphere packed with colour, culture, and excitement.",
@@ -41,6 +61,26 @@
       "end": "2026-07-25T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Youth Summer Series Writing Workshop: Making Your Character Shine",
+      "summary": "Join authors Sarena Nanua and Sasha Nanua for an engaging Author Talk and interactive workshop, “Making Your Character Shine.”",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/youth-summer-series-writing-workshop-making-your-character-shine-tickets-1993541753048",
+      "start": "2026-07-29T23:00:00.000Z",
+      "end": "2026-07-30T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Summer Berry Salad",
+      "summary": "Join us for an interactive, hands-on workshop that reconnects participants to the earth through the lens of Indigenous food sovereignty.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/summer-berry-salad-tickets-1993488875891",
+      "start": "2026-07-30T21:30:00.000Z",
+      "end": "2026-07-30T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
       "title": "Mosaic Festival 2026",
