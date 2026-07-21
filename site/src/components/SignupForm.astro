@@ -1,9 +1,10 @@
 ---
 import config from "../../site.config.mjs";
-const { idSuffix = "hero", formId = config.beehiivFormId } = Astro.props;
+const { idSuffix = "hero" } = Astro.props;
 // Beehiiv's "Subscribe form" widget has its own email field and submit
 // button, so we never render a form of our own — one form, not two.
 const fallbackUrl = config.newsletterUrl;
+const formId = config.beehiivFormId;
 ---
 <div class="signup-embed-only">
   <div class="signup-embed" id={`signup-embed-${idSuffix}`} data-form-id={formId}></div>
