@@ -1,12 +1,11 @@
 ---
 import config from "../../site.config.mjs";
-const { compact = false, idSuffix = "hero" } = Astro.props;
+const { compact = false, idSuffix = "hero", formId = config.beehiivFormId } = Astro.props;
 // Beehiiv's "Subscribe form" widget has its own email field and submit
 // button, so we never render a form of our own — one form, not two. In
 // compact contexts (e.g. the sticky bar) there isn't room for the widget
 // itself, so a trigger button opens it in a modal instead.
 const fallbackUrl = config.newsletterUrl;
-const formId = config.beehiivFormId;
 ---
 {compact ? (
   <>

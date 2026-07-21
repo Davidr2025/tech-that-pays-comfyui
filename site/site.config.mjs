@@ -23,6 +23,10 @@ export default {
   // available (e.g. on GitHub Pages) — no redirect, submits in place.
   beehiivFormId: "b867d630-1828-461b-a4c9-3a541cfacd53",
 
+  // Separate Beehiiv form used for the footer signup block, which is
+  // always visible (not behind a modal like the sticky bar).
+  beehiivFooterFormId: "bf5577b9-4190-4b06-a441-ebc6fb251dca",
+
   // --- Brand colors (used as CSS variables across the whole site) ---
   colors: {
     primary: "#0e4d92",      // deep lake blue
