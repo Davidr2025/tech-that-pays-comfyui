@@ -48,22 +48,13 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 .hero p.lede { font-size: clamp(1rem, 2.2vw, 1.2rem); color: #dbe6f2; max-width: 42rem; margin: .25rem 0 1.5rem; }
 
 /* ---------- Signup form ---------- */
-.signup { display: flex; gap: .5rem; flex-wrap: wrap; max-width: 34rem; }
-.signup input[type="email"] {
-  flex: 1 1 220px; padding: .8rem 1rem; border-radius: 10px; border: 1px solid transparent;
-  font-size: 1rem; outline: none;
-}
-.signup input[type="email"]:focus { border-color: var(--accent); }
-.signup button {
+.hero .fine { font-size: .8rem; color: #b7c9dc; margin-top: .5rem; }
+.signup-trigger {
   padding: .8rem 1.4rem; border: 0; border-radius: 10px; cursor: pointer;
   background: var(--accent); color: #1f1300; font-weight: 700; font-size: 1rem;
   transition: background .15s;
 }
-.signup button:hover { background: var(--accent-dark); color: #fff; }
-.signup .msg { flex-basis: 100%; font-size: .9rem; min-height: 1.3em; margin: 0; }
-.signup .msg.ok { color: #86efac; }
-.signup .msg.err { color: #fca5a5; }
-.hero .fine { font-size: .8rem; color: #b7c9dc; margin-top: .5rem; }
+.signup-trigger:hover { background: var(--accent-dark); color: #fff; }
 
 /* Inline Beehiiv embed fallback (hero/full context) and its modal variant
    (compact/sticky context) — see SignupForm.astro. Reuses the .news-modal
@@ -102,9 +93,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 .sticky-signup.visible { transform: translateY(0); }
 .sticky-signup .container { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
 .sticky-signup .pitch { font-weight: 700; font-size: .95rem; }
-.sticky-signup form { margin-left: auto; }
-.sticky-signup .signup input[type="email"] { padding: .55rem .8rem; font-size: .9rem; }
-.sticky-signup .signup button { padding: .55rem 1rem; font-size: .9rem; }
+.sticky-signup .signup-trigger { margin-left: auto; padding: .55rem 1rem; font-size: .9rem; }
 .sticky-signup .close {
   background: none; border: 0; color: #9db4cc; font-size: 1.3rem; cursor: pointer; line-height: 1;
 }

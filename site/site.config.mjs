@@ -21,7 +21,7 @@ export default {
   // code → the value of data-beehiiv-form). Powers the inline signup
   // widget used when the serverless /api/subscribe endpoint isn't
   // available (e.g. on GitHub Pages) — no redirect, submits in place.
-  beehiivFormId: "d19d7ac3-659f-4990-848d-d8db8366ac59",
+  beehiivFormId: "b867d630-1828-461b-a4c9-3a541cfacd53",
 
   // --- Brand colors (used as CSS variables across the whole site) ---
   colors: {
