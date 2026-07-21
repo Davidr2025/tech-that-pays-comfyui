@@ -1,27 +1,27 @@
 {
-  "updatedAt": "2026-07-21T15:13:04.025Z",
+  "updatedAt": "2026-07-21T17:44:40.977Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 24,
-    "feelsLike": 27,
-    "text": "Partly cloudy",
-    "icon": "⛅"
+    "temp": 23,
+    "feelsLike": 25,
+    "text": "Light drizzle",
+    "icon": "🌦️"
   },
   "days": [
     {
       "date": "2026-07-21",
-      "max": 27,
+      "max": 26,
       "min": 19,
-      "precipChance": 55,
-      "text": "Rain",
+      "precipChance": 70,
+      "text": "Heavy showers",
       "icon": "🌧️"
     },
     {
       "date": "2026-07-22",
       "max": 18,
       "min": 13,
-      "precipChance": 1,
+      "precipChance": 0,
       "text": "Overcast",
       "icon": "☁️"
     },
@@ -35,11 +35,11 @@
     },
     {
       "date": "2026-07-24",
-      "max": 28,
+      "max": 27,
       "min": 15,
       "precipChance": 0,
-      "text": "Mainly clear",
-      "icon": "🌤️"
+      "text": "Overcast",
+      "icon": "☁️"
     },
     {
       "date": "2026-07-25",
@@ -51,11 +51,11 @@
     },
     {
       "date": "2026-07-26",
-      "max": 27,
+      "max": 28,
       "min": 18,
       "precipChance": 44,
-      "text": "Light drizzle",
-      "icon": "🌦️"
+      "text": "Heavy drizzle",
+      "icon": "🌧️"
     }
   ]
 }
