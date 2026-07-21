@@ -1,34 +1,16 @@
 ---
 import config from "../../site.config.mjs";
-const { compact = false, idSuffix = "hero", formId = config.beehiivFormId } = Astro.props;
+const { idSuffix = "hero", formId = config.beehiivFormId } = Astro.props;
 // Beehiiv's "Subscribe form" widget has its own email field and submit
-// button, so we never render a form of our own — one form, not two. In
-// compact contexts (e.g. the sticky bar) there isn't room for the widget
-// itself, so a trigger button opens it in a modal instead.
+// button, so we never render a form of our own — one form, not two.
 const fallbackUrl = config.newsletterUrl;
 ---
-{compact ? (
-  <>
-    <button type="button" class="signup-trigger" data-signup-open={idSuffix}>Subscribe</button>
-    <dialog class="signup-modal" id={`signup-modal-${idSuffix}`}>
-      <button class="signup-modal-close" type="button" aria-label="Close" data-signup-modal-close>&times;</button>
-      <div class="signup-modal-body">
-        <h2>Get the newsletter</h2>
-        <div class="signup-embed" id={`signup-embed-${idSuffix}`} data-form-id={formId}></div>
-        <p class="signup-modal-fallback">
-          Having trouble? <a href={fallbackUrl} target="_blank" rel="noopener">Subscribe directly on our newsletter page →</a>
-        </p>
-      </div>
-    </dialog>
-  </>
-) : (
-  <div class="signup-embed-only">
-    <div class="signup-embed" id={`signup-embed-${idSuffix}`} data-form-id={formId}></div>
-    <p class="signup-embed-fallback">
-      Having trouble? <a href={fallbackUrl} target="_blank" rel="noopener">Subscribe directly on our newsletter page →</a>
-    </p>
-  </div>
-)}
+<div class="signup-embed-only">
+  <div class="signup-embed" id={`signup-embed-${idSuffix}`} data-form-id={formId}></div>
+  <p class="signup-embed-fallback">
+    Having trouble? <a href={fallbackUrl} target="_blank" rel="noopener">Subscribe directly on our newsletter page →</a>
+  </p>
+</div>
 
 <script>
   function mountEmbed(container: HTMLElement | null, formId: string) {
@@ -41,28 +23,7 @@ const fallbackUrl = config.newsletterUrl;
     container.appendChild(script);
   }
 
-  // Inline (non-compact) embeds mount immediately, no interaction needed.
-  document.querySelectorAll<HTMLElement>(".signup-embed-only .signup-embed[data-form-id]:not([data-mounted])").forEach((embed) => {
+  document.querySelectorAll<HTMLElement>(".signup-embed[data-form-id]:not([data-mounted])").forEach((embed) => {
     mountEmbed(embed, embed.dataset.formId!);
-  });
-
-  // Compact trigger buttons open their modal and mount the embed then.
-  document.querySelectorAll<HTMLButtonElement>("[data-signup-open]:not([data-bound])").forEach((btn) => {
-    btn.dataset.bound = "1";
-    const idSuffix = btn.dataset.signupOpen!;
-    btn.addEventListener("click", () => {
-      const modal = document.getElementById(`signup-modal-${idSuffix}`) as HTMLDialogElement | null;
-      const embed = document.getElementById(`signup-embed-${idSuffix}`);
-      if (embed) mountEmbed(embed, embed.dataset.formId!);
-      modal?.showModal();
-    });
-  });
-
-  document.querySelectorAll<HTMLDialogElement>(".signup-modal:not([data-bound])").forEach((dialog) => {
-    dialog.dataset.bound = "1";
-    dialog.querySelector("[data-signup-modal-close]")?.addEventListener("click", () => dialog.close());
-    dialog.addEventListener("click", (e) => {
-      if (e.target === dialog) dialog.close();
-    });
   });
 </script>
