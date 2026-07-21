@@ -1,13 +1,21 @@
 {
-  "updatedAt": "2026-07-21T14:45:02.093Z",
+  "updatedAt": "2026-07-21T15:13:02.682Z",
   "items": [
     {
       "title": "Thunderstorms and heavy rain expected in Mississauga today",
-      "summary": "Storm activity may develop through the morning and continue into the afternoon, with the greatest risk for impacts expected later in the day. The timing and severity of these storms remain uncertain and may change as weather conditions develop. Reminders Periods of heavier rain may lead to higher water levels across the city. For safety, residents are urged to: Stay away from rivers, creeks, stormwater ponds and Lake Ontario. Avoid low-lying areas that may flood quickly. Watch for washouts near culverts and bridges.",
+      "summary": "Storm activity may develop through the morning and continue into the afternoon, with the greatest risk for impacts expected later in the day. The Toronto and Region Conservation Authority (TRCA) has issued a Flood Outlook Statement , and Environment and Climate Change Canada (ECCC) has issued a Yellow Level Severe Thunderstorm Watch for the area. Residents should be prepared for rapidly changing weather conditions, including heavy rain, strong winds and localized flooding.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/thunderstorms-and-heavy-rain-expected-in-mississauga-today/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-21T08:41:01.000Z"
+    },
+    {
+      "title": "Philippine Park opens in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1tMEg5NEVaT0RSQmJId3dlWVBoeWxqX0hCZmVYam5BY2JkNHJoQjdGTHFFZ1dVbEtFeFd5OGNpbzE3N1dBbHIyRDNNUEZQTzBGU1lKUXdYUWRyRHl0QzJYQ1pHbWJkeE1uaml5NW5Fa05BTUQ2LXRITjNkSQ?oc=5",
+      "source": "frequencynews.ca",
+      "sourceUrl": "https://www.frequencynews.ca",
+      "publishedAt": "2026-07-21T15:05:52.000Z"
     },
     {
       "title": "Woman charged with attempted murder after stabbing of teen on Mississauga bus",
@@ -58,14 +66,6 @@
       "publishedAt": "2026-07-20T09:57:53.000Z"
     },
     {
-      "title": "Jaywalking Pedestrian Dead, Struck by Vehicle Near Mississauga Hospital",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNaHlfVk10eDlQM3ZlNGUwc3hLTExUNUkyTTBZcjZCNll0THFNd2FOTF9KeXJfMFd0eWFqWHFyZTRsLVM1Nm13VkFENUNYY0xfUVpSUEdQZEN6Ym1hRE9aLXJrUWJJQTVaOFJuM0lNQm01R01fOEZkbUJjWEwyaU5FOXNhaURTZ0U?oc=5",
-      "source": "Samfiru Tumarkin LLP",
-      "sourceUrl": "https://stlawyers.ca",
-      "publishedAt": "2026-07-20T22:09:36.000Z"
-    },
-    {
       "title": "That noise on the waterfront at night is the sound of a tunnel being dug in Mississauga",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTTdPOVpsakVTb0tZQmZESjdlUDNTTTdQWVQtV1A4cTVpa2poYUEwRklwYkpyMnFxZlhWaERxY1QycjN2SzktRk16c2V0RmhWVXJtMTJqSEpzUUJSa3JJcGZlQXJmUldhY3BqS0I0b2kwOVg2WFdsTkZZV19JTDRMMENoOU1FZ2NnSi1HandNR1dCSVJjSi1mdG1wSTloVkRoUExJQXFtcjhsNS0yMTJWTnVn?oc=5",
@@ -82,20 +82,20 @@
       "publishedAt": "2026-07-20T19:11:52.000Z"
     },
     {
+      "title": "Woman, 20, dead after being struck by vehicle while crossing road near Mississauga hospital, say Peel police",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPTUlYMVA3TEVkaXNHWE5tdl9hREdEZW9qWDh4cW9QLVlNemlBa3IzcGp2Wno4UGpaSWIzdWVzQ3dVVFNfOTVYSDhPYXJPU3dZNVdNN1RRMlQwcXdBREE4Z3pLSHpKVnp1WWlCbHNPTmxZekQtWDREalQ0dDZMbU90TzNGLUstSnB3MmdOckcyUHpySDVsSTNHN3lQb3R2aHN0U0JpOW9YVnFpZ1k2NWVnNWdnbW9WWWlkZ3Rjdk1XelR1WDhXOFRvTUNaUGpqTm5aRjZWQ19qNA?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-20T12:27:00.000Z"
+    },
+    {
       "title": "Peel highway closures for planned roadwork on July 19",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOR2I0WWRoRjhLWS1EeVZLbE9EQ1d0VHVaLUJEQnp4VmRXVFNfbEozcjI5bUtOS3JXRFltNUNDRWhKRDdUbXU1YzRVTGszaEowNjUwaDNNVmJ0bEdoT3FzOGs4bzFnTWdxY054MTJmM25WVUxlUElpNHJrTnM2ZnBKTnJPM1Uxd1NNcWdDS04wdjhXcmloTDdoNTBqeUtZTFg5c0Q4SXpHeUpQM2xiMU9HWVVCSGpmcnN3NzVPeUtkSXFYNDdEa3Jxclg4MU9ab2o1Snc?oc=5",
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-07-19T10:01:37.000Z"
-    },
-    {
-      "title": "City outdoor pools and recreation programs resume normal operations as air quality continues to improve",
-      "summary": "Due to wildfires in other parts of Ontario, Mississauga experienced poor air quality and a Very High (10+) Air Quality Health Index (AQHI) last week. As a result, to support public health and safety, outdoor pools, and Mississauga Celebration Square wading pool were closed and some recreation programs were adjusted. Based on reports from Environment and Climate Change Canada (ECCC), air quality is expected to continue improving through the day.",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/city-outdoor-pools-and-recreation-programs-resume-normal-operations-as-air-quality-continues-to-improve/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-18T08:23:19.000Z"
     }
   ]
 }
