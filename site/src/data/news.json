@@ -1,21 +1,13 @@
 {
-  "updatedAt": "2026-07-21T11:59:18.702Z",
+  "updatedAt": "2026-07-21T13:27:45.322Z",
   "items": [
     {
-      "title": "UPDATED: Woman, 18, charged with attempted murder after Peel police say teen boy stabbed aboard Mississauga transit bus early Tuesday morning",
-      "summary": "m. on July 21, say police.",
-      "url": "https://www.mississauga.com/news/crime/man-badly-hurt-woman-arrested-after-stabbing-attack-tuesday/article_d9aecbb9-da02-569d-9e29-177e9e992c92.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
-      "publishedAt": "2026-07-21T10:56:00.000Z"
-    },
-    {
-      "title": "Peel highway closures for planned roadwork on July 21",
-      "summary": "Highway 10, Highway 401, Highway 403, Highway 410, Highway 9 and Queen Elizabeth Way are affected",
-      "url": "https://www.mississauga.com/news/peel-highway-closures-for-planned-roadwork-on-july-21/article_19022d8d-75d5-507a-8b68-2c1f14d60b83.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
-      "publishedAt": "2026-07-21T10:01:29.000Z"
+      "title": "Thunderstorms and heavy rain expected in Mississauga today",
+      "summary": "Storm activity may develop through the morning and continue into the afternoon, with the greatest risk for impacts expected later in the day. The timing and severity of these storms remain uncertain and may change as weather conditions develop. Reminders Periods of heavier rain may lead to higher water levels across the city. For safety, residents are urged to: Stay away from rivers, creeks, stormwater ponds and Lake Ontario. Avoid low-lying areas that may flood quickly. Watch for washouts near culverts and bridges.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/thunderstorms-and-heavy-rain-expected-in-mississauga-today/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-21T08:41:01.000Z"
     },
     {
       "title": "Stabbing on bus in Mississauga leaves teen with life-threatening injuries",
@@ -90,12 +82,20 @@
       "publishedAt": "2026-07-20T17:10:12.000Z"
     },
     {
-      "title": "Karate brown belt from Mississauga is heading to Ontario Summer Games",
+      "title": "City outdoor pools and recreation programs resume normal operations as air quality continues to improve",
+      "summary": "Due to wildfires in other parts of Ontario, Mississauga experienced poor air quality and a Very High (10+) Air Quality Health Index (AQHI) last week. As a result, to support public health and safety, outdoor pools, and Mississauga Celebration Square wading pool were closed and some recreation programs were adjusted. Based on reports from Environment and Climate Change Canada (ECCC), air quality is expected to continue improving through the day.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/city-outdoor-pools-and-recreation-programs-resume-normal-operations-as-air-quality-continues-to-improve/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-18T08:23:19.000Z"
+    },
+    {
+      "title": "Highway 401 crash leaves two dead, three injured in Mississauga, Ont.",
       "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQTFVtenBCVExLVkdjZjQwNEdZMFFWRmUtcE5NcGEzc3o0Y3hEeUU2bGpLSEIydHljRTNyZTZrNmw4ZVVYVVdkeXRmbUpsX3lfcV8wUzNRR2hwS19ybFNxcDZ1Ym9UbW9KbXFjdGJETno4UG9naTRGVktEYkFaanVFSkJFVVF5UmgyUERvczMxYklhdEp0TG4zNUpxalJoR2JDdU8tUDk1T2c2STg0OHc?oc=5",
-      "source": "CityNews Toronto",
-      "sourceUrl": "https://toronto.citynews.ca",
-      "publishedAt": "2026-07-20T13:31:00.000Z"
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcEZBeURxNHhZWUN2QXRqTkdNM1I1VVhXcVFjLThtOUtJWkJ5bGwtUE5EYnhhemVydWhWeDNSTkczSUxhRDk0bGFKb3hoR2NkYXc4ekhEQ2JOQldlN2ZJWU9vcVotV0xaN3RQN0FnRlVJM3l0a2o3cHg2TDhwWVZTQnY5RUpzSkIzNHREZjhmc1lrWkFZaWllbEZCOG44Q3ZCTTBvWXp5NV9CLWhkLVkySi1pZ09CUlJPUEhTOEZCY3NFa1p1cl9zZzFkMU5BcWp6VndIaHlxTXh4dk5UeEp2WFRLTXNuZnhN?oc=5",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-07-15T20:46:55.000Z"
     }
   ]
 }
