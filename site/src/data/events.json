@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T06:42:16.928Z",
+  "updatedAt": "2026-07-22T12:03:28.399Z",
   "windowDays": 14,
   "items": [
     {
@@ -79,6 +79,16 @@
       "url": "https://www.visitmississauga.ca/event/mosaic-festival-2026/",
       "start": "2026-07-31T17:00:00.000Z",
       "end": "2026-08-01T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Central Lions Farmers Market – Wednesdays",
+      "summary": "Stop by the Central Lions Farmers Market this summer in Mississauga and experience a lively local shopping destination! m. m. m. m. m.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-3/",
+      "start": "2026-08-05T08:00:00.000Z",
+      "end": "2026-08-05T15:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }

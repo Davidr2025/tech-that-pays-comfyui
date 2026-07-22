@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-07-22T06:42:16.060Z",
+  "updatedAt": "2026-07-22T12:03:27.413Z",
   "items": [
+    {
+      "title": "Peel highway closures for planned roadwork on July 22",
+      "summary": "Highway 10, Highway 401, Highway 403, Highway 410, Highway 9 and Queen Elizabeth Way are affected",
+      "url": "https://www.mississauga.com/news/peel-highway-closures-for-planned-roadwork-on-july-22/article_b0f22349-bb76-53e8-9e68-36cf5b31aaa5.html",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com/",
+      "publishedAt": "2026-07-22T10:01:28.000Z"
+    },
     {
       "title": "Mississauga: Gateway to the best of Ontario, By Ehi Braimah",
       "summary": "",
@@ -66,14 +74,6 @@
       "publishedAt": "2026-07-21T19:44:19.000Z"
     },
     {
-      "title": "One of Mississauga’s longest-running art festivals slated to return in September",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYm1OeFJYUW9qZkJ5cTRUdWZKQkpWYXZybDZxTTdSSGY0QjltajFqTEpFXzIwLTg0QlpzbWZDSXhNTkh4R0gxcHVvczE5UUtXTVpOTUw3b1ZYazY4cWxTLUFKM3VSdXZkOTgwM1NsY3oydklfZGY5QXlCbkFPRm51NHNPWC1tSDQtSGVuQ3BhcjREZVNUdElER05jNjZrVEVLYWtFYjZpenpQSGl5VWJ2b0JLVVVacTA?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-21T16:00:00.000Z"
-    },
-    {
       "title": "Did a tornado actually hit part of the Greater Toronto Area?",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPemlpNGpzaXY3T1phemdXWGxjWFBtLVZCM3phdGtVZHpCNHhmOXJpZHo2VzNQTk56OVkwUllPNXpVS1o1RGFzT2Q2ejVEMHJlTzlJZWZSNjVxS1NjVG1LWEpQOWdmRWFtNndaTFNOME9ycUJzVkdySmdDWTRhYWRCa1dSUi1vekE2bnRKeA?oc=5",
@@ -90,12 +90,12 @@
       "publishedAt": "2026-07-20T09:57:53.000Z"
     },
     {
-      "title": "Woman, 20, dead after being struck by vehicle while crossing road near Mississauga hospital, say Peel police",
+      "title": "Woman dies after being struck by vehicle near Mississauga Hospital",
       "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPTUlYMVA3TEVkaXNHWE5tdl9hREdEZW9qWDh4cW9QLVlNemlBa3IzcGp2Wno4UGpaSWIzdWVzQ3dVVFNfOTVYSDhPYXJPU3dZNVdNN1RRMlQwcXdBREE4Z3pLSHpKVnp1WWlCbHNPTmxZekQtWDREalQ0dDZMbU90TzNGLUstSnB3MmdOckcyUHpySDVsSTNHN3lQb3R2aHN0U0JpOW9YVnFpZ1k2NWVnNWdnbW9WWWlkZ3Rjdk1XelR1WDhXOFRvTUNaUGpqTm5aRjZWQ19qNA?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-20T12:27:00.000Z"
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxORk9RUnBSNHBQSFk2eHpub2JHLUZXZUlRS2lGNW4xeXBzZWFkTGpnTW9lSWxrdjVNQTVfWXAtMnVmbTFUNm5mU2g3MTczckFNVzB6VndtcGY1TzJZRkQtczFVMy1CYUVOQjJfTlVJWmhELUV6N3dlVDRmZDlTQ21Eb2laTFN5bWFWSlJkd2VMM2RyTzhUSlRERlBFZ1JuNEhoTk90ZlhONjhtaU1mNTh3Y1BNMzZBWWpiU3ZuVnA0dWtyYlBGbm1YaUhkNVFxSUhnemxFR1NGTFFLQ3BEVW5NUVpySQ?oc=5",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-07-19T17:00:00.000Z"
     }
   ]
 }
