@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-07-22T01:19:57.015Z",
+  "updatedAt": "2026-07-22T02:43:04.381Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 20,
-    "feelsLike": 21,
-    "text": "Partly cloudy",
-    "icon": "⛅"
+    "temp": 19,
+    "feelsLike": 19,
+    "text": "Mainly clear",
+    "icon": "🌤️"
   },
   "days": [
     {
@@ -27,7 +27,7 @@
     },
     {
       "date": "2026-07-23",
-      "max": 26,
+      "max": 23,
       "min": 12,
       "precipChance": 0,
       "text": "Clear",
