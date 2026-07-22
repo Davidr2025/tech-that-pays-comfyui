@@ -103,6 +103,20 @@ export default {
         ]
       },
       {
+        // Canada's national wire service, published directly (not just
+        // picked up secondhand via outlets like CBC that republish CP
+        // wire stories under their own byline) — same search-RSS pattern
+        // as mississauga.com/thestar.com above, just swapping f=html
+        // (the browsable search page) for f=rss.
+        name: "The Canadian Press",
+        homepage: "https://www.thecanadianpressnews.ca/search/?q=Mississauga",
+        filter: true,
+        candidates: [
+          "https://www.thecanadianpressnews.ca/search/?l=25&sd=desc&s=start_time&f=rss&t=article%2Cvideo%2Cyoutube%2Ccollection&q=Mississauga",
+          "https://news.google.com/rss/search?q=site:thecanadianpressnews.ca%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
+        ]
+      },
+      {
         name: "Google News",
         homepage: "https://news.google.com/search?q=mississauga%20ontario&hl=en-CA&gl=CA&ceid=CA:en",
         filter: true,
