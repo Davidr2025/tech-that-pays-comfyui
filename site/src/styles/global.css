@@ -271,6 +271,17 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   .biz-detail-hero { max-width: 100%; }
 }
 
+/* Spotlight video embeds (VIP tier) */
+.spotlight-videos { margin: 1.75rem 0 2.25rem; }
+.spotlight-videos h2 { font-size: 1.25rem; margin-bottom: .9rem; }
+.spotlight-video-grid { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: flex-start; }
+.video-embed-youtube {
+  position: relative; width: 100%; max-width: 480px; aspect-ratio: 16 / 9;
+  border-radius: 12px; overflow: hidden; background: #000;
+}
+.video-embed-youtube iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.instagram-media { max-width: 340px !important; min-width: 280px !important; margin: 0 !important; }
+
 /* Guides */
 .guide-detail h1 { font-size: 1.9rem; margin: .5rem 0 .2rem; }
 .guide-meta { color: var(--muted); font-size: .85rem; margin-bottom: 1.6rem; }
@@ -301,6 +312,9 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   .sticky-signup .pitch { display: none; }
   .featured .photo { width: 100%; height: 160px; }
 }
+
+/* ---------- Contact page ---------- */
+.contact-form-embed { width: 100%; height: 780px; margin-top: 1.5rem; }
 
 /* ---------- Homepage layout (main column + ad sidebar) ---------- */
 .home-layout {

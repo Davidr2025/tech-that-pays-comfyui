@@ -22,6 +22,7 @@ const spotlights = (await getCollection("spotlights")).sort(
       <div class="grid">
         {spotlights.map((s) => (
           <article class="card">
+            {s.data.tier === "vip" && <span class="tag">🎥 VIP Partner</span>}
             {s.data.tier === "paid" && <span class="tag">Featured Partner</span>}
             <h3><a href={`${base}spotlight/${s.id}/`}>{s.data.businessName}</a></h3>
             <p style="color:var(--muted);font-size:.85rem;margin:.1rem 0 .4rem">{s.data.category}</p>

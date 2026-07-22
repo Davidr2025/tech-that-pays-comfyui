@@ -1,1 +1,10 @@
-[]
+[
+  { "id": "ChIJZ7O5MGVHK4gR5ca4q_u4joE", "note": "Live example for /advertise/ (Restaurants)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJk8etdoVBK4gRdQv6qYLgOMA", "note": "Live example for /advertise/ (Cafés & Bakeries)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJA_IYFgBDK4gRd6NVhNpcuaM", "note": "Live example for /advertise/ (Trades & Home Services)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJt2zSsOA0K4gRBaCjEv6H9Ag", "note": "Live example for /advertise/ (Real Estate)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJf0vTc3JHK4gRByuF7SdvG00", "note": "Live example for /advertise/ (Health & Wellness)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJTV3hiJY5K4gRhZtw-Sm6gyw", "note": "Live example for /advertise/ (Fitness & Sports)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJ2_v17lNDK4gRnhYeodcsD6w", "note": "Live example for /advertise/ (Auto Services)", "featuredAt": "2026-07-22" },
+  { "id": "ChIJM5VTKCJBK4gRW1L6ukCk8Wc", "note": "Live example for /advertise/ (Beauty & Barber)", "featuredAt": "2026-07-22" }
+]
