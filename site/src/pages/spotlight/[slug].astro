@@ -34,6 +34,19 @@ function youtubeId(url: string) {
     return null;
   }
 }
+// Instagram's oEmbed lookup expects the canonical /reel/ (singular) or /p/
+// permalink form — normalize the "/reels/" (plural, browse-tab) URL shape
+// some share sheets produce, or the widget silently falls back to a bare
+// "View this post" link instead of the actual embedded post.
+function instagramPermalink(url: string) {
+  try {
+    const u = new URL(url);
+    u.pathname = u.pathname.replace(/^\/reels\//, "/reel/");
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
 ---
 <Base title={`${s.data.businessName} · Business Spotlight`} description={s.data.description} current="spotlight">
   <section class="section container guide-detail">
@@ -75,8 +88,13 @@ function youtubeId(url: string) {
                 ></iframe>
               </div>
             ) : (
-              <blockquote class="instagram-media" data-instgrm-permalink={v.url} data-instgrm-version="14">
-                <a href={v.url} target="_blank" rel="noopener">View this post on Instagram</a>
+              <blockquote
+                class="instagram-media"
+                data-instgrm-permalink={instagramPermalink(v.url)}
+                data-instgrm-captioned
+                data-instgrm-version="14"
+              >
+                <a href={instagramPermalink(v.url)} target="_blank" rel="noopener">View this post on Instagram</a>
               </blockquote>
             )
           ))}
