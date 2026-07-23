@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-23T12:02:31.699Z",
+  "updatedAt": "2026-07-23T12:45:05.653Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 14,
-    "feelsLike": 13,
+    "temp": 17,
+    "feelsLike": 16,
     "text": "Clear",
     "icon": "☀️"
   },
