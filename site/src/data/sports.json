@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-07-23T22:20:38.394Z",
+  "updatedAt": "2026-07-23T23:11:14.728Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Tampa Bay Rays",
-      "date": "2026-07-23",
-      "time": "19:07:00",
-      "venue": "Rogers Centre"
+      "event": "Boston Red Sox vs Toronto Blue Jays",
+      "date": "2026-07-24",
+      "time": "23:15:00",
+      "venue": "Fenway Park"
     },
     {
       "team": "Toronto FC",
