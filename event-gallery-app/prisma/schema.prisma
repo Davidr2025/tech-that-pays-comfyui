@@ -1,0 +1,188 @@
+// Event Gallery — multi-tenant event photo/video sharing platform
+// Org -> SubAccount (a business/client) -> Event -> MediaAsset
+// Membership gives a user a role scoped to an org (all sub-accounts) or a single sub-account.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  STAFF
+}
+
+enum SocialProvider {
+  BLOTATO
+  GHL
+}
+
+enum PostStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHING
+  PUBLISHED
+  FAILED
+}
+
+enum MediaStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+enum EventTheme {
+  CLASSIC
+  MODERN
+  PLAYFUL
+  ELEGANT
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  subAccounts SubAccount[]
+  memberships Membership[]
+}
+
+model SubAccount {
+  id             String   @id @default(cuid())
+  organizationId String
+  name           String
+  slug           String
+  brandColor     String?  // hex, applied to event page themes
+  logoStorageKey String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization       Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  events              Event[]
+  socialConnections   SocialConnection[]
+  memberships         Membership[]
+
+  @@unique([organizationId, slug])
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+
+  memberships Membership[]
+}
+
+// Scoped to either the whole org (subAccountId null = access to all sub-accounts)
+// or a single sub-account.
+model Membership {
+  id             String   @id @default(cuid())
+  userId         String
+  role           Role
+  organizationId String
+  subAccountId   String?
+  createdAt      DateTime @default(now())
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  subAccount   SubAccount?  @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId, subAccountId])
+}
+
+model Event {
+  id               String     @id @default(cuid())
+  subAccountId     String
+  name             String
+  slug             String     @unique // used in the public /e/[slug] URL
+  eventDate        DateTime
+  location         String?
+  description      String?
+  theme            EventTheme @default(CLASSIC)
+  permanentStorage Boolean    @default(false)
+  expiresAt        DateTime?  // null when permanentStorage is true
+  qrCodeStorageKey String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  subAccount     SubAccount      @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
+  media          MediaAsset[]
+  scheduledPosts ScheduledPost[]
+
+  @@index([subAccountId])
+  @@index([expiresAt])
+}
+
+model MediaAsset {
+  id               String      @id @default(cuid())
+  eventId          String
+  type             MediaType
+  status           MediaStatus @default(APPROVED)
+  storageKey       String
+  thumbnailKey     String?
+  uploaderName     String?
+  widthPx          Int?
+  heightPx         Int?
+  durationSeconds  Int?
+  // False until the client confirms the presigned PUT finished — keeps
+  // in-flight/broken uploads out of the public gallery and slideshow.
+  uploadConfirmed  Boolean     @default(false)
+  createdAt        DateTime    @default(now())
+
+  event          Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  scheduledPosts ScheduledPost[] @relation("PostMedia")
+
+  @@index([eventId, status, createdAt])
+}
+
+model SocialConnection {
+  id               String         @id @default(cuid())
+  subAccountId     String
+  provider         SocialProvider
+  label            String // e.g. "Main Instagram via Blotato"
+  // Provider credentials (Blotato API key, or GHL location/API token). Encrypt at rest in production.
+  credentialsJson  String
+  externalAccountId String?       // provider-side account/location id, if applicable
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  subAccount     SubAccount      @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
+  scheduledPosts ScheduledPost[]
+
+  @@index([subAccountId])
+}
+
+model ScheduledPost {
+  id                 String         @id @default(cuid())
+  eventId            String
+  socialConnectionId String
+  provider           SocialProvider
+  caption            String?
+  targetPlatforms    String[] // e.g. ["instagram", "tiktok"]
+  scheduledFor       DateTime? // null = publish immediately
+  status             PostStatus     @default(DRAFT)
+  providerPostId     String?
+  error              String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  event            Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  socialConnection SocialConnection @relation(fields: [socialConnectionId], references: [id], onDelete: Cascade)
+  media            MediaAsset[]     @relation("PostMedia")
+
+  @@index([status, scheduledFor])
+}
