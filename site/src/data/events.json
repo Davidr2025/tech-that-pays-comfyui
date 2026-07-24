@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T11:55:36.036Z",
+  "updatedAt": "2026-07-24T17:51:03.879Z",
   "windowDays": 14,
   "items": [
     {
@@ -79,6 +79,16 @@
       "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-3/",
       "start": "2026-08-05T08:00:00.000Z",
       "end": "2026-08-05T15:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "First Friday Market",
+      "summary": "Spend a summer evening in the heart of Streetsville at First Fridays in The ’Ville. Taking place on the first Friday of June, July, and August, the Streetsville Village Square transforms into a lively open-air market featuring local vendors, great food, and live music. Visitors can explore a curated mix of handcrafted goods, small-batch food offerings, and more than 25 vendors to browse, sample, and shop. The atmosphere is brought to life with performances from local artists as part of the City of Mississauga’s Summer Music Concert Series.",
+      "venue": "streetsville village square",
+      "url": "https://www.visitmississauga.ca/event/first-friday-market-3/",
+      "start": "2026-08-07T17:00:00.000Z",
+      "end": "2026-08-07T21:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
