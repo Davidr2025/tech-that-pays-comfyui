@@ -5,9 +5,10 @@ import { executeScheduledPost } from "@/lib/social-publish";
 
 /**
  * Fires any ScheduledPost whose scheduledFor time has passed. Run on a
- * frequent schedule (e.g. every 5-15 minutes via Vercel Cron).
+ * frequent schedule (e.g. every 5-15 minutes via Vercel Cron). GET, not
+ * POST — Vercel Cron always invokes scheduled endpoints with GET.
  */
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   if (!isAuthorizedCronRequest(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

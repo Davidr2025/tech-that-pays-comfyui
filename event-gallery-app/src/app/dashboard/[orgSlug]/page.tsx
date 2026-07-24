@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { getOrganizationRole } from "@/lib/authz";
 import { db } from "@/lib/db";
+import { PLAN_LIMITS } from "@/lib/plan";
 
 export default async function OrganizationPage({ params }: { params: { orgSlug: string } }) {
   const user = await getCurrentUser();
@@ -21,15 +22,23 @@ export default async function OrganizationPage({ params }: { params: { orgSlug: 
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <p className="text-sm opacity-60">Organization</p>
+          <p className="text-sm opacity-60">Organization · {PLAN_LIMITS[org.planTier].label} plan</p>
           <h1 className="text-2xl font-bold">{org.name}</h1>
         </div>
-        <Link
-          href={`/dashboard/${org.slug}/sub-accounts/new`}
-          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
-        >
-          + Add business
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href={`/dashboard/${org.slug}/billing`}
+            className="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-semibold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900"
+          >
+            Billing
+          </Link>
+          <Link
+            href={`/dashboard/${org.slug}/sub-accounts/new`}
+            className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+          >
+            + Add business
+          </Link>
+        </div>
       </div>
 
       {org.subAccounts.length === 0 ? (

@@ -6,11 +6,13 @@ import { requireUser } from "@/lib/auth";
 import { requireSubAccountRole } from "@/lib/authz";
 import { slugify, computeExpiresAt } from "@/lib/events";
 import { generateAndStoreEventQrCode } from "@/lib/qrcode";
+import { limitsForOrg } from "@/lib/plan";
 import type { EventTheme } from "@prisma/client";
 
 async function findSubAccount(orgSlug: string, subSlug: string) {
   const subAccount = await db.subAccount.findFirst({
     where: { slug: subSlug, organization: { slug: orgSlug } },
+    include: { organization: true },
   });
   if (!subAccount) redirect("/dashboard");
   return subAccount;
@@ -29,11 +31,17 @@ export async function createEventAction(formData: FormData) {
   const location = String(formData.get("location") ?? "").trim() || null;
   const description = String(formData.get("description") ?? "").trim() || null;
   const theme = (String(formData.get("theme") ?? "CLASSIC") as EventTheme) ?? "CLASSIC";
-  const permanentStorage = formData.get("permanentStorage") === "on";
+  const permanentStorageRequested = formData.get("permanentStorage") === "on";
 
   if (!name || !eventDateRaw) {
     redirect(`/dashboard/${orgSlug}/${subSlug}/events/new?error=Name+and+date+are+required`);
   }
+  if (permanentStorageRequested && !limitsForOrg(subAccount.organization).permanentStorageAllowed) {
+    redirect(
+      `/dashboard/${orgSlug}/${subSlug}/events/new?error=Permanent+storage+needs+the+Pro+plan+or+higher+%E2%80%94+see+Billing`,
+    );
+  }
+  const permanentStorage = permanentStorageRequested;
 
   const eventDate = new Date(eventDateRaw);
   const baseSlug = slugify(`${subAccount.slug}-${name}`) || "event";

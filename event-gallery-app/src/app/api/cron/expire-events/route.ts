@@ -6,9 +6,10 @@ import { isAuthorizedCronRequest } from "@/lib/cron-auth";
 /**
  * Deletes media (and its storage objects) for events past their retention
  * window. Run on a daily schedule (e.g. Vercel Cron) with an Authorization:
- * Bearer <CRON_SECRET> header.
+ * Bearer <CRON_SECRET> header. GET, not POST — Vercel Cron always invokes
+ * scheduled endpoints with GET.
  */
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   if (!isAuthorizedCronRequest(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }

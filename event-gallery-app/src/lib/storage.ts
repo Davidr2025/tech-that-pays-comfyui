@@ -1,10 +1,12 @@
 import { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-// S3-compatible client — works with Cloudflare R2, AWS S3, or any compatible provider.
+// S3-compatible client — works with Cloudflare R2, AWS S3, MinIO (local dev), or any compatible provider.
 export const s3 = new S3Client({
   region: process.env.STORAGE_REGION ?? "auto",
   endpoint: process.env.STORAGE_ENDPOINT,
+  // Required for MinIO/local dev; R2 and AWS ignore this or don't need it.
+  forcePathStyle: process.env.STORAGE_FORCE_PATH_STYLE === "true",
   credentials: {
     accessKeyId: process.env.STORAGE_ACCESS_KEY_ID ?? "",
     secretAccessKey: process.env.STORAGE_SECRET_ACCESS_KEY ?? "",

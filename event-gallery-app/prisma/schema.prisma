@@ -48,12 +48,25 @@ enum EventTheme {
   ELEGANT
 }
 
+enum PlanTier {
+  FREE
+  PRO
+  AGENCY
+}
+
 model Organization {
   id          String   @id @default(cuid())
   name        String
   slug        String   @unique
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  planTier                PlanTier  @default(FREE)
+  stripeCustomerId        String?   @unique
+  stripeSubscriptionId    String?   @unique
+  stripePriceId           String?
+  stripeCurrentPeriodEnd  DateTime?
+  stripeCancelAtPeriodEnd Boolean   @default(false)
 
   subAccounts SubAccount[]
   memberships Membership[]
@@ -66,13 +79,16 @@ model SubAccount {
   slug           String
   brandColor     String?  // hex, applied to event page themes
   logoStorageKey String?
+  // White-label (AGENCY plan): guests hit this domain instead of the default host.
+  customDomain   String?  @unique
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
-  organization       Organization       @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  events              Event[]
-  socialConnections   SocialConnection[]
-  memberships         Membership[]
+  organization         Organization              @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  events               Event[]
+  socialConnections    SocialConnection[]
+  memberships          Membership[]
+  externalStorageConnections ExternalStorageConnection[]
 
   @@unique([organizationId, slug])
 }
@@ -141,6 +157,9 @@ model MediaAsset {
   // False until the client confirms the presigned PUT finished — keeps
   // in-flight/broken uploads out of the public gallery and slideshow.
   uploadConfirmed  Boolean     @default(false)
+  // True once this file has been exported to the sub-account's connected
+  // external storage (e.g. Google Drive), so the sync job doesn't re-upload it.
+  syncedExternally Boolean     @default(false)
   createdAt        DateTime    @default(now())
 
   event          Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
@@ -185,4 +204,25 @@ model ScheduledPost {
   media            MediaAsset[]     @relation("PostMedia")
 
   @@index([status, scheduledFor])
+}
+
+enum ExternalStorageProvider {
+  GOOGLE_DRIVE
+}
+
+// One per sub-account per provider — auto-exports approved event media there.
+model ExternalStorageConnection {
+  id               String                  @id @default(cuid())
+  subAccountId     String
+  provider         ExternalStorageProvider
+  connectedEmail   String?
+  // OAuth refresh token (encrypt at rest in production, same as SocialConnection.credentialsJson).
+  refreshToken     String
+  rootFolderId     String? // top-level Drive folder this sub-account's events sync into
+  createdAt        DateTime                @default(now())
+  updatedAt        DateTime                @updatedAt
+
+  subAccount SubAccount @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
+
+  @@unique([subAccountId, provider])
 }
