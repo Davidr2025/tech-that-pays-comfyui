@@ -271,6 +271,17 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
   .biz-detail-hero { max-width: 100%; }
 }
 
+/* Spotlight referral banner */
+.referral-banner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 16%, white), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, white);
+  border-radius: 14px; padding: 1.1rem 1.4rem; margin-bottom: 1.75rem;
+}
+.referral-banner-text { display: flex; flex-direction: column; gap: .2rem; }
+.referral-banner-text strong { font-size: 1.05rem; }
+.referral-banner-text span { color: var(--muted); font-size: .92rem; }
+
 /* Spotlight video embeds (VIP tier) */
 .spotlight-videos { margin: 1.75rem 0 2.25rem; }
 .spotlight-videos h2 { font-size: 1.25rem; margin-bottom: .9rem; }
