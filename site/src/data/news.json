@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-07-26T18:30:25.421Z",
+  "updatedAt": "2026-07-26T23:11:13.304Z",
   "items": [
+    {
+      "title": "Body found near train tracks in Brampton being investigated as suspicious death: police",
+      "summary": "Peel police say they are investigating a suspicious death after a body was found near train tracks in Brampton, Ont.",
+      "url": "https://www.cbc.ca/news/canada/toronto/body-found-near-train-tracks-brampton-police-9.7285099?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-07-26T19:07:58.000Z"
+    },
     {
       "title": "Blaze damages 5 homes, displaces residents in Mississauga",
       "summary": "Firefighters extinguished a house fire that spread to \"several\" nearby resident units in Mississauga on Saturday evening, Peel Regional Police said.",
@@ -88,14 +96,6 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-23T08:15:03.000Z"
-    },
-    {
-      "title": "‘Quite the surprise’: Python pulled from car engine in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTUNUTUdNTENMR1k2Tm9FWWZSYXUwRm93SGQwV2cyb2VaQUprYU9ySEhEeDJ2NEVtOWlqcnQ4NHFnWVdLTTJuMERCUnYyTnpDM2xtckJ1ZWpsT21BWEZVa2xDUU56dEYybXh6TDVHNUFyYXk2SUptbW5lbFZlRWlIaWI0ZklMczRobGlKWjV4WEhleWRRYmcxV0FFbjQ3aHoxdW1LSmtUNGE2dW9aQ2lqU2F5V0NTOVRIbzI0c0dXN0IwRkNkNUU4V08wNTJVNk80dHJDZ1B2dzM0LUk?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-23T12:43:00.000Z"
     }
   ]
 }
