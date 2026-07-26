@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-25T23:11:46.163Z",
+  "updatedAt": "2026-07-26T06:48:30.624Z",
   "windowDays": 14,
   "items": [
     {
@@ -39,6 +39,36 @@
       "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-3/",
       "start": "2026-08-05T08:00:00.000Z",
       "end": "2026-08-05T15:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Port Credit Ribfest X 2026",
+      "summary": "Port Credit Ribfest X 2026 is presented by Gelateria Italiana and held at Port Credit Memorial Park. Produced by Ontario Festival Group, the event features North America’s top rib teams serving award-winning BBQ favourites, including smoked ribs, pulled pork, brisket, BBQ chicken, smoked sausage, and massive beef “Dino” ribs.",
+      "venue": "Port Credit Memorial Park",
+      "url": "https://www.visitmississauga.ca/event/port-credit-ribfest-x-2026/",
+      "start": "2026-08-07T12:00:00.000Z",
+      "end": "2026-08-09T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Jurassic Quest",
+      "summary": "Embark on an unforgettable prehistoric adventure at , where North America’s largest moving, roaring, and life-like dinosaurs come to life in a fully immersive walk-through experience for the whole family. Featuring towering animatronic dinosaurs, interactive exhibits, and hands-on activities, Jurassic Quest invites guests to step back in time and explore the wonders of the Jurassic era like never before.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/jurassic-quest-2/",
+      "start": "2026-08-07T13:00:00.000Z",
+      "end": "2026-08-09T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga Latin Festival",
+      "summary": "Celebrate the vibrant cultures of Latin America with a festival full of music, movement, and flavour. From the rhythms of salsa and reggaeton to colourful performances and lively entertainment, this is where the community comes together to dance, connect, and celebrate. Enjoy live music, cultural showcases, and dynamic dance performances that bring the spirit of Latin culture to life. Indulge in authentic cuisine, explore local vendors, and soak in an atmosphere that’s as warm as it is electric.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/mississauga-latin-festival/",
+      "start": "2026-08-07T17:00:00.000Z",
+      "end": "2026-08-09T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
