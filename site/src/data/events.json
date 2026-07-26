@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-26T06:48:30.624Z",
+  "updatedAt": "2026-07-26T11:36:31.913Z",
   "windowDays": 14,
   "items": [
     {
@@ -79,6 +79,16 @@
       "url": "https://www.visitmississauga.ca/event/first-friday-market-3/",
       "start": "2026-08-07T17:00:00.000Z",
       "end": "2026-08-07T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Rad Ride & Shine 2026",
+      "summary": "Rad Ride & Shine 2026 is hitting Mississauga! They're bringing a first-of-its-kind, three-part BMX festival to the city, celebrating riding culture, community, and the perfect balance in everyday life. What to expect: The Ride Out: A massive, permit-secured group ride through the heart of Mississauga. Own the streets with them! The Comps: High-flying Freestyle, Flatland, and Ramp action from local riders and seasoned pros. Also, they are hosting a Freestyle Flatland Trick workshop for juniors, led by seasoned pros!",
+      "venue": "Huron Park",
+      "url": "https://www.visitmississauga.ca/event/rad-ride-shine-2026/",
+      "start": "2026-08-09T10:30:00.000Z",
+      "end": "2026-08-09T18:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
