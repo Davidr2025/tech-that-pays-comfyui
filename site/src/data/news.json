@@ -1,13 +1,21 @@
 {
-  "updatedAt": "2026-07-26T11:36:30.868Z",
+  "updatedAt": "2026-07-26T17:14:56.391Z",
   "items": [
     {
-      "title": "Mississauga house fire extinguished after several homes evacuated: police",
-      "summary": "In a post on social media platform X, Peel Region police said surrounding homes were evacuated as a precaution while emergency crews were working at the scene.",
+      "title": "Blaze damages 5 homes, displaces residents in Mississauga",
+      "summary": "Firefighters extinguished a house fire that spread to \"several\" nearby resident units in Mississauga on Saturday evening, Peel Regional Police said.",
       "url": "https://www.cbc.ca/news/canada/toronto/mississauga-house-fire-erin-mills-9.7284731?cmp=rss",
       "source": "CBC Toronto",
       "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
       "publishedAt": "2026-07-26T02:03:22.000Z"
+    },
+    {
+      "title": "Peel highway closures for planned roadwork on July 26",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOZWdoYzhmYk1QZjYyX29VQlZicGtVMHkyc1U1dG1rcUpKVlFkSXFrcDdRLUE1VV9kN3R4NlZUN0U4Z1gwWjk0RnBGaEFPTmJGNzN0TXd0Q3A5RmF2MmZqaEhvTWNsN29vakRMN0ZVU0tlWmJmX0N1SVVQRi05YlVOZGtBQkM3M0RIc2dweENsVUkyY0puWlpyZ0pnQ2ttQWNBX3hwcUVjcDZ3U29zNm9IRnZoWjZUSDhDRTlsQnk0YUZ6MVRZeUtVd0JnZVV2Ym1maWc?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-26T10:01:31.000Z"
     },
     {
       "title": "House fire in Mississauga sends one person to hospital as nearby homes evacuated",
@@ -24,14 +32,6 @@
       "source": "CityNews Toronto",
       "sourceUrl": "https://toronto.citynews.ca",
       "publishedAt": "2026-07-26T02:25:00.000Z"
-    },
-    {
-      "title": "Two-alarm house fire in Mississauga causes surrounding homes to evacuate, police say",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPU0Q2QXI0akMwZ3pVMlhVM3FnYW1xVUNpVFEyVW9KcHBxWkhqcHZuZk93aFh2QWh4U1BpWURtdl9qeDNaT3BvaVpRcXphUDVXbFdRd2Q5SmJwRWZVSVNGMmlHTGZCZXpwNC1LOHA5S2FoUXd6NzJwSTBRVzhmaDFOalNuaENxQUpuZnJFSTVNTDkteVVERHVNXzFxeVVuampQX012ZlZ3d2VNejc0RTFwMzkwWWlYT1dHTlNHRDFZa3Q0VldpR1A3SkhYdlJpV3M?oc=5",
-      "source": "CTV News",
-      "sourceUrl": "https://www.ctvnews.ca",
-      "publishedAt": "2026-07-26T01:52:00.000Z"
     },
     {
       "title": "293 vehicles stolen in the last 31 days in Mississauga and Brampton",
@@ -74,14 +74,6 @@
       "publishedAt": "2026-07-24T20:14:43.000Z"
     },
     {
-      "title": "Additional Arrest Made in Connection with 2023 Mississauga Homicide",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNNGVEUlMxYXBCbDVsNHY3dkxVTTlyNlRUdlVjZmU5LWhvcWJFTWV1d2U1Mmd0cHgwTHJ4eDM2Y1BwbUFUWFB6Z2paRTRFZTFhRHFwX1hrdTR1MWpmbjAxUmVYWHRPNXYtY2xyY3doRURTOE15ZTY2cGE4bEVTanZ4MWZuQ3FzRFZ4Z28tUGJzTkhqWXhQZlVLM3h6c3VCdWd2RzlwakhHNTFWMGJneWV0NmxXd3d1dDFFREZaVlFiaw?oc=5",
-      "source": "Peel Regional Police",
-      "sourceUrl": "https://www.peelpolice.ca",
-      "publishedAt": "2026-07-24T17:01:39.000Z"
-    },
-    {
       "title": "Mississauga welcomes federal investment to restore the Cooksville Creek watershed",
       "summary": "The City of Mississauga is welcoming $453,406 in federal funding through the Government of Canada’s Natural Infrastructure Fund to restore and strengthen the Cooksville Creek watershed. ), helping protect one of Mississauga’s largest watersheds while improving green space for residents. Key improvements The Iggy Kaneff Park restoration project supports the City’s climate and sustainability goals while making parks more enjoyable for the community. 1 hectares), limiting the watershed’s ability to manage stormwater and flooding risks.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/mississauga-welcomes-federal-investment-to-restore-the-cooksville-creek-watershed/",
@@ -96,6 +88,14 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-23T08:15:03.000Z"
+    },
+    {
+      "title": "‘Quite the surprise’: Python pulled from car engine in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOTUNUTUdNTENMR1k2Tm9FWWZSYXUwRm93SGQwV2cyb2VaQUprYU9ySEhEeDJ2NEVtOWlqcnQ4NHFnWVdLTTJuMERCUnYyTnpDM2xtckJ1ZWpsT21BWEZVa2xDUU56dEYybXh6TDVHNUFyYXk2SUptbW5lbFZlRWlIaWI0ZklMczRobGlKWjV4WEhleWRRYmcxV0FFbjQ3aHoxdW1LSmtUNGE2dW9aQ2lqU2F5V0NTOVRIbzI0c0dXN0IwRkNkNUU4V08wNTJVNk80dHJDZ1B2dzM0LUk?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-23T12:43:00.000Z"
     }
   ]
 }
