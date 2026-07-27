@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-07-27T17:55:03.833Z",
+  "updatedAt": "2026-07-27T22:23:01.610Z",
   "items": [
+    {
+      "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
+      "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/peel-region-confirms-west-nile-virus-found-in-mosquitoes-what-you-need-to-know/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-27T15:14:58.000Z"
+    },
     {
       "title": "Public engagements open in August",
       "summary": "The City of Mississauga regularly connects with residents throughout the year to gather their ideas and constructive feedback. This helps guide City plans, programs, services and new developments. Residents and businesses can take part in different ways. You can participate by attending information sessions, open houses and workshops or completing online surveys. The City reviews this feedback along with other data and trends to help decide how to focus its time and resources on community priorities.",
@@ -18,12 +26,44 @@
       "publishedAt": "2026-07-27T08:15:34.000Z"
     },
     {
+      "title": "Mississauga could pause new data centres for a year to address community, operational concerns",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOY3o0YlJ6a1p4RHFZS1BheWM4dG5zWkNycmNsM0dhdjBKcFNnaVdKUmI4aWsta1A4dVNXaW1aU3pPU0tnZDNCVlRWNnhxNWlGMVJ3a2RHTXMwNndUX0RYSHVqNnc4ZFRhNFh2cGlsWkV3WURoT0dOSjlsRkVkbmN3eWU0MG1Bd05tNC04ejZlVU9hUy04eHNyZ2dYZ3BSaXZ0VmdCLW91SDl1Q3Zwc284YTZObWY?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-27T21:33:00.000Z"
+    },
+    {
+      "title": "Unassuming homes provide important link to industrial history of Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOTVlXRF9lUWloRkljRHplOEhxZWZfZC03M3hmVDhHN1JOX2dRVzdEbGl4OXlqS1dHYTUxZzdYc0xEdXhfbG85enNld2k2NzAxVzBzMFVoYzVRN1BiY1pEVVhZV3M1ZEZUSjVublNXc0h5RVd0dTNPOTE2SXNoRVo2bFBIbnQ3VEd0cjAyMWdhbEFLYnJUeDFHYnZmWGpEVGpKTGRV?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-27T20:31:46.000Z"
+    },
+    {
+      "title": "Big drilling rigs on Lake Ontario near Mississauga and Toronto almost done their work",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOLW1sX0JTTDZBZE00VXhiTGlKZk84OXg1dkpuRnhpUzRNQ2VKVDNNNkNYaFgxaF9QRk1xdl9SbVlxWm1UNFhlRWZrLU9pNGdmbURQblA1ZGZvQXpqWHVnWWVXbnN2bnBuLU4yT1Rqb0JKUm5OcTI2SU10WmdTOWNVS1NtZ3VHM1Y0NTVXaXFjV01XWDBkTlBzSmJfdjRZNzZYQjJPWHNXRzA1WHlmS3hJ?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-27T19:20:21.000Z"
+    },
+    {
+      "title": "Mississauga to vote this week on one-year freeze on AI data centres",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRWNNaV9uNUJDWWtXVzl1NDRzSFdubElSMWx5eVJyaHZDTDZKSE5od1FzbWFxd1FoTE1vMWpxN0ljbnBJNkhsWWV6ZWFZUUF3aXI3dE9memkwU1ZIY1JPTDFOUWg2NHQ2UFp5TlozX1l3Qk5FbWdaWDhHNHBmWGhSUkI3enFKcFBHMTNEUw?oc=5",
+      "source": "MobileSyrup",
+      "sourceUrl": "https://mobilesyrup.com",
+      "publishedAt": "2026-07-27T18:10:00.000Z"
+    },
+    {
       "title": "Playground reopens after safety concerns shut it down for nearly 2 months in Mississauga",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQbWI0LVhKNUxVZ19PNFA3c2ZHU2pOWXAzOVF4WVJKZnd0b1B1R1NBYUJZYm1TMW1YcHkzNFFUV0lKM0V0RURmdERBNmtRcmsyT3I5YUY2S1dSMDlrSU9XTl9Fd3pLRmIzTTZ1T3NMRlY1MTZ0VTNnNEJ2RHFwQjhvaHFjaE44TGd3TEwtMGMySlhQODNBZVB1VkxpeGxNdjN5S2J3enNqcERQWHFCaTBvUkpqOA?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-27T16:36:42.000Z"
+      "publishedAt": "2026-07-27T16:37:48.000Z"
     },
     {
       "title": "House of the week: Modern home with three self-contained units in Mississauga",
@@ -50,52 +90,12 @@
       "publishedAt": "2026-07-27T14:58:48.000Z"
     },
     {
-      "title": "Python recovering after found in vehicle engine compartment in Mississauga",
+      "title": "Remembering the life of BETTY BURTON",
       "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1WRnFOSkJ4aE42MWhpcGdPaGpaZTlJdjQtOVpVRU5lcExacmhVRTNJZmEydlFZdVpTWlhBbU84UEpZdFZTWTRQZTd2VHVaUVZWMUsyNWVJVFU2c0tYRElkSHotWDd2Nk9WSnJzVG1aU3paWnc2YzNyaEhiY2o?oc=5",
-      "source": "Global News",
-      "sourceUrl": "https://globalnews.ca",
-      "publishedAt": "2026-07-27T13:43:56.000Z"
-    },
-    {
-      "title": "Transport stuck on hairpin curve north of Brampton; Mississauga driver charged",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNcE8yS2Y0TXZ5elZFdEtlVmc1SUEwRXlJSUpQWGVyalBWUGFSQnpZRWZxWFllTml0dG9faHprODAtM1VpNzFjZlROZ25yTU9xb0cxdUpEZEoxMEQ3NmViR3pRbXVQMmV0V3hIcnVxVkwtak5QbFkwWE9EaVVXMkdaNjdhYWdVc0Y0a0xINWlBMDRYeHhoR2hYRGlOUmZMNEZyYUpYQg?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-27T12:57:30.000Z"
-    },
-    {
-      "title": "Remembering the life of CHARLES MURRAY",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQc3FVaUZ4c2o2YWJ4eHRfSGJscTdZQ0lTRGJwU196VTl6UjhsQTBheW4xMVlhSjI5ZURxNkRNYzU1MWdRSkFsVUtuSXBiUTFTUXJ5VTdoX2pZN3l5d0dqZ2gyNXdLVzZUenV6VzVLdHlVdW5JeGlEZkNfekVyUTZ2VW9zSWNRQQ?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPRWtnaHNUTFl6bzRwTm9xRXFPOV9sZzA4UlBvYlRCb0x2Z09ESkxYT1l4N0d2ZllRd3EtV3BmWDJCTm5RVUdQVmREVFRRMmV4dnY3Nng3R0VjN3hBUEROdUxqcGIwRmphVkZCREFaa29objllblFzb2R6UFZsQTYyTFI1Zw?oc=5",
       "source": "Mississauga News Obituaries",
       "sourceUrl": "https://obituaries.mississauga.com",
-      "publishedAt": "2026-07-27T11:33:32.000Z"
-    },
-    {
-      "title": "Remembering the life of TONI DANIELS",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOQTJON0J5bFVMVEpBMTFUbkRFRFlHYVRJOG02bF8xMWJFcmozeW1ZeVVrM245VHdjb2cybVZrbG45cVVBcFNsMXJZNmNMSVNWbDIwNk51OXNIMEJoOVpteUZ2a2VYaW5SSlJXam1jX3VtSjRyeWcwS1h6S0N1SWRLSVNNQQ?oc=5",
-      "source": "Mississauga News Obituaries",
-      "sourceUrl": "https://obituaries.mississauga.com",
-      "publishedAt": "2026-07-27T11:04:18.000Z"
-    },
-    {
-      "title": "Body found near train tracks in Brampton being investigated as suspicious death: police",
-      "summary": "Peel police say they are investigating a suspicious death after a body was found near train tracks in Brampton, Ont.",
-      "url": "https://www.cbc.ca/news/canada/toronto/body-found-near-train-tracks-brampton-police-9.7285099?cmp=rss",
-      "source": "CBC Toronto",
-      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
-      "publishedAt": "2026-07-26T19:07:58.000Z"
-    },
-    {
-      "title": "Dora Pilgrim Obituary | Turner & Porter Funeral Directors Ltd. | Mississauga, ON",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNeDBWWW16REZQbGdaOFhYWjlDcVNXLVVSdXZsZHlTS0x3dDRiR0ZNOHJZTUJ6Qm1yNm5sRFNQS0VnR1JrLTRfcVVqQzM5NmVGaGZfbW9WWXYxcTdsclNIT1RWckJYSDVjOWZXZGxLLUZRYXBNN0ZBY2hQSkU3RHBPU0F6VTNqRU54RjRMOHRXLTNpMnZiRS1VWDVrbUFYVmljdzlaTEVENGdzaE5mZ1hpVU5KLVh2bHlCcUdv?oc=5",
-      "source": "Tribute Archive",
-      "sourceUrl": "https://tributearchive.com",
-      "publishedAt": "2026-07-26T22:31:25.000Z"
+      "publishedAt": "2026-07-27T13:04:00.000Z"
     }
   ]
 }
