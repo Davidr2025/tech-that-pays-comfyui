@@ -1,0 +1,91 @@
+---
+import Base from "../layouts/Base.astro";
+import config from "../../site.config.mjs";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+const contact = "mailto:david@lsfg.ca?subject=Privacy%20question%20-%20Mississauga%20Insider";
+const updated = "July 27, 2026";
+---
+<Base title="Privacy Policy" description={`How ${config.name} collects, uses and protects your information.`}>
+  <section class="section container guide-detail">
+    <h1>Privacy Policy</h1>
+    <p class="guide-meta">Last updated {updated}</p>
+
+    <div class="prose">
+      <p>
+        This policy explains what information {config.name} ("we", "us") collects when you visit
+        mississaugainsider.ca, why we collect it, and how it's used. We try to keep this simple and collect
+        as little as possible.
+      </p>
+
+      <h2>Information we collect</h2>
+      <p>We only collect information you choose to give us, through two forms on the site:</p>
+      <ul>
+        <li>
+          <strong>Newsletter signup:</strong> your email address, submitted through the subscribe form on the
+          homepage, the sticky bar, or {config.newsletterUrl}. This is handled by our newsletter provider,
+          Beehiiv, and used only to send you the {config.name} newsletter.
+        </li>
+        <li>
+          <strong>Contact form:</strong> the <a href={`${base}contact/`}>Contact Us</a> page uses an embedded
+          form (powered by GoHighLevel) that may ask for your name, email, phone number, and message. If you
+          check the optional consent boxes on that form, you're also agreeing to receive text messages from
+          us at the number provided. You can reply STOP at any time to opt out, or HELP for assistance.
+          Message and data rates may apply.
+        </li>
+      </ul>
+      <p>
+        We do not use our own tracking cookies or analytics software. The only thing the site stores in your
+        browser is a single, non-identifying preference (whether you've dismissed the sticky newsletter bar),
+        kept in your browser's local storage and never sent back to us.
+      </p>
+
+      <h2>How we use your information</h2>
+      <ul>
+        <li>To send the newsletter you signed up for.</li>
+        <li>To respond to questions, story tips, or advertising inquiries submitted through the contact form.</li>
+        <li>To send text updates, but only if you opted in on the contact form.</li>
+      </ul>
+      <p>We do not sell your personal information to anyone.</p>
+
+      <h2>Third-party services</h2>
+      <p>
+        Parts of the site rely on outside services, each with its own privacy policy governing the
+        information it handles:
+      </p>
+      <ul>
+        <li><strong>Beehiiv</strong> (newsletter delivery): <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener">beehiiv.com/privacy</a></li>
+        <li><strong>GoHighLevel</strong> (contact form and messaging): <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener">gohighlevel.com/privacy-policy</a></li>
+        <li><strong>Google Maps Platform</strong> (business listing data and photos in our <a href={`${base}directory/`}>directory</a>): <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+        <li>Some <a href={`${base}spotlight/`}>Business Spotlight</a> articles embed a YouTube video or Instagram post. Those embeds are subject to YouTube's and Instagram's own privacy policies when you interact with them.</li>
+      </ul>
+
+      <h2>Our business directory</h2>
+      <p>
+        Listings in the <a href={`${base}directory/`}>directory</a> are compiled from Google's public business
+        data (Google Maps Platform), not submitted by site visitors. If you're a business owner and want your
+        listing corrected or removed, <a href={contact}>contact us</a>.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p>{config.name} is not directed at children under 13, and we do not knowingly collect information from them.</p>
+
+      <h2>Your rights</h2>
+      <p>
+        You can ask us what information we hold about you, ask us to correct it, or ask us to delete it, at
+        any time by <a href={contact}>contacting us</a>. To stop receiving the newsletter, use the unsubscribe
+        link in any issue. To stop text messages, reply STOP to any message.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this policy from time to time. The "last updated" date at the top will always reflect
+        the most recent version.
+      </p>
+
+      <h2>Contact us</h2>
+      <p>Questions about this policy? <a href={contact}>Email us</a>.</p>
+    </div>
+  </section>
+</Base>
