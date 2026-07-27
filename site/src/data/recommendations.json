@@ -63,6 +63,33 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/",
       "tag": "Free · Trail"
+    },
+    {
+      "title": "Explore the newly opened Jim Tovey Lakeview Conservation Area",
+      "summary": "Built on the former site of the coal fired Lakeview Generating Station and named for the late Mississauga councillor who championed its restoration, this new waterfront conservation area adds several kilometres of trail and boardwalk along Lake Ontario, with restored wetland and meadow habitat. Reached via Marie Curtis Park on the Waterfront Trail.",
+      "venue": "Jim Tovey Lakeview Conservation Area, Lakeview",
+      "url": "https://cvc.ca/",
+      "source": "Credit Valley Conservation",
+      "sourceUrl": "https://cvc.ca/",
+      "tag": "Free · Waterfront"
+    },
+    {
+      "title": "Walk the Glassford Trail at Meadowvale Conservation Area",
+      "summary": "Home to Credit Valley Conservation's head office, this park follows the Credit River through floodplain forest and open meadow, with picnic areas and gazebos along the way. A quieter, less travelled stretch of the river valley than the trails further south.",
+      "venue": "Meadowvale Conservation Area, Meadowvale",
+      "url": "https://cvc.ca/",
+      "source": "Credit Valley Conservation",
+      "sourceUrl": "https://cvc.ca/",
+      "tag": "Free · Nature"
+    },
+    {
+      "title": "Follow the Cooksville Creek Trail",
+      "summary": "A paved, easy multi use path through Cooksville's green corridor, linking Richard Jones Park and Mississauga Valley Park before continuing south toward Lakeshore Road and the Waterfront Trail. A good flat route for walking, jogging or an easy bike ride.",
+      "venue": "Cooksville Creek Trail, Cooksville",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Trail"
     }
   ]
 }
