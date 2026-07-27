@@ -2,7 +2,9 @@
 import Base from "../layouts/Base.astro";
 import SignupForm from "../components/SignupForm.astro";
 import config from "../../site.config.mjs";
-const contact = "mailto:david@lsfg.ca?subject=Advertising%20on%20Mississauga%20Insider";
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
 ---
 <Base title="Advertise" description={`Put your business in front of ${config.city} locals: featured placements on ${config.name} and in the newsletter.`} current="advertise">
   <section class="hero">
@@ -12,7 +14,7 @@ const contact = "mailto:david@lsfg.ca?subject=Advertising%20on%20Mississauga%20I
         {config.name} is read by your neighbours, on this site and in the weekly newsletter.
         Featured placements put your business front and centre.
       </p>
-      <a class="cta-btn" style="background:var(--accent);color:#1f1300;display:inline-block;padding:.8rem 1.5rem;border-radius:10px;font-weight:800;text-decoration:none" href={contact}>Book a placement →</a>
+      <a class="cta-btn" style="background:var(--accent);color:#1f1300;display:inline-block;padding:.8rem 1.5rem;border-radius:10px;font-weight:800;text-decoration:none" href={`${base}contact/`}>Book a placement →</a>
     </div>
   </section>
 
@@ -32,7 +34,7 @@ const contact = "mailto:david@lsfg.ca?subject=Advertising%20on%20Mississauga%20I
       </div>
     </div>
     <p style="margin-top:1.5rem">
-      Interested? <a href={contact}>Email us</a> and we'll send current rates and availability.
+      Interested? <a href={`${base}contact/`}>Contact us</a> and we'll send current rates and availability.
     </p>
   </section>
 </Base>

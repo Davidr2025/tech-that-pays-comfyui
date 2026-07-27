@@ -98,6 +98,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 .card h3 { font-size: 1.02rem; font-weight: 700; color: var(--text); }
 .card p { margin: 0; font-size: .92rem; color: var(--muted); }
 .card .meta { display: flex; gap: .5rem; align-items: center; font-size: .8rem; color: var(--muted); margin-top: auto; padding-top: .35rem; }
+.spotlight-card-photo { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; }
 .source-badge {
   display: inline-block; background: color-mix(in srgb, var(--primary) 10%, white);
   color: var(--primary); font-weight: 700; font-size: .74rem;

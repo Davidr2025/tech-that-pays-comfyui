@@ -6,6 +6,7 @@ tier: "vip"
 description: "Portuguese-style flame-grilled rotisserie chicken on Burnhamthorpe Road West, a Mississauga counter-service favourite built around one thing: the whole chicken."
 publishDate: 2026-07-22
 website: "https://www.brasasgrill.ca/"
+photo: "https://img.youtube.com/vi/8e4pRDs9-8E/hqdefault.jpg"
 videos:
   - platform: "youtube"
     url: "https://www.youtube.com/watch?v=8e4pRDs9-8E"

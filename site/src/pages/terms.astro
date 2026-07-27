@@ -4,7 +4,7 @@ import config from "../../site.config.mjs";
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
-const contact = "mailto:david@lsfg.ca?subject=Terms%20question%20-%20Mississauga%20Insider";
+const contact = `${base}contact/`;
 const updated = "July 27, 2026";
 ---
 <Base title="Terms of Service" description={`The terms governing use of ${config.name}.`}>
@@ -97,7 +97,7 @@ const updated = "July 27, 2026";
 
       <h2>Contact us</h2>
       <p>
-        Questions about these terms? <a href={contact}>Email us</a>. See also our
+        Questions about these terms? <a href={contact}>Contact us</a>. See also our
         <a href={`${base}privacy/`}>Privacy Policy</a>.
       </p>
     </div>

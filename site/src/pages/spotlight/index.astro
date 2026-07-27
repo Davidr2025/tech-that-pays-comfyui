@@ -16,19 +16,22 @@ const spotlights = (await getCollection("spotlights")).sort(
     <div class="referral-banner">
       <div class="referral-banner-text">
         <strong>💰 Know a 5-star local business?</strong>
-        <span>Recommend them to be featured in our next Spotlight. If we feature them, you win $100.</span>
+        <span>Recommend them to be featured in our next Spotlight. If we feature them, you could win $100.</span>
       </div>
       <a class="cta-btn" href={`${base}contact/`}>Recommend a business →</a>
     </div>
     <div class="section-head">
       <h2>Business Spotlight</h2>
       <span class="sub">Local businesses in {config.city}, featured in their own words</span>
-      <a class="more" href={`${base}advertise/`}>Get spotlighted →</a>
+      <a class="more" href={`${base}contact/`}>Get spotlighted →</a>
     </div>
     {spotlights.length ? (
       <div class="grid">
         {spotlights.map((s) => (
           <article class="card">
+            {s.data.tier === "vip" && s.data.photo && (
+              <img class="spotlight-card-photo" src={s.data.photo} alt={s.data.businessName} loading="lazy" />
+            )}
             {s.data.tier === "vip" && <span class="tag">🎥 VIP Partner</span>}
             {s.data.tier === "paid" && <span class="tag">Featured Partner</span>}
             <h3><a href={`${base}spotlight/${s.id}/`}>{s.data.businessName}</a></h3>
