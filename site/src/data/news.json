@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-07-27T22:58:56.448Z",
+  "updatedAt": "2026-07-27T23:19:44.642Z",
   "items": [
-    {
-      "title": "Mississauga could temporarily pause new AI data centres",
-      "summary": "If approved, the city will introduce a one-year interim control bylaw while the city reviews how to regulate major digital infrastructure.",
-      "url": "https://www.mississauga.com/news/council/data-centre-mississauga/article_bed88dd2-3b29-540e-b7fc-6d574174eac2.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
-      "publishedAt": "2026-07-27T21:33:00.000Z"
-    },
     {
       "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
       "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
@@ -26,20 +18,20 @@
       "publishedAt": "2026-07-27T12:30:37.000Z"
     },
     {
-      "title": "Can your condo board police who sleeps in your home? This Mississauga building has a rule that does",
-      "summary": "In my opinion, the building’s overnight guest rule is intrusive, improper and vulnerable to challenge, Bob Aaron writes.",
-      "url": "https://www.thestar.com/business/personal-finance/is-your-condo-board-allowed-to-police-who-sleeps-in-your-home-one-mississauga-rule-tests-the-limit/article_22759a08-7201-470e-997d-a86fb1791697.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-27T09:00:00.000Z"
-    },
-    {
       "title": "Voting in the 2026 Municipal Election? Check the voters’ list",
       "summary": "Mississauga’s 2026 Municipal Election is on Monday, October 26. Eligible voters will elect Mississauga’s Mayor, their Ward/Regional Councillor and School Board Trustees for the 2026–2030 term of office. Use the Voter Registration Portal to check, update or add your information to the voters’ list before voting begins. Being on the voters’ list helps confirm you’re eligible to vote, helps ensure you receive a Voter notification card and can make the process faster when you arrive to vote.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/voting-in-the-2026-municipal-election-check-the-voters-list/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-27T08:15:34.000Z"
+    },
+    {
+      "title": "Mississauga could pause new data centres for a year to address community, operational concerns",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOY3o0YlJ6a1p4RHFZS1BheWM4dG5zWkNycmNsM0dhdjBKcFNnaVdKUmI4aWsta1A4dVNXaW1aU3pPU0tnZDNCVlRWNnhxNWlGMVJ3a2RHTXMwNndUX0RYSHVqNnc4ZFRhNFh2cGlsWkV3WURoT0dOSjlsRkVkbmN3eWU0MG1Bd05tNC04ejZlVU9hUy04eHNyZ2dYZ3BSaXZ0VmdCLW91SDl1Q3Zwc284YTZObWY?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-27T21:33:00.000Z"
     },
     {
       "title": "Unassuming homes provide important link to industrial history of Mississauga",
@@ -74,14 +66,6 @@
       "publishedAt": "2026-07-27T16:37:48.000Z"
     },
     {
-      "title": "House of the week: Modern home with three self-contained units in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOV2Rqd0trQnY3ZXNFTHlBeDh2QV9BOE1HZGlEaUhnMV9lQkZETHJTTmpuQnl1VVJNM1FkZzNoOTQyMzk3Y0R0M0x3THkzaHJIb2VyS2RYQ01XSUN0Y1lTeVNhdVZ1UlV6ZTFKRDJTMWRiT2ZYZThnM0QyS1Azd1pGakQ0U1hNc2xTREZ4c1ZYZkFyVTRhZV9UMnpPYjRjX1FUSGxZ?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-27T15:54:14.000Z"
-    },
-    {
       "title": "Inside Mississauga’s newest purpose-built rental community",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPekFhV0tHMEN5WkNRVWFyTmstT3g2ckUwNHpqUWVyZVpac2Z1OUNoSW4zaXB2M2s0d0JkbEh6RzQ2cHIyU0w3VUJzeVN5QUdDYURNS250Z3NRSDZqdEc3aXgyYTJRSzN6b3lsQjJ6WmdpNGRQdzQyWUEwaFFkNk1oZnVMM0oxcW9WZWc?oc=5",
@@ -96,6 +80,22 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-27T14:58:48.000Z"
+    },
+    {
+      "title": "Transport stuck on hairpin curve north of Brampton; Mississauga driver charged",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNcE8yS2Y0TXZ5elZFdEtlVmc1SUEwRXlJSUpQWGVyalBWUGFSQnpZRWZxWFllTml0dG9faHprODAtM1VpNzFjZlROZ25yTU9xb0cxdUpEZEoxMEQ3NmViR3pRbXVQMmV0V3hIcnVxVkwtak5QbFkwWE9EaVVXMkdaNjdhYWdVc0Y0a0xINWlBMDRYeHhoR2hYRGlOUmZMNEZyYUpYQg?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-27T12:57:30.000Z"
+    },
+    {
+      "title": "Remembering the life of MARION NIKLES",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPWmp0OHdxRXhjZ05Gb0R3Z1lwY090TmNhRHNtYTZiU3lXVDVkeGFBQzFoLXJ6S1hEYkZjUTF2YzJDbS1KRVFoQ3lTS0J3T2IxTjNiZmtIZDlfNDE5aFluQ2pXUTNSRlJJcHg1Skk2OUZNVy1KUkpNYU5Kenkteng2REd6Mm8?oc=5",
+      "source": "Mississauga News Obituaries",
+      "sourceUrl": "https://obituaries.mississauga.com",
+      "publishedAt": "2026-07-27T08:59:28.000Z"
     }
   ]
 }
