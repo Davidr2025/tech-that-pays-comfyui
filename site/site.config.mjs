@@ -228,15 +228,23 @@ export default {
   },
 
   // --- CLAIM-LISTING PAID TIERS ---
-  // Powers /directory/<category>/<business>/claim/. Free corrections go out
-  // as a plain mailto: to claimEmail (no backend needed on static hosting —
-  // it opens the visitor's own email client addressed to you). Paid
-  // upgrades are Stripe Payment Links — create each link in the Stripe
-  // dashboard (Payment Links → New), then paste its URL below in place of
-  // the "REPLACE_ME" placeholder; Stripe itself notifies you on payment, so
-  // no extra email wiring is needed there. Until replaced, the claim page
+  // Powers /directory/<category>/<business>/claim/. The site is static
+  // (GitHub Pages) with no backend, so the "Claim this business" and
+  // "Request a correction" forms submit client-side straight to Web3Forms
+  // (web3forms.com) — a free, no-account form relay that emails the
+  // submission to claimEmail. Get an access key at web3forms.com (just
+  // enter claimEmail, the key arrives by email instantly) and paste it in
+  // place of "REPLACE_ME" below — it's meant to be public in client-side
+  // code, that's how Web3Forms's threat model works. Until replaced, both
+  // forms show a "not configured yet" message instead of submitting.
+  // Paid upgrades are Stripe Payment Links — create each link in the
+  // Stripe dashboard (Payment Links → New), then paste its URL below in
+  // place of the "REPLACE_ME" placeholder; Stripe itself notifies you on
+  // payment, so no extra email wiring is needed there. Until replaced, the
+  // claim page
   // shows the tier but disables its checkout button.
   claimEmail: "david@lsfg.ca",
+  web3formsAccessKey: "REPLACE_ME_WEB3FORMS_ACCESS_KEY",
   claim: {
     tiers: [
       {

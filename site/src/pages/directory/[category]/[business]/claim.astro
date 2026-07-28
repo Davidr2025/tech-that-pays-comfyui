@@ -2,6 +2,9 @@
 import Base from "../../../../layouts/Base.astro";
 import config from "../../../../../site.config.mjs";
 import places from "../../../../data/places.json";
+import claimedPlaces from "../../../../data/claimed-places.json";
+import listingCorrections from "../../../../data/listing-corrections.json";
+import { applyListingOverrides, withClaimed } from "../../../../lib/listing-data.mjs";
 
 // Fully static — one prerendered claim page per business, generated at
 // build time from places.json, mirroring the business detail page route.
@@ -14,26 +17,15 @@ export async function getStaticPaths() {
   );
 }
 
-const { business: b, category: cat } = Astro.props;
+const { category: cat } = Astro.props;
+const b = withClaimed(applyListingOverrides(Astro.props.business, listingCorrections), claimedPlaces);
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
 
 const tiers = config.claim.tiers;
 const description = `Claim and upgrade the ${config.name} listing for ${b.name} in ${config.city}, Ontario.`;
-
-const correctionSubject = `Listing correction: ${b.name}`;
-const correctionBody = [
-  `Business: ${b.name}`,
-  `Category: ${b.subcategory || cat.label}`,
-  `Address on file: ${b.address}`,
-  "",
-  "What needs to change:",
-  "(describe the correction here)",
-  "",
-  "Your name and best contact number:"
-].join("\n");
-const correctionMailto = `mailto:${config.claimEmail}?subject=${encodeURIComponent(correctionSubject)}&body=${encodeURIComponent(correctionBody)}`;
+const web3formsReady = config.web3formsAccessKey && !config.web3formsAccessKey.startsWith("REPLACE_ME");
 ---
 <Base title={`Claim: ${b.name}`} description={description} current="directory">
   <section class="section container biz-detail">
@@ -51,7 +43,7 @@ const correctionMailto = `mailto:${config.claimEmail}?subject=${encodeURICompone
     <p class="lede">Confirm this is your business, tell us about anything that needs fixing, and pick how you want it to appear on {config.name}.</p>
 
     <div class="claim-current">
-      <h3>Your current listing</h3>
+      <h3>Your current listing {b.claimed && <span class="verified-badge">✓ Verified</span>}</h3>
       <div class="claim-current-body">
         {b.photo && <img class="claim-current-photo" src={b.photo} alt={b.name} />}
         <dl class="claim-current-facts">
@@ -73,7 +65,52 @@ const correctionMailto = `mailto:${config.claimEmail}?subject=${encodeURICompone
           <li>Address, hours, phone and map link</li>
           <li>Sourced automatically from Google, corrections welcome</li>
         </ul>
-        <a class="cta-btn secondary" href={correctionMailto}>Request a correction →</a>
+
+        {b.claimed ? (
+          <p class="claim-already">✓ This listing is claimed and verified.</p>
+        ) : web3formsReady ? (
+          <div class="claim-inline">
+            <button type="button" class="cta-btn" data-toggle="claim-form">Claim this business →</button>
+            <form id="claim-form" class="claim-mini-form" hidden>
+              <input type="hidden" name="access_key" value={config.web3formsAccessKey} />
+              <input type="hidden" name="subject" value={`Business claim: ${b.name}`} />
+              <input type="hidden" name="from_name" value={`${config.name} claim form`} />
+              <input type="hidden" name="business_name" value={b.name} />
+              <input type="hidden" name="business_id" value={b.id} />
+              <input type="hidden" name="listing_url" value={`${base}directory/${cat.slug}/${b.slug}/`} />
+              <label for="claim-email">Your email</label>
+              <input type="email" id="claim-email" name="email" required placeholder="you@business.com" />
+              <button type="submit" class="cta-btn">Submit claim →</button>
+            </form>
+            <p class="form-success" data-for="claim-form" hidden>✓ Got it — we'll verify and mark your listing as claimed shortly.</p>
+            <p class="form-error" data-for="claim-form" hidden>Something went wrong — please try again in a moment.</p>
+          </div>
+        ) : (
+          <p class="claim-already">Claiming isn't set up yet — check back soon.</p>
+        )}
+
+        {web3formsReady ? (
+          <div class="claim-inline">
+            <button type="button" class="cta-btn secondary" data-toggle="correction-form">Request a correction →</button>
+            <form id="correction-form" class="claim-mini-form" hidden>
+              <input type="hidden" name="access_key" value={config.web3formsAccessKey} />
+              <input type="hidden" name="subject" value={`Listing correction: ${b.name}`} />
+              <input type="hidden" name="from_name" value={`${config.name} correction form`} />
+              <input type="hidden" name="business_name" value={b.name} />
+              <input type="hidden" name="business_id" value={b.id} />
+              <input type="hidden" name="listing_url" value={`${base}directory/${cat.slug}/${b.slug}/`} />
+              <label for="correction-email">Your email</label>
+              <input type="email" id="correction-email" name="email" required placeholder="you@business.com" />
+              <label for="correction-message">What needs to change?</label>
+              <textarea id="correction-message" name="message" required rows="3" placeholder="e.g. our hours are wrong, we now close at 9pm on weekends"></textarea>
+              <button type="submit" class="cta-btn secondary">Submit correction →</button>
+            </form>
+            <p class="form-success" data-for="correction-form" hidden>✓ Got it — we'll make the fix and follow up if we need anything else.</p>
+            <p class="form-error" data-for="correction-form" hidden>Something went wrong — please try again in a moment.</p>
+          </div>
+        ) : (
+          <p class="claim-already">Corrections aren't set up yet — check back soon.</p>
+        )}
       </div>
 
       {tiers.map((tier) => {
@@ -94,14 +131,49 @@ const correctionMailto = `mailto:${config.claimEmail}?subject=${encodeURICompone
         );
       })}
     </div>
-
-    <div class="claim-correction">
-      <h3>Something wrong with your listing?</h3>
-      <p>
-        Our directory is built from public Google listing data, so details can be out of date. Send us
-        corrections directly, we'll update it for free.
-      </p>
-      <a class="cta-btn secondary" href={correctionMailto}>Email us the correction →</a>
-    </div>
   </section>
+
+  <script>
+    const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+    function wireForm(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      const wrap = form.closest(".claim-inline");
+      const toggle = wrap.querySelector(`[data-toggle="${formId}"]`);
+      const success = wrap.querySelector(`.form-success[data-for="${formId}"]`);
+      const error = wrap.querySelector(`.form-error[data-for="${formId}"]`);
+
+      toggle.addEventListener("click", () => {
+        toggle.hidden = true;
+        form.hidden = false;
+      });
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        error.hidden = true;
+        const submitBtn = form.querySelector("button[type=submit]");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+        try {
+          const res = await fetch(WEB3FORMS_ENDPOINT, {
+            method: "POST",
+            headers: { "content-type": "application/json", accept: "application/json" },
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+          });
+          const json = await res.json();
+          if (!res.ok || !json.success) throw new Error(json.message || "Submission failed");
+          form.hidden = true;
+          success.hidden = false;
+        } catch {
+          error.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = form.id === "claim-form" ? "Submit claim →" : "Submit correction →";
+        }
+      });
+    }
+
+    wireForm("claim-form");
+    wireForm("correction-form");
+  </script>
 </Base>

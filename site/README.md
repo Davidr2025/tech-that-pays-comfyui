@@ -86,6 +86,35 @@ its entry in `places.json` (its category slug and business slug) — the
 business's own directory page then shows a banner linking to the spotlight
 article.
 
+## Claim your listing (verified badge + paid upgrades)
+
+`/directory/<category>/<business>/claim/` is a static page generated for
+every directory business. It shows the current listing data, a "Claim this
+business" and "Request a correction" form, and the two paid tiers from
+`site.config.mjs`'s `claim.tiers`.
+
+- **Forms:** the site is static (GitHub Pages), so both forms submit
+  client-side to [Web3Forms](https://web3forms.com) — free, no account, a
+  public "access key" is enough (that's Web3Forms's threat model, safe to
+  commit). Get one at web3forms.com with `claimEmail`'s address and set
+  `web3formsAccessKey` in `site.config.mjs`. Until set, both forms show a
+  "not configured yet" message instead of submitting. Submissions land as
+  plain emails in your inbox — there's no dashboard/webhook wiring.
+- **Verified badge + claim data:** `src/data/claimed-places.json` (array of
+  `{ id, email, claimedAt }`, keyed by Google place id) drives the green
+  "✓ Verified" badge on the directory card, business page, and claim page,
+  and adds a `verified`/`claimEmail` column to the CSV export. It's
+  hand-maintained (or updated by whoever processes claim-form emails) —
+  the Places refresh pipeline never touches it.
+- **Corrections:** `src/data/listing-corrections.json` (object keyed by
+  place id, e.g. `{ "ChIJ...": { "phone": "..." } }`) overrides whatever
+  fields you list on top of the auto-fetched Places data at build time, so
+  a fix survives the next monthly refresh. Also hand-maintained.
+- **Paid tiers:** `claim.tiers` in `site.config.mjs` — each tier's
+  `stripeUrl` is a Stripe Payment Link (Stripe dashboard → Payment Links →
+  New). Until set, the tier's button falls back to `/contact/`. Stripe's
+  own notifications cover payment, no extra wiring needed.
+
 ## Commands (run inside `site/`)
 
 | Command                  | What it does                            |

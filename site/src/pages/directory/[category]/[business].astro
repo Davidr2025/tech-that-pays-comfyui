@@ -2,6 +2,9 @@
 import Base from "../../../layouts/Base.astro";
 import config from "../../../../site.config.mjs";
 import places from "../../../data/places.json";
+import claimedPlaces from "../../../data/claimed-places.json";
+import listingCorrections from "../../../data/listing-corrections.json";
+import { applyListingOverrides, withClaimed } from "../../../lib/listing-data.mjs";
 import { getCollection } from "astro:content";
 
 // Fully static — one prerendered page per business, generated at build
@@ -15,7 +18,8 @@ export async function getStaticPaths() {
   );
 }
 
-const { business: b, category: cat } = Astro.props;
+const { category: cat } = Astro.props;
+const b = withClaimed(applyListingOverrides(Astro.props.business, listingCorrections), claimedPlaces);
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
@@ -50,7 +54,7 @@ const description = `${b.name}: ${b.subcategory || cat.label} in ${config.city},
 
       <div class="biz-detail-body">
         {b.subcategory && <span class="tag">{b.subcategory}</span>}
-        <h1>{b.name}</h1>
+        <h1>{b.name} {b.claimed && <span class="verified-badge">✓ Verified</span>}</h1>
         {b.rating != null && (
           <div class="rating" style="font-size:1.1rem">
             ★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span>
