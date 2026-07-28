@@ -244,7 +244,7 @@ export default {
   // claim page
   // shows the tier but disables its checkout button.
   claimEmail: "info@mississaugainsider.ca",
-  web3formsAccessKey: "REPLACE_ME_WEB3FORMS_ACCESS_KEY",
+  web3formsAccessKey: "57d2600b-5e8b-4c5e-a88b-5ec0269aabff",
   claim: {
     tiers: [
       {
