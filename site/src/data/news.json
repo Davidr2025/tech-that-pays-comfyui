@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-07-28T03:26:43.362Z",
+  "updatedAt": "2026-07-28T03:32:47.863Z",
   "items": [
-    {
-      "title": "Mississauga could temporarily pause new AI data centres",
-      "summary": "If approved, the city will introduce a one-year interim control bylaw while the city reviews how to regulate major digital infrastructure.",
-      "url": "https://www.mississauga.com/news/council/data-centre-mississauga/article_bed88dd2-3b29-540e-b7fc-6d574174eac2.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
-      "publishedAt": "2026-07-27T21:33:00.000Z"
-    },
     {
       "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
       "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
@@ -26,12 +18,28 @@
       "publishedAt": "2026-07-27T12:30:37.000Z"
     },
     {
+      "title": "Can your condo board police who sleeps in your home? This Mississauga building has a rule that does",
+      "summary": "In my opinion, the building’s overnight guest rule is intrusive, improper and vulnerable to challenge, Bob Aaron writes.",
+      "url": "https://www.thestar.com/business/personal-finance/is-your-condo-board-allowed-to-police-who-sleeps-in-your-home-one-mississauga-rule-tests-the-limit/article_22759a08-7201-470e-997d-a86fb1791697.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com/news/gta/",
+      "publishedAt": "2026-07-27T09:00:00.000Z"
+    },
+    {
       "title": "Voting in the 2026 Municipal Election? Check the voters’ list",
       "summary": "Mississauga’s 2026 Municipal Election is on Monday, October 26. Eligible voters will elect Mississauga’s Mayor, their Ward/Regional Councillor and School Board Trustees for the 2026–2030 term of office. Use the Voter Registration Portal to check, update or add your information to the voters’ list before voting begins. Being on the voters’ list helps confirm you’re eligible to vote, helps ensure you receive a Voter notification card and can make the process faster when you arrive to vote.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/voting-in-the-2026-municipal-election-check-the-voters-list/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-27T08:15:34.000Z"
+    },
+    {
+      "title": "Mississauga could pause new data centres for a year to address community, operational concerns",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOY3o0YlJ6a1p4RHFZS1BheWM4dG5zWkNycmNsM0dhdjBKcFNnaVdKUmI4aWsta1A4dVNXaW1aU3pPU0tnZDNCVlRWNnhxNWlGMVJ3a2RHTXMwNndUX0RYSHVqNnc4ZFRhNFh2cGlsWkV3WURoT0dOSjlsRkVkbmN3eWU0MG1Bd05tNC04ejZlVU9hUy04eHNyZ2dYZ3BSaXZ0VmdCLW91SDl1Q3Zwc284YTZObWY?oc=5",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-07-27T21:33:00.000Z"
     },
     {
       "title": "Unassuming homes provide important link to industrial history of Mississauga",
@@ -88,14 +96,6 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-27T14:58:48.000Z"
-    },
-    {
-      "title": "Body found near train tracks in Brampton being investigated as suspicious death: police",
-      "summary": "Peel police say they are investigating a suspicious death after a body was found near train tracks in Brampton, Ont.",
-      "url": "https://www.cbc.ca/news/canada/toronto/body-found-near-train-tracks-brampton-police-9.7285099?cmp=rss",
-      "source": "CBC Toronto",
-      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
-      "publishedAt": "2026-07-26T19:07:58.000Z"
     }
   ]
 }
