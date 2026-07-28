@@ -21,6 +21,19 @@ const base = import.meta.env.BASE_URL.endsWith("/")
 
 const tiers = config.claim.tiers;
 const description = `Claim and upgrade the ${config.name} listing for ${b.name} in ${config.city}, Ontario.`;
+
+const correctionSubject = `Listing correction: ${b.name}`;
+const correctionBody = [
+  `Business: ${b.name}`,
+  `Category: ${b.subcategory || cat.label}`,
+  `Address on file: ${b.address}`,
+  "",
+  "What needs to change:",
+  "(describe the correction here)",
+  "",
+  "Your name and best contact number:"
+].join("\n");
+const correctionMailto = `mailto:${config.claimEmail}?subject=${encodeURIComponent(correctionSubject)}&body=${encodeURIComponent(correctionBody)}`;
 ---
 <Base title={`Claim: ${b.name}`} description={description} current="directory">
   <section class="section container biz-detail">
@@ -60,7 +73,7 @@ const description = `Claim and upgrade the ${config.name} listing for ${b.name} 
           <li>Address, hours, phone and map link</li>
           <li>Sourced automatically from Google, corrections welcome</li>
         </ul>
-        <a class="cta-btn secondary" href={`${base}contact/`}>Request a correction →</a>
+        <a class="cta-btn secondary" href={correctionMailto}>Request a correction →</a>
       </div>
 
       {tiers.map((tier) => {
@@ -85,29 +98,10 @@ const description = `Claim and upgrade the ${config.name} listing for ${b.name} 
     <div class="claim-correction">
       <h3>Something wrong with your listing?</h3>
       <p>
-        Our directory is built from public Google listing data, so details can be out of date. Use the form below
-        to send corrections, mentioning <strong>{b.name}</strong> and what needs to change, we'll update it for free.
+        Our directory is built from public Google listing data, so details can be out of date. Send us
+        corrections directly, we'll update it for free.
       </p>
-      <div class="contact-form-embed">
-        <iframe
-          src="https://site.getlimitlesscustomers.com/widget/form/sCAbuNqcEsfYxpUnPQZq"
-          style="width:100%;height:100%;border:none;border-radius:4px"
-          id="inline-sCAbuNqcEsfYxpUnPQZq"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Mississauga Insider Contact Us"
-          data-height="undefined"
-          data-layout-iframe-id="inline-sCAbuNqcEsfYxpUnPQZq"
-          data-form-id="sCAbuNqcEsfYxpUnPQZq"
-          title="Mississauga Insider Contact Us"
-        ></iframe>
-      </div>
+      <a class="cta-btn secondary" href={correctionMailto}>Email us the correction →</a>
     </div>
   </section>
-  <script src="https://site.getlimitlesscustomers.com/js/form_embed.js"></script>
 </Base>

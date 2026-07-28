@@ -228,11 +228,15 @@ export default {
   },
 
   // --- CLAIM-LISTING PAID TIERS ---
-  // Powers /directory/<category>/<business>/claim/. Checkout is Stripe
-  // Payment Links (no backend needed) — create each link in the Stripe
+  // Powers /directory/<category>/<business>/claim/. Free corrections go out
+  // as a plain mailto: to claimEmail (no backend needed on static hosting —
+  // it opens the visitor's own email client addressed to you). Paid
+  // upgrades are Stripe Payment Links — create each link in the Stripe
   // dashboard (Payment Links → New), then paste its URL below in place of
-  // the "REPLACE_ME" placeholder. Until replaced, the claim page shows the
-  // tier but disables its checkout button.
+  // the "REPLACE_ME" placeholder; Stripe itself notifies you on payment, so
+  // no extra email wiring is needed there. Until replaced, the claim page
+  // shows the tier but disables its checkout button.
+  claimEmail: "david@lsfg.ca",
   claim: {
     tiers: [
       {
