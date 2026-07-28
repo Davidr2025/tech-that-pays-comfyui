@@ -225,5 +225,40 @@ export default {
       { slug: "auto",         label: "Auto Services",      query: "top rated auto repair shops in Mississauga, Ontario" },
       { slug: "beauty",       label: "Beauty & Barber",    query: "best hair salons and barbershops in Mississauga, Ontario" }
     ]
+  },
+
+  // --- CLAIM-LISTING PAID TIERS ---
+  // Powers /directory/<category>/<business>/claim/. Checkout is Stripe
+  // Payment Links (no backend needed) — create each link in the Stripe
+  // dashboard (Payment Links → New), then paste its URL below in place of
+  // the "REPLACE_ME" placeholder. Until replaced, the claim page shows the
+  // tier but disables its checkout button.
+  claim: {
+    tiers: [
+      {
+        slug: "featured",
+        label: "Featured Listing",
+        price: "$49/mo",
+        stripeUrl: "REPLACE_ME_STRIPE_PAYMENT_LINK_FEATURED",
+        perks: [
+          "Priority placement at the top of your category",
+          "Your own photos in the directory card",
+          "Direct link to your website and phone number",
+          "Highlighted \"Featured\" badge on your listing"
+        ]
+      },
+      {
+        slug: "vip",
+        label: "VIP Spotlight",
+        price: "$149/mo",
+        stripeUrl: "REPLACE_ME_STRIPE_PAYMENT_LINK_VIP",
+        perks: [
+          "Everything in Featured Listing",
+          "A full Business Spotlight article written about you",
+          "Video embed support (YouTube/Instagram)",
+          "Mentioned in the weekly newsletter"
+        ]
+      }
+    ]
   }
 };

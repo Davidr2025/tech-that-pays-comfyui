@@ -1,0 +1,113 @@
+---
+import Base from "../../../../layouts/Base.astro";
+import config from "../../../../../site.config.mjs";
+import places from "../../../../data/places.json";
+
+// Fully static — one prerendered claim page per business, generated at
+// build time from places.json, mirroring the business detail page route.
+export async function getStaticPaths() {
+  return places.categories.flatMap((cat) =>
+    cat.businesses.map((b) => ({
+      params: { category: cat.slug, business: b.slug },
+      props: { business: b, category: cat }
+    }))
+  );
+}
+
+const { business: b, category: cat } = Astro.props;
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
+
+const tiers = config.claim.tiers;
+const description = `Claim and upgrade the ${config.name} listing for ${b.name} in ${config.city}, Ontario.`;
+---
+<Base title={`Claim: ${b.name}`} description={description} current="directory">
+  <section class="section container biz-detail">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={`${base}directory/`}>Directory</a>
+      <span>›</span>
+      <a href={`${base}directory/#${cat.slug}`}>{cat.label}</a>
+      <span>›</span>
+      <a href={`${base}directory/${cat.slug}/${b.slug}/`}>{b.name}</a>
+      <span>›</span>
+      <span>Claim this listing</span>
+    </nav>
+
+    <h1>Claim your listing</h1>
+    <p class="lede">Confirm this is your business, tell us about anything that needs fixing, and pick how you want it to appear on {config.name}.</p>
+
+    <div class="claim-current">
+      <h3>Your current listing</h3>
+      <div class="claim-current-body">
+        {b.photo && <img class="claim-current-photo" src={b.photo} alt={b.name} />}
+        <dl class="claim-current-facts">
+          <div><dt>Name</dt><dd>{b.name}</dd></div>
+          <div><dt>Category</dt><dd>{b.subcategory || cat.label}</dd></div>
+          <div><dt>Address</dt><dd>{b.address}</dd></div>
+          {b.phone && <div><dt>Phone</dt><dd>{b.phone}</dd></div>}
+          {b.website && <div><dt>Website</dt><dd><a href={b.website} target="_blank" rel="noopener">{b.website}</a></dd></div>}
+        </dl>
+      </div>
+    </div>
+
+    <div class="claim-tiers">
+      <div class="claim-tier">
+        <h3>Free listing</h3>
+        <p class="claim-tier-price">Current</p>
+        <ul class="claim-tier-perks">
+          <li>Listed in the {cat.label} directory</li>
+          <li>Address, hours, phone and map link</li>
+          <li>Sourced automatically from Google, corrections welcome</li>
+        </ul>
+        <a class="cta-btn secondary" href={`${base}contact/`}>Request a correction →</a>
+      </div>
+
+      {tiers.map((tier) => {
+        const isLive = tier.stripeUrl && !tier.stripeUrl.startsWith("REPLACE_ME");
+        return (
+          <div class="claim-tier claim-tier-paid">
+            <span class="tag">{tier.label}</span>
+            <p class="claim-tier-price">{tier.price}</p>
+            <ul class="claim-tier-perks">
+              {tier.perks.map((perk) => <li>{perk}</li>)}
+            </ul>
+            {isLive ? (
+              <a class="cta-btn" href={tier.stripeUrl} target="_blank" rel="noopener">Upgrade to {tier.label} →</a>
+            ) : (
+              <a class="cta-btn" href={`${base}contact/`}>Ask about {tier.label} →</a>
+            )}
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="claim-correction">
+      <h3>Something wrong with your listing?</h3>
+      <p>
+        Our directory is built from public Google listing data, so details can be out of date. Use the form below
+        to send corrections, mentioning <strong>{b.name}</strong> and what needs to change, we'll update it for free.
+      </p>
+      <div class="contact-form-embed">
+        <iframe
+          src="https://site.getlimitlesscustomers.com/widget/form/sCAbuNqcEsfYxpUnPQZq"
+          style="width:100%;height:100%;border:none;border-radius:4px"
+          id="inline-sCAbuNqcEsfYxpUnPQZq"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Mississauga Insider Contact Us"
+          data-height="undefined"
+          data-layout-iframe-id="inline-sCAbuNqcEsfYxpUnPQZq"
+          data-form-id="sCAbuNqcEsfYxpUnPQZq"
+          title="Mississauga Insider Contact Us"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  <script src="https://site.getlimitlesscustomers.com/js/form_embed.js"></script>
+</Base>
