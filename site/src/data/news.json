@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T03:32:47.863Z",
+  "updatedAt": "2026-07-28T03:58:43.605Z",
   "items": [
     {
       "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
@@ -16,14 +16,6 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-07-27T12:30:37.000Z"
-    },
-    {
-      "title": "Can your condo board police who sleeps in your home? This Mississauga building has a rule that does",
-      "summary": "In my opinion, the building’s overnight guest rule is intrusive, improper and vulnerable to challenge, Bob Aaron writes.",
-      "url": "https://www.thestar.com/business/personal-finance/is-your-condo-board-allowed-to-police-who-sleeps-in-your-home-one-mississauga-rule-tests-the-limit/article_22759a08-7201-470e-997d-a86fb1791697.html",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com/news/gta/",
-      "publishedAt": "2026-07-27T09:00:00.000Z"
     },
     {
       "title": "Voting in the 2026 Municipal Election? Check the voters’ list",
@@ -96,6 +88,14 @@
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-27T14:58:48.000Z"
+    },
+    {
+      "title": "Remembering the life of BETTY BURTON",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPRWtnaHNUTFl6bzRwTm9xRXFPOV9sZzA4UlBvYlRCb0x2Z09ESkxYT1l4N0d2ZllRd3EtV3BmWDJCTm5RVUdQVmREVFRRMmV4dnY3Nng3R0VjN3hBUEROdUxqcGIwRmphVkZCREFaa29objllblFzb2R6UFZsQTYyTFI1Zw?oc=5",
+      "source": "Mississauga News Obituaries",
+      "sourceUrl": "https://obituaries.mississauga.com",
+      "publishedAt": "2026-07-27T13:04:00.000Z"
     }
   ]
 }

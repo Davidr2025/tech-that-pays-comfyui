@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-07-28T03:32:49.191Z",
+  "updatedAt": "2026-07-28T03:58:45.001Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 22,
+    "temp": 21,
     "feelsLike": 23,
     "text": "Overcast",
     "icon": "☁️"
@@ -21,7 +21,7 @@
       "date": "2026-07-28",
       "max": 27,
       "min": 20,
-      "precipChance": 55,
+      "precipChance": 41,
       "text": "Drizzle",
       "icon": "🌦️"
     },
