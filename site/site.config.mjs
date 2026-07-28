@@ -243,7 +243,7 @@ export default {
   // payment, so no extra email wiring is needed there. Until replaced, the
   // claim page
   // shows the tier but disables its checkout button.
-  claimEmail: "david@lsfg.ca",
+  claimEmail: "info@mississaugainsider.ca",
   web3formsAccessKey: "REPLACE_ME_WEB3FORMS_ACCESS_KEY",
   claim: {
     tiers: [
