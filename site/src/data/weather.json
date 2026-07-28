@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-28T01:41:07.815Z",
+  "updatedAt": "2026-07-28T01:46:04.183Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 23,
-    "feelsLike": 25,
+    "temp": 22,
+    "feelsLike": 24,
     "text": "Overcast",
     "icon": "☁️"
   },
