@@ -50,3 +50,11 @@ try {
 
 const secs = ((Date.now() - started) / 1000).toFixed(1);
 log(`=== done in ${secs}s: ${Object.entries(results).map(([k, v]) => `${k}=${v ? "updated" : "unchanged"}`).join(", ")} ===`);
+
+// fetch-news.mjs's headless Chromium (Playwright) can leave a lingering
+// chrome-headless-shell process/handle behind even after browser.close(),
+// which keeps Node's event loop alive and the process never exits on its
+// own — CI then hangs on this step until the job timeout kills it, having
+// never reached the commit/build/deploy steps that follow. All work above
+// is already done and written to disk at this point, so force a clean exit.
+process.exit(0);
