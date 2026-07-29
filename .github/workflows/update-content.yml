@@ -54,7 +54,14 @@ jobs:
         working-directory: site
         run: npm ci --no-audit --no-fund
 
+      # Only re-fetch on a real schedule/manual run. A push (code change, or
+      # a data commit from something like the news-rewrite Routine) should
+      # only rebuild + redeploy whatever's already committed — re-fetching
+      # here would overwrite hand-edited/rewritten data (e.g. news.json's
+      # `rewritten` flags) with fresh raw feed content seconds after it was
+      # written, which is exactly what used to happen before this guard.
       - name: Run content pipeline (feeds fetched → content parsed)
+        if: github.event_name != 'push'
         working-directory: site
         env:
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
@@ -68,6 +75,7 @@ jobs:
           fi
 
       - name: Commit refreshed data
+        if: github.event_name != 'push'
         run: |
           if git diff --quiet -- site/src/data site/exports; then
             echo "No content changes this run."
