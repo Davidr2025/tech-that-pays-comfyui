@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import config from "../site.config.mjs";
 import {
-  fetchText, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn, UA
+  fetchText, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, readData, log, warn, UA
 } from "./lib/util.mjs";
 
 /** WordPress REST API posts endpoint → normalized feed items. */
@@ -220,9 +220,27 @@ export async function fetchNews() {
       warn(`news: dropped ${deduped.length - withText.length} item(s) with no source text available for a summary`);
     }
 
+    // A story often keeps appearing in the feeds run after run while it's
+    // still current. Without this, every 6-hour re-fetch would overwrite
+    // an already-rewritten item's title/summary/`rewritten` flag with the
+    // source's raw wording again, silently un-publishing it until someone
+    // re-does the rewrite pass. Match by URL against whatever's already on
+    // disk and, for any item that was already rewritten, keep that
+    // rewritten title/summary instead of the freshly fetched raw text —
+    // only genuinely new URLs come through unrewritten.
+    const existingByUrl = new Map((readData("news.json")?.items || []).map((it) => [it.url, it]));
+    const merged = withText.map((it) => {
+      const prev = existingByUrl.get(it.url);
+      return prev?.rewritten
+        ? { ...it, title: prev.title, summary: prev.summary, rewritten: true }
+        : it;
+    });
+    const carriedOver = merged.filter((it) => it.rewritten).length;
+    if (carriedOver > 0) log(`news: carried forward ${carriedOver} already-rewritten item(s) still present in the feeds`);
+
     return writeData("news.json", {
       updatedAt: new Date().toISOString(),
-      items: withText
+      items: merged
     });
   } finally {
     await browser?.close().catch(() => {});
