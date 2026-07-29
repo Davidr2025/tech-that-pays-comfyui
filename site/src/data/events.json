@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T17:38:07.106Z",
+  "updatedAt": "2026-07-29T23:14:27.690Z",
   "windowDays": 14,
   "items": [
     {
@@ -101,6 +101,16 @@
       "end": "2026-08-09T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Youth Summer Series Writing Workshop: World-Building and Lived Experiences",
+      "summary": "Join authors Sarena and Sasha Nanua for an Author Talk and interactive workshop, “World-Building and Writing from your Lived Experiences.”",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/youth-summer-series-writing-workshop-world-building-and-lived-experiences-tickets-1993542803189",
+      "start": "2026-08-12T23:00:00.000Z",
+      "end": "2026-08-13T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
