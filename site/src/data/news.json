@@ -2,100 +2,103 @@
   "updatedAt": "2026-07-29T14:23:17.594Z",
   "items": [
     {
-      "title": "Peel Region shelter crisis deepens as intimate partner violence incidents rise",
-      "summary": "As intimate partner violence incidents rise in Peel Region, local leaders say provincially funded emergency shelters are overburdened and hamstrung by outdated funding rules. Mississauga’s mayor and the Peel Regional Council have called for more support.",
+      "title": "Rising Domestic Violence Cases Push Peel Shelters Past Capacity",
+      "summary": "Local leaders say Peel Region's provincially funded emergency shelters are stretched thin as intimate partner violence cases climb, with outdated funding rules making it harder to keep up. Mississauga's mayor and Peel Regional Council are now pressing the province for additional support.",
       "url": "https://www.cbc.ca/news/canada/toronto/ipv-shelters-peel-region-9.7287717?cmp=rss",
       "source": "CBC Toronto",
       "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
-      "publishedAt": "2026-07-29T09:00:00.000Z"
+      "publishedAt": "2026-07-29T09:00:00.000Z",
+      "rewritten": true
     },
     {
-      "title": "Amid food security crisis Mississauga food bank seeks development charges waiver for expansion",
+      "title": "Local Food Bank Asks City to Waive Development Charges for Expansion",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPZTN0UEQwaTJINkpzR09VeFR6WWVSajlNUXhqSzhEcWJ2WWxlTGlMTzRDa3RhSnFwMW1ZU0RkRkg2RENORFZVdHNNaUIxM2lKX3R2RlRIXzhGc3EwbUdSZ3k3R2V5Yk5zNjdsYlplakJMTzJRMXc2WDFKZDNFand3c2dpU1ZabURfSE5xam53cnIzZEV0Wno3ZTNvV05CeUh0T1JudHV4TVV2U2xjd1ZCdUgxTU00Ym5NUzl3M29YbjdtSS1SbjZjWkx5Uk1XWHl4R2lIQVp0UHo2aFpKODUtVWdqcHM?oc=5",
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-29T10:00:00.000Z"
+      "publishedAt": "2026-07-29T10:00:00.000Z",
+      "rewritten": true
     },
     {
-      "title": "Mississauga, Ontario, Canada",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0zY1F1MFBweVZVTUc0YlpjRV9Rc1d1MEhHRnlCQ3VEdzhlZ01VVDVsbVA2b2t0cFlrelQxZkxIZXphbTUzZndjNVJkUWstLVo1MkkzYkRTajBsZ19TQ2U5Z1VRbFc4aFU?oc=5",
-      "source": "MSN",
-      "sourceUrl": "http://www.msn.com",
-      "publishedAt": "2026-07-29T09:38:01.000Z"
-    },
-    {
-      "title": "Mississauga councillor wants pause on AI data centres as Toronto councillors grapple with proposed facilities",
+      "title": "Mississauga Councillor Pushes for Pause on AI Data Centres as Toronto Weighs Its Own Proposals",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPOFM1RnpGUjJfc3pqTm5CVlBQb2otLTE1eFNZVXRKUWd1dWlKcnBnV21jbndOX2pMa3pOVnRzWGN0ekpxamg3VEd0cEctU1VOMW9XMzh4OTE0U0lVUkdiZ1l0V1htT21LV2pRS3dLa0hpbHo1LS1Pb3R1ZWJKb1VHUGptbmdLQ1dPTW00?oc=5",
       "source": "CityNews Toronto",
       "sourceUrl": "https://toronto.citynews.ca",
-      "publishedAt": "2026-07-29T00:30:00.000Z"
+      "publishedAt": "2026-07-29T00:30:00.000Z",
+      "rewritten": true
     },
     {
-      "title": "Child in critical condition after being pulled from Mississauga pool",
-      "summary": "A child has been pulled from a pool at a Mississauga home and rushed to hospital in life-threatening condition, Peel police say.",
+      "title": "Child Rushed to Hospital in Critical Condition After Mississauga Pool Incident",
+      "summary": "Peel police say a child was pulled from a swimming pool at a Mississauga home and taken to hospital in life-threatening condition.",
       "url": "https://www.cbc.ca/news/canada/toronto/child-drowning-call-mississauga-9.7287525?cmp=rss",
       "source": "CBC Toronto",
       "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
-      "publishedAt": "2026-07-28T17:13:22.000Z"
+      "publishedAt": "2026-07-28T17:13:22.000Z",
+      "rewritten": true
     },
     {
-      "title": "Discover the hidden history of Mississauga’s oldest village on free walking tours",
+      "title": "Free Walking Tours Highlight the Hidden History of Mississauga's Oldest Village",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQQlQteVVhdE0yOTctcDlzU1lXR1k1M0V3c1M2UWtJbG1HWTRGVXNUYnRkMlpsRjFjMWNLTzU2MHNwY3ctYjIwMEx1MzVhWFNlRmRaMU9EamlZdHliV3pRMk42VHhyYjl1UDhZVG9PWnR3eEhVRkwwT1B2TEdaYk9fX05seXo0c3NwZG1pUWNpSy1wdlhGM0FjbXZ2ZC1UTEFrN0R0LXRPXzU?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-28T21:41:44.000Z"
+      "publishedAt": "2026-07-28T21:41:44.000Z",
+      "rewritten": true
     },
     {
-      "title": "114-year-old company opens new facility in Mississauga to meet demand for cold coffee",
+      "title": "114-Year-Old Company Opens New Mississauga Facility to Meet Cold Coffee Demand",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOOFpXaDdtUHVrclpTTnNJaFQ0UDVGSEJmbUlKQUtCQWVXazRBVFFwUEw5dXJtaWJJaVdpbWJqcWZNS1BxY1lGdEtPYk0xYy1fejR4eE8xdm9OSGNITTJYa1MwTjl5aW56Yi1kcFp6T2ZVNnZmZ19XYXlhdGRNbkRGdEVTV1ZoUjg1cHoyWUFoaGhJdEpHeE5nYU5OSGFJTDdnZnVWb250NDFteWV6WGxJ?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-28T20:33:47.000Z"
+      "publishedAt": "2026-07-28T20:33:47.000Z",
+      "rewritten": true
     },
     {
-      "title": "Major infrastructure project will impact Mississauga now and in future",
+      "title": "New Infrastructure Project Set to Affect Mississauga for Years to Come",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNQ2I2dmlyc0t5OWxVWFZId1FmNE9jVTRFdEZnbU5uUHhRVXlLV0s2SDFuc2RhZWlzcVBZRENuWjdBTEdLekVGRWtZUVhWdGpqaFYtckowSzhtRVR4QkJybWlpeU5Bd1c4dGN6dEZHY3RQTnA4bjJ3UmZKcThvSTRGYS01VlRyektoX3JQQ0N6cHpLeTBOZjVFVEtybw?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-28T15:42:10.000Z"
+      "publishedAt": "2026-07-28T15:42:10.000Z",
+      "rewritten": true
     },
     {
-      "title": "Mississauga apartment tenants may gain stronger heat protections if motion passes",
+      "title": "Proposed Motion Could Strengthen Heat Protections for Mississauga Apartment Tenants",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNVV5Y0U1S18tZ0JLS2JyTktBQVBtWkZLZVZBR3MzaDRYeURpNnlGWGFNM1pLUlRPOWpUcHhpLUQ2S2VYanhLQmRpZmRXeHBxc1ZsaHQ0ZDdkcktWWDNXaWtOSjRMakxxMUJfUnRmMlZsWjVUM2Z6VTQ0bEZjbUVFbEhyWWxHX2pVUVNVQzVEbC1tOW1qMUNoQ3dLeXlMWGw2dVA4MjQ5SGpUVF83cTVyRTRoekJ1OHM?oc=5",
       "source": "Mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-28T10:00:00.000Z"
+      "publishedAt": "2026-07-28T10:00:00.000Z",
+      "rewritten": true
     },
     {
-      "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
-      "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
+      "title": "First West Nile Case of the Season Turns Up in Peel Mosquitoes",
+      "summary": "According to the City of Mississauga, this year's first local case of West Nile virus has turned up in mosquitoes near Queen Street East and Kennedy Road North in Brampton. The City says most infections are just mild, flu-like symptoms, though it can rarely affect the brain or nervous system, and it's urging Peel residents to start taking precautions against mosquito bites.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/peel-region-confirms-west-nile-virus-found-in-mosquitoes-what-you-need-to-know/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-27T15:14:58.000Z"
+      "publishedAt": "2026-07-27T15:14:58.000Z",
+      "rewritten": true
     },
     {
-      "title": "Public engagements open in August",
-      "summary": "The City of Mississauga regularly connects with residents throughout the year to gather their ideas and constructive feedback. This helps guide City plans, programs, services and new developments. Residents and businesses can take part in different ways. You can participate by attending information sessions, open houses and workshops or completing online surveys. The City reviews this feedback along with other data and trends to help decide how to focus its time and resources on community priorities.",
+      "title": "City Opens New Round of Public Engagement Sessions This August",
+      "summary": "The City of Mississauga is inviting residents and businesses to weigh in on upcoming plans, programs and services through information sessions, open houses, workshops and online surveys throughout August. City staff say the feedback helps shape where time and resources get focused next.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/public-engagements-open-in-august/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-27T12:30:37.000Z"
+      "publishedAt": "2026-07-27T12:30:37.000Z",
+      "rewritten": true
     },
     {
-      "title": "Voting in the 2026 Municipal Election? Check the voters’ list",
-      "summary": "Mississauga’s 2026 Municipal Election is on Monday, October 26. Eligible voters will elect Mississauga’s Mayor, their Ward/Regional Councillor and School Board Trustees for the 2026–2030 term of office. Use the Voter Registration Portal to check, update or add your information to the voters’ list before voting begins. Being on the voters’ list helps confirm you’re eligible to vote, helps ensure you receive a Voter notification card and can make the process faster when you arrive to vote.",
+      "title": "Mississauga Voters Urged to Check the Voters' List Before October Election",
+      "summary": "Mississauga heads to the polls on Monday, October 26 to elect its Mayor, Ward and Regional Councillors, and School Board Trustees for the 2026 to 2030 term. The City is encouraging residents to confirm or update their information on the Voter Registration Portal ahead of time, since being on the voters' list speeds up the process on election day.",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/voting-in-the-2026-municipal-election-check-the-voters-list/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-27T08:15:34.000Z"
+      "publishedAt": "2026-07-27T08:15:34.000Z",
+      "rewritten": true
     }
   ]
 }

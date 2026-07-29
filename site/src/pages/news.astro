@@ -6,9 +6,14 @@ import AdSlot from "../components/AdSlot.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
 
-const mid = Math.ceil(news.items.length / 2);
-const firstHalf = news.items.slice(0, mid);
-const secondHalf = news.items.slice(mid);
+// Only ever show items whose headline/summary have been rewritten into our
+// own original wording (see the "rewritten" flag) — a freshly-fetched item
+// that hasn't gone through that pass yet stays hidden rather than briefly
+// showing the source's own verbatim text.
+const items = news.items.filter((it) => it.rewritten);
+const mid = Math.ceil(items.length / 2);
+const firstHalf = items.slice(0, mid);
+const secondHalf = items.slice(mid);
 ---
 <Base title="Top News" description={`The latest ${config.city} headlines, curated from local sources with links to the original coverage.`} current="news">
   <section class="section container">
@@ -19,7 +24,7 @@ const secondHalf = news.items.slice(mid);
 
     <AdSlot id="news-top" variant="banner" />
 
-    {news.items.length ? (
+    {items.length ? (
       <>
         <div class="grid">{firstHalf.map((item) => <NewsCard item={item} />)}</div>
         {secondHalf.length > 0 && (
