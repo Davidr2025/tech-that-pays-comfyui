@@ -66,6 +66,15 @@ export default {
         name: "insauga",
         homepage: "https://www.insauga.com/mississauga/",
         candidates: [
+          // insauga runs on WordPress — try its native feed first so links
+          // go straight to the article instead of through Google News
+          // (which now gets dropped entirely if it can't be unwrapped to
+          // the real article URL, see resolveGoogleNewsUrl in
+          // fetch-news.mjs). Unverified from this environment (outbound
+          // fetches to insauga.com are network-policy-blocked here) — if
+          // this 404s/isn't a feed, firstWorkingFeed() just falls through
+          // to the Google News candidate below as before.
+          "https://www.insauga.com/feed/",
           "https://news.google.com/rss/search?q=site:insauga.com%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
         ]
       },

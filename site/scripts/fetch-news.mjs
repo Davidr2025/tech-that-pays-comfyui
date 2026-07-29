@@ -1,6 +1,6 @@
 import config from "../site.config.mjs";
 import {
-  fetchText, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn
+  fetchText, resolveUrl, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn
 } from "./lib/util.mjs";
 
 /** WordPress REST API posts endpoint → normalized feed items. */
@@ -52,6 +52,29 @@ async function firstWorkingFeed(src) {
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
+ * Google News RSS <link> URLs are redirects through news.google.com that
+ * don't land on the publisher's article on a plain HTTP fetch — they land
+ * on Google's own interstitial page. Try to recover the real article URL
+ * from that page (the final redirect target, a meta-refresh, or a
+ * canonical link, whichever points off Google's own domain); return null
+ * if none of those work, so the caller can drop the item rather than
+ * publish a Google link — we only ever link to the original source.
+ */
+async function resolveGoogleNewsUrl(url) {
+  try {
+    const { finalUrl, html } = await resolveUrl(url);
+    if (finalUrl && !finalUrl.includes("news.google.com")) return finalUrl;
+    const refresh = html.match(/<meta[^>]+http-equiv=["']refresh["'][^>]*content=["']\d+;\s*url=([^"']+)["']/i);
+    if (refresh && !refresh[1].includes("news.google.com")) return refresh[1];
+    const canonical = html.match(/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
+    if (canonical && !canonical[1].includes("news.google.com")) return canonical[1];
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Best-effort fallback for items with no real excerpt (mainly Google
  * News-routed items, whose RSS descriptions are just link lists): fetch the
  * article page and pull its og:description / meta description. This is
@@ -101,24 +124,40 @@ export async function fetchNews() {
       });
     }
     const viaGoogleNews = hit.url.includes("news.google.com");
-    items = items.slice(0, maxPerSource).map((it) => {
+    const candidateCount = Math.min(items.length, maxPerSource);
+    const mapped = await Promise.all(items.slice(0, maxPerSource).map(async (it) => {
       // Google News items carry the real publisher in the <source> tag and
       // append " - Publisher" to titles; credit the outlet, not Google.
       const publisher = it.sourceName || src.name;
       const title = viaGoogleNews
         ? it.title.replace(new RegExp(`\\s*[-–|]\\s*${escapeRe(publisher)}\\s*$`, "i"), "")
         : it.title;
+      let url = it.link;
+      if (viaGoogleNews) {
+        // Only ever link to the original article — if Google's redirect
+        // can't be unwrapped, drop the item rather than publish a Google
+        // link or a homepage guess.
+        const resolved = await resolveGoogleNewsUrl(it.link);
+        if (!resolved) return null;
+        url = resolved;
+      }
       return {
         title,
-        // Google News "descriptions" are just link lists — no real excerpt
+        // Google News "descriptions" are just link lists — no real excerpt;
+        // the meta-description fallback below fills this in now that `url`
+        // is the real article (not Google's interstitial).
         summary: viaGoogleNews ? "" : excerpt(it.description),
-        url: it.link,
+        url,
         source: publisher,
         sourceUrl: it.sourceUrl || src.homepage,
         publishedAt: it.publishedAt
       };
-    });
-    log(`news: ${src.name} → ${items.length} items (via ${hit.url})`);
+    }));
+    items = mapped.filter(Boolean);
+    const droppedNote = viaGoogleNews && candidateCount > items.length
+      ? ` (dropped ${candidateCount - items.length} unresolved Google News link${candidateCount - items.length === 1 ? "" : "s"})`
+      : "";
+    log(`news: ${src.name} → ${items.length} items (via ${hit.url})${droppedNote}`);
     all.push(...items);
   }
 
@@ -164,8 +203,18 @@ export async function fetchNews() {
       })
   );
 
+  // No source text to work with (own excerpt empty, and the article's own
+  // meta description came back empty too) means there's nothing for the
+  // rewrite pass to write an original summary from — drop it rather than
+  // publish a "no preview available" card. Every story on the site should
+  // have a real write-up.
+  const withText = deduped.filter((it) => it.summary);
+  if (withText.length < deduped.length) {
+    warn(`news: dropped ${deduped.length - withText.length} item(s) with no source text available for a summary`);
+  }
+
   return writeData("news.json", {
     updatedAt: new Date().toISOString(),
-    items: deduped
+    items: withText
   });
 }

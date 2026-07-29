@@ -55,6 +55,24 @@ export async function fetchJson(url, opts = {}) {
   return JSON.parse(text);
 }
 
+/** Follow redirects and return both the final resolved URL and the response
+ *  body — used to unwrap Google News's redirect links to find the real
+ *  article URL (a plain fetchText() only gives you the body, not res.url). */
+export async function resolveUrl(url, { timeoutMs = 8000 } = {}) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      signal: ctrl.signal,
+      redirect: "follow",
+      headers: { "user-agent": UA, accept: "text/html,*/*" }
+    });
+    return { finalUrl: res.url, html: await res.text() };
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 /** Try candidate URLs in order; return { url, text } of first success. */
 export async function tryCandidates(candidates, validate = () => true) {
   for (const url of candidates) {
