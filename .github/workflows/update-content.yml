@@ -54,6 +54,15 @@ jobs:
         working-directory: site
         run: npm ci --no-audit --no-fund
 
+      # Google News RSS links only resolve to the real article via
+      # client-side JavaScript, so fetch-news.mjs drives a headless browser
+      # (Playwright/Chromium) to follow that redirect. Only needed when the
+      # fetch step below actually runs.
+      - name: Install Playwright Chromium
+        if: github.event_name != 'push'
+        working-directory: site
+        run: npx playwright install --with-deps chromium
+
       # Only re-fetch on a real schedule/manual run. A push (code change, or
       # a data commit from something like the news-rewrite Routine) should
       # only rebuild + redeploy whatever's already committed — re-fetching

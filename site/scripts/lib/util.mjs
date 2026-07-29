@@ -7,7 +7,7 @@ export const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", ".."
 
 // A browser-like UA: several local outlets sit behind bot-blocking CDNs that
 // 403 non-browser agents even for their public RSS feeds.
-const UA =
+export const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
 export function log(msg) {
@@ -53,24 +53,6 @@ export async function fetchText(url, { timeoutMs = 30000, headers = {}, retries 
 export async function fetchJson(url, opts = {}) {
   const text = await fetchText(url, opts);
   return JSON.parse(text);
-}
-
-/** Follow redirects and return both the final resolved URL and the response
- *  body — used to unwrap Google News's redirect links to find the real
- *  article URL (a plain fetchText() only gives you the body, not res.url). */
-export async function resolveUrl(url, { timeoutMs = 8000 } = {}) {
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), timeoutMs);
-  try {
-    const res = await fetch(url, {
-      signal: ctrl.signal,
-      redirect: "follow",
-      headers: { "user-agent": UA, accept: "text/html,*/*" }
-    });
-    return { finalUrl: res.url, html: await res.text() };
-  } finally {
-    clearTimeout(t);
-  }
 }
 
 /** Try candidate URLs in order; return { url, text } of first success. */

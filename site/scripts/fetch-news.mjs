@@ -1,6 +1,7 @@
+import { chromium } from "playwright";
 import config from "../site.config.mjs";
 import {
-  fetchText, resolveUrl, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn
+  fetchText, parseFeed, looksLikeFeed, excerpt, stripHtml, toIso, writeData, log, warn, UA
 } from "./lib/util.mjs";
 
 /** WordPress REST API posts endpoint → normalized feed items. */
@@ -53,24 +54,40 @@ const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
  * Google News RSS <link> URLs are redirects through news.google.com that
- * don't land on the publisher's article on a plain HTTP fetch — they land
- * on Google's own interstitial page. Try to recover the real article URL
- * from that page (the final redirect target, a meta-refresh, or a
- * canonical link, whichever points off Google's own domain); return null
- * if none of those work, so the caller can drop the item rather than
- * publish a Google link — we only ever link to the original source.
+ * only resolve via client-side JavaScript — a plain HTTP fetch just lands
+ * on Google's own interstitial page and stops there. A real (headless)
+ * browser is the only reliable way to land on the actual publisher page,
+ * so this drives one to follow the redirect, then pulls the resolved
+ * article's own og:description/meta description while the page is right
+ * there (skips a second network round-trip, and works even on sites that
+ * 403 plain server-side fetches). Returns null if it never leaves
+ * news.google.com, so the caller can drop the item — we only ever link to
+ * the original source, never a Google redirect.
  */
-async function resolveGoogleNewsUrl(url) {
+async function resolveGoogleNewsArticle(browser, googleUrl) {
+  const page = await browser.newPage({ userAgent: UA });
   try {
-    const { finalUrl, html } = await resolveUrl(url);
-    if (finalUrl && !finalUrl.includes("news.google.com")) return finalUrl;
-    const refresh = html.match(/<meta[^>]+http-equiv=["']refresh["'][^>]*content=["']\d+;\s*url=([^"']+)["']/i);
-    if (refresh && !refresh[1].includes("news.google.com")) return refresh[1];
-    const canonical = html.match(/<link[^>]+rel=["']canonical["'][^>]*href=["']([^"']+)["']/i);
-    if (canonical && !canonical[1].includes("news.google.com")) return canonical[1];
-    return null;
+    await page.goto(googleUrl, { waitUntil: "domcontentloaded", timeout: 15000 });
+    // Google's redirect fires client-side after the interstitial loads —
+    // give it a moment to land before giving up on it.
+    await page
+      .waitForURL((u) => !u.hostname.includes("news.google.com"), { timeout: 8000 })
+      .catch(() => {});
+    const finalUrl = page.url();
+    if (!finalUrl || finalUrl.includes("news.google.com")) return null;
+    const description = await page
+      .evaluate(() => {
+        const meta =
+          document.querySelector('meta[property="og:description"]') ||
+          document.querySelector('meta[name="description"]');
+        return meta?.getAttribute("content") || "";
+      })
+      .catch(() => "");
+    return { url: finalUrl, description };
   } catch {
     return null;
+  } finally {
+    await page.close().catch(() => {});
   }
 }
 
@@ -110,55 +127,64 @@ export async function fetchNews() {
   const { sources, keywords, maxPerSource, maxTotal } = config.news;
   const all = [];
 
-  for (const src of sources) {
-    const hit = await firstWorkingFeed(src);
-    if (!hit) {
-      warn(`news: no working feed for ${src.name}`);
-      continue;
-    }
-    let items = hit.items;
-    if (src.filter) {
-      items = items.filter((it) => {
-        const hay = `${it.title} ${it.description}`.toLowerCase();
-        return keywords.some((k) => hay.includes(k));
-      });
-    }
-    const viaGoogleNews = hit.url.includes("news.google.com");
-    const candidateCount = Math.min(items.length, maxPerSource);
-    const mapped = await Promise.all(items.slice(0, maxPerSource).map(async (it) => {
-      // Google News items carry the real publisher in the <source> tag and
-      // append " - Publisher" to titles; credit the outlet, not Google.
-      const publisher = it.sourceName || src.name;
-      const title = viaGoogleNews
-        ? it.title.replace(new RegExp(`\\s*[-–|]\\s*${escapeRe(publisher)}\\s*$`, "i"), "")
-        : it.title;
-      let url = it.link;
-      if (viaGoogleNews) {
-        // Only ever link to the original article — if Google's redirect
-        // can't be unwrapped, drop the item rather than publish a Google
-        // link or a homepage guess.
-        const resolved = await resolveGoogleNewsUrl(it.link);
-        if (!resolved) return null;
-        url = resolved;
+  // Only spun up if some source actually needs it (see use below) — most
+  // runs do, since Google News is both a dedicated source and the fallback
+  // for several others whenever their direct feed is down/rate-limited.
+  let browser;
+  const getBrowser = async () => (browser ??= await chromium.launch());
+
+  try {
+    for (const src of sources) {
+      const hit = await firstWorkingFeed(src);
+      if (!hit) {
+        warn(`news: no working feed for ${src.name}`);
+        continue;
       }
-      return {
-        title,
-        // Google News "descriptions" are just link lists — no real excerpt;
-        // the meta-description fallback below fills this in now that `url`
-        // is the real article (not Google's interstitial).
-        summary: viaGoogleNews ? "" : excerpt(it.description),
-        url,
-        source: publisher,
-        sourceUrl: it.sourceUrl || src.homepage,
-        publishedAt: it.publishedAt
-      };
-    }));
-    items = mapped.filter(Boolean);
-    const droppedNote = viaGoogleNews && candidateCount > items.length
-      ? ` (dropped ${candidateCount - items.length} unresolved Google News link${candidateCount - items.length === 1 ? "" : "s"})`
-      : "";
-    log(`news: ${src.name} → ${items.length} items (via ${hit.url})${droppedNote}`);
-    all.push(...items);
+      let items = hit.items;
+      if (src.filter) {
+        items = items.filter((it) => {
+          const hay = `${it.title} ${it.description}`.toLowerCase();
+          return keywords.some((k) => hay.includes(k));
+        });
+      }
+      const viaGoogleNews = hit.url.includes("news.google.com");
+      const candidateCount = Math.min(items.length, maxPerSource);
+      const mapped = await Promise.all(items.slice(0, maxPerSource).map(async (it) => {
+        // Google News items carry the real publisher in the <source> tag and
+        // append " - Publisher" to titles; credit the outlet, not Google.
+        const publisher = it.sourceName || src.name;
+        const title = viaGoogleNews
+          ? it.title.replace(new RegExp(`\\s*[-–|]\\s*${escapeRe(publisher)}\\s*$`, "i"), "")
+          : it.title;
+        let url = it.link;
+        let summary = viaGoogleNews ? "" : excerpt(it.description);
+        if (viaGoogleNews) {
+          // Only ever link to the original article — if Google's redirect
+          // can't be resolved to it, drop the item rather than publish a
+          // Google link or a homepage guess.
+          const resolved = await resolveGoogleNewsArticle(await getBrowser(), it.link);
+          if (!resolved) return null;
+          url = resolved.url;
+          summary = excerpt(resolved.description);
+        }
+        return {
+          title,
+          summary,
+          url,
+          source: publisher,
+          sourceUrl: it.sourceUrl || src.homepage,
+          publishedAt: it.publishedAt
+        };
+      }));
+      items = mapped.filter(Boolean);
+      const droppedNote = viaGoogleNews && candidateCount > items.length
+        ? ` (dropped ${candidateCount - items.length} unresolved Google News link${candidateCount - items.length === 1 ? "" : "s"})`
+        : "";
+      log(`news: ${src.name} → ${items.length} items (via ${hit.url})${droppedNote}`);
+      all.push(...items);
+    }
+  } finally {
+    await browser?.close().catch(() => {});
   }
 
   // De-dupe near-identical stories (same event covered by many outlets):
