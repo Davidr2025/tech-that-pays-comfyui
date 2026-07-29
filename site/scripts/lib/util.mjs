@@ -103,18 +103,21 @@ export function stripHtml(html) {
     .trim();
 }
 
-/** Keep a few sentences, max ~550 chars (roughly a paragraph) — a bounded
- *  preview for the reading modal, never anything close to the full article. */
+/** Keep a few sentences, max ~550 chars by default (roughly a paragraph) —
+ *  a bounded preview, never anything close to the full article. Pass a
+ *  larger maxLen (e.g. for gathering raw article text as rewrite-pass
+ *  material) and the sentence ceiling scales with it accordingly. */
 export function excerpt(text, maxLen = 550) {
   const clean = stripHtml(text);
   if (!clean) return "";
+  const sentenceCap = Math.max(6, Math.ceil(maxLen / 150));
   const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g);
   let out = "";
   if (sentences) {
     for (const s of sentences) {
       if ((out + s).length > maxLen) break;
       out += s;
-      if (out.split(/[.!?]+\s/).length > 6) break;
+      if (out.split(/[.!?]+\s/).length > sentenceCap) break;
     }
   }
   if (!out) out = clean.slice(0, maxLen);

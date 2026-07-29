@@ -5,12 +5,14 @@ import NewsModal from "../components/NewsModal.astro";
 import AdSlot from "../components/AdSlot.astro";
 import config from "../../site.config.mjs";
 import news from "../data/news.json";
+import { isPublishable } from "../lib/news-data.mjs";
 
-// Only ever show items whose headline/summary have been rewritten into our
-// own original wording (see the "rewritten" flag) — a freshly-fetched item
-// that hasn't gone through that pass yet stays hidden rather than briefly
-// showing the source's own verbatim text.
-const items = news.items.filter((it) => it.rewritten);
+// Only ever show items that pass isPublishable (rewritten into our own
+// original wording, long enough, and carrying real attribution) — a
+// freshly-fetched item that hasn't gone through that pass yet, or one the
+// rewrite pass got wrong, stays hidden rather than showing the source's
+// verbatim text or a too-thin/unattributed rewrite.
+const items = news.items.filter(isPublishable);
 const mid = Math.ceil(items.length / 2);
 const firstHalf = items.slice(0, mid);
 const secondHalf = items.slice(mid);
