@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-07-30T17:47:40.958Z",
+  "updatedAt": "2026-07-30T23:18:12.109Z",
   "items": [
     {
       "title": "Police watchdog investigating after man's fatal fall from Mississauga condo",
-      "summary": "The province's Special Investigations Unit (SIU) says it's investigating the death of a 35-year-old man after he died in a fall from a Mississauga condo unit.",
+      "summary": "The province's Special Investigations Unit says it's investigating the death of a 35-year-old man after he died in a fall from a Mississauga condo unit.",
       "url": "https://www.cbc.ca/news/canada/toronto/siu-investigating-man-fatal-fall-mississauga-9.7290898?cmp=rss",
       "source": "CBC Toronto",
       "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
@@ -42,6 +42,38 @@
       "publishedAt": "2026-07-30T09:29:49.000Z"
     },
     {
+      "title": "Mississauga Puts Temporary Freeze On New Data Centres",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQOWlOVF9sVU9TeUZDZlRscHFiazBCTjNNeXR0OVpkWHY2ejc0eW1MbjFOeHhPdjk0MlBUaUVYalZwOGFMdkVpYnc2NVJEOTY1WmdBNUtnalFTZjZ1d0xvNUpaWjQza1hxRjNSNHNSbjVQTnhJLTAxRTE0RVZIRVgxOXVJNXVzSVhsNWFRMmtEWGwwUQ?oc=5",
+      "source": "Connect CRE Canada",
+      "sourceUrl": "https://www.connectcre.ca",
+      "publishedAt": "2026-07-30T22:09:26.000Z"
+    },
+    {
+      "title": "Man robbed at gunpoint at hotel in Mississauga; three people face charges",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQQ2RZUlpMNk1FMVg5angxR3lJcmpoZUd0RzVpeWVGSE9xX2VrU0g2T2dmQ2thdmwwZ2VrdDlpVDBRSG5wRUtLangyNW1mZ0dJcnRsVkNlWHotXzBIZGw5RGlCOF91cDk2ZlY4M0JKWjBaMHFqNTB1a1ljQzhrVkRTNW5aUjZOOG9teDkyY0xJWDdhOU1IRWNrb1JySHZtUQ?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T20:19:43.000Z"
+    },
+    {
+      "title": "Street to be renamed to recognize Mississauga company",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQUlBUcVBVc3lodkpTeElRRzVsRlBBUGw5RnJmRm02V0ItbWdhSVdBS2Jkc1Z6TTRVSzdfeVJ4X3M2THFEbTR6UTJRLVNvUy1leHEyc2U1czBHQWpiMlM0RENZT3ctWFZ3ZlBUdFI0LVM1bHB4YUczZWVsSEExSDZlTEJyN3U?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T19:05:41.000Z"
+    },
+    {
+      "title": "2 luxury SUVs stolen from home driveways in Ontario city; 1 found later in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOODFsdXhNRDVtWlkwZmFLSFJJS3g4Y0xhZ3hYVi0xckZXV0ZZeEJ4V1htd3l0MHFxRE9xM2pRYVQ1d3AxSDJfN2I3YUowSzNWc3hWSXpXNkp6VFBKQU1iWV9rVDM0VFNoQVpoN2hVVHowcHVfQU5wWXBEUG03Nm41a3dZYi1CZ3RCN3A2VjB5S1RLUjNWX2poLXZBelhCNTVWVy10WjhrQkJVRmc1eFR3?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T18:58:15.000Z"
+    },
+    {
       "title": "New buses on the way to Mississauga will mark a first in Ontario",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNN0RROWlXRXByMTQxZk9UX2dBSVg4bkpROTZLV1dFaDEwaGRMc2NJR1I0WEpxak1iNmlvMXVqVVFXcEJIVDRLTXZNaDNsTEtLd2xMUnlUelI5ZDNUZXJMNWFwa254T3NzN2xIMldYSWxyOEFHMkM5aUdsMmFyMDYxcHpIdmRCYU5oc3RRTTRhNWpHTUU?oc=5",
@@ -50,20 +82,12 @@
       "publishedAt": "2026-07-30T17:01:25.000Z"
     },
     {
-      "title": "Messy parks a concern in Mississauga, residents say",
+      "title": "Remembering the life of TOM FINNEGAN.",
       "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQUFVPcHkzM2IweWx6WTlLQ2xKZnZpUS1TSHpEcTlUVDVEYk05VHEyaXBXQnR5ODlmRkp3RWp0ODc1MmhkYUE3RUxBYlVmRFI2aXpZSTFkaW9HNkY1bUtaY0ZBbGRhdXlFbUlFQUduQVVjaTAtbTR1d1JZaE8ycVBNVg?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-30T16:00:36.000Z"
-    },
-    {
-      "title": "Gold medal Olympian, MP once owned heritage home in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbF9OOUIwUWJVTDMxRnpZWHM0QWxwU2Fra1ZlbjM4NGNGQVEwb3o3NWlkSUdrT1MxUEphTVRjRllxLVRrV0xTa0ZsT3owTnZKWldhZ0hWbkJwQTBSaEFuNVk2SUJackUyWkxXWFJiaWt3MTBrUHlWYmEwU2JScjduU3lVSnVPQXRxLXRxVGI4SVM?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-30T15:12:54.000Z"
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5aeFB1QWRaOWFVckxqV01tRF96UjAyeEFQeXZpaUhXWl9DVG85N0dDUFJSQWpRNUt3QWxCdXgxREF2T0kxYnJwMHBpZllfaDRpMERIN0ctT05HTzVrM3NUeUNsdGZoUnZDZTlzaXpGMFVaMUFTYlE?oc=5",
+      "source": "Mississauga News Obituaries",
+      "sourceUrl": "https://obituaries.mississauga.com",
+      "publishedAt": "2026-07-30T14:41:07.000Z"
     },
     {
       "title": "HF Sinclair to end base oil refining at Mississauga plant by 2027",
@@ -72,30 +96,6 @@
       "source": "CCentral",
       "sourceUrl": "https://ccentral.ca",
       "publishedAt": "2026-07-30T13:23:21.000Z"
-    },
-    {
-      "title": "Remembering the life of VALERIE AARON",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdDg0UVdoWEVMSVRwSkpWMlhnNW9rYngzeFJCTzZVREVZclFmZUhMSktwZk1Ec2tXa2tUOW4xQndpZ21yRGN6aXE4LWJJUTNnaXdwMUR6ald4ZDdaR2xrZFVDMXFCaGNsZTF4ODJZd2NsZmRaeldIdUZpcDVuZmM2T29La2M?oc=5",
-      "source": "obituaries.mississauga.com",
-      "sourceUrl": "https://obituaries.mississauga.com",
-      "publishedAt": "2026-07-30T13:08:21.000Z"
-    },
-    {
-      "title": "Canada’s largest base oil producer to end refining after 80 years in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNX2hWRVJ6Yms5NU1UbXZrTVFfQzFQYTNCOWJhVWwyX0RNZUZ0MlBtVFNRai1KYlRCQ1J1S1dsUzQ2QWVwTUZmOXFyN3lFMkYwV0NmUmRfdjYyMmFxalVvUm1Wc24wWldVTEZINEVsb1h1LUNXUHFCLXRoSlJXenBCS2psWU00dGR2Z1RkX01wZnZaZlRiMWFYdjFZZmQ5QTJhUVpwSFo5Yw?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-30T04:03:31.000Z"
-    },
-    {
-      "title": "Mississauga votes for data centre moratorium that could set Canadian precedent",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQTGxaSEdiY2QxS3lQYUxsZHEySmwwR1dSVTQ5VlU3VTNVZXdldmN4eGlwYW5aZmpFM1hPZjVhSHhoNFRPc0paLXhZV3lUWEFaU0lROXZoQTVBYjQ5NlhyOU1QTkxPaTdJVEVXbldHMGVVek0xNWZsQlBIUmVvandaY2tzWWN3enR3RW92NkM2R2VwOWJwYlEwYkh3Vno5QQ?oc=5",
-      "source": "Canada's National Observer",
-      "sourceUrl": "https://www.nationalobserver.com",
-      "publishedAt": "2026-07-30T00:04:40.000Z"
     }
   ]
 }
