@@ -1,6 +1,86 @@
 {
-  "updatedAt": "2026-07-30T12:49:57.718Z",
+  "updatedAt": "2026-07-30T17:47:40.958Z",
   "items": [
+    {
+      "title": "Police watchdog investigating after man's fatal fall from Mississauga condo",
+      "summary": "The province's Special Investigations Unit (SIU) says it's investigating the death of a 35-year-old man after he died in a fall from a Mississauga condo unit.",
+      "url": "https://www.cbc.ca/news/canada/toronto/siu-investigating-man-fatal-fall-mississauga-9.7290898?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-07-30T17:15:37.000Z"
+    },
+    {
+      "title": "What’s open and closed in Mississauga this Civic Holiday",
+      "summary": "As the Civic Holiday approaches, City of Mississauga administrative offices and various library, cultural and recreational facilities will be closed on Monday, August 3, however, spray pads and the Mississauga Celebration Square wading pool will be open. During this time, City response times to resident inquiries will be limited.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/whats-open-and-closed-in-mississauga-this-civic-holiday/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-30T13:01:20.000Z"
+    },
+    {
+      "title": "Mississauga moves to pause data centre development",
+      "summary": "Council has approved a motion directing staff to prepare an Interim Control By-law (ICBL) that would prohibit the approval of development of digital infrastructure projects, such as data centres, for up to one year. City staff are also undertaking a comprehensive review of this emerging sector to assess whether updates to City policies and regulations such as the Official Plan and Zoning By-law are needed. The growing use of digital services is increasing demand for larger-scale data centres across Canada.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/mississauga-moves-to-pause-data-centre-development/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-30T10:46:58.000Z"
+    },
+    {
+      "title": "Pan-African flag to be raised in Mississauga on Emancipation Day",
+      "summary": "Recognized annually on August 1, Emancipation Day is a time for reflection, education and celebration of the strength and resilience of people of African descent and the ongoing fight against racism and discrimination. The community is encouraged to participate in honouring this important day by: Attending the Pan-African flag raising ceremony (see details below). Learning about the contributions and achievements of Black individuals in Canada by checking out the library’s curated reading list .",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/pan-african-flag-to-be-raised-in-mississauga-on-emancipation-day/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-30T09:54:51.000Z"
+    },
+    {
+      "title": "Gas or groceries? You shouldn’t have to choose",
+      "summary": "With surging gas prices, the pain at the gas pump is real. Transportation is the third largest household expense for Canadians after shelter and food, according to Statistics Canada's most recent Survey of Household Spending (2023). At the same time, new data from United Way Centraide Canada in June 2026 found that 46 per cent of people in Canada could cover their basic living expenses for only one month or less. Given these realities, rising and unpredictable gas prices are adding even more pressure and stress to already stretched budgets.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/gas-or-groceries-you-shouldnt-have-to-choose/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-30T09:29:49.000Z"
+    },
+    {
+      "title": "New buses on the way to Mississauga will mark a first in Ontario",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNN0RROWlXRXByMTQxZk9UX2dBSVg4bkpROTZLV1dFaDEwaGRMc2NJR1I0WEpxak1iNmlvMXVqVVFXcEJIVDRLTXZNaDNsTEtLd2xMUnlUelI5ZDNUZXJMNWFwa254T3NzN2xIMldYSWxyOEFHMkM5aUdsMmFyMDYxcHpIdmRCYU5oc3RRTTRhNWpHTUU?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T17:01:25.000Z"
+    },
+    {
+      "title": "Messy parks a concern in Mississauga, residents say",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQUFVPcHkzM2IweWx6WTlLQ2xKZnZpUS1TSHpEcTlUVDVEYk05VHEyaXBXQnR5ODlmRkp3RWp0ODc1MmhkYUE3RUxBYlVmRFI2aXpZSTFkaW9HNkY1bUtaY0ZBbGRhdXlFbUlFQUduQVVjaTAtbTR1d1JZaE8ycVBNVg?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T16:00:36.000Z"
+    },
+    {
+      "title": "Gold medal Olympian, MP once owned heritage home in Mississauga",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbF9OOUIwUWJVTDMxRnpZWHM0QWxwU2Fra1ZlbjM4NGNGQVEwb3o3NWlkSUdrT1MxUEphTVRjRllxLVRrV0xTa0ZsT3owTnZKWldhZ0hWbkJwQTBSaEFuNVk2SUJackUyWkxXWFJiaWt3MTBrUHlWYmEwU2JScjduU3lVSnVPQXRxLXRxVGI4SVM?oc=5",
+      "source": "INsauga",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-07-30T15:12:54.000Z"
+    },
+    {
+      "title": "HF Sinclair to end base oil refining at Mississauga plant by 2027",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNekt3NnNWVHpMSTBzeFJaUzhodXdWOE1xUWUyYmh4cy1xbmpEMU5FaUhxdXdwa1A2a1N6TnZkSDdMYWUyN3FiSTZWNUdwVW8tZ28xVTJvLVBOeVJNM0ZrNkNCbUN6LWM4SzlSUlJnNVVaN0lzd3J3Ti13cFhKZkZ1WjVB?oc=5",
+      "source": "CCentral",
+      "sourceUrl": "https://ccentral.ca",
+      "publishedAt": "2026-07-30T13:23:21.000Z"
+    },
+    {
+      "title": "Remembering the life of VALERIE AARON",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOdDg0UVdoWEVMSVRwSkpWMlhnNW9rYngzeFJCTzZVREVZclFmZUhMSktwZk1Ec2tXa2tUOW4xQndpZ21yRGN6aXE4LWJJUTNnaXdwMUR6ald4ZDdaR2xrZFVDMXFCaGNsZTF4ODJZd2NsZmRaeldIdUZpcDVuZmM2T29La2M?oc=5",
+      "source": "obituaries.mississauga.com",
+      "sourceUrl": "https://obituaries.mississauga.com",
+      "publishedAt": "2026-07-30T13:08:21.000Z"
+    },
     {
       "title": "Canada’s largest base oil producer to end refining after 80 years in Mississauga",
       "summary": "",
@@ -16,86 +96,6 @@
       "source": "Canada's National Observer",
       "sourceUrl": "https://www.nationalobserver.com",
       "publishedAt": "2026-07-30T00:04:40.000Z"
-    },
-    {
-      "title": "Peel Region shelter crisis deepens as intimate partner violence incidents rise",
-      "summary": "As intimate partner violence incidents rise in Peel Region, local leaders say provincially funded emergency shelters are overburdened and hamstrung by outdated funding rules. Mississauga’s mayor and the Peel Regional Council have called for more support.",
-      "url": "https://www.cbc.ca/news/canada/toronto/ipv-shelters-peel-region-9.7287717?cmp=rss",
-      "source": "CBC Toronto",
-      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
-      "publishedAt": "2026-07-29T09:00:00.000Z"
-    },
-    {
-      "title": "Man dead in fall from Mississauga condo building, police watchdog investigating",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNSDhuVXlocTB6c3hoMWZXakU3SUl6YXZlNGY1ZDhvQW1IY2E3WnVRU2dNRGl6M3dudEJrOHFzVTBYRjZ4SEJRMlVmcXpyV21LVUpHRGdaRFc5ZjBDcUNkaHNvSkhmYzNONjYxOXlib2hXQnB2MW5rQjFibVdLcFozZzI3QUJJOG05OGdPS3dyOEtldF9qUkJOaXRRQ1dlaDYyWTJ2V3RB?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-29T22:41:17.000Z"
-    },
-    {
-      "title": "Residents seek moratorium on Toronto data centres as Mississauga approves pause",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNVGs5anJleHMxTldpZVlpU0VXdlNlUkkxYTRqdkpQTlNwVXYzY2ZEUnREMXQyRFBhbmF0czNSM2RjX3kxLWVmQjBkd3IwUHhFRHhFU0s3RXpKdm9XUWpQbGczdnp6RHRNbzFkNDcxWHRtbDJUNGFydjdfbDNFZG52dUtKVjZpbFY4NnBfRTdvWWN6eE5RcUZFSlIzcGp0MTkxSFlncWtlWQ?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-29T21:17:10.000Z"
-    },
-    {
-      "title": "Police officer leaves loaded gun in change room at major Mississauga shopping centre",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONWFTSkgtcXJfYmtvcDByQzJWNUx6QTdqeHMtdkxNbWtIVUgwYUJOQ3JVTkJtT19Dclg0dGJQa3ZmcEZmUkFrVGFfOFMzd3VKS2trQ19jQll2eDR6X3RrRi1YeC1zaW5TWFhqM1FSOFNTV2laWWFFTkZfaVB2cnhoaGpSV3NlTmRNbWV6ejVhaXE2SHJEa21Gb1VxbnR4VEY0Z0ptYWtKbUxVZWZhUXc?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-29T20:51:27.000Z"
-    },
-    {
-      "title": "Mississauga freezes new AI data centres as developer says it will ‘likely’ fight back",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNWUtYLWlyS29zbFA2NUNaQTRDNFNLa2ZpTjFLNmRVUjd1X0ZMXzM3SzBZcXprRlFVSlZlUTYtVVQxQ29uU2U1eUFGMVZqNTNXMkVtNE9WYk5lNGxJUktyN0s5MThZNEtPa1Q3cjNpajVJa1Zpb0FGaVpuc0habTMtcnpmTTB4V3dpMWlSLUctV0NQcUZodm1UdUFxeEl4ZkpMVk81ZTlLTUFtdjh4dXhSSmk2ZVl6WEF3cVM2aHVUMExqM3pjV0ZZMWFOc1FuMThwS2FxdEYxb2dXMHRLUWV0TXBhYVpuS1k1WTRpVC05U0Z1R1dIUzFtU01kLUQ?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-29T19:45:00.000Z"
-    },
-    {
-      "title": "Temporary freeze put on any new AI data centres in Mississauga",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPRHVPbWRabF9oMVFYLUxxSl91dkNhWFlTY2ttYXNXZmh0SHM4RzYwU0tYUzRwVEQtN1Y3dEhjTkxROTk0NTJHRTVoQVlhYlhPcGEwYW9sMEY1Y0dKcTI2eXdMc29xMmNhTm9pblYwNjQ0R1JMY0JBZ1pnTjNrNFRYbURIa3dyd25JYlZrX1VfQWNYVHRfUUV4cUZBY0w?oc=5",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-07-29T18:26:13.000Z"
-    },
-    {
-      "title": "Mississauga councillor wants pause on AI data centres as Toronto councillors grapple with proposed facilities",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPOFM1RnpGUjJfc3pqTm5CVlBQb2otLTE1eFNZVXRKUWd1dWlKcnBnV21jbndOX2pMa3pOVnRzWGN0ekpxamg3VEd0cEctU1VOMW9XMzh4OTE0U0lVUkdiZ1l0V1htT21LV2pRS3dLa0hpbHo1LS1Pb3R1ZWJKb1VHUGptbmdLQ1dPTW00?oc=5",
-      "source": "CityNews Toronto",
-      "sourceUrl": "https://toronto.citynews.ca",
-      "publishedAt": "2026-07-29T00:30:00.000Z"
-    },
-    {
-      "title": "Child in critical condition after being rescued from pool at Mississauga home",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOaUJFeUQxXzdUd2NUeFBBZm5GOU1vNS0yWkVZMGxZMjZ5NEJYaUFlVDlFUk9IemlSX2gzcnpwUDR1M2ZmajQ0bW5HTzBVcUp6TUUtWHNEeWxsM0hMTmx6cEJzYkNmbTJQc0N1NDJ4aWYwaEpLNGg2bmMycTZQTGZGUU43VzBUUzVOdHBQY3lpaFRuNUstU3hhYXF4bzNFM3l6cm1CYlVKRG9QbnhTMExRWUMteDJYaEpoVlM2NmIteHJUdklqVDNyNkNPd3dVUGwtTlM3eW5YdlBjVnJpWEZjSUkyeG1MWWVVVlpSZXI2M3hHUQ?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-28T22:03:00.000Z"
-    },
-    {
-      "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
-      "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/peel-region-confirms-west-nile-virus-found-in-mosquitoes-what-you-need-to-know/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-27T15:14:58.000Z"
-    },
-    {
-      "title": "Public engagements open in August",
-      "summary": "The City of Mississauga regularly connects with residents throughout the year to gather their ideas and constructive feedback. This helps guide City plans, programs, services and new developments. Residents and businesses can take part in different ways. You can participate by attending information sessions, open houses and workshops or completing online surveys. The City reviews this feedback along with other data and trends to help decide how to focus its time and resources on community priorities.",
-      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/public-engagements-open-in-august/",
-      "source": "City of Mississauga",
-      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
-      "publishedAt": "2026-07-27T12:30:37.000Z"
     }
   ]
 }
