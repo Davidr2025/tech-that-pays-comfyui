@@ -1,14 +1,6 @@
 {
-  "updatedAt": "2026-07-30T12:03:36.533Z",
+  "updatedAt": "2026-07-30T12:49:57.718Z",
   "items": [
-    {
-      "title": "Mississauga freezes new AI data centres as developer says it will ‘likely’ fight back",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNWUtYLWlyS29zbFA2NUNaQTRDNFNLa2ZpTjFLNmRVUjd1X0ZMXzM3SzBZcXprRlFVSlZlUTYtVVQxQ29uU2U1eUFGMVZqNTNXMkVtNE9WYk5lNGxJUktyN0s5MThZNEtPa1Q3cjNpajVJa1Zpb0FGaVpuc0habTMtcnpmTTB4V3dpMWlSLUctV0NQcUZodm1UdUFxeEl4ZkpMVk81ZTlLTUFtdjh4dXhSSmk2ZVl6WEF3cVM2aHVUMExqM3pjV0ZZMWFOc1FuMThwS2FxdEYxb2dXMHRLUWV0TXBhYVpuS1k1WTRpVC05U0Z1R1dIUzFtU01kLUQ?oc=5",
-      "source": "Toronto Star",
-      "sourceUrl": "https://www.thestar.com",
-      "publishedAt": "2026-07-30T10:27:03.000Z"
-    },
     {
       "title": "Canada’s largest base oil producer to end refining after 80 years in Mississauga",
       "summary": "",
@@ -58,20 +50,20 @@
       "publishedAt": "2026-07-29T20:51:27.000Z"
     },
     {
+      "title": "Mississauga freezes new AI data centres as developer says it will ‘likely’ fight back",
+      "summary": "",
+      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNWUtYLWlyS29zbFA2NUNaQTRDNFNLa2ZpTjFLNmRVUjd1X0ZMXzM3SzBZcXprRlFVSlZlUTYtVVQxQ29uU2U1eUFGMVZqNTNXMkVtNE9WYk5lNGxJUktyN0s5MThZNEtPa1Q3cjNpajVJa1Zpb0FGaVpuc0habTMtcnpmTTB4V3dpMWlSLUctV0NQcUZodm1UdUFxeEl4ZkpMVk81ZTlLTUFtdjh4dXhSSmk2ZVl6WEF3cVM2aHVUMExqM3pjV0ZZMWFOc1FuMThwS2FxdEYxb2dXMHRLUWV0TXBhYVpuS1k1WTRpVC05U0Z1R1dIUzFtU01kLUQ?oc=5",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-07-29T19:45:00.000Z"
+    },
+    {
       "title": "Temporary freeze put on any new AI data centres in Mississauga",
       "summary": "",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPRHVPbWRabF9oMVFYLUxxSl91dkNhWFlTY2ttYXNXZmh0SHM4RzYwU0tYUzRwVEQtN1Y3dEhjTkxROTk0NTJHRTVoQVlhYlhPcGEwYW9sMEY1Y0dKcTI2eXdMc29xMmNhTm9pblYwNjQ0R1JMY0JBZ1pnTjNrNFRYbURIa3dyd25JYlZrX1VfQWNYVHRfUUV4cUZBY0w?oc=5",
       "source": "INsauga",
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-07-29T18:26:13.000Z"
-    },
-    {
-      "title": "Amid food security crisis Mississauga food bank seeks development charges waiver for expansion",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPZTN0UEQwaTJINkpzR09VeFR6WWVSajlNUXhqSzhEcWJ2WWxlTGlMTzRDa3RhSnFwMW1ZU0RkRkg2RENORFZVdHNNaUIxM2lKX3R2RlRIXzhGc3EwbUdSZ3k3R2V5Yk5zNjdsYlplakJMTzJRMXc2WDFKZDNFand3c2dpU1ZabURfSE5xam53cnIzZEV0Wno3ZTNvV05CeUh0T1JudHV4TVV2U2xjd1ZCdUgxTU00Ym5NUzl3M29YbjdtSS1SbjZjWkx5Uk1XWHl4R2lIQVp0UHo2aFpKODUtVWdqcHM?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-29T10:00:00.000Z"
     },
     {
       "title": "Mississauga councillor wants pause on AI data centres as Toronto councillors grapple with proposed facilities",
@@ -90,12 +82,20 @@
       "publishedAt": "2026-07-28T22:03:00.000Z"
     },
     {
-      "title": "Mississauga apartment tenants may gain stronger heat protections if motion passes",
-      "summary": "",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPNVV5Y0U1S18tZ0JLS2JyTktBQVBtWkZLZVZBR3MzaDRYeURpNnlGWGFNM1pLUlRPOWpUcHhpLUQ2S2VYanhLQmRpZmRXeHBxc1ZsaHQ0ZDdkcktWWDNXaWtOSjRMakxxMUJfUnRmMlZsWjVUM2Z6VTQ0bEZjbUVFbEhyWWxHX2pVUVNVQzVEbC1tOW1qMUNoQ3dLeXlMWGw2dVA4MjQ5SGpUVF83cTVyRTRoekJ1OHM?oc=5",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-07-28T10:00:00.000Z"
+      "title": "Peel Region confirms West Nile virus found in mosquitoes: What you need to know",
+      "summary": "The first West Nile virus case this year has been confirmed in Peel Region. The mosquitoes were identified in Brampton near the intersection of Queen Street East and Kennedy Road North. With the virus now active locally, residents are advised to take steps to protect themselves (and their property) from infected insects. What is West Nile virus? West Nile virus is a mosquito-borne illness that can cause mild flu-like symptoms in most people, but in rare cases, it can lead to serious illness affecting the brain or nervous system.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/peel-region-confirms-west-nile-virus-found-in-mosquitoes-what-you-need-to-know/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-27T15:14:58.000Z"
+    },
+    {
+      "title": "Public engagements open in August",
+      "summary": "The City of Mississauga regularly connects with residents throughout the year to gather their ideas and constructive feedback. This helps guide City plans, programs, services and new developments. Residents and businesses can take part in different ways. You can participate by attending information sessions, open houses and workshops or completing online surveys. The City reviews this feedback along with other data and trends to help decide how to focus its time and resources on community priorities.",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/public-engagements-open-in-august/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-07-27T12:30:37.000Z"
     }
   ]
 }
