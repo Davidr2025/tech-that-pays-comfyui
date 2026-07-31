@@ -27,7 +27,7 @@ const CHUNK_SIZE = 150; // keeps each file well within a single upload step
 
 const COLUMNS = [
   "name", "category", "subcategory", "address", "phone",
-  "rating", "reviews", "website", "profileUrl", "placeId"
+  "rating", "reviews", "website", "profileUrl", "placeId", "verified", "claimEmail"
 ];
 
 function csvField(value) {
@@ -35,7 +35,8 @@ function csvField(value) {
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
-function toRow(cat, b) {
+function toRow(cat, b, claimedById) {
+  const claim = claimedById.get(b.id);
   return COLUMNS.map((col) => csvField({
     name: b.name,
     category: cat.label,
@@ -46,7 +47,9 @@ function toRow(cat, b) {
     reviews: b.reviews,
     website: b.website,
     profileUrl: `${SITE_URL}/directory/${cat.slug}/${b.slug}/`,
-    placeId: b.id
+    placeId: b.id,
+    verified: claim ? "yes" : "no",
+    claimEmail: claim?.email || ""
   }[col])).join(",");
 }
 
@@ -56,6 +59,8 @@ export function exportCsv() {
     warn("export-csv: places.json missing or malformed — skipping");
     return false;
   }
+  const claimedPlaces = readData("claimed-places.json", []);
+  const claimedById = new Map(claimedPlaces.map((c) => [c.id, c]));
 
   const header = COLUMNS.join(",");
   const allRows = [header];
@@ -67,7 +72,7 @@ export function exportCsv() {
   for (const cat of places.categories) {
     const businesses = cat.businesses || [];
     if (!businesses.length) continue;
-    const rows = businesses.map((b) => toRow(cat, b));
+    const rows = businesses.map((b) => toRow(cat, b, claimedById));
     allRows.push(...rows);
     total += rows.length;
 

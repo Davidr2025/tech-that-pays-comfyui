@@ -7,7 +7,7 @@ export const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", ".."
 
 // A browser-like UA: several local outlets sit behind bot-blocking CDNs that
 // 403 non-browser agents even for their public RSS feeds.
-const UA =
+export const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
 
 export function log(msg) {
@@ -103,18 +103,21 @@ export function stripHtml(html) {
     .trim();
 }
 
-/** Keep a few sentences, max ~550 chars (roughly a paragraph) — a bounded
- *  preview for the reading modal, never anything close to the full article. */
+/** Keep a few sentences, max ~550 chars by default (roughly a paragraph) —
+ *  a bounded preview, never anything close to the full article. Pass a
+ *  larger maxLen (e.g. for gathering raw article text as rewrite-pass
+ *  material) and the sentence ceiling scales with it accordingly. */
 export function excerpt(text, maxLen = 550) {
   const clean = stripHtml(text);
   if (!clean) return "";
+  const sentenceCap = Math.max(6, Math.ceil(maxLen / 150));
   const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g);
   let out = "";
   if (sentences) {
     for (const s of sentences) {
       if ((out + s).length > maxLen) break;
       out += s;
-      if (out.split(/[.!?]+\s/).length > 6) break;
+      if (out.split(/[.!?]+\s/).length > sentenceCap) break;
     }
   }
   if (!out) out = clean.slice(0, maxLen);

@@ -13,17 +13,24 @@ import news from "../data/news.json";
 import events from "../data/events.json";
 import recommendations from "../data/recommendations.json";
 import meta from "../data/meta.json";
+import { isPublishable } from "../lib/news-data.mjs";
 
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : import.meta.env.BASE_URL + "/";
 
-const topNews = news.items.slice(0, 6);
+// Only ever show items that pass isPublishable (rewritten into our own
+// original wording, long enough, and carrying real attribution) — a
+// freshly-fetched item that hasn't gone through that pass yet, or one the
+// rewrite pass got wrong, stays hidden rather than showing the source's
+// verbatim text or a too-thin/unattributed rewrite.
+const newsItems = news.items.filter(isPublishable);
+const topNews = newsItems.slice(0, 6);
 const topEvents = events.items.slice(0, 6);
 
 // "New in Mississauga" — openings & launches auto-detected from headlines
 const openingWords = /\b(open(s|ing|ed)?|launch(es|ed|ing)?|debuts?|coming to|new (restaurant|store|shop|café|cafe|location|park|business))\b/i;
-const openings = news.items.filter((it) => openingWords.test(it.title)).slice(0, 3);
+const openings = newsItems.filter((it) => openingWords.test(it.title)).slice(0, 3);
 
 const updated = meta.updatedAt
   ? new Date(meta.updatedAt).toLocaleString("en-CA", { dateStyle: "medium", timeStyle: "short", timeZone: "America/Toronto" })

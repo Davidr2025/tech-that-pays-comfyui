@@ -348,4 +348,49 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 .ad-slot-banner { width: 100%; min-height: 90px; margin: 1.5rem 0; }
 .ad-slot-sidebar { width: 100%; min-height: 500px; }
 .ad-slot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .15s; }
+
+/* ---------- Claim-listing page ---------- */
+.biz-detail .lede { color: var(--muted); margin: -.3rem 0 1.75rem; max-width: 60ch; }
+.claim-current {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.25rem 1.4rem; margin-bottom: 2rem;
+}
+.claim-current h3 { font-size: 1rem; margin-bottom: .9rem; }
+.claim-current-body { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: flex-start; }
+.claim-current-photo { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; background: #e8ecf1; flex-shrink: 0; }
+.claim-current-facts { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); flex: 1 1 320px; margin: 0; }
+.claim-current-facts dt { font-size: .74rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+.claim-current-facts dd { margin: .1rem 0 0; font-size: .92rem; }
+
+.claim-tiers { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: 2.5rem; }
+.claim-tier {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.4rem; display: flex; flex-direction: column; gap: .3rem;
+}
+.claim-tier-paid { border-color: color-mix(in srgb, var(--accent) 45%, white); background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 10%, white), var(--surface)); }
+.claim-tier h3 { font-size: 1.05rem; }
+.claim-tier-price { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); margin: 0 0 .8rem; }
+.claim-tier-perks { list-style: none; padding: 0; margin: 0 0 1.1rem; display: flex; flex-direction: column; gap: .5rem; font-size: .88rem; color: var(--muted); }
+.claim-tier-perks li { padding-left: 1.3rem; position: relative; }
+.claim-tier-perks li::before { content: "✓"; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+.claim-tier > .cta-btn { margin-top: auto; text-align: center; }
+
+.verified-badge {
+  display: inline-block; background: color-mix(in srgb, #16a34a 14%, white);
+  color: #15803d; font-weight: 700; font-size: .72rem; text-transform: uppercase;
+  letter-spacing: .03em; padding: .15rem .55rem; border-radius: 99px; vertical-align: middle;
+}
+.claim-already { color: var(--muted); font-size: .88rem; margin-top: .3rem; }
+
+.claim-inline { margin-top: .6rem; }
+.claim-mini-form { display: flex; flex-direction: column; gap: .5rem; margin-top: .5rem; }
+.claim-mini-form label { font-size: .82rem; font-weight: 700; color: var(--text); }
+.claim-mini-form input, .claim-mini-form textarea {
+  border: 1.5px solid var(--border); border-radius: 8px; padding: .55rem .7rem;
+  font: inherit; font-size: .9rem; width: 100%;
+}
+.claim-mini-form input:focus, .claim-mini-form textarea:focus { outline: none; border-color: var(--primary); }
+.claim-mini-form button { align-self: flex-start; }
+.form-success { color: #15803d; font-size: .88rem; font-weight: 600; margin-top: .5rem; }
+.form-error { color: #b91c1c; font-size: .85rem; margin-top: .5rem; }
 .ad-slot:hover img { opacity: .92; }

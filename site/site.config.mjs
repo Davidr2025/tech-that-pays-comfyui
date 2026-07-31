@@ -66,6 +66,15 @@ export default {
         name: "insauga",
         homepage: "https://www.insauga.com/mississauga/",
         candidates: [
+          // insauga runs on WordPress — try its native feed first so links
+          // go straight to the article instead of through Google News
+          // (which now gets dropped entirely if it can't be unwrapped to
+          // the real article URL, see resolveGoogleNewsUrl in
+          // fetch-news.mjs). Unverified from this environment (outbound
+          // fetches to insauga.com are network-policy-blocked here) — if
+          // this 404s/isn't a feed, firstWorkingFeed() just falls through
+          // to the Google News candidate below as before.
+          "https://www.insauga.com/feed/",
           "https://news.google.com/rss/search?q=site:insauga.com%20mississauga&hl=en-CA&gl=CA&ceid=CA:en"
         ]
       },
@@ -224,6 +233,53 @@ export default {
       { slug: "fitness",      label: "Fitness & Sports",   query: "gyms and fitness studios in Mississauga, Ontario" },
       { slug: "auto",         label: "Auto Services",      query: "top rated auto repair shops in Mississauga, Ontario" },
       { slug: "beauty",       label: "Beauty & Barber",    query: "best hair salons and barbershops in Mississauga, Ontario" }
+    ]
+  },
+
+  // --- CLAIM-LISTING PAID TIERS ---
+  // Powers /directory/<category>/<business>/claim/. The site is static
+  // (GitHub Pages) with no backend, so the "Claim this business" and
+  // "Request a correction" forms submit client-side straight to Web3Forms
+  // (web3forms.com) — a free, no-account form relay that emails the
+  // submission to claimEmail. Get an access key at web3forms.com (just
+  // enter claimEmail, the key arrives by email instantly) and paste it in
+  // place of "REPLACE_ME" below — it's meant to be public in client-side
+  // code, that's how Web3Forms's threat model works. Until replaced, both
+  // forms show a "not configured yet" message instead of submitting.
+  // Paid upgrades are Stripe Payment Links — create each link in the
+  // Stripe dashboard (Payment Links → New), then paste its URL below in
+  // place of the "REPLACE_ME" placeholder; Stripe itself notifies you on
+  // payment, so no extra email wiring is needed there. Until replaced, the
+  // claim page
+  // shows the tier but disables its checkout button.
+  claimEmail: "info@mississaugainsider.ca",
+  web3formsAccessKey: "57d2600b-5e8b-4c5e-a88b-5ec0269aabff",
+  claim: {
+    tiers: [
+      {
+        slug: "featured",
+        label: "Featured Listing",
+        price: "$49/mo",
+        stripeUrl: "REPLACE_ME_STRIPE_PAYMENT_LINK_FEATURED",
+        perks: [
+          "Priority placement at the top of your category",
+          "Your own photos in the directory card",
+          "Direct link to your website and phone number",
+          "Highlighted \"Featured\" badge on your listing"
+        ]
+      },
+      {
+        slug: "vip",
+        label: "VIP Spotlight",
+        price: "$149/mo",
+        stripeUrl: "REPLACE_ME_STRIPE_PAYMENT_LINK_VIP",
+        perks: [
+          "Everything in Featured Listing",
+          "A full Business Spotlight article written about you",
+          "Video embed support (YouTube/Instagram)",
+          "Mentioned in the weekly newsletter"
+        ]
+      }
     ]
   }
 };
