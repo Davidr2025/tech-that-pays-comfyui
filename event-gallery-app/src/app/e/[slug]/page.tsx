@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { THEME_STYLES } from "@/lib/themes";
-import { UploadWidget } from "@/components/UploadWidget";
+import { GuestUploadFlow } from "@/components/GuestUploadFlow";
 import { Gallery } from "@/components/Gallery";
 
 export default async function EventPage({ params }: { params: { slug: string } }) {
@@ -37,7 +37,14 @@ export default async function EventPage({ params }: { params: { slug: string } }
         ) : (
           <>
             <div className="mb-10">
-              <UploadWidget eventSlug={event.slug} accentClassName={theme.accent} />
+              <GuestUploadFlow
+                eventSlug={event.slug}
+                businessName={event.subAccount.name}
+                accentClassName={theme.accent}
+                incentiveMessage={event.subAccount.contactIncentiveMessage}
+                requireContactInfo={event.subAccount.requireContactInfo}
+                googleReviewUrl={event.subAccount.googleReviewUrl}
+              />
             </div>
             <a
               href={`/e/${event.slug}/present`}

@@ -5,12 +5,13 @@ import { useRef, useState } from "react";
 interface UploadWidgetProps {
   eventSlug: string;
   accentClassName: string;
+  guestId?: string;
   onUploaded?: () => void;
 }
 
 type UploadState = { fileName: string; progress: "uploading" | "done" | "error" };
 
-export function UploadWidget({ eventSlug, accentClassName, onUploaded }: UploadWidgetProps) {
+export function UploadWidget({ eventSlug, accentClassName, guestId, onUploaded }: UploadWidgetProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploads, setUploads] = useState<UploadState[]>([]);
 
@@ -21,7 +22,7 @@ export function UploadWidget({ eventSlug, accentClassName, onUploaded }: UploadW
       const res = await fetch(`/api/events/${eventSlug}/upload-url`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contentType: file.type }),
+        body: JSON.stringify({ contentType: file.type, guestId }),
       });
       if (!res.ok) throw new Error("Could not start upload");
       const { mediaId, uploadUrl } = await res.json();

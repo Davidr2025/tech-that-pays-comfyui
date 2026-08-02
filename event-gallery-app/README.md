@@ -35,6 +35,11 @@ can resell it under their own branded domains.
   current live event.
 - **External storage sync**: Pro-plan-and-up sub-accounts can connect Google
   Drive so approved uploads are auto-exported there as a standing backup.
+- **Guest contact capture + review funnel**: after a guest's first upload, an
+  optional (business-configurable) card asks for their email or phone —
+  each with its own explicit consent checkbox — then shows a "Leave us a
+  review" button linking to the business's Google review URL. Captured
+  contacts are listed on a **Guests** dashboard page with CSV export.
 - **Expiration**: events auto-expire 14 days after the event date unless
   `permanentStorage` is set (a paid-plan feature), cleaned up by a daily cron
   job.
@@ -42,7 +47,9 @@ can resell it under their own branded domains.
 **Deferred (see Roadmap):** direct native social posting (host's own
 Instagram/TikTok/YouTube OAuth, bypassing Blotato/GHL) — blocked on you
 registering developer apps with each platform and clearing their review
-process, not on anything buildable here.
+process, not on anything buildable here. Also deferred: automatically
+syncing captured guest contacts into GHL — for now, CSV export is the
+bridge (see Roadmap).
 
 ## Stack
 
@@ -143,6 +150,26 @@ Required for the core app:
    Google Drive**. Approved uploads then export via the
    `sync-external-storage` cron job.
 
+### Setting up guest contact capture & Google reviews
+
+No external account needed — just fill in the sub-account's **Settings**
+page:
+
+1. **Google review link** — from your Google Business Profile, under "Ask
+   for reviews" (looks like `https://g.page/r/.../review`). Guests see a
+   "Leave us a quick review" button linking here right after they upload,
+   whether or not they gave contact info.
+2. **Contact capture incentive message** — the copy shown on the card asking
+   for email/phone (e.g. "Enter your email for a free dessert on your next
+   visit!"). Leave blank for a generic default.
+3. **Require contact info** — off by default (recommended): guests can Skip
+   the card. Turning it on hides Skip, but doesn't block the upload itself
+   (the photo is already saved before the card appears) — it just means they
+   can't dismiss the follow-up card without submitting something.
+
+Captured contacts land on each sub-account's **Guests** dashboard page, with
+a CSV export button — see Roadmap for what's not automated yet.
+
 ## Verifying the core flow locally
 
 1. `npm run dev`, sign up at `/signup`, create an organization, then a
@@ -161,6 +188,12 @@ Required for the core app:
 5. On the org's **Billing** page, upgrade to Pro/Agency in Stripe test mode
    and confirm the plan badge updates (via the webhook) and that
    permanent-storage / white-label / Drive-sync options unlock accordingly.
+6. Set a Google review link + incentive message on the sub-account's
+   Settings page. Upload another photo as a guest — the contact-capture card
+   should appear once; submit with just an email (no phone) and confirm the
+   "Leave us a quick review" button appears and opens the right URL. Check
+   the sub-account's **Guests** page to confirm the contact was captured,
+   and try the CSV export.
 
 ## Cron jobs (`vercel.json`)
 
@@ -185,6 +218,10 @@ manually with the same header for local testing or another scheduler.
   `ExternalStorageConnection.refreshToken` are stored as plaintext —
   encrypt at rest (e.g. KMS envelope encryption) before handling real
   customer tokens.
+- Rate limiting on the public upload/guest-capture endpoints
+  (`src/lib/rate-limit.ts`) is a simple DB-backed sliding window — fine at
+  this scale, but move to Upstash/Redis or edge-level rate limiting if a
+  deployment ever needs to handle heavy abuse traffic.
 - Google Drive export re-fetches each file from object storage and
   re-uploads it to Drive on the cron pass — fine at event-gallery scale, but
   a queue-based/streaming approach would scale better for very large events.
@@ -202,5 +239,16 @@ manually with the same header for local testing or another scheduler.
   you can obtain, not something buildable from here. Once you have developer
   app credentials for a given platform, add it as a new
   `SocialProvider`-style integration alongside `blotato.ts`/`ghl.ts`.
+- **GHL contact sync**: automatically push captured `Guest` rows into GHL as
+  Contacts (tagged by business/event) whenever a sub-account has a GHL
+  connection, so GHL workflows can pick them up for SMS discount blasts,
+  review-request emails, and a monthly newsletter — the actual send
+  sequences/cadence are built by the user inside GHL's workflow builder, not
+  something this app builds. Reuses the existing GHL credentials on
+  `SocialConnection` (no new connection type needed); add a
+  `upsertGhlContact()` function to `src/lib/ghl.ts` calling GHL's Contacts
+  API, and a sync path (immediate on capture, and/or a cron backfill) that
+  writes back a `ghlContactId` on `Guest` once synced. CSV export
+  (`Guests` dashboard page) is the bridge until this exists.
 - Dropbox as a second external-storage-sync provider alongside Google Drive.
 - Real thumbnailing pipeline (see Known MVP simplifications above).

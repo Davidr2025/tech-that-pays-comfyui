@@ -63,6 +63,9 @@ export async function updateSubAccountSettingsAction(formData: FormData) {
   const brandColor = String(formData.get("brandColor") ?? "").trim() || null;
   const customDomainRaw = String(formData.get("customDomain") ?? "").trim().toLowerCase();
   const customDomain = customDomainRaw || null;
+  const googleReviewUrl = String(formData.get("googleReviewUrl") ?? "").trim() || null;
+  const contactIncentiveMessage = String(formData.get("contactIncentiveMessage") ?? "").trim() || null;
+  const requireContactInfo = formData.get("requireContactInfo") === "on";
 
   if (customDomain && !limitsForOrg(subAccount.organization).whiteLabelAllowed) {
     redirect(`${redirectTo}?error=White-label+domains+need+the+Agency+plan+%E2%80%94+see+Billing`);
@@ -70,11 +73,14 @@ export async function updateSubAccountSettingsAction(formData: FormData) {
   if (customDomain && !/^[a-z0-9.-]+\.[a-z]{2,}$/.test(customDomain)) {
     redirect(`${redirectTo}?error=That+doesn%27t+look+like+a+valid+domain`);
   }
+  if (googleReviewUrl && !/^https:\/\//.test(googleReviewUrl)) {
+    redirect(`${redirectTo}?error=Google+review+link+must+start+with+https%3A%2F%2F`);
+  }
 
   try {
     await db.subAccount.update({
       where: { id: subAccount.id },
-      data: { brandColor, customDomain },
+      data: { brandColor, customDomain, googleReviewUrl, contactIncentiveMessage, requireContactInfo },
     });
   } catch (err: unknown) {
     if (typeof err === "object" && err !== null && "code" in err && err.code === "P2002") {

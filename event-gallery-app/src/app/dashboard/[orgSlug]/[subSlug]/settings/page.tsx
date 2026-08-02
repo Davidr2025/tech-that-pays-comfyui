@@ -80,6 +80,42 @@ export default async function SubAccountSettingsPage({
           )}
         </div>
 
+        <div className="border-t border-neutral-200 pt-4 dark:border-neutral-800">
+          <p className="mb-3 text-sm font-semibold">Guest contact capture &amp; reviews</p>
+
+          <label className="mb-1 block text-sm opacity-70">Google review link</label>
+          <input
+            name="googleReviewUrl"
+            placeholder="https://g.page/r/your-business/review"
+            defaultValue={subAccount.googleReviewUrl ?? ""}
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900"
+          />
+          <p className="mb-3 mt-1 text-xs opacity-60">
+            Find this in your Google Business Profile under "Ask for reviews." Shown to guests
+            right after they upload a photo.
+          </p>
+
+          <label className="mb-1 block text-sm opacity-70">Contact capture incentive message</label>
+          <textarea
+            name="contactIncentiveMessage"
+            placeholder="Enter your email or phone for a free dessert on your next visit!"
+            defaultValue={subAccount.contactIncentiveMessage ?? ""}
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900"
+          />
+          <p className="mb-3 mt-1 text-xs opacity-60">
+            Shown on the card that asks guests for their email/phone after their first upload.
+          </p>
+
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              name="requireContactInfo"
+              defaultChecked={subAccount.requireContactInfo}
+            />
+            Require contact info (hides the Skip option — off by default, recommended)
+          </label>
+        </div>
+
         <button className="w-full rounded-lg bg-brand-600 py-2 font-semibold text-white hover:bg-brand-700">
           Save
         </button>

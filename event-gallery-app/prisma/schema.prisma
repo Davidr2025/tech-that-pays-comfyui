@@ -81,6 +81,10 @@ model SubAccount {
   logoStorageKey String?
   // White-label (AGENCY plan): guests hit this domain instead of the default host.
   customDomain   String?  @unique
+  // Guest contact capture + review funnel (see Guest model).
+  googleReviewUrl         String?
+  contactIncentiveMessage String?
+  requireContactInfo      Boolean  @default(false)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -89,6 +93,7 @@ model SubAccount {
   socialConnections    SocialConnection[]
   memberships          Membership[]
   externalStorageConnections ExternalStorageConnection[]
+  guests               Guest[]
 
   @@unique([organizationId, slug])
 }
@@ -138,6 +143,7 @@ model Event {
   subAccount     SubAccount      @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
   media          MediaAsset[]
   scheduledPosts ScheduledPost[]
+  guests         Guest[]
 
   @@index([subAccountId])
   @@index([expiresAt])
@@ -146,6 +152,7 @@ model Event {
 model MediaAsset {
   id               String      @id @default(cuid())
   eventId          String
+  guestId          String?
   type             MediaType
   status           MediaStatus @default(APPROVED)
   storageKey       String
@@ -163,9 +170,34 @@ model MediaAsset {
   createdAt        DateTime    @default(now())
 
   event          Event           @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  guest          Guest?          @relation(fields: [guestId], references: [id], onDelete: SetNull)
   scheduledPosts ScheduledPost[] @relation("PostMedia")
 
   @@index([eventId, status, createdAt])
+  @@index([guestId])
+}
+
+// A guest's contact info, captured (optionally) at upload time. Feeds the
+// immediate on-page Google review prompt now; a bridge to sync into GHL
+// (or export as CSV in the meantime) for SMS/email follow-up later.
+model Guest {
+  id           String   @id @default(cuid())
+  subAccountId String
+  eventId      String?
+  name         String?
+  email        String?
+  phone        String?
+  // Separate, explicit opt-in per channel — required before any future SMS
+  // or email send, not implied by just providing the contact info.
+  smsConsent   Boolean  @default(false)
+  emailConsent Boolean  @default(false)
+  createdAt    DateTime @default(now())
+
+  subAccount SubAccount   @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
+  event      Event?       @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  media      MediaAsset[]
+
+  @@index([subAccountId, createdAt])
 }
 
 model SocialConnection {
@@ -225,4 +257,15 @@ model ExternalStorageConnection {
   subAccount SubAccount @relation(fields: [subAccountId], references: [id], onDelete: Cascade)
 
   @@unique([subAccountId, provider])
+}
+
+// One row per request against a rate-limited public endpoint. Simple
+// DB-backed sliding window — fine at this scale; move to Upstash/Redis if
+// the public upload/guest-capture endpoints ever need to scale further.
+model RateLimitHit {
+  id        String   @id @default(cuid())
+  key       String // e.g. "upload-url:<ip>:<eventId>"
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
 }

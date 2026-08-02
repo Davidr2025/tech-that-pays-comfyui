@@ -42,6 +42,12 @@ export default async function SubAccountPage({
             Social connections
           </Link>
           <Link
+            href={`/dashboard/${params.orgSlug}/${params.subSlug}/guests`}
+            className="rounded-lg border border-neutral-300 px-4 py-2 text-sm font-semibold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900"
+          >
+            Guests
+          </Link>
+          <Link
             href={`/dashboard/${params.orgSlug}/${params.subSlug}/events/new`}
             className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
