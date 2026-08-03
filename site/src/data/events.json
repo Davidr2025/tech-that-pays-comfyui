@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T18:05:15.690Z",
+  "updatedAt": "2026-08-03T23:20:05.710Z",
   "windowDays": 14,
   "items": [
     {
@@ -101,6 +101,16 @@
       "end": "2026-08-16T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Summer Berry Salad",
+      "summary": "Join us for an interactive, hands-on workshop that reconnects participants to the earth through the lens of Indigenous food sovereignty.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/summer-berry-salad-tickets-1996257614262",
+      "start": "2026-08-17T21:30:00.000Z",
+      "end": "2026-08-17T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
