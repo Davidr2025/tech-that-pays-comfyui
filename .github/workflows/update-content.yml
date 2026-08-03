@@ -19,7 +19,6 @@ on:
   push:
     branches:
       - main
-      - claude/mississauga-insider-site-gllpem
     paths:
       - "site/**"
       - ".github/workflows/update-content.yml"
