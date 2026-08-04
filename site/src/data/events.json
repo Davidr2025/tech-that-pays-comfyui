@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T18:03:57.316Z",
+  "updatedAt": "2026-08-04T23:18:52.743Z",
   "windowDays": 14,
   "items": [
     {
@@ -109,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/summer-berry-salad-tickets-1996257614262",
       "start": "2026-08-17T21:30:00.000Z",
       "end": "2026-08-17T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Water & Urban Gardening: Hacks for Hydration",
+      "summary": "Explore how healthy soil and smart gardening practices can help conserve water while supporting thriving urban gardens.",
+      "venue": "Port Credit Library",
+      "url": "https://www.eventbrite.ca/e/water-urban-gardening-hacks-for-hydration-tickets-1993482781663",
+      "start": "2026-08-18T21:30:00.000Z",
+      "end": "2026-08-18T23:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
