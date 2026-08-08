@@ -1,47 +1,7 @@
 {
-  "updatedAt": "2026-08-07T22:55:20.038Z",
+  "updatedAt": "2026-08-08T10:50:38.376Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Port Credit Ribfest X 2026",
-      "summary": "Port Credit Ribfest X 2026 is presented by Gelateria Italiana and held at Port Credit Memorial Park. Produced by Ontario Festival Group, the event features North America’s top rib teams serving award-winning BBQ favourites, including smoked ribs, pulled pork, brisket, BBQ chicken, smoked sausage, and massive beef “Dino” ribs.",
-      "venue": "Port Credit Memorial Park",
-      "url": "https://www.visitmississauga.ca/event/port-credit-ribfest-x-2026/",
-      "start": "2026-08-07T12:00:00.000Z",
-      "end": "2026-08-09T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Jurassic Quest",
-      "summary": "Embark on an unforgettable prehistoric adventure at , where North America’s largest moving, roaring, and life-like dinosaurs come to life in a fully immersive walk-through experience for the whole family. Featuring towering animatronic dinosaurs, interactive exhibits, and hands-on activities, Jurassic Quest invites guests to step back in time and explore the wonders of the Jurassic era like never before.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/jurassic-quest-2/",
-      "start": "2026-08-07T13:00:00.000Z",
-      "end": "2026-08-09T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Mississauga Latin Festival",
-      "summary": "Celebrate the vibrant cultures of Latin America with a festival full of music, movement, and flavour. From the rhythms of salsa and reggaeton to colourful performances and lively entertainment, this is where the community comes together to dance, connect, and celebrate. Enjoy live music, cultural showcases, and dynamic dance performances that bring the spirit of Latin culture to life. Indulge in authentic cuisine, explore local vendors, and soak in an atmosphere that’s as warm as it is electric.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/mississauga-latin-festival/",
-      "start": "2026-08-07T17:00:00.000Z",
-      "end": "2026-08-09T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "First Friday Market",
-      "summary": "Join Us For The Last First Friday Market Of The Year!",
-      "venue": "Streetsville Village Square",
-      "url": "https://www.eventbrite.ca/e/first-friday-market-tickets-1991118177067",
-      "start": "2026-08-07T21:00:00.000Z",
-      "end": "2026-08-08T01:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Rad Ride & Shine 2026",
       "summary": "Rad Ride & Shine 2026 is hitting Mississauga! They're bringing a first-of-its-kind, three-part BMX festival to the city, celebrating riding culture, community, and the perfect balance in everyday life. What to expect: The Ride Out: A massive, permit-secured group ride through the heart of Mississauga. Own the streets with them! The Comps: High-flying Freestyle, Flatland, and Ramp action from local riders and seasoned pros. Also, they are hosting a Freestyle Flatland Trick workshop for juniors, led by seasoned pros!",
@@ -111,6 +71,16 @@
       "end": "2026-08-18T23:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Mississauga Italfest 2026",
+      "summary": "Mississauga Italfest is a vibrant celebration of Italian culture in Mississauga. Recognized as one of Ontario’s Top 100 Festivals (2016–2025), the festival takes place each August in celebration of Ferragosto, Italy’s national holiday. The festival brings the community together for a lively weekend filled with live music, traditional and contemporary performances, and authentic Italian cuisine—from fresh pasta and pizza to espresso and cannoli.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/mississauga-italfest-2026/",
+      "start": "2026-08-21T17:00:00.000Z",
+      "end": "2026-08-22T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
