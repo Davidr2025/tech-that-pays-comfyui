@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-08-09T16:53:51.909Z",
+  "updatedAt": "2026-08-09T22:50:06.153Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Rad Ride & Shine 2026",
-      "summary": "Rad Ride & Shine 2026 is hitting Mississauga! They're bringing a first-of-its-kind, three-part BMX festival to the city, celebrating riding culture, community, and the perfect balance in everyday life. What to expect: The Ride Out: A massive, permit-secured group ride through the heart of Mississauga. Own the streets with them! The Comps: High-flying Freestyle, Flatland, and Ramp action from local riders and seasoned pros. Also, they are hosting a Freestyle Flatland Trick workshop for juniors, led by seasoned pros!",
-      "venue": "Huron Park",
-      "url": "https://www.visitmississauga.ca/event/rad-ride-shine-2026/",
-      "start": "2026-08-09T10:30:00.000Z",
-      "end": "2026-08-09T18:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Movie Night in The Square: Zootopia 2",
       "summary": "Spend an evening outdoors in Streetsville and enjoy a movie under the stars with a screening of Zootopia 2 . Gather your family and friends, bring along blankets or lawn chairs, and settle into the Village Square for a fun-filled night. The movie will start at dusk, but there will be plenty of activities to keep you entertained beforehand—so be sure to arrive early and enjoy the full experience.",
@@ -79,6 +69,16 @@
       "url": "https://www.visitmississauga.ca/event/mississauga-italfest-2026/",
       "start": "2026-08-21T17:00:00.000Z",
       "end": "2026-08-22T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Kendra Gabrielle",
+      "summary": "Get ready for an unforgettable evening of live music as Kendra Gabrielle , one of Canada's rising country-pop stars, takes the stage in Mississauga! With over 500,000 music streams and a rapidly growing community of 13,000+ social media followers , Kendra Gabrielle is capturing the attention of audiences across Canada with her heartfelt songwriting, powerful vocals, and dynamic stage presence.",
+      "venue": "Port Credit Memorial Park",
+      "url": "https://www.visitmississauga.ca/event/kendra-gabrielle/",
+      "start": "2026-08-23T18:30:00.000Z",
+      "end": "2026-08-23T20:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
