@@ -178,6 +178,7 @@ function presentCard(p) {
         : ""
     }
     <div class="pcard-actions">
+      ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
       <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
     </div>
