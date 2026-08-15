@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>David's AI Vision Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="shell">
+  <nav class="sidebar">
+    <div class="brand"><span class="icon">🧭</span>Vision Board</div>
+    <div class="brand-sub">LSFG · Command Center</div>
+
+    <div class="navgroup-label">This board</div>
+    <ul class="navlinks">
+      <li><a href="#present" class="active" data-nav>Present Builds</a></li>
+      <li><a href="#future" data-nav>Future Builds</a></li>
+      <li><a href="#scratchpad" data-nav>Scratch Pad</a></li>
+      <li><a href="#activity" data-nav>Recent Activity</a></li>
+    </ul>
+
+    <div class="navgroup-label">CEO views</div>
+    <ul class="navlinks">
+      <li><a href="/mississauga-insider.html">🏙️ Mississauga Insider <span class="ext">↗</span></a></li>
+      <li><a href="/tech-that-pays.html">🎬 Tech That Pays <span class="ext">↗</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="signed-in">Signed in as David</div>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topbar">
+      <div class="topbar-top">
+        <div>
+          <h1>Good morning, David.</h1>
+          <div class="date" id="todayDate"></div>
+        </div>
+      </div>
+      <div class="glance" id="glance"></div>
+      <div class="search-row">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search everything on the board…">
+      </div>
+    </div>
+
+    <section id="present">
+      <div class="section-head">
+        <div>
+          <h2>Present Builds</h2>
+          <div class="section-desc">What you're actually committing time to right now.</div>
+        </div>
+        <button class="btn btn-primary" id="addPresentBtn">+ New present build</button>
+      </div>
+      <div class="card-grid" id="presentGrid"></div>
+    </section>
+
+    <section id="future">
+      <div class="section-head">
+        <div>
+          <h2>Future Builds</h2>
+          <div class="section-desc">Ideas and someday-projects — kept separate so a dream never gets confused with a commitment.</div>
+        </div>
+        <button class="btn btn-ghost" id="addFutureBtn">+ New idea</button>
+      </div>
+      <div class="future-list" id="futureList"></div>
+    </section>
+
+    <section id="scratchpad">
+      <div class="section-head">
+        <div>
+          <h2>Scratch Pad</h2>
+          <div class="section-desc">Dump anything, anytime. Nothing here ever disappears unless you delete it yourself.</div>
+        </div>
+      </div>
+      <div class="scratch-input-row">
+        <textarea id="noteInput" placeholder="Half-idea, reminder, thing to ask a client…"></textarea>
+        <button class="btn btn-primary" id="addNoteBtn">Add note</button>
+      </div>
+      <div class="note-list" id="noteList"></div>
+    </section>
+
+    <section id="activity">
+      <div class="section-head">
+        <div>
+          <h2>Recent Activity</h2>
+          <div class="section-desc">What changed on this board, and when — written automatically, never by hand.</div>
+        </div>
+      </div>
+      <div class="activity-list" id="activityList"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Add / edit project modal -->
+<div class="modal-overlay hidden" id="projectModal">
+  <form class="modal" id="projectForm">
+    <h3 id="projectModalTitle">New present build</h3>
+    <input type="hidden" id="projectId">
+    <input type="hidden" id="projectSection">
+
+    <div class="field">
+      <label for="pName">Project / business name</label>
+      <input type="text" id="pName" required placeholder="e.g. Limitless Mortgage">
+    </div>
+    <div class="field">
+      <label for="pWinning">What winning looks like</label>
+      <textarea id="pWinning" placeholder="Describe the finish line, plainly."></textarea>
+    </div>
+    <div id="presentOnlyFields">
+      <div class="field">
+        <label for="pNextMove">Your single recommended next move</label>
+        <textarea id="pNextMove" placeholder="The one thing to do next."></textarea>
+      </div>
+      <div class="field">
+        <label for="pBlockers">Anything blocking it</label>
+        <textarea id="pBlockers" placeholder="Leave blank if nothing is in the way."></textarea>
+      </div>
+      <div class="field">
+        <label for="pHealth">Health</label>
+        <select id="pHealth">
+          <option value="On track">On track</option>
+          <option value="Watch">Watch</option>
+          <option value="Blocked">Blocked</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="pCurrentRevenue">Current monthly revenue ($)</label>
+        <input type="number" id="pCurrentRevenue" min="0" step="1">
+      </div>
+      <div class="field">
+        <label for="pTargetRevenue">Target monthly revenue ($)</label>
+        <input type="number" id="pTargetRevenue" min="0" step="1">
+      </div>
+    </div>
+    <div class="field">
+      <label for="pNotes">Notes</label>
+      <textarea id="pNotes" placeholder="Anything else worth remembering."></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="projectCancelBtn">Cancel</button>
+      <button type="submit" class="btn btn-primary" id="projectSaveBtn">Save</button>
+    </div>
+  </form>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal-overlay hidden" id="confirmModal">
+  <div class="modal" style="max-width:420px">
+    <h3 id="confirmTitle">Remove this build?</h3>
+    <p class="pcard-text" id="confirmBody" style="margin-bottom:18px"></p>
+    <div class="modal-actions" id="confirmActions"></div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

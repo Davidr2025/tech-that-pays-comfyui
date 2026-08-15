@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mississauga Insider — CEO Dashboard</title>
+<style>
+  :root{
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #202020;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --baseline: #383835;
+    --border: rgba(255,255,255,0.10);
+    --blue: #3987e5;
+    --blue-dim: #1c3a5e;
+    --gold: #c98500;
+    --good: #0ca30c;
+    --warning: #fab219;
+    --critical: #e66767;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--page);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .shell{display:flex;min-height:100vh;transition:opacity .25s ease}
+  .sidebar{
+    width:240px;flex:none;background:var(--surface);border-right:1px solid var(--border);
+    position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:24px 18px;
+  }
+  .brand{font-weight:700;font-size:15px;line-height:1.3;margin-bottom:4px}
+  .brand span{display:block;font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+  .navlinks{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .navlinks a{
+    display:block;padding:9px 12px;border-radius:8px;font-size:13.5px;font-weight:500;
+    color:var(--ink-2);text-decoration:none;border-left:2px solid transparent;
+  }
+  .navlinks a:hover{background:var(--surface-2);color:var(--ink)}
+  .navlinks a.active{background:var(--surface-2);color:var(--ink);border-left-color:var(--blue)}
+  .sidebar .meta{margin-top:auto;font-size:11px;color:var(--muted);line-height:1.6;padding-top:16px;border-top:1px solid var(--border)}
+  main{flex:1;min-width:0;padding:32px 40px 80px}
+  .topbar{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:8px}
+  .topbar h1{font-size:20px;margin:0}
+  .topbar .sub{font-size:13px;color:var(--muted)}
+  section{margin-bottom:52px;scroll-margin-top:24px}
+  section h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);margin:0 0 4px}
+  section .section-desc{font-size:13px;color:var(--muted);margin:0 0 18px}
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+  .stat-tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+  .stat-label{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+  .stat-value{font-size:30px;font-weight:600;letter-spacing:-.01em}
+  .stat-sub{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.5}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:920px){.grid-2{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px}
+  .card h3{font-size:13.5px;margin:0 0 14px;color:var(--ink-2);font-weight:600}
+  .barlist{display:flex;flex-direction:column;gap:10px}
+  .bar-row{display:grid;grid-template-columns:185px 1fr 44px;align-items:center;gap:10px;text-decoration:none;border-radius:6px;padding:2px 4px;margin:-2px -4px}
+  .bar-row[href]:hover{background:var(--surface-2)}
+  .bar-label{font-size:12.5px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-track{height:8px;background:var(--baseline);border-radius:4px;overflow:hidden}
+  .bar-fill{height:100%;width:0;background:var(--blue);border-radius:4px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+  .shell.in .bar-fill{width:var(--w)}
+  .bar-value{font-size:12.5px;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+  .funnel{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .funnel-step{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .funnel-step .n{font-size:26px;font-weight:600}
+  .funnel-step .l{font-size:12px;color:var(--muted);margin-top:4px}
+  .funnel-step .p{font-size:11.5px;color:var(--ink-2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+  .funnel-arrow{color:var(--muted);font-size:18px;flex:none}
+  .status-grid{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .status-item{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--surface)}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none}
+  .dot.good{background:var(--good);box-shadow:0 0 0 3px rgba(12,163,12,.15)}
+  .dot.neutral{background:var(--muted)}
+  .status-item .name{font-size:13.5px;font-weight:500;width:150px;flex:none}
+  .status-item .detail{font-size:12.5px;color:var(--muted);flex:1}
+  .status-item .when{font-size:12px;color:var(--ink-2);text-align:right;flex:none}
+  .empty-state{border:1px dashed var(--border);border-radius:12px;padding:22px 24px;text-align:left}
+  .empty-icon{font-size:20px;margin-bottom:8px}
+  .empty-title{font-size:14px;font-weight:600;margin-bottom:6px}
+  .empty-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+  .empty-cta{margin-top:12px;font-size:12.5px;color:var(--blue);font-weight:600}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:5px}
+  .tag.vip{background:rgba(201,133,0,.18);color:#e0a63a}
+  .tag.basic{background:var(--surface-2);color:var(--ink-2)}
+  .list-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+  .list-row:last-child{border-bottom:none}
+  .list-row .t{color:var(--ink)}
+  .list-row .m{color:var(--muted);font-size:12px;flex:none}
+
+  /* skeleton (perceived-performance) */
+  #skeleton{position:fixed;inset:0;background:var(--page);z-index:50;display:flex;transition:opacity .3s ease}
+  #skeleton.out{opacity:0;pointer-events:none}
+  .sk-side{width:240px;background:var(--surface);border-right:1px solid var(--border)}
+  .sk-main{flex:1;padding:32px 40px}
+  .sk-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px}
+  .sk-block{height:88px;border-radius:12px}
+  .sk-block.tall{height:220px}
+  .sk-block,.sk-side{background-image:linear-gradient(100deg,var(--surface) 30%,var(--surface-2) 50%,var(--surface) 70%);background-size:200% 100%;animation:shimmer 1.4s ease-in-out infinite}
+  @keyframes shimmer{to{background-position:-200% 0}}
+  .shell{opacity:0}
+  .shell.in{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .bar-fill{transition:none}
+    .sk-block,.sk-side{animation:none}
+    #skeleton,.shell{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="skeleton" aria-hidden="true">
+  <div class="sk-side"></div>
+  <div class="sk-main">
+    <div class="sk-row">
+      <div class="sk-block"></div><div class="sk-block"></div><div class="sk-block"></div><div class="sk-block"></div>
+    </div>
+    <div class="sk-row" style="grid-template-columns:1fr 1fr">
+      <div class="sk-block tall"></div><div class="sk-block tall"></div>
+    </div>
+  </div>
+</div>
+
+<div class="shell" id="app">
+  <nav class="sidebar">
+    <div class="brand">🏙️ Mississauga Insider<span>CEO Dashboard</span></div>
+    <ul class="navlinks">
+      <li><a href="#overview" data-nav>Overview</a></li>
+      <li><a href="#directory" data-nav>Directory</a></li>
+      <li><a href="#monetization" data-nav>Monetization</a></li>
+      <li><a href="#pipeline" data-nav>Content Pipeline</a></li>
+      <li><a href="#editorial" data-nav>Editorial</a></li>
+    </ul>
+    <div class="meta">
+      <a href="/board.html" style="color:var(--blue);text-decoration:none;font-weight:600">← Vision Board</a><br><br>
+      Generated Aug 15, 2026, 12:48 a.m.<br>
+      Regenerate: <code>npm run build-dashboard</code>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topbar">
+      <h1>Business Overview</h1>
+      <div class="sub">Every number below is computed live from this repo's own data files — nothing here is a mock.</div>
+    </div>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <div class="kpi-grid">
+        
+  <div class="stat-tile">
+    <div class="stat-label">Directory listings</div>
+    <div class="stat-value">973</div>
+    <div class="stat-sub">across 8 categories + 10 trades specialties</div>
+  </div>
+        
+  <div class="stat-tile">
+    <div class="stat-label">Verified listings</div>
+    <div class="stat-value">2</div>
+    <div class="stat-sub">0.2% of the directory claimed</div>
+  </div>
+        
+  <div class="stat-tile">
+    <div class="stat-label">Paid placements (MRR)</div>
+    <div class="stat-value">$0</div>
+    <div class="stat-sub">Stripe links not connected yet</div>
+  </div>
+        
+  <div class="stat-tile">
+    <div class="stat-label">Guides published</div>
+    <div class="stat-value">6</div>
+    <div class="stat-sub">hand-written, evergreen</div>
+  </div>
+        
+  <div class="stat-tile">
+    <div class="stat-label">Business spotlights</div>
+    <div class="stat-value">2</div>
+    <div class="stat-sub">1 VIP · 0 paid · 1 basic</div>
+  </div>
+        
+  <div class="stat-tile">
+    <div class="stat-label">Ad slots sold</div>
+    <div class="stat-value">0/7</div>
+    <div class="stat-sub">generic display placements</div>
+  </div>
+      </div>
+    </section>
+
+    <section id="directory">
+      <h2>Directory</h2>
+      <p class="section-desc">Live counts from <code>src/data/places.json</code>, refreshed monthly by the Google Places pipeline.</p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Businesses by category</h3>
+          <div class="barlist">
+            <div class="bar-row">
+      <div class="bar-label">Trades &amp; Home Services</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:100.0%"></div></div>
+      <div class="bar-value">353</div></div><div class="bar-row">
+      <div class="bar-label">Restaurants</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:28.3%"></div></div>
+      <div class="bar-value">100</div></div><div class="bar-row">
+      <div class="bar-label">Real Estate</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:28.3%"></div></div>
+      <div class="bar-value">100</div></div><div class="bar-row">
+      <div class="bar-label">Health &amp; Wellness</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:28.3%"></div></div>
+      <div class="bar-value">100</div></div><div class="bar-row">
+      <div class="bar-label">Beauty &amp; Barber</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:26.1%"></div></div>
+      <div class="bar-value">92</div></div><div class="bar-row">
+      <div class="bar-label">Fitness &amp; Sports</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:24.6%"></div></div>
+      <div class="bar-value">87</div></div><div class="bar-row">
+      <div class="bar-label">Cafés &amp; Bakeries</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:20.7%"></div></div>
+      <div class="bar-value">73</div></div><div class="bar-row">
+      <div class="bar-label">Auto Services</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:19.3%"></div></div>
+      <div class="bar-value">68</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Trades &amp; Home Services — by specialty</h3>
+          <div class="barlist">
+            <div class="bar-row">
+      <div class="bar-label">Electricians</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:100.0%"></div></div>
+      <div class="bar-value">46</div></div><div class="bar-row">
+      <div class="bar-label">Plumbers</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:95.7%"></div></div>
+      <div class="bar-value">44</div></div><div class="bar-row">
+      <div class="bar-label">Painters</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:84.8%"></div></div>
+      <div class="bar-value">39</div></div><div class="bar-row">
+      <div class="bar-label">HVAC &amp; Heating</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:80.4%"></div></div>
+      <div class="bar-value">37</div></div><div class="bar-row">
+      <div class="bar-label">General Contractors &amp; Renovations</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:80.4%"></div></div>
+      <div class="bar-value">37</div></div><div class="bar-row">
+      <div class="bar-label">Landscaping &amp; Lawn Care</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:76.1%"></div></div>
+      <div class="bar-value">35</div></div><div class="bar-row">
+      <div class="bar-label">Roofers</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:73.9%"></div></div>
+      <div class="bar-value">34</div></div><div class="bar-row">
+      <div class="bar-label">Cleaning Services</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:69.6%"></div></div>
+      <div class="bar-value">32</div></div><div class="bar-row">
+      <div class="bar-label">Appliance Repair</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:58.7%"></div></div>
+      <div class="bar-value">27</div></div><div class="bar-row">
+      <div class="bar-label">Locksmiths</div>
+      <div class="bar-track"><div class="bar-fill" style="--w:47.8%"></div></div>
+      <div class="bar-value">22</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="monetization">
+      <h2>Monetization</h2>
+      <p class="section-desc">The directory is a lead magnet — this is the real conversion path from free listing to paying customer today.</p>
+      <div class="funnel">
+        <div class="funnel-step">
+          <div class="n">973</div>
+          <div class="l">Businesses listed</div>
+        </div>
+        <div class="funnel-arrow">→</div>
+        <div class="funnel-step">
+          <div class="n">2</div>
+          <div class="l">Claimed (verified, free)</div>
+          <div class="p">0.21% of listed</div>
+        </div>
+        <div class="funnel-arrow">→</div>
+        <div class="funnel-step">
+          <div class="n">$0</div>
+          <div class="l">Paying customers</div>
+          <div class="p">0% of claimed</div>
+        </div>
+      </div>
+      <div style="height:20px"></div>
+      
+  <div class="empty-state">
+    <div class="empty-icon">💳</div>
+    <div class="empty-title">No revenue is being tracked yet — and that's expected</div>
+    <div class="empty-body">Both claim tiers in <code>site.config.mjs</code> (Featured Listing — $49/mo, VIP Spotlight — $149/mo) still have placeholder <code>stripeUrl</code> values, and 0 of 7 ad slots are sold. The 2 claimed listing(s) above proves real demand for the free tier — the next step is wiring a real Stripe Payment Link so a claim can convert.</div>
+    <div class="empty-cta">→ Create Payment Links in Stripe, paste them into claim.tiers, then a real MRR number belongs here.</div>
+  </div>
+    </section>
+
+    <section id="pipeline">
+      <h2>Content Pipeline Health</h2>
+      <p class="section-desc">Runs 3×/day via GitHub Actions. "Cached" means the fetcher intentionally skipped — not a failure.</p>
+      <div class="status-grid">
+        <div class="status-item">
+              <span class="dot good"></span>
+              <span class="name">Local News</span>
+              <span class="detail">5 live headlines</span>
+              <span class="when">updated · today</span>
+            </div><div class="status-item">
+              <span class="dot good"></span>
+              <span class="name">Things to Do</span>
+              <span class="detail">10 upcoming events</span>
+              <span class="when">updated · today</span>
+            </div><div class="status-item">
+              <span class="dot good"></span>
+              <span class="name">Weather</span>
+              <span class="detail">Open-Meteo, no key needed</span>
+              <span class="when">updated · today</span>
+            </div><div class="status-item">
+              <span class="dot good"></span>
+              <span class="name">Local Sports</span>
+              <span class="detail">2 tracked results</span>
+              <span class="when">updated · today</span>
+            </div><div class="status-item">
+              <span class="dot neutral"></span>
+              <span class="name">Business Directory</span>
+              <span class="detail">cached 30d · refreshes in 29d</span>
+              <span class="when">cached · yesterday</span>
+            </div>
+      </div>
+    </section>
+
+    <section id="editorial">
+      <h2>Editorial</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Latest newsletter issue</h3>
+          <div style="font-size:13.5px;font-weight:600;margin-bottom:6px">🏙️ Mississauga this week: 38 Closures Scheduled Across Six Peel Highways on Aug. 13</div>
+                 <div style="font-size:12.5px;color:var(--ink-2);margin-bottom:14px">Plus: 6 things to do, starting with Mississauga Hong Kong Festival 2026</div>
+                 <div style="display:flex;gap:16px;font-size:12px;color:var(--muted)">
+                   <span>6 news</span><span>6 events</span><span>1 openings</span>
+                 </div>
+          <div style="height:14px"></div>
+          
+  <div class="empty-state">
+    <div class="empty-icon">👥</div>
+    <div class="empty-title">Subscriber count isn't tracked locally</div>
+    <div class="empty-body">Beehiiv is the source of truth for subscribers and open rates — this dashboard only tracks what the repo itself generates.</div>
+    <div class="empty-cta">→ View live subscriber count in the Beehiiv dashboard.</div>
+  </div>
+        </div>
+        <div class="card">
+          <h3>Guides &amp; Spotlights</h3>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px">Guides (6)</div>
+          <div class="list-row"><span class="t">Clarkson: A Neighbourhood Guide</span><span class="m">2026-07-20</span></div><div class="list-row"><span class="t">Getting Around Mississauga: MiWay, GO Transit &amp; the Hazel McCallion Line</span><span class="m">2026-07-15</span></div><div class="list-row"><span class="t">Malton: A Neighbourhood Guide</span><span class="m">2026-08-03</span></div><div class="list-row"><span class="t">Port Credit: A Neighbourhood Guide</span><span class="m">2026-07-15</span></div><div class="list-row"><span class="t">First Time at Square One? A Downtown Mississauga Primer</span><span class="m">2026-07-15</span></div><div class="list-row"><span class="t">Streetsville: A Neighbourhood Guide</span><span class="m">2026-07-19</span></div>
+          <div style="height:16px"></div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px">Spotlights (2)</div>
+          <div class="list-row"><span class="t">Brasas Churrasqueira Rotisserie &amp; Grill <span class="tag vip">VIP</span></span><span class="m">2026-07-22</span></div><div class="list-row"><span class="t">Life Time <span class="tag basic">BASIC</span></span><span class="m">2026-07-19</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  // Brief skeleton hold: masks the width:0→N% bar-fill flash on first paint
+  // (the CSS transition needs one settled frame before the .in class can
+  // animate it) instead of showing bars snap-filled with no motion.
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  requestAnimationFrame(function () {
+    setTimeout(function () {
+      document.getElementById("skeleton").classList.add("out");
+      document.getElementById("app").classList.add("in");
+    }, reduceMotion ? 0 : 420);
+  });
+
+  // Sidebar scrollspy
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-nav]"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var id = "#" + entry.target.id;
+      links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === id); });
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  sections.forEach(function (s) { if (s) observer.observe(s); });
+</script>
+</body>
+</html>
