@@ -16,7 +16,8 @@ const FIELD = {
   winning: "What Winning Looks Like",
   nextMove: "Next Move",
   blockers: "Blockers",
-  ceoViewUrl: "CEO View URL"
+  ceoViewUrl: "CEO View URL",
+  parentCompany: "Parent Company"
 };
 
 function toJson(record) {
