@@ -11,6 +11,7 @@
     "update-content": "node scripts/update-content.mjs",
     "export-csv": "node scripts/export-csv.mjs",
     "build-newsletter": "node scripts/build-newsletter.mjs",
+    "build-dashboard": "node scripts/build-dashboard.mjs",
     "send-newsletter": "node scripts/send-newsletter.mjs",
     "test:beehiiv": "node scripts/test-beehiiv.mjs"
   },

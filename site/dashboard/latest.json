@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-08-15T04:48:31.561Z",
+  "totalBusinesses": 973,
+  "categories": [
+    {
+      "slug": "trades",
+      "label": "Trades & Home Services",
+      "count": 353
+    },
+    {
+      "slug": "restaurants",
+      "label": "Restaurants",
+      "count": 100
+    },
+    {
+      "slug": "real-estate",
+      "label": "Real Estate",
+      "count": 100
+    },
+    {
+      "slug": "health",
+      "label": "Health & Wellness",
+      "count": 100
+    },
+    {
+      "slug": "beauty",
+      "label": "Beauty & Barber",
+      "count": 92
+    },
+    {
+      "slug": "fitness",
+      "label": "Fitness & Sports",
+      "count": 87
+    },
+    {
+      "slug": "cafes",
+      "label": "Cafés & Bakeries",
+      "count": 73
+    },
+    {
+      "slug": "auto",
+      "label": "Auto Services",
+      "count": 68
+    }
+  ],
+  "tradesSubcats": [
+    {
+      "label": "Electricians",
+      "count": 46
+    },
+    {
+      "label": "Plumbers",
+      "count": 44
+    },
+    {
+      "label": "Painters",
+      "count": 39
+    },
+    {
+      "label": "HVAC & Heating",
+      "count": 37
+    },
+    {
+      "label": "General Contractors & Renovations",
+      "count": 37
+    },
+    {
+      "label": "Landscaping & Lawn Care",
+      "count": 35
+    },
+    {
+      "label": "Roofers",
+      "count": 34
+    },
+    {
+      "label": "Cleaning Services",
+      "count": 32
+    },
+    {
+      "label": "Appliance Repair",
+      "count": 27
+    },
+    {
+      "label": "Locksmiths",
+      "count": 22
+    }
+  ],
+  "claimed": 2,
+  "featuredDemo": 8,
+  "excluded": 0,
+  "adSlotsFilled": 0,
+  "adSlotsTotal": 7,
+  "guides": 6,
+  "spotlights": 2,
+  "pipeline": {
+    "news": true,
+    "events": true,
+    "weather": true,
+    "sports": true,
+    "places": false
+  }
+}
