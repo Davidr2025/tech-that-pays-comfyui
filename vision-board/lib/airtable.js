@@ -13,7 +13,8 @@ export const TABLES = {
   projects: "tblzcueShApXTI31K", // Businesses
   notes: "tbl6H345p485TNk6I", // Scratchpad Notes
   activity: "tblA2CAff5jutYwIJ", // Vision Board Activity
-  sessionsInbox: "tblGFEQ7z3oC33s5t" // Sessions Inbox
+  sessionsInbox: "tblGFEQ7z3oC33s5t", // Sessions Inbox
+  usageSnapshot: "tbl01vFnoJjLOsoVp" // Usage Snapshot
 };
 
 function airtableUrl(tableId, query = "", baseId = BASE_ID) {

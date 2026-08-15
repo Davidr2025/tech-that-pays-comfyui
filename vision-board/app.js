@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 
 // ===== state =====
-let state = { projects: [], notes: [], activity: [], sessionsInbox: [], search: "" };
+let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, search: "" };
 
 // ===== formatting helpers =====
 const money = (n) =>
@@ -108,7 +108,30 @@ function renderGlance() {
     <div class="glance-chip"><span class="n">${present.length}</span><span class="l">present builds</span></div>
     <div class="glance-chip"><span class="n">${future.length}</span><span class="l">future ideas</span></div>
     <div class="glance-chip ${attention ? "alert" : ""}"><span class="n">${attention}</span><span class="l">need attention</span></div>
+    ${usageChipHtml()}
   `;
+}
+
+function timeUntil(iso) {
+  const ms = new Date(iso).getTime() - Date.now();
+  if (ms <= 0) return "now";
+  const min = Math.round(ms / 60000);
+  if (min < 60) return `${min}m`;
+  return `${Math.round(min / 60)}h`;
+}
+
+// Best-effort: reads Claude Code session metadata as a proxy for account
+// usage (see api/usage.js), not an official usage meter -- the tooltip
+// says so plainly, but "approaching"/"blocked" still alert visually since
+// that's the whole point of tracking this.
+function usageChipHtml() {
+  const u = state.usage;
+  if (!u) return "";
+  const label = u.status === "allowed" ? "Claude usage OK" : u.status === "approaching" ? "Claude usage: near limit" : "Claude usage: blocked";
+  return `<div class="glance-chip ${u.status !== "allowed" ? "alert" : ""}" title="Best-effort proxy, checked ${relTime(u.checkedAt)} -- not an official usage meter">
+    <span class="n" style="font-size:14px">${escapeHtml(label)}</span>
+    <span class="l">resets in ${timeUntil(u.resetsAt)}</span>
+  </div>`;
 }
 
 // Groups items by parentCompany (exact name match to another project on the
@@ -262,16 +285,18 @@ function renderActivity() {
 
 // ===== data loading =====
 async function loadAll() {
-  const [projects, notes, activity, sessionsInbox] = await Promise.all([
+  const [projects, notes, activity, sessionsInbox, usage] = await Promise.all([
     api("/api/projects"),
     api("/api/notes"),
     api("/api/activity"),
-    api("/api/sessions-inbox")
+    api("/api/sessions-inbox"),
+    api("/api/usage")
   ]);
   state.projects = projects;
   state.notes = notes;
   state.activity = activity;
   state.sessionsInbox = sessionsInbox;
+  state.usage = usage;
   render();
 }
 
