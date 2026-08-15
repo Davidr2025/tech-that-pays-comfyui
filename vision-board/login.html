@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sign in — AI Vision Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F3EC; --surface:#FFFFFF; --ink:#1D2019; --ink-2:#55584E;
+    --muted:#8B8D80; --border:rgba(29,32,25,0.14); --accent:#223A70; --accent-strong:#1A2C57;
+    --danger:#C3402F; --danger-soft:#FBE6E2;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Public Sans",system-ui,sans-serif;
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .panel{
+    width:100%;max-width:380px;background:var(--surface);border:1px solid var(--border);
+    border-radius:16px;padding:36px 32px;box-shadow:0 1px 2px rgba(29,32,25,0.04), 0 12px 32px rgba(29,32,25,0.06);
+  }
+  .mark{font-family:"Fraunces",serif;font-weight:600;font-size:15px;color:var(--accent);letter-spacing:.01em;margin-bottom:6px}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:26px;line-height:1.25;margin:0 0 6px;text-wrap:balance}
+  .sub{font-size:14px;color:var(--ink-2);margin:0 0 28px;line-height:1.5}
+  label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+  input[type="password"]{
+    width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
+    font-size:15px;font-family:inherit;background:var(--paper);color:var(--ink);
+  }
+  input[type="password"]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  button{
+    width:100%;margin-top:18px;padding:12px 14px;border:none;border-radius:10px;
+    background:var(--accent);color:#fff;font-family:inherit;font-size:15px;font-weight:600;
+    cursor:pointer;transition:background .15s ease;
+  }
+  button:hover{background:var(--accent-strong)}
+  button:disabled{opacity:.6;cursor:default}
+  .error{
+    display:none;margin-top:14px;padding:10px 12px;border-radius:8px;background:var(--danger-soft);
+    color:var(--danger);font-size:13px;font-weight:500;
+  }
+  .error.show{display:block}
+  @media (prefers-reduced-motion: reduce){ button{transition:none} }
+</style>
+</head>
+<body>
+  <form class="panel" id="loginForm" autocomplete="off">
+    <div class="mark">🧭 VISION BOARD</div>
+    <h1>David's AI Vision Board</h1>
+    <p class="sub">Private command center. Enter your password to get in.</p>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autofocus required autocomplete="current-password">
+    <button type="submit" id="submitBtn">Sign in</button>
+    <div class="error" id="error">That password isn't right. Try again.</div>
+  </form>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const btn = document.getElementById("submitBtn");
+    const err = document.getElementById("error");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      err.classList.remove("show");
+      btn.disabled = true;
+      btn.textContent = "Signing in…";
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ password: document.getElementById("password").value })
+        });
+        if (res.ok) {
+          window.location.href = "/board.html";
+          return;
+        }
+        err.classList.add("show");
+      } catch {
+        err.textContent = "Couldn't reach the server. Check your connection and try again.";
+        err.classList.add("show");
+      }
+      btn.disabled = false;
+      btn.textContent = "Sign in";
+    });
+  </script>
+</body>
+</html>

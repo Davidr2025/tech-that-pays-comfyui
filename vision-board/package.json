@@ -1,0 +1,10 @@
+{
+  "name": "ai-vision-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "David's private AI Vision Board — password-protected command center backed by the LSFG Coaching Airtable base.",
+  "dependencies": {
+    "@vercel/edge": "^1.1.1"
+  }
+}
