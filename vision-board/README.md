@@ -56,13 +56,12 @@ the one place you're in the driver's seat, and it's four short steps:
    set **Root Directory** to `vision-board` (this repo has more than one app
    in it, so this tells Vercel which one to build).
 3. **Paste in three environment variables** (Project Settings → Environment
-   Variables) — see `.env.example` in this folder for exactly what each one
-   is:
-   - `AIRTABLE_PAT` → the token from step 1
-   - `VISION_BOARD_PASSWORD` → `harbor-forge-vista-1421` (generated for you;
-     change it to anything, any time, right here — no redeploy needed to
-     take effect on the next request)
-   - `SESSION_SECRET` → `uCmerhzWU9BJylRjuoj0fnz_qhPryeS20Qtbbh9akR4`
+   Variables) — see `.env.example` in this folder for what each one is.
+   `AIRTABLE_PAT` is the token from step 1; `VISION_BOARD_PASSWORD` and
+   `SESSION_SECRET` were generated for you in chat (not written here on
+   purpose — secrets don't belong in a committed file, even in a private
+   repo). You can change `VISION_BOARD_PASSWORD` to anything, any time,
+   right in Vercel — no redeploy needed for it to take effect.
 4. **Click Deploy.** Vercel gives you a `https://<something>.vercel.app`
    URL — that's your private link. Bookmark it on every device.
 
