@@ -34,7 +34,14 @@ export async function listRecordsFromBase(baseId, tableId) {
   return records;
 }
 
-async function airtableFetch(url, options = {}) {
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Airtable rate-limits per base (a handful of requests/second) and answers a
+// burst with 429 rather than queuing it. A personal dashboard with no
+// auto-refresh is very unlikely to hit that on its own, but two people
+// clicking at once could -- so instead of that click just failing, wait and
+// retry a few times before giving up for real.
+async function airtableFetch(url, options = {}, attempt = 0) {
   const pat = process.env.AIRTABLE_PAT;
   if (!pat) throw new Error("AIRTABLE_PAT is not set");
   const res = await fetch(url, {
@@ -45,6 +52,14 @@ async function airtableFetch(url, options = {}) {
       ...options.headers
     }
   });
+
+  if (res.status === 429 && attempt < 3) {
+    const retryAfter = Number(res.headers.get("retry-after"));
+    const delayMs = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : 500 * 2 ** attempt;
+    await sleep(delayMs);
+    return airtableFetch(url, options, attempt + 1);
+  }
+
   if (!res.ok) {
     const body = await res.text().catch(() => "");
     throw new Error(`Airtable ${options.method || "GET"} ${res.status}: ${body}`);
