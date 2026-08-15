@@ -43,40 +43,33 @@ way Mississauga Insider and Tech That Pays were built.
 ## Deploying (the only non-code part)
 
 I can't click buttons in your Vercel or Airtable accounts for you — this is
-the one place you're in the driver's seat. The button below pre-fills the
-tricky settings (which folder to build, which env vars to ask for) so it's
-three real steps instead of four:
+the one place you're in the driver's seat.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Davidr2025/tech-that-pays-comfyui&root-directory=vision-board&env=AIRTABLE_PAT,VISION_BOARD_PASSWORD,SESSION_SECRET&envDescription=Airtable%20token%2C%20the%20login%20password%2C%20and%20a%20session-signing%20secret%20-%20see%20vision-board%2F.env.example%20for%20what%20each%20one%20is.&envLink=https://github.com/Davidr2025/tech-that-pays-comfyui/blob/main/vision-board/.env.example&project-name=ai-vision-board)
+(A pre-filled "Deploy with Vercel" button used to live here. Dropped it —
+Vercel's link-based pre-fill only works when you're cloning someone *else's*
+template into a new repo of your own; since you already own this repo, it
+silently ignores every query-string setting and drops you into the plain
+import screen with Root Directory and Environment Variables missing. The
+steps below are the real path, confirmed against what Vercel actually shows.)
 
-1. **Create an Airtable token first** (the button can't do this part — it's
-   a separate site). Go to
+1. **Create an Airtable token.** Go to
    [airtable.com/create/tokens](https://airtable.com/create/tokens) → Create
    token → name it "Vision Board" → scopes `data.records:read`,
    `data.records:write`, `schema.bases:read` → under Access, add both the
    **LSFG Coaching** base and the **LSFG Video Pipeline** base → Create
    token → copy it (you only see it once).
-2. **Click the button above.** It opens Vercel already pointed at this repo,
-   `main`, and the `vision-board` folder, with the three env var names
-   already listed — you just paste in the values (the Airtable token from
-   step 1, plus the password and session secret from chat) and click Deploy.
-   If Vercel's wizard asks whether to fork this into a new repo of your own
-   vs. importing it directly, choose to import it directly — you already own
-   this repo.
-3. **Bookmark the `https://<something>.vercel.app` URL** it gives you on
-   every device.
-
-<details>
-<summary>Prefer to do it by hand instead of the button?</summary>
-
-1. [vercel.com/new](https://vercel.com/new) → import
-   `davidr2025/tech-that-pays-comfyui` → set **Root Directory** to
-   `vision-board`.
-2. Project Settings → Environment Variables → add `AIRTABLE_PAT`,
-   `VISION_BOARD_PASSWORD`, `SESSION_SECRET` (see `.env.example`).
-3. Click Deploy.
-
-</details>
+2. **Go to [vercel.com/new](https://vercel.com/new)** and search for
+   `tech-that-pays-comfyui` in the repo list — click it directly from the
+   list rather than pasting a URL, so Vercel treats it as importing your own
+   existing repo (this is what actually reveals the settings in step 3,
+   instead of the stripped-down screen a pasted link produces).
+3. On the **Configure Project** screen: set **Root Directory** to
+   `vision-board`, then open **Environment Variables** and add
+   `AIRTABLE_PAT` (the token from step 1), `VISION_BOARD_PASSWORD`, and
+   `SESSION_SECRET` (the last two from chat — see `.env.example` for what
+   each one is).
+4. **Click Deploy.** Bookmark the `https://<something>.vercel.app` URL it
+   gives you on every device.
 
 Redeploying later (pushing new code) never touches your data — everything
 you add, edit, or write lives in Airtable, completely separate from the
