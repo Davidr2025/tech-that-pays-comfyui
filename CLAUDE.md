@@ -30,13 +30,14 @@ Mastermind, Limitless Wealth Community).
     the deployed public site.
 - **`vision-board/`** — David's private, password-protected personal
   command center (Present/Future Builds, Scratch Pad, auto-written
-  Activity Log, per-project CEO views). Deploys as its **own separate**
-  Vercel project (root directory `vision-board`) — see
+  Activity Log, per-project CEO views). Live at
+  **ceo-dashboard-ls.vercel.app** (Vercel project `ceo-dashboard`, team
+  `limitless6`, root directory `vision-board`) — see
   `vision-board/README.md` for the real deploy flow. Its data model *is*
   the LSFG Coaching Businesses table above, extended with `Section`,
   `Health`, `What Winning Looks Like`, `Next Move`, `Blockers` fields —
-  not a duplicate tracker. Also owns two more tables in that same base:
-  `Scratchpad Notes` and `Vision Board Activity`.
+  not a duplicate tracker. Also owns more tables in that same base:
+  `Scratchpad Notes`, `Vision Board Activity`, `Sessions Inbox`.
   - Tech That Pays' CEO view reads (read-only) from the separate
     **LSFG Video Pipeline** base (`appKvNW8liQGtejmQ`), table `Videos`.
 

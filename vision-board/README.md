@@ -1,5 +1,9 @@
 # David's AI Vision Board
 
+**Live at [ceo-dashboard-ls.vercel.app](https://ceo-dashboard-ls.vercel.app/)**
+(Vercel project `ceo-dashboard`, team `limitless6`). Bookmark that URL, not
+a branch-preview link — preview URLs change per-branch, this one doesn't.
+
 A private, password-protected command center: Present Builds, Future Builds,
 a Scratch Pad, and an auto-written Activity Log, plus a dedicated CEO view
 per project. All of it reads and writes straight from the **LSFG Coaching**
