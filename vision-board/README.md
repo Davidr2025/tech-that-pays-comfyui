@@ -43,27 +43,44 @@ way Mississauga Insider and Tech That Pays were built.
 ## Deploying (the only non-code part)
 
 I can't click buttons in your Vercel or Airtable accounts for you — this is
-the one place you're in the driver's seat, and it's four short steps:
+the one place you're in the driver's seat. The button below pre-fills the
+tricky settings (which folder to build, which env vars to ask for) so it's
+three real steps instead of four:
 
-1. **Create an Airtable token.** Go to
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Davidr2025/tech-that-pays-comfyui/tree/claude/ceo-dashboard-apwawa&root-directory=vision-board&env=AIRTABLE_PAT,VISION_BOARD_PASSWORD,SESSION_SECRET&envDescription=Airtable%20token%2C%20the%20login%20password%2C%20and%20a%20session-signing%20secret%20-%20see%20vision-board%2F.env.example%20for%20what%20each%20one%20is.&envLink=https://github.com/Davidr2025/tech-that-pays-comfyui/blob/claude/ceo-dashboard-apwawa/vision-board/.env.example&project-name=ai-vision-board)
+
+1. **Create an Airtable token first** (the button can't do this part — it's
+   a separate site). Go to
    [airtable.com/create/tokens](https://airtable.com/create/tokens) → Create
    token → name it "Vision Board" → scopes `data.records:read`,
    `data.records:write`, `schema.bases:read` → under Access, add both the
    **LSFG Coaching** base and the **LSFG Video Pipeline** base → Create
    token → copy it (you only see it once).
-2. **Import this repo into Vercel.** [vercel.com/new](https://vercel.com/new)
-   → import `davidr2025/tech-that-pays-comfyui` → in the project settings,
-   set **Root Directory** to `vision-board` (this repo has more than one app
-   in it, so this tells Vercel which one to build).
-3. **Paste in three environment variables** (Project Settings → Environment
-   Variables) — see `.env.example` in this folder for what each one is.
-   `AIRTABLE_PAT` is the token from step 1; `VISION_BOARD_PASSWORD` and
-   `SESSION_SECRET` were generated for you in chat (not written here on
-   purpose — secrets don't belong in a committed file, even in a private
-   repo). You can change `VISION_BOARD_PASSWORD` to anything, any time,
-   right in Vercel — no redeploy needed for it to take effect.
-4. **Click Deploy.** Vercel gives you a `https://<something>.vercel.app`
-   URL — that's your private link. Bookmark it on every device.
+2. **Click the button above.** It opens Vercel already pointed at this repo,
+   this branch, and the `vision-board` folder, with the three env var names
+   already listed — you just paste in the values (the Airtable token from
+   step 1, plus the password and session secret from chat) and click Deploy.
+   If Vercel's wizard asks whether to fork this into a new repo of your own
+   vs. importing it directly, choose to import it directly — you already own
+   this repo.
+3. **Bookmark the `https://<something>.vercel.app` URL** it gives you on
+   every device.
+
+Once this branch is merged into `main`, the button's `/tree/claude/ceo-dashboard-apwawa`
+in the link should be dropped so it points at `main` instead — a one-line
+edit to this file, not a rebuild.
+
+<details>
+<summary>Prefer to do it by hand instead of the button?</summary>
+
+1. [vercel.com/new](https://vercel.com/new) → import
+   `davidr2025/tech-that-pays-comfyui` → set **Root Directory** to
+   `vision-board`.
+2. Project Settings → Environment Variables → add `AIRTABLE_PAT`,
+   `VISION_BOARD_PASSWORD`, `SESSION_SECRET` (see `.env.example`).
+3. Click Deploy.
+
+</details>
 
 Redeploying later (pushing new code) never touches your data — everything
 you add, edit, or write lives in Airtable, completely separate from the
