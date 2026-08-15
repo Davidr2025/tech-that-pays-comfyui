@@ -111,6 +111,56 @@ function renderGlance() {
   `;
 }
 
+// Groups items by parentCompany (exact name match to another project on the
+// board). Grouped clusters come first (alphabetical by parent name),
+// standalone items (no parent set) come last with no heading.
+function groupByParent(items) {
+  const groups = new Map();
+  const standalone = [];
+  for (const p of items) {
+    const parent = (p.parentCompany || "").trim();
+    if (!parent) {
+      standalone.push(p);
+      continue;
+    }
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push(p);
+  }
+  const ordered = Array.from(groups.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([label, groupItems]) => ({ label, items: groupItems }));
+  if (standalone.length) ordered.push({ label: null, items: standalone });
+  return ordered;
+}
+
+function presentCard(p) {
+  const h = healthMeta(p.health);
+  const cur = money(p.currentRevenue);
+  const tgt = money(p.targetRevenue);
+  return `
+  <div class="pcard health-${h.cls}" data-id="${p.id}">
+    <div class="pcard-top">
+      <h3>${escapeHtml(p.name)}</h3>
+      <span class="pill ${h.cls}"><span class="dot"></span>${h.label}</span>
+    </div>
+    ${p.winning ? `<div class="pcard-row"><div class="pcard-label">Winning looks like</div><div class="pcard-text">${nl2br(p.winning)}</div></div>` : ""}
+    ${p.nextMove ? `<div class="pcard-row"><div class="pcard-label">Next move</div><div class="pcard-text">${nl2br(p.nextMove)}</div></div>` : ""}
+    ${p.blockers && p.blockers !== "None noted yet." ? `<div class="pcard-row"><div class="pcard-label">Blocking it</div><div class="pcard-text">${nl2br(p.blockers)}</div></div>` : ""}
+    ${
+      cur || tgt
+        ? `<div class="pcard-financials">
+            ${cur ? `<div class="fin-block"><div class="n">${cur}/mo</div><div class="l">current</div></div>` : ""}
+            ${tgt ? `<div class="fin-block"><div class="n">${tgt}/mo</div><div class="l">target</div></div>` : ""}
+          </div>`
+        : ""
+    }
+    <div class="pcard-actions">
+      <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
+      <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
+    </div>
+  </div>`;
+}
+
 function renderPresent() {
   const grid = document.getElementById("presentGrid");
   const items = state.projects.filter((p) => p.section === "Present" && matchesSearch(p));
@@ -122,35 +172,28 @@ function renderPresent() {
     return;
   }
 
-  grid.innerHTML = items
-    .map((p) => {
-      const h = healthMeta(p.health);
-      const cur = money(p.currentRevenue);
-      const tgt = money(p.targetRevenue);
-      return `
-      <div class="pcard health-${h.cls}" data-id="${p.id}">
-        <div class="pcard-top">
-          <h3>${escapeHtml(p.name)}</h3>
-          <span class="pill ${h.cls}"><span class="dot"></span>${h.label}</span>
-        </div>
-        ${p.winning ? `<div class="pcard-row"><div class="pcard-label">Winning looks like</div><div class="pcard-text">${nl2br(p.winning)}</div></div>` : ""}
-        ${p.nextMove ? `<div class="pcard-row"><div class="pcard-label">Next move</div><div class="pcard-text">${nl2br(p.nextMove)}</div></div>` : ""}
-        ${p.blockers && p.blockers !== "None noted yet." ? `<div class="pcard-row"><div class="pcard-label">Blocking it</div><div class="pcard-text">${nl2br(p.blockers)}</div></div>` : ""}
-        ${
-          cur || tgt
-            ? `<div class="pcard-financials">
-                ${cur ? `<div class="fin-block"><div class="n">${cur}/mo</div><div class="l">current</div></div>` : ""}
-                ${tgt ? `<div class="fin-block"><div class="n">${tgt}/mo</div><div class="l">target</div></div>` : ""}
-              </div>`
-            : ""
-        }
-        <div class="pcard-actions">
-          <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
-          <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
-        </div>
-      </div>`;
-    })
+  grid.innerHTML = groupByParent(items)
+    .map(
+      (group) => `
+      ${group.label ? `<div class="group-label">${escapeHtml(group.label)}</div>` : ""}
+      <div class="card-grid" style="margin-bottom:16px">${group.items.map(presentCard).join("")}</div>`
+    )
     .join("");
+}
+
+function futureRow(p) {
+  return `
+  <div class="frow" data-id="${p.id}">
+    <div class="frow-main">
+      <h4>${escapeHtml(p.name)}</h4>
+      ${p.winning ? `<p>${escapeHtml(p.winning)}</p>` : ""}
+    </div>
+    <div class="frow-actions">
+      <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
+      <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
+      <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
+    </div>
+  </div>`;
 }
 
 function renderFuture() {
@@ -164,20 +207,11 @@ function renderFuture() {
     return;
   }
 
-  list.innerHTML = items
+  list.innerHTML = groupByParent(items)
     .map(
-      (p) => `
-      <div class="frow" data-id="${p.id}">
-        <div class="frow-main">
-          <h4>${escapeHtml(p.name)}</h4>
-          ${p.winning ? `<p>${escapeHtml(p.winning)}</p>` : ""}
-        </div>
-        <div class="frow-actions">
-          <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
-          <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
-          <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
-        </div>
-      </div>`
+      (group) => `
+      ${group.label ? `<div class="group-label">${escapeHtml(group.label)}</div>` : ""}
+      <div class="future-list" style="margin-bottom:16px">${group.items.map(futureRow).join("")}</div>`
     )
     .join("");
 }
@@ -254,6 +288,7 @@ function openProjectModal({ project = null, section = "Present" } = {}) {
   document.getElementById("projectId").value = project?.id || "";
   document.getElementById("projectSection").value = project?.section || section;
   document.getElementById("pName").value = project?.name || "";
+  document.getElementById("pParentCompany").value = project?.parentCompany || "";
   document.getElementById("pWinning").value = project?.winning || "";
   document.getElementById("pNextMove").value = project?.nextMove || "";
   document.getElementById("pBlockers").value = project?.blockers || "";
@@ -282,6 +317,7 @@ projectForm.addEventListener("submit", async (e) => {
   const body = {
     name: document.getElementById("pName").value.trim(),
     section,
+    parentCompany: document.getElementById("pParentCompany").value.trim(),
     winning: document.getElementById("pWinning").value.trim(),
     currentRevenue: document.getElementById("pCurrentRevenue").value === "" ? null : Number(document.getElementById("pCurrentRevenue").value),
     targetRevenue: document.getElementById("pTargetRevenue").value === "" ? null : Number(document.getElementById("pTargetRevenue").value),
