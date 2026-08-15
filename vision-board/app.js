@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 
 // ===== state =====
-let state = { projects: [], notes: [], activity: [], search: "" };
+let state = { projects: [], notes: [], activity: [], sessionsInbox: [], search: "" };
 
 // ===== formatting helpers =====
 const money = (n) =>
@@ -64,10 +64,33 @@ function noteMatchesSearch(note) {
 // ===== render =====
 function render() {
   renderGlance();
+  renderInbox();
   renderPresent();
   renderFuture();
   renderNotes();
   renderActivity();
+}
+
+function renderInbox() {
+  const list = document.getElementById("inboxList");
+  const items = state.sessionsInbox;
+  if (!items.length) {
+    list.innerHTML = `<div class="empty">Nothing stuck right now — every session either shipped or is still actively running.</div>`;
+    return;
+  }
+  list.innerHTML = items
+    .map((s) => {
+      const days = Math.max(0, Math.floor((Date.now() - new Date(s.lastActive).getTime()) / 86400000));
+      return `
+      <div class="frow">
+        <div class="frow-main">
+          <h4>${escapeHtml(s.title)} <span class="pill ${s.status === "Blocked" ? "blocked" : "watch"}"><span class="dot"></span>${escapeHtml(s.status)}</span></h4>
+          <p>${escapeHtml(s.needsAction)}</p>
+          <p style="color:var(--muted);font-size:11.5px;margin-top:4px">Waiting ${days} day${days === 1 ? "" : "s"}</p>
+        </div>
+      </div>`;
+    })
+    .join("");
 }
 
 function renderGlance() {
@@ -205,10 +228,16 @@ function renderActivity() {
 
 // ===== data loading =====
 async function loadAll() {
-  const [projects, notes, activity] = await Promise.all([api("/api/projects"), api("/api/notes"), api("/api/activity")]);
+  const [projects, notes, activity, sessionsInbox] = await Promise.all([
+    api("/api/projects"),
+    api("/api/notes"),
+    api("/api/activity"),
+    api("/api/sessions-inbox")
+  ]);
   state.projects = projects;
   state.notes = notes;
   state.activity = activity;
+  state.sessionsInbox = sessionsInbox;
   render();
 }
 

@@ -19,7 +19,8 @@
 
     <div class="navgroup-label">This board</div>
     <ul class="navlinks">
-      <li><a href="#present" class="active" data-nav>Present Builds</a></li>
+      <li><a href="#inbox" class="active" data-nav>Sessions Inbox</a></li>
+      <li><a href="#present" data-nav>Present Builds</a></li>
       <li><a href="#future" data-nav>Future Builds</a></li>
       <li><a href="#scratchpad" data-nav>Scratch Pad</a></li>
       <li><a href="#activity" data-nav>Recent Activity</a></li>
@@ -50,6 +51,16 @@
         <input type="text" class="search-input" id="searchInput" placeholder="Search everything on the board…">
       </div>
     </div>
+
+    <section id="inbox">
+      <div class="section-head">
+        <div>
+          <h2>Sessions Inbox</h2>
+          <div class="section-desc">Claude Code sessions genuinely stuck waiting on you — checked daily, so nothing sits forgotten for weeks.</div>
+        </div>
+      </div>
+      <div class="future-list" id="inboxList"></div>
+    </section>
 
     <section id="present">
       <div class="section-head">

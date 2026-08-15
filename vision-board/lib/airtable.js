@@ -12,7 +12,8 @@ const BASE_ID = "appnQS8Fuxs1Kyjjh"; // LSFG Coaching
 export const TABLES = {
   projects: "tblzcueShApXTI31K", // Businesses
   notes: "tbl6H345p485TNk6I", // Scratchpad Notes
-  activity: "tblA2CAff5jutYwIJ" // Vision Board Activity
+  activity: "tblA2CAff5jutYwIJ", // Vision Board Activity
+  sessionsInbox: "tblGFEQ7z3oC33s5t" // Sessions Inbox
 };
 
 function airtableUrl(tableId, query = "", baseId = BASE_ID) {
