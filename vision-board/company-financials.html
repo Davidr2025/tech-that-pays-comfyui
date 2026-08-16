@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title id="pageTitle">Financials — CEO View</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .kpi-delta{font-size:12px;font-weight:600;margin-top:2px}
+  .kpi-delta.up{color:var(--good)}
+  .kpi-delta.down{color:var(--blocked)}
+  .kpi-delta.flat{color:var(--muted)}
+  .log-form{display:grid;grid-template-columns:140px 140px 140px 1fr auto;gap:10px;align-items:end;margin-bottom:22px}
+  .log-form .field{margin:0}
+  .log-form label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:4px}
+  .log-form input{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:13px;background:var(--surface);color:var(--ink)}
+  .fin-table{width:100%;border-collapse:collapse;font-size:13px}
+  .fin-table th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border)}
+  .fin-table td{padding:9px 10px;border-bottom:1px solid var(--border)}
+  .fin-table tr:last-child td{border-bottom:none}
+  .chart-wrap{overflow-x:auto}
+  .chart-legend{display:flex;gap:16px;margin-bottom:10px;font-size:12px;color:var(--ink-2)}
+  .chart-legend span{display:inline-flex;align-items:center;gap:5px}
+  .chart-legend .sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="sidebar">
+    <div class="brand"><span class="icon">💵</span><span id="sidebarName">Financials</span></div>
+    <div class="brand-sub">Financial CEO View</div>
+    <ul class="navlinks">
+      <li><a href="/board.html">← Vision Board</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="signed-in">Signed in as David</div>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topbar">
+      <div class="topbar-top">
+        <div>
+          <h1 id="pageHeading">Loading…</h1>
+          <div class="date">Live from the LSFG Coaching Airtable — logged by you, month by month. Nothing here is estimated.</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="kpis">
+      <div class="section-head"><div><h2>This month</h2><div class="section-desc" id="monthLabel"></div></div></div>
+      <div class="card-grid" id="kpiGrid"><div class="empty">Loading…</div></div>
+    </section>
+
+    <section id="year">
+      <div class="section-head"><div><h2>Year to date vs. last year</h2></div></div>
+      <div class="card-grid" id="yearGrid"></div>
+    </section>
+
+    <section id="chart">
+      <div class="section-head"><div><h2>Income vs. expenses over time</h2><div class="section-desc">Every month you've logged.</div></div></div>
+      <div class="pcard chart-wrap" id="chartWrap"></div>
+    </section>
+
+    <section id="log">
+      <div class="section-head"><div><h2>Log a month</h2><div class="section-desc">Logging the same month again corrects it in place.</div></div></div>
+      <div class="pcard">
+        <div class="log-form">
+          <div class="field"><label for="fMonth">Month</label><input type="month" id="fMonth"></div>
+          <div class="field"><label for="fIncome">Income ($)</label><input type="number" id="fIncome" min="0" step="1"></div>
+          <div class="field"><label for="fExpenses">Expenses ($)</label><input type="number" id="fExpenses" min="0" step="1"></div>
+          <div class="field"><label for="fNotes">Notes</label><input type="text" id="fNotes" placeholder="Optional"></div>
+          <button class="btn btn-primary" id="logBtn">Save</button>
+        </div>
+        <table class="fin-table" id="entriesTable"></table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const businessId = params.get('id');
+  const money = (n) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0);
+  const monthLabel = (key) => key ? new Date(key + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : '';
+
+  function deltaHtml(current, prior, label) {
+    if (prior === null || prior === undefined) return `<div class="kpi-delta flat">No ${label} to compare yet</div>`;
+    if (prior === 0 && current === 0) return `<div class="kpi-delta flat">Flat vs ${label}</div>`;
+    const pct = prior === 0 ? null : Math.round(((current - prior) / Math.abs(prior)) * 100);
+    const dir = current > prior ? 'up' : current < prior ? 'down' : 'flat';
+    const arrow = dir === 'up' ? '▲' : dir === 'down' ? '▼' : '—';
+    return `<div class="kpi-delta ${dir}">${arrow} ${pct === null ? money(current - prior) : pct + '%'} vs ${label}</div>`;
+  }
+
+  function renderChart(entries) {
+    const wrap = document.getElementById('chartWrap');
+    if (!entries.length) {
+      wrap.innerHTML = `<div class="empty">Nothing logged yet — log your first month below and the chart fills in.</div>`;
+      return;
+    }
+    const shown = entries.slice(-12);
+    const max = Math.max(...shown.map((e) => Math.max(e.income, e.expenses)), 1);
+    const barW = 26, gap = 14, groupW = barW * 2 + 6, chartH = 180, padTop = 20;
+    const w = shown.length * (groupW + gap) + gap;
+
+    const bars = shown.map((e, i) => {
+      const x = gap + i * (groupW + gap);
+      const incomeH = (e.income / max) * chartH;
+      const expH = (e.expenses / max) * chartH;
+      const [y, m] = e.month.split('-');
+      const label = new Date(Number(y), Number(m) - 1, 2).toLocaleDateString('en-US', { month: 'short' });
+      return `
+        <rect x="${x}" y="${padTop + chartH - incomeH}" width="${barW}" height="${incomeH}" fill="var(--good)" rx="2"></rect>
+        <rect x="${x + barW + 6}" y="${padTop + chartH - expH}" width="${barW}" height="${expH}" fill="var(--blocked)" rx="2"></rect>
+        <text x="${x + groupW / 2 - 3}" y="${padTop + chartH + 16}" font-size="11" text-anchor="middle" fill="var(--muted)">${label}</text>
+      `;
+    }).join('');
+
+    wrap.innerHTML = `
+      <div class="chart-legend">
+        <span><span class="sw" style="background:var(--good)"></span>Income</span>
+        <span><span class="sw" style="background:var(--blocked)"></span>Expenses</span>
+      </div>
+      <svg width="${w}" height="${padTop + chartH + 28}" viewBox="0 0 ${w} ${padTop + chartH + 28}">${bars}</svg>
+    `;
+  }
+
+  async function load() {
+    const res = await fetch(`/api/company-financials?businessId=${encodeURIComponent(businessId)}`);
+    if (res.status === 401) { window.location.href = '/login.html'; return; }
+    const d = await res.json();
+    if (d.error) throw new Error(d.error);
+
+    document.title = `${d.business.name} — Financials`;
+    document.getElementById('sidebarName').textContent = d.business.name;
+    document.getElementById('pageHeading').textContent = `${d.business.name} — financials`;
+    document.getElementById('monthLabel').textContent = monthLabel(d.currentMonthKey);
+    document.getElementById('fMonth').value = d.currentMonthKey;
+
+    const tm = d.thisMonth;
+    const net = tm ? tm.income - tm.expenses : null;
+    document.getElementById('kpiGrid').innerHTML = `
+      <div class="pcard status-${tm ? 'active' : 'new'}">
+        <div class="pcard-top"><h3>Income</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:24px">${tm ? money(tm.income) : '—'}</div></div>
+        ${tm ? deltaHtml(tm.income, d.lastMonth?.income, 'last month') : `<div class="kpi-delta flat">Not logged yet</div>`}
+      </div>
+      <div class="pcard status-${tm ? 'active' : 'new'}">
+        <div class="pcard-top"><h3>Expenses</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:24px">${tm ? money(tm.expenses) : '—'}</div></div>
+        ${tm ? deltaHtml(tm.expenses, d.lastMonth?.expenses, 'last month') : `<div class="kpi-delta flat">Not logged yet</div>`}
+      </div>
+      <div class="pcard status-${tm ? 'active' : 'new'}">
+        <div class="pcard-top"><h3>Net</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:24px">${net !== null ? money(net) : '—'}</div></div>
+        ${d.lastYearSameMonth ? deltaHtml(net, d.lastYearSameMonth.income - d.lastYearSameMonth.expenses, 'same month last year') : `<div class="kpi-delta flat">No year-ago data yet</div>`}
+      </div>
+    `;
+
+    const ytdNet = d.ytd.income - d.ytd.expenses;
+    const lastYearNet = d.lastYearTotal.income - d.lastYearTotal.expenses;
+    const hasLastYear = d.lastYearTotal.income > 0 || d.lastYearTotal.expenses > 0;
+    document.getElementById('yearGrid').innerHTML = `
+      <div class="pcard status-active">
+        <div class="pcard-top"><h3>This year so far</h3></div>
+        <div class="pcard-financials">
+          <div class="fin-block"><div class="n">${money(d.ytd.income)}</div><div class="l">income</div></div>
+          <div class="fin-block"><div class="n">${money(d.ytd.expenses)}</div><div class="l">expenses</div></div>
+          <div class="fin-block"><div class="n">${money(ytdNet)}</div><div class="l">net</div></div>
+        </div>
+        ${hasLastYear ? deltaHtml(ytdNet, lastYearNet, 'same period last year') : `<div class="kpi-delta flat">No prior-year data logged yet</div>`}
+      </div>
+      <div class="pcard status-${hasLastYear ? 'active' : 'new'}">
+        <div class="pcard-top"><h3>Last year (full)</h3></div>
+        <div class="pcard-financials">
+          <div class="fin-block"><div class="n">${hasLastYear ? money(d.lastYearTotal.income) : '—'}</div><div class="l">income</div></div>
+          <div class="fin-block"><div class="n">${hasLastYear ? money(d.lastYearTotal.expenses) : '—'}</div><div class="l">expenses</div></div>
+          <div class="fin-block"><div class="n">${hasLastYear ? money(lastYearNet) : '—'}</div><div class="l">net</div></div>
+        </div>
+      </div>
+    `;
+
+    renderChart(d.entries);
+
+    document.getElementById('entriesTable').innerHTML = d.entries.length
+      ? `<thead><tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net</th><th>Notes</th><th></th></tr></thead>
+         <tbody>${d.entries.slice().reverse().map((e) => `
+           <tr>
+             <td>${monthLabel(e.month)}</td>
+             <td>${money(e.income)}</td>
+             <td>${money(e.expenses)}</td>
+             <td>${money(e.income - e.expenses)}</td>
+             <td>${e.notes || ''}</td>
+             <td><button class="btn btn-ghost btn-sm" data-action="deleteEntry" data-id="${e.id}">Delete</button></td>
+           </tr>`).join('')}</tbody>`
+      : `<tbody><tr><td class="empty" style="border:none">Nothing logged yet.</td></tr></tbody>`;
+  }
+
+  document.getElementById('logBtn').addEventListener('click', async () => {
+    const month = document.getElementById('fMonth').value;
+    if (!month) { alert('Pick a month.'); return; }
+    const btn = document.getElementById('logBtn');
+    btn.disabled = true;
+    try {
+      await fetch('/api/monthly-financials', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          businessId,
+          month,
+          income: Number(document.getElementById('fIncome').value) || 0,
+          expenses: Number(document.getElementById('fExpenses').value) || 0,
+          notes: document.getElementById('fNotes').value.trim() || null
+        })
+      });
+      document.getElementById('fIncome').value = '';
+      document.getElementById('fExpenses').value = '';
+      document.getElementById('fNotes').value = '';
+      await load();
+    } catch (err) {
+      alert(err.message);
+    }
+    btn.disabled = false;
+  });
+
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-action="deleteEntry"]');
+    if (!btn) return;
+    if (!confirm('Delete this logged month? This can\'t be undone.')) return;
+    await fetch('/api/monthly-financials', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: btn.dataset.id }) });
+    await load();
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/login.html';
+  });
+
+  if (!businessId) {
+    document.getElementById('kpiGrid').innerHTML = `<div class="empty">No business specified — open this page via a company's "CEO View" link on the Vision Board.</div>`;
+  } else {
+    load().catch((err) => {
+      document.getElementById('kpiGrid').innerHTML = `<div class="empty">Couldn't load financials: ${err.message}</div>`;
+    });
+  }
+</script>
+</body>
+</html>

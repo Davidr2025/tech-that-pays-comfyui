@@ -69,19 +69,19 @@
     const d = await res.json();
 
     document.getElementById('kpiGrid').innerHTML = `
-      <div class="pcard health-on-track">
+      <div class="pcard status-active">
         <div class="pcard-top"><h3>Videos in pipeline</h3></div>
         <div class="fin-block"><div class="n" style="font-size:26px">${d.total}</div><div class="l">total tracked</div></div>
       </div>
-      <div class="pcard health-${d.published ? 'on-track' : 'watch'}">
+      <div class="pcard status-${d.published ? 'active' : 'on-hold'}">
         <div class="pcard-top"><h3>Published</h3></div>
         <div class="fin-block"><div class="n" style="font-size:26px">${d.published}</div><div class="l">live on YouTube</div></div>
       </div>
-      <div class="pcard health-on-track">
+      <div class="pcard status-active">
         <div class="pcard-top"><h3>Actual spend</h3></div>
         <div class="fin-block"><div class="n" style="font-size:26px">${money(d.actualSpend)}</div><div class="l">vs ${money(d.estimatedSpend)} estimated</div></div>
       </div>
-      <div class="pcard health-${d.totalLeads ? 'on-track' : 'watch'}">
+      <div class="pcard status-${d.totalLeads ? 'active' : 'on-hold'}">
         <div class="pcard-top"><h3>Leads generated</h3></div>
         <div class="fin-block"><div class="n" style="font-size:26px">${d.totalLeads}</div><div class="l">attributed to videos</div></div>
       </div>

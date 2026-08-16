@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 
 // ===== state =====
-let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, projectTracker: [], search: "" };
+let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, tasks: [], search: "" };
 
 // ===== formatting helpers =====
 const money = (n) =>
@@ -35,11 +35,14 @@ function relTime(iso) {
   return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-function healthMeta(health) {
-  if (health === "Watch") return { cls: "watch", label: "Watch" };
-  if (health === "Blocked") return { cls: "blocked", label: "Blocked" };
-  return { cls: "on-track", label: "On track" };
+function statusMeta(status) {
+  if (status === "On Hold") return { cls: "on-hold", label: "On Hold" };
+  if (status === "Abandoned") return { cls: "abandoned", label: "Abandoned" };
+  if (status === "Completed") return { cls: "completed", label: "Completed" };
+  if (status === "New") return { cls: "new", label: "New" };
+  return { cls: "active", label: "Active" };
 }
+const PROJECT_STATUSES = ["New", "Active", "On Hold", "Abandoned", "Completed"];
 
 function escapeHtml(s) {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -64,6 +67,7 @@ function noteMatchesSearch(note) {
 // ===== render =====
 function render() {
   renderGlance();
+  renderPriorities();
   renderInbox();
   renderPresent();
   renderFuture();
@@ -71,7 +75,6 @@ function render() {
   renderNotes();
   renderActivity();
   renderCeoViewsNav();
-  renderTracker();
 }
 
 function renderInbox() {
@@ -99,7 +102,7 @@ function renderInbox() {
 function renderGlance() {
   const present = state.projects.filter((p) => p.section === "Present");
   const future = state.projects.filter((p) => p.section === "Future");
-  const attention = present.filter((p) => p.health === "Watch" || p.health === "Blocked").length;
+  const attention = present.filter((p) => p.status === "On Hold" || (p.blockers && p.blockers.trim() && p.blockers !== "None noted yet.")).length;
 
   document.getElementById("todayDate").textContent = new Date().toLocaleDateString("en-US", {
     weekday: "long",
@@ -135,6 +138,39 @@ function usageChipHtml() {
     <span class="n" style="font-size:14px">${escapeHtml(label)}</span>
     <span class="l">resets in ${timeUntil(u.resetsAt)}</span>
   </div>`;
+}
+
+// Top 3 Priorities: any non-completed build from anywhere on the board can
+// be pinned into one of 3 slots via Priority Rank on its own record. Only
+// one build holds a given rank at a time -- the API clears the previous
+// holder when a new one is picked.
+function renderPriorities() {
+  const grid = document.getElementById("prioritiesGrid");
+  const pickable = state.projects.filter((p) => p.section !== "Completed").sort((a, b) => a.name.localeCompare(b.name));
+
+  grid.innerHTML = [1, 2, 3]
+    .map((rank) => {
+      const current = state.projects.find((p) => p.priorityRank === rank);
+      const options = pickable
+        .map((p) => `<option value="${p.id}" ${current?.id === p.id ? "selected" : ""}>${escapeHtml(p.name)}</option>`)
+        .join("");
+      return `
+      <div class="priority-slot">
+        <div class="priority-rank">Priority ${rank}</div>
+        <select data-action="setPriority" data-rank="${rank}">
+          <option value="">— pick a build —</option>
+          ${options}
+        </select>
+        ${
+          current
+            ? `<div class="priority-preview">
+                ${current.nextMove ? `<div class="priority-next">${escapeHtml(current.nextMove)}</div>` : `<div class="priority-next" style="color:var(--muted)">No next move noted yet.</div>`}
+              </div>`
+            : ""
+        }
+      </div>`;
+    })
+    .join("");
 }
 
 // The company taxonomy David actually runs: fixed display order, with
@@ -203,15 +239,36 @@ document.addEventListener("click", (e) => {
   saveCollapsedGroups(collapsedGroups);
 });
 
+function taskListHtml(businessId) {
+  const tasks = state.tasks.filter((t) => t.businessId === businessId);
+  const rows = tasks
+    .map(
+      (t) => `
+    <label class="task-row ${t.done ? "task-done" : ""}">
+      <input type="checkbox" data-action="toggleTask" data-id="${t.id}" ${t.done ? "checked" : ""}>
+      <span>${escapeHtml(t.task)}</span>
+      <button type="button" class="task-delete" data-action="deleteTask" data-id="${t.id}" title="Delete task">✕</button>
+    </label>`
+    )
+    .join("");
+  return `
+  <div class="task-list" data-business-id="${businessId}">
+    ${rows}
+    <div class="task-add-row">
+      <input type="text" class="task-add-input" data-business-id="${businessId}" placeholder="+ Add task">
+    </div>
+  </div>`;
+}
+
 function presentCard(p) {
-  const h = healthMeta(p.health);
+  const s = statusMeta(p.status);
   const cur = money(p.currentRevenue);
   const tgt = money(p.targetRevenue);
   return `
-  <div class="pcard health-${h.cls}" data-id="${p.id}">
+  <div class="pcard status-${s.cls}" data-id="${p.id}">
     <div class="pcard-top">
       <h3>${escapeHtml(p.name)}</h3>
-      <span class="pill ${h.cls}"><span class="dot"></span>${h.label}</span>
+      <span class="pill ${s.cls}"><span class="dot"></span>${s.label}</span>
     </div>
     ${p.winning ? `<div class="pcard-row"><div class="pcard-label">Winning looks like</div><div class="pcard-text">${nl2br(p.winning)}</div></div>` : ""}
     ${p.nextMove ? `<div class="pcard-row"><div class="pcard-label">Next move</div><div class="pcard-text">${nl2br(p.nextMove)}</div></div>` : ""}
@@ -224,6 +281,7 @@ function presentCard(p) {
           </div>`
         : ""
     }
+    <div class="pcard-row"><div class="pcard-label">Tasks</div>${taskListHtml(p.id)}</div>
     <div class="pcard-actions">
       ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
@@ -247,11 +305,13 @@ function renderPresent() {
 }
 
 function futureRow(p) {
+  const s = statusMeta(p.status);
   return `
   <div class="frow" data-id="${p.id}">
     <div class="frow-main">
-      <h4>${escapeHtml(p.name)}</h4>
+      <h4>${escapeHtml(p.name)} <span class="pill ${s.cls}"><span class="dot"></span>${s.label}</span></h4>
       ${p.winning ? `<p>${escapeHtml(p.winning)}</p>` : ""}
+      ${taskListHtml(p.id)}
     </div>
     <div class="frow-actions">
       <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
@@ -378,69 +438,22 @@ function renderCeoViewsNav() {
     .join("");
 }
 
-function trackerStatusMeta(status) {
-  if (status === "Active") return { cls: "active", label: "Active" };
-  if (status === "At Risk") return { cls: "risk", label: "At Risk" };
-  if (status === "Completed") return { cls: "completed", label: "Completed" };
-  return { cls: "new", label: "New" };
-}
-
-const TRACKER_STATUSES = ["New", "Active", "At Risk", "Completed"];
-
-function trackerRow(p) {
-  const cls = trackerStatusMeta(p.status).cls;
-  return `
-  <div class="frow" data-id="${p.id}">
-    <div class="frow-main">
-      <h4>${p.num ? `<span class="tracker-num">${escapeHtml(p.num)}</span>` : ""}${escapeHtml(p.project)}</h4>
-    </div>
-    <select class="tracker-status-select status-${cls}" data-action="trackerStatus" data-id="${p.id}">
-      ${TRACKER_STATUSES.map((s) => `<option value="${s}" ${p.status === s ? "selected" : ""}>${s}</option>`).join("")}
-    </select>
-  </div>`;
-}
-
-function renderTracker() {
-  const ongoing = state.projectTracker.filter((p) => p.status !== "Completed");
-  const completed = state.projectTracker.filter((p) => p.status === "Completed");
-  document.getElementById("trackerOngoingList").innerHTML = ongoing.length
-    ? ongoing.map(trackerRow).join("")
-    : `<div class="empty">Nothing ongoing.</div>`;
-  document.getElementById("trackerCompletedList").innerHTML = completed.length
-    ? completed.map(trackerRow).join("")
-    : `<div class="empty">Nothing marked completed yet.</div>`;
-}
-
-document.addEventListener("change", async (e) => {
-  const sel = e.target.closest('[data-action="trackerStatus"]');
-  if (!sel) return;
-  const { id } = sel.dataset;
-  sel.disabled = true;
-  try {
-    await api("/api/project-tracker", { method: "PATCH", body: JSON.stringify({ id, status: sel.value }) });
-    await loadAll();
-  } catch (err) {
-    alert(err.message);
-    sel.disabled = false;
-  }
-});
-
 // ===== data loading =====
 async function loadAll() {
-  const [projects, notes, activity, sessionsInbox, usage, projectTracker] = await Promise.all([
+  const [projects, notes, activity, sessionsInbox, usage, tasks] = await Promise.all([
     api("/api/projects"),
     api("/api/notes"),
     api("/api/activity"),
     api("/api/sessions-inbox"),
     api("/api/usage"),
-    api("/api/project-tracker")
+    api("/api/tasks")
   ]);
   state.projects = projects;
   state.notes = notes;
   state.activity = activity;
   state.sessionsInbox = sessionsInbox;
   state.usage = usage;
-  state.projectTracker = projectTracker;
+  state.tasks = tasks;
   render();
 }
 
@@ -461,13 +474,10 @@ function openProjectModal({ project = null, section = "Present" } = {}) {
   document.getElementById("pWinning").value = project?.winning || "";
   document.getElementById("pNextMove").value = project?.nextMove || "";
   document.getElementById("pBlockers").value = project?.blockers || "";
-  document.getElementById("pHealth").value = project?.health || "On track";
+  document.getElementById("pStatus").value = project?.status || (section === "Future" ? "New" : "Active");
   document.getElementById("pCurrentRevenue").value = project?.currentRevenue ?? "";
   document.getElementById("pTargetRevenue").value = project?.targetRevenue ?? "";
   document.getElementById("pNotes").value = project?.notes || "";
-
-  const isPresent = (project?.section || section) === "Present";
-  document.getElementById("presentOnlyFields").style.display = isPresent ? "block" : "none";
 
   projectModal.classList.remove("hidden");
 }
@@ -488,15 +498,13 @@ projectForm.addEventListener("submit", async (e) => {
     section,
     parentCompany: document.getElementById("pParentCompany").value.trim(),
     winning: document.getElementById("pWinning").value.trim(),
+    nextMove: document.getElementById("pNextMove").value.trim(),
+    blockers: document.getElementById("pBlockers").value.trim(),
+    status: document.getElementById("pStatus").value,
     currentRevenue: document.getElementById("pCurrentRevenue").value === "" ? null : Number(document.getElementById("pCurrentRevenue").value),
     targetRevenue: document.getElementById("pTargetRevenue").value === "" ? null : Number(document.getElementById("pTargetRevenue").value),
     notes: document.getElementById("pNotes").value.trim()
   };
-  if (section === "Present") {
-    body.nextMove = document.getElementById("pNextMove").value.trim();
-    body.blockers = document.getElementById("pBlockers").value.trim();
-    body.health = document.getElementById("pHealth").value;
-  }
 
   const saveBtn = document.getElementById("projectSaveBtn");
   saveBtn.disabled = true;
@@ -606,6 +614,54 @@ document.addEventListener("click", async (e) => {
     if (!confirm("Delete this scratchpad note? This can't be undone.")) return;
     await api("/api/notes", { method: "DELETE", body: JSON.stringify({ id }) });
     await loadAll();
+  }
+
+  if (action === "toggleTask") {
+    const task = state.tasks.find((t) => t.id === id);
+    await api("/api/tasks", { method: "PATCH", body: JSON.stringify({ id, done: !task.done }) });
+    await loadAll();
+  }
+
+  if (action === "deleteTask") {
+    await api("/api/tasks", { method: "DELETE", body: JSON.stringify({ id }) });
+    await loadAll();
+  }
+});
+
+// ===== Top 3 Priorities picker =====
+document.addEventListener("change", async (e) => {
+  const sel = e.target.closest('[data-action="setPriority"]');
+  if (!sel) return;
+  const rank = Number(sel.dataset.rank);
+  const chosenId = sel.value;
+  sel.disabled = true;
+  try {
+    if (!chosenId) {
+      const current = state.projects.find((p) => p.priorityRank === rank);
+      if (current) await api("/api/projects", { method: "PATCH", body: JSON.stringify({ id: current.id, priorityRank: null }) });
+    } else {
+      await api("/api/projects", { method: "PATCH", body: JSON.stringify({ id: chosenId, priorityRank: rank }) });
+    }
+    await loadAll();
+  } catch (err) {
+    alert(err.message);
+    sel.disabled = false;
+  }
+});
+
+// ===== per-build task add =====
+document.addEventListener("keydown", async (e) => {
+  if (!e.target.classList?.contains("task-add-input") || e.key !== "Enter") return;
+  const input = e.target;
+  const task = input.value.trim();
+  if (!task) return;
+  input.disabled = true;
+  try {
+    await api("/api/tasks", { method: "POST", body: JSON.stringify({ businessId: input.dataset.businessId, task }) });
+    await loadAll();
+  } catch (err) {
+    alert(err.message);
+    input.disabled = false;
   }
 });
 

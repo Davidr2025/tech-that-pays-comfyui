@@ -12,12 +12,13 @@ const FIELD = {
   priority90Day: "90-Day Priority",
   notes: "Notes",
   section: "Section",
-  health: "Health",
+  status: "Project Status",
   winning: "What Winning Looks Like",
   nextMove: "Next Move",
   blockers: "Blockers",
   ceoViewUrl: "CEO View URL",
-  parentCompany: "Parent Company"
+  parentCompany: "Parent Company",
+  priorityRank: "Priority Rank"
 };
 
 function toJson(record) {
@@ -67,6 +68,14 @@ export default async function handler(request) {
     const before = await getRecord(TABLES.projects, body.id);
     const name = before?.fields?.[FIELD.name] || "Untitled";
     const wasSection = before?.fields?.[FIELD.section];
+
+    // Only one build can hold a given Priority Rank -- bumping a new pick
+    // into slot N clears whoever previously held slot N.
+    if (body.priorityRank) {
+      const all = await listRecords(TABLES.projects);
+      const priorHolder = all.find((r) => r.id !== body.id && r.fields[FIELD.priorityRank] === body.priorityRank);
+      if (priorHolder) await updateRecord(TABLES.projects, priorHolder.id, { [FIELD.priorityRank]: null });
+    }
 
     const fields = toAirtableFields(body);
     const record = await updateRecord(TABLES.projects, body.id, fields);

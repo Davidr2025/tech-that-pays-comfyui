@@ -23,7 +23,6 @@
       <li><a href="#present" data-nav>Present Builds</a></li>
       <li><a href="#future" data-nav>Future Builds</a></li>
       <li><a href="#completed" data-nav>Completed Builds</a></li>
-      <li><a href="#tracker" data-nav>Project Tracker</a></li>
       <li><a href="#scratchpad" data-nav>Scratch Pad</a></li>
       <li><a href="#activity" data-nav>Recent Activity</a></li>
     </ul>
@@ -51,6 +50,10 @@
         </div>
       </div>
       <div class="glance" id="glance"></div>
+      <div class="priorities">
+        <div class="priorities-label">Top 3 priorities right now</div>
+        <div class="priorities-grid" id="prioritiesGrid"></div>
+      </div>
       <div class="search-row">
         <input type="text" class="search-input" id="searchInput" placeholder="Search everything on the board…">
       </div>
@@ -96,18 +99,6 @@
         </div>
       </div>
       <div class="future-list" id="completedList"></div>
-    </section>
-
-    <section id="tracker">
-      <div class="section-head">
-        <div>
-          <h2>Project Tracker</h2>
-          <div class="section-desc">Every individual build/tool you're tracking day to day — imported from your own tracker sheet. Mark each Completed or leave it Ongoing yourself, right here.</div>
-        </div>
-      </div>
-      <div class="future-list" id="trackerOngoingList"></div>
-      <div class="navgroup-label" style="margin-top:22px">Completed</div>
-      <div class="future-list" id="trackerCompletedList"></div>
     </section>
 
     <section id="scratchpad">
@@ -161,23 +152,23 @@
       <label for="pWinning">What winning looks like</label>
       <textarea id="pWinning" placeholder="Describe the finish line, plainly."></textarea>
     </div>
-    <div id="presentOnlyFields">
-      <div class="field">
-        <label for="pNextMove">Your single recommended next move</label>
-        <textarea id="pNextMove" placeholder="The one thing to do next."></textarea>
-      </div>
-      <div class="field">
-        <label for="pBlockers">Anything blocking it</label>
-        <textarea id="pBlockers" placeholder="Leave blank if nothing is in the way."></textarea>
-      </div>
-      <div class="field">
-        <label for="pHealth">Health</label>
-        <select id="pHealth">
-          <option value="On track">On track</option>
-          <option value="Watch">Watch</option>
-          <option value="Blocked">Blocked</option>
-        </select>
-      </div>
+    <div class="field">
+      <label for="pNextMove">Your single recommended next move</label>
+      <textarea id="pNextMove" placeholder="The one thing to do next."></textarea>
+    </div>
+    <div class="field">
+      <label for="pBlockers">Anything blocking it</label>
+      <textarea id="pBlockers" placeholder="Leave blank if nothing is in the way."></textarea>
+    </div>
+    <div class="field">
+      <label for="pStatus">Project status</label>
+      <select id="pStatus">
+        <option value="New">New</option>
+        <option value="Active">Active</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Abandoned">Abandoned</option>
+        <option value="Completed">Completed</option>
+      </select>
     </div>
     <div class="field-row">
       <div class="field">
