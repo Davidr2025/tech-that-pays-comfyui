@@ -183,6 +183,14 @@ section{margin-bottom:56px;scroll-margin-top:24px}
 .fin-block .l{font-size:11px;color:var(--muted)}
 .pcard-actions{display:flex;gap:8px;margin-top:14px}
 
+.fin-tile{
+  display:block;text-decoration:none;background:var(--accent-soft);border:1.5px solid var(--accent);
+}
+.fin-tile::before{background:var(--accent)}
+.fin-tile h3{color:var(--accent-strong)}
+.fin-tile .pcard-text{color:var(--accent-strong)}
+.fin-tile:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+
 /* ===== Future Build rows ===== */
 .future-list{display:flex;flex-direction:column;gap:10px}
 .frow{

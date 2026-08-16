@@ -271,11 +271,26 @@ function taskListHtml(businessId) {
   </div>`;
 }
 
+// A financial dashboard (company-financials.html) is different from a
+// generic CEO View (e.g. Tech That Pays' production pipeline) -- give it
+// its own unmissable tile up front instead of a button buried on the
+// business's regular card.
+function financialDashboardTile(p) {
+  if (!p.ceoViewUrl || !p.ceoViewUrl.startsWith("/company-financials.html")) return "";
+  return `
+  <a class="pcard fin-tile" href="${escapeHtml(p.ceoViewUrl)}" data-id="fin-${p.id}">
+    <div class="pcard-top"><h3>💵 Financial Dashboard</h3></div>
+    <div class="pcard-text">Income, expenses, MoM/YoY trends, and the log form for ${escapeHtml(p.name)}.</div>
+    <div class="pcard-actions"><span class="btn btn-primary btn-sm">Open →</span></div>
+  </a>`;
+}
+
 function presentCard(p) {
   const s = statusMeta(p.status);
   const cur = money(p.currentRevenue);
   const tgt = money(p.targetRevenue);
   return `
+  ${financialDashboardTile(p)}
   <div class="pcard status-${s.cls}" data-id="${p.id}">
     <div class="pcard-top">
       <h3>${escapeHtml(p.name)}</h3>
@@ -294,7 +309,7 @@ function presentCard(p) {
     }
     <div class="pcard-row"><div class="pcard-label">Tasks</div>${taskListHtml(p.id)}</div>
     <div class="pcard-actions">
-      ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
+      ${p.ceoViewUrl && !p.ceoViewUrl.startsWith("/company-financials.html") ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
       <button class="btn btn-ghost btn-sm" data-action="delete" data-id="${p.id}">Complete / Remove</button>
     </div>
@@ -317,7 +332,9 @@ function renderPresent() {
 
 function futureRow(p) {
   const s = statusMeta(p.status);
+  const isFinDashboard = p.ceoViewUrl && p.ceoViewUrl.startsWith("/company-financials.html");
   return `
+  ${financialDashboardTile(p)}
   <div class="frow" data-id="${p.id}">
     <div class="frow-main">
       <h4>${escapeHtml(p.name)} <span class="pill ${s.cls}"><span class="dot"></span>${s.label}</span></h4>
@@ -325,7 +342,7 @@ function futureRow(p) {
       ${taskListHtml(p.id)}
     </div>
     <div class="frow-actions">
-      ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
+      ${p.ceoViewUrl && !isFinDashboard ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
       <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
