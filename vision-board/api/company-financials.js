@@ -4,7 +4,17 @@ import { TABLES, listRecords, getRecord } from "../lib/airtable.js";
 export const config = { runtime: "edge" };
 
 const BIZ_FIELD = { name: "Business", currentRevenue: "Current Monthly Revenue", targetRevenue: "Target Monthly Revenue" };
-const FIN_FIELD = { month: "Month", business: "Business", income: "Income", expenses: "Expenses", notes: "Notes" };
+const FIN_FIELD = {
+  month: "Month",
+  business: "Business",
+  income: "Income",
+  expenses: "Expenses",
+  notes: "Notes",
+  traffic: "Traffic",
+  leads: "Leads",
+  offers: "Offers",
+  sales: "Sales"
+};
 
 function shiftMonth(monthKey, delta) {
   const [y, m] = monthKey.split("-").map(Number);
@@ -31,7 +41,11 @@ export default async function handler(request) {
       month: r.fields[FIN_FIELD.month],
       income: r.fields[FIN_FIELD.income] || 0,
       expenses: r.fields[FIN_FIELD.expenses] || 0,
-      notes: r.fields[FIN_FIELD.notes] || null
+      notes: r.fields[FIN_FIELD.notes] || null,
+      traffic: r.fields[FIN_FIELD.traffic] || 0,
+      leads: r.fields[FIN_FIELD.leads] || 0,
+      offers: r.fields[FIN_FIELD.offers] || 0,
+      sales: r.fields[FIN_FIELD.sales] || 0
     }))
     .sort((a, b) => a.month.localeCompare(b.month));
 

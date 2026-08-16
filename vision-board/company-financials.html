@@ -14,8 +14,9 @@
   .kpi-delta.up{color:var(--good)}
   .kpi-delta.down{color:var(--blocked)}
   .kpi-delta.flat{color:var(--muted)}
-  .log-form{display:grid;grid-template-columns:140px 140px 140px 1fr auto;gap:10px;align-items:end;margin-bottom:22px}
-  .log-form .field{margin:0}
+  .log-form{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:22px}
+  .log-form .field{margin:0;width:130px}
+  .log-form .field.wide{width:auto;flex:1;min-width:160px}
   .log-form label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:4px}
   .log-form input{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:13px;background:var(--surface);color:var(--ink)}
   .fin-table{width:100%;border-collapse:collapse;font-size:13px}
@@ -26,6 +27,7 @@
   .chart-legend{display:flex;gap:16px;margin-bottom:10px;font-size:12px;color:var(--ink-2)}
   .chart-legend span{display:inline-flex;align-items:center;gap:5px}
   .chart-legend .sw{width:10px;height:10px;border-radius:2px;display:inline-block}
+  .funnel-rate{font-size:12px;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -62,9 +64,19 @@
       <div class="card-grid" id="yearGrid"></div>
     </section>
 
+    <section id="funnel">
+      <div class="section-head"><div><h2>Funnel this month</h2><div class="section-desc">Traffic → leads → offers → sales, and how it converted to income.</div></div></div>
+      <div class="card-grid" id="funnelGrid"><div class="empty">Loading…</div></div>
+    </section>
+
     <section id="chart">
       <div class="section-head"><div><h2>Income vs. expenses over time</h2><div class="section-desc">Every month you've logged.</div></div></div>
       <div class="pcard chart-wrap" id="chartWrap"></div>
+    </section>
+
+    <section id="funnelChart">
+      <div class="section-head"><div><h2>Traffic, leads, offers, sales over time</h2><div class="section-desc">Same months as above, so you can see the funnel move alongside income.</div></div></div>
+      <div class="pcard chart-wrap" id="funnelChartWrap"></div>
     </section>
 
     <section id="log">
@@ -74,7 +86,11 @@
           <div class="field"><label for="fMonth">Month</label><input type="month" id="fMonth"></div>
           <div class="field"><label for="fIncome">Income ($)</label><input type="number" id="fIncome" min="0" step="1"></div>
           <div class="field"><label for="fExpenses">Expenses ($)</label><input type="number" id="fExpenses" min="0" step="1"></div>
-          <div class="field"><label for="fNotes">Notes</label><input type="text" id="fNotes" placeholder="Optional"></div>
+          <div class="field"><label for="fTraffic">Traffic</label><input type="number" id="fTraffic" min="0" step="1"></div>
+          <div class="field"><label for="fLeads">Leads</label><input type="number" id="fLeads" min="0" step="1"></div>
+          <div class="field"><label for="fOffers">Offers</label><input type="number" id="fOffers" min="0" step="1"></div>
+          <div class="field"><label for="fSales">Sales</label><input type="number" id="fSales" min="0" step="1"></div>
+          <div class="field wide"><label for="fNotes">Notes</label><input type="text" id="fNotes" placeholder="Optional"></div>
           <button class="btn btn-primary" id="logBtn">Save</button>
         </div>
         <table class="fin-table" id="entriesTable"></table>
@@ -98,36 +114,92 @@
     return `<div class="kpi-delta ${dir}">${arrow} ${pct === null ? money(current - prior) : pct + '%'} vs ${label}</div>`;
   }
 
-  function renderChart(entries) {
-    const wrap = document.getElementById('chartWrap');
+  // Generic grouped bar chart -- used for both income/expenses (2 series)
+  // and traffic/leads/offers/sales (4 series) so the two charts line up
+  // month-for-month.
+  function renderGroupedChart(wrapId, entries, series, emptyMessage) {
+    const wrap = document.getElementById(wrapId);
     if (!entries.length) {
-      wrap.innerHTML = `<div class="empty">Nothing logged yet — log your first month below and the chart fills in.</div>`;
+      wrap.innerHTML = `<div class="empty">${emptyMessage}</div>`;
       return;
     }
     const shown = entries.slice(-12);
-    const max = Math.max(...shown.map((e) => Math.max(e.income, e.expenses)), 1);
-    const barW = 26, gap = 14, groupW = barW * 2 + 6, chartH = 180, padTop = 20;
+    const max = Math.max(...shown.flatMap((e) => series.map((s) => e[s.key])), 1);
+    const barW = Math.max(10, Math.floor(48 / series.length)), barGap = 4;
+    const groupW = barW * series.length + barGap * (series.length - 1);
+    const gap = 14, chartH = 180, padTop = 20;
     const w = shown.length * (groupW + gap) + gap;
 
     const bars = shown.map((e, i) => {
-      const x = gap + i * (groupW + gap);
-      const incomeH = (e.income / max) * chartH;
-      const expH = (e.expenses / max) * chartH;
+      const x0 = gap + i * (groupW + gap);
       const [y, m] = e.month.split('-');
       const label = new Date(Number(y), Number(m) - 1, 2).toLocaleDateString('en-US', { month: 'short' });
-      return `
-        <rect x="${x}" y="${padTop + chartH - incomeH}" width="${barW}" height="${incomeH}" fill="var(--good)" rx="2"></rect>
-        <rect x="${x + barW + 6}" y="${padTop + chartH - expH}" width="${barW}" height="${expH}" fill="var(--blocked)" rx="2"></rect>
-        <text x="${x + groupW / 2 - 3}" y="${padTop + chartH + 16}" font-size="11" text-anchor="middle" fill="var(--muted)">${label}</text>
-      `;
+      const seriesBars = series.map((s, si) => {
+        const x = x0 + si * (barW + barGap);
+        const h = (e[s.key] / max) * chartH;
+        return `<rect x="${x}" y="${padTop + chartH - h}" width="${barW}" height="${h}" fill="${s.color}" rx="2"></rect>`;
+      }).join('');
+      return `${seriesBars}<text x="${x0 + groupW / 2 - 3}" y="${padTop + chartH + 16}" font-size="11" text-anchor="middle" fill="var(--muted)">${label}</text>`;
     }).join('');
 
     wrap.innerHTML = `
       <div class="chart-legend">
-        <span><span class="sw" style="background:var(--good)"></span>Income</span>
-        <span><span class="sw" style="background:var(--blocked)"></span>Expenses</span>
+        ${series.map((s) => `<span><span class="sw" style="background:${s.color}"></span>${s.label}</span>`).join('')}
       </div>
       <svg width="${w}" height="${padTop + chartH + 28}" viewBox="0 0 ${w} ${padTop + chartH + 28}">${bars}</svg>
+    `;
+  }
+
+  function renderChart(entries) {
+    renderGroupedChart('chartWrap', entries, [
+      { key: 'income', label: 'Income', color: 'var(--good)' },
+      { key: 'expenses', label: 'Expenses', color: 'var(--blocked)' }
+    ], 'Nothing logged yet — log your first month below and the chart fills in.');
+  }
+
+  function renderFunnelChart(entries) {
+    renderGroupedChart('funnelChartWrap', entries, [
+      { key: 'traffic', label: 'Traffic', color: 'var(--accent)' },
+      { key: 'leads', label: 'Leads', color: 'var(--watch)' },
+      { key: 'offers', label: 'Offers', color: 'var(--blocked)' },
+      { key: 'sales', label: 'Sales', color: 'var(--good)' }
+    ], 'Nothing logged yet — log your first month below and the chart fills in.');
+  }
+
+  const pct = (num, den) => {
+    if (!den) return '—';
+    const p = (num / den) * 100;
+    return (p > 0 && p < 1 ? p.toFixed(1) : Math.round(p)) + '%';
+  };
+
+  function renderFunnel(d) {
+    const tm = d.thisMonth;
+    const grid = document.getElementById('funnelGrid');
+    if (!tm) {
+      grid.innerHTML = `<div class="empty">Nothing logged for ${monthLabel(d.currentMonthKey)} yet.</div>`;
+      return;
+    }
+    grid.innerHTML = `
+      <div class="pcard status-active">
+        <div class="pcard-top"><h3>Traffic</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:22px">${tm.traffic.toLocaleString()}</div></div>
+        <div class="funnel-rate">${pct(tm.leads, tm.traffic)} became leads</div>
+      </div>
+      <div class="pcard status-active">
+        <div class="pcard-top"><h3>Leads</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:22px">${tm.leads.toLocaleString()}</div></div>
+        <div class="funnel-rate">${pct(tm.offers, tm.leads)} got an offer</div>
+      </div>
+      <div class="pcard status-active">
+        <div class="pcard-top"><h3>Offers</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:22px">${tm.offers.toLocaleString()}</div></div>
+        <div class="funnel-rate">${pct(tm.sales, tm.offers)} closed</div>
+      </div>
+      <div class="pcard status-active">
+        <div class="pcard-top"><h3>Sales</h3></div>
+        <div class="fin-block"><div class="n" style="font-size:22px">${tm.sales.toLocaleString()}</div></div>
+        <div class="funnel-rate">${pct(tm.sales, tm.traffic)} overall · ${tm.sales ? money(tm.income / tm.sales) : '—'}/sale</div>
+      </div>
     `;
   }
 
@@ -187,15 +259,21 @@
     `;
 
     renderChart(d.entries);
+    renderFunnel(d);
+    renderFunnelChart(d.entries);
 
     document.getElementById('entriesTable').innerHTML = d.entries.length
-      ? `<thead><tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net</th><th>Notes</th><th></th></tr></thead>
+      ? `<thead><tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net</th><th>Traffic</th><th>Leads</th><th>Offers</th><th>Sales</th><th>Notes</th><th></th></tr></thead>
          <tbody>${d.entries.slice().reverse().map((e) => `
            <tr>
              <td>${monthLabel(e.month)}</td>
              <td>${money(e.income)}</td>
              <td>${money(e.expenses)}</td>
              <td>${money(e.income - e.expenses)}</td>
+             <td>${e.traffic.toLocaleString()}</td>
+             <td>${e.leads.toLocaleString()}</td>
+             <td>${e.offers.toLocaleString()}</td>
+             <td>${e.sales.toLocaleString()}</td>
              <td>${e.notes || ''}</td>
              <td><button class="btn btn-ghost btn-sm" data-action="deleteEntry" data-id="${e.id}">Delete</button></td>
            </tr>`).join('')}</tbody>`
@@ -216,12 +294,14 @@
           month,
           income: Number(document.getElementById('fIncome').value) || 0,
           expenses: Number(document.getElementById('fExpenses').value) || 0,
+          traffic: Number(document.getElementById('fTraffic').value) || 0,
+          leads: Number(document.getElementById('fLeads').value) || 0,
+          offers: Number(document.getElementById('fOffers').value) || 0,
+          sales: Number(document.getElementById('fSales').value) || 0,
           notes: document.getElementById('fNotes').value.trim() || null
         })
       });
-      document.getElementById('fIncome').value = '';
-      document.getElementById('fExpenses').value = '';
-      document.getElementById('fNotes').value = '';
+      ['fIncome', 'fExpenses', 'fTraffic', 'fLeads', 'fOffers', 'fSales', 'fNotes'].forEach((id) => (document.getElementById(id).value = ''));
       await load();
     } catch (err) {
       alert(err.message);
