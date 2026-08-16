@@ -314,6 +314,7 @@ function futureRow(p) {
       ${taskListHtml(p.id)}
     </div>
     <div class="frow-actions">
+      ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
       <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
@@ -429,7 +430,7 @@ function renderCeoViewsNav() {
         .join("");
       return `
       <li class="nav-company">
-        <details>
+        <details open>
           <summary>${escapeHtml(group.label)}</summary>
           <ul class="navlinks nav-sublist">${rows}</ul>
         </details>
@@ -682,6 +683,19 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
   renderFuture();
   renderNotes();
 });
+
+// ===== collapsible Recent Activity =====
+const ACTIVITY_COLLAPSED_KEY = "vb-activity-collapsed";
+const activityToggleBtn = document.getElementById("activityToggleBtn");
+const activityListEl = document.getElementById("activityList");
+function setActivityCollapsed(collapsed) {
+  activityListEl.style.display = collapsed ? "none" : "";
+  activityToggleBtn.textContent = collapsed ? "Show" : "Hide";
+  activityToggleBtn.setAttribute("aria-expanded", String(!collapsed));
+  localStorage.setItem(ACTIVITY_COLLAPSED_KEY, collapsed ? "1" : "0");
+}
+setActivityCollapsed(localStorage.getItem(ACTIVITY_COLLAPSED_KEY) === "1");
+activityToggleBtn.addEventListener("click", () => setActivityCollapsed(activityListEl.style.display !== "none"));
 
 // ===== sidebar scrollspy =====
 const navLinks = Array.from(document.querySelectorAll("[data-nav]"));
