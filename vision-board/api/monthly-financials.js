@@ -3,7 +3,17 @@ import { TABLES, listRecords, createRecord, updateRecord, deleteRecord, logActiv
 
 export const config = { runtime: "edge" };
 
-const FIELD = { month: "Month", business: "Business", income: "Income", expenses: "Expenses", notes: "Notes" };
+const FIELD = {
+  month: "Month",
+  business: "Business",
+  income: "Income",
+  expenses: "Expenses",
+  notes: "Notes",
+  traffic: "Traffic",
+  leads: "Leads",
+  offers: "Offers",
+  sales: "Sales"
+};
 
 function toJson(record) {
   const f = record.fields;
@@ -13,7 +23,11 @@ function toJson(record) {
     businessId: f[FIELD.business]?.[0] ?? null,
     income: f[FIELD.income] ?? 0,
     expenses: f[FIELD.expenses] ?? 0,
-    notes: f[FIELD.notes] ?? null
+    notes: f[FIELD.notes] ?? null,
+    traffic: f[FIELD.traffic] ?? 0,
+    leads: f[FIELD.leads] ?? 0,
+    offers: f[FIELD.offers] ?? 0,
+    sales: f[FIELD.sales] ?? 0
   };
 }
 
@@ -40,7 +54,11 @@ export default async function handler(request) {
       [FIELD.business]: [body.businessId],
       [FIELD.income]: body.income ?? 0,
       [FIELD.expenses]: body.expenses ?? 0,
-      [FIELD.notes]: body.notes || null
+      [FIELD.notes]: body.notes || null,
+      [FIELD.traffic]: body.traffic ?? 0,
+      [FIELD.leads]: body.leads ?? 0,
+      [FIELD.offers]: body.offers ?? 0,
+      [FIELD.sales]: body.sales ?? 0
     };
 
     const record = existing ? await updateRecord(TABLES.monthlyFinancials, existing.id, fields) : await createRecord(TABLES.monthlyFinancials, fields);
