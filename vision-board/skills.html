@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>David's Skills Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .skill-trigger{
+    display:inline-block;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:12px;
+    background:var(--accent-soft);color:var(--accent-strong);padding:2px 8px;border-radius:6px;margin-bottom:10px;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="sidebar">
+    <div class="brand"><span class="icon">🧩</span>Skills Library</div>
+    <div class="brand-sub">Custom Claude Code skills</div>
+    <ul class="navlinks">
+      <li><a href="/board.html">← Vision Board</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="signed-in">Signed in as David</div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topbar">
+      <div class="topbar-top">
+        <div>
+          <h1>Your custom skills</h1>
+          <div class="date">The content pipeline you've built for Tech That Pays &amp; Limitless Mortgage — a reference, not something you edit here.</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="pipeline">
+      <div class="section-head"><div><h2>Content pipeline</h2><div class="section-desc">Roughly the order they chain together, research → published video.</div></div></div>
+      <div class="card-grid" id="pipelineGrid"></div>
+    </section>
+
+    <section id="ops">
+      <div class="section-head"><div><h2>Ops</h2><div class="section-desc">Standalone, not part of the content chain.</div></div></div>
+      <div class="card-grid" id="opsGrid"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+  const pipeline = [
+    {
+      trigger: '/research',
+      name: 'research',
+      desc: "Combined market research and idea pipeline for Tech That Pays and Limitless Mortgage. Reads ICP files, runs VidIQ keyword research, Reddit trend checks, and Google Trends analysis to score 10 topics, then applies Patrick Dang's 5-criteria framework to pick the top 3. Uploads a report to Google Drive, creates Research + Idea records in Airtable, archives old ones to Script Bank. Replaces /intelligence and /idea."
+    },
+    {
+      trigger: '/intelligence or /intel',
+      name: 'intelligence',
+      desc: 'Lightweight daily/weekly niche intelligence scan — 10 ranked trending topics, viral alerts, outlier performance data. Saves to Airtable. Feeds directly into /idea. Run daily for fast-moving niches, weekly for stable ones.'
+    },
+    {
+      trigger: '/idea',
+      name: 'idea',
+      desc: "Ranks and validates YouTube content ideas using Patrick Dang's 5-criteria framework. Accepts topics from /intelligence, or researches standalone. Returns 3 ranked video ideas with titles, scored angles, and a recommendation."
+    },
+    {
+      trigger: '/title',
+      name: 'title',
+      desc: 'Generates and scores 10 YouTube titles from /idea output, using 4 emotional hook categories (Fear, Curiosity, Transformation, Proof/Contrarian) plus VidIQ title scoring. Feeds directly into /script.'
+    },
+    {
+      trigger: '/script [title]',
+      name: 'script',
+      desc: "Writes high-performing long-form YouTube scripts using a dream-selling conversion framework — not generic tutorial content. Picks up title, hook, angle, and keyword directly from /title's output."
+    },
+    {
+      trigger: 'ask for thumbnails',
+      name: 'thumbnail',
+      desc: "Generates 3 thumbnail concepts per video via VidIQ's generation and scoring tools, grounded in your real headshot pulled fresh from Airtable. Finalizes the chosen concept as a 4K production asset via Kie.ai."
+    },
+    {
+      trigger: '/start-production',
+      name: 'start-production',
+      desc: 'Kicks off the full automated render pipeline for a Scripting-stage video: Fish Audio TTS → RunPod pod → InfiniteTalk/ComfyUI render → ffmpeg concat → Real-ESRGAN upscale → Google Drive upload → Airtable update. ~85-90 min total, monitored via the Airtable Stage field.'
+    },
+    {
+      trigger: '/video-edit',
+      name: 'video-edit',
+      desc: 'Pulls raw footage from Google Drive into Descript and runs the full Underlord AI edit: filler removal, silence trimming, Studio Sound, auto-captions, AI B-roll, zoom effects, brand overlay. Publishes and updates Airtable to Stage = Production.'
+    },
+    {
+      trigger: '/ysm',
+      name: 'ysm',
+      desc: 'Autonomous end-to-end pipeline for Tech That Pays and Limitless Mortgage — one question (channel + format), then runs research, title, thumbnail, and full script without stopping, saving everything to Airtable ready for your approval and /start-production.'
+    }
+  ];
+
+  const ops = [
+    {
+      trigger: '/receipts',
+      name: 'receipt-tracker',
+      desc: 'Weekly receipt processing for tax prep. Scans a Google Drive folder for uploaded receipt photos, extracts merchant/date/amount/tax/category via AI vision, logs each to a Google Sheet, and renames processed files so nothing gets logged twice.'
+    }
+  ];
+
+  function card(s) {
+    return `
+    <div class="pcard health-on-track">
+      <div class="pcard-top"><h3>${s.name}</h3></div>
+      <span class="skill-trigger">${s.trigger}</span>
+      <div class="pcard-text">${s.desc}</div>
+    </div>`;
+  }
+
+  document.getElementById('pipelineGrid').innerHTML = pipeline.map(card).join('');
+  document.getElementById('opsGrid').innerHTML = ops.map(card).join('');
+</script>
+</body>
+</html>

@@ -9,3 +9,6 @@ site/.astro/
 # OS / editor
 .DS_Store
 *.log
+
+# Personal Claude Code overrides (not shared with the team)
+.claude/settings.local.json

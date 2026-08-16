@@ -22,15 +22,18 @@
       <li><a href="#inbox" class="active" data-nav>Sessions Inbox</a></li>
       <li><a href="#present" data-nav>Present Builds</a></li>
       <li><a href="#future" data-nav>Future Builds</a></li>
+      <li><a href="#completed" data-nav>Completed Builds</a></li>
       <li><a href="#scratchpad" data-nav>Scratch Pad</a></li>
       <li><a href="#activity" data-nav>Recent Activity</a></li>
     </ul>
 
-    <div class="navgroup-label">CEO views</div>
+    <div class="navgroup-label">Reference</div>
     <ul class="navlinks">
-      <li><a href="/mississauga-insider.html">🏙️ Mississauga Insider <span class="ext">↗</span></a></li>
-      <li><a href="/tech-that-pays.html">🎬 Tech That Pays <span class="ext">↗</span></a></li>
+      <li><a href="/skills.html">🧩 Skills Library <span class="ext">↗</span></a></li>
     </ul>
+
+    <div class="navgroup-label">CEO views</div>
+    <ul class="navlinks" id="ceoViewsNav"></ul>
 
     <div class="sidebar-footer">
       <div class="signed-in">Signed in as David</div>
@@ -84,6 +87,16 @@
       <div class="future-list" id="futureList"></div>
     </section>
 
+    <section id="completed">
+      <div class="section-head">
+        <div>
+          <h2>Completed Builds</h2>
+          <div class="section-desc">Finished present builds — kept as a record, reopenable any time.</div>
+        </div>
+      </div>
+      <div class="future-list" id="completedList"></div>
+    </section>
+
     <section id="scratchpad">
       <div class="section-head">
         <div>
@@ -122,8 +135,14 @@
       <input type="text" id="pName" required placeholder="e.g. Limitless Mortgage">
     </div>
     <div class="field">
-      <label for="pParentCompany">Part of (parent company/project)</label>
-      <input type="text" id="pParentCompany" placeholder="Leave blank if this stands on its own">
+      <label for="pParentCompany">Company</label>
+      <select id="pParentCompany">
+        <option value="Limitless Mortgage">Limitless Mortgage</option>
+        <option value="Limitless Capital">Limitless Capital</option>
+        <option value="Limitless Automated Systems">Limitless Automated Systems</option>
+        <option value="Limitless Customers">Limitless Customers</option>
+        <option value="General">General</option>
+      </select>
     </div>
     <div class="field">
       <label for="pWinning">What winning looks like</label>

@@ -14,7 +14,8 @@ export const TABLES = {
   notes: "tbl6H345p485TNk6I", // Scratchpad Notes
   activity: "tblA2CAff5jutYwIJ", // Vision Board Activity
   sessionsInbox: "tblGFEQ7z3oC33s5t", // Sessions Inbox
-  usageSnapshot: "tbl01vFnoJjLOsoVp" // Usage Snapshot
+  usageSnapshot: "tbl01vFnoJjLOsoVp", // Usage Snapshot
+  commitments: "tblPQwXs6S4aWfdhE" // Commitments
 };
 
 function airtableUrl(tableId, query = "", baseId = BASE_ID) {
