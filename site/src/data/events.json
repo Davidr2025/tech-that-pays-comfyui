@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-08-15T22:37:23.095Z",
+  "updatedAt": "2026-08-16T10:39:09.538Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga Hong Kong Festival 2026",
-      "summary": "The Mississauga Hong Kong Festival 2026 takes over the Paramount Fine Foods Centre Sportsplex on August 15 and 16, bringing the city's most authentic Hong Kong experience to life. Feel the energy of the World Kongers Cup soccer competition, now joined by a brand new basketball tournament that draws players from across Ontario and beyond. Between the matches, hit up a vibrant market with tasty Hong Kong street food, nostalgic games, and handmade crafts.",
-      "venue": "",
-      "url": "https://www.visitmississauga.ca/event/mississauga-hong-kong-festival-2026/",
-      "start": "2026-08-15T09:00:00.000Z",
-      "end": "2026-08-16T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Japan Festival Canada",
-      "summary": "Celebrate the beauty and depth of Japan through a dynamic festival that blends timeless culture with modern creativity. From captivating performances to immersive experiences, this is your chance to explore Japan in the heart of the city. Enjoy live entertainment, cultural demonstrations, and a variety of authentic Japanese cuisine. Discover traditional arts, contemporary pop culture, and unique vendors offering everything from handcrafted goods to the latest trends.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/japan-festival-canada/",
-      "start": "2026-08-15T12:00:00.000Z",
-      "end": "2026-08-16T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Summer Berry Salad",
       "summary": "Join us for an interactive, hands-on workshop that reconnects participants to the earth through the lens of Indigenous food sovereignty.",
@@ -101,6 +81,16 @@
       "end": "2026-08-27T00:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "MuslimFest",
+      "summary": "Experience the vibrant spirit of community, culture, and celebration at MuslimFest Mississauga Step into a lively atmosphere filled with rich cultural traditions, inspiring performances, and delicious cuisine . From captivating live nasheeds and spoken word to energetic family-friendly entertainment, MuslimFest brings people of all backgrounds together in a welcoming and uplifting environment.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/muslimfest/",
+      "start": "2026-08-28T14:00:00.000Z",
+      "end": "2026-08-30T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
