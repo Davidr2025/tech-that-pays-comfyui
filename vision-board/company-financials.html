@@ -69,6 +69,31 @@
       <div class="card-grid" id="funnelGrid"><div class="empty">Loading…</div></div>
     </section>
 
+    <section id="sources">
+      <div class="section-head"><div><h2>Leads by source</h2><div class="section-desc">Which channel is actually making the sales.</div></div></div>
+      <div class="pcard" style="margin-bottom:16px">
+        <div class="pcard-label" style="margin-bottom:8px">This month (<span id="sourcesMonthLabel"></span>)</div>
+        <table class="fin-table" id="sourcesThisMonthTable"></table>
+      </div>
+      <div class="pcard" style="margin-bottom:16px">
+        <div class="pcard-label" style="margin-bottom:8px">All-time totals by source</div>
+        <table class="fin-table" id="sourcesAllTimeTable"></table>
+      </div>
+      <div class="pcard">
+        <div class="pcard-label" style="margin-bottom:8px">Log a source</div>
+        <div class="log-form">
+          <div class="field wide" style="min-width:140px"><label for="sSource">Source</label><input type="text" id="sSource" placeholder="e.g. YouTube, Referral"></div>
+          <div class="field"><label for="sMonth">Month</label><input type="month" id="sMonth"></div>
+          <div class="field"><label for="sTraffic">Traffic</label><input type="number" id="sTraffic" min="0" step="1"></div>
+          <div class="field"><label for="sLeads">Leads</label><input type="number" id="sLeads" min="0" step="1"></div>
+          <div class="field"><label for="sOffers">Offers</label><input type="number" id="sOffers" min="0" step="1"></div>
+          <div class="field"><label for="sSales">Sales</label><input type="number" id="sSales" min="0" step="1"></div>
+          <button class="btn btn-primary" id="logSourceBtn">Save</button>
+        </div>
+        <table class="fin-table" id="sourcesTable"></table>
+      </div>
+    </section>
+
     <section id="chart">
       <div class="section-head"><div><h2>Income vs. expenses over time</h2><div class="section-desc">Every month you've logged.</div></div></div>
       <div class="pcard chart-wrap" id="chartWrap"></div>
@@ -104,6 +129,7 @@
   const businessId = params.get('id');
   const money = (n) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0);
   const monthLabel = (key) => key ? new Date(key + '-02').toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : '';
+  const escapeHtml = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   function deltaHtml(current, prior, label) {
     if (prior === null || prior === undefined) return `<div class="kpi-delta flat">No ${label} to compare yet</div>`;
@@ -203,6 +229,55 @@
     `;
   }
 
+  function sourceRow(s, { showMonth = false, showDelete = false } = {}) {
+    return `
+    <tr>
+      ${showMonth ? `<td>${monthLabel(s.month)}</td>` : ''}
+      <td>${escapeHtml(s.source)}</td>
+      <td>${s.traffic.toLocaleString()}</td>
+      <td>${s.leads.toLocaleString()}</td>
+      <td>${s.offers.toLocaleString()}</td>
+      <td>${s.sales.toLocaleString()}</td>
+      <td>${pct(s.sales, s.traffic)}</td>
+      ${showDelete ? `<td><button class="btn btn-ghost btn-sm" data-action="deleteSource" data-id="${s.id}">Delete</button></td>` : ''}
+    </tr>`;
+  }
+
+  function renderSources(d) {
+    document.getElementById('sourcesMonthLabel').textContent = monthLabel(d.currentMonthKey);
+    document.getElementById('sMonth').value = d.currentMonthKey;
+
+    const thisMonth = d.sources.filter((s) => s.month === d.currentMonthKey).sort((a, b) => b.sales - a.sales);
+    document.getElementById('sourcesThisMonthTable').innerHTML = thisMonth.length
+      ? `<thead><tr><th>Source</th><th>Traffic</th><th>Leads</th><th>Offers</th><th>Sales</th><th>Conv.</th><th></th></tr></thead>
+         <tbody>${thisMonth.map((s) => sourceRow(s, { showDelete: true })).join('')}</tbody>`
+      : `<tbody><tr><td class="empty" style="border:none">Nothing logged for this month yet.</td></tr></tbody>`;
+
+    const totals = new Map();
+    for (const s of d.sources) {
+      const t = totals.get(s.source) || { source: s.source, traffic: 0, leads: 0, offers: 0, sales: 0 };
+      t.traffic += s.traffic;
+      t.leads += s.leads;
+      t.offers += s.offers;
+      t.sales += s.sales;
+      totals.set(s.source, t);
+    }
+    const allTime = Array.from(totals.values()).sort((a, b) => b.sales - a.sales);
+    document.getElementById('sourcesAllTimeTable').innerHTML = allTime.length
+      ? `<thead><tr><th>Source</th><th>Traffic</th><th>Leads</th><th>Offers</th><th>Sales</th><th>Conv.</th></tr></thead>
+         <tbody>${allTime.map((s) => sourceRow(s)).join('')}</tbody>`
+      : `<tbody><tr><td class="empty" style="border:none">Nothing logged yet — the source that's actually winning shows up here once you log a few months.</td></tr></tbody>`;
+
+    document.getElementById('sourcesTable').innerHTML = d.sources.length
+      ? `<thead><tr><th>Month</th><th>Source</th><th>Traffic</th><th>Leads</th><th>Offers</th><th>Sales</th><th>Conv.</th><th></th></tr></thead>
+         <tbody>${d.sources
+           .slice()
+           .sort((a, b) => b.month.localeCompare(a.month) || b.sales - a.sales)
+           .map((s) => sourceRow(s, { showMonth: true, showDelete: true }))
+           .join('')}</tbody>`
+      : `<tbody><tr><td class="empty" style="border:none">Nothing logged yet.</td></tr></tbody>`;
+  }
+
   async function load() {
     const res = await fetch(`/api/company-financials?businessId=${encodeURIComponent(businessId)}`);
     if (res.status === 401) { window.location.href = '/login.html'; return; }
@@ -261,6 +336,7 @@
     renderChart(d.entries);
     renderFunnel(d);
     renderFunnelChart(d.entries);
+    renderSources(d);
 
     document.getElementById('entriesTable').innerHTML = d.entries.length
       ? `<thead><tr><th>Month</th><th>Income</th><th>Expenses</th><th>Net</th><th>Traffic</th><th>Leads</th><th>Offers</th><th>Sales</th><th>Notes</th><th></th></tr></thead>
@@ -309,12 +385,48 @@
     btn.disabled = false;
   });
 
+  document.getElementById('logSourceBtn').addEventListener('click', async () => {
+    const month = document.getElementById('sMonth').value;
+    const source = document.getElementById('sSource').value.trim();
+    if (!month || !source) { alert('Pick a month and name the source.'); return; }
+    const btn = document.getElementById('logSourceBtn');
+    btn.disabled = true;
+    try {
+      await fetch('/api/lead-sources', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          businessId,
+          month,
+          source,
+          traffic: Number(document.getElementById('sTraffic').value) || 0,
+          leads: Number(document.getElementById('sLeads').value) || 0,
+          offers: Number(document.getElementById('sOffers').value) || 0,
+          sales: Number(document.getElementById('sSales').value) || 0
+        })
+      });
+      ['sSource', 'sTraffic', 'sLeads', 'sOffers', 'sSales'].forEach((id) => (document.getElementById(id).value = ''));
+      await load();
+    } catch (err) {
+      alert(err.message);
+    }
+    btn.disabled = false;
+  });
+
   document.addEventListener('click', async (e) => {
-    const btn = e.target.closest('[data-action="deleteEntry"]');
-    if (!btn) return;
-    if (!confirm('Delete this logged month? This can\'t be undone.')) return;
-    await fetch('/api/monthly-financials', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: btn.dataset.id }) });
-    await load();
+    const deleteEntryBtn = e.target.closest('[data-action="deleteEntry"]');
+    if (deleteEntryBtn) {
+      if (!confirm('Delete this logged month? This can\'t be undone.')) return;
+      await fetch('/api/monthly-financials', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: deleteEntryBtn.dataset.id }) });
+      await load();
+      return;
+    }
+    const deleteSourceBtn = e.target.closest('[data-action="deleteSource"]');
+    if (deleteSourceBtn) {
+      if (!confirm('Delete this logged source? This can\'t be undone.')) return;
+      await fetch('/api/lead-sources', { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: deleteSourceBtn.dataset.id }) });
+      await load();
+    }
   });
 
   document.getElementById('logoutBtn').addEventListener('click', async () => {
