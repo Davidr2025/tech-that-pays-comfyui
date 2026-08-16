@@ -430,7 +430,7 @@ function renderCeoViewsNav() {
         .join("");
       return `
       <li class="nav-company">
-        <details open>
+        <details>
           <summary>${escapeHtml(group.label)}</summary>
           <ul class="navlinks nav-sublist">${rows}</ul>
         </details>
@@ -683,18 +683,6 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
   renderFuture();
   renderNotes();
 });
-
-// ===== collapsible sidebar (defaults to collapsed) =====
-const SIDEBAR_COLLAPSED_KEY = "vb-sidebar-collapsed";
-const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-function setSidebarCollapsed(collapsed) {
-  document.body.classList.toggle("sidebar-collapsed", collapsed);
-  sidebarToggleBtn.setAttribute("aria-expanded", String(!collapsed));
-  localStorage.setItem(SIDEBAR_COLLAPSED_KEY, collapsed ? "1" : "0");
-}
-const storedSidebarCollapsed = localStorage.getItem(SIDEBAR_COLLAPSED_KEY);
-setSidebarCollapsed(storedSidebarCollapsed === null ? true : storedSidebarCollapsed === "1");
-sidebarToggleBtn.addEventListener("click", () => setSidebarCollapsed(!document.body.classList.contains("sidebar-collapsed")));
 
 // ===== collapsible Recent Activity =====
 const ACTIVITY_COLLAPSED_KEY = "vb-activity-collapsed";

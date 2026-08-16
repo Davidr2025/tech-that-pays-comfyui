@@ -74,15 +74,6 @@ button{font-family:inherit}
 .logout-btn:hover{background:var(--surface-2);color:var(--ink)}
 
 main{flex:1;min-width:0;padding:34px 44px 90px}
-
-.sidebar-toggle{
-  position:fixed;top:18px;left:18px;z-index:40;width:34px;height:34px;border-radius:8px;
-  border:1px solid var(--border);background:var(--surface);color:var(--ink);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:var(--shadow-sm);
-}
-.sidebar-toggle:hover{background:var(--surface-2)}
-body.sidebar-collapsed .sidebar{display:none}
-body.sidebar-collapsed main{padding-left:70px}
 @media (max-width:860px){
   .sidebar{position:fixed;left:0;bottom:0;top:auto;width:100%;height:auto;flex-direction:row;
     border-right:none;border-top:1px solid var(--border);padding:10px 14px;z-index:20;overflow-x:auto}
