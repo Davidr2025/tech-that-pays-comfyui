@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 
 // ===== state =====
-let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, search: "" };
+let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, projectTracker: [], search: "" };
 
 // ===== formatting helpers =====
 const money = (n) =>
@@ -71,6 +71,7 @@ function render() {
   renderNotes();
   renderActivity();
   renderCeoViewsNav();
+  renderTracker();
 }
 
 function renderInbox() {
@@ -377,20 +378,69 @@ function renderCeoViewsNav() {
     .join("");
 }
 
+function trackerStatusMeta(status) {
+  if (status === "Active") return { cls: "active", label: "Active" };
+  if (status === "At Risk") return { cls: "risk", label: "At Risk" };
+  if (status === "Completed") return { cls: "completed", label: "Completed" };
+  return { cls: "new", label: "New" };
+}
+
+const TRACKER_STATUSES = ["New", "Active", "At Risk", "Completed"];
+
+function trackerRow(p) {
+  const cls = trackerStatusMeta(p.status).cls;
+  return `
+  <div class="frow" data-id="${p.id}">
+    <div class="frow-main">
+      <h4>${p.num ? `<span class="tracker-num">${escapeHtml(p.num)}</span>` : ""}${escapeHtml(p.project)}</h4>
+    </div>
+    <select class="tracker-status-select status-${cls}" data-action="trackerStatus" data-id="${p.id}">
+      ${TRACKER_STATUSES.map((s) => `<option value="${s}" ${p.status === s ? "selected" : ""}>${s}</option>`).join("")}
+    </select>
+  </div>`;
+}
+
+function renderTracker() {
+  const ongoing = state.projectTracker.filter((p) => p.status !== "Completed");
+  const completed = state.projectTracker.filter((p) => p.status === "Completed");
+  document.getElementById("trackerOngoingList").innerHTML = ongoing.length
+    ? ongoing.map(trackerRow).join("")
+    : `<div class="empty">Nothing ongoing.</div>`;
+  document.getElementById("trackerCompletedList").innerHTML = completed.length
+    ? completed.map(trackerRow).join("")
+    : `<div class="empty">Nothing marked completed yet.</div>`;
+}
+
+document.addEventListener("change", async (e) => {
+  const sel = e.target.closest('[data-action="trackerStatus"]');
+  if (!sel) return;
+  const { id } = sel.dataset;
+  sel.disabled = true;
+  try {
+    await api("/api/project-tracker", { method: "PATCH", body: JSON.stringify({ id, status: sel.value }) });
+    await loadAll();
+  } catch (err) {
+    alert(err.message);
+    sel.disabled = false;
+  }
+});
+
 // ===== data loading =====
 async function loadAll() {
-  const [projects, notes, activity, sessionsInbox, usage] = await Promise.all([
+  const [projects, notes, activity, sessionsInbox, usage, projectTracker] = await Promise.all([
     api("/api/projects"),
     api("/api/notes"),
     api("/api/activity"),
     api("/api/sessions-inbox"),
-    api("/api/usage")
+    api("/api/usage"),
+    api("/api/project-tracker")
   ]);
   state.projects = projects;
   state.notes = notes;
   state.activity = activity;
   state.sessionsInbox = sessionsInbox;
   state.usage = usage;
+  state.projectTracker = projectTracker;
   render();
 }
 
