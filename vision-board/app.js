@@ -179,6 +179,17 @@ function renderPriorities() {
 const COMPANY_ORDER = ["Limitless Mortgage", "Limitless Capital", "Limitless Automated Systems", "Limitless Customers"];
 const GENERAL_COMPANY = "General";
 
+// Within a company's group, its own top-level business record (the one
+// carrying revenue/CEO View) always leads -- otherwise it's easy to bury
+// under a pile of sibling builds and never see its dashboard link.
+function sortWithAnchorFirst(items, companyLabel) {
+  return [...items].sort((a, b) => {
+    const aAnchor = a.name === companyLabel ? 0 : 1;
+    const bAnchor = b.name === companyLabel ? 0 : 1;
+    return aAnchor - bAnchor;
+  });
+}
+
 function groupByCompany(items) {
   const groups = new Map();
   for (const p of items) {
@@ -186,11 +197,11 @@ function groupByCompany(items) {
     if (!groups.has(company)) groups.set(company, []);
     groups.get(company).push(p);
   }
-  const known = COMPANY_ORDER.filter((c) => groups.has(c)).map((label) => ({ label, items: groups.get(label) }));
+  const known = COMPANY_ORDER.filter((c) => groups.has(c)).map((label) => ({ label, items: sortWithAnchorFirst(groups.get(label), label) }));
   const extra = Array.from(groups.keys())
     .filter((k) => !COMPANY_ORDER.includes(k) && k !== GENERAL_COMPANY)
     .sort((a, b) => a.localeCompare(b))
-    .map((label) => ({ label, items: groups.get(label) }));
+    .map((label) => ({ label, items: sortWithAnchorFirst(groups.get(label), label) }));
   const general = groups.has(GENERAL_COMPANY) ? [{ label: GENERAL_COMPANY, items: groups.get(GENERAL_COMPANY) }] : [];
   return [...known, ...extra, ...general];
 }
