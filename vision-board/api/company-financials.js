@@ -15,6 +15,7 @@ const FIN_FIELD = {
   offers: "Offers",
   sales: "Sales"
 };
+const SRC_FIELD = { source: "Source", business: "Business", month: "Month", traffic: "Traffic", leads: "Leads", offers: "Offers", sales: "Sales" };
 
 function shiftMonth(monthKey, delta) {
   const [y, m] = monthKey.split("-").map(Number);
@@ -31,8 +32,24 @@ export default async function handler(request) {
   const businessId = searchParams.get("businessId");
   if (!businessId) return json({ error: "businessId is required" }, 400);
 
-  const [bizRecord, allEntries] = await Promise.all([getRecord(TABLES.projects, businessId), listRecords(TABLES.monthlyFinancials)]);
+  const [bizRecord, allEntries, allSources] = await Promise.all([
+    getRecord(TABLES.projects, businessId),
+    listRecords(TABLES.monthlyFinancials),
+    listRecords(TABLES.leadSources)
+  ]);
   if (!bizRecord) return json({ error: "Business not found" }, 404);
+
+  const sources = allSources
+    .filter((r) => r.fields[SRC_FIELD.business]?.[0] === businessId)
+    .map((r) => ({
+      id: r.id,
+      source: r.fields[SRC_FIELD.source],
+      month: r.fields[SRC_FIELD.month],
+      traffic: r.fields[SRC_FIELD.traffic] || 0,
+      leads: r.fields[SRC_FIELD.leads] || 0,
+      offers: r.fields[SRC_FIELD.offers] || 0,
+      sales: r.fields[SRC_FIELD.sales] || 0
+    }));
 
   const entries = allEntries
     .filter((r) => r.fields[FIN_FIELD.business]?.[0] === businessId)
@@ -71,6 +88,7 @@ export default async function handler(request) {
     },
     currentMonthKey,
     entries,
+    sources,
     thisMonth: byMonth(currentMonthKey),
     lastMonth: byMonth(lastMonthKey),
     lastYearSameMonth: byMonth(lastYearSameMonthKey),
