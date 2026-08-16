@@ -67,8 +67,10 @@ function render() {
   renderInbox();
   renderPresent();
   renderFuture();
+  renderCompleted();
   renderNotes();
   renderActivity();
+  renderCeoViewsNav();
 }
 
 function renderInbox() {
@@ -134,27 +136,71 @@ function usageChipHtml() {
   </div>`;
 }
 
-// Groups items by parentCompany (exact name match to another project on the
-// board). Grouped clusters come first (alphabetical by parent name),
-// standalone items (no parent set) come last with no heading.
-function groupByParent(items) {
+// The company taxonomy David actually runs: fixed display order, with
+// anything else (parked ideas, cross-company projects not yet sorted)
+// falling into General rather than being left unlabeled.
+const COMPANY_ORDER = ["Limitless Mortgage", "Limitless Capital", "Limitless Automated Systems", "Limitless Customers"];
+const GENERAL_COMPANY = "General";
+
+function groupByCompany(items) {
   const groups = new Map();
-  const standalone = [];
   for (const p of items) {
-    const parent = (p.parentCompany || "").trim();
-    if (!parent) {
-      standalone.push(p);
-      continue;
-    }
-    if (!groups.has(parent)) groups.set(parent, []);
-    groups.get(parent).push(p);
+    const company = (p.parentCompany || "").trim() || GENERAL_COMPANY;
+    if (!groups.has(company)) groups.set(company, []);
+    groups.get(company).push(p);
   }
-  const ordered = Array.from(groups.entries())
-    .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([label, groupItems]) => ({ label, items: groupItems }));
-  if (standalone.length) ordered.push({ label: null, items: standalone });
-  return ordered;
+  const known = COMPANY_ORDER.filter((c) => groups.has(c)).map((label) => ({ label, items: groups.get(label) }));
+  const extra = Array.from(groups.keys())
+    .filter((k) => !COMPANY_ORDER.includes(k) && k !== GENERAL_COMPANY)
+    .sort((a, b) => a.localeCompare(b))
+    .map((label) => ({ label, items: groups.get(label) }));
+  const general = groups.has(GENERAL_COMPANY) ? [{ label: GENERAL_COMPANY, items: groups.get(GENERAL_COMPANY) }] : [];
+  return [...known, ...extra, ...general];
 }
+
+// Collapsed company groups persist across reloads so "focus on one
+// company" sticks instead of resetting every time the board loads.
+const COLLAPSED_GROUPS_KEY = "vb-collapsed-groups";
+function loadCollapsedGroups() {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(COLLAPSED_GROUPS_KEY) || "[]"));
+  } catch {
+    return new Set();
+  }
+}
+function saveCollapsedGroups(set) {
+  localStorage.setItem(COLLAPSED_GROUPS_KEY, JSON.stringify([...set]));
+}
+const collapsedGroups = loadCollapsedGroups();
+
+function renderGroupedSection(groups, itemRenderer, { sectionKey, wrapperClass }) {
+  return groups
+    .map((group) => {
+      const groupKey = `${sectionKey}::${group.label}`;
+      const collapsed = collapsedGroups.has(groupKey);
+      return `
+      <button type="button" class="group-header" data-toggle-group="${escapeHtml(groupKey)}" aria-expanded="${!collapsed}">
+        <span class="group-chevron">${collapsed ? "▸" : "▾"}</span>
+        <span class="group-label">${escapeHtml(group.label)}</span>
+      </button>
+      <div class="${wrapperClass}" style="margin-bottom:16px${collapsed ? ";display:none" : ""}">${group.items.map(itemRenderer).join("")}</div>`;
+    })
+    .join("");
+}
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-toggle-group]");
+  if (!btn) return;
+  const key = btn.dataset.toggleGroup;
+  const body = btn.nextElementSibling;
+  const nowCollapsed = body.style.display !== "none";
+  body.style.display = nowCollapsed ? "none" : "";
+  btn.setAttribute("aria-expanded", String(!nowCollapsed));
+  btn.querySelector(".group-chevron").textContent = nowCollapsed ? "▸" : "▾";
+  if (nowCollapsed) collapsedGroups.add(key);
+  else collapsedGroups.delete(key);
+  saveCollapsedGroups(collapsedGroups);
+});
 
 function presentCard(p) {
   const h = healthMeta(p.health);
@@ -180,7 +226,7 @@ function presentCard(p) {
     <div class="pcard-actions">
       ${p.ceoViewUrl ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
-      <button class="btn btn-danger btn-sm" data-action="delete" data-id="${p.id}">Delete</button>
+      <button class="btn btn-ghost btn-sm" data-action="delete" data-id="${p.id}">Complete / Remove</button>
     </div>
   </div>`;
 }
@@ -196,13 +242,7 @@ function renderPresent() {
     return;
   }
 
-  grid.innerHTML = groupByParent(items)
-    .map(
-      (group) => `
-      ${group.label ? `<div class="group-label">${escapeHtml(group.label)}</div>` : ""}
-      <div class="card-grid" style="margin-bottom:16px">${group.items.map(presentCard).join("")}</div>`
-    )
-    .join("");
+  grid.innerHTML = renderGroupedSection(groupByCompany(items), presentCard, { sectionKey: "present", wrapperClass: "card-grid" });
 }
 
 function futureRow(p) {
@@ -231,13 +271,35 @@ function renderFuture() {
     return;
   }
 
-  list.innerHTML = groupByParent(items)
-    .map(
-      (group) => `
-      ${group.label ? `<div class="group-label">${escapeHtml(group.label)}</div>` : ""}
-      <div class="future-list" style="margin-bottom:16px">${group.items.map(futureRow).join("")}</div>`
-    )
-    .join("");
+  list.innerHTML = renderGroupedSection(groupByCompany(items), futureRow, { sectionKey: "future", wrapperClass: "future-list" });
+}
+
+function completedRow(p) {
+  return `
+  <div class="frow" data-id="${p.id}">
+    <div class="frow-main">
+      <h4>${escapeHtml(p.name)}</h4>
+      ${p.winning ? `<p>${escapeHtml(p.winning)}</p>` : ""}
+    </div>
+    <div class="frow-actions">
+      <button class="btn btn-primary btn-sm" data-action="reopen" data-id="${p.id}">Reopen →</button>
+      <button class="btn btn-danger btn-sm" data-action="deleteCompleted" data-id="${p.id}">Delete</button>
+    </div>
+  </div>`;
+}
+
+function renderCompleted() {
+  const list = document.getElementById("completedList");
+  const items = state.projects.filter((p) => p.section === "Completed" && matchesSearch(p));
+
+  if (!items.length) {
+    list.innerHTML = `<div class="empty">${
+      state.search ? "Nothing in Completed Builds matches that search." : "Nothing marked completed yet — finished present builds land here."
+    }</div>`;
+    return;
+  }
+
+  list.innerHTML = renderGroupedSection(groupByCompany(items), completedRow, { sectionKey: "completed", wrapperClass: "future-list" });
 }
 
 function renderNotes() {
@@ -284,6 +346,37 @@ function renderActivity() {
     .join("");
 }
 
+// Builds the sidebar "CEO Views" tree from real project data: one
+// collapsible entry per company, expanding to that company's projects.
+// Only projects with a CEO View URL are clickable -- others show as plain
+// text so it's clear no dashboard exists for them yet.
+function renderCeoViewsNav() {
+  const nav = document.getElementById("ceoViewsNav");
+  const groups = groupByCompany(state.projects.filter((p) => p.section !== "Completed"));
+  if (!groups.length) {
+    nav.innerHTML = `<li style="padding:9px 10px;color:var(--muted);font-size:12.5px">No projects yet</li>`;
+    return;
+  }
+  nav.innerHTML = groups
+    .map((group) => {
+      const rows = group.items
+        .map((p) =>
+          p.ceoViewUrl
+            ? `<li><a href="${escapeHtml(p.ceoViewUrl)}">${escapeHtml(p.name)} <span class="ext">↗</span></a></li>`
+            : `<li><span class="navlink-disabled">${escapeHtml(p.name)}</span></li>`
+        )
+        .join("");
+      return `
+      <li class="nav-company">
+        <details>
+          <summary>${escapeHtml(group.label)}</summary>
+          <ul class="navlinks nav-sublist">${rows}</ul>
+        </details>
+      </li>`;
+    })
+    .join("");
+}
+
 // ===== data loading =====
 async function loadAll() {
   const [projects, notes, activity, sessionsInbox, usage] = await Promise.all([
@@ -314,7 +407,7 @@ function openProjectModal({ project = null, section = "Present" } = {}) {
   document.getElementById("projectId").value = project?.id || "";
   document.getElementById("projectSection").value = project?.section || section;
   document.getElementById("pName").value = project?.name || "";
-  document.getElementById("pParentCompany").value = project?.parentCompany || "";
+  document.getElementById("pParentCompany").value = project?.parentCompany || "General";
   document.getElementById("pWinning").value = project?.winning || "";
   document.getElementById("pNextMove").value = project?.nextMove || "";
   document.getElementById("pBlockers").value = project?.blockers || "";
@@ -402,8 +495,14 @@ document.addEventListener("click", async (e) => {
     openProjectModal({ project });
   }
 
-  if (action === "promote") {
+  if (action === "promote" || action === "reopen") {
     await api("/api/projects", { method: "PATCH", body: JSON.stringify({ id, section: "Present" }) });
+    await loadAll();
+  }
+
+  if (action === "deleteCompleted") {
+    if (!confirm("Permanently delete this completed build? This can't be undone.")) return;
+    await api("/api/projects", { method: "DELETE", body: JSON.stringify({ id }) });
     await loadAll();
   }
 

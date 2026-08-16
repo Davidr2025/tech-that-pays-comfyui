@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Limitless Mortgage — Financial Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .revenue-compare{display:flex;gap:28px;align-items:flex-end;margin:6px 0 4px}
+  .revenue-block .n{font-size:32px;font-weight:600;font-variant-numeric:tabular-nums}
+  .revenue-block .l{font-size:12px;color:var(--muted);margin-top:2px}
+  .revenue-track{height:10px;background:var(--surface-2);border-radius:5px;overflow:hidden;margin-top:14px}
+  .revenue-fill{height:100%;background:var(--accent);border-radius:5px}
+  table.commitments{width:100%;border-collapse:collapse;font-size:13px}
+  table.commitments th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:0 12px 8px;border-bottom:1px solid var(--border)}
+  table.commitments td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  table.commitments tr:last-child td{border-bottom:none}
+  .status-pill{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .status-Done{background:var(--good-soft);color:var(--good)}
+  .status-In-Progress{background:var(--watch-soft);color:var(--watch)}
+  .status-Not-Started{background:var(--surface-2);color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="sidebar">
+    <div class="brand"><span class="icon">🏦</span>Limitless Mortgage</div>
+    <div class="brand-sub">Financial Dashboard</div>
+    <ul class="navlinks">
+      <li><a href="/board.html">← Vision Board</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="signed-in">Signed in as David</div>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="topbar">
+      <div class="topbar-top">
+        <div>
+          <h1>Limitless Mortgage — financials</h1>
+          <div class="date">Live from the LSFG Coaching Airtable — revenue and commitments, nothing estimated.</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="revenue">
+      <div class="section-head"><div><h2>Revenue</h2><div class="section-desc">Monthly, current vs. target.</div></div></div>
+      <div class="pcard" id="revenueCard" style="max-width:520px"><div class="empty">Loading…</div></div>
+    </section>
+
+    <section id="status">
+      <div class="section-head"><div><h2>Status</h2></div></div>
+      <div class="card-grid" id="statusGrid"><div class="empty">Loading…</div></div>
+    </section>
+
+    <section id="commitments">
+      <div class="section-head"><div><h2>Commitments</h2><div class="section-desc">The execution scoreboard for this business.</div></div></div>
+      <div class="pcard" id="commitmentsCard"><div class="empty">Loading…</div></div>
+    </section>
+  </main>
+</div>
+
+<script>
+  function money(n) { return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n || 0); }
+  function healthCls(h) { return h === 'Watch' ? 'watch' : h === 'Blocked' ? 'blocked' : 'on-track'; }
+  function escapeHtml(s) { return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  async function load() {
+    const res = await fetch('/api/financials-limitless-mortgage');
+    if (res.status === 401) { window.location.href = '/login.html'; return; }
+    const d = await res.json();
+    if (d.error) throw new Error(d.error);
+
+    const pct = d.targetRevenue ? Math.min(100, Math.round((d.currentRevenue / d.targetRevenue) * 100)) : 0;
+    document.getElementById('revenueCard').innerHTML = `
+      <div class="revenue-compare">
+        <div class="revenue-block"><div class="n">${money(d.currentRevenue)}</div><div class="l">current / mo</div></div>
+        <div class="revenue-block"><div class="n">${money(d.targetRevenue)}</div><div class="l">target / mo</div></div>
+      </div>
+      <div class="revenue-track"><div class="revenue-fill" style="width:${pct}%"></div></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:6px">${pct}% of target</div>
+    `;
+
+    document.getElementById('statusGrid').innerHTML = `
+      <div class="pcard health-${healthCls(d.health)}">
+        <div class="pcard-top"><h3>Health</h3><span class="pill ${healthCls(d.health)}"><span class="dot"></span>${escapeHtml(d.health || 'Unknown')}</span></div>
+        ${d.role ? `<div class="pcard-row"><div class="pcard-label">Role</div><div class="pcard-text">${escapeHtml(d.role)}</div></div>` : ''}
+      </div>
+      <div class="pcard health-on-track">
+        ${d.winning ? `<div class="pcard-row"><div class="pcard-label">Winning looks like</div><div class="pcard-text">${escapeHtml(d.winning)}</div></div>` : ''}
+        ${d.nextMove ? `<div class="pcard-row"><div class="pcard-label">Next move</div><div class="pcard-text">${escapeHtml(d.nextMove)}</div></div>` : ''}
+        ${d.blockers && d.blockers !== 'None noted yet.' ? `<div class="pcard-row"><div class="pcard-label">Blocking it</div><div class="pcard-text">${escapeHtml(d.blockers)}</div></div>` : ''}
+      </div>
+    `;
+
+    document.getElementById('commitmentsCard').innerHTML = d.commitments.length
+      ? `<table class="commitments">
+          <thead><tr><th>Commitment</th><th>Status</th><th>Owner</th><th>Due</th><th>Outcome</th></tr></thead>
+          <tbody>
+            ${d.commitments.map(c => `
+              <tr>
+                <td>${escapeHtml(c.commitment)}</td>
+                <td><span class="status-pill status-${(c.status || 'Not-Started').replace(/\s+/g, '-')}">${escapeHtml(c.status || 'Not Started')}</span></td>
+                <td>${escapeHtml(c.owner || '—')}</td>
+                <td>${c.dueDate ? new Date(c.dueDate).toLocaleDateString() : '—'}</td>
+                <td>${escapeHtml(c.outcome || '—')}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>`
+      : '<div class="empty">No commitments linked yet.</div>';
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/login.html';
+  });
+
+  load().catch(err => {
+    document.getElementById('revenueCard').innerHTML = `<div class="empty">Couldn't load financials: ${err.message}</div>`;
+  });
+</script>
+</body>
+</html>

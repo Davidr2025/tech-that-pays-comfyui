@@ -87,11 +87,17 @@ export default async function handler(request) {
     if (!body.id) return json({ error: "id is required" }, 400);
     const before = await getRecord(TABLES.projects, body.id);
     const name = before?.fields?.[FIELD.name] || "Untitled";
+
+    if (body.reason === "completed") {
+      // Completed builds move to their own section instead of vanishing --
+      // the record (and its history) stays on the board.
+      const record = await updateRecord(TABLES.projects, body.id, { [FIELD.section]: "Completed" });
+      await logActivity(`Completed '${name}'`, "Completed");
+      return json(toJson(record));
+    }
+
     await deleteRecord(TABLES.projects, body.id);
-    await logActivity(
-      body.reason === "completed" ? `Completed '${name}'` : `Deleted '${name}'`,
-      body.reason === "completed" ? "Completed" : "Deleted"
-    );
+    await logActivity(`Deleted '${name}'`, "Deleted");
     return json({ ok: true });
   }
 
