@@ -48,6 +48,38 @@ async function firstWorkingFeed(src) {
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
+ * De-dupe near-identical stories (same event covered by many outlets):
+ * sort newest-first (by day, then exact timestamp within a day), then
+ * compare sets of significant title words and drop any item that overlaps
+ * heavily with an already-kept, more recent item. Caps the result at
+ * `cap`, dropping from the oldest end — the only items that ever get
+ * dropped for being "full" are the least recent ones, never an arbitrary
+ * cut based on which single run happened to fetch them.
+ */
+function dedupeByRecency(items, cap) {
+  const words = (t) =>
+    new Set(t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length > 3));
+  const dayOf = (iso) => (iso || "").slice(0, 10);
+  const kept = [];
+  for (const it of [...items].sort((a, b) => {
+    const dayCmp = dayOf(b.publishedAt).localeCompare(dayOf(a.publishedAt));
+    if (dayCmp !== 0) return dayCmp;
+    return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
+  })) {
+    const w = words(it.title);
+    const dup = kept.some((k) => {
+      const kw = words(k.title);
+      let overlap = 0;
+      for (const x of w) if (kw.has(x)) overlap++;
+      return overlap / Math.max(1, Math.min(w.size, kw.size)) > 0.6;
+    });
+    if (!dup) kept.push(it);
+    if (kept.length >= cap) break;
+  }
+  return kept;
+}
+
+/**
  * Google News RSS <link> URLs are redirects through news.google.com that
  * only resolve via client-side JavaScript — a plain HTTP fetch just lands
  * on Google's own interstitial page and stops there. A real (headless)
@@ -169,29 +201,10 @@ export async function fetchNews() {
       all.push(...items);
     }
 
-    // De-dupe near-identical stories (same event covered by many outlets):
-    // compare sets of significant title words and drop items that overlap
-    // heavily with an already-kept item.
-    const words = (t) =>
-      new Set(t.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter((w) => w.length > 3));
-    const dayOf = (iso) => (iso || "").slice(0, 10);
-    const kept = [];
-    for (const it of all.sort((a, b) => {
-      const dayCmp = dayOf(b.publishedAt).localeCompare(dayOf(a.publishedAt));
-      if (dayCmp !== 0) return dayCmp;
-      return new Date(b.publishedAt || 0) - new Date(a.publishedAt || 0);
-    })) {
-      const w = words(it.title);
-      const dup = kept.some((k) => {
-        const kw = words(k.title);
-        let overlap = 0;
-        for (const x of w) if (kw.has(x)) overlap++;
-        return overlap / Math.max(1, Math.min(w.size, kw.size)) > 0.6;
-      });
-      if (!dup) kept.push(it);
-      if (kept.length >= maxTotal) break;
-    }
-    const deduped = kept;
+    // Cap how many candidates we bother visiting/processing this run (cost
+    // control) — the real, final cap that decides what actually stays on
+    // the site happens later, after merging with what's already published.
+    const deduped = dedupeByRecency(all, maxTotal);
 
     // Pull real article body text for whatever made the final cut — only
     // now, after de-duping, so we're not paying for a page visit on
@@ -228,7 +241,8 @@ export async function fetchNews() {
     // disk and, for any item that was already rewritten, keep that
     // rewritten title/summary instead of the freshly fetched raw text —
     // only genuinely new URLs come through unrewritten.
-    const existingByUrl = new Map((readData("news.json")?.items || []).map((it) => [it.url, it]));
+    const existingItems = readData("news.json")?.items || [];
+    const existingByUrl = new Map(existingItems.map((it) => [it.url, it]));
     const merged = withText.map((it) => {
       const prev = existingByUrl.get(it.url);
       return prev?.rewritten
@@ -238,9 +252,26 @@ export async function fetchNews() {
     const carriedOver = merged.filter((it) => it.rewritten).length;
     if (carriedOver > 0) log(`news: carried forward ${carriedOver} already-rewritten item(s) still present in the feeds`);
 
+    // A published story shouldn't vanish just because this run's feeds
+    // didn't happen to return its URL again (the outlet stopped listing
+    // it, a search window moved on, etc). Keep any already-rewritten item
+    // not already represented above, then re-run the same recency-first
+    // dedup across the *combined* pool — so a newer item (fresh or
+    // already-published) about the same event wins over an older one, and
+    // the site's item budget is spent on the most recent maxTotal stories
+    // available, not just whatever a single run's feeds returned. An old
+    // item is only ever dropped here because something more recent took
+    // its place, never because the feeds went quiet on it.
+    const mergedUrls = new Set(merged.map((it) => it.url));
+    const retainedOld = existingItems.filter((it) => it.rewritten && !mergedUrls.has(it.url));
+    if (retainedOld.length > 0) {
+      log(`news: retaining ${retainedOld.length} previously-published item(s) not in this run's feeds`);
+    }
+    const final = dedupeByRecency([...merged, ...retainedOld], maxTotal);
+
     return writeData("news.json", {
       updatedAt: new Date().toISOString(),
-      items: merged
+      items: final
     });
   } finally {
     await browser?.close().catch(() => {});
