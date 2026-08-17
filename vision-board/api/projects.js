@@ -18,7 +18,8 @@ const FIELD = {
   blockers: "Blockers",
   ceoViewUrl: "CEO View URL",
   parentCompany: "Parent Company",
-  priorityRank: "Priority Rank"
+  priorityRank: "Priority Rank",
+  sortOrder: "Sort Order"
 };
 
 function toJson(record) {
@@ -51,6 +52,16 @@ export default async function handler(request) {
     if (!body.name || !body.section) {
       return json({ error: "name and section are required" }, 400);
     }
+
+    // New builds land at the end of their company + section group.
+    if (body.sortOrder === undefined) {
+      const all = await listRecords(TABLES.projects);
+      const siblings = all.filter(
+        (r) => r.fields[FIELD.section] === body.section && (r.fields[FIELD.parentCompany] || "").trim() === (body.parentCompany || "").trim()
+      );
+      body.sortOrder = siblings.length ? Math.max(...siblings.map((r) => r.fields[FIELD.sortOrder] ?? 0)) + 10 : 0;
+    }
+
     const fields = toAirtableFields(body);
     const record = await createRecord(TABLES.projects, fields);
     await logActivity(

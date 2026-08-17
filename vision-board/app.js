@@ -16,7 +16,7 @@ async function api(path, options = {}) {
 }
 
 // ===== state =====
-let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, tasks: [], search: "" };
+let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, tasks: [], companies: [], search: "" };
 
 // ===== formatting helpers =====
 const money = (n) =>
@@ -173,21 +173,15 @@ function renderPriorities() {
     .join("");
 }
 
-// The company taxonomy David actually runs: fixed display order, with
-// anything else (parked ideas, cross-company projects not yet sorted)
-// falling into General rather than being left unlabeled.
-const COMPANY_ORDER = ["Limitless Mortgage", "Limitless Capital", "Limitless Automated Systems", "Limitless Customers"];
+// Anything without a Parent Company falls into General rather than being
+// left unlabeled. Group order (across all sections alike) and item order
+// within a group are both fully David-controlled via the move up/down
+// buttons -- see swapCompanySortOrder / swapProjectSortOrder.
 const GENERAL_COMPANY = "General";
 
-// Within a company's group, its own top-level business record (the one
-// carrying revenue/CEO View) always leads -- otherwise it's easy to bury
-// under a pile of sibling builds and never see its dashboard link.
-function sortWithAnchorFirst(items, companyLabel) {
-  return [...items].sort((a, b) => {
-    const aAnchor = a.name === companyLabel ? 0 : 1;
-    const bAnchor = b.name === companyLabel ? 0 : 1;
-    return aAnchor - bAnchor;
-  });
+function companySortOrder(name) {
+  const match = state.companies.find((c) => c.name === name);
+  return match ? match.sortOrder : 500; // unseeded company names sort just ahead of General (9999)
 }
 
 function groupByCompany(items) {
@@ -197,13 +191,52 @@ function groupByCompany(items) {
     if (!groups.has(company)) groups.set(company, []);
     groups.get(company).push(p);
   }
-  const known = COMPANY_ORDER.filter((c) => groups.has(c)).map((label) => ({ label, items: sortWithAnchorFirst(groups.get(label), label) }));
-  const extra = Array.from(groups.keys())
-    .filter((k) => !COMPANY_ORDER.includes(k) && k !== GENERAL_COMPANY)
-    .sort((a, b) => a.localeCompare(b))
-    .map((label) => ({ label, items: sortWithAnchorFirst(groups.get(label), label) }));
-  const general = groups.has(GENERAL_COMPANY) ? [{ label: GENERAL_COMPANY, items: groups.get(GENERAL_COMPANY) }] : [];
-  return [...known, ...extra, ...general];
+  const labels = Array.from(groups.keys()).sort((a, b) => companySortOrder(a) - companySortOrder(b) || a.localeCompare(b));
+  return labels.map((label) => ({
+    label,
+    items: [...groups.get(label)].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  }));
+}
+
+async function swapProjectSortOrder(a, b) {
+  await Promise.all([
+    api("/api/projects", { method: "PATCH", body: JSON.stringify({ id: a.id, sortOrder: b.sortOrder ?? 0 }) }),
+    api("/api/projects", { method: "PATCH", body: JSON.stringify({ id: b.id, sortOrder: a.sortOrder ?? 0 }) })
+  ]);
+}
+
+async function swapCompanySortOrder(a, b) {
+  await Promise.all([
+    api("/api/companies", { method: "PATCH", body: JSON.stringify({ id: a.id, sortOrder: b.sortOrder }) }),
+    api("/api/companies", { method: "PATCH", body: JSON.stringify({ id: b.id, sortOrder: a.sortOrder }) })
+  ]);
+}
+
+// A company name typed into the project modal may not have a Companies
+// record yet -- create one (appended just before General) the first time
+// it's needed for a group-order swap.
+async function ensureCompanyRecord(name) {
+  const existing = state.companies.find((c) => c.name === name);
+  if (existing) return existing;
+  const record = await api("/api/companies", { method: "POST", body: JSON.stringify({ name }) });
+  state.companies.push(record);
+  return record;
+}
+
+const SECTION_LABEL = { present: "Present", future: "Future", completed: "Completed" };
+
+// Recomputes the same grouped view renderPresent/Future/Completed just drew,
+// so a move button always swaps with whichever neighbor is actually visible.
+function currentGroups(sectionKey) {
+  const items = state.projects.filter((p) => p.section === SECTION_LABEL[sectionKey] && matchesSearch(p));
+  return groupByCompany(items);
+}
+
+function currentGroupItems(project) {
+  const groups = currentGroups(Object.keys(SECTION_LABEL).find((k) => SECTION_LABEL[k] === project.section));
+  const company = (project.parentCompany || "").trim() || GENERAL_COMPANY;
+  const group = groups.find((g) => g.label === company);
+  return group ? group.items : [];
 }
 
 // Collapsed company groups persist across reloads so "focus on one
@@ -223,15 +256,22 @@ const collapsedGroups = loadCollapsedGroups();
 
 function renderGroupedSection(groups, itemRenderer, { sectionKey, wrapperClass }) {
   return groups
-    .map((group) => {
+    .map((group, gi) => {
       const groupKey = `${sectionKey}::${group.label}`;
       const collapsed = collapsedGroups.has(groupKey);
+      const items = group.items.map((item, ii) => itemRenderer(item, ii === 0, ii === group.items.length - 1)).join("");
       return `
-      <button type="button" class="group-header" data-toggle-group="${escapeHtml(groupKey)}" aria-expanded="${!collapsed}">
-        <span class="group-chevron">${collapsed ? "▸" : "▾"}</span>
-        <span class="group-label">${escapeHtml(group.label)}</span>
-      </button>
-      <div class="${wrapperClass}" style="margin-bottom:16px${collapsed ? ";display:none" : ""}">${group.items.map(itemRenderer).join("")}</div>`;
+      <div class="group-header-row">
+        <button type="button" class="group-header" data-toggle-group="${escapeHtml(groupKey)}" aria-expanded="${!collapsed}">
+          <span class="group-chevron">${collapsed ? "▸" : "▾"}</span>
+          <span class="group-label">${escapeHtml(group.label)}</span>
+        </button>
+        <div class="group-move-actions">
+          <button type="button" class="icon-btn" data-action="moveGroupUp" data-section="${sectionKey}" data-company="${escapeHtml(group.label)}" title="Move company up" ${gi === 0 ? "disabled" : ""}>▲</button>
+          <button type="button" class="icon-btn" data-action="moveGroupDown" data-section="${sectionKey}" data-company="${escapeHtml(group.label)}" title="Move company down" ${gi === groups.length - 1 ? "disabled" : ""}>▼</button>
+        </div>
+      </div>
+      <div class="${wrapperClass}" style="margin-bottom:16px${collapsed ? ";display:none" : ""}">${items}</div>`;
     })
     .join("");
 }
@@ -240,7 +280,7 @@ document.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-toggle-group]");
   if (!btn) return;
   const key = btn.dataset.toggleGroup;
-  const body = btn.nextElementSibling;
+  const body = btn.closest(".group-header-row").nextElementSibling;
   const nowCollapsed = body.style.display !== "none";
   body.style.display = nowCollapsed ? "none" : "";
   btn.setAttribute("aria-expanded", String(!nowCollapsed));
@@ -271,6 +311,12 @@ function taskListHtml(businessId) {
   </div>`;
 }
 
+function moveButtonsHtml(id, isFirst, isLast) {
+  return `
+  <button type="button" class="icon-btn" data-action="moveItemUp" data-id="${id}" title="Move up" ${isFirst ? "disabled" : ""}>▲</button>
+  <button type="button" class="icon-btn" data-action="moveItemDown" data-id="${id}" title="Move down" ${isLast ? "disabled" : ""}>▼</button>`;
+}
+
 // A financial dashboard (company-financials.html) is different from a
 // generic CEO View (e.g. Tech That Pays' production pipeline) -- give it
 // its own unmissable tile up front instead of a button buried on the
@@ -285,7 +331,7 @@ function financialDashboardTile(p) {
   </a>`;
 }
 
-function presentCard(p) {
+function presentCard(p, isFirst, isLast) {
   const s = statusMeta(p.status);
   const cur = money(p.currentRevenue);
   const tgt = money(p.targetRevenue);
@@ -294,7 +340,10 @@ function presentCard(p) {
   <div class="pcard status-${s.cls}" data-id="${p.id}">
     <div class="pcard-top">
       <h3>${escapeHtml(p.name)}</h3>
-      <span class="pill ${s.cls}"><span class="dot"></span>${s.label}</span>
+      <div class="pcard-top-actions">
+        ${moveButtonsHtml(p.id, isFirst, isLast)}
+        <span class="pill ${s.cls}"><span class="dot"></span>${s.label}</span>
+      </div>
     </div>
     ${p.winning ? `<div class="pcard-row"><div class="pcard-label">Winning looks like</div><div class="pcard-text">${nl2br(p.winning)}</div></div>` : ""}
     ${p.nextMove ? `<div class="pcard-row"><div class="pcard-label">Next move</div><div class="pcard-text">${nl2br(p.nextMove)}</div></div>` : ""}
@@ -330,7 +379,7 @@ function renderPresent() {
   grid.innerHTML = renderGroupedSection(groupByCompany(items), presentCard, { sectionKey: "present", wrapperClass: "card-grid" });
 }
 
-function futureRow(p) {
+function futureRow(p, isFirst, isLast) {
   const s = statusMeta(p.status);
   const isFinDashboard = p.ceoViewUrl && p.ceoViewUrl.startsWith("/company-financials.html");
   return `
@@ -342,6 +391,7 @@ function futureRow(p) {
       ${taskListHtml(p.id)}
     </div>
     <div class="frow-actions">
+      ${moveButtonsHtml(p.id, isFirst, isLast)}
       ${p.ceoViewUrl && !isFinDashboard ? `<a class="btn btn-primary btn-sm" href="${escapeHtml(p.ceoViewUrl)}">CEO View →</a>` : ""}
       <button class="btn btn-primary btn-sm" data-action="promote" data-id="${p.id}">Promote →</button>
       <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${p.id}">Edit</button>
@@ -364,7 +414,7 @@ function renderFuture() {
   list.innerHTML = renderGroupedSection(groupByCompany(items), futureRow, { sectionKey: "future", wrapperClass: "future-list" });
 }
 
-function completedRow(p) {
+function completedRow(p, isFirst, isLast) {
   return `
   <div class="frow" data-id="${p.id}">
     <div class="frow-main">
@@ -372,6 +422,7 @@ function completedRow(p) {
       ${p.winning ? `<p>${escapeHtml(p.winning)}</p>` : ""}
     </div>
     <div class="frow-actions">
+      ${moveButtonsHtml(p.id, isFirst, isLast)}
       <button class="btn btn-primary btn-sm" data-action="reopen" data-id="${p.id}">Reopen →</button>
       <button class="btn btn-danger btn-sm" data-action="deleteCompleted" data-id="${p.id}">Delete</button>
     </div>
@@ -469,13 +520,14 @@ function renderCeoViewsNav() {
 
 // ===== data loading =====
 async function loadAll() {
-  const [projects, notes, activity, sessionsInbox, usage, tasks] = await Promise.all([
+  const [projects, notes, activity, sessionsInbox, usage, tasks, companies] = await Promise.all([
     api("/api/projects"),
     api("/api/notes"),
     api("/api/activity"),
     api("/api/sessions-inbox"),
     api("/api/usage"),
-    api("/api/tasks")
+    api("/api/tasks"),
+    api("/api/companies")
   ]);
   state.projects = projects;
   state.notes = notes;
@@ -483,6 +535,7 @@ async function loadAll() {
   state.sessionsInbox = sessionsInbox;
   state.usage = usage;
   state.tasks = tasks;
+  state.companies = companies;
   render();
 }
 
@@ -653,6 +706,28 @@ document.addEventListener("click", async (e) => {
 
   if (action === "deleteTask") {
     await api("/api/tasks", { method: "DELETE", body: JSON.stringify({ id }) });
+    await loadAll();
+  }
+
+  if (action === "moveItemUp" || action === "moveItemDown") {
+    const project = state.projects.find((p) => p.id === id);
+    if (!project) return;
+    const siblings = currentGroupItems(project);
+    const idx = siblings.findIndex((p) => p.id === id);
+    const targetIdx = action === "moveItemUp" ? idx - 1 : idx + 1;
+    if (idx === -1 || targetIdx < 0 || targetIdx >= siblings.length) return;
+    await swapProjectSortOrder(project, siblings[targetIdx]);
+    await loadAll();
+  }
+
+  if (action === "moveGroupUp" || action === "moveGroupDown") {
+    const { section, company } = btn.dataset;
+    const groups = currentGroups(section);
+    const idx = groups.findIndex((g) => g.label === company);
+    const targetIdx = action === "moveGroupUp" ? idx - 1 : idx + 1;
+    if (idx === -1 || targetIdx < 0 || targetIdx >= groups.length) return;
+    const [a, b] = await Promise.all([ensureCompanyRecord(company), ensureCompanyRecord(groups[targetIdx].label)]);
+    await swapCompanySortOrder(a, b);
     await loadAll();
   }
 });

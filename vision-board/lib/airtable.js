@@ -18,7 +18,8 @@ export const TABLES = {
   commitments: "tblPQwXs6S4aWfdhE", // Commitments
   tasks: "tblmfpK7yhH9englL", // Build Tasks
   monthlyFinancials: "tblj8oiNQE9bpJCFP", // Monthly Financials
-  leadSources: "tblQcHkU0JVmR8YIF" // Lead Sources
+  leadSources: "tblQcHkU0JVmR8YIF", // Lead Sources
+  companies: "tblG9wGJRP7ZvuUNz" // Companies
 };
 
 function airtableUrl(tableId, query = "", baseId = BASE_ID) {
