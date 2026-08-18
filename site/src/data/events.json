@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-18T16:48:04.686Z",
+  "updatedAt": "2026-08-18T22:41:49.537Z",
   "windowDays": 14,
   "items": [
     {
@@ -91,6 +91,16 @@
       "end": "2026-08-29T21:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Urban Composting in the Yard",
+      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
+      "venue": "Port Credit Library",
+      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1993483073536",
+      "start": "2026-09-01T21:30:00.000Z",
+      "end": "2026-09-01T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
