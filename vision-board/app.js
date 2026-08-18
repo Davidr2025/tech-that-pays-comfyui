@@ -254,6 +254,10 @@ function saveCollapsedGroups(set) {
 }
 const collapsedGroups = loadCollapsedGroups();
 
+// Which scratchpad note (if any) is currently showing its edit textarea
+// instead of static text. Purely a UI concern -- never persisted.
+let editingNoteId = null;
+
 function renderGroupedSection(groups, itemRenderer, { sectionKey, wrapperClass }) {
   return groups
     .map((group, gi) => {
@@ -453,20 +457,41 @@ function renderNotes() {
   }
 
   list.innerHTML = items
-    .map(
-      (n) => `
+    .map((n) => {
+      if (n.id === editingNoteId) {
+        return `
+        <div class="note editing" data-id="${n.id}">
+          <div style="flex:1">
+            <textarea class="note-edit-input" data-id="${n.id}">${escapeHtml(n.note)}</textarea>
+          </div>
+          <div class="note-actions">
+            <button class="btn btn-primary btn-sm" data-action="saveNoteEdit" data-id="${n.id}">Save</button>
+            <button class="btn btn-ghost btn-sm" data-action="cancelNoteEdit" data-id="${n.id}">Cancel</button>
+          </div>
+        </div>`;
+      }
+      return `
       <div class="note ${n.pinned ? "pinned" : ""}" data-id="${n.id}">
         <div style="flex:1">
           <div class="note-text">${nl2br(n.note)}</div>
           <div class="note-meta">${relTime(n.createdTime)}</div>
         </div>
         <div class="note-actions">
+          <button class="icon-btn" data-action="editNote" data-id="${n.id}" title="Edit">✎</button>
           <button class="icon-btn" data-action="pin" data-id="${n.id}" title="${n.pinned ? "Unpin" : "Pin"}">${n.pinned ? "★" : "☆"}</button>
           <button class="icon-btn" data-action="deleteNote" data-id="${n.id}" title="Delete">✕</button>
         </div>
-      </div>`
-    )
+      </div>`;
+    })
     .join("");
+
+  if (editingNoteId) {
+    const textarea = list.querySelector(`.note-edit-input[data-id="${editingNoteId}"]`);
+    if (textarea) {
+      textarea.focus();
+      textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+    }
+  }
 }
 
 function renderActivity() {
@@ -698,6 +723,25 @@ document.addEventListener("click", async (e) => {
     await loadAll();
   }
 
+  if (action === "editNote") {
+    editingNoteId = id;
+    renderNotes();
+  }
+
+  if (action === "cancelNoteEdit") {
+    editingNoteId = null;
+    renderNotes();
+  }
+
+  if (action === "saveNoteEdit") {
+    const textarea = document.querySelector(`.note-edit-input[data-id="${id}"]`);
+    const note = textarea.value.trim();
+    if (!note) return;
+    await api("/api/notes", { method: "PATCH", body: JSON.stringify({ id, note }) });
+    editingNoteId = null;
+    await loadAll();
+  }
+
   if (action === "toggleTask") {
     const task = state.tasks.find((t) => t.id === id);
     await api("/api/tasks", { method: "PATCH", body: JSON.stringify({ id, done: !task.done }) });
@@ -767,6 +811,13 @@ document.addEventListener("keydown", async (e) => {
     alert(err.message);
     input.disabled = false;
   }
+});
+
+// ===== scratchpad note edit: Escape cancels =====
+document.addEventListener("keydown", (e) => {
+  if (!e.target.classList?.contains("note-edit-input") || e.key !== "Escape") return;
+  editingNoteId = null;
+  renderNotes();
 });
 
 // ===== scratchpad add =====
