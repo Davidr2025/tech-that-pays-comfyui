@@ -138,6 +138,14 @@ jobs:
           # deploy — without this, a fresh deploy can silently drop a
           # manually-set custom domain in Settings → Pages.
           cname: mississaugainsider.ca
+          # Preserve files outside publish_dir -- specifically the
+          # vision-board/ placeholder seeded below. The ceo-dashboard
+          # Vercel project's GitHub integration watches every branch in
+          # this repo (not just main), and its Root Directory is set to
+          # "vision-board"; without something there, every push here made
+          # that project's build fail outright at Root Directory
+          # resolution, before any ignore/skip config could even run.
+          keep_files: true
 
       - name: Verify live URL
         continue-on-error: true
