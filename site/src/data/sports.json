@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T22:40:31.441Z",
+  "updatedAt": "2026-08-20T10:46:56.353Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -15,17 +15,17 @@
       "team": "Toronto Blue Jays",
       "league": "MLB",
       "event": "Tampa Bay Rays vs Toronto Blue Jays",
-      "date": "2026-08-19",
-      "time": "22:40:00",
+      "date": "2026-08-20",
+      "time": "17:10:00",
       "venue": "George M Steinbrenner Field"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs Charlotte FC",
-      "date": "2026-08-19",
+      "event": "Inter Miami vs Toronto FC",
+      "date": "2026-08-22",
       "time": "23:30:00",
-      "venue": "BMO Field"
+      "venue": "Nu Stadium"
     }
   ]
 }
