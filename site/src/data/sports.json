@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T22:44:50.306Z",
+  "updatedAt": "2026-08-21T10:47:06.900Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,10 +14,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Tampa Bay Rays vs Toronto Blue Jays",
-      "date": "2026-08-20",
-      "time": "17:10:00",
-      "venue": "George M Steinbrenner Field"
+      "event": "New York Yankees vs Toronto Blue Jays",
+      "date": "2026-08-21",
+      "time": "23:05:00",
+      "venue": "Yankee Stadium"
     },
     {
       "team": "Toronto FC",
