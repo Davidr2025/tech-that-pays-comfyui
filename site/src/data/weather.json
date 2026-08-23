@@ -1,61 +1,61 @@
 {
-  "updatedAt": "2026-08-22T22:37:52.011Z",
+  "updatedAt": "2026-08-23T10:38:39.263Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 21,
-    "feelsLike": 21,
-    "text": "Overcast",
-    "icon": "☁️"
+    "temp": 15,
+    "feelsLike": 15,
+    "text": "Partly cloudy",
+    "icon": "⛅"
   },
   "days": [
     {
-      "date": "2026-08-22",
-      "max": 23,
-      "min": 17,
-      "precipChance": 46,
-      "text": "Rain",
-      "icon": "🌧️"
-    },
-    {
       "date": "2026-08-23",
-      "max": 20,
-      "min": 15,
-      "precipChance": 46,
-      "text": "Drizzle",
+      "max": 21,
+      "min": 13,
+      "precipChance": 65,
+      "text": "Light rain",
       "icon": "🌦️"
     },
     {
       "date": "2026-08-24",
-      "max": 16,
-      "min": 13,
-      "precipChance": 55,
-      "text": "Drizzle",
+      "max": 18,
+      "min": 12,
+      "precipChance": 29,
+      "text": "Light drizzle",
       "icon": "🌦️"
     },
     {
       "date": "2026-08-25",
-      "max": 24,
+      "max": 23,
       "min": 15,
-      "precipChance": 3,
-      "text": "Overcast",
-      "icon": "☁️"
+      "precipChance": 1,
+      "text": "Light drizzle",
+      "icon": "🌦️"
     },
     {
       "date": "2026-08-26",
       "max": 28,
       "min": 14,
-      "precipChance": 10,
+      "precipChance": 3,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-08-27",
       "max": 25,
-      "min": 17,
-      "precipChance": 47,
+      "min": 18,
+      "precipChance": 56,
       "text": "Thunderstorm",
       "icon": "⛈️"
+    },
+    {
+      "date": "2026-08-28",
+      "max": 21,
+      "min": 14,
+      "precipChance": 23,
+      "text": "Overcast",
+      "icon": "☁️"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T22:37:53.062Z",
+  "updatedAt": "2026-08-23T10:38:40.828Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -15,17 +15,17 @@
       "team": "Toronto Blue Jays",
       "league": "MLB",
       "event": "New York Yankees vs Toronto Blue Jays",
-      "date": "2026-08-22",
+      "date": "2026-08-23",
       "time": "17:35:00",
       "venue": "Yankee Stadium"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Inter Miami vs Toronto FC",
-      "date": "2026-08-22",
+      "event": "Toronto FC vs New York City FC",
+      "date": "2026-08-29",
       "time": "23:30:00",
-      "venue": "Nu Stadium"
+      "venue": "BMO Field"
     }
   ]
 }
