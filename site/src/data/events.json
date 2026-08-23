@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-08-23T16:42:27.295Z",
+  "updatedAt": "2026-08-23T22:38:17.588Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Kendra Gabrielle",
-      "summary": "Get ready for an unforgettable evening of live music as Kendra Gabrielle , one of Canada's rising country-pop stars, takes the stage in Mississauga! With over 500,000 music streams and a rapidly growing community of 13,000+ social media followers , Kendra Gabrielle is capturing the attention of audiences across Canada with her heartfelt songwriting, powerful vocals, and dynamic stage presence.",
-      "venue": "Port Credit Memorial Park",
-      "url": "https://www.visitmississauga.ca/event/kendra-gabrielle/",
-      "start": "2026-08-23T18:30:00.000Z",
-      "end": "2026-08-23T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Summer Berry Salad",
       "summary": "Join us for an interactive, hands-on workshop that reconnects participants to the earth through the lens of Indigenous food sovereignty.",
@@ -99,6 +89,16 @@
       "url": "https://www.visitmississauga.ca/event/the-egyptian-coptic-festival/",
       "start": "2026-09-05T12:00:00.000Z",
       "end": "2026-09-06T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Movie Night in The Square: Karate Kid",
+      "summary": "Spend an evening in Streetsville enjoying a movie under the stars with a screening of The Karate Kid (2010) . Gather your family and friends, bring along blankets or lawn chairs, and get comfortable in the Village Square for a relaxed and entertaining night out. The movie will begin at dusk, with plenty of pre-movie activities to enjoy—so be sure to arrive early. While you’re there, treat yourself to something delicious from one of the local businesses, whether it’s ice cream, churros, funnel cake, Beavertails, or your favourite snack.",
+      "venue": "streetsville village square",
+      "url": "https://www.visitmississauga.ca/event/movie-night-in-the-square-karate-kid/",
+      "start": "2026-09-06T20:00:00.000Z",
+      "end": "2026-09-06T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
