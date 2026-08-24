@@ -90,6 +90,33 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/",
       "tag": "Free · Trail"
+    },
+    {
+      "title": "Take in the aviation history at Paul Coffey Park",
+      "summary": "A large community park in Malton built around an adventure playground with a fairytale theme, complete with castles, turrets and dragon slides, plus a splash pad, trails and picnic areas. A retired Avro Canada CF-100 Canuck fighter jet sits on display near the park, a nod to Malton's roots as a hub of Canadian aircraft manufacturing.",
+      "venue": "Paul Coffey Park, Malton",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Park"
+    },
+    {
+      "title": "Spend a day at Lakefront Promenade Park",
+      "summary": "A 40-hectare waterfront park in Lakeview with an unsupervised beach, a boardwalk, a splash pad, beach volleyball courts and a marina with slips for visiting boats. One of the most complete free lakefront destinations in the city, with trails and picnic spots along the shore.",
+      "venue": "Lakefront Promenade Park, Lakeview",
+      "url": "https://www.mississauga.ca/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/",
+      "tag": "Free · Waterfront"
+    },
+    {
+      "title": "Escape the weather at Hazel McCallion Central Library",
+      "summary": "The city's flagship library in City Centre, reopened after a major renovation with a fourth-floor Sky Reading Lounge enclosed in glass with panoramic views over Celebration Square. Admission is free, and the building also has a maker space, a gaming lounge and quiet study areas, a solid rainy-day alternative to the city's outdoor spots.",
+      "venue": "Hazel McCallion Central Library, City Centre",
+      "url": "https://www.mississauga.ca/library/",
+      "source": "Mississauga Library System",
+      "sourceUrl": "https://www.mississauga.ca/library/",
+      "tag": "Free · Indoor"
     }
   ]
 }
