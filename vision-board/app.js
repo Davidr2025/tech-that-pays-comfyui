@@ -18,6 +18,35 @@ async function api(path, options = {}) {
 // ===== state =====
 let state = { projects: [], notes: [], activity: [], sessionsInbox: [], usage: null, tasks: [], companies: [], search: "" };
 
+// ===== skill runs (client-only, Managed Agents pilot) =====
+// receipts/research/start-production each need their own MCP server + vault
+// credential (Google Drive, VidIQ, Airtable) before they can run this way --
+// customer-engine-builder needs none of that, so it's the pilot.
+const SKILLS = [
+  {
+    key: "customer-engine-builder",
+    label: "Customer Engine Builder",
+    icon: "🚀",
+    description: "Build a complete offer + sales system (Million Dollar Message, Product Roadmap, SCRIPT, VSL) from a short description."
+  }
+];
+
+const SKILL_RUNS_KEY = "vb-skill-runs";
+function loadSkillRuns() {
+  try {
+    return JSON.parse(localStorage.getItem(SKILL_RUNS_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+function saveSkillRuns() {
+  localStorage.setItem(SKILL_RUNS_KEY, JSON.stringify(skillRuns));
+}
+// key -> { sessionId, status, text, consoleUrl, error }. Persisted so a page
+// refresh doesn't lose track of a run that's still going.
+let skillRuns = loadSkillRuns();
+const skillPollTimers = {};
+
 // ===== formatting helpers =====
 const money = (n) =>
   n || n === 0 ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n) : null;
@@ -75,6 +104,7 @@ function render() {
   renderNotes();
   renderActivity();
   renderCeoViewsNav();
+  renderSkills();
 }
 
 function renderInbox() {
@@ -512,6 +542,98 @@ function renderActivity() {
     .join("");
 }
 
+const SKILL_STATUS_LABEL = { running: "Running…", done: "Done", failed: "Failed" };
+
+function renderSkills() {
+  const grid = document.getElementById("skillsGrid");
+  grid.innerHTML = SKILLS.map((s) => {
+    const run = skillRuns[s.key];
+    const running = run && run.status === "running";
+    let resultHtml = "";
+    if (run) {
+      resultHtml = `<div class="skill-status status-${run.status}">${SKILL_STATUS_LABEL[run.status] || run.status}${run.error ? `: ${escapeHtml(run.error)}` : ""}</div>`;
+      if (run.text) resultHtml += `<div class="skill-result">${nl2br(run.text)}</div>`;
+      if (run.consoleUrl) resultHtml += `<a class="skill-console-link" href="${escapeHtml(run.consoleUrl)}" target="_blank" rel="noopener">Watch live in Console →</a>`;
+    }
+    return `
+    <div class="skill-card" data-skill="${s.key}">
+      <div class="skill-icon">${s.icon}</div>
+      <h3>${escapeHtml(s.label)}</h3>
+      <div class="pcard-text">${escapeHtml(s.description)}</div>
+      ${resultHtml}
+      <div class="pcard-actions">
+        <button type="button" class="btn btn-primary btn-sm" data-action="openSkillRun" data-key="${s.key}" ${running ? "disabled" : ""}>
+          ${running ? "Running…" : "Run →"}
+        </button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ===== run skill modal =====
+const skillRunModal = document.getElementById("skillRunModal");
+const skillRunForm = document.getElementById("skillRunForm");
+
+function openSkillRunModal(key) {
+  const skill = SKILLS.find((s) => s.key === key);
+  if (!skill) return;
+  document.getElementById("skillRunTitle").textContent = `Run: ${skill.label}`;
+  document.getElementById("skillRunKey").value = key;
+  document.getElementById("skillRunInput").value = "";
+  skillRunModal.classList.remove("hidden");
+}
+function closeSkillRunModal() {
+  skillRunModal.classList.add("hidden");
+}
+document.getElementById("skillRunCancelBtn").addEventListener("click", closeSkillRunModal);
+
+skillRunForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const key = document.getElementById("skillRunKey").value;
+  const input = document.getElementById("skillRunInput").value.trim();
+  if (!input) return;
+  closeSkillRunModal();
+
+  skillRuns[key] = { status: "running" };
+  saveSkillRuns();
+  renderSkills();
+
+  try {
+    const { sessionId, consoleUrl } = await api("/api/skills-run", { method: "POST", body: JSON.stringify({ skill: key, input }) });
+    skillRuns[key] = { sessionId, status: "running", consoleUrl };
+    saveSkillRuns();
+    renderSkills();
+    pollSkillRun(key, sessionId);
+  } catch (err) {
+    skillRuns[key] = { status: "failed", error: err.message };
+    saveSkillRuns();
+    renderSkills();
+  }
+});
+
+function pollSkillRun(key, sessionId) {
+  clearTimeout(skillPollTimers[key]);
+  const poll = async () => {
+    try {
+      const data = await api(`/api/skills-status?sessionId=${encodeURIComponent(sessionId)}`);
+      skillRuns[key] = { sessionId, status: data.status, text: data.text, consoleUrl: data.consoleUrl, error: data.error };
+      saveSkillRuns();
+      renderSkills();
+      if (data.status === "running") skillPollTimers[key] = setTimeout(poll, 5000);
+    } catch (err) {
+      skillRuns[key] = { ...skillRuns[key], status: "failed", error: err.message };
+      saveSkillRuns();
+      renderSkills();
+    }
+  };
+  poll();
+}
+
+// Resume polling any run that was still going when the page last closed.
+for (const [key, run] of Object.entries(skillRuns)) {
+  if (run.status === "running" && run.sessionId) pollSkillRun(key, run.sessionId);
+}
+
 // Builds the sidebar "CEO Views" tree from real project data: one
 // collapsible entry per company, expanding to that company's projects.
 // Only projects with a CEO View URL are clickable -- others show as plain
@@ -654,6 +776,10 @@ document.addEventListener("click", async (e) => {
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const { action, id } = btn.dataset;
+
+  if (action === "openSkillRun") {
+    openSkillRunModal(btn.dataset.key);
+  }
 
   if (action === "edit") {
     const project = state.projects.find((p) => p.id === id);

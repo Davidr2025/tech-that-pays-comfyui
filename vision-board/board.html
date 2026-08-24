@@ -24,6 +24,7 @@
       <li><a href="#future" data-nav>Future Builds</a></li>
       <li><a href="#completed" data-nav>Completed Builds</a></li>
       <li><a href="#scratchpad" data-nav>Scratch Pad</a></li>
+      <li><a href="#skills" data-nav>Run Skills</a></li>
       <li><a href="#activity" data-nav>Recent Activity</a></li>
     </ul>
 
@@ -116,6 +117,16 @@
       <div class="note-list" id="noteList"></div>
     </section>
 
+    <section id="skills">
+      <div class="section-head">
+        <div>
+          <h2>Run Skills</h2>
+          <div class="section-desc">Fire a Claude Code skill in the cloud, right from here — no chat window needed.</div>
+        </div>
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
     <section id="activity">
       <div class="section-head">
         <div>
@@ -202,6 +213,22 @@
     <p class="pcard-text" id="confirmBody" style="margin-bottom:18px"></p>
     <div class="modal-actions" id="confirmActions"></div>
   </div>
+</div>
+
+<!-- Run skill modal -->
+<div class="modal-overlay hidden" id="skillRunModal">
+  <form class="modal" style="max-width:480px" id="skillRunForm">
+    <h3 id="skillRunTitle">Run skill</h3>
+    <input type="hidden" id="skillRunKey">
+    <div class="field">
+      <label for="skillRunInput" id="skillRunInputLabel">What do you want to build?</label>
+      <textarea id="skillRunInput" placeholder="A short description is enough to start." required></textarea>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="skillRunCancelBtn">Cancel</button>
+      <button type="submit" class="btn btn-primary" id="skillRunSubmitBtn">Run</button>
+    </div>
+  </form>
 </div>
 
 <script src="/app.js"></script>
