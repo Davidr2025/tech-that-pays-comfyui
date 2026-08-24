@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T22:38:19.895Z",
+  "updatedAt": "2026-08-24T10:53:16.189Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,10 +14,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "New York Yankees vs Toronto Blue Jays",
-      "date": "2026-08-23",
-      "time": "17:35:00",
-      "venue": "Yankee Stadium"
+      "event": "Toronto Blue Jays vs Kansas City Royals",
+      "date": "2026-08-25",
+      "time": "23:07:00",
+      "venue": "Rogers Centre"
     },
     {
       "team": "Toronto FC",
