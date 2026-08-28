@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T20:57:44.461Z",
+  "updatedAt": "2026-08-28T06:07:35.629Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,9 +14,9 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Kansas City Royals",
-      "date": "2026-08-27",
-      "time": "23:07:00",
+      "event": "Toronto Blue Jays vs Seattle Mariners",
+      "date": "2026-08-28",
+      "time": "23:15:00",
       "venue": "Rogers Centre"
     },
     {
