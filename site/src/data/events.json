@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T03:43:35.438Z",
+  "updatedAt": "2026-08-29T15:04:10.595Z",
   "windowDays": 14,
   "items": [
     {
@@ -59,6 +59,36 @@
       "url": "https://www.visitmississauga.ca/event/movie-night-in-the-square-karate-kid/",
       "start": "2026-09-06T20:00:00.000Z",
       "end": "2026-09-06T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga Parkinson Canada SuperWalk",
+      "summary": "C. Saddington Park for a community event raising awareness and support for people living with Parkinson’s disease and their families. This family-friendly walk welcomes participants of all ages and abilities to come together, connect with the community, and make a difference. SuperWalk events support Parkinson Canada’s programs, services, advocacy efforts, and research initiatives. Admission is free, however, online registration prior to the event is preferred.",
+      "venue": "JC Saddington Park",
+      "url": "https://www.visitmississauga.ca/event/mississauga-parkinson-canada-superwalk-2/",
+      "start": "2026-09-12T10:00:00.000Z",
+      "end": "2026-09-12T12:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga Literary Festival",
+      "summary": "Celebrate the culture of reading and writing in Mississauga. Visitors can enjoy Mississauga’s annual literary festival, featuring engaging panel discussions, interactive writing workshops, book-themed activities, local author showcases, a special keynote Author Talk, and plenty more to discover. This is a drop-in event, but registering will ensure attendees receive updates leading up to the Mississauga Literary Festival. Program details and exhibitor information will be available in mid-August.",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.visitmississauga.ca/event/mississauga-literary-festival/",
+      "start": "2026-09-12T10:00:00.000Z",
+      "end": "2026-09-12T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Streetsville's 6th Annual Fall Market",
+      "summary": "Streetsville's 6th Annual Fall Market, a vibrant event for all local residents and visitors, celebrating the autumn season! Get ready for a day of fun, live music, treats, and fantastic finds. On Saturday, September 12, 2026 , starting at 12:00 PM , we invite you to indulge in a day filled with local flavors, arts, crafts, and community spirit. Shop local vendors, enjoy music, kids' activities and free face painting from 12pm-7pm.",
+      "venue": "Streetsville Village Square",
+      "url": "https://www.visitmississauga.ca/event/streetsvilles-annual-fall-market/",
+      "start": "2026-09-12T12:00:00.000Z",
+      "end": "2026-09-12T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
