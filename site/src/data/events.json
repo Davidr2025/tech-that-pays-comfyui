@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T15:04:10.595Z",
+  "updatedAt": "2026-08-29T19:25:25.797Z",
   "windowDays": 14,
   "items": [
     {
@@ -91,6 +91,16 @@
       "end": "2026-09-12T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Author Talks with Jess Janz",
+      "summary": "An in-person talk and book signing with Jess Janz, author of The Table Where Where We Meet.",
+      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/author-talks-with-jess-janz-tickets-1996816726582",
+      "start": "2026-09-12T19:00:00.000Z",
+      "end": "2026-09-12T20:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
