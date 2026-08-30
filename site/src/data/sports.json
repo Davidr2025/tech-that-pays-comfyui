@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-08-30T00:19:27.127Z",
+  "updatedAt": "2026-08-30T14:52:56.578Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
+    {
+      "team": "Raptors 905",
+      "league": "NBA G League",
+      "event": "College Park Skyhawks vs Raptors 905",
+      "date": "2026-11-07",
+      "time": "00:00:00",
+      "venue": "Gateway Center Arena"
+    },
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
