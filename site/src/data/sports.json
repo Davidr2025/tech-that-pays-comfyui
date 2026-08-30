@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T19:25:27.669Z",
+  "updatedAt": "2026-08-30T00:19:27.127Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -15,15 +15,15 @@
       "team": "Toronto Blue Jays",
       "league": "MLB",
       "event": "Toronto Blue Jays vs Seattle Mariners",
-      "date": "2026-08-29",
-      "time": "19:07:00",
+      "date": "2026-08-30",
+      "time": "17:37:00",
       "venue": "Rogers Centre"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs New York City FC",
-      "date": "2026-08-29",
+      "event": "Toronto FC vs Chicago Fire",
+      "date": "2026-09-05",
       "time": "23:30:00",
       "venue": "BMO Field"
     }

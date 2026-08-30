@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-08-29T19:25:25.797Z",
+  "updatedAt": "2026-08-30T00:19:25.427Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Dinner Detective Mississauga: Interactive Murder Mystery Dinner Show",
-      "summary": "Put your detective skills to the test at The Dinner Detective, an immersive murder mystery dinner show where the suspects and actors are hiding in plain sight — right among the audience! Enjoy a delicious multi-course dinner while professional performers lead you through a hilarious, suspenseful mystery filled with clues, interrogation, improv, and unexpected twists. Dinner and the interactive show are included with admission, and a prize package is awarded to the Top Sleuth of the evening.",
-      "venue": "Four Points by Sheraton &#038; Element by Westin Toronto Airport",
-      "url": "https://www.visitmississauga.ca/event/the-dinner-detective-mississauga-interactive-murder-mystery-dinner-show/",
-      "start": "2026-08-29T18:00:00.000Z",
-      "end": "2026-08-29T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Urban Composting in the Yard",
       "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
@@ -59,6 +49,36 @@
       "url": "https://www.visitmississauga.ca/event/movie-night-in-the-square-karate-kid/",
       "start": "2026-09-06T20:00:00.000Z",
       "end": "2026-09-06T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Great Outdoors Comedy Festival 2026",
+      "summary": "Get ready for big laughs in the great outdoors Mississauga! The Great Outdoors Comedy Festival is coming to town! Celebrate a summer weekend with open-air comedy, great food-truck eats, and a festival atmosphere that’s all about good vibes and even better punchlines. With the skyline behind you and the park setting all around, it’s the perfect place to unwind and enjoy top comedians alongside standout local talent. This is a 19+ event and runs rain or shine.",
+      "venue": "Erindale Park, Picnic Area E., 1695 Dundas St. W., Mississauga, Ontario, L5C 1E3",
+      "url": "https://www.visitmississauga.ca/event/great-outdoors-comedy-festival-2026/",
+      "start": "2026-09-11T00:00:00.000Z",
+      "end": "2026-09-13T23:59:59.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Tim Hortons South Side Shuffle – The 28th Annual Port Credit Blues and Jazz Festival",
+      "summary": "The 28th Annual Tim Hortons Southside Shuffle is a non-profit, award-winning blues and jazz festival held in Port Credit, Mississauga, Ontario, Canada, September 11–13, 2026. The three-day outdoor festival features three stages at Port Credit Memorial Park, presenting 60 bands from across Canada and beyond, including over 20 local acts during its Saturday afternoon street party.",
+      "venue": "Port Credit Memorial Park",
+      "url": "https://www.visitmississauga.ca/event/south-side-shuffle-2026/",
+      "start": "2026-09-11T13:00:00.000Z",
+      "end": "2026-09-13T22:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Philippine Festival Mississauga",
+      "summary": "Experience the vibrancy of Filipino heritage through a full day of music, dance, and unforgettable flavours. This lively festival brings the spirit of the Philippines to life with performances, cultural showcases, and a welcoming atmosphere for all. Enjoy live entertainment, traditional and modern dance, and a variety of authentic Filipino cuisine. Browse local vendors, discover unique crafts, and connect with a community proud to share its culture and traditions.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/philippine-festival-mississauga/",
+      "start": "2026-09-11T18:00:00.000Z",
+      "end": "2026-09-13T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
