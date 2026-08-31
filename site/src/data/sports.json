@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30T19:19:48.270Z",
+  "updatedAt": "2026-08-31T00:37:15.144Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,10 +22,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Seattle Mariners",
-      "date": "2026-08-30",
-      "time": "17:37:00",
-      "venue": "Rogers Centre"
+      "event": "Cleveland Guardians vs Toronto Blue Jays",
+      "date": "2026-09-01",
+      "time": "22:40:00",
+      "venue": "Progressive Field"
     },
     {
       "team": "Toronto FC",
