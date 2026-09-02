@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-01T19:24:05.622Z",
+  "updatedAt": "2026-09-02T00:12:51.896Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Urban Composting in the Yard",
-      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
-      "venue": "Port Credit Library",
-      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1993483073536",
-      "start": "2026-09-01T21:30:00.000Z",
-      "end": "2026-09-01T23:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Central Lions Farmers Market – Wednesdays",
       "summary": "Stop by the Central Lions Farmers Market this summer in Mississauga and experience a lively local shopping destination! m. m. m. m. m.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/author-talks-with-jess-janz-tickets-1996816726582",
       "start": "2026-09-12T19:00:00.000Z",
       "end": "2026-09-12T20:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Urban Composting in the Yard",
+      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
+      "venue": "Cooksville Library",
+      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1996738702209",
+      "start": "2026-09-15T21:30:00.000Z",
+      "end": "2026-09-15T23:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
