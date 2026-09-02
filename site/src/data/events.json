@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-02T14:29:09.819Z",
+  "updatedAt": "2026-09-02T19:24:09.383Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Central Lions Farmers Market – Wednesdays",
-      "summary": "Stop by the Central Lions Farmers Market this summer in Mississauga and experience a lively local shopping destination! m. m. m. m. m.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-4/",
-      "start": "2026-09-02T08:00:00.000Z",
-      "end": "2026-09-02T15:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "2nd annual Mississauga Moon and Lantern Festival",
       "summary": "Join us in celebrating the 2nd Annual Mississauga Moon & Lantern Festival 2026 , a vibrant community event honouring the traditional Mid-Autumn Festival , one of the most treasured cultural celebrations across many Asian communities. As part of the Ontario Asian Night Market Series 2026 , this seasonal festival brings the spirit of the harvest moon to Mississauga through captivating lantern displays, cultural performances, delicious mooncakes, diverse food vendors, unique shopping experiences, and engaging activities for all ages.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1996738702209",
       "start": "2026-09-15T21:30:00.000Z",
       "end": "2026-09-15T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Lecture Me! Demystifying Artificial Intelligence",
+      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
+      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/lecture-me-demystifying-artificial-intelligence-tickets-1998483156920",
+      "start": "2026-09-15T23:00:00.000Z",
+      "end": "2026-09-16T00:15:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
