@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-03T19:18:19.446Z",
+  "updatedAt": "2026-09-04T00:05:47.558Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,10 +22,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Cleveland Guardians vs Toronto Blue Jays",
-      "date": "2026-09-03",
-      "time": "17:10:00",
-      "venue": "Progressive Field"
+      "event": "Kansas City Royals vs Toronto Blue Jays",
+      "date": "2026-09-05",
+      "time": "23:10:00",
+      "venue": "Kauffman Stadium"
     },
     {
       "team": "Toronto FC",
