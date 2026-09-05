@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-09-05T00:03:49.135Z",
+  "updatedAt": "2026-09-05T13:28:24.003Z",
   "items": [
+    {
+      "title": "What services are open and closed in Mississauga this Labour Day?",
+      "url": "https://www.mississauga.com/news/labour-day-mississauga/article_f271fb5e-90c7-5e8b-acd4-b6af39c06aaf.html",
+      "source": "mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-09-05T10:00:00.000Z",
+      "summary": "Most retails stores and city services will be closed. What’s open and closed in Mississauga on Labour Day this Monday? Labour Day is on Monday, Sept. 7 and here’s a list of services and places open and closed for the day. Outdoor pools, spray pads and the Celebration Square wading pool will be open on Labour Day. GO Transit will operate on a Saturday schedule. m. , while all others are closed. m. m. , including at Heartland Mall (although the rest of the mall is closed); 2458 Dundas St. ; 1550 Dundas St. ; as well as 1-3560 Lakeshore Blvd. W."
+    },
     {
       "title": "Bert Fleming Park Redesign Heads Back to Mississauga Council Next Week",
       "url": "https://www.insauga.com/old-park-to-be-turned-into-neighbourhood-hub-in-mississauga-city/",
@@ -47,6 +55,14 @@
       "rewritten": true
     },
     {
+      "title": "2 arrested, 2 outstanding in Brampton home invasion, shooting: police",
+      "url": "https://www.cbc.ca/news/canada/toronto/arrests-home-invasion-shooting-brampton-9.7332891?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-09-04T17:31:15.000Z",
+      "summary": ", in June."
+    },
+    {
       "title": "Mississauga August Home Sales Slip 13 Per Cent as Days on Market Stretch to 54, Zoocasa Finds",
       "url": "https://www.insauga.com/average-price-of-a-condo-dips-below-500k-in-mississauga/",
       "source": "INsauga",
@@ -58,7 +74,7 @@
     {
       "title": "22-Unit Affordable Rental Building Breaks Ground in Mississauga's Meadowvale Area",
       "url": "https://www.mississauga.com/news/affordable-housing-mississauga/article_cd8d5d5d-7a5d-5c34-baf8-249d37d83e48.html",
-      "source": "Mississauga.com",
+      "source": "mississauga.com",
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-09-04T10:00:00.000Z",
       "summary": "According to Mississauga.com, construction has begun on a new affordable rental housing project in the city's Meadowvale area. The outlet reports the four-storey building, located at the northwest corner of Winston Churchill Boulevard and Britannia Road, will include 22 units. Mississauga.com reports 18 of those units will be subsidized through affordable housing incentive programs run by Peel Region and the City of Mississauga. According to the outlet, project owner Safwat Boulos said the development was first proposed in 2022 as a 20-unit project and is expected to be ready for occupancy before the end of 2027. Mississauga.com reports the building will offer a mix of one-bedroom plus den, two-bedroom plus den, and three-bedroom plus den units, with the project having secured both regional and municipal funding.",
@@ -83,13 +99,12 @@
       "rewritten": true
     },
     {
-      "title": "Lakeview Home's $1.78 Million Over-Asking Sale Tops Mississauga's Market Last Month",
-      "url": "https://www.insauga.com/most-expensive-home-sold-for-over-asking-in-mississauga-last-month/",
-      "source": "INsauga",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-09-03T18:04:29.000Z",
-      "summary": "According to INsauga, a four-bedroom home in Mississauga's Lakeview neighbourhood was the city's most expensive over-asking sale last month, according to a new report from Zoocasa. The outlet reports the home sold for $1,782,777, well above its $1,699,000 list price. INsauga reports the property includes a mudroom with direct garage access, a built-in surround sound system, and a finished basement with a home theatre and wine cellar. According to the outlet, the backyard also features an in-ground pool. INsauga reports the sale was highlighted in Zoocasa's monthly roundup of the Greater Toronto Area's top over-asking home sales, drawing attention to Mississauga's competitive housing market.",
-      "rewritten": true
+      "title": "Mississauga to receive up to $401.4 million to support housing and community infrastructure",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/mississauga-to-receive-up-to-401-4-million-to-support-housing-and-community-infrastructure/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca",
+      "publishedAt": "2026-09-03T18:07:25.000Z",
+      "summary": "The City’s efforts to make it easier to build new homes, including significant development charge reductions, helped secure the substantial new funding. 4 million in funding to help Mississauga build housing-enabling infrastructure including important new transit projects. Mayor Carolyn Parrish and Members of Council joined Ontario Premier Doug Ford for today’s official announcement alongside Rob Flack, Minister of Municipal Affairs and Housing, Jennifer McKelvie, Parliamentary Secretary to the Minister of Housing and Infrastructure and Member of Parliament for Ajax, and Peter Fonseca, Member of Parliament for Mississauga-East Cooksville. The funding, part of the Development Charges Reduction Program, helps municipalities who have reduced development charges invest in the infrastructure they need to support growth. It is part of the broader Canada-Ontario Partnership to Build. Mississauga was one of the first cities in Ontario to substantially reduce development charges – by up to 100 per cent – to help get more homes built and make them more affordable. The City has agreed to maintain these reductions until March 31, 2029. The new funding will help support housing-enabling infrastructure including two key transit projects: a new zero-emissions transit maintenance and storage facility and new downtown transit mobility hub. As Canada’s seventh largest city, significant investment in transit infrastructure is critical to support new housing development. These investments, which the City has long advocated for, will help support Mississauga’s growing population and deliver lasting benefits for residents and businesses. The City is planning a new zero-emission transit facility on City-owned land at 7300 West Credit Avenue to support future growth and improve service."
     }
   ]
 }
