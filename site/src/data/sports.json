@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T18:17:09.010Z",
+  "updatedAt": "2026-09-05T23:54:34.559Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -23,15 +23,15 @@
       "team": "Toronto Blue Jays",
       "league": "MLB",
       "event": "Kansas City Royals vs Toronto Blue Jays",
-      "date": "2026-09-05",
-      "time": "23:10:00",
+      "date": "2026-09-06",
+      "time": "18:10:00",
       "venue": "Kauffman Stadium"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs Chicago Fire",
-      "date": "2026-09-05",
+      "event": "Toronto FC vs Nashville SC",
+      "date": "2026-09-09",
       "time": "23:30:00",
       "venue": "BMO Field"
     }
