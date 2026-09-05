@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-04T18:59:47.380Z",
+  "updatedAt": "2026-09-05T00:03:50.280Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "2nd annual Mississauga Moon and Lantern Festival",
-      "summary": "Join us in celebrating the 2nd Annual Mississauga Moon & Lantern Festival 2026 , a vibrant community event honouring the traditional Mid-Autumn Festival , one of the most treasured cultural celebrations across many Asian communities. As part of the Ontario Asian Night Market Series 2026 , this seasonal festival brings the spirit of the harvest moon to Mississauga through captivating lantern displays, cultural performances, delicious mooncakes, diverse food vendors, unique shopping experiences, and engaging activities for all ages.",
-      "venue": "Square One Shopping Centre, Lot P6",
-      "url": "https://www.visitmississauga.ca/event/2nd-annual-mississauga-moon-and-lantern-festival/",
-      "start": "2026-09-04T17:00:00.000Z",
-      "end": "2026-09-07T23:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Egyptian Coptic Festival",
       "summary": "Celebrate the rich heritage of the Coptic community through a vibrant gathering filled with history, flavour, and community spirit. This festival offers a unique opportunity to explore one of the world’s oldest cultures in a welcoming and lively setting. Enjoy authentic Egyptian cuisine, traditional music, and cultural performances that showcase centuries of heritage. Browse artisan vendors, discover handcrafted goods, and take part in activities for all ages.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/lecture-me-demystifying-artificial-intelligence-tickets-1998483156920",
       "start": "2026-09-15T23:00:00.000Z",
       "end": "2026-09-16T00:15:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Midday Melodies featuring Andrew Sords & Cheryl Duvall",
+      "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
+      "venue": "Maker Stage, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/midday-melodies-featuring-andrew-sords-cheryl-duvall-tickets-1998963881781",
+      "start": "2026-09-16T16:00:00.000Z",
+      "end": "2026-09-16T17:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
