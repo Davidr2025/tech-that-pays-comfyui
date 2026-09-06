@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-05T23:54:32.524Z",
+  "updatedAt": "2026-09-06T13:41:11.614Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Egyptian Coptic Festival",
-      "summary": "Celebrate the rich heritage of the Coptic community through a vibrant gathering filled with history, flavour, and community spirit. This festival offers a unique opportunity to explore one of the world’s oldest cultures in a welcoming and lively setting. Enjoy authentic Egyptian cuisine, traditional music, and cultural performances that showcase centuries of heritage. Browse artisan vendors, discover handcrafted goods, and take part in activities for all ages.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/the-egyptian-coptic-festival/",
-      "start": "2026-09-05T12:00:00.000Z",
-      "end": "2026-09-06T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Movie Night in The Square: Karate Kid",
       "summary": "Spend an evening in Streetsville enjoying a movie under the stars with a screening of The Karate Kid (2010) . Gather your family and friends, bring along blankets or lawn chairs, and get comfortable in the Village Square for a relaxed and entertaining night out. The movie will begin at dusk, with plenty of pre-movie activities to enjoy—so be sure to arrive early. While you’re there, treat yourself to something delicious from one of the local businesses, whether it’s ice cream, churros, funnel cake, Beavertails, or your favourite snack.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/midday-melodies-featuring-andrew-sords-cheryl-duvall-tickets-1998963881781",
       "start": "2026-09-16T16:00:00.000Z",
       "end": "2026-09-16T17:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Newcomer Kitchen: Eastern Taste",
+      "summary": "Step into the world of Pakistani cooking with host Nadia Mumtaz from Eastern Taste, bringing together bold spices and timeless traditions.",
+      "venue": "Hazel McCallion Central Library, Teaching Kitchen, 4th Floor",
+      "url": "https://www.eventbrite.ca/e/newcomer-kitchen-eastern-taste-tickets-1999498306259",
+      "start": "2026-09-17T15:00:00.000Z",
+      "end": "2026-09-17T16:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
