@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-06T18:17:02.872Z",
+  "updatedAt": "2026-09-06T23:52:47.786Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Movie Night in The Square: Karate Kid",
-      "summary": "Spend an evening in Streetsville enjoying a movie under the stars with a screening of The Karate Kid (2010) . Gather your family and friends, bring along blankets or lawn chairs, and get comfortable in the Village Square for a relaxed and entertaining night out. The movie will begin at dusk, with plenty of pre-movie activities to enjoy—so be sure to arrive early. While you’re there, treat yourself to something delicious from one of the local businesses, whether it’s ice cream, churros, funnel cake, Beavertails, or your favourite snack.",
-      "venue": "streetsville village square",
-      "url": "https://www.visitmississauga.ca/event/movie-night-in-the-square-karate-kid/",
-      "start": "2026-09-06T20:00:00.000Z",
-      "end": "2026-09-06T23:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Great Outdoors Comedy Festival 2026",
       "summary": "Get ready for big laughs in the great outdoors Mississauga! The Great Outdoors Comedy Festival is coming to town! Celebrate a summer weekend with open-air comedy, great food-truck eats, and a festival atmosphere that’s all about good vibes and even better punchlines. With the skyline behind you and the park setting all around, it’s the perfect place to unwind and enjoy top comedians alongside standout local talent. This is a 19+ event and runs rain or shine.",
@@ -121,6 +111,16 @@
       "end": "2026-09-17T16:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "AfroCan Roots & Rhythms Festival 2026",
+      "summary": "Celebrate the richness and diversity of African and Caribbean culture at this vibrant, high-energy festival. From powerful live performances to music that moves you, this is a full-sensory experience rooted in heritage, community, and expression. Expect live music, cultural showcases, dynamic dance performances, and a lineup of artists bringing the sounds of Afrobeats, reggae, dancehall, and more to life. Explore authentic cuisine, support local vendors, and connect with a community that celebrates culture in every form.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/afrocan-roots-rhythms-festival-2026/",
+      "start": "2026-09-18T17:00:00.000Z",
+      "end": "2026-09-19T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }

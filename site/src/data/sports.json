@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T18:17:04.396Z",
+  "updatedAt": "2026-09-06T23:52:49.013Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,10 +22,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Kansas City Royals vs Toronto Blue Jays",
-      "date": "2026-09-06",
-      "time": "18:10:00",
-      "venue": "Kauffman Stadium"
+      "event": "Athletics vs Toronto Blue Jays",
+      "date": "2026-09-08",
+      "time": "02:05:00",
+      "venue": "Sutter Health Park"
     },
     {
       "team": "Toronto FC",
