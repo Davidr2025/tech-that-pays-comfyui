@@ -117,6 +117,24 @@
       "source": "Mississauga Library System",
       "sourceUrl": "https://www.mississauga.ca/library/",
       "tag": "Free · Indoor"
+    },
+    {
+      "title": "Wander the heritage grounds of Adamson Estate",
+      "summary": "A 13-acre waterfront property in Lakeview built around a 1920s manor house, gatehouse and barn, with grounds that are now a public park along the Waterfront Trail. Free parking and a small beach make it an easy stop for a lakeside walk or a picnic among the historic buildings.",
+      "venue": "Adamson Estate, Lakeview",
+      "url": "https://www.mississauga.ca/events-and-attractions/parks/adamson-estate/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/events-and-attractions/parks/adamson-estate/",
+      "tag": "Free · Heritage"
+    },
+    {
+      "title": "Stroll the woodlot and gardens at Cawthra Park",
+      "summary": "Once the private grounds of the 1926 Cawthra-Elliot family estate near Cawthra Road and the QEW, this property was purchased by the City of Mississauga in 1974 and opened for passive park use. Its surrounding woodlot is provincially recognized habitat for the endangered Jefferson salamander, making it one of the city's more ecologically significant green spaces.",
+      "venue": "Cawthra Park, near Cawthra Road and the QEW",
+      "url": "https://www.mississauga.ca/events-and-attractions/parks/cawthra-park/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/events-and-attractions/parks/cawthra-park/",
+      "tag": "Free · Garden"
     }
   ]
 }
