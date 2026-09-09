@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-08T19:26:32.100Z",
+  "updatedAt": "2026-09-09T00:13:20.862Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Great Outdoors Comedy Festival 2026",
-      "summary": "Get ready for big laughs in the great outdoors Mississauga! The Great Outdoors Comedy Festival is coming to town! Celebrate a summer weekend with open-air comedy, great food-truck eats, and a festival atmosphere that’s all about good vibes and even better punchlines. With the skyline behind you and the park setting all around, it’s the perfect place to unwind and enjoy top comedians alongside standout local talent. This is a 19+ event and runs rain or shine.",
-      "venue": "Erindale Park, Picnic Area E., 1695 Dundas St. W., Mississauga, Ontario, L5C 1E3",
-      "url": "https://www.visitmississauga.ca/event/great-outdoors-comedy-festival-2026/",
-      "start": "2026-09-11T00:00:00.000Z",
-      "end": "2026-09-13T23:59:59.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Tim Hortons South Side Shuffle – The 28th Annual Port Credit Blues and Jazz Festival",
       "summary": "The 28th Annual Tim Hortons Southside Shuffle is a non-profit, award-winning blues and jazz festival held in Port Credit, Mississauga, Ontario, Canada, September 11–13, 2026. The three-day outdoor festival features three stages at Port Credit Memorial Park, presenting 60 bands from across Canada and beyond, including over 20 local acts during its Saturday afternoon street party.",
@@ -121,6 +111,16 @@
       "end": "2026-09-19T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "International Observe the Moon Night",
+      "summary": "International Observe the Moon Night is a worldwide public event that encourages observation, appreciation and understanding of our Moon.",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/international-observe-the-moon-night-tickets-1997165142704",
+      "start": "2026-09-18T22:30:00.000Z",
+      "end": "2026-09-19T00:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
