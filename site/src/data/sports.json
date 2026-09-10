@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-09T19:17:03.483Z",
+  "updatedAt": "2026-09-10T00:14:02.635Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -30,18 +30,18 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Athletics vs Toronto Blue Jays",
-      "date": "2026-09-09",
-      "time": "01:40:00",
-      "venue": "Sutter Health Park"
+      "event": "Toronto Blue Jays vs Baltimore Orioles",
+      "date": "2026-09-11",
+      "time": "23:07:00",
+      "venue": "Rogers Centre"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs Nashville SC",
-      "date": "2026-09-09",
+      "event": "Orlando City vs Toronto FC",
+      "date": "2026-09-12",
       "time": "23:30:00",
-      "venue": "BMO Field"
+      "venue": "Inter&Co Stadium"
     }
   ]
 }
