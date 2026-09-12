@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-12T00:17:34.151Z",
+  "updatedAt": "2026-09-12T13:36:55.421Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga Parkinson Canada SuperWalk",
-      "summary": "C. Saddington Park for a community event raising awareness and support for people living with Parkinson’s disease and their families. This family-friendly walk welcomes participants of all ages and abilities to come together, connect with the community, and make a difference. SuperWalk events support Parkinson Canada’s programs, services, advocacy efforts, and research initiatives. Admission is free, however, online registration prior to the event is preferred.",
-      "venue": "JC Saddington Park",
-      "url": "https://www.visitmississauga.ca/event/mississauga-parkinson-canada-superwalk-2/",
-      "start": "2026-09-12T10:00:00.000Z",
-      "end": "2026-09-12T12:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Mississauga Literary Festival",
       "summary": "Celebrate the culture of reading and writing in Mississauga. Visitors can enjoy Mississauga’s annual literary festival, featuring engaging panel discussions, interactive writing workshops, book-themed activities, local author showcases, a special keynote Author Talk, and plenty more to discover. This is a drop-in event, but registering will ensure attendees receive updates leading up to the Mississauga Literary Festival. Program details and exhibitor information will be available in mid-August.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/taste-of-cooksville-2026/",
       "start": "2026-09-19T11:00:00.000Z",
       "end": "2026-09-20T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Portugalo Fest 2026",
+      "summary": "Celebrate the vibrant traditions, culture, and community spirit of Portugal at Portugalo Fest 2026 in Mississauga. This exciting annual festival brings together residents and visitors for a memorable celebration of Portuguese heritage, featuring live entertainment, traditional music and dance performances, authentic cuisine, cultural exhibits, local artisans, and activities for all ages.",
+      "venue": "Port Credit Memorial Park",
+      "url": "https://www.visitmississauga.ca/event/portugalo-fest-2026/",
+      "start": "2026-09-19T13:00:00.000Z",
+      "end": "2026-09-19T22:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
