@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-09-11T19:10:20.760Z",
+  "updatedAt": "2026-09-12T00:17:34.151Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Tim Hortons South Side Shuffle – The 28th Annual Port Credit Blues and Jazz Festival",
-      "summary": "The 28th Annual Tim Hortons Southside Shuffle is a non-profit, award-winning blues and jazz festival held in Port Credit, Mississauga, Ontario, Canada, September 11–13, 2026. The three-day outdoor festival features three stages at Port Credit Memorial Park, presenting 60 bands from across Canada and beyond, including over 20 local acts during its Saturday afternoon street party.",
-      "venue": "Port Credit Memorial Park",
-      "url": "https://www.visitmississauga.ca/event/south-side-shuffle-2026/",
-      "start": "2026-09-11T13:00:00.000Z",
-      "end": "2026-09-13T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Philippine Festival Mississauga",
-      "summary": "Experience the vibrancy of Filipino heritage through a full day of music, dance, and unforgettable flavours. This lively festival brings the spirit of the Philippines to life with performances, cultural showcases, and a welcoming atmosphere for all. Enjoy live entertainment, traditional and modern dance, and a variety of authentic Filipino cuisine. Browse local vendors, discover unique crafts, and connect with a community proud to share its culture and traditions.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/philippine-festival-mississauga/",
-      "start": "2026-09-11T18:00:00.000Z",
-      "end": "2026-09-13T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Mississauga Parkinson Canada SuperWalk",
       "summary": "C. Saddington Park for a community event raising awareness and support for people living with Parkinson’s disease and their families. This family-friendly walk welcomes participants of all ages and abilities to come together, connect with the community, and make a difference. SuperWalk events support Parkinson Canada’s programs, services, advocacy efforts, and research initiatives. Admission is free, however, online registration prior to the event is preferred.",
@@ -121,6 +101,26 @@
       "end": "2026-09-19T00:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Butter Tarts & More Market",
+      "summary": "The Streetsville Butter Tarts & More Market, presented by Gotta Luv Buttertarts, will take place on Saturday, September 19, 2026. The event will showcase a delicious assortment of sweet treats, fresh baked goods, and a wide variety of butter tarts from local and small businesses. Visitors can shop from local vendors, discover unique products, and enjoy live performances by local musicians throughout the day.",
+      "venue": "",
+      "url": "https://www.visitmississauga.ca/event/butter-tarts-more-market/",
+      "start": "2026-09-19T10:00:00.000Z",
+      "end": "2026-09-19T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Taste of Cooksville 2026",
+      "summary": "Two days of global flavours, live entertainment and family fun await at one of Mississauga’s largest food festivals! Cooksville BIA presents Taste of Cooksville 2026, a free celebration of food, music, culture, local shopping and so much more. This year, enjoy extended festival hours, explore the Cooksville community, and check out a brand-new car show featuring an exciting lineup of vehicles.",
+      "venue": "",
+      "url": "https://www.visitmississauga.ca/event/taste-of-cooksville-2026/",
+      "start": "2026-09-19T11:00:00.000Z",
+      "end": "2026-09-20T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
