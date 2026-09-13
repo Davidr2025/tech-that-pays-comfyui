@@ -1,37 +1,7 @@
 {
-  "updatedAt": "2026-09-12T18:22:29.084Z",
+  "updatedAt": "2026-09-13T00:00:36.180Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Streetsville's 6th Annual Fall Market",
-      "summary": "Streetsville's 6th Annual Fall Market, a vibrant event for all local residents and visitors, celebrating the autumn season! Get ready for a day of fun, live music, treats, and fantastic finds. On Saturday, September 12, 2026 , starting at 12:00 PM , we invite you to indulge in a day filled with local flavors, arts, crafts, and community spirit. Shop local vendors, enjoy music, kids' activities and free face painting from 12pm-7pm.",
-      "venue": "Streetsville Village Square",
-      "url": "https://www.visitmississauga.ca/event/streetsvilles-annual-fall-market/",
-      "start": "2026-09-12T12:00:00.000Z",
-      "end": "2026-09-12T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Mississauga Literary Festival",
-      "summary": "Celebrate the culture of reading and writing in Canada.",
-      "venue": "Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/mississauga-literary-festival-tickets-1993545198353",
-      "start": "2026-09-12T14:00:00.000Z",
-      "end": "2026-09-12T20:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "Author Talks with Jess Janz",
-      "summary": "An in-person talk and book signing with Jess Janz, author of The Table Where Where We Meet.",
-      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/author-talks-with-jess-janz-tickets-1996816726582",
-      "start": "2026-09-12T19:00:00.000Z",
-      "end": "2026-09-12T20:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Urban Composting in the Yard",
       "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
@@ -119,6 +89,36 @@
       "url": "https://www.visitmississauga.ca/event/portugalo-fest-2026/",
       "start": "2026-09-19T13:00:00.000Z",
       "end": "2026-09-19T22:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Urban Composting in the Yard",
+      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
+      "venue": "Burnhamthorpe Library",
+      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1996741909803",
+      "start": "2026-09-22T22:30:00.000Z",
+      "end": "2026-09-23T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Cookbook Club",
+      "summary": "Connect with fellow foodies through our monthly cookbook club.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-1996723353300",
+      "start": "2026-09-23T18:00:00.000Z",
+      "end": "2026-09-23T19:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "The 3rd Annual of Arts of the Middle East Festival",
+      "summary": "The Arts of the Middle East Festival celebrates the diverse cultures, traditions, and artistic expressions of the Middle East through a full day of performances, cultural experiences, family activities, and food. The festival features live performances by talented Arabic artists, showcasing music, dance, and cultural traditions from across the region. A dedicated children's area offers interactive activities and entertainment for younger attendees.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/the-3rd-annual-of-arts-of-the-middle-east-festival/",
+      "start": "2026-09-25T16:00:00.000Z",
+      "end": "2026-09-26T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
