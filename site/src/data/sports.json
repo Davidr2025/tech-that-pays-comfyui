@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13T18:47:40.958Z",
+  "updatedAt": "2026-09-14T00:10:29.561Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -30,9 +30,9 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Baltimore Orioles",
-      "date": "2026-09-13",
-      "time": "17:37:00",
+      "event": "Toronto Blue Jays vs Detroit Tigers",
+      "date": "2026-09-14",
+      "time": "23:07:00",
       "venue": "Rogers Centre"
     },
     {
