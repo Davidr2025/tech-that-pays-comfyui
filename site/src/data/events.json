@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-09-15T19:42:21.078Z",
+  "updatedAt": "2026-09-16T00:18:20.064Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Urban Composting in the Yard",
-      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
-      "venue": "Cooksville Library",
-      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1996738702209",
-      "start": "2026-09-15T21:30:00.000Z",
-      "end": "2026-09-15T23:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "Lecture Me! Demystifying Artificial Intelligence",
-      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
-      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/lecture-me-demystifying-artificial-intelligence-tickets-1998483156920",
-      "start": "2026-09-15T23:00:00.000Z",
-      "end": "2026-09-16T00:15:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Midday Melodies featuring Andrew Sords & Cheryl Duvall",
       "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
@@ -119,6 +99,16 @@
       "url": "https://www.visitmississauga.ca/event/the-3rd-annual-of-arts-of-the-middle-east-festival/",
       "start": "2026-09-25T16:00:00.000Z",
       "end": "2026-09-26T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Grand Illusion Show – WONDR",
+      "summary": "Prepare to be amazed at The Grand Illusion Show: WONDR at The Rec Room Square One ! Featuring mind-bending illusions, jaw-dropping magic, and unforgettable moments that will leave you questioning what's real, this family-friendly experience is packed with wonder from beginning to end. A perfect night out for anyone who loves mystery, magic, and live entertainment.",
+      "venue": "The Rec Room",
+      "url": "https://www.visitmississauga.ca/event/the-grand-illusion-show-wondr/",
+      "start": "2026-09-25T19:30:00.000Z",
+      "end": "2026-09-25T20:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
