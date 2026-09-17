@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-09-17T15:00:29.387Z",
+  "updatedAt": "2026-09-17T15:30:01.773Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 21,
-    "feelsLike": 21,
-    "text": "Clear",
-    "icon": "☀️"
+    "feelsLike": 23,
+    "text": "Mainly clear",
+    "icon": "🌤️"
   },
   "days": [
     {
       "date": "2026-09-17",
-      "max": 25,
+      "max": 24,
       "min": 15,
       "precipChance": 7,
       "text": "Overcast",
