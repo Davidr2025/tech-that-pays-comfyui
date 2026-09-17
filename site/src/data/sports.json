@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-16T19:34:04.384Z",
+  "updatedAt": "2026-09-17T00:30:46.766Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -30,10 +30,10 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Toronto Blue Jays vs Detroit Tigers",
-      "date": "2026-09-16",
-      "time": "19:07:00",
-      "venue": "Rogers Centre"
+      "event": "Texas Rangers vs Toronto Blue Jays",
+      "date": "2026-09-19",
+      "time": "00:05:00",
+      "venue": "Globe Life Field"
     },
     {
       "team": "Toronto FC",
