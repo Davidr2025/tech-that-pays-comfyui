@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-19T00:20:15.401Z",
+  "updatedAt": "2026-09-19T13:56:01.185Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "International Observe the Moon Night",
-      "summary": "International Observe the Moon Night is a worldwide public event that encourages observation, appreciation and understanding of our Moon.",
-      "venue": "Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/international-observe-the-moon-night-tickets-1997165142704",
-      "start": "2026-09-18T22:30:00.000Z",
-      "end": "2026-09-19T00:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Butter Tarts & More Market",
       "summary": "The Streetsville Butter Tarts & More Market, presented by Gotta Luv Buttertarts, will take place on Saturday, September 19, 2026. The event will showcase a delicious assortment of sweet treats, fresh baked goods, and a wide variety of butter tarts from local and small businesses. Visitors can shop from local vendors, discover unique products, and enjoy live performances by local musicians throughout the day.",
@@ -79,6 +69,26 @@
       "url": "https://www.visitmississauga.ca/event/the-grand-illusion-show-wondr/",
       "start": "2026-09-25T19:30:00.000Z",
       "end": "2026-09-25T20:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Craft Show: presents The Fall Edit",
+      "summary": "The Craft Show Fall Edit is an indoor curated market in the heart of Streetsville, Mississauga. Browse handmade goods from local artisans and specialty vendors, all under one roof. Free admission for everyone. Discover something special, you'll find unique pieces you won't see anywhere else.",
+      "venue": "Streetsville Overseas Veterans' Club Royal Canadian Legion Branch 139",
+      "url": "https://www.visitmississauga.ca/event/the-craft-show-presents-the-fall-edit/",
+      "start": "2026-10-03T11:00:00.000Z",
+      "end": "2026-10-03T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "2026 All Nations Powwow",
+      "summary": "A Powwow is an Indigenous social celebration where community members can gather and enjoy traditional singing and dancing. All community members, including non-Indigenous, are welcome and strongly encouraged to attend and participate in what a Powwow has to offer. Experiencing a Powwow emphasizes the importance of relationship-building with everyone while providing opportunities to learn more about Indigenous culture and knowledge.",
+      "venue": "University of Toronto Mississauga Recreation, Athletics and Wellness Centre (RAWC)",
+      "url": "https://www.visitmississauga.ca/event/2026-all-nations-powwow/",
+      "start": "2026-10-03T11:00:00.000Z",
+      "end": "2026-10-03T17:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
