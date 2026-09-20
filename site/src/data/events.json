@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T00:09:33.116Z",
+  "updatedAt": "2026-09-20T14:14:23.480Z",
   "windowDays": 14,
   "items": [
     {
@@ -59,6 +59,16 @@
       "url": "https://www.visitmississauga.ca/event/2026-all-nations-powwow/",
       "start": "2026-10-03T11:00:00.000Z",
       "end": "2026-10-03T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Canadian Cancer Society CIBC Run for the Cure in Mississauga",
+      "summary": "m. at 2800 Speakman Drive . Participants of all ages are invited to take part in either a 5 km or 1 km run or walk . The event is open to everyone, including children and leashed pets, with a virtual participation option also available through My Run. Anywhere. Any Way .",
+      "venue": "Hatch Ltd.",
+      "url": "https://www.visitmississauga.ca/event/canadian-cancer-society-cibc-run-for-the-cure-in-mississauga/",
+      "start": "2026-10-04T09:30:00.000Z",
+      "end": "2026-10-04T09:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
