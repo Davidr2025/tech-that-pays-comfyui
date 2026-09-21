@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-20T18:47:01.884Z",
+  "updatedAt": "2026-09-21T00:16:14.934Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -30,18 +30,18 @@
     {
       "team": "Toronto Blue Jays",
       "league": "MLB",
-      "event": "Texas Rangers vs Toronto Blue Jays",
-      "date": "2026-09-20",
-      "time": "18:35:00",
-      "venue": "Globe Life Field"
+      "event": "Baltimore Orioles vs Toronto Blue Jays",
+      "date": "2026-09-21",
+      "time": "22:35:00",
+      "venue": "Oriole Park at Camden Yards"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "St. Louis City SC vs Toronto FC",
-      "date": "2026-09-20",
+      "event": "Nashville SC vs Toronto FC",
+      "date": "2026-09-27",
       "time": "00:30:00",
-      "venue": "Energizer Park"
+      "venue": "GEODIS Park"
     }
   ]
 }
