@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-22T19:45:33.937Z",
+  "updatedAt": "2026-09-23T00:31:08.264Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Urban Composting in the Yard",
-      "summary": "Discover how compost can transform your garden in this practical, hands-on workshop focused on building healthy soil from the ground up.",
-      "venue": "Burnhamthorpe Library",
-      "url": "https://www.eventbrite.ca/e/urban-composting-in-the-yard-tickets-1996741909803",
-      "start": "2026-09-22T22:30:00.000Z",
-      "end": "2026-09-23T00:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Cookbook Club",
       "summary": "Connect with fellow foodies through our monthly cookbook club.",
@@ -79,6 +69,16 @@
       "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001399959154",
       "start": "2026-10-06T18:00:00.000Z",
       "end": "2026-10-06T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Lecture Me! Music, Language, and the Developing Brain",
+      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
+      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/lecture-me-music-language-and-the-developing-brain-tickets-1998484846975",
+      "start": "2026-10-06T23:00:00.000Z",
+      "end": "2026-10-07T00:15:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
