@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T00:30:37.065Z",
+  "updatedAt": "2026-09-24T15:04:12.872Z",
   "windowDays": 14,
   "items": [
     {
@@ -51,6 +51,16 @@
       "end": "2026-10-04T09:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Preserving Seasonal Food: Quick Pickling Workshop",
+      "summary": "Learn the fast-pickle method to reduce food waste, boost flavor, and enjoy fresh-tasting produce!",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/preserving-seasonal-food-quick-pickling-workshop-tickets-2002210613844",
+      "start": "2026-10-05T18:00:00.000Z",
+      "end": "2026-10-05T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
       "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
