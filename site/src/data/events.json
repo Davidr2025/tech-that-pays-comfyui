@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T19:41:15.976Z",
+  "updatedAt": "2026-09-24T00:30:37.065Z",
   "windowDays": 14,
   "items": [
     {
@@ -79,6 +79,26 @@
       "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-5/",
       "start": "2026-10-07T08:00:00.000Z",
       "end": "2026-10-07T15:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
+      "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400421537",
+      "start": "2026-10-07T22:30:00.000Z",
+      "end": "2026-10-08T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Food Forward Summit 2026",
+      "summary": "Join the conversation shaping Canada's food future. Food Forward is Canada’s premier summit for food systems innovation. It brings together policymakers, innovators, producers, SMBs, community leaders, industry stakeholders, and ecosystem builders to advance the future of food through strategic dialogue, practical connections, and intentional collaboration. Innovation is the summit’s core focus. It shapes the purpose, programming, and value of the event.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/food-forward-summit/",
+      "start": "2026-10-08T00:00:00.000Z",
+      "end": "2026-10-08T23:59:59.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
