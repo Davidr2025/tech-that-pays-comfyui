@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-24T19:59:52.612Z",
+  "updatedAt": "2026-09-25T00:33:53.411Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "A Look Behind The Artwork: Eagle Spirits Panel and Kanakiyost Film Screening",
-      "summary": "You're invited to an evening of conversation, creativity, and community with artists from the Eagle Spirits of the Great Waters exhibition. Come support local Indigenous voices, engage with stories behind their art and be inspired by the voices shaping our Indigenous arts community. Kicking off the evening we’ll have a panel discussion, led by artists and community members, exploring the ideas and processes behind the artworks in the Eagle Spirits Art Exhibition.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/a-look-behind-the-artwork-eagle-spirits-panel-and-kanakiyost-film-screening/",
-      "start": "2026-09-24T19:15:00.000Z",
-      "end": "2026-09-24T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The 3rd Annual of Arts of the Middle East Festival",
       "summary": "The Arts of the Middle East Festival celebrates the diverse cultures, traditions, and artistic expressions of the Middle East through a full day of performances, cultural experiences, family activities, and food. The festival features live performances by talented Arabic artists, showcasing music, dance, and cultural traditions from across the region. A dedicated children's area offers interactive activities and entertainment for younger attendees.",
@@ -121,6 +111,16 @@
       "end": "2026-10-07T15:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
+      "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400421537",
+      "start": "2026-10-07T22:30:00.000Z",
+      "end": "2026-10-08T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
