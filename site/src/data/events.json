@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-26T00:38:10.477Z",
+  "updatedAt": "2026-09-26T14:30:02.233Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "A City in Tune: Mississauga Music Exhibition Launch",
-      "summary": "Visitors are invited to the Adamson Estate for the opening reception of A City in Tune: Mississauga's Greatest Hits , the newest exhibition from Museums of Mississauga. m. , the event will feature complimentary refreshments and an opportunity to be among the first to experience the exhibition. m. Named a Music City in 2023, Mississauga has built a reputation as a hub for exceptional musical talent and innovation.",
-      "venue": "Adamson Estate",
-      "url": "https://www.visitmississauga.ca/event/a-city-in-tune-mississauga-music-exhibition-launch/",
-      "start": "2026-09-26T11:00:00.000Z",
-      "end": "2026-09-26T13:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Canada Tea Festival",
       "summary": "A celebration of culture, community, and connection, all through the simple joy of tea. Join us for a full day of tastings, workshops, and stories that bring together tea lovers from all walks of life.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/food-forward-summit/",
       "start": "2026-10-08T00:00:00.000Z",
       "end": "2026-10-08T23:59:59.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Art of Presence: Forest Bathing and Sound Immersion",
+      "summary": "There is an art to slowing down, and most of us have forgotten it. Come be inspired by facilitator Tina De Luca in a two-hour immersive wellness experience inspired by the Japanese practice of Shinrin-yoku (forest bathing). The evening begins outdoors with a guided forest bathing experience around the grounds of the Small Arms Inspection Building. Through mindful walking and sensory awareness, you'll be invited to slow down, notice the natural environment, and reconnect with the present moment.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/the-art-of-presence-forest-bathing-and-sound-immersion/",
+      "start": "2026-10-08T18:00:00.000Z",
+      "end": "2026-10-08T20:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
