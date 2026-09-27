@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-27T15:10:14.012Z",
+  "updatedAt": "2026-09-27T19:46:41.230Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Canada Tea Festival",
-      "summary": "A celebration of culture, community, and connection, all through the simple joy of tea. Join us for a full day of tastings, workshops, and stories that bring together tea lovers from all walks of life.",
-      "venue": "Hansa Haus",
-      "url": "https://www.visitmississauga.ca/event/canada-tea-festival/",
-      "start": "2026-09-27T10:00:00.000Z",
-      "end": "2026-09-27T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Henna Workshop",
       "summary": "Discover the art of henna in this engaging, hands-on workshop led by artist Ankita Sherkhane. Participants will explore the rich cultural traditions and history of henna through a brief introductory presentation before learning the techniques behind creating their own unique designs. Using individual henna cones, attendees will have the opportunity to apply their creations to themselves or a partner and leave with a beautiful temporary henna tattoo (mehndi) that can be enjoyed for weeks afterward.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/the-art-of-presence-forest-bathing-and-sound-immersion/",
       "start": "2026-10-08T18:00:00.000Z",
       "end": "2026-10-08T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Nostalgia Fest Expo",
+      "summary": "Nostalgia Fest is taking over Square One for three massive days! Get ready for an exciting weekend of trading cards, collectibles, nostalgia, entertainment and community at the Square One Event Hall in Mississauga . Explore a huge lineup of vendors, artists, special guests, activities, giveaways and more! WHAT YOU'LL FIND AT NOSTALGIA FEST?",
+      "venue": "Square One Event Hall",
+      "url": "https://www.visitmississauga.ca/event/nostalgia-fest-expo/",
+      "start": "2026-10-09T16:00:00.000Z",
+      "end": "2026-10-11T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
