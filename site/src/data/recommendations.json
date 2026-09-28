@@ -135,6 +135,33 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/events-and-attractions/parks/cawthra-park/",
       "tag": "Free · Garden"
+    },
+    {
+      "title": "Take in free events and skating at Celebration Square",
+      "summary": "The civic heart of City Centre hosts free concerts, movie nights and cultural festivals through the summer, with the reflecting pool converted into an outdoor skating rink each winter. A splash pad and turf lawn make it a year round gathering spot right next to the Hazel McCallion Central Library and Square One.",
+      "venue": "Celebration Square, City Centre",
+      "url": "https://www.mississauga.ca/arts-and-culture/locations/celebration-square/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/arts-and-culture/locations/celebration-square/",
+      "tag": "Free · Civic Square"
+    },
+    {
+      "title": "Watch the boats from J.C. Saddington Park",
+      "summary": "This waterfront park at the mouth of the Credit River was built on land reclaimed from a former landfill during 1970s waterfront planning. Looped paths, picnic areas, a playground and an informal amphitheatre sit within view of the red and white Port Credit Lighthouse, one of the most photographed structures in the city.",
+      "venue": "J.C. Saddington Park, Port Credit",
+      "url": "https://www.mississauga.ca/events-and-attractions/parks/j-c-saddington-park/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/events-and-attractions/parks/j-c-saddington-park/",
+      "tag": "Free · Waterfront"
+    },
+    {
+      "title": "Walk the streets of Meadowvale Village, Ontario's first heritage district",
+      "summary": "Designated in 1980, this was Ontario's first Heritage Conservation District, preserving a 19th century mill village along Old Derry Road and Second Line West by the Credit River. Dozens of historic homes and buildings remain largely unaltered, with heights rarely exceeding two storeys, making a stroll through the village core feel like stepping back into Mississauga's pioneer era.",
+      "venue": "Meadowvale Village, Old Derry Road at Second Line West",
+      "url": "https://heritagemississauga.com/meadowvale-village/",
+      "source": "Heritage Mississauga",
+      "sourceUrl": "https://heritagemississauga.com/meadowvale-village/",
+      "tag": "Free · Heritage"
     }
   ]
 }
