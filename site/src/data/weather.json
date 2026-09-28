@@ -1,27 +1,27 @@
 {
-  "updatedAt": "2026-09-27T19:46:41.864Z",
+  "updatedAt": "2026-09-28T00:44:42.686Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 24,
-    "feelsLike": 20,
-    "text": "Clear",
-    "icon": "☀️"
+    "temp": 17,
+    "feelsLike": 16,
+    "text": "Partly cloudy",
+    "icon": "⛅"
   },
   "days": [
     {
       "date": "2026-09-27",
       "max": 24,
       "min": 11,
-      "precipChance": 3,
+      "precipChance": 1,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-09-28",
-      "max": 19,
+      "max": 20,
       "min": 14,
-      "precipChance": 10,
+      "precipChance": 11,
       "text": "Overcast",
       "icon": "☁️"
     },
@@ -36,26 +36,26 @@
     {
       "date": "2026-09-30",
       "max": 25,
-      "min": 14,
-      "precipChance": 5,
+      "min": 15,
+      "precipChance": 4,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-10-01",
       "max": 32,
-      "min": 18,
-      "precipChance": 34,
-      "text": "Light drizzle",
-      "icon": "🌦️"
+      "min": 17,
+      "precipChance": 27,
+      "text": "Overcast",
+      "icon": "☁️"
     },
     {
       "date": "2026-10-02",
-      "max": 21,
+      "max": 20,
       "min": 10,
-      "precipChance": 34,
-      "text": "Rain",
-      "icon": "🌧️"
+      "precipChance": 42,
+      "text": "Light drizzle",
+      "icon": "🌦️"
     }
   ]
 }

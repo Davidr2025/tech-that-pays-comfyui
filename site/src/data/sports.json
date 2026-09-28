@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T19:46:43.481Z",
+  "updatedAt": "2026-09-28T00:44:44.437Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -28,20 +28,12 @@
       "venue": "Scotiabank Arena"
     },
     {
-      "team": "Toronto Blue Jays",
-      "league": "MLB",
-      "event": "Toronto Blue Jays vs Cincinnati Reds",
-      "date": "2026-09-27",
-      "time": "19:07:00",
-      "venue": "Rogers Centre"
-    },
-    {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Nashville SC vs Toronto FC",
-      "date": "2026-09-27",
-      "time": "00:30:00",
-      "venue": "GEODIS Park"
+      "event": "Toronto FC vs CF Montréal",
+      "date": "2026-10-10",
+      "time": "17:00:00",
+      "venue": "BMO Field"
     }
   ]
 }
