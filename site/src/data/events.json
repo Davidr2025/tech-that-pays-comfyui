@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-09-29T01:56:17.456Z",
+  "updatedAt": "2026-09-29T16:31:10.613Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Henna Workshop",
-      "summary": "Discover the art of henna in this engaging, hands-on workshop led by artist Ankita Sherkhane. Participants will explore the rich cultural traditions and history of henna through a brief introductory presentation before learning the techniques behind creating their own unique designs. Using individual henna cones, attendees will have the opportunity to apply their creations to themselves or a partner and leave with a beautiful temporary henna tattoo (mehndi) that can be enjoyed for weeks afterward.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/henna-workshop/",
-      "start": "2026-09-29T12:30:00.000Z",
-      "end": "2026-09-29T14:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Craft Show: presents The Fall Edit",
       "summary": "The Craft Show Fall Edit is an indoor curated market in the heart of Streetsville, Mississauga. Browse handmade goods from local artisans and specialty vendors, all under one roof. Free admission for everyone. Discover something special, you'll find unique pieces you won't see anywhere else.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/nostalgia-fest-expo/",
       "start": "2026-10-09T16:00:00.000Z",
       "end": "2026-10-11T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Kids Craft & Play — Erin Mills Town Centre",
+      "summary": "Celebrate Thanksgiving weekend at Erin Mills Town Centre with a fun-filled family festival featuring interactive activities, local vendors, entertainment, and plenty of opportunities to make lasting memories together. Taking place on October 10-11 2026 , the Thanksgiving Family Festival brings together shopping, community spirit, and family-friendly entertainment in a festive atmosphere designed for all ages. Visitors can enjoy a wide variety of activities throughout the day, making it the perfect long weekend outing for families.",
+      "venue": "Erin Mills Town Centre",
+      "url": "https://www.visitmississauga.ca/event/kids-craft-play-erin-mills-town-centre/",
+      "start": "2026-10-10T09:30:00.000Z",
+      "end": "2026-10-11T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
