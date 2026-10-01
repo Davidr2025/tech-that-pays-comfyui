@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T16:25:09.786Z",
+  "updatedAt": "2026-10-01T01:18:11.288Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,9 +22,9 @@
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Toronto Maple Leafs vs New York Islanders",
-      "date": "2026-09-30",
-      "time": "23:30:00",
+      "event": "Toronto Maple Leafs vs Ottawa Senators",
+      "date": "2026-10-02",
+      "time": "00:00:00",
       "venue": "Scotiabank Arena"
     },
     {
