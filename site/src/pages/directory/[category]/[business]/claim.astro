@@ -78,6 +78,8 @@ const web3formsReady = config.web3formsAccessKey && !config.web3formsAccessKey.s
               <input type="hidden" name="business_name" value={b.name} />
               <input type="hidden" name="business_id" value={b.id} />
               <input type="hidden" name="listing_url" value={`${base}directory/${cat.slug}/${b.slug}/`} />
+              <label for="claim-name">Your name</label>
+              <input type="text" id="claim-name" name="name" placeholder="Jane Doe" />
               <label for="claim-email">Your email</label>
               <input type="email" id="claim-email" name="email" required placeholder="you@business.com" />
               <button type="submit" class="cta-btn">Submit claim →</button>
