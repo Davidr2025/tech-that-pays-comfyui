@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-02T16:46:37.227Z",
-  "totalBusinesses": 958,
+  "generatedAt": "2026-10-02T16:47:28.594Z",
+  "totalBusinesses": 959,
   "categories": [
     {
       "slug": "trades",
@@ -8,13 +8,13 @@
       "count": 347
     },
     {
-      "slug": "restaurants",
-      "label": "Restaurants",
-      "count": 100
-    },
-    {
       "slug": "real-estate",
       "label": "Real Estate",
+      "count": 101
+    },
+    {
+      "slug": "restaurants",
+      "label": "Restaurants",
       "count": 100
     },
     {
