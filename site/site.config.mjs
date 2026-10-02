@@ -228,7 +228,15 @@ export default {
           { label: "Cleaning Services",                query: "best house cleaning services in Mississauga, Ontario" }
         ]
       },
-      { slug: "real-estate",  label: "Real Estate",        query: "real estate agencies in Mississauga, Ontario" },
+      {
+        slug: "real-estate",
+        label: "Real Estate",
+        perSubcategory: 100,
+        subcategories: [
+          { label: "Real Estate Agents",  query: "real estate agencies in Mississauga, Ontario" },
+          { label: "Mortgage Brokers",    query: "best mortgage brokers in Mississauga, Ontario" }
+        ]
+      },
       { slug: "health",       label: "Health & Wellness",  query: "clinics dentists physiotherapy in Mississauga, Ontario" },
       { slug: "fitness",      label: "Fitness & Sports",   query: "gyms and fitness studios in Mississauga, Ontario" },
       { slug: "auto",         label: "Auto Services",      query: "top rated auto repair shops in Mississauga, Ontario" },
