@@ -153,7 +153,11 @@ const emptyState = ({ icon, title, body, cta }) => `
     ${cta ? `<div class="empty-cta">${cta}</div>` : ""}
   </div>`;
 
-const html = `<!doctype html>
+// Rendered twice: once as this file's own output (site/dashboard/latest.html,
+// never deployed), once as the copy embedded in Vision Board
+// (vision-board/mississauga-insider.html, which Vercel auto-deploys) --
+// identical except the Vision Board copy gets a back-link to the board.
+const renderHtml = (backLinkHtml) => `<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
@@ -296,7 +300,7 @@ const html = `<!doctype html>
       <li><a href="#editorial" data-nav>Editorial</a></li>
     </ul>
     <div class="meta">
-      Generated ${generatedAt.toLocaleString("en-CA", { timeZone: "America/Toronto", dateStyle: "medium", timeStyle: "short" })}<br>
+      ${backLinkHtml}Generated ${generatedAt.toLocaleString("en-CA", { timeZone: "America/Toronto", dateStyle: "medium", timeStyle: "short" })}<br>
       Regenerate: <code>npm run build-dashboard</code>
     </div>
   </nav>
@@ -483,9 +487,19 @@ const html = `<!doctype html>
 </html>
 `;
 
+const html = renderHtml("");
+const visionBoardHtml = renderHtml(
+  '<a href="/board.html" style="color:var(--blue);text-decoration:none;font-weight:600">← Vision Board</a><br><br>\n      '
+);
+
 const outDir = join(ROOT, "dashboard");
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "latest.html"), html);
+
+// Vision Board (vision-board/, a separate Vercel project) embeds its own
+// copy as a per-business CEO view -- keep it in lockstep so the deployed
+// page actually reflects current data instead of a one-off manual paste.
+writeFileSync(join(ROOT, "..", "vision-board", "mississauga-insider.html"), visionBoardHtml);
 writeFileSync(
   join(outDir, "latest.json"),
   JSON.stringify(
@@ -508,4 +522,4 @@ writeFileSync(
   ) + "\n"
 );
 console.log(`[dashboard] ${fmt(totalBusinesses)} businesses · ${claimed.length} claimed · ${adSlotsFilled}/${adSlotEntries.length} ad slots sold · ${guides.length} guides · ${spotlights.length} spotlights`);
-console.log(`[dashboard] wrote dashboard/latest.html + latest.json`);
+console.log(`[dashboard] wrote dashboard/latest.html + latest.json + ../vision-board/mississauga-insider.html`);
