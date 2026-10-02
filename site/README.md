@@ -128,21 +128,26 @@ business" and "Request a correction" form, and the two paid tiers from
 | `npm run dev`            | local dev server                        |
 | `npm run test:beehiiv`   | send a test subscription to Beehiiv     |
 | `npm run export-csv`     | export the directory as `exports/businesses.csv` |
-| `npm run build-dashboard` | regenerate the internal CEO dashboard at `dashboard/latest.html` |
+| `npm run build-dashboard` | regenerate the CEO dashboard embedded in Vision Board |
 
-## Internal CEO dashboard
+## CEO dashboard
 
-`npm run build-dashboard` composes `dashboard/latest.html` — a dark,
-single-file business dashboard computed entirely from this repo's own data:
-directory size and category/specialty breakdown from `places.json`, claimed
-vs. paid conversion from `claimed-places.json` and the `claim.tiers` pricing
-in `site.config.mjs`, ad-slot sell-through from `ad-slots.json`, content
-pipeline freshness from `meta.json`, and the latest newsletter issue plus
-guides/spotlights counts. Every number is real — where something isn't
-tracked yet (subscriber count, ad revenue), the dashboard says so instead of
-guessing. Like `newsletter/latest.html`, it lives outside `src/pages/` and
-`public/` on purpose so it's never deployed to the public site — open it
-locally, or regenerate after any pipeline run.
+`npm run build-dashboard` composes a dark, single-file business dashboard
+computed entirely from this repo's own data: directory size and
+category/specialty breakdown from `places.json`, claimed vs. paid
+conversion from `claimed-places.json` and the `claim.tiers` pricing in
+`site.config.mjs`, ad-slot sell-through from `ad-slots.json`, content
+pipeline freshness from `meta.json` plus the live headline list from
+`news.json`, and the latest newsletter issue plus guides/spotlights
+counts. Every number is real — where something isn't tracked yet
+(subscriber count, ad revenue), the dashboard says so instead of guessing.
+
+Its output isn't in this repo's own `site/` — it writes directly to
+`../vision-board/mississauga-insider.html`, embedded there as a
+per-business CEO view inside David's private Vision Board (a separate
+Vercel project). `update-content.yml` runs this automatically on every
+scheduled pipeline run (3x/day) and commits the result, so the live page
+stays current without anyone running the script by hand.
 
 ## Configuration
 

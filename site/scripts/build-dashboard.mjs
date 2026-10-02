@@ -3,12 +3,12 @@
 // CEO dashboard generator — composes a static, real-data business
 // dashboard from the site's own data files (directory, claims,
 // ad slots, newsletter, content pipeline, guides & spotlights).
-// Output: site/dashboard/latest.html (open locally, never deployed —
-//         lives outside src/pages and public, same pattern as
-//         site/newsletter/latest.html)
-// Run:    npm run build-dashboard
+// Output: ../vision-board/mississauga-insider.html -- embedded in Vision
+//         Board (a separate Vercel project) as a per-business CEO view.
+// Run:    npm run build-dashboard (also runs automatically 3x/day via
+//         .github/workflows/update-content.yml)
 // ============================================================
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import config from "../site.config.mjs";
@@ -487,39 +487,14 @@ const renderHtml = (backLinkHtml) => `<!doctype html>
 </html>
 `;
 
-const html = renderHtml("");
+// Vision Board (vision-board/, a separate Vercel project) is the only
+// place this dashboard is actually viewed -- it embeds this output as a
+// per-business CEO view at mississauga-insider.html. This is the single
+// source; no separate local copy is generated.
 const visionBoardHtml = renderHtml(
   '<a href="/board.html" style="color:var(--blue);text-decoration:none;font-weight:600">← Vision Board</a><br><br>\n      '
 );
-
-const outDir = join(ROOT, "dashboard");
-mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, "latest.html"), html);
-
-// Vision Board (vision-board/, a separate Vercel project) embeds its own
-// copy as a per-business CEO view -- keep it in lockstep so the deployed
-// page actually reflects current data instead of a one-off manual paste.
 writeFileSync(join(ROOT, "..", "vision-board", "mississauga-insider.html"), visionBoardHtml);
-writeFileSync(
-  join(outDir, "latest.json"),
-  JSON.stringify(
-    {
-      generatedAt: generatedAt.toISOString(),
-      totalBusinesses,
-      categories,
-      tradesSubcats,
-      claimed: claimed.length,
-      featuredDemo: featured.length,
-      excluded: excluded.length,
-      adSlotsFilled,
-      adSlotsTotal: adSlotEntries.length,
-      guides: guides.length,
-      spotlights: spotlights.length,
-      pipeline: meta.results
-    },
-    null,
-    2
-  ) + "\n"
-);
+
 console.log(`[dashboard] ${fmt(totalBusinesses)} businesses · ${claimed.length} claimed · ${adSlotsFilled}/${adSlotEntries.length} ad slots sold · ${guides.length} guides · ${spotlights.length} spotlights`);
-console.log(`[dashboard] wrote dashboard/latest.html + latest.json + ../vision-board/mississauga-insider.html`);
+console.log(`[dashboard] wrote ../vision-board/mississauga-insider.html`);
