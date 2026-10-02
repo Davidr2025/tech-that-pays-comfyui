@@ -93,12 +93,20 @@ const adSlotsFilled = adSlotEntries.filter(([, v]) => v.enabled).length;
 
 // ---------- content pipeline freshness ----------
 const daysSince = (iso) => Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
-const relTime = (iso) => {
-  const d = daysSince(iso);
-  if (d <= 0) return "today";
-  if (d === 1) return "yesterday";
-  return `${d} days ago`;
-};
+// Exact, unambiguous timestamp -- not a relative "today"/"2 days ago" label,
+// so freshness can actually be verified at a glance.
+const fmtDateTime = (iso) =>
+  iso
+    ? new Date(iso).toLocaleString("en-CA", {
+        timeZone: "America/Toronto",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        timeZoneName: "short"
+      })
+    : "unknown";
 const pipelineFeeds = [
   { key: "news", label: "Local News", detail: `${news.items?.length ?? 0} live headlines`, updatedAt: news.updatedAt },
   { key: "events", label: "Things to Do", detail: `${events.items?.length ?? 0} upcoming events`, updatedAt: events.updatedAt },
@@ -371,10 +379,34 @@ const html = `<!doctype html>
               <span class="dot ${updated ? "good" : "neutral"}"></span>
               <span class="name">${esc(f.label)}</span>
               <span class="detail">${esc(f.detail)}</span>
-              <span class="when">${updated ? "updated" : "cached"} · ${relTime(f.updatedAt)}</span>
+              <span class="when">${updated ? "updated" : "cached"} ${esc(fmtDateTime(f.updatedAt))}</span>
             </div>`;
           })
           .join("")}
+      </div>
+      <div style="height:20px"></div>
+      <div class="card">
+        <h3>Live headlines on the site right now (${fmt(news.items?.length ?? 0)})</h3>
+        <p class="section-desc" style="margin:-6px 0 14px">This batch was last written to the site at <strong>${esc(fmtDateTime(news.updatedAt))}</strong>. The date next to each headline below is that story's original publish time at its source, not a separate per-headline site timestamp — the pipeline doesn't track one.</p>
+        ${
+          news.items?.length
+            ? `<div class="barlist" style="gap:0">
+                ${news.items
+                  .map(
+                    (n) => `<div class="list-row">
+                      <a class="t" href="${esc(n.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(n.title)}</a>
+                      <span class="m">${esc(n.source || "")} · ${esc(fmtDateTime(n.publishedAt))}</span>
+                    </div>`
+                  )
+                  .join("")}
+              </div>`
+            : emptyState({
+                icon: "📰",
+                title: "No headlines in the feed right now",
+                body: "The next scheduled run (3×/day) will repopulate this from the configured local sources.",
+                cta: null
+              })
+        }
       </div>
     </section>
 
