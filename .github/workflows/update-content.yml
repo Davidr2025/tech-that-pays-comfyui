@@ -84,6 +84,9 @@ jobs:
 
       - name: Build CEO dashboard
         if: github.event_name != 'push'
+        # Internal tool, never deployed -- a bug here must never block the
+        # public site's own build/deploy steps below.
+        continue-on-error: true
         working-directory: site
         run: npm run build-dashboard
 
