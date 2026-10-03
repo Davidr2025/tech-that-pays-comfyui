@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-03T14:44:31.593Z",
+  "updatedAt": "2026-10-03T17:51:05.544Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Craft Show: presents The Fall Edit",
-      "summary": "The Craft Show Fall Edit is an indoor curated market in the heart of Streetsville, Mississauga. Browse handmade goods from local artisans and specialty vendors, all under one roof. Free admission for everyone. Discover something special, you'll find unique pieces you won't see anywhere else.",
-      "venue": "Streetsville Overseas Veterans' Club Royal Canadian Legion Branch 139",
-      "url": "https://www.visitmississauga.ca/event/the-craft-show-presents-the-fall-edit/",
-      "start": "2026-10-03T11:00:00.000Z",
-      "end": "2026-10-03T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "2026 All Nations Powwow",
-      "summary": "A Powwow is an Indigenous social celebration where community members can gather and enjoy traditional singing and dancing. All community members, including non-Indigenous, are welcome and strongly encouraged to attend and participate in what a Powwow has to offer. Experiencing a Powwow emphasizes the importance of relationship-building with everyone while providing opportunities to learn more about Indigenous culture and knowledge.",
-      "venue": "University of Toronto Mississauga Recreation, Athletics and Wellness Centre (RAWC)",
-      "url": "https://www.visitmississauga.ca/event/2026-all-nations-powwow/",
-      "start": "2026-10-03T11:00:00.000Z",
-      "end": "2026-10-03T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Canadian Cancer Society CIBC Run for the Cure in Mississauga",
       "summary": "m. at 2800 Speakman Drive . Participants of all ages are invited to take part in either a 5 km or 1 km run or walk . The event is open to everyone, including children and leashed pets, with a virtual participation option also available through My Run. Anywhere. Any Way .",
@@ -119,6 +99,26 @@
       "url": "https://www.visitmississauga.ca/event/kids-craft-play-erin-mills-town-centre/",
       "start": "2026-10-10T09:30:00.000Z",
       "end": "2026-10-11T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Diwali RazzMatazz",
+      "summary": "Celebrate the magic of Diwali with an unforgettable night of culture, colour, and energy. From dazzling performances and vibrant fashion to music that keeps you moving all night long, this is where tradition meets celebration in the most electrifying way. Expect live entertainment, high-energy DJ sets, delicious festive bites, and a space filled with lights, style, and celebration. Whether you’re coming for the culture, the atmosphere, or the memories, RazzMatazz is the place to be this Diwali.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/diwali-razzmatazz/",
+      "start": "2026-10-10T12:00:00.000Z",
+      "end": "2026-10-11T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Kahaani Cafe: Table #7",
+      "summary": "Kahaani Cafe: Table #7 , presented by ArtsyCulture Society , returns this October with a captivating new chapter of theatre, storytelling, and live music. Set within the warm ambiance of an intimate café, this unique stage production weaves together nostalgia, compelling narratives, and live musical performances to create a deeply moving experience. One table. Endless emotions. At the heart of the evening is an exceptional live band, guiding audiences through a rich and immersive musical journey.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/kahaani-cafe-table-7/",
+      "start": "2026-10-10T19:00:00.000Z",
+      "end": "2026-10-10T22:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
