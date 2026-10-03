@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T19:13:46.341Z",
+  "updatedAt": "2026-10-03T23:50:08.602Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,16 +14,16 @@
     {
       "team": "Toronto Raptors",
       "league": "NBA",
-      "event": "Toronto Raptors vs Miami Heat",
-      "date": "2026-10-03",
-      "time": "23:00:00",
+      "event": "Toronto Raptors vs Los Angeles Clippers",
+      "date": "2026-10-10",
+      "time": "22:30:00",
       "venue": "Scotiabank Arena"
     },
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Toronto Maple Leafs vs Ottawa Senators",
-      "date": "2026-10-03",
+      "event": "Toronto Maple Leafs vs Nashville Predators",
+      "date": "2026-10-06",
       "time": "23:00:00",
       "venue": "Scotiabank Arena"
     },
