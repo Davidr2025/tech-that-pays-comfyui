@@ -1,7 +1,11 @@
 ---
+import { effectiveDate } from "../lib/news-data.mjs";
 const { item } = Astro.props;
-const date = item.publishedAt
-  ? new Date(item.publishedAt).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "America/Toronto" })
+// Shows when we published this on our site (falls back to the source's
+// own date for older items that predate that field) — see effectiveDate.
+const dateValue = effectiveDate(item);
+const date = dateValue
+  ? new Date(dateValue).toLocaleDateString("en-CA", { month: "short", day: "numeric", timeZone: "America/Toronto" })
   : "";
 ---
 <article class="card news-card" role="button" tabindex="0" data-news-trigger data-item={JSON.stringify(item)}>

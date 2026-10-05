@@ -38,8 +38,13 @@
     // itself where relevant, plus the separate source badge/link below.
     summaryEl.textContent = item.summary || "No preview available for this story.";
     sourceEl.textContent = item.source || "";
-    dateEl.textContent = item.publishedAt
-      ? new Date(item.publishedAt).toLocaleDateString("en-CA", {
+    // Shows when we published this on our site (falls back to the
+    // source's own date for older items that predate that field) — mirrors
+    // effectiveDate() in news-data.mjs, duplicated here since this runs as
+    // plain client-side JS against the card's raw data-item JSON.
+    const dateValue = item.rewrittenAt || item.publishedAt;
+    dateEl.textContent = dateValue
+      ? new Date(dateValue).toLocaleDateString("en-CA", {
           month: "long", day: "numeric", year: "numeric", timeZone: "America/Toronto"
         })
       : "";
