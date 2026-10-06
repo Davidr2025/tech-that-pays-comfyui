@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-06T16:48:34.775Z",
+  "updatedAt": "2026-10-06T20:50:12.926Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
-      "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001399959154",
-      "start": "2026-10-06T18:00:00.000Z",
-      "end": "2026-10-06T19:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Lecture Me! Music, Language, and the Developing Brain",
       "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400673290",
       "start": "2026-10-13T18:00:00.000Z",
       "end": "2026-10-13T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
+      "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400733470",
+      "start": "2026-10-14T22:30:00.000Z",
+      "end": "2026-10-15T00:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
