@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-06T20:50:12.926Z",
+  "updatedAt": "2026-10-07T00:51:08.784Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Lecture Me! Music, Language, and the Developing Brain",
-      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
-      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/lecture-me-music-language-and-the-developing-brain-tickets-1998484846975",
-      "start": "2026-10-06T23:00:00.000Z",
-      "end": "2026-10-07T00:15:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Central Lions Farmers Market – Wednesdays",
       "summary": "Stop by the Central Lions Farmers Market this summer in Mississauga and experience a lively local shopping destination! m. m. m. m. Visitors can explore a variety of fresh, locally grown produce , delicious baked goods, and handcrafted items from community vendors.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400733470",
       "start": "2026-10-14T22:30:00.000Z",
       "end": "2026-10-15T00:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Newcomer Kitchen Canada: Lentil Mjadra & Cabbage Salad",
+      "summary": "Join Newcomer Kitchen Canada for a workshop led by alumni of their Food Business Entrepreneurship Program.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/newcomer-kitchen-canada-lentil-mjadra-cabbage-salad-tickets-2002301995168",
+      "start": "2026-10-15T15:00:00.000Z",
+      "end": "2026-10-15T16:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T20:50:14.548Z",
+  "updatedAt": "2026-10-07T00:51:11.222Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,10 +22,10 @@
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Toronto Maple Leafs vs Nashville Predators",
-      "date": "2026-10-06",
-      "time": "23:00:00",
-      "venue": "Scotiabank Arena"
+      "event": "Vegas Golden Knights vs Toronto Maple Leafs",
+      "date": "2026-10-09",
+      "time": "02:00:00",
+      "venue": "T-Mobile Arena"
     },
     {
       "team": "Toronto FC",
