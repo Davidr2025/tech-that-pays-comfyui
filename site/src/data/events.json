@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-07T12:55:26.918Z",
+  "updatedAt": "2026-10-07T16:51:07.041Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Central Lions Farmers Market – Wednesdays",
-      "summary": "Stop by the Central Lions Farmers Market this summer in Mississauga and experience a lively local shopping destination! m. m. m. m. Visitors can explore a variety of fresh, locally grown produce , delicious baked goods, and handcrafted items from community vendors.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/central-lions-farmers-market-wednesdays-5/",
-      "start": "2026-10-07T08:00:00.000Z",
-      "end": "2026-10-07T15:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
       "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
@@ -121,6 +111,16 @@
       "end": "2026-10-15T16:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Luna Halloween Market",
+      "summary": "The Luna Halloween Market: Night of the Vampire brings a weekend of Halloween-themed shopping, entertainment, and family-friendly activities to the Vic Johnston Community Centre. 🌙🖤 Visitors can explore more than 45 unique vendors , immersive vampire-themed photo opportunities, and a variety of spooky attractions throughout the market. Highlights include the 🩸 Blood Bar serving Halloween-inspired beverages, 🍬 Dracula's Candy Bar , the 🎃 Vampire's Cauldron Kids Prize Station , and a 🦇 Vampire Scavenger Hunt with prizes to be won.",
+      "venue": "Vic Johnston Community Centre",
+      "url": "https://www.visitmississauga.ca/event/luna-halloween-market/",
+      "start": "2026-10-16T18:00:00.000Z",
+      "end": "2026-10-17T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
