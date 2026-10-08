@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-10-08T17:24:49.628Z",
+  "updatedAt": "2026-10-08T17:49:23.510Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 18,
-    "feelsLike": 14,
-    "text": "Mainly clear",
-    "icon": "🌤️"
+    "feelsLike": 15,
+    "text": "Clear",
+    "icon": "☀️"
   },
   "days": [
     {
