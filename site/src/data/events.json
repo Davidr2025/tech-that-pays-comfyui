@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T17:49:22.792Z",
+  "updatedAt": "2026-10-08T21:50:43.642Z",
   "windowDays": 14,
   "items": [
     {
@@ -13,22 +13,22 @@
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
     {
-      "title": "The Art of Presence: Forest Bathing and Sound Immersion",
-      "summary": "There is an art to slowing down, and most of us have forgotten it. Come be inspired by facilitator Tina De Luca in a two-hour immersive wellness experience inspired by the Japanese practice of Shinrin-yoku (forest bathing). The evening begins outdoors with a guided forest bathing experience around the grounds of the Small Arms Inspection Building. Through mindful walking and sensory awareness, you'll be invited to slow down, notice the natural environment, and reconnect with the present moment.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/the-art-of-presence-forest-bathing-and-sound-immersion/",
-      "start": "2026-10-08T18:00:00.000Z",
-      "end": "2026-10-08T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
       "title": "Nostalgia Fest Expo",
       "summary": "Nostalgia Fest is taking over Square One for three massive days! Get ready for an exciting weekend of trading cards, collectibles, nostalgia, entertainment and community at the Square One Event Hall in Mississauga . Explore a huge lineup of vendors, artists, special guests, activities, giveaways and more! WHAT YOU'LL FIND AT NOSTALGIA FEST?",
       "venue": "Square One Event Hall",
       "url": "https://www.visitmississauga.ca/event/nostalgia-fest-expo/",
       "start": "2026-10-09T16:00:00.000Z",
       "end": "2026-10-11T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite/",
+      "start": "2026-10-09T19:00:00.000Z",
+      "end": "2026-10-09T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -103,22 +103,22 @@
       "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-2/",
+      "start": "2026-10-15T19:00:00.000Z",
+      "end": "2026-10-15T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
       "title": "Luna Halloween Market",
       "summary": "The Luna Halloween Market: Night of the Vampire brings a weekend of Halloween-themed shopping, entertainment, and family-friendly activities to the Vic Johnston Community Centre. 🌙🖤 Visitors can explore more than 45 unique vendors , immersive vampire-themed photo opportunities, and a variety of spooky attractions throughout the market. Highlights include the 🩸 Blood Bar serving Halloween-inspired beverages, 🍬 Dracula's Candy Bar , the 🎃 Vampire's Cauldron Kids Prize Station , and a 🦇 Vampire Scavenger Hunt with prizes to be won.",
       "venue": "Vic Johnston Community Centre",
       "url": "https://www.visitmississauga.ca/event/luna-halloween-market/",
       "start": "2026-10-16T18:00:00.000Z",
       "end": "2026-10-17T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Musical Journey of Neil Diamond featuring Jay White",
-      "summary": "VaughnCo Entertainment proudly presents the world’s most authentic Neil Diamond concert tribute, starring Jay White! For more than five decades, Neil Diamond’s music has transcended generations, touching the hearts of millions around the world. ” Every sound, every gesture, and every note captures the power and emotion that define Neil Diamond’s legendary music. Visually stunning and comfortingly familiar, this extraordinary concert experience is a true feast for the senses—and the soul.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/the-musical-journey-of-neil-diamond-featuring-jay-white/",
-      "start": "2026-10-16T19:30:00.000Z",
-      "end": "2026-10-16T21:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
