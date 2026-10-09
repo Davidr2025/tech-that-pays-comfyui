@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T02:08:27.315Z",
+  "updatedAt": "2026-10-09T06:51:39.628Z",
   "items": [
     {
       "title": "Crombie Wants to Halt Study of Demolishing Mississauga's Living Arts Centre",
@@ -44,8 +44,7 @@
       "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-10-08T19:34:00.000Z",
       "summary": "According to Mississauga.com, mayoral candidates were asked ahead of the Oct. 26 election to address Peel Regional Police funding and public safety in roughly 200 words each, covering rising concerns about organized crime, break-ins and auto theft as well as how residents can hold the city accountable for public safety spending. The outlet says candidates were asked to reply in written email statements, which were edited for length, and at least one candidate did not respond by the publication deadline. One candidate who did respond said residents deserve to feel safe in their homes and neighbourhoods, and pledged to work with Peel Regional Police to strengthen visible policing, target auto theft, robbery and property crime, and improve coordination between officers, businesses and residents. That candidate also said city spending on public safety needs to be tied to measurable outcomes rather than open-ended budget increases. Mississauga.com reports Peel Regional Police funding has become a recurring flashpoint in the campaign as candidates weigh how much of the city's budget should go toward policing versus other priorities.",
-      "rewritten": true,
-      "rewrittenAt": "2026-10-09T02:50:03.434Z"
+      "rewritten": true
     },
     {
       "title": "Diwali Celebration and Collectibles Expo to Share Mississauga's Downtown Core This Weekend",
@@ -94,14 +93,21 @@
       "rewrittenAt": "2026-10-08T17:49:40.400Z"
     },
     {
+      "title": "What’s open and closed in Mississauga on Thanksgiving Monday",
+      "url": "https://www.mississauga.ca/city-of-mississauga-news/news/whats-open-and-closed-in-mississauga-on-thanksgiving-monday/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
+      "publishedAt": "2026-10-08T15:00:42.000Z",
+      "summary": "Plan ahead for changes to City services and facility hours on Monday, October 12. On Monday, October 12 City of Mississauga administrative offices and various library, cultural and recreational facilities will be closed for Thanksgiving Day. During this time, City response times to resident inquiries will be limited. The Thanksgiving Day schedule includes hours of operation for: The contact centre will be closed on Monday, October 12 and will re-open on Tuesday, October 13. m. m. from Monday to Friday to speak to a Customer Service Advisor who can assist with inquiries. For urgent issues on weekends, statutory holidays or overnight, dial 311 and select option 2 for after-hours dispatch service. For emergencies, dial 911. Residents can also submit requests 24/7 online. A full list of City services and hours of operation during Thanksgiving Day is available on the City’s website. For a list of Region of Peel service hours, please visit the Region’s website. ca 905-615-3200, ext."
+    },
+    {
       "title": "Mississauga Pays Local Musicians $300 to Soundtrack Its 311 Phone Line",
       "url": "https://www.mississauga.ca/city-of-mississauga-news/news/mississauga-musicians-add-your-track-to-the-citys-music-311-playlist/",
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/city-of-mississauga-news/",
       "publishedAt": "2026-10-08T14:42:52.000Z",
       "summary": "According to the City of Mississauga, local musicians can now apply to have their music played across municipal channels through the Music 311 program, which selects 12 songs to represent the diversity of styles, genres and voices found in Mississauga's music community. The city said artists chosen for the program receive a $300 payment along with promotion on the City's website and social media accounts. Officials noted the city's 311 line fields as many as 950 calls a day and roughly 250,000 calls a year, meaning a selected track could reach thousands of residents while they wait on hold for a customer service representative. Beyond the phone line, the city said chosen songs will also air during City Council livestreams and on MiWay customer information lines. The program is designed to turn routine interactions with city services into a showcase for homegrown musical talent. The city invited interested musicians to submit their applications through its website ahead of the program's deadline.",
-      "rewritten": true,
-      "rewrittenAt": "2026-10-09T02:50:03.442Z"
+      "rewritten": true
     }
   ]
 }
