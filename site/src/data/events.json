@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-08T21:50:43.642Z",
+  "updatedAt": "2026-10-09T01:51:04.165Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Food Forward Summit 2026",
-      "summary": "Join the conversation shaping Canada's food future. Food Forward is Canada’s premier summit for food systems innovation. It brings together policymakers, innovators, producers, SMBs, community leaders, industry stakeholders, and ecosystem builders to advance the future of food through strategic dialogue, practical connections, and intentional collaboration. Innovation is the summit’s core focus. It shapes the purpose, programming, and value of the event.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/food-forward-summit/",
-      "start": "2026-10-08T00:00:00.000Z",
-      "end": "2026-10-08T23:59:59.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Nostalgia Fest Expo",
       "summary": "Nostalgia Fest is taking over Square One for three massive days! Get ready for an exciting weekend of trading cards, collectibles, nostalgia, entertainment and community at the Square One Event Hall in Mississauga . Explore a huge lineup of vendors, artists, special guests, activities, giveaways and more! WHAT YOU'LL FIND AT NOSTALGIA FEST?",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/luna-halloween-market/",
       "start": "2026-10-16T18:00:00.000Z",
       "end": "2026-10-17T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Musical Journey of Neil Diamond featuring Jay White",
+      "summary": "VaughnCo Entertainment proudly presents the world’s most authentic Neil Diamond concert tribute, starring Jay White! For more than five decades, Neil Diamond’s music has transcended generations, touching the hearts of millions around the world. ” Every sound, every gesture, and every note captures the power and emotion that define Neil Diamond’s legendary music. Visually stunning and comfortingly familiar, this extraordinary concert experience is a true feast for the senses—and the soul.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/the-musical-journey-of-neil-diamond-featuring-jay-white/",
+      "start": "2026-10-16T19:30:00.000Z",
+      "end": "2026-10-16T21:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
