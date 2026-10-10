@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T21:51:02.020Z",
+  "updatedAt": "2026-10-10T01:46:03.449Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,10 +22,10 @@
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Vegas Golden Knights vs Toronto Maple Leafs",
-      "date": "2026-10-09",
-      "time": "02:00:00",
-      "venue": "T-Mobile Arena"
+      "event": "Colorado Avalanche vs Toronto Maple Leafs",
+      "date": "2026-10-10",
+      "time": "23:00:00",
+      "venue": "Ball Arena"
     },
     {
       "team": "Toronto FC",
