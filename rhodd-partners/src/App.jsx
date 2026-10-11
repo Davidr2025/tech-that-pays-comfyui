@@ -2,6 +2,7 @@ import { useLenis } from "./hooks/useLenis";
 import Nav from "./sections/Nav";
 import Hero from "./sections/Hero";
 import Statement from "./sections/Statement";
+import Brands from "./sections/Brands";
 import Services from "./sections/Services";
 import Approach from "./sections/Approach";
 import Who from "./sections/Who";
@@ -17,6 +18,7 @@ export default function App() {
       <main>
         <Hero />
         <Statement />
+        <Brands />
         <Services />
         <Approach />
         <Who />

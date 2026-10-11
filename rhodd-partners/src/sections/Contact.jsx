@@ -12,7 +12,7 @@ export default function Contact() {
   const onSubmit = (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.currentTarget));
-    const body = `Name: ${d.name}\nCompany: ${d.company}\nTeam size: ${d.size}\n\n${d.message}`;
+    const body = `Name: ${d.name}\nCompany: ${d.company}\nAnnual revenue: ${d.size}\n\n${d.message}`;
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       "Enquiry from " + d.company
     )}&body=${encodeURIComponent(body)}`;
@@ -53,11 +53,11 @@ export default function Contact() {
             <input name="company" required autoComplete="organization" />
           </label>
           <label>
-            Team size
-            <select name="size" defaultValue="5–20">
-              <option>5–20</option>
-              <option>20–100</option>
-              <option>100+</option>
+            Annual revenue
+            <select name="size" defaultValue="$1M to $5M">
+              <option>$1M to $5M</option>
+              <option>$5M to $25M</option>
+              <option>$25M+</option>
             </select>
           </label>
           <label>

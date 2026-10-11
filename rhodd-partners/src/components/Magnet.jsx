@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { reducedMotion } from "../hooks/useLenis";
 
-// React Bits–style Magnet: wrapped element is gently pulled toward the cursor.
+// React Bits style Magnet: wrapped element is gently pulled toward the cursor.
 export default function Magnet({ children, strength = 0.3 }) {
   const ref = useRef(null);
   const move = (e) => {

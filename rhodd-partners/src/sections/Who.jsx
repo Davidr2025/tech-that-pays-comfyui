@@ -9,19 +9,19 @@ export default function Who() {
       <div className="wrap who-grid">
         <div>
           <Reveal className="eyebrow">Who we serve</Reveal>
-          <SplitText className="h2" text="Built for teams of five and up." />
+          <SplitText className="h2" text="Built for companies past the $1M mark." />
           <Reveal as="p" className="lead" delay={0.1}>
-            Once you have more than a handful of people, AI stops being a personal productivity hack
-            and becomes an organisational change. That's where we work.
+            Once revenue passes the first million, AI stops being a personal productivity hack and
+            becomes an organisational change. That's where we work, from $1M up to around $50M.
           </Reveal>
           <Reveal className="bignum">
             <strong>
-              <CountUp to={5} suffix="+" duration={1.2} />
+              <CountUp to={1} prefix="$" suffix="M+" duration={1.2} />
             </strong>
             <span>
-              people is where structure
+              in annual revenue is where
               <br />
-              starts to pay for itself
+              structure starts to pay for itself
             </span>
           </Reveal>
         </div>

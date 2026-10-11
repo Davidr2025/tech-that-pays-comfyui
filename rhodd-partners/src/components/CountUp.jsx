@@ -5,7 +5,7 @@ import { reducedMotion } from "../hooks/useLenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// React Bits–style CountUp, implemented with GSAP + ScrollTrigger.
+// React Bits style CountUp, implemented with GSAP + ScrollTrigger.
 export default function CountUp({ to, prefix = "", suffix = "", duration = 1.8 }) {
   const ref = useRef(null);
   useLayoutEffect(() => {

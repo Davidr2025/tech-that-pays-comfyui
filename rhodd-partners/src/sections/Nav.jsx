@@ -14,7 +14,7 @@ export default function Nav() {
   return (
     <header className={`nav ${solid ? "nav--solid" : ""} ${open ? "nav--open" : ""}`}>
       <div className="wrap nav-inner">
-        <a href="#top" className="logo" aria-label="Rhodd Partners — home">
+        <a href="#top" className="logo" aria-label="Rhodd Partners, home">
           <span className="logo-mark">R</span>
           <span>
             Rhodd <em>Partners</em>

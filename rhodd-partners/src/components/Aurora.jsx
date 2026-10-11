@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { reducedMotion } from "../hooks/useLenis";
 
-// React Bits–style Aurora background: slow-drifting blurred colour fields.
+// React Bits style Aurora background: slow-drifting blurred colour fields.
 export default function Aurora() {
   const ref = useRef(null);
   useLayoutEffect(() => {

@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-// React Bits–style SpotlightCard: a soft light follows the cursor across the card.
+// React Bits style SpotlightCard: a soft light follows the cursor across the card.
 export default function SpotlightCard({ children, className = "" }) {
   const ref = useRef(null);
   const onMove = (e) => {

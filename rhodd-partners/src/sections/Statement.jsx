@@ -27,7 +27,7 @@ export default function Statement() {
         <Reveal as="p" className="lead" delay={0.1}>
           Teams buy licences, run a workshop, and six weeks later nothing has changed. The gap
           between "we have AI tools" and "our business runs differently" is a change-management
-          problem — and it's the one we're built to solve.
+          problem, and it's the one we're built to solve.
         </Reveal>
       </div>
       <Reveal className="wrap principles" stagger={0.1}>

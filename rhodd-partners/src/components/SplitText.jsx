@@ -5,7 +5,7 @@ import { reducedMotion } from "../hooks/useLenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// React Bits–style SplitText, implemented with GSAP: words rise out of a mask.
+// React Bits style SplitText, implemented with GSAP: words rise out of a mask.
 export default function SplitText({
   text,
   as: Tag = "h2",
