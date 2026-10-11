@@ -1,37 +1,7 @@
 {
-  "updatedAt": "2026-10-10T20:04:18.725Z",
+  "updatedAt": "2026-10-11T00:51:10.037Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Kids Craft & Play — Erin Mills Town Centre",
-      "summary": "Celebrate Thanksgiving weekend at Erin Mills Town Centre with a fun-filled family festival featuring interactive activities, local vendors, entertainment, and plenty of opportunities to make lasting memories together. Taking place on October 10-11 2026 , the Thanksgiving Family Festival brings together shopping, community spirit, and family-friendly entertainment in a festive atmosphere designed for all ages. Visitors can enjoy a wide variety of activities throughout the day, making it the perfect long weekend outing for families.",
-      "venue": "Erin Mills Town Centre",
-      "url": "https://www.visitmississauga.ca/event/kids-craft-play-erin-mills-town-centre/",
-      "start": "2026-10-10T09:30:00.000Z",
-      "end": "2026-10-11T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Diwali RazzMatazz",
-      "summary": "Celebrate the magic of Diwali with an unforgettable night of culture, colour, and energy. From dazzling performances and vibrant fashion to music that keeps you moving all night long, this is where tradition meets celebration in the most electrifying way. Expect live entertainment, high-energy DJ sets, delicious festive bites, and a space filled with lights, style, and celebration. Whether you’re coming for the culture, the atmosphere, or the memories, RazzMatazz is the place to be this Diwali.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/diwali-razzmatazz/",
-      "start": "2026-10-10T12:00:00.000Z",
-      "end": "2026-10-11T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Kahaani Cafe: Table #7",
-      "summary": "Kahaani Cafe: Table #7 , presented by ArtsyCulture Society , returns this October with a captivating new chapter of theatre, storytelling, and live music. Set within the warm ambiance of an intimate café, this unique stage production weaves together nostalgia, compelling narratives, and live musical performances to create a deeply moving experience. One table. Endless emotions. At the heart of the evening is an exceptional live band, guiding audiences through a rich and immersive musical journey.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/kahaani-cafe-table-7/",
-      "start": "2026-10-10T19:00:00.000Z",
-      "end": "2026-10-10T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Sculpt A Succulent Garden",
       "summary": "Create a beautiful handcrafted succulent arrangement in this Air-Dry Clay Succulent Sculpture Workshop! Participants will learn how to sculpt realistic succulent shapes using air-dry clay, exploring techniques for shaping, texturing, and assembling layered botanical forms. Once complete, the clay succulents will be arranged in a charming terracotta tray to create a modern decorative centerpiece.",
@@ -119,6 +89,36 @@
       "url": "https://www.visitmississauga.ca/event/halloween-harvest-festival/",
       "start": "2026-10-17T12:00:00.000Z",
       "end": "2026-10-18T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Debut 2026",
+      "summary": "The Debut returns for another unforgettable night of rising hip-hop talent, spotlighting the next generation of artists on a professional stage with a full-scale concert experience to match. This year, RYO, Scartown Koom, Peel Baby JSav, and Seth take over The Rec Room at Square One , delivering exclusive performances and brand-new music that audiences will hear first on debut night.",
+      "venue": "The Rec Room",
+      "url": "https://www.visitmississauga.ca/event/the-debut-2026/",
+      "start": "2026-10-17T19:30:00.000Z",
+      "end": "2026-10-17T23:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Symphony Of Communities",
+      "summary": "What happens when community bands from across Ontario come together on one stage? Find out at Symphony of Communities: When Ontario Plays as One ! Hosted by the Mississauga Pops Concert Band, this lively afternoon concert is part of the Canadian Band Association (Ontario) Community Band Weekend and showcases the energy, passion, and camaraderie of musicians from across the province. Come celebrate community, connection, and great music.",
+      "venue": "Meadowvale Theatre",
+      "url": "https://www.visitmississauga.ca/event/symphony-of-communities/",
+      "start": "2026-10-18T14:00:00.000Z",
+      "end": "2026-10-18T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-3/",
+      "start": "2026-10-18T18:00:00.000Z",
+      "end": "2026-10-18T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }

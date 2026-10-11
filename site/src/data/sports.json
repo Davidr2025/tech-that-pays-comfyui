@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-10T20:04:20.083Z",
+  "updatedAt": "2026-10-11T00:51:12.299Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,25 +14,25 @@
     {
       "team": "Toronto Raptors",
       "league": "NBA",
-      "event": "Toronto Raptors vs Los Angeles Clippers",
-      "date": "2026-10-10",
-      "time": "22:30:00",
+      "event": "Toronto Raptors vs New York Knicks",
+      "date": "2026-10-13",
+      "time": "23:00:00",
       "venue": "Scotiabank Arena"
     },
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Colorado Avalanche vs Toronto Maple Leafs",
-      "date": "2026-10-10",
-      "time": "23:00:00",
-      "venue": "Ball Arena"
+      "event": "Utah Mammoth vs Toronto Maple Leafs",
+      "date": "2026-10-14",
+      "time": "01:00:00",
+      "venue": "Delta Center"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs CF Montréal",
-      "date": "2026-10-10",
-      "time": "17:00:00",
+      "event": "Toronto FC vs Orlando City",
+      "date": "2026-10-14",
+      "time": "23:30:00",
       "venue": "BMO Field"
     }
   ]
