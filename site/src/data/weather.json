@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-12T00:50:16.392Z",
+  "updatedAt": "2026-10-12T01:20:27.848Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 14,
+    "temp": 13,
     "feelsLike": 14,
     "text": "Fog",
     "icon": "🌫️"
