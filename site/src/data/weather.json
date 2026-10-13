@@ -1,58 +1,58 @@
 {
-  "updatedAt": "2026-10-13T07:51:13.243Z",
+  "updatedAt": "2026-10-13T11:52:26.733Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 16,
-    "feelsLike": 16,
-    "text": "Mainly clear",
-    "icon": "🌤️"
+    "temp": 17,
+    "feelsLike": 18,
+    "text": "Overcast",
+    "icon": "☁️"
   },
   "days": [
     {
       "date": "2026-10-13",
-      "max": 25,
+      "max": 26,
       "min": 16,
-      "precipChance": 72,
-      "text": "Rain",
-      "icon": "🌧️"
+      "precipChance": 61,
+      "text": "Drizzle",
+      "icon": "🌦️"
     },
     {
       "date": "2026-10-14",
-      "max": 16,
+      "max": 17,
       "min": 11,
-      "precipChance": 10,
+      "precipChance": 12,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-10-15",
       "max": 12,
-      "min": 8,
-      "precipChance": 45,
-      "text": "Light rain",
-      "icon": "🌦️"
+      "min": 9,
+      "precipChance": 59,
+      "text": "Rain",
+      "icon": "🌧️"
     },
     {
       "date": "2026-10-16",
-      "max": 14,
-      "min": 6,
-      "precipChance": 62,
-      "text": "Light rain",
-      "icon": "🌦️"
+      "max": 16,
+      "min": 5,
+      "precipChance": 72,
+      "text": "Showers",
+      "icon": "🌧️"
     },
     {
       "date": "2026-10-17",
-      "max": 7,
-      "min": 0,
-      "precipChance": 17,
-      "text": "Light drizzle",
-      "icon": "🌦️"
+      "max": 8,
+      "min": 1,
+      "precipChance": 15,
+      "text": "Snow showers",
+      "icon": "🌨️"
     },
     {
       "date": "2026-10-18",
-      "max": 15,
-      "min": 3,
+      "max": 16,
+      "min": 4,
       "precipChance": 0,
       "text": "Partly cloudy",
       "icon": "⛅"
