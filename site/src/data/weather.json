@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-14T19:49:58.696Z",
+  "updatedAt": "2026-10-14T20:12:37.222Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 15,
+    "temp": 16,
     "feelsLike": 13,
     "text": "Overcast",
     "icon": "☁️"
