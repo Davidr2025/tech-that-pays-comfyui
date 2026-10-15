@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-15T15:00:53.742Z",
+  "updatedAt": "2026-10-15T15:33:25.488Z",
   "results": {
-    "news": true,
+    "news": false,
     "events": true,
     "weather": true,
     "sports": true,
