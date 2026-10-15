@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-15T15:33:23.175Z",
+  "updatedAt": "2026-10-15T19:50:53.114Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Newcomer Kitchen Canada: Lentil Mjadra & Cabbage Salad",
-      "summary": "Join Newcomer Kitchen Canada for a workshop led by alumni of their Food Business Entrepreneurship Program.",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/newcomer-kitchen-canada-lentil-mjadra-cabbage-salad-tickets-2002301995168",
-      "start": "2026-10-15T15:00:00.000Z",
-      "end": "2026-10-15T16:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-2/",
-      "start": "2026-10-15T19:00:00.000Z",
-      "end": "2026-10-15T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Toronto Rock N' Gem Show",
       "summary": "GET READY! THE MOST ANTICIPATED ROCK N’ GEM SHOW IS COMING! For the FIRST TIME EVER , the Rock N’ Gem Show is taking over The International Centre in Mississauga! Explore an incredible selection of crystals, minerals, fossils, gemstones, jewelry, beads, carvings, lapidary supplies and one-of-a-kind treasures from vendors across Canada. Free parking available. Service animals permitted.",
@@ -121,6 +101,26 @@
       "end": "2026-10-21T17:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Indoor Composting with Vermicompost",
+      "summary": "Learn about indoor composting with vermicompost!",
+      "venue": "Cooksville Library",
+      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001083731308",
+      "start": "2026-10-21T21:30:00.000Z",
+      "end": "2026-10-21T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Hotel California",
+      "summary": "HOTEL CALIFORNIA, the original Eagles tribute is bringing their full production to the Living Arts Centre Mississauga Friday October 23. This is without question the best live Eagles performance you will see this side of the Las Vegas Sphere. For over three decades, HOTEL CALIFORNIA has been re-creating the legendary sound of THE EAGLES, and thrilling audiences all over the world.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/hotel-california/",
+      "start": "2026-10-23T19:30:00.000Z",
+      "end": "2026-10-23T21:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
