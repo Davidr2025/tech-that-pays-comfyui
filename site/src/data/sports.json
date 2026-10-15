@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-14T20:12:39.119Z",
+  "updatedAt": "2026-10-15T00:32:23.662Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -22,18 +22,18 @@
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Utah Mammoth vs Toronto Maple Leafs",
-      "date": "2026-10-14",
-      "time": "01:00:00",
-      "venue": "Delta Center"
+      "event": "Toronto Maple Leafs vs Buffalo Sabres",
+      "date": "2026-10-15",
+      "time": "23:00:00",
+      "venue": "Scotiabank Arena"
     },
     {
       "team": "Toronto FC",
       "league": "American Major League Soccer",
-      "event": "Toronto FC vs Orlando City",
-      "date": "2026-10-14",
+      "event": "New York Red Bulls vs Toronto FC",
+      "date": "2026-10-17",
       "time": "23:30:00",
-      "venue": "BMO Field"
+      "venue": "Sports Illustrated Stadium"
     }
   ]
 }

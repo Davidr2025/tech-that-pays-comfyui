@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-14T20:12:36.575Z",
+  "updatedAt": "2026-10-15T00:32:21.542Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "From Garden to Ital Table: Caribbean-Inspired Cooking Workshop",
-      "summary": "An interactive workshop that invites participants to transform fresh seasonal produce into simple, nourishing Caribbean-inspired dishes.",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/from-garden-to-ital-table-caribbean-inspired-cooking-workshop-tickets-2001400733470",
-      "start": "2026-10-14T22:30:00.000Z",
-      "end": "2026-10-15T00:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Newcomer Kitchen Canada: Lentil Mjadra & Cabbage Salad",
       "summary": "Join Newcomer Kitchen Canada for a workshop led by alumni of their Food Business Entrepreneurship Program.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/preserving-seasonal-food-quick-pickling-workshop-tickets-2002212975909",
       "start": "2026-10-19T18:00:00.000Z",
       "end": "2026-10-19T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Midday Melodies: Opera Fantasy",
+      "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
+      "venue": "Maker Stage, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/midday-melodies-opera-fantasy-tickets-2000417236805",
+      "start": "2026-10-21T16:00:00.000Z",
+      "end": "2026-10-21T17:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
