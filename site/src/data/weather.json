@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T23:50:28.518Z",
+  "updatedAt": "2026-10-16T00:23:45.293Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
@@ -13,7 +13,7 @@
       "date": "2026-10-15",
       "max": 12,
       "min": 9,
-      "precipChance": 36,
+      "precipChance": 25,
       "text": "Light drizzle",
       "icon": "🌦️"
     },
@@ -21,7 +21,7 @@
       "date": "2026-10-16",
       "max": 18,
       "min": 4,
-      "precipChance": 82,
+      "precipChance": 84,
       "text": "Light rain",
       "icon": "🌦️"
     },
