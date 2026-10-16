@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T19:53:52.360Z",
+  "updatedAt": "2026-10-16T14:50:30.513Z",
   "source": "TheSportsDB",
   "sourceUrl": "https://www.thesportsdb.com/",
   "items": [
@@ -14,16 +14,16 @@
     {
       "team": "Toronto Raptors",
       "league": "NBA",
-      "event": "New York Knicks vs Toronto Raptors",
-      "date": "2026-10-15",
-      "time": "23:30:00",
-      "venue": "Madison Square Garden"
+      "event": "Detroit Pistons vs Toronto Raptors",
+      "date": "2026-10-16",
+      "time": "23:00:00",
+      "venue": "Little Caesars Arena"
     },
     {
       "team": "Toronto Maple Leafs",
       "league": "NHL",
-      "event": "Toronto Maple Leafs vs Buffalo Sabres",
-      "date": "2026-10-15",
+      "event": "Toronto Maple Leafs vs New York Islanders",
+      "date": "2026-10-17",
       "time": "23:00:00",
       "venue": "Scotiabank Arena"
     },
