@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T19:33:59.653Z",
+  "updatedAt": "2026-10-16T23:50:52.148Z",
   "windowDays": 14,
   "items": [
     {
@@ -29,16 +29,6 @@
       "url": "https://www.visitmississauga.ca/event/lakeshore-art-trail/",
       "start": "2026-10-16T18:30:00.000Z",
       "end": "2026-10-18T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Musical Journey of Neil Diamond featuring Jay White",
-      "summary": "VaughnCo Entertainment proudly presents the world’s most authentic Neil Diamond concert tribute, starring Jay White! For more than five decades, Neil Diamond’s music has transcended generations, touching the hearts of millions around the world. ” Every sound, every gesture, and every note captures the power and emotion that define Neil Diamond’s legendary music. Visually stunning and comfortingly familiar, this extraordinary concert experience is a true feast for the senses—and the soul.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/the-musical-journey-of-neil-diamond-featuring-jay-white/",
-      "start": "2026-10-16T19:30:00.000Z",
-      "end": "2026-10-16T21:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -121,6 +111,16 @@
       "end": "2026-10-21T23:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Hotel California",
+      "summary": "HOTEL CALIFORNIA, the original Eagles tribute is bringing their full production to the Living Arts Centre Mississauga Friday October 23. This is without question the best live Eagles performance you will see this side of the Las Vegas Sphere. For over three decades, HOTEL CALIFORNIA has been re-creating the legendary sound of THE EAGLES, and thrilling audiences all over the world.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/hotel-california/",
+      "start": "2026-10-23T19:30:00.000Z",
+      "end": "2026-10-23T21:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
