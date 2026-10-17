@@ -1,37 +1,7 @@
 {
-  "updatedAt": "2026-10-16T23:50:52.148Z",
+  "updatedAt": "2026-10-17T00:28:18.648Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Toronto Rock N' Gem Show",
-      "summary": "GET READY! THE MOST ANTICIPATED ROCK N’ GEM SHOW IS COMING! For the FIRST TIME EVER , the Rock N’ Gem Show is taking over The International Centre in Mississauga! Explore an incredible selection of crystals, minerals, fossils, gemstones, jewelry, beads, carvings, lapidary supplies and one-of-a-kind treasures from vendors across Canada. Free parking available. Service animals permitted.",
-      "venue": "The International Centre, Hall 4",
-      "url": "https://www.visitmississauga.ca/event/rock-n-gem-show/",
-      "start": "2026-10-16T10:00:00.000Z",
-      "end": "2026-10-18T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Luna Halloween Market",
-      "summary": "The Luna Halloween Market: Night of the Vampire brings a weekend of Halloween-themed shopping, entertainment, and family-friendly activities to the Vic Johnston Community Centre. 🌙🖤 Visitors can explore more than 45 unique vendors , immersive vampire-themed photo opportunities, and a variety of spooky attractions throughout the market. Highlights include the 🩸 Blood Bar serving Halloween-inspired beverages, 🍬 Dracula's Candy Bar , the 🎃 Vampire's Cauldron Kids Prize Station , and a 🦇 Vampire Scavenger Hunt with prizes to be won.",
-      "venue": "Vic Johnston Community Centre",
-      "url": "https://www.visitmississauga.ca/event/luna-halloween-market/",
-      "start": "2026-10-16T18:00:00.000Z",
-      "end": "2026-10-17T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Lakeshore Art Trail",
-      "summary": "Discover, shop, and be inspired at the Lakeshore Art Trail, a weekend celebration of local creativity featuring 40 talented artists showcasing everything from paintings and photography to sculpture and mixed media. Whether you're a serious art collector or just love a good wander, you'll find plenty to explore, plus live demonstrations, artist chats, and interactive experiences along the way. This year is extra special as the Lakeshore Art Trail celebrates 25 years of bringing art and community together.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/lakeshore-art-trail/",
-      "start": "2026-10-16T18:30:00.000Z",
-      "end": "2026-10-18T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "National Menopause Show",
       "summary": "Empower your health journey at The National Menopause Show, Canada’s leading consumer event for women navigating perimenopause, menopause, and healthy aging. Taking place on Saturday, October 17 and Sunday, October 18, 2026, at The International Centre in Mississauga, this transformative weekend brings the science and stories of women's health into one supportive space. Attendees can connect with top doctors and medical experts to find real answers about sleep, hormone management, weight, fitness, and intimacy.",
@@ -121,6 +91,36 @@
       "end": "2026-10-23T21:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Solidaridad Tango in Concert",
+      "summary": "Experience the passion, virtuosity, and irresistible rhythms of live tango! On Friday, October 23, the Chamber Music Society of Mississauga presents Solidaridad Tango , North America’s original all-woman, diversity-affirming tango ensemble, for an electrifying evening of music and dance.",
+      "venue": "Unitarian Congregation of Mississauga",
+      "url": "https://www.visitmississauga.ca/event/solidaridad-tango-in-concert/",
+      "start": "2026-10-23T20:00:00.000Z",
+      "end": "2026-10-23T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Video Game Live Expo (VGLX)",
+      "summary": "Calling all Pokémon Trainers! VGLX is packed with Pokémon activities all weekend long, from scavenger hunts and mini-games to crafts, photo ops, card collecting and more. Whether you want to catch ’em all, make something of your own or hunt for your next favourite card, there’s something for Pokémon fans of every age.",
+      "venue": "The International Centre, Hall 4",
+      "url": "https://www.visitmississauga.ca/event/video-game-live-expo/",
+      "start": "2026-10-24T10:00:00.000Z",
+      "end": "2026-10-25T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
+      "summary": "Join us for a captivating Bharatanatyam dance performance!",
+      "venue": "Malton Library",
+      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2002964679274",
+      "start": "2026-10-24T16:00:00.000Z",
+      "end": "2026-10-24T16:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
