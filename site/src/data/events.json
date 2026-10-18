@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-18T14:01:04.501Z",
+  "updatedAt": "2026-10-18T18:38:37.597Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Symphony Of Communities",
-      "summary": "What happens when community bands from across Ontario come together on one stage? Find out at Symphony of Communities: When Ontario Plays as One ! Hosted by the Mississauga Pops Concert Band, this lively afternoon concert is part of the Canadian Band Association (Ontario) Community Band Weekend and showcases the energy, passion, and camaraderie of musicians from across the province. Come celebrate community, connection, and great music.",
-      "venue": "Meadowvale Theatre",
-      "url": "https://www.visitmississauga.ca/event/symphony-of-communities/",
-      "start": "2026-10-18T14:00:00.000Z",
-      "end": "2026-10-18T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-3/",
-      "start": "2026-10-18T18:00:00.000Z",
-      "end": "2026-10-18T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Preserving Seasonal Food: Quick Pickling Workshop",
       "summary": "Learn the fast-pickle method to reduce food waste, boost flavor, and enjoy fresh-tasting produce!",
@@ -119,6 +99,26 @@
       "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-2002084694215",
       "start": "2026-10-28T18:00:00.000Z",
       "end": "2026-10-28T19:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Indoor Composting with Vermicompost",
+      "summary": "Learn about indoor composting with vermicompost!",
+      "venue": "Woodlands Library",
+      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001085175628",
+      "start": "2026-10-28T21:30:00.000Z",
+      "end": "2026-10-28T23:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Author Talks with Kelley Armstrong",
+      "summary": "Best selling author, Kelley Armstrong, will talk about her books and writing experiences.",
+      "venue": "",
+      "url": "https://www.eventbrite.ca/e/author-talks-with-kelley-armstrong-tickets-1996819459757",
+      "start": "2026-10-28T23:00:00.000Z",
+      "end": "2026-10-29T00:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
