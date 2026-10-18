@@ -1,37 +1,7 @@
 {
-  "updatedAt": "2026-10-17T22:50:29.304Z",
+  "updatedAt": "2026-10-18T00:02:10.876Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "National Menopause Show",
-      "summary": "Empower your health journey at The National Menopause Show, Canada’s leading consumer event for women navigating perimenopause, menopause, and healthy aging. Taking place on Saturday, October 17 and Sunday, October 18, 2026, at The International Centre in Mississauga, this transformative weekend brings the science and stories of women's health into one supportive space. Attendees can connect with top doctors and medical experts to find real answers about sleep, hormone management, weight, fitness, and intimacy.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/national-menopause-show/",
-      "start": "2026-10-17T00:00:00.000Z",
-      "end": "2026-10-18T23:59:59.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Halloween Harvest Festival",
-      "summary": "Visit Bradley Museum and enjoy all the fall harvest season has to offer!",
-      "venue": "Bradley Museum",
-      "url": "https://www.visitmississauga.ca/event/halloween-harvest-festival/",
-      "start": "2026-10-17T12:00:00.000Z",
-      "end": "2026-10-18T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Debut 2026",
-      "summary": "The Debut returns for another unforgettable night of rising hip-hop talent, spotlighting the next generation of artists on a professional stage with a full-scale concert experience to match. This year, RYO, Scartown Koom, Peel Baby JSav, and Seth take over The Rec Room at Square One , delivering exclusive performances and brand-new music that audiences will hear first on debut night.",
-      "venue": "The Rec Room",
-      "url": "https://www.visitmississauga.ca/event/the-debut-2026/",
-      "start": "2026-10-17T19:30:00.000Z",
-      "end": "2026-10-17T23:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Symphony Of Communities",
       "summary": "What happens when community bands from across Ontario come together on one stage? Find out at Symphony of Communities: When Ontario Plays as One ! Hosted by the Mississauga Pops Concert Band, this lively afternoon concert is part of the Canadian Band Association (Ontario) Community Band Weekend and showcases the energy, passion, and camaraderie of musicians from across the province. Come celebrate community, connection, and great music.",
@@ -119,6 +89,36 @@
       "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2002964679274",
       "start": "2026-10-24T16:00:00.000Z",
       "end": "2026-10-24T16:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Sing Pitch Perfect with Deke Sharon and Splüsh",
+      "summary": "Join the legendary Deke Sharon , the Father of Contemporary A Cappella, for an unforgettable interactive singing experience featuring a hit song from the beloved Pitch Perfect movie franchise. Learn directly from the Music Director behind all three blockbuster Pitch Perfect films as Deke guides you through an all-a-cappella performance of the fan-favorite anthem, Since U Been Gone . With his expert coaching, you'll be singing confidently alongside fellow Pitch Perfect enthusiasts in no time.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/sing-pitch-perfect-with-deke-sharon-and-splush/",
+      "start": "2026-10-24T20:00:00.000Z",
+      "end": "2026-10-24T21:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-4/",
+      "start": "2026-10-25T18:00:00.000Z",
+      "end": "2026-10-25T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Cookbook Club",
+      "summary": "Connect with fellow foodies through our monthly cookbook club.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-2002084694215",
+      "start": "2026-10-28T18:00:00.000Z",
+      "end": "2026-10-28T19:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
