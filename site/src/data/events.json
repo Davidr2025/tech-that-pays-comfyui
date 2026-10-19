@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-19T16:59:56.764Z",
+  "updatedAt": "2026-10-19T21:50:28.789Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Preserving Seasonal Food: Quick Pickling Workshop",
-      "summary": "Learn the fast-pickle method to reduce food waste, boost flavor, and enjoy fresh-tasting produce!",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/preserving-seasonal-food-quick-pickling-workshop-tickets-2002212975909",
-      "start": "2026-10-19T18:00:00.000Z",
-      "end": "2026-10-19T19:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Midday Melodies: Opera Fantasy",
       "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
@@ -121,6 +111,16 @@
       "end": "2026-10-29T00:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Startup Tour Mississauga",
+      "summary": "The 2026 Startup Canada Tour will be at the Living Arts Centre on October 29, 2026 As entrepreneurs navigate rising costs, emerging technologies, and an increasingly complex business landscape, this event is your go-to source for expert talks and networking to help you adapt, grow, and scale your business. Don't miss this incredible opportunity to take your business to the next level!",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/startup-tour-mississauga/",
+      "start": "2026-10-29T09:30:00.000Z",
+      "end": "2026-10-29T14:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
