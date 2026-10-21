@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-21T15:14:05.557Z",
+  "updatedAt": "2026-10-21T19:50:27.136Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Midday Melodies: Opera Fantasy",
-      "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
-      "venue": "Maker Stage, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/midday-melodies-opera-fantasy-tickets-2000417236805",
-      "start": "2026-10-21T16:00:00.000Z",
-      "end": "2026-10-21T17:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Indoor Composting with Vermicompost",
       "summary": "Learn about indoor composting with vermicompost!",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/startup-tour-mississauga/",
       "start": "2026-10-29T09:30:00.000Z",
       "end": "2026-10-29T14:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga sBOOky Village",
+      "summary": "Get ready for four days of frightfully fun fall festivities at Mississauga sBOOky Village ! Taking over Square One from October 29 to November 1, this Halloween and harvest-themed event features local vendors, delicious food, festive displays, family-friendly activities, a scavenger hunt, pumpkin carving, costume contests, and more. Soak up the seasonal atmosphere by day, then enjoy a Halloween DJ party after dark.",
+      "venue": "Square One Shopping Centre, P6 Parking Lot",
+      "url": "https://www.visitmississauga.ca/event/mississauga-sbooky-village/",
+      "start": "2026-10-29T17:00:00.000Z",
+      "end": "2026-11-01T21:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
