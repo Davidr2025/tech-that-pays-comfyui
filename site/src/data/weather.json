@@ -1,33 +1,25 @@
 {
-  "updatedAt": "2026-10-21T00:37:41.759Z",
+  "updatedAt": "2026-10-21T04:52:01.800Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 9,
-    "feelsLike": 8,
+    "temp": 6,
+    "feelsLike": 3,
     "text": "Clear",
     "icon": "☀️"
   },
   "days": [
     {
-      "date": "2026-10-20",
-      "max": 16,
-      "min": 7,
-      "precipChance": 0,
-      "text": "Clear",
-      "icon": "☀️"
-    },
-    {
       "date": "2026-10-21",
-      "max": 14,
-      "min": 4,
+      "max": 13,
+      "min": 3,
       "precipChance": 0,
       "text": "Clear",
       "icon": "☀️"
     },
     {
       "date": "2026-10-22",
-      "max": 17,
+      "max": 15,
       "min": 5,
       "precipChance": 1,
       "text": "Overcast",
@@ -53,7 +45,15 @@
       "date": "2026-10-25",
       "max": 20,
       "min": 7,
-      "precipChance": 0,
+      "precipChance": 1,
+      "text": "Overcast",
+      "icon": "☁️"
+    },
+    {
+      "date": "2026-10-26",
+      "max": 17,
+      "min": 8,
+      "precipChance": 7,
       "text": "Overcast",
       "icon": "☁️"
     }
