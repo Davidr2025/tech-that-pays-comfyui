@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-21T20:09:09.720Z",
+  "updatedAt": "2026-10-22T00:41:54.365Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Indoor Composting with Vermicompost",
-      "summary": "Learn about indoor composting with vermicompost!",
-      "venue": "Cooksville Library",
-      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001083731308",
-      "start": "2026-10-21T21:30:00.000Z",
-      "end": "2026-10-21T23:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Hotel California",
       "summary": "HOTEL CALIFORNIA, the original Eagles tribute is bringing their full production to the Living Arts Centre Mississauga Friday October 23. This is without question the best live Eagles performance you will see this side of the Las Vegas Sphere. For over three decades, HOTEL CALIFORNIA has been re-creating the legendary sound of THE EAGLES, and thrilling audiences all over the world.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/mississauga-sbooky-village/",
       "start": "2026-10-29T17:00:00.000Z",
       "end": "2026-11-01T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga Music Nights — Halloween Show",
+      "summary": "Celebrate Halloween with an unforgettable evening of live music at Mississauga Music Nights — Halloween Show . This special showcase features an all-female lineup of talented GTA-based Pop, R&B, and Soul artists, highlighting both emerging and award-winning performers. Enjoy live performances from Mississauga Music Awards Fan Choice winner Maame G. , rising Latin-pop artist Jasy , genre-blending singer-songwriter Maylana , acclaimed vocalist Shanaya Z.",
+      "venue": "The Rec Room",
+      "url": "https://www.visitmississauga.ca/event/mississauga-music-nights-halloween-show/",
+      "start": "2026-10-30T19:00:00.000Z",
+      "end": "2026-10-30T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
