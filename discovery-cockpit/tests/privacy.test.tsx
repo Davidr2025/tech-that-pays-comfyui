@@ -60,6 +60,7 @@ beforeAll(async () => {
     nextQuestion: { text: string; why: string };
     signals: { quote: string }[];
     objections: { quote: string }[];
+    facts: { urgency: { quote: string }; decision: { quote: string } };
   };
   await prisma.session.update({
     where: { id: sessionId },
@@ -80,7 +81,12 @@ beforeAll(async () => {
     coaching.nextQuestion.text,
     coaching.nextQuestion.why,
   ];
-  clientQuotes = [...coaching.signals.map((s) => s.quote), ...coaching.objections.map((o) => o.quote)];
+  clientQuotes = [
+    ...coaching.signals.map((s) => s.quote),
+    ...coaching.objections.map((o) => o.quote),
+    coaching.facts.urgency.quote,
+    coaching.facts.decision.quote,
+  ];
 
   const loaded = await getRevealPayload(sessionId);
   if (!loaded) throw new Error("expected a report to exist");
@@ -95,8 +101,9 @@ describe("test preconditions (the test is not vacuous)", () => {
     expect(JSON.stringify(s.coaching)).toContain(SENTINEL_COACHING);
     expect([...coachStrings, ...clientQuotes].every((p) => p.length > 0)).toBe(true);
     expect(coachStrings.length).toBe(7);
-    expect(clientQuotes.length).toBe(3); // 2 buying signals + 1 objection in the demo call
-    expect(clientQuotes.some((q) => q.includes("burned"))).toBe(true);
+    expect(clientQuotes.length).toBe(5); // 2 buying signals, 1 objection, the urgency and decision statements
+    expect(clientQuotes.some((q) => q.includes("freelancer"))).toBe(true);
+    expect(clientQuotes.some((q) => q.includes("mid-November"))).toBe(true);
   });
 });
 
@@ -116,14 +123,14 @@ describe("reveal payload contains no private data", () => {
       const allowed = moneyContexts.filter((c) => c === quote).length;
       expect(occurrences(JSON.stringify(payload), quote), quote).toBe(allowed);
     }
-    // The objection is never surfaced; the budget statement is, because it states a dollar amount.
-    const objection = clientQuotes.find((q) => q.includes("burned"))!;
+    // The objection and the sentence that carried the deadline are never surfaced as written.
+    const objection = clientQuotes.find((q) => q.includes("freelancer"))!;
     expect(occurrences(JSON.stringify(payload), objection)).toBe(0);
   });
 
   it("only has the allow-listed top-level fields", () => {
     expect(Object.keys(payload).sort()).toEqual(
-      ["currentState", "futureState", "generatedAt", "header", "moneyMentioned", "painPoints", "summary", "techStack", "totals", "version"].sort(),
+      ["currentState", "futureState", "generatedAt", "header", "moneyMentioned", "painPoints", "summary", "techStack", "timeline", "totals", "version"].sort(),
     );
   });
 });
@@ -133,7 +140,7 @@ describe("rendered reveal page contains no private data", () => {
     const html = renderToStaticMarkup(<RevealView data={payload} />);
     const text = htmlToText(html);
     expect(text).toContain("What We Heard");
-    expect(text).toContain("QuickBooks");
+    expect(text).toContain("HubSpot");
     expect(findLeaks(text, coachStrings)).toEqual([]);
     expect(findLeaks(text, FORBIDDEN_TEXT)).toEqual([]);
     const moneyContexts = payload.moneyMentioned.map((m) => m.context);
@@ -178,12 +185,13 @@ describe("the boundary is enforced, not just observed", () => {
     expect(FORBIDDEN_KEYS.filter((k) => deepKeys(JSON.parse(leaky)).has(k))).toContain("coaching");
     expect(findLeaks("<p>Decision Readiness 77</p>", FORBIDDEN_TEXT)).toContain("decision readiness");
 
-    // The objection sentence contains an apostrophe, which React escapes as &#x27; in HTML.
-    // The scan must still see it once the markup is decoded.
-    const objection = clientQuotes.find((q) => q.includes("burned"))!;
-    const html = renderToStaticMarkup(<RevealView data={{ ...payload, summary: objection }} />);
-    expect(html).not.toContain(objection); // raw markup would have hidden the leak...
-    expect(occurrences(htmlToText(html), objection)).toBe(1); // ...decoded text does not
+    // A leaked sentence with an apostrophe is escaped as &#x27; in raw HTML. The scan must still
+    // see it once the markup is decoded (the urgency statement says "I'd want to move ...").
+    const withApostrophe = clientQuotes.find((q) => q.includes("'"))!;
+    expect(withApostrophe).toBeTruthy();
+    const html = renderToStaticMarkup(<RevealView data={{ ...payload, summary: withApostrophe }} />);
+    expect(html).not.toContain(withApostrophe); // raw markup would have hidden the leak...
+    expect(occurrences(htmlToText(html), withApostrophe)).toBe(1); // ...decoded text does not
   });
 
   it("the reveal code path never touches private session data (static check)", () => {

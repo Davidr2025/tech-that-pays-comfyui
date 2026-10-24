@@ -43,6 +43,15 @@ describe("useTalkTimer", () => {
     expect(result.current.elapsedMs).toBeLessThanOrEqual(10_200);
   });
 
+  it("keeps the partial interval when stopped between ticks", () => {
+    const { result } = renderHook(() => useTalkTimer(1));
+    act(() => result.current.start());
+    advance(1_050, 50); // 10 full ticks plus 50ms that no tick has counted yet
+    act(() => result.current.stop());
+    expect(result.current.elapsedMs).toBeGreaterThanOrEqual(1_040);
+    expect(result.current.elapsedMs).toBeLessThanOrEqual(1_060);
+  });
+
   it("stops, resumes and resets", () => {
     const { result } = renderHook(() => useTalkTimer(1));
     act(() => result.current.start());

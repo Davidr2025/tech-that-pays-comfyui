@@ -10,20 +10,25 @@
  */
 import { joinList } from "../format";
 import {
-  BUDGET_CUE,
+  BUDGET_FACT,
+  DEADLINE_PHRASE,
   DECISION_MAKER,
   DECISION_SHARED,
   ONE_TIME_CUE,
   OBJECTION_RULES,
   RECURRING_CUE,
   SIGNAL_RULES,
+  URGENCY_FACT,
+  WINDOW_PHRASE,
 } from "./cues";
-import { INTENSITY, PAIN_CATEGORIES } from "./pain";
+import { formatRange, NUM, RANGE_JOIN, toNumber } from "./numbers";
+import { CUSTOMER_VISIBLE, INTENSITY, PAIN_CATEGORIES, type PainCategory } from "./pain";
 import { QUESTION_BANK } from "./questions";
 import { TOOL_CATALOG } from "./tools";
 import type {
   Analysis,
   Cue,
+  DecisionFacts,
   MoneyMention,
   NextQuestion,
   PainPoint,
@@ -34,6 +39,7 @@ import type {
   Severity,
   TalkRatio,
   TechItem,
+  Timeline,
 } from "./types";
 
 export function splitSentences(text: string): string[] {
@@ -99,72 +105,197 @@ export function findMoney(sentence: string): RawMoney[] {
   return out;
 }
 
-// ---------- pain points ----------
+const annualised = (m: Pick<RawMoney, "amount" | "period">): number =>
+  m.period === "month" ? m.amount * 12 : m.period === "week" ? m.amount * 52 : m.amount;
 
-interface PainHit {
-  sentence: string;
-  segmentOrder: number;
-  hours: { value: number; per: string | null } | null;
-  hasMoney: boolean;
-  intense: boolean;
+const formatDollars = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
+
+// ---------- quantities the client states ----------
+
+const TIME_RE = new RegExp(
+  `\\b(${NUM})(?:${RANGE_JOIN}(${NUM}))?\\s+(?:full\\s+|whole\\s+)?(hours?|hrs?|days?)\\b(?:\\s*(?:a|per|each|every)\\s*(week|month|day))?`,
+  "i",
+);
+const COUNT_RE = new RegExp(
+  `\\b(${NUM})(?:${RANGE_JOIN}(${NUM}))?\\s+(?:good |qualified |new |real )?(leads?|clients?|customers?|deals?|prospects?|estimate requests?|estimates?|inquiries|proposals?|jobs?)\\b[^.]{0,40}?\\b(?:a|per|each|every) (week|month|year)\\b`,
+  "i",
+);
+
+interface TimeQty {
+  low: number;
+  high: number | null;
+  unit: "hours" | "days";
+  per: string | null;
+  /** Hours per week, when the client gave a weekly (or monthly) rate. */
+  weekly: number | null;
+}
+interface CountQty {
+  low: number;
+  high: number | null;
+  noun: string;
+  per: string;
 }
 
-const HOURS_RE = /(\d+(?:\.\d+)?)\s*(?:hours?|hrs?)\b(?:\s*(?:a|per|each|every)\s*(week|day|month))?/i;
+function parseTime(sentence: string): TimeQty | null {
+  const m = sentence.match(TIME_RE);
+  if (!m) return null;
+  const low = toNumber(m[1]!);
+  const high = m[2] ? toNumber(m[2]) : null;
+  const unit = m[3]!.toLowerCase().startsWith("d") ? "days" : "hours";
+  const per = m[4]?.toLowerCase() ?? null;
+  const top = high ?? low;
+  const perWeek = unit === "days" ? top * 8 : top;
+  const weekly = per === "week" ? perWeek : per === "month" ? perWeek / 4.33 : null;
+  return { low, high, unit, per, weekly };
+}
+
+function parseCount(sentence: string): CountQty | null {
+  const m = sentence.match(COUNT_RE);
+  if (!m) return null;
+  return { low: toNumber(m[1]!), high: m[2] ? toNumber(m[2]) : null, noun: m[3]!.toLowerCase(), per: m[4]!.toLowerCase() };
+}
+
+const singular = (noun: string) => (noun.endsWith("ies") ? `${noun.slice(0, -3)}y` : noun.replace(/s$/, ""));
+
+// ---------- pain points ----------
+
+interface Features {
+  time: TimeQty | null;
+  count: CountQty | null;
+  money: RawMoney[];
+  intense: boolean;
+  visible: boolean;
+}
+
+interface Evidence {
+  hits: { sentence: string; order: number }[];
+  features: Features[];
+}
+
+function featuresOf(sentence: string): Features {
+  return {
+    time: parseTime(sentence),
+    count: parseCount(sentence),
+    money: findMoney(sentence),
+    intense: INTENSITY.test(sentence),
+    visible: CUSTOMER_VISIBLE.test(sentence),
+  };
+}
+
+const hasFeatures = (f: Features) => f.time || f.count || f.money.length || f.intense || f.visible;
+
+const SEVERITY_RANK: Record<Severity, number> = { high: 3, medium: 2, low: 1 };
 
 function severityFor(score: number): Severity {
-  if (score >= 5) return "high";
+  if (score >= 6) return "high";
   if (score >= 3) return "medium";
   return "low";
 }
 
-const SEVERITY_RANK: Record<Severity, number> = { high: 3, medium: 2, low: 1 };
+/**
+ * Walks each client segment sentence by sentence. A sentence that matches a pain category is
+ * a "hit". A follow-on sentence that matches nothing ("That was embarrassing.", "That's an extra
+ * $150,000 a year on the table.") lends its intensity, numbers and money to the category the
+ * previous matching sentence in the same segment belonged to. Hours only count toward
+ * time-sink categories.
+ */
+function collectEvidence(clientSegments: Segment[]): Map<string, Evidence> {
+  const evidence = new Map<string, Evidence>();
+  const slot = (id: string) => {
+    let e = evidence.get(id);
+    if (!e) evidence.set(id, (e = { hits: [], features: [] }));
+    return e;
+  };
+  const byId = new Map(PAIN_CATEGORIES.map((c) => [c.id, c]));
+  const forCategory = (cat: PainCategory, f: Features): Features => ({ ...f, time: cat.timeSink ? f.time : null });
 
-function extractPainPoints(clientSentences: { text: string; order: number }[]): PainPoint[] {
-  const hitsByCategory = new Map<string, PainHit[]>();
-  for (const { text, order } of clientSentences) {
-    for (const cat of PAIN_CATEGORIES) {
-      if (!cat.pattern.test(text)) continue;
-      const hoursMatch = text.match(HOURS_RE);
-      const hit: PainHit = {
-        sentence: text,
-        segmentOrder: order,
-        hours: hoursMatch ? { value: Number(hoursMatch[1]), per: hoursMatch[2]?.toLowerCase() ?? null } : null,
-        hasMoney: findMoney(text).length > 0,
-        intense: INTENSITY.test(text),
-      };
-      const list = hitsByCategory.get(cat.id) ?? [];
-      list.push(hit);
-      hitsByCategory.set(cat.id, list);
+  for (const seg of clientSegments) {
+    let lastMatched: PainCategory[] = [];
+    for (const sentence of splitSentences(seg.text)) {
+      const matched = PAIN_CATEGORIES.filter((c) => c.pattern.test(sentence));
+      const f = featuresOf(sentence);
+      if (matched.length) {
+        for (const cat of matched) {
+          const e = slot(cat.id);
+          e.hits.push({ sentence, order: seg.order });
+          e.features.push(forCategory(cat, f));
+        }
+        // "It's easily ten to twelve hours a week" quantifies the time sink just described.
+        if (f.time && !matched.some((c) => c.timeSink)) {
+          for (const cat of lastMatched.filter((c) => c.timeSink)) slot(cat.id).features.push({ ...f, count: null, money: [], intense: false, visible: false });
+        }
+        lastMatched = matched;
+      } else if (lastMatched.length && hasFeatures(f)) {
+        for (const cat of lastMatched) slot(cat.id).features.push(forCategory(byId.get(cat.id)!, f));
+      }
     }
   }
+  return evidence;
+}
 
-  const scored: { pain: PainPoint; score: number }[] = [];
-  for (const cat of PAIN_CATEGORIES) {
-    const hits = hitsByCategory.get(cat.id);
-    if (!hits?.length) continue;
-    const topHours = hits.reduce<PainHit["hours"]>((best, h) => (h.hours && (!best || h.hours.value > best.value) ? h.hours : best), null);
-    let score = hits.length;
-    if (hits.some((h) => h.intense)) score += 2;
-    if (topHours) score += topHours.value >= 10 ? 3 : 1;
-    if (hits.some((h) => h.hasMoney)) score += 1;
-    const first = hits[0]!;
+function describeImpact(cat: PainCategory, features: Features[]): { text: string | null; quantified: boolean; topWeekly: number } {
+  const times = features.map((f) => f.time).filter((t): t is TimeQty => t !== null);
+  const counts = features.map((f) => f.count).filter((c): c is CountQty => c !== null);
+  const moneys = features.flatMap((f) => f.money);
+  const topWeekly = Math.max(0, ...times.map((t) => t.weekly ?? 0));
+
+  // Prefer an explicit hours figure over a days figure; otherwise the largest.
+  const bestTime =
+    times.filter((t) => t.unit === "hours").sort((a, b) => (b.high ?? b.low) - (a.high ?? a.low))[0] ??
+    times.sort((a, b) => (b.weekly ?? 0) - (a.weekly ?? 0))[0];
+  const timeText = bestTime
+    ? `about ${formatRange(bestTime.low, bestTime.high)} ${bestTime.unit}${bestTime.per ? ` per ${bestTime.per}` : ""}`
+    : null;
+
+  const bestCount = counts[0];
+  const countText = bestCount ? `about ${formatRange(bestCount.low, bestCount.high)} ${bestCount.noun} per ${bestCount.per}` : null;
+
+  // Annual figures read best; fall back to whatever was said.
+  const bestMoney = [...moneys].sort((a, b) => annualised(b) - annualised(a) || (a.period === "year" ? -1 : 1))[0];
+  const moneyText = bestMoney
+    ? `about ${formatDollars(bestMoney.amount)}${bestMoney.period !== "unspecified" ? ` per ${bestMoney.period}` : ""}`
+    : null;
+
+  const text = cat.timeSink ? (timeText ?? countText ?? (cat.money ? moneyText : null)) : cat.money ? (moneyText ?? countText) : countText;
+  return { text, quantified: Boolean(timeText || countText || moneyText), topWeekly };
+}
+
+function extractPainPoints(clientSegments: Segment[]): PainPoint[] {
+  const evidence = collectEvidence(clientSegments);
+  const scored: { pain: PainPoint; score: number; index: number }[] = [];
+
+  PAIN_CATEGORIES.forEach((cat, index) => {
+    const e = evidence.get(cat.id);
+    if (!e?.hits.length) return;
+    const impact = describeImpact(cat, e.features);
+    let score = Math.min(3, e.hits.length);
+    if (e.features.some((f) => f.intense)) score += 2;
+    if (e.features.some((f) => f.visible)) score += 2;
+    if (impact.topWeekly >= 10) score += 4;
+    else if (e.features.some((f) => f.time)) score += 1;
+    if (e.features.some((f) => f.count)) score += 1;
+    if (e.features.some((f) => f.money.length)) score += 1;
+    const first = e.hits[0]!;
     scored.push({
+      index,
       score,
       pain: {
         id: cat.id,
         title: cat.title,
         description: cat.description,
-        impact: topHours ? `about ${topHours.value} hours${topHours.per ? ` per ${topHours.per}` : ""}` : null,
+        impact: impact.text,
+        quantified: impact.quantified,
         severity: severityFor(score),
         quote: first.sentence,
-        segmentOrder: first.segmentOrder,
+        segmentOrder: first.order,
         currentState: cat.currentState,
         futureState: cat.futureState,
       },
     });
-  }
+  });
+
   return scored
-    .sort((a, b) => SEVERITY_RANK[b.pain.severity] - SEVERITY_RANK[a.pain.severity] || b.score - a.score)
+    .sort((a, b) => SEVERITY_RANK[b.pain.severity] - SEVERITY_RANK[a.pain.severity] || b.score - a.score || a.index - b.index)
     .map((s) => s.pain);
 }
 
@@ -182,6 +313,18 @@ function monthlyFrom(amount: number, period: Period): { monthly: number; annual:
     default:
       return null;
   }
+}
+
+/** Splits a sentence into clauses so "Asana at $120 a month, Zapier at $99 a month" pairs correctly. */
+function clausesOf(sentence: string): { start: number; end: number }[] {
+  const out: { start: number; end: number }[] = [];
+  let start = 0;
+  for (const m of sentence.matchAll(/,|;|—|–| - |\band\b/gi)) {
+    out.push({ start, end: m.index ?? 0 });
+    start = (m.index ?? 0) + m[0].length;
+  }
+  out.push({ start, end: sentence.length });
+  return out;
 }
 
 function extractTech(clientSentences: { text: string; order: number }[]): TechItem[] {
@@ -202,6 +345,7 @@ function extractTech(clientSentences: { text: string; order: number }[]): TechIt
     for (const mention of mentions) touch(mention.name, mention.purpose, order);
     if (!mentions.length) continue;
 
+    const clauses = clausesOf(text);
     for (const money of findMoney(text)) {
       let { period } = money;
       let assumed = false;
@@ -213,9 +357,15 @@ function extractTech(clientSentences: { text: string; order: number }[]): TechIt
       }
       const converted = monthlyFrom(money.amount, period);
       if (!converted) continue;
-      const nearest = mentions.reduce((best, m) =>
-        Math.abs(m.index - money.start) < Math.abs(best.index - money.start) ? m : best,
-      );
+
+      // Same clause first; otherwise the closest tool before the amount; otherwise the closest after.
+      const clause = clauses.find((c) => money.start >= c.start && money.start <= c.end);
+      const inClause = clause ? mentions.filter((m) => m.index >= clause.start && m.index <= clause.end) : [];
+      const dist = (m: { index: number }) => Math.abs(m.index - money.start);
+      const pool = inClause.length ? inClause : mentions.filter((m) => m.index < money.start);
+      const candidates = pool.length ? pool : mentions;
+      const nearest = candidates.reduce((best, m) => (dist(m) < dist(best) ? m : best));
+
       const item = touch(nearest.name, nearest.purpose, order);
       item.monthlyCost = converted.monthly;
       item.annualCost = converted.annual;
@@ -225,7 +375,7 @@ function extractTech(clientSentences: { text: string; order: number }[]): TechIt
   return [...tools.values()];
 }
 
-// ---------- cues ----------
+// ---------- cues and facts ----------
 
 function extractCues(rules: { kind: string; pattern: RegExp }[], clientSegments: Segment[]): Cue[] {
   const out: Cue[] = [];
@@ -242,46 +392,77 @@ function extractCues(rules: { kind: string; pattern: RegExp }[], clientSegments:
   return out;
 }
 
+function firstMatch(kind: string, re: RegExp, clientSentences: { text: string; order: number }[]): Cue | null {
+  const hit = clientSentences.find((s) => re.test(s.text));
+  return hit ? { kind, quote: hit.text, segmentOrder: hit.order } : null;
+}
+
+function extractFacts(clientSentences: { text: string; order: number }[]): DecisionFacts {
+  const maker = firstMatch("Decision-maker", DECISION_MAKER, clientSentences);
+  const shared = maker ? null : firstMatch("Shared decision", DECISION_SHARED, clientSentences);
+  return {
+    budget: firstMatch("Budget", BUDGET_FACT, clientSentences),
+    urgency: firstMatch("Urgency", URGENCY_FACT, clientSentences),
+    decision: maker ? { ...maker, role: "maker" } : shared ? { ...shared, role: "shared" } : null,
+  };
+}
+
+function extractTimeline(urgency: Cue | null): Timeline {
+  if (!urgency) return { deadline: null, window: null };
+  return {
+    deadline: urgency.quote.match(DEADLINE_PHRASE)?.[1] ?? null,
+    window: urgency.quote.match(WINDOW_PHRASE)?.[1] ?? null,
+  };
+}
+
 // ---------- question coverage ----------
 
 type Ctx = {
   any: (re: RegExp) => boolean;
   client: (re: RegExp) => boolean;
-  consultant: (re: RegExp) => boolean;
-  painCount: number;
+  /** A consultant sentence that is actually a question (ends in "?") matching `re`. */
+  asks: (re: RegExp) => boolean;
+  painIds: Set<string>;
   hasCostedTool: boolean;
 };
 
+const WEEKLY_TIME = /\b(\w+ )?(hours?|days?) (a|per) week\b/i;
+
 const TOPIC_DETECTORS: Record<string, (c: Ctx) => boolean> = {
-  overview: (c) => c.any(/\bwe(?:'re| are| run| sell| serve| help| install| specialize)\b|who you serve|started the (business|company)|\bour (business|company)\b/i),
-  team: (c) => c.client(/\bteam of\b|\bemployees\b|\bstaff\b|\btechnicians\b|\bpart[- ]time\b|\bfull[- ]time\b|\bheadcount\b|\bcrew\b|\b\d+ (people|employees|reps|agents)\b/i) || c.consultant(/how big is (the|your) team|how many (people|employees)/i),
-  process: (c) => c.any(/walk me through|step by step|what happens (when|from)|\bit starts\b|here'?s how|how it works|\bthen (she|he|we|they)\b|after the job/i),
-  pain: (c) => c.painCount > 0,
-  impact: (c) => c.client(/\b\d+(?:\.\d+)?\s*(hours?|hrs?)\b|\bcost(s|ing)? (me|us)\b|\blosing\b|\bleaving [^.]{0,20}on the table\b/i),
-  tools: (c) => c.consultant(/\b(software|tools?|apps?|systems?|subscriptions?)\b/i) || c.hasCostedTool,
-  tried: (c) => c.any(/\btried\b|\battempted\b|\bwe (hired|bought|switched)\b|\bdropped it\b/i),
-  goal: (c) => c.any(/\bwhat would (that|it) look like\b|a year from now|\b(six|6|twelve|12) months\b|\bsuccess\b|\bdream\b/i),
-  urgency: (c) => c.any(/\bwhy now\b|driving the timing|\btimeline\b|\bbusy season\b|\bdeadline\b|\bas soon as\b|\basap\b|in the next \d+/i),
-  budget: (c) => c.any(/\bbudget\b|\bset aside\b|\bafford\b|\binvestment\b|\binvest\b|\bspend\b/i),
-  decision: (c) => c.any(/\bwho else\b|\bdecision\b|\bdecide\b|\bsign off\b|\bfinal call\b|\bfinal say\b|\bapprove\b/i),
-  next: (c) => c.any(/\bnext steps?\b|\bsend (me|over)\b|\bproposal\b|\bbook a\b|\bschedule a\b|follow[- ]up call/i),
+  context: (c) => c.any(/\bhow \w+ runs today\b|walk me through the business|tell me (a bit )?about \w+( \w+)* and who you serve|who you serve|how money comes in/i),
+  time_sinks: (c) => c.client(WEEKLY_TIME) || c.any(/\btime sinks?\b/i),
+  manual_processes: (c) => c.client(/\bby hand\b|\bmanual(ly)?\b|\bexports? csvs?\b|\bcopy[- ]and[- ]paste\b|\bre-?(enter|key|typ)\w*\b|\btypes? (it|them) (all )?into\b/i),
+  volume_spikes: (c) => c.any(/\bvolume spikes?\b|\bwhat breaks first\b|\bpeak (season|volume)\b|\bbusy season\b/i),
+  tool_stack: (c) => c.asks(/\b(tool stack|software|tools?|apps?|subscriptions?)\b/i) || c.hasCostedTool,
+  tool_overlap: (c) => c.any(/\boverlap\b|\bsame job\b|\btwo tools\b|\bboth places\b|\bpaying for two\b/i),
+  lead_leakage: (c) => c.painIds.has("lead_followup") || c.any(/\bleads?\b[^.?]{0,40}\b(slip|cracks?|lose|lost|die|go cold)\b/i),
+  close_rate: (c) => c.any(/\bclose rate\b|\bproposal to signed\b|\bone in (two|three|four|five)\b/i),
+  quality_dips: (c) => c.client(/\b(wrong|mistakes?|errors?|embarrass\w*|typo|sloppy|spotted it|client noticed)\b/i) || c.asks(/quality dip|notice a mistake/i),
+  team_resistance: (c) => c.any(/\bresist\w*|\bburn(ed|t)\b|\btried automation\b|\bbroke during\b|\bhated it\b|\bcautious\b/i),
+  decision_timeline: (c) => c.any(/\bwho else\b|\bdecision\b|\bdecide\b|\btimeline\b|\bsign off\b|\bmy call\b|\bfinal call\b/i),
+  one_fix: (c) => c.any(/\bexactly one thing\b|\bno-brainer\b|\bnext 90 days\b|\bone thing\b/i),
 };
 
-function detectTopics(segments: Segment[], painCount: number, hasCostedTool: boolean): string[] {
+function detectTopics(segments: Segment[], painIds: Set<string>, hasCostedTool: boolean): string[] {
   const test = (list: Segment[]) => (re: RegExp) => list.some((s) => re.test(s.text));
+  const consultantSentences = segments.filter((s) => s.speaker === "CONSULTANT").flatMap((s) => splitSentences(s.text));
   const ctx: Ctx = {
     any: test(segments),
     client: test(segments.filter((s) => s.speaker === "CLIENT")),
-    consultant: test(segments.filter((s) => s.speaker === "CONSULTANT")),
-    painCount,
+    asks: (re) => consultantSentences.some((s) => s.endsWith("?") && re.test(s)),
+    painIds,
     hasCostedTool,
   };
   return QUESTION_BANK.filter((q) => TOPIC_DETECTORS[q.topic]?.(ctx)).map((q) => q.topic);
 }
 
-/** The first bank question not yet covered (manual or AI), in natural call order. */
-export function pickNextQuestion(covered: ReadonlySet<string>): NextQuestion {
+/**
+ * The single best next question. A contextual follow-up (`followUp`) jumps the queue; the first
+ * uncovered bank question, in natural call order, follows it (as `after`) or stands alone.
+ */
+export function pickNextQuestion(covered: ReadonlySet<string>, followUp: NextQuestion | null = null): NextQuestion {
   const next = QUESTION_BANK.find((q) => !covered.has(q.topic));
+  if (followUp) return { ...followUp, after: next?.text ?? null };
   if (!next) {
     return {
       topic: null,
@@ -292,32 +473,53 @@ export function pickNextQuestion(covered: ReadonlySet<string>): NextQuestion {
   return { topic: next.topic, text: next.text, why: next.why };
 }
 
+/**
+ * A problem the client counted ("three to four good leads a month die") but never priced is
+ * missing a dollar value for the reveal. Skipped once the consultant has asked what one is worth.
+ */
+function dollarizeFollowUp(painPoints: PainPoint[], consultantText: string, counts: Map<string, CountQty>, priced: Set<string>): NextQuestion | null {
+  for (const pain of painPoints) {
+    const cat = PAIN_CATEGORIES.find((c) => c.id === pain.id);
+    if (!cat?.dollarize || !counts.has(pain.id) || priced.has(pain.id)) continue;
+    const noun = counts.get(pain.id) ? singular(counts.get(pain.id)!.noun) : cat.dollarize;
+    if (new RegExp(`\\b(worth|value)\\b[^.?]{0,40}\\b${noun}\\b|\\b${noun}\\b[^.?]{0,40}\\b(worth|value)\\b`, "i").test(consultantText)) continue;
+    return {
+      topic: null,
+      text: `What is one recovered ${noun} worth to you in revenue?`,
+      why: `Puts a dollar value on the ${noun} follow-up fix for the reveal (effectiveness).`,
+    };
+  }
+  return null;
+}
+
 // ---------- readiness ----------
 
 function scoreReadiness(args: {
   signals: Cue[];
   objections: Cue[];
-  money: MoneyMention[];
+  facts: DecisionFacts;
   painPoints: PainPoint[];
-  clientText: string;
   heardAnything: boolean;
 }): Readiness {
-  const { signals, objections, painPoints, clientText } = args;
-  const budget =
-    signals.some((s) => s.kind === "Budget") || args.money.some((m) => BUDGET_CUE.test(m.context));
-  const timeline = signals.some((s) => s.kind === "Urgency");
-  const decisionFull = DECISION_MAKER.test(clientText);
-  const decisionPartial = !decisionFull && DECISION_SHARED.test(clientText);
+  const { signals, objections, facts, painPoints } = args;
+  const budget = facts.budget !== null;
+  // No budget statement, but the client already pays a stated amount to work around the problem.
+  const spendOnProblem = !budget && painPoints.some((p) => p.id === "outsourcing_cost" && p.quantified);
+  const timeline = facts.urgency !== null;
+  const decisionFull = facts.decision?.role === "maker";
+  const decisionPartial = facts.decision?.role === "shared";
 
   const high = painPoints.filter((p) => p.severity === "high").length;
   const medium = painPoints.filter((p) => p.severity === "medium").length;
   const low = painPoints.filter((p) => p.severity === "low").length;
+  const costOfInaction = painPoints.some((p) => p.quantified && p.severity !== "low");
 
   const factors: ReadinessFactor[] = [
-    { label: "Budget", points: budget ? 20 : 0, max: 20 },
+    { label: "Budget", points: budget ? 15 : spendOnProblem ? 8 : 0, max: 15 },
     { label: "Urgency", points: timeline ? 20 : 0, max: 20 },
     { label: "Decision-maker", points: decisionFull ? 15 : decisionPartial ? 5 : 0, max: 15 },
-    { label: "Pain", points: Math.min(20, high * 8 + medium * 4 + low * 2), max: 20 },
+    { label: "Pain", points: Math.min(15, high * 6 + medium * 3 + low), max: 15 },
+    { label: "Cost of inaction", points: costOfInaction ? 10 : 0, max: 10 },
     { label: "Buying signals", points: Math.min(15, signals.length * 5), max: 15 },
     { label: "Objections", points: -Math.min(16, objections.length * 8), max: 0 },
   ];
@@ -327,9 +529,14 @@ function scoreReadiness(args: {
   if (!args.heardAnything) {
     reason = "Nothing heard yet — listen for budget, timeline and who decides.";
   } else {
-    const confirmed = [budget && "budget", timeline && "urgency", decisionFull && "decision-maker"].filter(Boolean) as string[];
+    const confirmed = [
+      decisionFull && "decision-maker",
+      timeline && "urgency",
+      budget && "budget",
+      signals.length > 0 && (signals.length === 1 ? "a buying signal" : `${signals.length} buying signals`),
+    ].filter(Boolean) as string[];
     const missing = [
-      !budget && "budget",
+      !budget && (spendOnProblem ? "an explicit budget" : "budget"),
       !timeline && "timeline",
       !decisionFull && (decisionPartial ? "final approver" : "who decides"),
     ].filter(Boolean) as string[];
@@ -346,15 +553,15 @@ function scoreReadiness(args: {
 
 // ---------- reflect back ----------
 
-function reflectBack(painPoints: PainPoint[], tech: TechItem[]): string {
+function reflectBack(painPoints: PainPoint[], timeline: Timeline): string {
   if (!painPoints.length) {
     return "Keep listening — no clear problem stated yet. Ask them to walk you through how it works today.";
   }
   const lines = painPoints.slice(0, 3).map((p) => `${p.title.charAt(0).toLowerCase()}${p.title.slice(1)}${p.impact ? ` (${p.impact})` : ""}`);
-  let out = `What I'm hearing is ${joinList(lines)}.`;
-  const named = tech.slice(0, 4).map((t) => t.tool);
-  if (named.length) out += ` Tools mentioned so far: ${joinList(named)}.`;
-  return `${out} Did I get that right, and what am I missing?`;
+  let out = `What I'm hearing is ${joinList(lines)}`;
+  if (timeline.deadline) out += `, with a target date of ${timeline.deadline}`;
+  else if (timeline.window) out += `, and you want to move within ${timeline.window}`;
+  return `${out}. Did I get that right, and what am I missing?`;
 }
 
 // ---------- talk ratio ----------
@@ -378,23 +585,33 @@ export function analyze(segments: Segment[]): Analysis {
   const clientSegments = ordered.filter((s) => s.speaker === "CLIENT");
   const clientSentences = clientSegments.flatMap((s) => splitSentences(s.text).map((text) => ({ text, order: s.order })));
 
-  const painPoints = extractPainPoints(clientSentences);
+  const painPoints = extractPainPoints(clientSegments);
   const tech = extractTech(clientSentences);
   const money: MoneyMention[] = clientSentences.flatMap(({ text, order }) =>
     findMoney(text).map((m) => ({ amount: m.amount, period: m.period, context: text, segmentOrder: order })),
   );
   const signals = extractCues(SIGNAL_RULES, clientSegments);
   const objections = extractCues(OBJECTION_RULES, clientSegments);
+  const facts = extractFacts(clientSentences);
+  const timeline = extractTimeline(facts.urgency);
 
-  const topicsCovered = detectTopics(ordered, painPoints.length, tech.some((t) => t.monthlyCost !== null));
-  const readiness = scoreReadiness({
-    signals,
-    objections,
-    money,
+  const evidence = collectEvidence(clientSegments);
+  const counts = new Map<string, CountQty>();
+  const priced = new Set<string>();
+  for (const [id, e] of evidence) {
+    const count = e.features.map((f) => f.count).find((c): c is CountQty => c !== null);
+    if (count) counts.set(id, count);
+    if (e.features.some((f) => f.money.length)) priced.add(id);
+  }
+  const followUp = dollarizeFollowUp(
     painPoints,
-    clientText: clientSegments.map((s) => s.text).join(" "),
-    heardAnything: ordered.length > 0,
-  });
+    ordered.filter((s) => s.speaker === "CONSULTANT").map((s) => s.text).join(" "),
+    counts,
+    priced,
+  );
+
+  const topicsCovered = detectTopics(ordered, new Set(painPoints.map((p) => p.id)), tech.some((t) => t.monthlyCost !== null));
+  const readiness = scoreReadiness({ signals, objections, facts, painPoints, heardAnything: ordered.length > 0 });
 
   return {
     painPoints,
@@ -402,10 +619,13 @@ export function analyze(segments: Segment[]): Analysis {
     tech,
     signals,
     objections,
+    facts,
+    timeline,
     topicsCovered,
     talk: talkRatio(ordered),
     readiness,
-    reflectBack: reflectBack(painPoints, tech),
-    nextQuestion: pickNextQuestion(new Set(topicsCovered)),
+    reflectBack: reflectBack(painPoints, timeline),
+    followUp,
+    nextQuestion: pickNextQuestion(new Set(topicsCovered), followUp),
   };
 }

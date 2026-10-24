@@ -52,6 +52,9 @@ export function buildRevealData({ consultant, client, analysis, generatedAt }: R
       : "";
     sentences.push(`The business currently uses ${pluralize(techStack.length, "tool")}.${costed}`);
   }
+  if (analysis.timeline.deadline) {
+    sentences.push(`Your target date is ${analysis.timeline.deadline}.`);
+  }
   if (analysis.money.length) {
     sentences.push(
       `You shared ${pluralize(analysis.money.length, "dollar figure")} along the way; each is listed below in context.`,
@@ -70,6 +73,7 @@ export function buildRevealData({ consultant, client, analysis, generatedAt }: R
       clientCompany: client.companyName,
     },
     summary: sentences.join(" "),
+    timeline: { deadline: analysis.timeline.deadline, window: analysis.timeline.window },
     painPoints,
     currentState,
     futureState,

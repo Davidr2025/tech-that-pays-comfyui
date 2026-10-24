@@ -11,7 +11,7 @@ import { analyze, pickNextQuestion } from "@/lib/mock-ai/engine";
 import type { Segment } from "@/lib/mock-ai/types";
 import { TARGET_DEFAULT_SEC } from "@/lib/talk-timer";
 import type { CockpitData } from "@/server/sessions";
-import { NextQuestionCard, ObjectionsCard, PainPointsCard, ReflectBackCard, SignalsCard } from "./coaching-panel";
+import { DecisionFactsCard, NextQuestionCard, ObjectionsCard, PainPointsCard, ReflectBackCard, SignalsCard } from "./coaching-panel";
 import { ReadinessGauge } from "./readiness-gauge";
 import { QuestionPanel, type QuestionRow } from "./question-panel";
 import { TalkRatioCard, TalkTimerCard } from "./talk-panel";
@@ -54,7 +54,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
       }),
     [data.questions, manual, dismissed, analysis.topicsCovered],
   );
-  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic))), [rows]);
+  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic)), analysis.followUp), [rows, analysis.followUp]);
 
   function toggleQuestion(row: QuestionRow) {
     const covered = !row.checked;
@@ -207,6 +207,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
             clockSpeed={clockSpeed}
           />
           <TalkRatioCard talk={analysis.talk} />
+          <DecisionFactsCard facts={analysis.facts} timeline={analysis.timeline} />
           <ReflectBackCard text={analysis.reflectBack} />
           <PainPointsCard painPoints={analysis.painPoints} />
           <SignalsCard signals={analysis.signals} />

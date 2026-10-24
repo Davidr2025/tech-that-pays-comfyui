@@ -29,6 +29,8 @@ export const revealSchema = z
       })
       .strict(),
     summary: z.string(),
+    /** Date phrases the client gave themselves, e.g. "mid-November" — never the surrounding sentence. */
+    timeline: z.object({ deadline: z.string().nullable(), window: z.string().nullable() }).strict(),
     painPoints: z.array(z.object({ title: z.string(), detail: z.string() }).strict()),
     currentState: z.array(z.string()),
     futureState: z.array(z.string()),

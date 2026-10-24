@@ -1,4 +1,4 @@
-import { Lightbulb, MessageSquareQuote, ShieldAlert, Sparkles } from "lucide-react";
+import { CheckCircle2, Circle, Lightbulb, MessageSquareQuote, ShieldAlert, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Analysis, NextQuestion } from "@/lib/mock-ai/types";
@@ -20,6 +20,11 @@ export function NextQuestionCard({ next }: { next: NextQuestion }) {
           {next.text}
         </p>
         <p className="mt-1 text-xs text-muted-foreground">{next.why}</p>
+        {next.after && (
+          <p className="mt-2 border-t pt-2 text-xs text-muted-foreground" data-testid="next-after">
+            <span className="font-medium">Then:</span> {next.after}
+          </p>
+        )}
       </CardContent>
     </Card>
   );
@@ -123,6 +128,36 @@ export function ObjectionsCard({ objections }: { objections: Analysis["objection
             ))}
           </ul>
         )}
+      </CardContent>
+    </Card>
+  );
+}
+
+export function DecisionFactsCard({ facts, timeline }: { facts: Analysis["facts"]; timeline: Analysis["timeline"] }) {
+  const dates = [timeline.deadline && `by ${timeline.deadline}`, timeline.window && `within ${timeline.window}`].filter(Boolean).join(", ");
+  const rows = [
+    { key: "decision", label: "Who decides", cue: facts.decision, detail: facts.decision ? (facts.decision.role === "maker" ? "Client owns the decision" : "Someone else must approve") : null },
+    { key: "urgency", label: "Timeline", cue: facts.urgency, detail: dates || null },
+    { key: "budget", label: "Budget", cue: facts.budget, detail: null },
+  ];
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Decision factors</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className="space-y-2.5" data-testid="facts-list">
+          {rows.map((r) => (
+            <li key={r.key} className="text-sm" data-testid={`fact-${r.key}`} data-found={r.cue !== null}>
+              <div className="flex items-center gap-1.5 font-medium">
+                {r.cue ? <CheckCircle2 className="size-4 text-emerald-600" /> : <Circle className="size-4 text-muted-foreground" />}
+                {r.label}
+                {r.detail && <span className="font-normal text-muted-foreground">· {r.detail}</span>}
+              </div>
+              <p className="mt-0.5 pl-5 text-xs italic text-muted-foreground">{r.cue ? `“${r.cue.quote}”` : "Not heard yet."}</p>
+            </li>
+          ))}
+        </ul>
       </CardContent>
     </Card>
   );

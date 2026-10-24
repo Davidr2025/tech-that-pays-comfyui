@@ -8,7 +8,7 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/db";
 import { analyze } from "../lib/mock-ai/engine";
-import type { Analysis } from "../lib/mock-ai/types";
+import type { Analysis, Cue } from "../lib/mock-ai/types";
 import { buildRevealData } from "../lib/reveal/build";
 
 export class ReviewError extends Error {
@@ -49,6 +49,13 @@ function extractionRows(sessionId: string, a: Analysis): Prisma.ExtractionCreate
       segmentOrder: t.segmentOrder,
     })),
     ...a.signals.map((s) => ({ sessionId, kind: "SIGNAL" as const, label: s.kind, quote: s.quote, segmentOrder: s.segmentOrder })),
+    ...([a.facts.budget, a.facts.urgency, a.facts.decision].filter((c) => c !== null) as Cue[]).map((c) => ({
+      sessionId,
+      kind: "SIGNAL" as const,
+      label: c.kind,
+      quote: c.quote,
+      segmentOrder: c.segmentOrder,
+    })),
     ...a.objections.map((o) => ({ sessionId, kind: "OBJECTION" as const, label: o.kind, quote: o.quote, segmentOrder: o.segmentOrder })),
   ];
 }
@@ -88,6 +95,8 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     painSeverity: analysis.painPoints.map((p) => ({ id: p.id, severity: p.severity })),
     signals: analysis.signals,
     objections: analysis.objections,
+    facts: analysis.facts,
+    followUp: analysis.followUp,
     talk: analysis.talk,
   };
 

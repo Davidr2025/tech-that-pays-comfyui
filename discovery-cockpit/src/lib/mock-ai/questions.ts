@@ -1,22 +1,30 @@
+/** The three levers every question targets, plus the two call-management stages. */
+export type Lever = "context" | "efficiency" | "effectiveness" | "quality" | "decision" | "outcomes";
+
 export interface BankQuestion {
   topic: string;
   text: string;
+  lever: Lever;
   /** Coaching hint shown with the "suggested next question". */
   why: string;
 }
 
-/** Default discovery question bank, in natural call order. */
+/**
+ * Default discovery question bank, in natural call order (from the Demo Seed Pack).
+ * Each question targets effectiveness (more revenue), efficiency (hours back) or quality
+ * (better client experience); the first, second-to-last and last frame and close the call.
+ */
 export const QUESTION_BANK: BankQuestion[] = [
-  { topic: "overview", text: "Tell me about your business and who you serve.", why: "Opens the call and gets them talking about something easy." },
-  { topic: "team", text: "How big is the team, and who does what?", why: "Sizes the operation and shows who touches the problem." },
-  { topic: "process", text: "Walk me through how this works today, step by step.", why: "The real process usually differs from the official one." },
-  { topic: "pain", text: "What's the biggest frustration with it right now?", why: "Let them name the problem in their own words." },
-  { topic: "impact", text: "What does that cost you in time or money?", why: "A pain without a number rarely turns into a purchase." },
-  { topic: "tools", text: "What tools and software do you use today, and what does each cost?", why: "Maps the current stack and what it costs to keep." },
-  { topic: "tried", text: "What have you already tried to fix this?", why: "Surfaces past failures and objections early." },
-  { topic: "goal", text: "If this were solved a year from now, what would that look like?", why: "Gets them to describe the future state themselves." },
-  { topic: "urgency", text: "What's driving the timing? Why now?", why: "Urgency separates a project from a someday-idea." },
-  { topic: "budget", text: "Is there a budget set aside for solving this?", why: "Better to learn the range now than after a proposal." },
-  { topic: "decision", text: "Who else is involved in making this decision?", why: "Avoids a surprise veto after the proposal goes out." },
-  { topic: "next", text: "What would a good next step look like for you?", why: "Ends the call with a committed next action." },
+  { topic: "context", lever: "context", text: "Walk me through the business as it runs today — team size, clients, how money comes in.", why: "Frames the call and gets them talking about something easy." },
+  { topic: "time_sinks", lever: "efficiency", text: "What are the two or three tasks eating the most hours every week?", why: "Efficiency: finds where the hours go." },
+  { topic: "manual_processes", lever: "efficiency", text: "Which of those run the exact same steps every time but are still done by hand?", why: "Efficiency: repeatable steps are the easiest to automate." },
+  { topic: "volume_spikes", lever: "quality", text: "What breaks first when volume spikes?", why: "Quality: shows where the process fails under load." },
+  { topic: "tool_stack", lever: "efficiency", text: "What tools are you paying for right now, and which ones does the team actually open every day?", why: "Efficiency: maps the stack, its cost and its real usage." },
+  { topic: "tool_overlap", lever: "efficiency", text: "Where are you paying for two tools that do the same job?", why: "Efficiency: overlap is spend you can recover." },
+  { topic: "lead_leakage", lever: "effectiveness", text: "Where do leads slip through the cracks between first touch and signed?", why: "Effectiveness: leaks between touch and signature are lost revenue." },
+  { topic: "close_rate", lever: "effectiveness", text: "What's your close rate from proposal to signed — and how long does a proposal take to build?", why: "Effectiveness: speed to proposal moves the close rate." },
+  { topic: "quality_dips", lever: "quality", text: "Where does quality dip, or a client notice a mistake, when things get busy?", why: "Quality: client-visible mistakes carry the real cost." },
+  { topic: "team_resistance", lever: "quality", text: "Who on the team would resist a new system — and what burned them last time?", why: "Quality: past failures predict adoption risk." },
+  { topic: "decision_timeline", lever: "decision", text: "Who else weighs in on a decision like this, and what does your timeline look like?", why: "Avoids a surprise veto and tests the urgency." },
+  { topic: "one_fix", lever: "outcomes", text: "If we fixed exactly one thing in the next 90 days, what would make this a no-brainer win?", why: "Ends on the outcome they would sign for." },
 ];

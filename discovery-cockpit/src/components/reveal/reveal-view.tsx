@@ -44,6 +44,22 @@ export function RevealView({ data }: { data: RevealData }) {
       <div className="px-8 pb-8">
         <Section title="What We Heard">
           <p className="leading-relaxed">{data.summary}</p>
+          {(data.timeline.deadline || data.timeline.window) && (
+            <dl className="avoid-break mt-4 flex flex-wrap gap-x-8 gap-y-2 rounded-md border px-4 py-3 text-sm" style={{ borderColor: "var(--brand)" }}>
+              {data.timeline.deadline && (
+                <div>
+                  <dt className="text-xs uppercase tracking-wide text-slate-500">Target date</dt>
+                  <dd className="font-semibold">{data.timeline.deadline}</dd>
+                </div>
+              )}
+              {data.timeline.window && (
+                <div>
+                  <dt className="text-xs uppercase tracking-wide text-slate-500">Looking to move within</dt>
+                  <dd className="font-semibold">{data.timeline.window}</dd>
+                </div>
+              )}
+            </dl>
+          )}
         </Section>
 
         <Section title="What's Getting in the Way">

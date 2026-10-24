@@ -7,7 +7,7 @@ import { buildRevealData } from "@/lib/reveal/build";
 import { computeTotals, revealSchema } from "@/lib/reveal/schema";
 
 const consultant = { name: "Avery Quinn", businessName: "Quinn Ops", tagline: null, brandColor: "#0f766e" };
-const client = { name: "Marcus", companyName: "Cedar Ridge" };
+const client = { name: "Priya", companyName: "Brightline" };
 const when = new Date("2026-01-15T12:00:00Z");
 
 const demoAnalysis = analyze(DEMO_SEGMENTS.map((s, order) => ({ ...s, order })));
@@ -16,24 +16,37 @@ describe("buildRevealData", () => {
   const data = buildRevealData({ consultant, client, analysis: demoAnalysis, generatedAt: when });
 
   it("computes monthly and annual totals from the rows with a stated cost", () => {
-    expect(data.totals).toEqual({ monthly: 206, annual: 2472, toolsWithCost: 4, toolsTotal: 5 });
-    expect(data.techStack.filter((t) => t.monthlyCost !== null).map((t) => t.monthlyCost)).toEqual([85, 45, 16, 60]);
+    expect(data.totals).toEqual({ monthly: 1174, annual: 14088, toolsWithCost: 5, toolsTotal: 6 });
+    expect(data.techStack.filter((t) => t.monthlyCost !== null).map((t) => t.monthlyCost)).toEqual([800, 120, 99, 20, 135]);
   });
 
   it("includes every dollar amount the client mentioned, with context", () => {
-    expect(data.moneyMentioned).toHaveLength(8);
-    expect(data.moneyMentioned.find((m) => m.amount === 120000)?.context).toContain("on the table");
+    expect(data.moneyMentioned).toHaveLength(9);
+    expect(data.moneyMentioned.find((m) => m.amount === 150000)?.context).toContain("on the table");
+    expect(data.moneyMentioned.find((m) => m.amount === 48000)?.context).toContain("a system should be doing");
   });
 
   it("phrases pain points neutrally (never the client's raw words)", () => {
-    expect(data.painPoints.map((p) => p.title)).toContain("Manual, repetitive data entry");
+    expect(data.painPoints.map((p) => p.title)).toContain("Manual, time-consuming reporting");
     const all = JSON.stringify(data.painPoints);
-    expect(all).not.toMatch(/drowning|copy and paste|burned/i);
-    expect(data.painPoints[0]?.detail).toContain("about 15 hours per week");
+    expect(all).not.toMatch(/drowning|kills me|felt sick|burning out|embarrass/i);
+    expect(data.painPoints[0]?.detail).toContain("Reported impact: about 10–12 hours per week.");
+  });
+
+  it("carries the client's deadline as the driving timeline, as date phrases only", () => {
+    expect(data.timeline).toEqual({ deadline: "mid-November", window: "the next two to three weeks" });
+    expect(data.summary).toContain("Your target date is mid-November.");
+    expect(JSON.stringify(data)).not.toContain("the dental group wants"); // the sentence stays private
+  });
+
+  it("states the future state the pack calls for (automated reporting, fast lead replies)", () => {
+    expect(data.futureState).toContain("Reports build themselves from connected data sources and arrive on schedule.");
+    expect(data.futureState).toContain("Every new lead gets a reply within minutes and is tracked until it is won or closed.");
+    expect(data.currentState).toContain("Reports are built by hand each period from several separate exports.");
   });
 
   it("words the summary correctly when every tool, or only some, has a cost", () => {
-    expect(data.summary).toContain("Among the 4 tools with a stated cost, the subscriptions total about $206 per month ($2,472 per year)");
+    expect(data.summary).toContain("Among the 5 tools with a stated cost, the subscriptions total about $1,174 per month ($14,088 per year)");
     const one = buildRevealData({ consultant, client, analysis: analyze([{ speaker: "CLIENT", text: "Calendly is $50 a month.", order: 0 }]), generatedAt: when });
     expect(one.summary).toContain("uses 1 tool. Their subscriptions total about $50 per month ($600 per year)");
     expect(renderToStaticMarkup(<RevealView data={one} />)).toContain("Totals include all 1 tool.");
@@ -70,10 +83,12 @@ describe("RevealView", () => {
     for (const heading of ["What We Heard", "The Numbers You Mentioned", "Your Current Tools", "Where You Are Today vs. Where You Could Be"]) {
       expect(html).toContain(heading.replace("&", "&amp;"));
     }
-    expect(html).toMatch(/data-testid="total-monthly">\$206</);
-    expect(html).toMatch(/data-testid="total-annual">\$2,472</);
+    expect(html).toMatch(/data-testid="total-monthly">\$1,174</);
+    expect(html).toMatch(/data-testid="total-annual">\$14,088</);
+    expect(html).toContain("Target date");
+    expect(html).toContain("mid-November");
     expect(html).toContain("Not stated"); // Google Sheets: a tool with no stated cost
-    expect(html).toContain("4 of 5 tools");
+    expect(html).toContain("5 of 6 tools");
     expect(html).toContain("Quinn Ops");
   });
 

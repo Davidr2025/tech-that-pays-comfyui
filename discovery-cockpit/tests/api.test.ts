@@ -48,7 +48,7 @@ describe("POST /api/sessions/[id]/transcript", () => {
   it("loads the built-in demo call", async () => {
     const res = await postTranscript(json({ mode: "demo" }), ctx({ id }));
     expect(res.status).toBe(200);
-    expect(((await res.json()) as { segments: unknown[] }).segments).toHaveLength(28);
+    expect(((await res.json()) as { segments: unknown[] }).segments).toHaveLength(20);
   });
 
   it("parses a pasted transcript and replaces the old one", async () => {

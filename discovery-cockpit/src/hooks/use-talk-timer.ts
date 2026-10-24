@@ -25,7 +25,12 @@ export function useTalkTimer(speed = 1) {
       last = now;
       setElapsedMs((e) => e + delta);
     }, 100);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      // Keep the partial interval since the last tick, so stopping never drops time.
+      const delta = (performance.now() - last) * speedRef.current;
+      setElapsedMs((e) => e + delta);
+    };
   }, [running]);
 
   const start = useCallback(() => setRunning(true), []);
