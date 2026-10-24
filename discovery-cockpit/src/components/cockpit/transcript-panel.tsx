@@ -10,6 +10,7 @@ import { formatClock } from "@/lib/format";
 import type { SpeakerKind } from "@/lib/mock-ai/types";
 import { cn } from "@/lib/utils";
 import { ImportDialog, type ImportRequest } from "./import-dialog";
+import { MicControls } from "./mic-controls";
 
 export const SPEEDS = [1, 2, 4, 8] as const;
 
@@ -41,7 +42,7 @@ interface Props {
   notice: string | null;
 }
 
-const STATUS_TEXT: Record<PlayerStatus, string> = { playing: "Replaying", paused: "Paused", finished: "Call ended", idle: "Ready", live: "Typing live" };
+const STATUS_TEXT: Record<PlayerStatus, string> = { playing: "Replaying", paused: "Paused", finished: "Call ended", idle: "Ready", live: "Live" };
 
 export function TranscriptPanel(p: Props) {
   const scroller = useRef<HTMLDivElement>(null);
@@ -139,6 +140,7 @@ export function TranscriptPanel(p: Props) {
           ))
         )}
       </CardContent>
+      {live && <MicControls onLine={p.onAppend} disabled={p.locked} />}
       {live && <LiveInput onAppend={p.onAppend} disabled={p.locked} />}
     </Card>
   );

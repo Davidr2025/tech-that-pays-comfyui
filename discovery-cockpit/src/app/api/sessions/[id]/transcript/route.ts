@@ -15,7 +15,7 @@ const swap = z.boolean().optional();
  *   demo    the built-in call
  *   paste   text from the clipboard
  *   upload  the text of a .txt / .vtt / .srt file
- *   append  one typed line, added live
+ *   append  one line added live: typed, or spoken (browser speech recognition)
  * paste/upload/demo REPLACE the transcript; append adds to it.
  */
 const body = z.discriminatedUnion("mode", [

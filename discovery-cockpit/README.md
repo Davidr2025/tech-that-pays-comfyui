@@ -87,7 +87,7 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   and PDFs of the review and the prototype. The email is a `mailto:` link behind an `EmailProvider` interface: it
   opens *your* mail app, sends nothing itself, and cannot attach the PDF, so you attach it. Everything is built from
   the validated reveal payload only. The recipient comes from the client's optional email field.
-- **Not built yet**: creating events through the Google Calendar API (it needs OAuth credentials; the `.ics` invitation
+- **Not built yet**: other speech providers (a hosted real-time service would sit behind the same `onLine` callback), creating events through the Google Calendar API (it needs OAuth credentials; the `.ics` invitation
   below covers inviting the client without them), a pluggable calendar-provider setting, and the Claude provider.
 
 ## Transcript sources
@@ -211,6 +211,26 @@ Judgement calls worth knowing:
   is you. No labels: paragraphs alternate, starting with you.
 - **Client-facing links are capability URLs.** `/reveal/<id>` and `/prototype/<id>` need no login by design (the client
   has none); the id is a random cuid, not access control. Anyone with the link can read that one document.
+
+## Live microphone transcription (optional)
+
+In **Type live** mode the transcript panel offers **Use the microphone**: the browser's Web Speech API turns speech into
+lines that go through exactly the same path as typed lines, so the coaching panel, the question checklist and the review
+keep working. No key and no cost, and no audio ever reaches this app: only text is saved.
+
+- **Privacy, stated before the first start:** the *browser* may send the audio to its own speech service (Chrome sends it to
+  Google, Safari to Apple). The panel says so and suggests starting it only if the client has agreed.
+- **Who said it:** tap **You** / **Client** when the other person starts. Speech engines finalise a sentence a moment after
+  it ends, so a tap never changes who owns words already in flight: the engine is told to finish the sentence for the old
+  speaker, and the new speaker takes over from the next session (`src/lib/speech-attribution.ts`, a small tested state
+  machine). Words the browser never finalised are kept for the old speaker too. Long run-ons are split at sentence ends.
+- **Robustness:** the browser ends sessions on its own, so listening restarts after a short pause; a blocked microphone,
+  no microphone, or an unreachable speech service ends with a plain message and a Try again; a permission prompt that is
+  never answered shows a "still waiting" hint instead of looking broken; lines reach the server in the order they were said.
+- **Not available** in browsers without the API (Firefox): the panel says so and typing keeps working.
+- **Untested against a real microphone.** I could not use real audio here. Everything after the engine (attribution, saving,
+  analysis, review) is tested with a fake engine that behaves like Chrome's, including in a real browser; how a real Chrome,
+  Edge or Safari behaves (for example that `stop()` finalises the sentence in flight) is from documentation, not observed.
 
 ## Lead Finder (a "coming soon" preview)
 

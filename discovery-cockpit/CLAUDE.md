@@ -49,6 +49,14 @@ behind an `AIProvider` interface.
   written by the app from the validated review; every attempt is counted against an hourly limit AFTER cheap
   validation (a refused request must cost nothing); errors from SMTP/Chromium are logged, not returned; no secrets in the
   database or responses. PDFs load the loopback origin only. Calendar text goes through `icsText`/`cn`/`fold`.
+- Live sources (typed, spoken) all end in `appendLine(speaker, text)`. Speaker attribution must never let a tap reassign
+  words already in flight (`Attributor`); and anything that starts an asynchronous browser capability needs a visible
+  "starting" state: a permission prompt produces no event at all.
+- Test with the real engine's shape, not just a fake that always answers: modern Chromium has a native unprefixed
+  `SpeechRecognition` that the app prefers, and a headless sandbox's native engine silently does nothing.
+- Money is read from `$`, "N dollars/bucks/CAD/USD", and spoken number words ("four thousand dollars", "twelve hundred
+  dollars", "four grand"), with a currency cue ALWAYS required and a strict number-word grammar ("nineteen ninety nine"
+  is rejected, not summed). A new form needs positive cases AND false-positive cases ("ten thousand leads", "a grand total").
 - Settings saved from several fields at once (blur-to-save) must be serialised: one request in flight, the latest queued
   behind it. Overlapping PUTs of whole snapshots can land out of order and let a stale one win.
 - Prototype edits go through ONE guarded endpoint with a closed set of strict operations (`src/lib/prototype/edit.ts`);
