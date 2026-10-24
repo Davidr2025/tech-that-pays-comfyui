@@ -63,9 +63,15 @@ model Consultant {
   calendarLink String?
   /// Show the booking page inside the client's review when the provider is on the embed allowlist.
   embedBooking Boolean   @default(false)
+  /// Lead Finder preview: off by default. It stores a list you import yourself; nothing is fetched or scraped.
+  leadFinderEnabled Boolean @default(false)
+  leadNiche    String?
+  leadLocation String?
+  leadSource   String?
   clients      Client[]
   sessions     Session[]
   authSessions AuthSession[]
+  leads        Lead[]
   createdAt    DateTime  @default(now())
 }
 
@@ -79,6 +85,25 @@ model AuthSession {
   createdAt    DateTime   @default(now())
 
   @@index([consultantId])
+}
+
+/// A row from a CSV the consultant imported into the Lead Finder preview. Private to the consultant.
+model Lead {
+  id           String     @id @default(cuid())
+  consultantId String
+  consultant   Consultant @relation(fields: [consultantId], references: [id], onDelete: Cascade)
+  name         String
+  company      String?
+  email        String?
+  phone        String?
+  website      String?
+  niche        String?
+  location     String?
+  source       String?
+  notes        String?
+  createdAt    DateTime   @default(now())
+
+  @@index([consultantId, createdAt])
 }
 
 model Client {

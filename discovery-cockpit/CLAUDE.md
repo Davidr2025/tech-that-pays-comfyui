@@ -49,6 +49,8 @@ behind an `AIProvider` interface.
   written by the app from the validated review; every attempt is counted against an hourly limit AFTER cheap
   validation (a refused request must cost nothing); errors from SMTP/Chromium are logged, not returned; no secrets in the
   database or responses. PDFs load the loopback origin only. Calendar text goes through `icsText`/`cn`/`fold`.
+- Settings saved from several fields at once (blur-to-save) must be serialised: one request in flight, the latest queued
+  behind it. Overlapping PUTs of whole snapshots can land out of order and let a stale one win.
 - Prototype edits go through ONE guarded endpoint with a closed set of strict operations (`src/lib/prototype/edit.ts`);
   the result is re-validated against the module's strict schema before it is stored, and the page shows controls only
   when `ownsSession` is true (it may ask who you are, never require a login). Never store a sentence that an edit can

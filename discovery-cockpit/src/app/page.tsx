@@ -28,6 +28,21 @@ export default async function Home() {
           No consultant profile yet. Run <code>npm run setup</code> to create the demo profile and call.
         </p>
       )}
+      <Card data-testid="lead-finder-card">
+        <CardContent className="flex flex-wrap items-center justify-between gap-3 p-4">
+          <div>
+            <p className="flex items-center gap-2 text-sm font-medium">
+              Lead Finder <span className="rounded border border-amber-300 bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-800">Coming soon</span>
+            </p>
+            <p className="mt-0.5 text-xs text-muted-foreground">A preview, off by default. It only keeps a list you import yourself; nothing is searched or scraped.</p>
+          </div>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/leads" data-testid="lead-finder-link">
+              Open the preview
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
       <Card>
         <CardContent className="p-0">
           {sessions.length === 0 ? (

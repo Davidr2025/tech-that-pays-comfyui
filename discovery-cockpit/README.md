@@ -212,6 +212,23 @@ Judgement calls worth knowing:
 - **Client-facing links are capability URLs.** `/reveal/<id>` and `/prototype/<id>` need no login by design (the client
   has none); the id is a random cuid, not access control. Anyone with the link can read that one document.
 
+## Lead Finder (a "coming soon" preview)
+
+A card on the home page opens `/leads`. **Nothing here finds, scrapes or fetches anything**, and no lead service is
+contacted: a test run records every network request and asserts they all go to localhost. It is **off by default** and
+only keeps a list you import yourself, so the shape of the feature can be tried.
+
+- Settings: switch it on, and note the intended inputs (niche, location, lead source). These are descriptions; nothing
+  uses them yet.
+- **CSV import** (works end to end): a header row, then up to 5,000 rows and 1 MB. Columns are recognised by name (Name,
+  Company, Email, Phone, Website, Niche, Location, Source, Notes, plus common synonyms) and unused columns are reported.
+  The reader handles quoted commas, escaped quotes, line breaks inside quotes, CRLF and a BOM. Bad rows are skipped with
+  the **row number** (as a spreadsheet counts it) and a reason: invalid email, a website that is not http(s), a duplicate
+  of a row already imported, or of an earlier row in the same file. Names and notes are stored and shown as plain text.
+  Comma-separated only: a semicolon-separated file from a European-locale spreadsheet will not split into columns.
+- Leads belong to one consultant (a list of up to 5,000), can be removed one at a time or cleared (with a confirm), and are
+  never part of a review, prototype or export.
+
 ## Email, PDFs and calendar (optional, off by default)
 
 Nothing here is needed for the demo. See `.env.example` for every variable.

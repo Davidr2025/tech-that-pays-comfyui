@@ -425,3 +425,58 @@ describe("prototype editing in accounts mode", () => {
     expect(res.status).toBe(403);
   });
 });
+
+// ---------------------------------------------------------------------------------------------
+// Lead Finder: a private list per consultant.
+// ---------------------------------------------------------------------------------------------
+
+describe("lead lists in accounts mode", () => {
+  let alice: Awaited<ReturnType<typeof makeAccount>>;
+  let bob: Awaited<ReturnType<typeof makeAccount>>;
+  let aliceLeadId: string;
+
+  beforeAll(async () => {
+    alice = await makeAccount("lead-alice");
+    bob = await makeAccount("lead-bob");
+    await prisma.consultant.updateMany({ where: { id: { in: [alice.consultantId, bob.consultantId] } }, data: { leadFinderEnabled: true } });
+    aliceLeadId = (await prisma.lead.create({ data: { consultantId: alice.consultantId, name: "Alice's Lead", email: "alice-lead@example.com" } })).id;
+  });
+
+  it("Bob cannot delete Alice's lead, and his clear-all leaves hers alone", async () => {
+    as(bob);
+    const { DELETE: removeOne } = await import("@/app/api/leads/[id]/route");
+    const { DELETE: clearAll } = await import("@/app/api/leads/route");
+    expect((await removeOne(req("/x", "DELETE"), ctx({ id: aliceLeadId }))).status).toBe(404);
+    expect((await clearAll(req("/x", "DELETE"))).status).toBe(200);
+    expect(await prisma.lead.count({ where: { id: aliceLeadId } })).toBe(1);
+  });
+
+  it("an import lands only on the signed-in consultant's list", async () => {
+    as(bob);
+    const { POST } = await import("@/app/api/leads/import/route");
+    const res = await POST(req("/x", "POST", { csv: "Name,Email\nBob Lead,bob-lead@example.com\n" }));
+    expect(res.status).toBe(200);
+    expect(await prisma.lead.count({ where: { consultantId: bob.consultantId, email: "bob-lead@example.com" } })).toBe(1);
+    expect(await prisma.lead.count({ where: { consultantId: alice.consultantId, email: "bob-lead@example.com" } })).toBe(0);
+  });
+
+  it("changing the settings changes only your own", async () => {
+    as(bob);
+    const { PUT } = await import("@/app/api/leads/settings/route");
+    expect((await PUT(req("/x", "PUT", { enabled: false, niche: "Bob's niche" }))).status).toBe(200);
+    expect((await prisma.consultant.findUniqueOrThrow({ where: { id: bob.consultantId } })).leadFinderEnabled).toBe(false);
+    expect((await prisma.consultant.findUniqueOrThrow({ where: { id: alice.consultantId } })).leadFinderEnabled).toBe(true);
+  });
+
+  it("a cross-site import is refused", async () => {
+    as(alice);
+    const { POST } = await import("@/app/api/leads/import/route");
+    expect((await POST(req("/x", "POST", { csv: "Name\nX" }, { origin: "https://evil.example" }))).status).toBe(403);
+  });
+
+  it("the page is behind the login", async () => {
+    as(null);
+    const { default: LeadsPage } = await import("@/app/leads/page");
+    await expect(LeadsPage()).rejects.toThrow(/NEXT_REDIRECT/);
+  });
+});
