@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T18:48:04.462Z",
+  "updatedAt": "2026-10-24T22:50:29.600Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,16 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/video-game-live-expo/",
       "start": "2026-10-24T10:00:00.000Z",
       "end": "2026-10-25T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Sing Pitch Perfect with Deke Sharon and Splüsh",
-      "summary": "Join the legendary Deke Sharon , the Father of Contemporary A Cappella, for an unforgettable interactive singing experience featuring a hit song from the beloved Pitch Perfect movie franchise. Learn directly from the Music Director behind all three blockbuster Pitch Perfect films as Deke guides you through an all-a-cappella performance of the fan-favorite anthem, Since U Been Gone . With his expert coaching, you'll be singing confidently alongside fellow Pitch Perfect enthusiasts in no time.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/sing-pitch-perfect-with-deke-sharon-and-splush/",
-      "start": "2026-10-24T20:00:00.000Z",
-      "end": "2026-10-24T21:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/halloween-in-the-village-2026/",
       "start": "2026-10-31T11:00:00.000Z",
       "end": "2026-10-31T14:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-5/",
+      "start": "2026-10-31T18:00:00.000Z",
+      "end": "2026-10-31T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
