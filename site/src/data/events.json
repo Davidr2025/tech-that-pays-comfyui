@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-23T19:57:35.057Z",
+  "updatedAt": "2026-10-24T00:40:29.036Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Hotel California",
-      "summary": "HOTEL CALIFORNIA, the original Eagles tribute is bringing their full production to the Living Arts Centre Mississauga Friday October 23. This is without question the best live Eagles performance you will see this side of the Las Vegas Sphere. For over three decades, HOTEL CALIFORNIA has been re-creating the legendary sound of THE EAGLES, and thrilling audiences all over the world.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/hotel-california/",
-      "start": "2026-10-23T19:30:00.000Z",
-      "end": "2026-10-23T21:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Solidaridad Tango in Concert",
-      "summary": "Experience the passion, virtuosity, and irresistible rhythms of live tango! On Friday, October 23, the Chamber Music Society of Mississauga presents Solidaridad Tango , North America’s original all-woman, diversity-affirming tango ensemble, for an electrifying evening of music and dance.",
-      "venue": "Unitarian Congregation of Mississauga",
-      "url": "https://www.visitmississauga.ca/event/solidaridad-tango-in-concert/",
-      "start": "2026-10-23T20:00:00.000Z",
-      "end": "2026-10-23T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Video Game Live Expo (VGLX)",
       "summary": "Calling all Pokémon Trainers! VGLX is packed with Pokémon activities all weekend long, from scavenger hunts and mini-games to crafts, photo ops, card collecting and more. Whether you want to catch ’em all, make something of your own or hunt for your next favourite card, there’s something for Pokémon fans of every age.",
@@ -119,6 +99,26 @@
       "url": "https://www.visitmississauga.ca/event/mississauga-music-nights-halloween-show/",
       "start": "2026-10-30T19:00:00.000Z",
       "end": "2026-10-30T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Scott Bradlee's Postmodern Jukebox – The Future Is Vintage World Tour",
+      "summary": "Postmodern Jukebox brings its signature vintage-inspired sound to the stage with The Future is Vintage Tour . Known for reimagining modern hits in classic jazz, swing, soul, and big band styles, the internationally acclaimed music collective delivers a high-energy live experience featuring talented singers, dancers, and musicians. Audiences can expect fresh takes on songs spanning multiple decades, from classic rock favourites to contemporary chart-toppers, movie themes, and more.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/scott-bradlees-postmodern-jukebox-the-future-is-vintage-world-tour/",
+      "start": "2026-10-30T20:00:00.000Z",
+      "end": "2026-10-30T22:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Streetsville Spooktacular",
+      "summary": "Streetsville Spooktacular Presented by Amica Credit Mills Get ready for a spine-tingling good time! Streetsville Spooktacular is back with tricks, treats and plenty of frightfully fun Halloween activities for the whole family. Dress up in your Halloween best and stroll through the Village for trick-or-treating at participating businesses. Bring your own bag and get ready to fill it with plenty of sweet surprises.",
+      "venue": "Village of Streetsville",
+      "url": "https://www.visitmississauga.ca/event/streetsville-spooktacular-2/",
+      "start": "2026-10-31T10:00:00.000Z",
+      "end": "2026-10-31T13:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
