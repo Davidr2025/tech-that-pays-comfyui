@@ -11,6 +11,7 @@
 import { z } from "zod";
 import { isValidLogoUrl } from "../logo";
 import { SESSION_TYPES } from "../session-types";
+import { embeddableBooking } from "./booking";
 import { computeTimeEstimate } from "./roi";
 
 const money = z.number().finite().nonnegative();
@@ -98,13 +99,16 @@ export const revealSchema = z
     roi: roiSchema.nullable().default(null),
     nextSteps: z.array(z.string()).max(6).default([]),
     /** The consultant's (or the client-specific) booking page. */
-    booking: z.object({ url: webUrl, label: z.string().min(1) }).strict().nullable().default(null),
+    booking: z.object({ url: webUrl, label: z.string().min(1), embed: z.boolean().default(false) }).strict().nullable().default(null),
   })
   .strict()
   .superRefine((data, ctx) => {
     const expected = computeTotals(data.techStack);
     if (data.totals.monthly !== expected.monthly || data.totals.annual !== expected.annual) {
       ctx.addIssue({ code: "custom", path: ["totals"], message: "totals do not match the tech stack rows" });
+    }
+    if (data.booking?.embed && !embeddableBooking(data.booking.url)) {
+      ctx.addIssue({ code: "custom", path: ["booking", "embed"], message: "only known scheduling providers may be embedded" });
     }
     if (data.roi) {
       const t = data.roi.time;

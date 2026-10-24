@@ -196,6 +196,10 @@ describe("one consultant cannot reach another's data", () => {
       ["GET share", (await mod("@/app/api/sessions/[id]/share/route")).GET!, "GET", undefined, { id: alice.sessionId }],
       ["POST questions", (await mod("@/app/api/sessions/[id]/questions/route")).POST!, "POST", { text: "A planted question" }, { id: alice.sessionId }],
       ["DELETE questions", (await mod("@/app/api/sessions/[id]/questions/route")).DELETE!, "DELETE", undefined, { id: alice.sessionId }],
+      ["GET pdf", (await mod("@/app/api/sessions/[id]/pdf/route")).GET!, "GET", undefined, { id: alice.sessionId }],
+      ["GET invite", (await mod("@/app/api/sessions/[id]/invite/route")).GET!, "GET", undefined, { id: alice.sessionId }],
+      ["POST email", (await mod("@/app/api/sessions/[id]/email/route")).POST!, "POST", { attachPdf: false }, { id: alice.sessionId }],
+      ["POST prototype", (await mod("@/app/api/sessions/[id]/prototype/route")).POST!, "POST", { op: "alert.remove", moduleId: "m", alertId: "a" }, { id: alice.sessionId }],
     ] as const;
   };
 

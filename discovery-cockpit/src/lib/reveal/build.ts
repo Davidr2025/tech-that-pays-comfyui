@@ -1,6 +1,7 @@
 import { formatMoney, joinList, pluralize } from "../format";
 import type { Analysis } from "../mock-ai/types";
 import type { SessionType } from "../session-types";
+import { embeddableBooking } from "./booking";
 import { computeTimeEstimate, RECOVERY_RATE, statedCostsFrom, timeSinksFrom, WEEKS_PER_YEAR } from "./roi";
 import { computeTotals, revealSchema, type RevealData } from "./schema";
 
@@ -16,6 +17,8 @@ export interface RevealInput {
   hourlyValue?: number | null;
   /** Where the client can book a follow-up: the client's own link, else the consultant's default. */
   bookingUrl?: string | null;
+  /** The consultant has opted in to showing an embeddable booking page inside the review. */
+  embedBooking?: boolean;
 }
 
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
@@ -40,7 +43,7 @@ function buildNextSteps(analysis: Analysis, consultantName: string): string[] {
   return steps;
 }
 
-export function buildRevealData({ consultant, branding, client, analysis, generatedAt, kind = "DISCOVERY", hourlyValue = null, bookingUrl = null }: RevealInput): RevealData {
+export function buildRevealData({ consultant, branding, client, analysis, generatedAt, kind = "DISCOVERY", hourlyValue = null, bookingUrl = null, embedBooking = false }: RevealInput): RevealData {
   const techStack = analysis.tech.map((t) => ({
     tool: t.tool,
     purpose: t.purpose,
@@ -123,6 +126,6 @@ export function buildRevealData({ consultant, branding, client, analysis, genera
     totals,
     roi: time || statedCosts.length ? { time, statedCosts, assumptions } : null,
     nextSteps: buildNextSteps(analysis, consultant.name),
-    booking: bookingUrl ? { url: bookingUrl, label: `Book a call with ${consultant.name}` } : null,
+    booking: bookingUrl ? { url: bookingUrl, label: `Book a call with ${consultant.name}`, embed: embedBooking && embeddableBooking(bookingUrl) } : null,
   });
 }

@@ -87,9 +87,8 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   and PDFs of the review and the prototype. The email is a `mailto:` link behind an `EmailProvider` interface: it
   opens *your* mail app, sends nothing itself, and cannot attach the PDF, so you attach it. Everything is built from
   the validated reveal payload only. The recipient comes from the client's optional email field.
-- **Not built yet**: sending email from the app (SMTP), server-rendered PDFs (the PDF is the browser's Save as PDF),
-  an embedded booking widget (the review links to your booking page), and the Claude
-  provider.
+- **Not built yet**: creating events through the Google Calendar API (it needs OAuth credentials; the `.ics` invitation
+  below covers inviting the client without them), a pluggable calendar-provider setting, and the Claude provider.
 
 ## Transcript sources
 
@@ -212,6 +211,34 @@ Judgement calls worth knowing:
   is you. No labels: paragraphs alternate, starting with you.
 - **Client-facing links are capability URLs.** `/reveal/<id>` and `/prototype/<id>` need no login by design (the client
   has none); the id is a random cuid, not access control. Anyone with the link can read that one document.
+
+## Email, PDFs and calendar (optional, off by default)
+
+Nothing here is needed for the demo. See `.env.example` for every variable.
+
+- **Send from the app** (`SMTP_HOST` + `SMTP_FROM`, optionally `SMTP_USER`/`SMTP_PASS`): the Share dialog gains
+  **Send to client**, behind a confirm click. Without SMTP the dialog opens a `mailto:` draft as before. It cannot be
+  used as a mail relay: the recipient is **only the address on the client's record** (the request cannot supply one, a
+  subject, text or a cc: the body schema is strict), the text is written by the app from the validated review, each
+  consultant can send **10 an hour**, and every send is logged (the dialog shows "Last sent"). STARTTLS is required for
+  any host that is not loopback. The mail server's error text is logged for the operator and never returned. The
+  sender address is yours (`SMTP_FROM`); the consultant is the Reply-To.
+- **PDF files** (`PDF_CHROMIUM_PATH`, or `npx playwright-core install chromium`): headless Chromium prints the same
+  public view the browser would, so the file matches the screen (A4, controls hidden). It loads the app's own loopback
+  address (never one derived from a request header), blocks every request to another origin while rendering, runs at
+  most two at a time, and is limited to **20 an hour** per consultant. Without Chromium the Share dialog says so and the
+  browser's Save as PDF still works. This adds `playwright-core` (no browser is downloaded with it).
+- **Calendar**: the Share dialog can propose a follow-up time and attach a standard calendar invitation (`.ics`,
+  `METHOD:REQUEST`) that invites the client in Google Calendar, Outlook and Apple Calendar, or download it to forward.
+  Text fields are escaped so a title cannot inject calendar properties. **Creating events through the Google Calendar API
+  is not built** (it needs OAuth credentials I could not test against).
+- **Booking page inside the review** (Settings, off by default): only for Calendly, Cal.com, SavvyCal, TidyCal and
+  YouCanBookMe, https only, in a sandboxed frame without top-navigation rights, hidden in print, with a plain button as
+  the fallback. Embedding loads the provider's scripts and cookies in your client's browser, which is why it is opt-in.
+  I could not load those providers from this environment, so how each one renders inside the frame is untested; the
+  markup, the allowlist and the sandbox are.
+- `npm audit` reports 9 issues in `next`/`tailwindcss` (via `postcss`) and Prisma's tooling (`deepmerge-ts`). They were
+  there before these additions and none come from `nodemailer` or `playwright-core`.
 
 ## Accounts and access (security)
 

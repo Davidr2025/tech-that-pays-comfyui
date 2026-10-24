@@ -45,6 +45,10 @@ behind an `AIProvider` interface.
 - Reveal estimates (`src/lib/reveal/roi.ts`) use only client-stated numbers plus two printed assumptions; anything
   derived must be re-checked in the schema's `superRefine` so tampering fails closed. Never sum figures that can
   overlap, and count one statement once (`hoursSource`).
+- Anything that leaves the app (`src/server/outgoing.ts`): recipients come from the database, never the request; text is
+  written by the app from the validated review; every attempt is counted against an hourly limit AFTER cheap
+  validation (a refused request must cost nothing); errors from SMTP/Chromium are logged, not returned; no secrets in the
+  database or responses. PDFs load the loopback origin only. Calendar text goes through `icsText`/`cn`/`fold`.
 - Prototype edits go through ONE guarded endpoint with a closed set of strict operations (`src/lib/prototype/edit.ts`);
   the result is re-validated against the module's strict schema before it is stored, and the page shows controls only
   when `ownsSession` is true (it may ask who you are, never require a login). Never store a sentence that an edit can

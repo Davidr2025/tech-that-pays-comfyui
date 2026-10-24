@@ -21,6 +21,7 @@ export default async function SettingsPage() {
             primaryColor: c.primaryColor,
             accentColor: c.accentColor,
             calendarLink: c.calendarLink ?? "",
+            embedBooking: c.embedBooking,
             logoUrl: c.logoUrl,
           }}
         />

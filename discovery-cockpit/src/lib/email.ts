@@ -5,8 +5,21 @@
  */
 import type { EmailContent } from "./reveal/export";
 
+export interface EmailAttachment {
+  filename: string;
+  content: string | Uint8Array;
+  contentType: string;
+}
+
 export interface EmailMessage extends EmailContent {
   to: string | null;
+  /** Where the client's reply should go (the consultant). Used by providers that send. */
+  replyTo?: string;
+  /** Shown as the sender's name; the address is the server's. */
+  fromName?: string;
+  attachments?: EmailAttachment[];
+  /** A calendar invitation, sent so mail apps can offer Accept/Decline. */
+  calendar?: { method: "REQUEST"; content: string };
 }
 
 export type EmailDelivery = { kind: "compose"; href: string } | { kind: "sent" };
@@ -19,7 +32,8 @@ export interface EmailProvider {
 /** Mail clients and browsers truncate or refuse very long mailto: links; stay well under ~2,000. */
 export const MAILTO_MAX = 1900;
 
-const SAFE_ADDRESS = /^[A-Za-z0-9._%+'-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+/** What counts as an address we will put in a header: no commas, spaces, quotes, angle brackets or control characters. */
+export const SAFE_ADDRESS = /^[A-Za-z0-9._%+'-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
 export function mailtoHref({ to, subject, parts }: EmailMessage): string {
   const build = (kept: typeof parts) =>

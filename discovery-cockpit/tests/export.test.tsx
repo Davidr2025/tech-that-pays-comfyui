@@ -231,7 +231,10 @@ describe("the share kit built from a real session", () => {
     it("returns the kit", async () => {
       const res = await call(sessionId);
       expect(res.status).toBe(200);
-      expect(Object.keys(await res.json()).sort()).toEqual(["email", "html", "text", "to"]);
+      const kit = (await res.json()) as { capabilities: { smtp: boolean }; lastSent: unknown };
+      expect(Object.keys(kit).sort()).toEqual(["capabilities", "email", "html", "lastSent", "text", "to"]);
+      expect(kit.capabilities.smtp).toBe(false); // nothing configured: the app offers mailto drafts only
+      expect(kit.lastSent).toBeNull();
     });
     it("404s for an unknown session", async () => {
       expect((await call("nope")).status).toBe(404);

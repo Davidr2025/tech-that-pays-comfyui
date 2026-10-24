@@ -18,6 +18,7 @@ export interface ConsultantValues {
   primaryColor: string;
   accentColor: string;
   calendarLink: string;
+  embedBooking: boolean;
   logoUrl: string | null;
 }
 
@@ -81,6 +82,16 @@ export function SettingsForm({ initial }: { initial: ConsultantValues }) {
             <Field label="Booking link" hint="Your calendar link. Clients can have their own; this is the default.">
               <Input id="calendarLink" value={v.calendarLink} onChange={(e) => set("calendarLink", e.target.value)} placeholder="https://calendly.com/you/30min" />
             </Field>
+            <label className="mt-3 flex items-start gap-2.5 text-sm">
+              <input type="checkbox" className="mt-1 size-4" checked={v.embedBooking} onChange={(e) => set("embedBooking", e.target.checked)} data-testid="embed-booking" />
+              <span>
+                Show my booking page inside the client&apos;s review
+                <span className="block text-xs text-muted-foreground">
+                  Only for Calendly, Cal.com, SavvyCal, TidyCal and YouCanBookMe. Their page then loads in your client&apos;s browser, so they will see that provider&apos;s own scripts and cookies. Off by default;
+                  every other link stays a plain button.
+                </span>
+              </span>
+            </label>
           </div>
         </CardContent>
       </Card>

@@ -7,6 +7,7 @@ import { WorkflowDiagram } from "@/components/diagrams/workflow-diagram";
 import { accentOnWhite } from "@/lib/brand";
 import { readableTextColor } from "@/lib/color";
 import { formatMoney, formatPeriod } from "@/lib/format";
+import { hostOf } from "@/lib/reveal/booking";
 import type { RevealData } from "@/lib/reveal/schema";
 import { REVIEW_LABEL } from "@/lib/session-types";
 
@@ -271,6 +272,19 @@ export function RevealView({ data }: { data: RevealData }) {
                   {data.booking.label}
                 </a>
                 <p className="mt-1 hidden break-all text-xs text-slate-500 print:block">{data.booking.url}</p>
+                {data.booking.embed && (
+                  <div className="mt-4 print:hidden" data-testid="booking-embed">
+                    <iframe
+                      src={data.booking.url}
+                      title={`Book a time with ${header.consultantName}`}
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                      className="h-[680px] w-full rounded-md border"
+                    />
+                    <p className="mt-1 text-xs text-slate-500">Booking page provided by {hostOf(data.booking.url)}. If it does not load, use the button above.</p>
+                  </div>
+                )}
               </div>
             )}
           </Section>

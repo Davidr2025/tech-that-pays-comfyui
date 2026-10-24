@@ -19,7 +19,7 @@ export async function readBody<T>(req: Request, schema: ZodType<T>): Promise<{ d
 }
 
 
-const SESSION_ERROR_STATUS = { NOT_FOUND: 404, INVALID: 400, CONFLICT: 409, UNAUTHORIZED: 401, FORBIDDEN: 403 } as const;
+const SESSION_ERROR_STATUS = { NOT_FOUND: 404, INVALID: 400, CONFLICT: 409, UNAUTHORIZED: 401, FORBIDDEN: 403, UPSTREAM: 502, UNAVAILABLE: 503 } as const;
 
 /** Maps the app's known error types to a response; anything else becomes a plain 500. */
 export function errorResponse(err: unknown, fallback = "Something went wrong.") {
