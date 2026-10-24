@@ -1,3 +1,4 @@
+import { guardSession } from "@/server/auth";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, readBody } from "@/lib/api";
@@ -9,6 +10,8 @@ const addBody = z.object({ text: z.string() }).strict();
 /** Adds a question of the consultant's own to this session's checklist. */
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const denied = await guardSession(req, id);
+  if (denied) return denied;
   const parsed = await readBody(req, addBody);
   if ("error" in parsed) return parsed.error;
   try {
@@ -19,8 +22,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 }
 
 /** Clears coverage for every question in the session (Restart). */
-export async function DELETE(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const denied = await guardSession(req, id);
+  if (denied) return denied;
   await resetQuestions(id);
   return NextResponse.json({ ok: true });
 }

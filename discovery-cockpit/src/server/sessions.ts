@@ -127,9 +127,9 @@ export function demoTranscript(type: SessionType = "DISCOVERY"): ParsedSegment[]
   return source.map((s) => ({ speaker: s.speaker, text: s.text }));
 }
 
-export async function listSessions(consultantId?: string) {
+export async function listSessions(consultantId: string) {
   const rows = await prisma.session.findMany({
-    where: consultantId ? { consultantId } : undefined,
+    where: { consultantId },
     orderBy: { createdAt: "desc" },
     include: { client: true, report: { select: { id: true } }, _count: { select: { segments: true } } },
   });

@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AppShell, StatusBadge } from "@/components/app-shell";
+import { AppShell } from "@/components/app-shell";
+import { StatusBadge } from "@/components/form-bits";
 import { ClientForm } from "@/components/client-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getClient } from "@/server/clients";
-import { getConsultant } from "@/server/consultant";
+import { requireConsultant } from "@/server/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function ClientPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const consultant = await getConsultant();
+  const consultant = await requireConsultant();
   const client = consultant ? await getClient(consultant.id, id) : null;
   if (!client) notFound();
   return (

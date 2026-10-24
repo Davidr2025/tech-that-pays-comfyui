@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { STATUS_LABEL, type SessionStatus } from "@/lib/sessions";
+import { AccountMenu } from "@/components/account-menu";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -11,7 +10,7 @@ const NAV = [
 
 export type NavKey = (typeof NAV)[number]["key"];
 
-export function AppShell({ current, title, intro, actions, children }: { current: NavKey; title: string; intro?: string; actions?: React.ReactNode; children: React.ReactNode }) {
+export async function AppShell({ current, title, intro, actions, children }: { current: NavKey; title: string; intro?: string; actions?: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="min-h-screen">
       <header className="border-b bg-card">
@@ -31,6 +30,7 @@ export function AppShell({ current, title, intro, actions, children }: { current
               </Link>
             ))}
           </nav>
+          <AccountMenu />
         </div>
       </header>
       <main className="mx-auto max-w-4xl space-y-6 px-4 py-8">
@@ -44,25 +44,5 @@ export function AppShell({ current, title, intro, actions, children }: { current
         {children}
       </main>
     </div>
-  );
-}
-
-const STATUS_VARIANT = { SETUP: "low", LIVE: "high", REVIEW: "medium", REVEALED: "default", COMPLETED: "secondary" } as const;
-
-export function StatusBadge({ status }: { status: SessionStatus }) {
-  return (
-    <Badge variant={STATUS_VARIANT[status]} data-testid="status-badge" data-status={status}>
-      {STATUS_LABEL[status]}
-    </Badge>
-  );
-}
-
-export function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
-  return (
-    <label className="block text-sm">
-      <span className="mb-1 block font-medium">{label}</span>
-      {children}
-      {hint && <span className="mt-1 block text-xs text-muted-foreground">{hint}</span>}
-    </label>
   );
 }

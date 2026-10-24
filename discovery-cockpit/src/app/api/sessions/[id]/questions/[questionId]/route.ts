@@ -1,3 +1,4 @@
+import { guardSession } from "@/server/auth";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, readBody } from "@/lib/api";
@@ -13,6 +14,8 @@ type Ctx = { params: Promise<{ id: string; questionId: string }> };
 
 export async function PATCH(req: Request, { params }: Ctx) {
   const { id, questionId } = await params;
+  const denied = await guardSession(req, id);
+  if (denied) return denied;
   const parsed = await readBody(req, body);
   if ("error" in parsed) return parsed.error;
   try {
@@ -22,8 +25,10 @@ export async function PATCH(req: Request, { params }: Ctx) {
   }
 }
 
-export async function DELETE(_req: Request, { params }: Ctx) {
+export async function DELETE(req: Request, { params }: Ctx) {
   const { id, questionId } = await params;
+  const denied = await guardSession(req, id);
+  if (denied) return denied;
   try {
     await deleteQuestion(id, questionId);
     return NextResponse.json({ ok: true });

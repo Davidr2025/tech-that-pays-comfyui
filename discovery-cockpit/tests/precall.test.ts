@@ -11,7 +11,7 @@ import { POST as transcriptRoute } from "@/app/api/sessions/[id]/transcript/rout
 import { POST as createSessionRoute } from "@/app/api/sessions/route";
 import { prisma } from "@/lib/db";
 import { getRevealPayload } from "@/server/reveal";
-import { getConsultant } from "@/server/consultant";
+import { currentConsultant as getConsultant } from "@/server/auth";
 
 const json = (body: unknown, method = "POST") => new Request("http://test.local/api", { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 const ctx = <T extends Record<string, string>>(p: T) => ({ params: Promise.resolve(p) });

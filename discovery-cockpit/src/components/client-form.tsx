@@ -4,7 +4,7 @@ import { Globe } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ColorField } from "@/components/color-field";
-import { Field } from "@/components/app-shell";
+import { Field } from "@/components/form-bits";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";

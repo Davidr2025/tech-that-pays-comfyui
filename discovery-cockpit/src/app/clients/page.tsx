@@ -2,13 +2,13 @@ import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getConsultant } from "@/server/consultant";
+import { requireConsultant } from "@/server/auth";
 import { listClients } from "@/server/clients";
 
 export const dynamic = "force-dynamic";
 
 export default async function ClientsPage() {
-  const consultant = await getConsultant();
+  const consultant = await requireConsultant();
   const clients = consultant ? await listClients(consultant.id) : [];
   return (
     <AppShell

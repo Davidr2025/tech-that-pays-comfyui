@@ -45,6 +45,12 @@ behind an `AIProvider` interface.
 - Reveal estimates (`src/lib/reveal/roi.ts`) use only client-stated numbers plus two printed assumptions; anything
   derived must be re-checked in the schema's `superRefine` so tampering fails closed. Never sum figures that can
   overlap, and count one statement once (`hoursSource`).
+- Access control: every API route calls `apiConsultant(req)` or `guardSession(req, id)` BEFORE reading the body; every
+  page calls `requireConsultant()` (the cockpit also `ownsSession`). Another consultant's record is a 404, never a 403.
+  The only public routes are listed in `tests/access.test.ts`, which fails for any route or page that is neither
+  guarded nor listed. `listSessions`-style helpers take a REQUIRED consultant id: never an optional one that lists everyone.
+- Run modes: `AUTH_MODE=local` (dev/tests default) or `accounts` (production default). Tests that exercise accounts mock
+  `next/headers` with a cookie jar (see `tests/access.test.ts`).
 - Exports (`src/lib/reveal/export.ts`, `src/lib/email.ts`, `src/server/share.ts`) take only the validated
   `RevealData`. Never give them a session, extraction or coaching object. HTML export: inline styles only, escape
   every string. Email goes through `EmailProvider`; `mailtoHref` validates the recipient and drops optional
@@ -54,6 +60,9 @@ behind an `AIProvider` interface.
   that change every played segment), and flush on blur, unmount and `pagehide` (with `keepalive`).
 - Print: use `.avoid-break` on rows and cards, `.reveal-section` so headings stay with content, `print:hidden` on
   controls, and `.keep-colors` on a link whose colours are part of its design (the global print rule strips link colour).
+- Do not `pkill -f` / `pgrep -f` a pattern that also appears in your own command line (it kills the shell: exit 144).
+  Use `ps -eo pid,args | awk '/[n]ext-server/ {print $1}' | xargs kill` and start servers in a separate call.
+- Python `open(p, "w").write(open(p).read())` truncates the file before reading it. Read first, then write.
 - Prisma refuses `migrate reset` from an agent. Refresh demo data with `npm run db:seed` (it only recreates the demo
   records); do not work around the guard.
 - The demo call is data too: `src/lib/demo/demo-call.ts` (Demo Seed Pack). The seed script, the

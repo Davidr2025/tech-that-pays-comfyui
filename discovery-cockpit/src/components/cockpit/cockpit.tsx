@@ -3,7 +3,7 @@
 import { CheckCheck, ExternalLink, EyeOff, FileText, LayoutDashboard, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { StatusBadge } from "@/components/app-shell";
+import { StatusBadge } from "@/components/form-bits";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { usePlayer } from "@/hooks/use-player";

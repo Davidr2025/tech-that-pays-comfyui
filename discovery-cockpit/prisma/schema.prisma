@@ -49,7 +49,10 @@ enum ExtractionKind {
 model Consultant {
   id           String    @id @default(cuid())
   name         String
-  email        String
+  /// Stored lower-case; the login name.
+  email        String    @unique
+  /// scrypt hash (see src/lib/auth/password.ts). Null = this profile has no login (local mode, demo data).
+  passwordHash String?
   businessName String
   tagline      String?
   /// Logo as a small data: URL (png/jpeg/webp/svg), validated in src/lib/logo.ts.
@@ -60,7 +63,20 @@ model Consultant {
   calendarLink String?
   clients      Client[]
   sessions     Session[]
+  authSessions AuthSession[]
   createdAt    DateTime  @default(now())
+}
+
+/// A login. Only a SHA-256 of the cookie token is stored, so a leaked database cannot be replayed as a cookie.
+model AuthSession {
+  id           String     @id @default(cuid())
+  consultantId String
+  consultant   Consultant @relation(fields: [consultantId], references: [id], onDelete: Cascade)
+  tokenHash    String     @unique
+  expiresAt    DateTime
+  createdAt    DateTime   @default(now())
+
+  @@index([consultantId])
 }
 
 model Client {

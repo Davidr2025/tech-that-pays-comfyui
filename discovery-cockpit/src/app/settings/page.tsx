@@ -1,14 +1,17 @@
 import { AppShell } from "@/components/app-shell";
+import { PasswordForm } from "@/components/password-form";
 import { SettingsForm } from "@/components/settings-form";
-import { getConsultant } from "@/server/consultant";
+import { authMode } from "@/lib/auth/mode";
+import { requireConsultant } from "@/server/auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
-  const c = await getConsultant();
+  const c = await requireConsultant();
   return (
     <AppShell current="settings" title="Settings" intro="Your name, branding and booking link. They appear on every client review you build.">
       {c ? (
+        <>
         <SettingsForm
           initial={{
             name: c.name,
@@ -21,6 +24,8 @@ export default async function SettingsPage() {
             logoUrl: c.logoUrl,
           }}
         />
+        {authMode() === "accounts" && <PasswordForm />}
+        </>
       ) : (
         <p className="rounded-md border border-dashed p-4 text-sm text-muted-foreground">
           No consultant profile yet. Run <code>npm run setup</code>.

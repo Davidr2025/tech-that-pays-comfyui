@@ -8,7 +8,7 @@ import { POST as createSessionRoute } from "@/app/api/sessions/route";
 import { prisma } from "@/lib/db";
 import { getPrototype } from "@/server/prototype";
 import { getRevealPayload } from "@/server/reveal";
-import { getConsultant } from "@/server/consultant";
+import { currentConsultant as getConsultant } from "@/server/auth";
 
 const json = (body: unknown) => new Request("http://test.local/api", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 const ctx = (id: string) => ({ params: Promise.resolve({ id }) });

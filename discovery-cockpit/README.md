@@ -201,7 +201,44 @@ Judgement calls worth knowing:
 - **Build Client Review** uses the segments played so far, not the whole stored transcript.
 - **Paste format**: `Consultant:`/`Client:` (also Me/Host, Customer/Prospect/Owner). Other names: first speaker
   is you. No labels: paragraphs alternate, starting with you.
-- **No auth.** This is a local single-user slice; the reveal URL is an unguessable id, not access control.
+- **Client-facing links are capability URLs.** `/reveal/<id>` and `/prototype/<id>` need no login by design (the client
+  has none); the id is a random cuid, not access control. Anyone with the link can read that one document.
+
+## Accounts and access (security)
+
+Two modes, chosen by `AUTH_MODE`:
+
+- **`local`**: no login, one person on their own machine; "you" is the oldest consultant. This is the zero-config demo
+  and the default for `npm run dev` and tests.
+- **`accounts`**: sign-in required, every client/session/report belongs to one consultant, and nothing is shared.
+  **A production build (`next build` + `next start`) with `AUTH_MODE` unset runs as `accounts`**, so a deployment is
+  locked by default; running open in production takes an explicit `AUTH_MODE=local`. A typo such as `AUTH_MODE=acounts`
+  also falls back to the safe choice.
+
+How it works, and what it does not do:
+
+- The first visitor creates the owner account; after that sign-up is closed unless the operator sets
+  `ALLOW_SIGNUP=true`. Passwords are scrypt (N=2^17, r=8, p=1, per-hash salt; the cost is stored in the hash), 10 to 200
+  characters, no composition rules. No email is sent, so there is **no self-service password reset**. If the owner forgets their password, an operator with
+  database access must set a new `Consultant.passwordHash` (generate one with `hashPassword` in
+  `src/lib/auth/password.ts`). [Likely] that is acceptable for one owner or a small team; it is not for a public product.
+- A login is a random 256-bit token in an `httpOnly; SameSite=Lax` cookie (`Secure` in production; `COOKIE_SECURE=false`
+  opts out for a plain-http local production build). Only its SHA-256 is stored, so a leaked database cannot be replayed
+  as a cookie. Logins last 14 days (absolute, not sliding), die on sign-out, and a password change signs out every other
+  device.
+- State-changing requests that the browser marks cross-site are refused as well (defence in depth on top of `SameSite`).
+- Five wrong passwords for one email, or twenty from one address, lock sign-in for 15 minutes. The limiter is in memory,
+  so it is per server process. Because it is per email, anyone can lock the owner out for 15 minutes by guessing wrongly:
+  that is a deliberate trade against online guessing.
+- Someone else's session, client or question answers exactly like one that does not exist (404), so ids cannot be probed.
+  An unknown email and a wrong password get the same message and take about the same time.
+- Not built: email verification, MFA, per-device session lists, account deletion, roles/teams, audit log.
+
+Adding a route? `tests/access.test.ts` imports every `route.ts` and every page and fails unless each is either guarded
+(`guardSession`, `apiConsultant`, `requireConsultant`) or on the short public list in that file.
+
+To move an existing local database to accounts mode, the oldest profile has no password. Sign up as a new owner (fresh,
+empty account), or set a hash on the existing profile from a script using `hashPassword` in `src/lib/auth/password.ts`.
 
 ## Fetching a client's website (security)
 

@@ -71,7 +71,7 @@ export const optionalHourlyValue = z
 
 export const consultantSchema = z.object({
   name: z.string().trim().min(1, "Your name is required.").max(120),
-  email: z.string().trim().email("Enter a valid email address.").max(200),
+  email: z.string().trim().toLowerCase().email("Enter a valid email address.").max(200),
   businessName: z.string().trim().min(1, "Your business name is required.").max(120),
   tagline: optionalText(160),
   primaryColor: hexColor,

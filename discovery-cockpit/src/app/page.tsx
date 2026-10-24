@@ -1,16 +1,17 @@
 import Link from "next/link";
-import { AppShell, StatusBadge } from "@/components/app-shell";
+import { AppShell } from "@/components/app-shell";
+import { StatusBadge } from "@/components/form-bits";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SESSION_TYPE_INFO } from "@/lib/session-types";
-import { getConsultant } from "@/server/consultant";
+import { requireConsultant } from "@/server/auth";
 import { listSessions } from "@/server/sessions";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const consultant = await getConsultant();
-  const sessions = await listSessions(consultant?.id);
+  const consultant = await requireConsultant();
+  const sessions = consultant ? await listSessions(consultant.id) : [];
   return (
     <AppShell
       current="sessions"

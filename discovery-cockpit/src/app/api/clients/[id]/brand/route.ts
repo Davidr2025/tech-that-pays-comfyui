@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/lib/api";
-import { getConsultant } from "@/server/consultant";
+import { apiConsultant } from "@/server/auth";
 import { suggestClientBrand } from "@/server/clients";
 import { FetchFailedError, UnsafeUrlError } from "@/server/safe-fetch";
 
 /** Suggests brand colours from the client's saved website. Nothing is saved until the consultant accepts. */
-export async function POST(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const consultant = await getConsultant();
-  if (!consultant) return jsonError("No consultant exists yet. Run `npm run db:seed`.", 409);
+  const who = await apiConsultant(req);
+  if ("error" in who) return who.error;
+  if (!who.consultant) return jsonError("No consultant exists yet. Run `npm run db:seed`.", 409);
+  const consultant = who.consultant;
   try {
     const result = await suggestClientBrand(consultant.id, id);
     if (result.kind === "not_found") return jsonError("Client not found.", 404);
