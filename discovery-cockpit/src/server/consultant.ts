@@ -28,6 +28,7 @@ function save(id: string, input: z.output<typeof consultantSchema>) {
       accentColor: input.accentColor,
       calendarLink: input.calendarLink,
       embedBooking: input.embedBooking,
+      aiProvider: input.aiProvider,
       logoUrl: input.logoUrl,
     },
   });

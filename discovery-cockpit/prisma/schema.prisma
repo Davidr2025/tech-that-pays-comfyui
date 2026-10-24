@@ -64,6 +64,8 @@ model Consultant {
   /// Show the booking page inside the client's review when the provider is on the embed allowlist.
   embedBooking Boolean   @default(false)
   /// Lead Finder preview: off by default. It stores a list you import yourself; nothing is fetched or scraped.
+  /// Which engine produces analysis: "mock" (rule-based, default) or "claude" (needs ANTHROPIC_API_KEY on the server).
+  aiProvider   String    @default("mock")
   leadFinderEnabled Boolean @default(false)
   leadNiche    String?
   leadLocation String?
@@ -144,6 +146,10 @@ model Session {
   internalNotes     String?
   decisionReadiness Int?
   coaching          Json?
+  /// Live-analysis state a paid provider has accumulated, and how many leading segments it accounts for (private).
+  liveState         Json?
+  liveSeen          Int       @default(0)
+  liveProvider      String?
   // -------------------------------------------------------------------------------
 
   segments    TranscriptSegment[]

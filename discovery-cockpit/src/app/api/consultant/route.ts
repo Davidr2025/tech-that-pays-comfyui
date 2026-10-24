@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { errorResponse, jsonError, readBody } from "@/lib/api";
 import { consultantSchema } from "@/lib/validation";
 import { apiConsultant } from "@/server/auth";
+import { claudeConfigured } from "@/server/ai/claude";
 import { updateConsultant } from "@/server/consultant";
 
 export async function PUT(req: Request) {
@@ -11,6 +12,9 @@ export async function PUT(req: Request) {
   const consultant = who.consultant;
   const parsed = await readBody(req, consultantSchema);
   if ("error" in parsed) return parsed.error;
+  if (parsed.data.aiProvider === "claude" && !claudeConfigured()) {
+    return jsonError("Claude is not available: this server has no ANTHROPIC_API_KEY. Keep the rule-based engine, or ask whoever runs the server to set one.", 400);
+  }
   try {
     await updateConsultant(consultant.id, parsed.data);
     return NextResponse.json({ ok: true });

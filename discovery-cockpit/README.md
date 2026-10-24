@@ -10,8 +10,9 @@ vertical slice proving the core loop — live coaching for you, a clean review f
   client mentioned in context, a conservative **What This Could Be Worth** estimate, a tech-stack table with monthly
   and annual totals, a today-vs-future panel, and **Next Steps** with a booking link (the client's own link, else
   your default). Print-optimised; **Download PDF** opens the print view.
-- All "AI" is a deterministic, rule-based `MockAIEngine` (keywords, a dollar regex, tool-name matching).
-  No network calls, no API keys.
+- By default all "AI" is a deterministic, rule-based `MockAIEngine` (keywords, a dollar regex, tool-name
+  matching): no network calls, no API keys, and the demo depends on it. **Claude** is an optional engine you can
+  switch on in Settings once the server has an `ANTHROPIC_API_KEY` (see [Claude](#claude-optional-needs-a-key)).
 
 > Working title only. Original code; no third-party product names, branding or copy.
 
@@ -321,18 +322,80 @@ resolved address **at connect time** (so DNS tricks don't help), re-validates ev
 and time, asks for uncompressed text, and refuses non-text responses. `localhost`, private ranges, link-local and the
 cloud metadata address are refused. Tests run the guard against a real local server and fail if it is disabled.
 
+## Claude (optional, needs a key)
+
+Off by default. The rule-based engine stays the default, runs the demo and every test, and is what the app falls
+back to whenever Claude cannot answer.
+
+**Turn it on.** Put `ANTHROPIC_API_KEY=...` in the server's environment (see `.env.example`; never commit it) and
+restart. Then **Settings -> Analysis engine -> Claude**. The server never sends the key to a browser, never stores it
+and never logs it. The model defaults to `claude-opus-5-5`; set `ANTHROPIC_MODEL` to change it (live analysis runs
+often, so a cheaper model may suit you: that is your call and your bill).
+
+**What goes to Anthropic, and when.**
+
+| When | What is sent | What comes back |
+| --- | --- | --- |
+| As the call goes on (live) | only the NEW transcript lines, up to six earlier lines for context, and a short summary of what is already known | findings with quotes, severity, covered questions, a readiness judgment, a reflect-back, a next question |
+| **Build Client Review** | lines not yet analysed (so usually a few), then the client-safe reveal text, then (assessments) neutral facts about the client's tools and gaps | better wording for the reveal; example content for three prototype modules |
+
+Live analysis never re-sends the whole call. A long backlog (a pasted transcript) goes in windows of 40 lines, each
+carrying the findings so far. The reveal request contains **only content already cleared for the client**: no
+quotes, no readiness, no internal notes, no branding or links.
+
+**What the model is trusted with, and what it is not.** The model's answer is untrusted input:
+
+- Every quote must be a sentence the **client** actually said (matched against the transcript; the consultant's words
+  never count). Anything the transcript does not support is dropped, not repaired.
+- **Hours and dollar figures are never taken from the model.** It points at the client's sentence; the app's own
+  parsers read the number out of it, so the estimate on the reveal still stands on client-stated figures only.
+- Problems are chosen from the app's fixed list; their titles, descriptions and today/future wording come from the
+  app. Covered questions must be on the session's checklist.
+- Reveal wording may change the summary, each problem's description, the today/future lists and up to three next
+  steps. Titles, totals, estimate, tools, money, timeline, header and booking stay the app's, and the result must pass
+  the same strict schema. New wording is rejected if it adds a figure that was not in the data, a promise, an AI or
+  coaching term, a link, an email address or a phone number.
+- Prototype content may only fill example rows (the app sets every `example` flag, status and age) and may name a tool
+  only if the client named it. **Financial Pulse always comes from the rule-based builder.**
+- A malformed or cut-off answer is retried once. After that (and at once for a refusal, a rejected key, a rate limit or
+  a server error) the app uses the rule-based result, logs one warning (a reason, never transcript text or the key), and
+  marks the snapshot. After a failure live analysis answers from the rules for 20 seconds rather than calling on
+  every line.
+
+**Which engine made it** is shown to you only: a badge above the readiness gauge ("Analysis: Claude", "Rule-based", or
+"Rule-based · Claude unavailable") and a private `provenance` record on the session. It is not part of the reveal, the
+prototype or any export (the strict schemas have no field for it, and a test checks the stored reveal).
+
+**Limits worth knowing.**
+
+- Hourly allowances per consultant (600 live windows, 200 review calls) are counted in memory, per server process. Every
+  signed-in consultant on a shared server spends the same key; there is no per-person budget.
+- Assessment facts (processes, security gaps, finance figures) and the list of dollar amounts are still read by the
+  rules, not by Claude. Claude supplies problems, severity, tools and costs, cues, coverage, readiness and wording.
+- Claude finds only what it is shown and can quote; a claim it cannot ground is dropped, so its list can be shorter than the
+  rules' (the rules over-match, Claude may under-match). Compare both on a real call before relying on either.
+- Readiness from Claude is the model's judgment with its one-sentence reason; the rules' per-factor breakdown is not shown for it.
+
+**How it is tested.** `tests/ai-*.test.*` drive the real Anthropic SDK against a local stand-in for the Messages API
+(no key, no network): the request we build, retry-once and fallback, refusals, 401/500, the hourly limit, incremental
+sending, grounding, every guard (each one was mutation-checked), privacy of what is sent, and the browser behaviour.
+**That proves this app's behaviour. It cannot prove the real service accepts our request**, because no real key was
+available while building. To check against the real service: set the key, choose Claude, load the demo call at 1x, and
+confirm the badge says "Claude" (not "Claude unavailable") and the server log has no `[ai]` warnings.
+
 ## Known limits of the mock engine
 
 Rules are keyword-based, so they are deliberately transparent and sometimes blunt:
 a sentence matching two pain categories attributes the same quantified impact to both; time and counts
-read number words ("ten to twelve hours") but dollars must be digits (`$85`, `$4.5k`), not "eighty-five
-dollars" — a real speech-to-text feed needs a number-word normaliser; assessment extraction is the same kind of keyword rules (a gap must be stated in the client's own sentence;
+read number words ("ten to twelve hours"); dollars are read from `$85`, `$4.5k`, "4,000 dollars/bucks" and
+spoken forms ("four thousand dollars", "four grand") but always need a currency cue, so "ten thousand leads" is not
+money; assessment extraction is the same kind of keyword rules (a gap must be stated in the client's own sentence;
 a terse "no" to "is multi-factor on?" is not read); a bare "by hand" is only read as a pain inside a sentence about reports ("12 hours a week on invoices by hand"
 is counted as lead-tracking, not manual work, unless it says re-entering or manual); severity is a heuristic score
 (`src/lib/mock-ai/engine.ts`, `extractPainPoints`); tool detection uses a fixed catalogue in
-`src/lib/mock-ai/tools.ts`. The engine re-analyses the whole transcript-so-far on each new segment, which
-is cheap here but conflicts with the pack's "incremental only" rule once a paid model is behind it. The engine sits behind a single
-`analyze(segments)` function so a real model can replace it later.
+`src/lib/mock-ai/tools.ts`. The rule-based engine re-analyses the whole transcript-so-far on each new segment: that is
+a few milliseconds of local CPU, so it stays. The pack's "incremental only" rule is about paid calls, and the Claude
+provider obeys it (new lines only). Both engines sit behind the `AIProvider` interface (`src/lib/ai/types.ts`).
 
 ## Layout
 
@@ -340,6 +403,8 @@ is cheap here but conflicts with the pack's "incremental only" rule once a paid 
 prisma/            schema, migration, seed
 scripts/prisma.mjs Prisma CLI wrapper (default DATABASE_URL)
 src/lib/mock-ai/   engine + rule tables (pain, cues, tools, question bank)
+src/lib/ai/        AIProvider interface, ALL prompts (prompts.ts), answer schemas, grounding and guards
+src/server/ai/     the Claude client (claude.ts), provider choice + fallback + limits, live-analysis service
 src/lib/reveal/    allow-list schema + payload builder
 src/lib/demo/      the fictitious demo calls: discovery + assessment (shared by seed, UI and tests)
 src/lib/prototype/ prototype module schemas (allow-list) and the generator

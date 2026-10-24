@@ -2,6 +2,7 @@ import { AppShell } from "@/components/app-shell";
 import { PasswordForm } from "@/components/password-form";
 import { SettingsForm } from "@/components/settings-form";
 import { authMode } from "@/lib/auth/mode";
+import { claudeConfigured, claudeModel } from "@/server/ai/claude";
 import { requireConsultant } from "@/server/auth";
 
 export const dynamic = "force-dynamic";
@@ -23,7 +24,10 @@ export default async function SettingsPage() {
             calendarLink: c.calendarLink ?? "",
             embedBooking: c.embedBooking,
             logoUrl: c.logoUrl,
+            // A saved Claude choice means nothing without a key: show what is actually in use.
+            aiProvider: c.aiProvider === "claude" && claudeConfigured() ? "claude" : "mock",
           }}
+          claude={{ available: claudeConfigured(), model: claudeModel() }}
         />
         {authMode() === "accounts" && <PasswordForm />}
         </>

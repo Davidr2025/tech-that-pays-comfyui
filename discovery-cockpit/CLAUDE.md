@@ -8,8 +8,8 @@ third-party trademark, logo, or copied marketing copy anywhere in code, UI, or d
 
 ## Stack
 Next.js 15 App Router, TypeScript strict, Tailwind 3, shadcn-style components (hand-written in
-`src/components/ui`), Prisma 6 + SQLite (Postgres-ready schema). Planned: Anthropic Claude API
-behind an `AIProvider` interface.
+`src/components/ui`), Prisma 6 + SQLite (Postgres-ready schema). Anthropic Claude API behind the `AIProvider`
+interface (`src/lib/ai/types.ts`); the rule-based mock is the default.
 
 ## Hard rules
 1. PRIVACY BOUNDARY: Client Reveal and Prototype routes receive ONLY allow-listed data
@@ -20,11 +20,11 @@ behind an `AIProvider` interface.
    Never make an external API call in a code path the demo depends on.
 3. All AI output is untrusted: validate against the TypeScript types/schema before storing
    or rendering. Fall back to mock output on failure.
-4. All AI prompts live in one file (planned: `src/lib/ai/prompts.ts`) — nowhere else. No prompt
+4. All AI prompts live in one file, `src/lib/ai/prompts.ts` — nowhere else. No prompt
    strings inline in components or API routes.
-5. Transcript processing must be incremental (new segments only) — never reprocess a
-   whole transcript on every update. (KNOWN DEVIATION: the mock engine's `analyze()` re-reads the
-   transcript-so-far per segment. Fix before a paid model is wired in.)
+5. Paid-model processing must be incremental (new segments only) — never re-send the whole transcript on every
+   update. The Claude provider sends new lines + a little context + a summary of what is known. (The rule-based
+   mock still re-reads the transcript-so-far per segment: that is free local CPU, so it is allowed.)
 6. Keep the app runnable after every change: run typecheck, lint, and tests before
    declaring a task done, and report their results honestly.
 
@@ -89,6 +89,20 @@ behind an `AIProvider` interface.
 - No `.env` is needed: `scripts/prisma.mjs` and `src/lib/db.ts` default `DATABASE_URL`. Use
   `npm run prisma -- <args>`, not bare `npx prisma`.
 
+- Claude provider (`src/server/ai`, `src/lib/ai`): the model's answer is UNTRUSTED. It may choose, classify and quote;
+  it may not supply a number a client sees. Quotes must be found in CLIENT sentences (`ground.ts`), hours and dollars
+  are read by the app's own parsers from the sentence the model points at, wording it writes for a client goes through
+  `guards.ts` (no new figures, promises, private/AI terms, contact details) and the strict schema, and anything that
+  fails falls back to the mock with one content-free warning. The key is read from the environment only, in
+  `server/ai/claude.ts`; never log, store or return it. Never add a model call to a path the demo depends on.
+- What the model is SENT is a privacy boundary too: the reveal request carries only `narrativeInput(base)` (already
+  client-safe), the prototype request only `prototypeFacts`. Add a field there and the tests that scan the request
+  body must be updated on purpose.
+- Which engine produced a snapshot is consultant-only (`EngineBadge`, `Session.coaching.provenance`). It has no field in
+  the reveal or prototype schemas, and must not get one.
+- Claude tests use `tests/stub-anthropic.ts` (a local Messages API). It proves the app's behaviour, not that the real
+  service accepts the request; say so whenever you report on it.
+
 ## Testing
 Run: `npm run typecheck && npm run lint && npm test`
 Must pass before any feature is called complete: the privacy tests (`tests/privacy.test.tsx`,
@@ -97,6 +111,12 @@ Must pass before any feature is called complete: the privacy tests (`tests/priva
 keeps a second, different call as a regression fixture).
 
 ## Lessons from building this (so they aren't re-learned)
+- A guard test that passes with the guard deleted is not a test. Two guards that overlap (a digit check and a money
+  check) each survive deleting the other: give each a case only it can catch (a percentage; a spelled-out amount).
+- A test fixture can trip the guard it exercises: a stub answer containing the word "Claude" was (correctly) rejected as
+  an AI mention. Read why a fallback happened before blaming the code.
+- Test files must not import another test file for its fixtures (its tests register twice): share via a plain module.
+- Test-isolation: a test that edits "the oldest consultant" (local mode) inherits whatever earlier tests left on it.
 - Test the privacy boundary at the ROUTE level, not just the component: a root-layout
   `<meta description>` once leaked "Private coaching…" onto the client page.
 - Leak scans must decode HTML entities (React escapes `'` as `&#x27;`) or they miss apostrophes.

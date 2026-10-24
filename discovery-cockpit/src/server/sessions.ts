@@ -7,6 +7,8 @@ import type { ParsedSegment } from "../lib/transcript";
 import { sessionCreateSchema } from "../lib/validation";
 import { ASSESSMENT_SEGMENTS } from "../lib/demo/assessment-call";
 import { isAssessment, SESSION_TYPE_INFO, type SessionType } from "../lib/session-types";
+import type { ProviderId } from "../lib/ai/types";
+import { claudeConfigured } from "./ai/claude";
 import { parseBrandColors } from "./clients";
 import { toQuestionView } from "./question-view";
 import { createDefaultQuestions } from "./questions";
@@ -49,6 +51,8 @@ export async function getCockpitData(sessionId: string) {
     segments: session.segments.map((s) => ({ order: s.order, speaker: s.speaker, text: s.text, startSec: s.startSec })),
     internalNotes: session.internalNotes ?? "",
     questions: session.questions.map(toQuestionView),
+    /** Which engine analyses this call: Claude only if the consultant chose it and the server has a key. */
+    aiProvider: (session.consultant.aiProvider === "claude" && claudeConfigured() ? "claude" : "mock") as ProviderId,
   };
 }
 
@@ -85,7 +89,7 @@ export async function replaceTranscript(sessionId: string, segments: ParsedSegme
     prisma.prototypeModule.deleteMany({ where: { sessionId } }),
     prisma.session.update({
       where: { id: sessionId },
-      data: { coaching: Prisma.DbNull, decisionReadiness: null, status: "LIVE", startedAt: startedAt ?? new Date() },
+      data: { coaching: Prisma.DbNull, decisionReadiness: null, liveState: Prisma.DbNull, liveSeen: 0, liveProvider: null, status: "LIVE", startedAt: startedAt ?? new Date() },
     }),
     // A new transcript is a new call: every question starts uncovered, manual ticks included.
     prisma.question.updateMany({ where: { sessionId }, data: { isCovered: false, coveredByAI: false } }),

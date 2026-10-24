@@ -78,6 +78,7 @@ export const consultantSchema = z.object({
   accentColor: hexColor,
   calendarLink: optionalUrl,
   embedBooking: z.boolean().default(false),
+  aiProvider: z.enum(["mock", "claude"]).default("mock"),
   logoUrl: logoField,
 });
 

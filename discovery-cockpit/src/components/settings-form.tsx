@@ -20,9 +20,10 @@ export interface ConsultantValues {
   calendarLink: string;
   embedBooking: boolean;
   logoUrl: string | null;
+  aiProvider: "mock" | "claude";
 }
 
-export function SettingsForm({ initial }: { initial: ConsultantValues }) {
+export function SettingsForm({ initial, claude }: { initial: ConsultantValues; claude: { available: boolean; model: string } }) {
   const [v, setV] = useState(initial);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
@@ -93,6 +94,34 @@ export function SettingsForm({ initial }: { initial: ConsultantValues }) {
               </span>
             </label>
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Analysis engine</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm">
+          <fieldset className="space-y-2" aria-label="Analysis engine">
+            <label className="flex items-start gap-2.5">
+              <input type="radio" name="aiProvider" className="mt-1 size-4" checked={v.aiProvider === "mock"} onChange={() => set("aiProvider", "mock")} data-testid="provider-mock" />
+              <span>
+                Rule-based (default)
+                <span className="block text-xs text-muted-foreground">Runs on this machine with no key, no cost and no data leaving it. Always works, including the demo.</span>
+              </span>
+            </label>
+            <label className={`flex items-start gap-2.5 ${claude.available ? "" : "opacity-60"}`}>
+              <input type="radio" name="aiProvider" className="mt-1 size-4" checked={v.aiProvider === "claude"} disabled={!claude.available} onChange={() => set("aiProvider", "claude")} data-testid="provider-claude" />
+              <span>
+                Claude
+                <span className="block text-xs text-muted-foreground">
+                  {claude.available
+                    ? `Sends the call's transcript lines to Anthropic (model ${claude.model}) as the call goes on, and again when you build the client review. This costs money on the server's account. If a request fails, the rule-based result is used instead.`
+                    : "Not available: this server has no ANTHROPIC_API_KEY. Whoever runs the server adds one to its environment and restarts it."}
+                </span>
+              </span>
+            </label>
+          </fieldset>
         </CardContent>
       </Card>
 

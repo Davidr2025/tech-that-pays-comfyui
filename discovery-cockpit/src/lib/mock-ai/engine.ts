@@ -69,7 +69,7 @@ const singular = (noun: string) => (noun.endsWith("ies") ? `${noun.slice(0, -3)}
 
 // ---------- pain points ----------
 
-interface Features {
+export interface Features {
   time: TimeQty | null;
   count: CountQty | null;
   money: RawMoney[];
@@ -149,7 +149,7 @@ function collectEvidence(clientSegments: Segment[]): Map<string, Evidence> {
   return evidence;
 }
 
-function describeImpact(cat: PainCategory, features: Features[]): { text: string | null; quantified: boolean; topWeekly: number; weeklyHours: number | null; hoursSource: string | null; annualAmount: number | null } {
+export function describeImpact(cat: PainCategory, features: Features[]): { text: string | null; quantified: boolean; topWeekly: number; weeklyHours: number | null; hoursSource: string | null; annualAmount: number | null } {
   const times = features.map((f) => f.time).filter((t): t is TimeQty => t !== null);
   const counts = features.map((f) => f.count).filter((c): c is CountQty => c !== null);
   const moneys = features.flatMap((f) => f.money);
@@ -228,7 +228,7 @@ function extractPainPoints(clientSegments: Segment[]): PainPoint[] {
 
 // ---------- tech stack ----------
 
-function monthlyFrom(amount: number, period: Period): { monthly: number; annual: number; note: string | null } | null {
+export function monthlyFrom(amount: number, period: Period): { monthly: number; annual: number; note: string | null } | null {
   const r2 = (n: number) => Math.round(n * 100) / 100;
   switch (period) {
     case "month":
@@ -302,6 +302,35 @@ function extractTech(clientSentences: { text: string; order: number }[]): TechIt
   return [...tools.values()];
 }
 
+/**
+ * The stated cost of ONE named tool, read from the sentence that mentions it. Used when something other than the
+ * rules (the Claude provider) has already decided which tool a sentence is about: the arithmetic stays here.
+ */
+export function costFromSentence(tool: string, sentence: string): { monthly: number; annual: number; note: string | null } | null {
+  const moneys = findMoney(sentence);
+  if (!moneys.length) return null;
+  const at = sentence.toLowerCase().indexOf(tool.toLowerCase());
+  let pick: RawMoney | undefined;
+  if (at < 0) pick = moneys.length === 1 ? moneys[0] : undefined;
+  else {
+    const clause = clausesOf(sentence).find((c) => at >= c.start && at <= c.end);
+    const inClause = clause ? moneys.filter((m) => m.start >= clause.start && m.start <= clause.end) : [];
+    const pool = inClause.length ? inClause : moneys;
+    pick = pool.reduce((best, m) => (Math.abs(m.start - at) < Math.abs(best.start - at) ? m : best));
+  }
+  if (!pick) return null;
+  let { period } = pick;
+  let assumed = false;
+  if (period === "unspecified") {
+    if (RECURRING_CUE.test(sentence) && !ONE_TIME_CUE.test(sentence)) {
+      period = "month";
+      assumed = true;
+    } else return null; // a one-off or unclear amount is not a subscription cost
+  }
+  const converted = monthlyFrom(pick.amount, period);
+  return converted ? { ...converted, note: assumed ? "assumed monthly" : converted.note } : null;
+}
+
 // ---------- cues and facts ----------
 
 function extractCues(rules: { kind: string; pattern: RegExp }[], clientSegments: Segment[]): Cue[] {
@@ -334,7 +363,7 @@ function extractFacts(clientSentences: { text: string; order: number }[]): Decis
   };
 }
 
-function extractTimeline(urgency: Cue | null): Timeline {
+export function extractTimeline(urgency: Cue | null): Timeline {
   if (!urgency) return { deadline: null, window: null };
   return {
     deadline: urgency.quote.match(DEADLINE_PHRASE)?.[1] ?? null,

@@ -7,9 +7,11 @@ import { StatusBadge } from "@/components/form-bits";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { usePlayer } from "@/hooks/use-player";
+import { useRemoteAnalysis } from "@/hooks/use-remote-analysis";
 import { useTalkTimer } from "@/hooks/use-talk-timer";
 import { bankFor } from "@/lib/mock-ai/banks";
 import { analyze, pickNextQuestion } from "@/lib/mock-ai/engine";
+import type { Provenance } from "@/lib/ai/types";
 import type { BankQuestion } from "@/lib/mock-ai/questions";
 import type { SpeakerKind } from "@/lib/mock-ai/types";
 import type { SessionStatus } from "@/lib/sessions";
@@ -20,6 +22,7 @@ import { DecisionFactsCard, NextQuestionCard, ObjectionsCard, PainPointsCard, Re
 import type { ImportRequest } from "./import-dialog";
 import { QuestionPanel, type QuestionRow } from "./question-panel";
 import { EncouragementFooter } from "./encouragement-footer";
+import { EngineBadge } from "./engine-badge";
 import { NotesCard } from "./notes-card";
 import { ReadinessGauge } from "./readiness-gauge";
 import { ShareDialog } from "./share-dialog";
@@ -59,7 +62,19 @@ export function Cockpit({ data }: { data: CockpitData }) {
 
   // ---- live analysis of the call so far (pure, in-browser) ----
   const played = useMemo(() => segments.slice(0, player.playedCount), [segments, player.playedCount]);
-  const analysis = useMemo(() => analyze(played, { type: data.type }), [played, data.type]);
+  const localAnalysis = useMemo(() => analyze(played, { type: data.type }), [played, data.type]);
+  // With Claude chosen, the server analyses new lines only; until its first answer (and whenever it cannot answer)
+  // the in-browser rules fill in, and the badge says so. The talk ratio is arithmetic, so it is always live.
+  const [analysisEpoch, setAnalysisEpoch] = useState(0);
+  const remote = useRemoteAnalysis({ sessionId: data.id, enabled: data.aiProvider === "claude", upTo: player.playedCount, epoch: analysisEpoch });
+  const analysis = useMemo(
+    () => (remote.answer ? { ...remote.answer.analysis, talk: localAnalysis.talk } : localAnalysis),
+    [remote.answer, localAnalysis],
+  );
+  const engine: Provenance & { waiting: boolean } =
+    data.aiProvider === "claude" && remote.answer?.provider === "claude"
+      ? { provider: "claude", fellBack: false, waiting: remote.busy || remote.answer.upTo !== player.playedCount }
+      : { provider: "mock", fellBack: data.aiProvider === "claude", waiting: data.aiProvider === "claude" && remote.answer === null && remote.error === null };
   const bank = useMemo(() => bankFor(data.type), [data.type]);
 
   // ---- question checklist: manual ticks + AI detection ----
@@ -159,6 +174,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
     setSegments(res.data.segments);
     setManual({});
     setDismissed(new Set());
+    setAnalysisEpoch((n) => n + 1);
     setRevealPath(null);
     setPrototypePath(null);
     setStatus("LIVE");
@@ -173,6 +189,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
     loadTranscript({ mode: req.mode, text: req.text, you: req.you, swap: req.swap || undefined, fileName: req.fileName });
 
   function restartCall() {
+    setAnalysisEpoch((n) => n + 1);
     setManual({});
     setDismissed(new Set());
     resetTimer();
@@ -342,6 +359,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
         </section>
 
         <section className="space-y-3 lg:min-h-0 lg:overflow-y-auto lg:pr-1" aria-label="Coaching">
+          <EngineBadge engine={engine} error={data.aiProvider === "claude" ? remote.error : null} />
           <ReadinessGauge readiness={analysis.readiness} />
           <NextQuestionCard next={nextQuestion} />
           <NotesCard initial={data.internalNotes} onSave={saveCallNotes} />
