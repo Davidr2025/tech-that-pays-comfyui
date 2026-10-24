@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T14:00:44.407Z",
+  "updatedAt": "2026-10-24T18:48:04.462Z",
   "windowDays": 14,
   "items": [
     {
@@ -11,16 +11,6 @@
       "end": "2026-10-25T17:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
-      "summary": "Join us for a captivating Bharatanatyam dance performance!",
-      "venue": "Malton Library",
-      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2002964679274",
-      "start": "2026-10-24T16:00:00.000Z",
-      "end": "2026-10-24T16:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
       "title": "Sing Pitch Perfect with Deke Sharon and Splüsh",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/streetsville-spooktacular-2/",
       "start": "2026-10-31T10:00:00.000Z",
       "end": "2026-10-31T13:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Halloween in the Village 2026",
+      "summary": "Halloween in the Village is back on Saturday, October 31, 2026 , bringing an afternoon of family-friendly fun to Clarkson Village. Put on your favourite costume and join us for an exciting community celebration featuring: 🎃 Bouncy Castles 🚂 Trackless Train 🎡 Games 🎨 Face Painting 🎭 Live Performances 🍬 Tricks & Treats 👻 Plus a few spooky surprises that promise to be frightfully good!",
+      "venue": "",
+      "url": "https://www.visitmississauga.ca/event/halloween-in-the-village-2026/",
+      "start": "2026-10-31T11:00:00.000Z",
+      "end": "2026-10-31T14:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
