@@ -1,5 +1,6 @@
 import { formatMoney, joinList, pluralize } from "../format";
 import type { Analysis } from "../mock-ai/types";
+import type { SessionType } from "../session-types";
 import { computeTotals, revealSchema, type RevealData } from "./schema";
 
 export interface RevealInput {
@@ -9,6 +10,7 @@ export interface RevealInput {
   client: { name: string; companyName: string };
   analysis: Analysis;
   generatedAt: Date;
+  kind?: SessionType;
 }
 
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
@@ -20,7 +22,7 @@ const unique = (items: string[]) => [...new Set(items)];
  * schema or this throws. Private analysis fields (readiness, signals, objections, quotes,
  * severity, next question, reflect-back) have no path into the output.
  */
-export function buildRevealData({ consultant, branding, client, analysis, generatedAt }: RevealInput): RevealData {
+export function buildRevealData({ consultant, branding, client, analysis, generatedAt, kind = "DISCOVERY" }: RevealInput): RevealData {
   const techStack = analysis.tech.map((t) => ({
     tool: t.tool,
     purpose: t.purpose,
@@ -42,7 +44,7 @@ export function buildRevealData({ consultant, branding, client, analysis, genera
   const futureState = unique(analysis.painPoints.map((p) => p.futureState));
 
   const sentences: string[] = [
-    `During our discovery conversation, ${client.name} of ${client.companyName} walked through how work flows through the business today and where it slows down.`,
+    `During our ${kind === "DISCOVERY" ? "discovery conversation" : "assessment"}, ${client.name} of ${client.companyName} walked through how work flows through the business today and where it slows down.`,
   ];
   if (painPoints.length) {
     sentences.push(`The main themes were ${joinList(painPoints.map((p) => lowerFirst(p.title)))}.`);
@@ -65,6 +67,7 @@ export function buildRevealData({ consultant, branding, client, analysis, genera
 
   return revealSchema.parse({
     version: 1,
+    kind,
     generatedAt: generatedAt.toISOString(),
     header: {
       consultantName: consultant.name,

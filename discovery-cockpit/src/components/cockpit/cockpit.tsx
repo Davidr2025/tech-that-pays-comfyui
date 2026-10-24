@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCheck, ExternalLink, EyeOff, FileText, Loader2 } from "lucide-react";
+import { CheckCheck, ExternalLink, EyeOff, FileText, LayoutDashboard, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StatusBadge } from "@/components/app-shell";
@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { usePlayer } from "@/hooks/use-player";
 import { useTalkTimer } from "@/hooks/use-talk-timer";
+import { bankFor } from "@/lib/mock-ai/banks";
 import { analyze, pickNextQuestion } from "@/lib/mock-ai/engine";
 import type { SpeakerKind } from "@/lib/mock-ai/types";
 import type { SessionStatus } from "@/lib/sessions";
@@ -53,7 +54,8 @@ export function Cockpit({ data }: { data: CockpitData }) {
 
   // ---- live analysis of the call so far (pure, in-browser) ----
   const played = useMemo(() => segments.slice(0, player.playedCount), [segments, player.playedCount]);
-  const analysis = useMemo(() => analyze(played), [played]);
+  const analysis = useMemo(() => analyze(played, { type: data.type }), [played, data.type]);
+  const bank = useMemo(() => bankFor(data.type), [data.type]);
 
   // ---- question checklist: manual ticks + AI detection ----
   const [manual, setManual] = useState<Record<string, boolean>>(() => Object.fromEntries(data.questions.map((q) => [q.id, q.manuallyCovered])));
@@ -68,7 +70,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
       }),
     [data.questions, manual, dismissed, analysis.topicsCovered],
   );
-  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic)), analysis.followUp), [rows, analysis.followUp]);
+  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic)), analysis.followUp, bank), [rows, analysis.followUp, bank]);
 
   function toggleQuestion(row: QuestionRow) {
     const covered = !row.checked;
@@ -103,6 +105,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
 
   // ---- loading a transcript: demo, paste, upload (all replace the call) ----
   const [revealPath, setRevealPath] = useState<string | null>(data.hasReport ? `/reveal/${data.id}` : null);
+  const [prototypePath, setPrototypePath] = useState<string | null>(data.hasPrototype ? `/prototype/${data.id}` : null);
 
   async function loadTranscript(body: unknown): Promise<string | null> {
     setLoading(true);
@@ -118,6 +121,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
     setManual({});
     setDismissed(new Set());
     setRevealPath(null);
+    setPrototypePath(null);
     setStatus("LIVE");
     resetTimer();
     stopTimer();
@@ -166,11 +170,12 @@ export function Cockpit({ data }: { data: CockpitData }) {
   const buildReview = useCallback(async () => {
     setBuilding(true);
     setBuildError(null);
-    const res = await request<{ revealPath: string }>(`/api/sessions/${data.id}/review`, "POST", { upTo: player.playedCount });
+    const res = await request<{ revealPath: string; prototypePath: string | null }>(`/api/sessions/${data.id}/review`, "POST", { upTo: player.playedCount });
     setBuilding(false);
     if (!res.ok) setBuildError(res.error);
     else {
       setRevealPath(res.data.revealPath);
+      setPrototypePath(res.data.prototypePath);
       setStatus("REVIEW");
       setBrandNote(null);
     }
@@ -231,6 +236,13 @@ export function Cockpit({ data }: { data: CockpitData }) {
             <Button asChild variant="outline">
               <Link href={revealPath} target="_blank" data-testid="open-reveal-link" onClick={() => status === "REVIEW" && void markStatus("REVEALED")}>
                 <ExternalLink /> Open Client Reveal
+              </Link>
+            </Button>
+          )}
+          {prototypePath && (
+            <Button asChild variant="outline">
+              <Link href={prototypePath} target="_blank" data-testid="open-prototype-link">
+                <LayoutDashboard /> Open Prototype
               </Link>
             </Button>
           )}

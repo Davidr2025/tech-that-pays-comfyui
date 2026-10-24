@@ -23,7 +23,7 @@ const render = async (searchParams: { print?: string } = {}) =>
 
 describe("reveal route", () => {
   it("sets its own title and description, so the root layout's never reaches a client", () => {
-    expect(revealMetadata.title).toBe("Discovery Review");
+    expect(revealMetadata.title).toBe("Client Review");
     expect(typeof revealMetadata.description).toBe("string");
     // What the browser actually gets is the root metadata overridden by the page's.
     const effective = JSON.stringify({ ...rootMetadata, ...revealMetadata });

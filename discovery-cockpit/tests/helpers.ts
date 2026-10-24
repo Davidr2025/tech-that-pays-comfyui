@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { createDefaultQuestions } from "@/server/questions";
+import { ASSESSMENT_SEGMENTS } from "@/lib/demo/assessment-call";
 import { demoTranscript, replaceTranscript } from "@/server/sessions";
 
 let counter = 0;
@@ -18,6 +19,17 @@ export async function makeDemoSession(label: string) {
   });
   await createDefaultQuestions(session.id);
   await replaceTranscript(session.id, demoTranscript());
+  return session;
+}
+
+/** A COMBINED_ASSESSMENT session loaded with the assessment demo call. */
+export async function makeAssessmentSession(label: string, type: "OPERATIONAL_ASSESSMENT" | "TECHNOLOGY_ASSESSMENT" | "COMBINED_ASSESSMENT" = "COMBINED_ASSESSMENT") {
+  const n = `${label}-${Date.now()}-${counter++}`;
+  const consultant = await prisma.consultant.create({ data: { name: "Test Consultant", email: `${n}@example.test`, businessName: "Test Studio", tagline: "Testing" } });
+  const client = await prisma.client.create({ data: { consultantId: consultant.id, name: "Pat Client", companyName: "Acme Marketing", industry: "Marketing agency" } });
+  const session = await prisma.session.create({ data: { consultantId: consultant.id, clientId: client.id, type, title: `Assessment ${n}` } });
+  await createDefaultQuestions(session.id, type);
+  await replaceTranscript(session.id, ASSESSMENT_SEGMENTS.map((s) => ({ speaker: s.speaker, text: s.text })));
   return session;
 }
 

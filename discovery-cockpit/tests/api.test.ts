@@ -76,7 +76,7 @@ describe("POST /api/sessions/[id]/review", () => {
   it("builds the report and returns the reveal path", async () => {
     const res = await buildReview(json({}), ctx({ id }));
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ revealPath: `/reveal/${id}` });
+    expect(await res.json()).toEqual({ revealPath: `/reveal/${id}`, prototypePath: null }); // discovery sessions have no prototype
     expect(await prisma.report.count({ where: { sessionId: id } })).toBe(1);
   });
 

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ASSESSMENT_PENDING, SESSION_TYPES, SESSION_TYPE_INFO, type SessionType } from "@/lib/session-types";
+import { isAssessment, SESSION_TYPES, SESSION_TYPE_INFO, type SessionType } from "@/lib/session-types";
 
 export interface ClientOption {
   id: string;
@@ -100,7 +100,11 @@ export function NewSessionForm({ clients, initialClientId }: { clients: ClientOp
               </label>
             );
           })}
-          <p className="text-xs text-muted-foreground">{ASSESSMENT_PENDING}</p>
+          <p className="text-xs text-muted-foreground" data-testid="type-hint">
+            {isAssessment(type)
+              ? "Assessment sessions use a longer question bank, and building the client review also generates a prototype dashboard from what the client tells you."
+              : "A first conversation. The cockpit coaches you through it and builds a client-safe review afterwards."}
+          </p>
         </CardContent>
       </Card>
 

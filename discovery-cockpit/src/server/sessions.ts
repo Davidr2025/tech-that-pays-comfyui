@@ -5,7 +5,8 @@ import { DEMO_SEGMENTS } from "../lib/demo/demo-call";
 import { assertTransition, type SessionStatus } from "../lib/sessions";
 import type { ParsedSegment } from "../lib/transcript";
 import { sessionCreateSchema } from "../lib/validation";
-import { SESSION_TYPE_INFO, ASSESSMENT_PENDING } from "../lib/session-types";
+import { ASSESSMENT_SEGMENTS } from "../lib/demo/assessment-call";
+import { isAssessment, SESSION_TYPE_INFO, type SessionType } from "../lib/session-types";
 import { parseBrandColors } from "./clients";
 import { createDefaultQuestions } from "./questions";
 
@@ -28,6 +29,7 @@ export async function getCockpitData(sessionId: string) {
       segments: { orderBy: { order: "asc" } },
       questions: { orderBy: { order: "asc" } },
       report: { select: { id: true } },
+      prototype: { select: { id: true } },
     },
   });
   if (!session) return null;
@@ -42,6 +44,7 @@ export async function getCockpitData(sessionId: string) {
     clientCompany: session.client.companyName,
     clientHasBrand: parseBrandColors(session.client.brandColors) !== null,
     hasReport: session.report !== null,
+    hasPrototype: session.prototype.length > 0,
     segments: session.segments.map((s) => ({ order: s.order, speaker: s.speaker, text: s.text, startSec: s.startSec })),
     questions: session.questions.map((q) => ({
       id: q.id,
@@ -83,6 +86,7 @@ export async function replaceTranscript(sessionId: string, segments: ParsedSegme
     }),
     prisma.extraction.deleteMany({ where: { sessionId } }),
     prisma.report.deleteMany({ where: { sessionId } }),
+    prisma.prototypeModule.deleteMany({ where: { sessionId } }),
     prisma.session.update({
       where: { id: sessionId },
       data: { coaching: Prisma.DbNull, decisionReadiness: null, status: "LIVE", startedAt: startedAt ?? new Date() },
@@ -121,8 +125,10 @@ export async function setSessionStatus(sessionId: string, to: "REVEALED" | "COMP
   return to;
 }
 
-export function demoTranscript(): ParsedSegment[] {
-  return DEMO_SEGMENTS.map((s) => ({ speaker: s.speaker, text: s.text }));
+/** The built-in call that fits the session: the discovery call, or the assessment follow-up. */
+export function demoTranscript(type: SessionType = "DISCOVERY"): ParsedSegment[] {
+  const source = isAssessment(type) ? ASSESSMENT_SEGMENTS : DEMO_SEGMENTS;
+  return source.map((s) => ({ speaker: s.speaker, text: s.text }));
 }
 
 export async function listSessions(consultantId?: string) {
@@ -145,7 +151,7 @@ export async function listSessions(consultantId?: string) {
 
 /** Creates a session for one of this consultant's clients. */
 export async function createSession(consultantId: string, input: z.output<typeof sessionCreateSchema>) {
-  if (!SESSION_TYPE_INFO[input.type].available) throw new SessionError("INVALID", ASSESSMENT_PENDING);
+  if (!SESSION_TYPE_INFO[input.type].available) throw new SessionError("INVALID", "That session type is not available.");
   const client = await prisma.client.findFirst({ where: { id: input.clientId, consultantId } });
   if (!client) throw new SessionError("NOT_FOUND", "That client was not found.");
   if (input.brandingMode === "CLIENT" && !parseBrandColors(client.brandColors)) {
@@ -160,7 +166,7 @@ export async function createSession(consultantId: string, input: z.output<typeof
       title: `${SESSION_TYPE_INFO[input.type].label} — ${client.companyName}`,
     },
   });
-  await createDefaultQuestions(session.id);
+  await createDefaultQuestions(session.id, input.type);
   return session;
 }
 

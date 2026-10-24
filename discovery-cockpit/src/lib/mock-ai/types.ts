@@ -94,6 +94,8 @@ export interface NextQuestion {
   after?: string | null;
 }
 
+import type { AssessmentFacts } from "./assessment";
+
 export interface Analysis {
   painPoints: PainPoint[];
   money: MoneyMention[];
@@ -105,6 +107,8 @@ export interface Analysis {
   timeline: Timeline;
   /** Question topics the engine considers covered so far. */
   topicsCovered: string[];
+  /** Processes, security gaps and finance figures from an assessment-style call. */
+  assessment: AssessmentFacts;
   talk: TalkRatio;
   readiness: Readiness;
   reflectBack: string;

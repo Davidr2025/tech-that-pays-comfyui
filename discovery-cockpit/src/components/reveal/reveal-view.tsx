@@ -3,10 +3,12 @@
  * fields of the allow-listed RevealData type, so it has nothing private to show.
  * (No hooks, no data fetching — keeps it renderable by tests and print-friendly.)
  */
+import { WorkflowDiagram } from "@/components/diagrams/workflow-diagram";
 import { accentOnWhite } from "@/lib/brand";
 import { readableTextColor } from "@/lib/color";
 import { formatMoney, formatPeriod } from "@/lib/format";
 import type { RevealData } from "@/lib/reveal/schema";
+import { REVIEW_LABEL } from "@/lib/session-types";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -28,6 +30,8 @@ export function RevealView({ data }: { data: RevealData }) {
   const date = new Date(data.generatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   const onBrand = readableTextColor(header.brandColor);
   const accent = accentOnWhite(header.accentColor, header.brandColor);
+  // Three or more tools make a meaningful picture; fewer would just be a line.
+  const diagramTools = data.techStack.length >= 3 ? data.techStack.map((t) => t.tool) : null;
 
   return (
     <article
@@ -36,7 +40,7 @@ export function RevealView({ data }: { data: RevealData }) {
     >
       <header className="flex items-start justify-between gap-6 px-8 py-7" style={{ backgroundColor: header.brandColor, color: onBrand }}>
         <div className="min-w-0">
-          <p className="text-xs font-medium uppercase tracking-widest opacity-80">Discovery Review</p>
+          <p className="text-xs font-medium uppercase tracking-widest opacity-80">{REVIEW_LABEL[data.kind]}</p>
           <h1 className="mt-1 text-2xl font-bold">{header.businessName}</h1>
           {header.tagline && <p className="mt-0.5 text-sm opacity-90">{header.tagline}</p>}
           <p className="mt-4 text-sm opacity-90">
@@ -162,6 +166,7 @@ export function RevealView({ data }: { data: RevealData }) {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="avoid-break rounded-md border bg-slate-50 p-4">
                 <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">Today</h3>
+                {diagramTools && <WorkflowDiagram tools={diagramTools} variant="tangled" label={`Today: ${diagramTools.length} tools wired together by hand`} />}
                 <ul className="list-disc space-y-1.5 pl-5 text-sm">
                   {data.currentState.map((s) => (
                     <li key={s}>{s}</li>
@@ -172,6 +177,7 @@ export function RevealView({ data }: { data: RevealData }) {
                 <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--accent)" }}>
                   Where we could get to
                 </h3>
+                {diagramTools && <WorkflowDiagram tools={diagramTools} variant="connected" label={`Where we could get to: the same ${diagramTools.length} tools feeding one place`} />}
                 <ul className="list-disc space-y-1.5 pl-5 text-sm">
                   {data.futureState.map((s) => (
                     <li key={s}>{s}</li>

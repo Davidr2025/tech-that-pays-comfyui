@@ -103,6 +103,7 @@ model Session {
   extractions Extraction[]
   questions   Question[]
   report      Report?
+  prototype   PrototypeModule[]
 }
 
 model TranscriptSegment {
@@ -155,4 +156,19 @@ model Report {
   revealData Json
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+}
+
+// Client-facing prototype dashboard (assessment sessions). Like Report.revealData, `data` holds
+// ONLY allow-listed fields: each moduleType has a strict schema (src/lib/prototype/schema.ts)
+// applied on write and again on read. The prototype route reads this table and nothing private.
+model PrototypeModule {
+  id         String  @id @default(cuid())
+  sessionId  String
+  session    Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  moduleType String
+  title      String
+  data       Json
+  order      Int
+
+  @@unique([sessionId, order])
 }

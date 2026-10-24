@@ -1,9 +1,11 @@
 import { prisma } from "../lib/db";
-import { QUESTION_BANK } from "../lib/mock-ai/questions";
+import { bankFor } from "../lib/mock-ai/banks";
+import type { SessionType } from "../lib/session-types";
 
-export async function createDefaultQuestions(sessionId: string) {
+/** Starts a session with the question bank for its type (a combined assessment asks both). */
+export async function createDefaultQuestions(sessionId: string, type: SessionType = "DISCOVERY") {
   await prisma.question.createMany({
-    data: QUESTION_BANK.map((q, order) => ({ sessionId, topic: q.topic, text: q.text, order })),
+    data: bankFor(type).map((q, order) => ({ sessionId, topic: q.topic, text: q.text, order })),
   });
 }
 

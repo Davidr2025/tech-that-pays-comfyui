@@ -1,5 +1,5 @@
 /** The three levers every question targets, plus the two call-management stages. */
-export type Lever = "context" | "efficiency" | "effectiveness" | "quality" | "decision" | "outcomes";
+export type Lever = "context" | "efficiency" | "effectiveness" | "quality" | "decision" | "outcomes" | "governance";
 
 export interface BankQuestion {
   topic: string;

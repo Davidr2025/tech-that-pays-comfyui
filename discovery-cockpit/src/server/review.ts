@@ -9,7 +9,9 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/db";
 import { analyze } from "../lib/mock-ai/engine";
 import type { Analysis, Cue } from "../lib/mock-ai/types";
+import { generatePrototype } from "../lib/prototype/generate";
 import { buildRevealData } from "../lib/reveal/build";
+import { isAssessment, type SessionType } from "../lib/session-types";
 import { assertTransition, type SessionStatus } from "../lib/sessions";
 import { parseBrandColors } from "./clients";
 
@@ -85,7 +87,8 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     throw new ReviewError("CONFLICT", err instanceof Error ? err.message : "This session cannot be reviewed.");
   }
 
-  const analysis = analyze(segments);
+  const type = session.type as SessionType;
+  const analysis = analyze(segments, { type });
   const generatedAt = new Date();
   const clientBrand = session.brandingMode === "CLIENT" ? parseBrandColors(session.client.brandColors) : null;
   const branding = clientBrand
@@ -97,7 +100,11 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     client: session.client,
     analysis,
     generatedAt,
+    kind: type,
   });
+  const prototype = isAssessment(type)
+    ? generatePrototype({ analysis, company: session.client.companyName, industry: session.client.industry })
+    : [];
 
   const covered = new Set(analysis.topicsCovered);
   const privateCoaching = {
@@ -133,7 +140,11 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
       create: { sessionId, revealData },
       update: { revealData },
     }),
+    prisma.prototypeModule.deleteMany({ where: { sessionId } }),
+    prisma.prototypeModule.createMany({
+      data: prototype.map((m) => ({ sessionId, moduleType: m.moduleType, title: m.title, order: m.order, data: m.data as Prisma.InputJsonValue })),
+    }),
   ]);
 
-  return { revealPath: `/reveal/${sessionId}`, analysis };
+  return { revealPath: `/reveal/${sessionId}`, prototypePath: prototype.length ? `/prototype/${sessionId}` : null, analysis };
 }

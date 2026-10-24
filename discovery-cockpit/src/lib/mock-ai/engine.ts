@@ -21,10 +21,17 @@ import {
   URGENCY_FACT,
   WINDOW_PHRASE,
 } from "./cues";
-import { formatRange, NUM, RANGE_JOIN, toNumber } from "./numbers";
+import { annualised, findMoney, formatDollars, type RawMoney } from "./money";
+import { formatRange } from "./numbers";
+import { parseCount, parseTime, type CountQty, type TimeQty } from "./quantities";
 import { CUSTOMER_VISIBLE, INTENSITY, PAIN_CATEGORIES, type PainCategory } from "./pain";
-import { QUESTION_BANK } from "./questions";
+import { extractAssessment } from "./assessment";
+import { bankFor } from "./banks";
+import { TOPIC_DETECTORS, type Ctx } from "./detectors";
+import { QUESTION_BANK, type BankQuestion } from "./questions";
 import { TOOL_CATALOG } from "./tools";
+import type { SessionType } from "../session-types";
+import type { AssessmentFacts } from "./assessment";
 import type {
   Analysis,
   Cue,
@@ -56,104 +63,7 @@ export function countWords(text: string): number {
   return trimmed ? trimmed.split(/\s+/).length : 0;
 }
 
-// ---------- money ----------
-
-interface RawMoney {
-  amount: number;
-  period: Period;
-  start: number;
-  end: number;
-}
-
-const MONEY_RE = /\$\s?(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d{1,2}))?\s?(k|m|thousand|million)?\b/gi;
-
-function periodFromWord(word: string): Period {
-  const w = word.toLowerCase();
-  if (w.startsWith("mo")) return "month";
-  if (w.startsWith("y")) return "year";
-  if (w.startsWith("w")) return "week";
-  if (w.startsWith("d")) return "day";
-  return "hour";
-}
-
-function detectPeriod(sentence: string, start: number, end: number): Period {
-  const after = sentence.slice(end, end + 40);
-  const direct = after.match(/^\s*(?:\/|per|a|an|each|every|for (?:the|this|a|one))\s*(month|mo|year|yr|week|wk|day|hour|hr)\b/i);
-  if (direct?.[1]) return periodFromWord(direct[1]);
-  const adverb = after.match(/^\s*,?\s*(monthly|annually|yearly|weekly)\b/i);
-  if (adverb?.[1]) return adverb[1].toLowerCase() === "monthly" ? "month" : adverb[1].toLowerCase() === "weekly" ? "week" : "year";
-
-  const before = sentence.slice(0, start);
-  if (/\b(monthly)\b/i.test(before.slice(-30))) return "month";
-  if (/\b(annual|annually|yearly)\b/i.test(before.slice(-30))) return "year";
-  if (/\b(over|in|per|each|every)\s+(a|the|one)?\s*year\b/i.test(before)) return "year";
-  return "unspecified";
-}
-
-export function findMoney(sentence: string): RawMoney[] {
-  const out: RawMoney[] = [];
-  for (const m of sentence.matchAll(new RegExp(MONEY_RE.source, MONEY_RE.flags))) {
-    const whole = (m[1] ?? "0").replace(/,/g, "");
-    let amount = Number(`${whole}${m[2] ? `.${m[2]}` : ""}`);
-    const suffix = (m[3] ?? "").toLowerCase();
-    if (suffix === "k" || suffix === "thousand") amount *= 1_000;
-    if (suffix === "m" || suffix === "million") amount *= 1_000_000;
-    const start = m.index ?? 0;
-    const end = start + m[0].length;
-    out.push({ amount: Math.round(amount * 100) / 100, period: detectPeriod(sentence, start, end), start, end });
-  }
-  return out;
-}
-
-const annualised = (m: Pick<RawMoney, "amount" | "period">): number =>
-  m.period === "month" ? m.amount * 12 : m.period === "week" ? m.amount * 52 : m.amount;
-
-const formatDollars = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
-
-// ---------- quantities the client states ----------
-
-const TIME_RE = new RegExp(
-  `\\b(${NUM})(?:${RANGE_JOIN}(${NUM}))?\\s+(?:full\\s+|whole\\s+)?(hours?|hrs?|days?)\\b(?:\\s*(?:a|per|each|every)\\s*(week|month|day))?`,
-  "i",
-);
-const COUNT_RE = new RegExp(
-  `\\b(${NUM})(?:${RANGE_JOIN}(${NUM}))?\\s+(?:good |qualified |new |real )?(leads?|clients?|customers?|deals?|prospects?|estimate requests?|estimates?|inquiries|proposals?|jobs?)\\b[^.]{0,40}?\\b(?:a|per|each|every) (week|month|year)\\b`,
-  "i",
-);
-
-interface TimeQty {
-  low: number;
-  high: number | null;
-  unit: "hours" | "days";
-  per: string | null;
-  /** Hours per week, when the client gave a weekly (or monthly) rate. */
-  weekly: number | null;
-}
-interface CountQty {
-  low: number;
-  high: number | null;
-  noun: string;
-  per: string;
-}
-
-function parseTime(sentence: string): TimeQty | null {
-  const m = sentence.match(TIME_RE);
-  if (!m) return null;
-  const low = toNumber(m[1]!);
-  const high = m[2] ? toNumber(m[2]) : null;
-  const unit = m[3]!.toLowerCase().startsWith("d") ? "days" : "hours";
-  const per = m[4]?.toLowerCase() ?? null;
-  const top = high ?? low;
-  const perWeek = unit === "days" ? top * 8 : top;
-  const weekly = per === "week" ? perWeek : per === "month" ? perWeek / 4.33 : null;
-  return { low, high, unit, per, weekly };
-}
-
-function parseCount(sentence: string): CountQty | null {
-  const m = sentence.match(COUNT_RE);
-  if (!m) return null;
-  return { low: toNumber(m[1]!), high: m[2] ? toNumber(m[2]) : null, noun: m[3]!.toLowerCase(), per: m[4]!.toLowerCase() };
-}
+export { findMoney } from "./money";
 
 const singular = (noun: string) => (noun.endsWith("ies") ? `${noun.slice(0, -3)}y` : noun.replace(/s$/, ""));
 
@@ -183,6 +93,9 @@ function featuresOf(sentence: string): Features {
 }
 
 const hasFeatures = (f: Features) => f.time || f.count || f.money.length || f.intense || f.visible;
+
+/** Wording that frames a dollar figure as money lost or spent because of a problem. */
+const LOSS_CUE = /\b(on the table|leaving|lost|losing|costs? (me|us)|costing|extra|wasted?|wasting|saving)\b/i;
 
 const SEVERITY_RANK: Record<Severity, number> = { high: 3, medium: 2, low: 1 };
 
@@ -226,7 +139,10 @@ function collectEvidence(clientSegments: Segment[]): Map<string, Evidence> {
         }
         lastMatched = matched;
       } else if (lastMatched.length && hasFeatures(f)) {
-        for (const cat of lastMatched) slot(cat.id).features.push(forCategory(byId.get(cat.id)!, f));
+        // A dollar figure only belongs to the problem it follows when it is framed as a cost or a
+        // loss ("an extra $150,000 on the table"); "our revenue is $95,000 a month" is just context.
+        const lent: Features = LOSS_CUE.test(sentence) ? f : { ...f, money: [] };
+        if (hasFeatures(lent)) for (const cat of lastMatched) slot(cat.id).features.push(forCategory(byId.get(cat.id)!, lent));
       }
     }
   }
@@ -417,51 +333,28 @@ function extractTimeline(urgency: Cue | null): Timeline {
 
 // ---------- question coverage ----------
 
-type Ctx = {
-  any: (re: RegExp) => boolean;
-  client: (re: RegExp) => boolean;
-  /** A consultant sentence that is actually a question (ends in "?") matching `re`. */
-  asks: (re: RegExp) => boolean;
-  painIds: Set<string>;
-  hasCostedTool: boolean;
-};
-
-const WEEKLY_TIME = /\b(\w+ )?(hours?|days?) (a|per) week\b/i;
-
-const TOPIC_DETECTORS: Record<string, (c: Ctx) => boolean> = {
-  context: (c) => c.any(/\bhow \w+ runs today\b|walk me through the business|tell me (a bit )?about \w+( \w+)* and who you serve|who you serve|how money comes in/i),
-  time_sinks: (c) => c.client(WEEKLY_TIME) || c.any(/\btime sinks?\b/i),
-  manual_processes: (c) => c.client(/\bby hand\b|\bmanual(ly)?\b|\bexports? csvs?\b|\bcopy[- ]and[- ]paste\b|\bre-?(enter|key|typ)\w*\b|\btypes? (it|them) (all )?into\b/i),
-  volume_spikes: (c) => c.any(/\bvolume spikes?\b|\bwhat breaks first\b|\bpeak (season|volume)\b|\bbusy season\b/i),
-  tool_stack: (c) => c.asks(/\b(tool stack|software|tools?|apps?|subscriptions?)\b/i) || c.hasCostedTool,
-  tool_overlap: (c) => c.any(/\boverlap\b|\bsame job\b|\btwo tools\b|\bboth places\b|\bpaying for two\b/i),
-  lead_leakage: (c) => c.painIds.has("lead_followup") || c.any(/\bleads?\b[^.?]{0,40}\b(slip|cracks?|lose|lost|die|go cold)\b/i),
-  close_rate: (c) => c.any(/\bclose rate\b|\bproposal to signed\b|\bone in (two|three|four|five)\b/i),
-  quality_dips: (c) => c.client(/\b(wrong|mistakes?|errors?|embarrass\w*|typo|sloppy|spotted it|client noticed)\b/i) || c.asks(/quality dip|notice a mistake/i),
-  team_resistance: (c) => c.any(/\bresist\w*|\bburn(ed|t)\b|\btried automation\b|\bbroke during\b|\bhated it\b|\bcautious\b/i),
-  decision_timeline: (c) => c.any(/\bwho else\b|\bdecision\b|\bdecide\b|\btimeline\b|\bsign off\b|\bmy call\b|\bfinal call\b/i),
-  one_fix: (c) => c.any(/\bexactly one thing\b|\bno-brainer\b|\bnext 90 days\b|\bone thing\b/i),
-};
-
-function detectTopics(segments: Segment[], painIds: Set<string>, hasCostedTool: boolean): string[] {
+function detectTopics(segments: Segment[], bank: BankQuestion[], painIds: Set<string>, tech: TechItem[], assessment: AssessmentFacts): string[] {
   const test = (list: Segment[]) => (re: RegExp) => list.some((s) => re.test(s.text));
   const consultantSentences = segments.filter((s) => s.speaker === "CONSULTANT").flatMap((s) => splitSentences(s.text));
+  const costed = tech.filter((t) => t.monthlyCost !== null).length;
   const ctx: Ctx = {
     any: test(segments),
     client: test(segments.filter((s) => s.speaker === "CLIENT")),
     asks: (re) => consultantSentences.some((s) => s.endsWith("?") && re.test(s)),
     painIds,
-    hasCostedTool,
+    hasCostedTool: costed > 0,
+    costedToolCount: costed,
+    assessment,
   };
-  return QUESTION_BANK.filter((q) => TOPIC_DETECTORS[q.topic]?.(ctx)).map((q) => q.topic);
+  return bank.filter((q) => TOPIC_DETECTORS[q.topic]?.(ctx)).map((q) => q.topic);
 }
 
 /**
  * The single best next question. A contextual follow-up (`followUp`) jumps the queue; the first
  * uncovered bank question, in natural call order, follows it (as `after`) or stands alone.
  */
-export function pickNextQuestion(covered: ReadonlySet<string>, followUp: NextQuestion | null = null): NextQuestion {
-  const next = QUESTION_BANK.find((q) => !covered.has(q.topic));
+export function pickNextQuestion(covered: ReadonlySet<string>, followUp: NextQuestion | null = null, bank: BankQuestion[] = QUESTION_BANK): NextQuestion {
+  const next = bank.find((q) => !covered.has(q.topic));
   if (followUp) return { ...followUp, after: next?.text ?? null };
   if (!next) {
     return {
@@ -580,7 +473,8 @@ export function talkRatio(segments: Segment[]): TalkRatio {
 
 // ---------- main entry ----------
 
-export function analyze(segments: Segment[]): Analysis {
+export function analyze(segments: Segment[], opts: { type?: SessionType } = {}): Analysis {
+  const bank = bankFor(opts.type ?? "DISCOVERY");
   const ordered = [...segments].sort((a, b) => a.order - b.order);
   const clientSegments = ordered.filter((s) => s.speaker === "CLIENT");
   const clientSentences = clientSegments.flatMap((s) => splitSentences(s.text).map((text) => ({ text, order: s.order })));
@@ -610,7 +504,8 @@ export function analyze(segments: Segment[]): Analysis {
     priced,
   );
 
-  const topicsCovered = detectTopics(ordered, new Set(painPoints.map((p) => p.id)), tech.some((t) => t.monthlyCost !== null));
+  const assessment = extractAssessment(clientSentences, tech.map((t) => t.tool));
+  const topicsCovered = detectTopics(ordered, bank, new Set(painPoints.map((p) => p.id)), tech, assessment);
   const readiness = scoreReadiness({ signals, objections, facts, painPoints, heardAnything: ordered.length > 0 });
 
   return {
@@ -622,10 +517,11 @@ export function analyze(segments: Segment[]): Analysis {
     facts,
     timeline,
     topicsCovered,
+    assessment,
     talk: talkRatio(ordered),
     readiness,
     reflectBack: reflectBack(painPoints, timeline),
     followUp,
-    nextQuestion: pickNextQuestion(new Set(topicsCovered), followUp),
+    nextQuestion: pickNextQuestion(new Set(topicsCovered), followUp, bank),
   };
 }

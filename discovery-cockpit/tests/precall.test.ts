@@ -125,12 +125,13 @@ describe("creating a session", () => {
     expect(await prisma.question.count({ where: { sessionId: id } })).toBe(12);
   });
 
-  it("refuses assessment types until they have question banks", async () => {
+  it("creates every session type with the right question bank (12 / 20 / 20 / 40)", async () => {
     const clientId = await newClient();
-    for (const type of ["OPERATIONAL_ASSESSMENT", "TECHNOLOGY_ASSESSMENT", "COMBINED_ASSESSMENT"]) {
-      const res = await createSessionRoute(json({ clientId, type }));
-      expect(res.status).toBe(400);
-      expect((await read(res)).error).toMatch(/assessment mode/);
+    const expected = { DISCOVERY: 12, OPERATIONAL_ASSESSMENT: 20, TECHNOLOGY_ASSESSMENT: 20, COMBINED_ASSESSMENT: 40 } as const;
+    for (const [type, count] of Object.entries(expected)) {
+      const id = await newSession(clientId, { type });
+      expect(await prisma.question.count({ where: { sessionId: id } }), type).toBe(count);
+      expect((await prisma.session.findUniqueOrThrow({ where: { id } })).title).toMatch(/Brightline Marketing$/);
     }
     expect((await createSessionRoute(json({ clientId, type: "NOT_A_TYPE" }))).status).toBe(400);
   });

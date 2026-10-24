@@ -2,8 +2,8 @@
 
 ## What this is
 An AI-powered discovery/assessment call system for consultants: private live coaching
-view for the consultant, a client-safe reveal view, and (planned) a generated prototype
-dashboard. Original code and branding only. Never use the name "Consultant Cockpit" or any
+view for the consultant, a client-safe reveal view, and a generated prototype
+dashboard (assessment sessions). Original code and branding only. Never use the name "Consultant Cockpit" or any
 third-party trademark, logo, or copied marketing copy anywhere in code, UI, or docs.
 
 ## Stack
@@ -12,8 +12,8 @@ Next.js 15 App Router, TypeScript strict, Tailwind 3, shadcn-style components (h
 behind an `AIProvider` interface.
 
 ## Hard rules
-1. PRIVACY BOUNDARY: Client Reveal and Prototype routes receive ONLY the allow-listed
-   Report.revealData fields. Coaching data, internalNotes, decisionReadiness, and raw
+1. PRIVACY BOUNDARY: Client Reveal and Prototype routes receive ONLY allow-listed data
+   (Report.revealData and the validated PrototypeModule rows). Coaching data, internalNotes, decisionReadiness, and raw
    extractions must never be passed to those components, serialized into their pages,
    or included in PDF/Gamma/email exports. The reveal privacy tests must always pass.
 2. DEMO MODE FIRST: every feature must work with the mock engine and no API keys.
@@ -37,7 +37,11 @@ behind an `AIProvider` interface.
   lives in `src/lib/transcript.ts` and runs in the browser (preview) and on the server (the stored result).
 - Anything that fetches a user-supplied URL must go through `src/server/safe-fetch.ts`. Never call `fetch` on one directly.
 - User-supplied images are stored as validated `data:` URLs (`src/lib/logo.ts`) and rendered only inside `<img>`.
-- Question banks are data, not hard-coded in components: `src/lib/mock-ai/questions.ts`.
+- Question banks are data, not hard-coded in components: `src/lib/mock-ai/questions.ts` (discovery) and
+  `banks.ts` (operations, technology; `bankFor(type)`). Topics are unique across banks; every topic needs a detector
+  in `detectors.ts` (a test enforces both).
+- Prototype modules are data-driven: add a type in `src/lib/prototype/schema.ts` (strict schema + title), a builder in
+  `generate.ts`, and a renderer. Invented rows must carry `example: true`; finance actuals say `stated` or `example`.
 - The demo call is data too: `src/lib/demo/demo-call.ts` (Demo Seed Pack). The seed script, the
   "Load Demo Call" button and the tests all read it, so they cannot drift.
 - No `.env` is needed: `scripts/prisma.mjs` and `src/lib/db.ts` default `DATABASE_URL`. Use
@@ -65,5 +69,9 @@ keeps a second, different call as a regression fixture).
 - A seed script that reuses an app function inherits its side effects (the staged demo came out "Live"): set the
   state you actually mean.
 - Fire-and-forget requests that run as a page navigates away need `keepalive`.
+- Read generated content, not just its tests: reading the prototype caught an internal-cost topic proposed as public
+  content, a nonsensical "4 of 4 ... the rest are examples", and a placeholder budget phrased as an overrun.
+- A forbidden-key list is per document: `severity` is private on the reveal but a normal field in the prototype's alerts.
+- Grid items need `min-w-0` (and `grid-cols-[minmax(0,1fr)]`) or they refuse to shrink on a phone.
 - Test hostile inputs against the real thing (a real local HTTP server for SSRF, real VTT exports for parsing),
   and mutate the guard to prove the test can fail.

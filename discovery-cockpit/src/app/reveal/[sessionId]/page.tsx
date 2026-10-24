@@ -7,7 +7,7 @@ import { getRevealPayload } from "@/server/reveal";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Discovery Review",
+  title: "Client Review",
   // Overrides the root layout's description: the client sees this page's <head>, too.
   description: "A summary of our discovery conversation.",
   robots: { index: false, follow: false },

@@ -42,11 +42,41 @@ Brightline Marketing, a 9-person agency (20 segments, 772 words). Everything in 
   website** suggests colours from the page's `theme-color`, brand tokens and most-used colours; nothing is saved
   until you accept, and you can always pick colours by hand.
 - **New session** (`/sessions/new`): choose the client, the type, and whose branding the review wears (yours or the
-  client's; switchable later from the cockpit). Only *Discovery call* is available: the three assessment types are
-  listed but disabled until assessment mode adds their question banks.
+  client's; switchable later from the cockpit). All four types are available (see Assessment mode below).
 - **Status** is `SETUP → LIVE → REVIEW → REVEALED → COMPLETED`, enforced in one place (`src/lib/sessions.ts`).
   Loading a transcript sets LIVE (and discards any review); building the review sets REVIEW; *Open Client Reveal*
   sets REVEALED; *Mark complete* sets COMPLETED, after which the transcript and review are locked.
+
+## Assessment mode
+
+Three assessment types (**operational**, **technology**, **combined**) alongside the discovery call.
+
+- **Question banks**: 20 operational (`ops_*`) and 20 technology (`tech_*`) questions, each tagged to the lever it
+  serves (efficiency, effectiveness, quality; plus governance for security). A combined session asks both (40, shown
+  under Operations / Technology headings). Each session is judged against **its own bank**: an operations-only call
+  never auto-checks a technology question. Detectors live in `src/lib/mock-ai/detectors.ts`.
+- **Demo call**: *Load Demo Call* loads the discovery call for a discovery session and a 54-turn assessment
+  follow-up (same fictitious agency) for the assessment types. The seed stages one of each.
+- **Assessment facts** (`src/lib/mock-ai/assessment.ts`), mined from client sentences only: processes (with hours),
+  security and governance gaps (shared logins, former staff with access, no multi-factor, client data in unapproved
+  AI tools, untested backups, personal devices, a key account under a personal email, ...), finance figures
+  (revenue, receivables, payroll, contractor spend; each dollar takes the nearest finance word) and content channels.
+- **Prototype dashboard** (`/prototype/[sessionId]`, built together with the client review): four data-driven modules.
+  **Client Nurture** (hot/warm/cold rows, days since contact, an expandable suggested action pointing at the client's
+  own CRM), **Content Studio** (drafts with Approve / Edit / Reject, nothing "publishes"), **Financial Pulse**
+  (budget bars, % used, remaining, a mock *Run Report*), **Security & Governance** (a live-style alert feed from the
+  gaps the client admitted to), plus a tangled-vs-connected diagram drawn from their real tool list (also on the
+  reveal). Always labelled PROTOTYPE.
+- **What is real and what is invented**: figures the client stated are tagged *From your call*; every row the
+  generator invents is tagged *Example* (and the schema refuses an invented row that doesn't say so). Budgets are
+  placeholders. Draft topics come from the client's described problems, minus internal-cost ones.
+- **Privacy**: the prototype is a second client-facing document, so it gets the reveal's treatment: strict
+  per-module allow-list schemas applied on write and on read, a route that reads only `Report.revealData` and
+  `PrototypeModule`, and its own sentinel/quote leak tests with negative controls. A stored module type nobody
+  renders is skipped, so modules can be added or removed.
+- **Not built yet**: the ROI panel and next steps/booking on the reveal, exports (email, Gamma), the Claude
+  provider, per-question notes/edit/add, and persisting the prototype's approve/edit/reject choices (they reset on
+  reload, by design for now).
 
 ## Transcript sources
 
@@ -158,7 +188,8 @@ cloud metadata address are refused. Tests run the guard against a real local ser
 Rules are keyword-based, so they are deliberately transparent and sometimes blunt:
 a sentence matching two pain categories attributes the same quantified impact to both; time and counts
 read number words ("ten to twelve hours") but dollars must be digits (`$85`, `$4.5k`), not "eighty-five
-dollars" — a real speech-to-text feed needs a number-word normaliser; a bare "by hand" is only read as a pain inside a sentence about reports ("12 hours a week on invoices by hand"
+dollars" — a real speech-to-text feed needs a number-word normaliser; assessment extraction is the same kind of keyword rules (a gap must be stated in the client's own sentence;
+a terse "no" to "is multi-factor on?" is not read); a bare "by hand" is only read as a pain inside a sentence about reports ("12 hours a week on invoices by hand"
 is counted as lead-tracking, not manual work, unless it says re-entering or manual); severity is a heuristic score
 (`src/lib/mock-ai/engine.ts`, `extractPainPoints`); tool detection uses a fixed catalogue in
 `src/lib/mock-ai/tools.ts`. The engine re-analyses the whole transcript-so-far on each new segment, which
@@ -172,7 +203,9 @@ prisma/            schema, migration, seed
 scripts/prisma.mjs Prisma CLI wrapper (default DATABASE_URL)
 src/lib/mock-ai/   engine + rule tables (pain, cues, tools, question bank)
 src/lib/reveal/    allow-list schema + payload builder
-src/lib/demo/      the fictitious demo call (shared by seed, UI and tests)
+src/lib/demo/      the fictitious demo calls: discovery + assessment (shared by seed, UI and tests)
+src/lib/prototype/ prototype module schemas (allow-list) and the generator
+src/components/    cockpit/, reveal/, prototype/, diagrams/, ui/ (shadcn-style)
 src/lib/           transcript parsers, brand-colour detection, session status machine, validation
 src/server/        data access: sessions, clients, consultant, questions, review (build), reveal (read), safe-fetch
 src/app/           pages + API route handlers

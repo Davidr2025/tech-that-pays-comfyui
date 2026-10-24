@@ -10,6 +10,7 @@
  */
 import { z } from "zod";
 import { isValidLogoUrl } from "../logo";
+import { SESSION_TYPES } from "../session-types";
 
 const money = z.number().finite().nonnegative();
 
@@ -18,6 +19,8 @@ export const REVEAL_PERIODS = ["month", "year", "week", "day", "hour", "unspecif
 export const revealSchema = z
   .object({
     version: z.literal(1),
+    /** Which kind of session this review is for: sets the document's title. */
+    kind: z.enum(SESSION_TYPES),
     generatedAt: z.string().datetime(),
     header: z
       .object({

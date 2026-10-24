@@ -10,8 +10,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const parsed = await readBody(req, body);
   if ("error" in parsed) return parsed.error;
   try {
-    const { revealPath } = await buildClientReview(id, { upTo: parsed.data.upTo });
-    return NextResponse.json({ revealPath });
+    const { revealPath, prototypePath } = await buildClientReview(id, { upTo: parsed.data.upTo });
+    return NextResponse.json({ revealPath, prototypePath });
   } catch (err) {
     return errorResponse(err, "Could not build the client review.");
   }

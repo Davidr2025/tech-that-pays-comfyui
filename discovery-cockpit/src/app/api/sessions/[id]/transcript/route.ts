@@ -35,8 +35,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   if ("error" in parsed) return parsed.error;
   const input = parsed.data;
 
-  const exists = await prisma.session.count({ where: { id } });
-  if (!exists) return jsonError("Session not found.", 404);
+  const session = await prisma.session.findUnique({ where: { id }, select: { type: true } });
+  if (!session) return jsonError("Session not found.", 404);
 
   try {
     if (input.mode === "append") {
@@ -46,7 +46,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
     const result =
       input.mode === "demo"
-        ? { segments: demoTranscript(), speakers: [] as string[], format: "labeled" as const, needsYou: false, unattributed: false }
+        ? { segments: demoTranscript(session.type), speakers: [] as string[], format: "labeled" as const, needsYou: false, unattributed: false }
         : parseTranscriptDetailed(input.text, { youLabel: input.you, swapRoles: input.swap });
     if (result.segments.length === 0) return jsonError("No transcript text found. Paste at least one line.", 400);
     if (result.segments.length > MAX_SEGMENTS) return jsonError(`That transcript has more than ${MAX_SEGMENTS} turns.`, 400);

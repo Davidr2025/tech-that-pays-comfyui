@@ -130,7 +130,7 @@ describe("reveal payload contains no private data", () => {
 
   it("only has the allow-listed top-level fields", () => {
     expect(Object.keys(payload).sort()).toEqual(
-      ["currentState", "futureState", "generatedAt", "header", "moneyMentioned", "painPoints", "summary", "techStack", "timeline", "totals", "version"].sort(),
+      ["currentState", "futureState", "generatedAt", "header", "kind", "moneyMentioned", "painPoints", "summary", "techStack", "timeline", "totals", "version"].sort(),
     );
   });
 });
