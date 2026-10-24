@@ -49,6 +49,9 @@ behind an `AIProvider` interface.
   `RevealData`. Never give them a session, extraction or coaching object. HTML export: inline styles only, escape
   every string. Email goes through `EmailProvider`; `mailtoHref` validates the recipient and drops optional
   paragraphs to stay under ~1,900 characters.
+- Anything typed into the cockpit (notes, a reworded question) must survive a row moving between sections and the
+  user leaving mid-sentence: keep drafts in the parent, autosave on a debounce keyed on the drafts (not on props
+  that change every played segment), and flush on blur, unmount and `pagehide` (with `keepalive`).
 - Print: use `.avoid-break` on rows and cards, `.reveal-section` so headings stay with content, `print:hidden` on
   controls, and `.keep-colors` on a link whose colours are part of its design (the global print rule strips link colour).
 - Prisma refuses `migrate reset` from an agent. Refresh demo data with `npm run db:seed` (it only recreates the demo

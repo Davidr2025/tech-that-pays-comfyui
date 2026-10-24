@@ -10,13 +10,17 @@ import { usePlayer } from "@/hooks/use-player";
 import { useTalkTimer } from "@/hooks/use-talk-timer";
 import { bankFor } from "@/lib/mock-ai/banks";
 import { analyze, pickNextQuestion } from "@/lib/mock-ai/engine";
+import type { BankQuestion } from "@/lib/mock-ai/questions";
 import type { SpeakerKind } from "@/lib/mock-ai/types";
 import type { SessionStatus } from "@/lib/sessions";
 import { TARGET_DEFAULT_SEC } from "@/lib/talk-timer";
+import type { QuestionView } from "@/server/question-view";
 import type { CockpitData } from "@/server/sessions";
 import { DecisionFactsCard, NextQuestionCard, ObjectionsCard, PainPointsCard, ReflectBackCard, SignalsCard } from "./coaching-panel";
 import type { ImportRequest } from "./import-dialog";
 import { QuestionPanel, type QuestionRow } from "./question-panel";
+import { EncouragementFooter } from "./encouragement-footer";
+import { NotesCard } from "./notes-card";
 import { ReadinessGauge } from "./readiness-gauge";
 import { ShareDialog } from "./share-dialog";
 import { TalkRatioCard, TalkTimerCard } from "./talk-panel";
@@ -59,19 +63,53 @@ export function Cockpit({ data }: { data: CockpitData }) {
   const bank = useMemo(() => bankFor(data.type), [data.type]);
 
   // ---- question checklist: manual ticks + AI detection ----
+  const [questions, setQuestions] = useState<QuestionView[]>(data.questions);
   const [manual, setManual] = useState<Record<string, boolean>>(() => Object.fromEntries(data.questions.map((q) => [q.id, q.manuallyCovered])));
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
 
   const rows: QuestionRow[] = useMemo(
     () =>
-      data.questions.map((q) => {
+      questions.map((q) => {
         const byManual = manual[q.id] === true;
         const byAI = !byManual && !dismissed.has(q.id) && analysis.topicsCovered.includes(q.topic);
-        return { id: q.id, topic: q.topic, text: q.text, checked: byManual || byAI, byAI };
+        return { id: q.id, topic: q.topic, text: q.text, checked: byManual || byAI, byAI, notes: q.notes, custom: q.custom };
       }),
-    [data.questions, manual, dismissed, analysis.topicsCovered],
+    [questions, manual, dismissed, analysis.topicsCovered],
   );
-  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic)), analysis.followUp, bank), [rows, analysis.followUp, bank]);
+  // What gets suggested follows the checklist as the consultant has shaped it: their order, wording, deletions and additions.
+  const suggestionBank = useMemo<BankQuestion[]>(
+    () =>
+      questions.map((q) => {
+        const known = bank.find((b) => b.topic === q.topic);
+        return known ? { ...known, text: q.text } : { topic: q.topic, text: q.text, lever: "effectiveness", why: "A question you added to this call." };
+      }),
+    [questions, bank],
+  );
+  const nextQuestion = useMemo(() => pickNextQuestion(new Set(rows.filter((r) => r.checked).map((r) => r.topic)), analysis.followUp, suggestionBank), [rows, analysis.followUp, suggestionBank]);
+
+  const questionUrl = (id: string) => `/api/sessions/${data.id}/questions/${id}`;
+  async function changeQuestion(row: QuestionRow, patch: { text?: string; notes?: string }): Promise<string | null> {
+    const res = await request<{ question: QuestionView }>(questionUrl(row.id), "PATCH", patch);
+    if (!res.ok) return res.error;
+    setQuestions((qs) => qs.map((q) => (q.id === row.id ? { ...q, text: res.data.question.text, notes: res.data.question.notes } : q)));
+    return null;
+  }
+  async function saveCallNotes(text: string, keepalive = false): Promise<string | null> {
+    const res = await request<{ ok: true }>(`/api/sessions/${data.id}`, "PATCH", { internalNotes: text }, keepalive);
+    return res.ok ? null : res.error;
+  }
+  async function deleteQuestion(row: QuestionRow): Promise<string | null> {
+    const res = await request<{ ok: true }>(questionUrl(row.id), "DELETE");
+    if (!res.ok) return res.error;
+    setQuestions((qs) => qs.filter((q) => q.id !== row.id));
+    return null;
+  }
+  async function addQuestion(text: string): Promise<string | null> {
+    const res = await request<{ question: QuestionView }>(`/api/sessions/${data.id}/questions`, "POST", { text });
+    if (!res.ok) return res.error;
+    setQuestions((qs) => [...qs, res.data.question]);
+    return null;
+  }
 
   function toggleQuestion(row: QuestionRow) {
     const covered = !row.checked;
@@ -292,12 +330,21 @@ export function Cockpit({ data }: { data: CockpitData }) {
         </section>
 
         <section className="min-h-[28rem] lg:min-h-0" aria-label="Questions">
-          <QuestionPanel rows={rows} onToggle={toggleQuestion} />
+          <QuestionPanel
+            rows={rows}
+            onToggle={toggleQuestion}
+            onEdit={(row, text) => changeQuestion(row, { text })}
+            onNotes={(row, notes) => changeQuestion(row, { notes })}
+            onDelete={deleteQuestion}
+            onAdd={addQuestion}
+            locked={locked}
+          />
         </section>
 
         <section className="space-y-3 lg:min-h-0 lg:overflow-y-auto lg:pr-1" aria-label="Coaching">
           <ReadinessGauge readiness={analysis.readiness} />
           <NextQuestionCard next={nextQuestion} />
+          <NotesCard initial={data.internalNotes} onSave={saveCallNotes} />
           <TalkTimerCard
             elapsedMs={timer.elapsedMs}
             running={timer.running}
@@ -318,6 +365,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
           <ObjectionsCard objections={analysis.objections} />
         </section>
       </main>
+      <EncouragementFooter seed={data.id} />
     </div>
   );
 }

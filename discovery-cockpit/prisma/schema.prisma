@@ -147,6 +147,8 @@ model Question {
   order       Int
   isCovered   Boolean @default(false)
   coveredByAI Boolean @default(false)
+  /// The consultant's private note on this question. Never part of the client-facing review.
+  notes       String?
 
   @@unique([sessionId, topic])
 }

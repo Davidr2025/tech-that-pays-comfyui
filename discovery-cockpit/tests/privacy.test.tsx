@@ -19,6 +19,7 @@ import { deepKeys, FORBIDDEN_TEXT, findLeaks, htmlToText, makeDemoSession, occur
 
 const SENTINEL_NOTES = "SENTINEL-INTERNAL-NOTES-7f3a91";
 const SENTINEL_COACHING = "SENTINEL-COACHING-c04e22";
+const SENTINEL_QNOTE = "SENTINEL-QUESTION-NOTE-e61b08";
 const SENTINEL_READINESS = 8137; // an Int no real score or amount in the demo equals
 
 /** Field names that must never appear as keys anywhere in the reveal payload. */
@@ -71,9 +72,13 @@ beforeAll(async () => {
     },
   });
 
+  // The consultant's private note on a question, and a question they added themselves.
+  await prisma.question.updateMany({ where: { sessionId, topic: "time_sinks" }, data: { notes: SENTINEL_QNOTE } });
+
   // Everything the consultant sees privately that the client must not.
   coachStrings = [
     SENTINEL_NOTES,
+    SENTINEL_QNOTE,
     SENTINEL_COACHING,
     String(SENTINEL_READINESS),
     coaching.readiness.reason,
@@ -100,7 +105,8 @@ describe("test preconditions (the test is not vacuous)", () => {
     expect(s.decisionReadiness).toBe(SENTINEL_READINESS);
     expect(JSON.stringify(s.coaching)).toContain(SENTINEL_COACHING);
     expect([...coachStrings, ...clientQuotes].every((p) => p.length > 0)).toBe(true);
-    expect(coachStrings.length).toBe(7);
+    expect(coachStrings.length).toBe(8);
+    expect((await prisma.question.findFirstOrThrow({ where: { sessionId, topic: "time_sinks" } })).notes).toBe(SENTINEL_QNOTE);
     expect(clientQuotes.length).toBe(5); // 2 buying signals, 1 objection, the urgency and decision statements
     expect(clientQuotes.some((q) => q.includes("freelancer"))).toBe(true);
     expect(clientQuotes.some((q) => q.includes("mid-November"))).toBe(true);

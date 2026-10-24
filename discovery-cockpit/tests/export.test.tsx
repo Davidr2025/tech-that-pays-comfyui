@@ -19,6 +19,7 @@ import { findLeaks, FORBIDDEN_TEXT, makeDemoSession } from "./helpers";
 
 const SENTINEL_NOTES = "SENTINEL-EXPORT-NOTES-5b21d9";
 const SENTINEL_COACH = "SENTINEL-EXPORT-COACH-90ac17";
+const SENTINEL_QNOTE = "SENTINEL-EXPORT-QNOTE-3d70ee";
 
 const demo = (): RevealData =>
   buildRevealData({
@@ -193,7 +194,8 @@ describe("the share kit built from a real session", () => {
       where: { id: sessionId },
       data: { internalNotes: SENTINEL_NOTES, coaching: { ...coaching, planted: SENTINEL_COACH } },
     });
-    coachStrings = [SENTINEL_NOTES, SENTINEL_COACH, coaching.readiness.reason, coaching.reflectBack, coaching.nextQuestion.text];
+    await prisma.question.updateMany({ where: { sessionId, topic: "time_sinks" }, data: { notes: SENTINEL_QNOTE } });
+    coachStrings = [SENTINEL_NOTES, SENTINEL_COACH, SENTINEL_QNOTE, coaching.readiness.reason, coaching.reflectBack, coaching.nextQuestion.text];
   });
 
   it("is addressed to the client's email and carries the review", async () => {

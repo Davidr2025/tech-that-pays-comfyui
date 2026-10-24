@@ -8,6 +8,7 @@ import { sessionCreateSchema } from "../lib/validation";
 import { ASSESSMENT_SEGMENTS } from "../lib/demo/assessment-call";
 import { isAssessment, SESSION_TYPE_INFO, type SessionType } from "../lib/session-types";
 import { parseBrandColors } from "./clients";
+import { toQuestionView } from "./question-view";
 import { createDefaultQuestions } from "./questions";
 
 export class SessionError extends Error {
@@ -46,13 +47,8 @@ export async function getCockpitData(sessionId: string) {
     hasReport: session.report !== null,
     hasPrototype: session.prototype.length > 0,
     segments: session.segments.map((s) => ({ order: s.order, speaker: s.speaker, text: s.text, startSec: s.startSec })),
-    questions: session.questions.map((q) => ({
-      id: q.id,
-      topic: q.topic,
-      text: q.text,
-      // Only a MANUAL check is restored on load; AI detection is recomputed as the call plays.
-      manuallyCovered: q.isCovered && !q.coveredByAI,
-    })),
+    internalNotes: session.internalNotes ?? "",
+    questions: session.questions.map(toQuestionView),
   };
 }
 
@@ -168,6 +164,16 @@ export async function createSession(consultantId: string, input: z.output<typeof
   });
   await createDefaultQuestions(session.id, input.type);
   return session;
+}
+
+export const MAX_CALL_NOTES_CHARS = 10_000;
+
+/** The consultant's private notes on the whole call. Editable in every status, including after the session is complete. */
+export async function setInternalNotes(sessionId: string, notes: string | null) {
+  const text = notes?.trim() ?? "";
+  if (text.length > MAX_CALL_NOTES_CHARS) throw new SessionError("INVALID", `Keep call notes under ${MAX_CALL_NOTES_CHARS.toLocaleString("en-US")} characters.`);
+  const result = await prisma.session.updateMany({ where: { id: sessionId }, data: { internalNotes: text === "" ? null : text } });
+  if (result.count !== 1) throw new SessionError("NOT_FOUND", "Session not found.");
 }
 
 export async function setBrandingMode(sessionId: string, brandingMode: "CONSULTANT" | "CLIENT") {

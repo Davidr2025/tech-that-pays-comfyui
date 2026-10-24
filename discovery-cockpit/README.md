@@ -75,6 +75,13 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   per-module allow-list schemas applied on write and on read, a route that reads only `Report.revealData` and
   `PrototypeModule`, and its own sentinel/quote leak tests with negative controls. A stored module type nobody
   renders is skipped, so modules can be added or removed.
+- **Checklist you can shape**: every question has a private note (autosaved), can be reworded (its topic, and so AI
+  detection, stays), deleted, or joined by questions of your own (ticked by hand only: no detector knows them).
+  The list splits into collapsible **Not yet asked** and **Covered**; what the cockpit suggests next follows your
+  order, wording and deletions. Wording, adding and deleting freeze when a session is completed; notes do not.
+- **Call notes** and an optional **encouragement line** (cockpit only; the on/off choice is a per-device setting, not
+  stored in the database). Notes are private fields like coaching: tests plant sentinels for them and check the
+  review, the prototype and every export.
 - **Share** (cockpit, once a review is built): a dialog with an email draft to the client, **Copy for Gamma**
   (self-contained inline-styled HTML on the clipboard, plus a plain-text alternative), **Copy as text**, **Copy link**,
   and PDFs of the review and the prototype. The email is a `mailto:` link behind an `EmailProvider` interface: it
@@ -82,7 +89,7 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   the validated reveal payload only. The recipient comes from the client's optional email field.
 - **Not built yet**: sending email from the app (SMTP), server-rendered PDFs (the PDF is the browser's Save as PDF),
   an embedded booking widget (the review links to your booking page), the Claude
-  provider, per-question notes/edit/add, and persisting the prototype's approve/edit/reject choices (they reset on
+  provider, persisting the prototype's approve/edit/reject choices (they reset on
   reload, by design for now).
 
 ## Transcript sources
