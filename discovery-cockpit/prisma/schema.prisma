@@ -1,0 +1,126 @@
+// Discovery Cockpit data model.
+// DATABASE_URL defaults to a local SQLite file via scripts/prisma.mjs (no .env needed).
+// To move to Postgres: change `provider` to "postgresql", set DATABASE_URL, and re-run
+// `npm run db:migrate:dev` to generate a fresh baseline migration. Enums and Json are
+// used (not stringly-typed columns) so the schema is portable as-is.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum SessionType {
+  DISCOVERY
+}
+
+enum Speaker {
+  CONSULTANT
+  CLIENT
+}
+
+enum ExtractionKind {
+  PAIN_POINT
+  DOLLAR
+  TECH_STACK
+  SIGNAL
+  OBJECTION
+}
+
+model Consultant {
+  id           String    @id @default(cuid())
+  name         String
+  email        String
+  businessName String
+  tagline      String?
+  brandColor   String    @default("#0f766e")
+  clients      Client[]
+  sessions     Session[]
+  createdAt    DateTime  @default(now())
+}
+
+model Client {
+  id           String    @id @default(cuid())
+  consultantId String
+  consultant   Consultant @relation(fields: [consultantId], references: [id], onDelete: Cascade)
+  name         String
+  companyName  String
+  industry     String?
+  sessions     Session[]
+  createdAt    DateTime  @default(now())
+}
+
+model Session {
+  id           String      @id @default(cuid())
+  consultantId String
+  consultant   Consultant  @relation(fields: [consultantId], references: [id], onDelete: Cascade)
+  clientId     String
+  client       Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  type         SessionType @default(DISCOVERY)
+  title        String
+  createdAt    DateTime    @default(now())
+
+  // ---- PRIVATE (consultant-only). The reveal code path never selects these. ----
+  internalNotes     String?
+  decisionReadiness Int?
+  coaching          Json?
+  // -------------------------------------------------------------------------------
+
+  segments    TranscriptSegment[]
+  extractions Extraction[]
+  questions   Question[]
+  report      Report?
+}
+
+model TranscriptSegment {
+  id        String  @id @default(cuid())
+  sessionId String
+  session   Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  speaker   Speaker
+  text      String
+  order     Int
+
+  @@unique([sessionId, order])
+}
+
+model Extraction {
+  id           String         @id @default(cuid())
+  sessionId    String
+  session      Session        @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  kind         ExtractionKind
+  label        String
+  detail       String?
+  quote        String?
+  amountCents  Int?
+  severity     String?
+  segmentOrder Int?
+
+  @@index([sessionId, kind])
+}
+
+model Question {
+  id          String  @id @default(cuid())
+  sessionId   String
+  session     Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  topic       String
+  text        String
+  order       Int
+  isCovered   Boolean @default(false)
+  coveredByAI Boolean @default(false)
+
+  @@unique([sessionId, topic])
+}
+
+// The ONLY table the client-facing reveal route reads. revealData is validated against a
+// strict allow-list schema (src/lib/reveal/schema.ts) on write and again on read.
+model Report {
+  id         String   @id @default(cuid())
+  sessionId  String   @unique
+  session    Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  revealData Json
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
