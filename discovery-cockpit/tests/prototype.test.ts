@@ -4,7 +4,7 @@ import { DEMO_SEGMENTS } from "@/lib/demo/demo-call";
 import { analyze } from "@/lib/mock-ai/engine";
 import type { Segment } from "@/lib/mock-ai/types";
 import { generatePrototype } from "@/lib/prototype/generate";
-import { MODULE_SCHEMAS, MODULE_TITLES, MODULE_TYPES, parseModule } from "@/lib/prototype/schema";
+import { financeProvenance, MODULE_SCHEMAS, MODULE_TITLES, MODULE_TYPES, parseModule } from "@/lib/prototype/schema";
 
 const number = (segs: { speaker: "CONSULTANT" | "CLIENT"; text: string }[]): Segment[] => segs.map((s, order) => ({ ...s, order }));
 const assessment = analyze(number(ASSESSMENT_SEGMENTS), { type: "COMBINED_ASSESSMENT" });
@@ -75,7 +75,8 @@ describe("prototype generator", () => {
       expect(line("revenue")).toMatchObject({ actual: 95000, source: "stated" });
       expect(line("receivables")).toMatchObject({ actual: 38000, source: "stated" });
       expect(line("payroll")).toMatchObject({ actual: 41000, source: "stated" });
-      expect(f.summary).toContain("All 4 actuals come from your call");
+      expect(financeProvenance(f.lines)).toBe("All 4 actuals come from your call.");
+      expect(f.summary).not.toMatch(/actuals/); // never stored: it would go stale when figures are entered
     });
     it("builds overhead from the real tool costs plus the contractor ($1,304 + $4,000)", () => {
       expect(line("overhead")).toMatchObject({ actual: 5304, source: "stated" });
@@ -161,5 +162,20 @@ describe("module schemas are an allow-list", () => {
     expect(parseModule("security", good)?.type).toBe("security");
     expect(() => parseModule("security", { ...good, coaching: 1 })).toThrow();
     expect(() => parseModule("finance", { nonsense: true })).toThrow();
+  });
+});
+
+describe("financeProvenance", () => {
+  const L = (...sources: ("stated" | "entered" | "example")[]) => sources.map((source) => ({ source }));
+  it.each([
+    [L("stated", "stated", "stated", "stated"), "All 4 actuals come from your call."],
+    [L("entered", "entered", "entered", "entered"), "All 4 actuals were entered for this review."],
+    [L("example", "example", "example", "example"), "These are example figures, not yours."],
+    [L("stated", "stated", "entered", "entered"), "2 of 4 actuals come from your call, 2 were entered."],
+    [L("stated", "stated", "stated", "example"), "3 of 4 actuals come from your call, 1 is an example."],
+    [L("stated", "entered", "example", "example"), "1 of 4 actuals come from your call, 1 was entered, 2 are examples."],
+    [L("entered", "example", "example", "example"), "1 was entered, 3 are examples."],
+  ])("%j", (lines, sentence) => {
+    expect(financeProvenance(lines)).toBe(sentence);
   });
 });

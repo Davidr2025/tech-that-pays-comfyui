@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AutoPrint, RevealActions } from "@/components/reveal/reveal-actions";
 import { PrototypeView } from "@/components/prototype/prototype-view";
+import { ownsSession } from "@/server/auth";
 import { getPrototype } from "@/server/prototype";
 
 export const dynamic = "force-dynamic";
@@ -39,7 +40,7 @@ export default async function PrototypePage({
   return (
     <main className="bg-slate-100 px-4 py-8 print:bg-white print:p-0">
       {print === "1" ? <AutoPrint /> : <RevealActions printHref={`/prototype/${sessionId}?print=1`} />}
-      <PrototypeView payload={payload} />
+      <PrototypeView payload={payload} sessionId={sessionId} canEdit={await ownsSession(sessionId)} />
     </main>
   );
 }

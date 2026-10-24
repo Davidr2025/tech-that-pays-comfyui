@@ -146,8 +146,8 @@ describe("the boundary is enforced", () => {
   it("the prototype code path never touches private data (static check)", () => {
     const root = path.resolve(__dirname, "..");
     const walk = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]));
-    const files = ["src/server/prototype.ts", ...walk(path.join(root, "src/app/prototype")), ...walk(path.join(root, "src/components/prototype")), ...walk(path.join(root, "src/components/diagrams"))].map((f) => path.relative(root, path.resolve(root, f)));
-    expect(files.length).toBeGreaterThanOrEqual(5);
+    const files = ["src/server/prototype.ts", "src/server/prototype-edit.ts", "src/lib/prototype/edit.ts", "src/app/api/sessions/[id]/prototype/route.ts", ...walk(path.join(root, "src/app/prototype")), ...walk(path.join(root, "src/components/prototype")), ...walk(path.join(root, "src/components/diagrams"))].map((f) => path.relative(root, path.resolve(root, f)));
+    expect(files.length).toBeGreaterThanOrEqual(8);
     const banned = /internalNotes|decisionReadiness|coaching|prisma\.session|prisma\.extraction|prisma\.question|server\/review|mock-ai|prototype\/generate/i;
     for (const f of files) expect(banned.test(fs.readFileSync(path.join(root, f), "utf8")), `${f} references private data`).toBe(false);
   });

@@ -45,6 +45,11 @@ behind an `AIProvider` interface.
 - Reveal estimates (`src/lib/reveal/roi.ts`) use only client-stated numbers plus two printed assumptions; anything
   derived must be re-checked in the schema's `superRefine` so tampering fails closed. Never sum figures that can
   overlap, and count one statement once (`hoursSource`).
+- Prototype edits go through ONE guarded endpoint with a closed set of strict operations (`src/lib/prototype/edit.ts`);
+  the result is re-validated against the module's strict schema before it is stored, and the page shows controls only
+  when `ownsSession` is true (it may ask who you are, never require a login). Never store a sentence that an edit can
+  make false (compute provenance at render time), and a label describes the field it names (finance `source` is about the
+  ACTUAL).
 - Access control: every API route calls `apiConsultant(req)` or `guardSession(req, id)` BEFORE reading the body; every
   page calls `requireConsultant()` (the cockpit also `ownsSession`). Another consultant's record is a 404, never a 403.
   The only public routes are listed in `tests/access.test.ts`, which fails for any route or page that is neither
@@ -92,6 +97,8 @@ keeps a second, different call as a regression fixture).
 - A seed script that reuses an app function inherits its side effects (the staged demo came out "Live"): set the
   state you actually mean.
 - Fire-and-forget requests that run as a page navigates away need `keepalive`.
+- Read the final screen after every edit feature: it showed every finance line relabelled "Entered" and two static
+  sentences that edits had made false. Tests written from the same assumptions as the code do not find these.
 - Read generated content, not just its tests: reading the prototype caught an internal-cost topic proposed as public
   content, a nonsensical "4 of 4 ... the rest are examples", and a placeholder budget phrased as an overrun.
 - A forbidden-key list is per document: `severity` is private on the reveal but a normal field in the prototype's alerts.

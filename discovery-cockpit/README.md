@@ -88,9 +88,8 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   opens *your* mail app, sends nothing itself, and cannot attach the PDF, so you attach it. Everything is built from
   the validated reveal payload only. The recipient comes from the client's optional email field.
 - **Not built yet**: sending email from the app (SMTP), server-rendered PDFs (the PDF is the browser's Save as PDF),
-  an embedded booking widget (the review links to your booking page), the Claude
-  provider, persisting the prototype's approve/edit/reject choices (they reset on
-  reload, by design for now).
+  an embedded booking widget (the review links to your booking page), and the Claude
+  provider.
 
 ## Transcript sources
 
@@ -189,6 +188,16 @@ Judgement calls worth knowing:
   itself, so how it renders there is unverified.
 - **PDF**: the review and prototype both have a `?print=1` view that opens the browser's print dialog. Interactive
   controls (approve/edit/reject, Run Report) are hidden in print; modules flow across pages but rows stay whole.
+- **A semi-functional prototype (owner-only edits)**: the signed-in owner (or anyone, in local mode) can approve,
+  reject, reword or undo content drafts; enter the client's real finance figures (the bars and remaining amounts are
+  recomputed); add or remove security alerts (filterable by severity for everyone); and add or remove real contacts.
+  Everything saves to the database. A guest who opens the client link sees the same prototype with **no controls**: the
+  write endpoint (`POST /api/sessions/[id]/prototype`) is behind the owner guard, takes a closed set of strict operations,
+  and re-validates the whole module against its schema before storing. Provenance stays honest: a finance line becomes
+  **Entered** only when its *actual* changes (resubmitting untouched lines does not relabel figures stated on the call);
+  a contact you type is shown without an Example label; an alert you type keeps its Example label, because it is part of
+  the demonstration. The sentence about where the figures came from is computed at render time, never stored.
+  **Rebuilding the client review regenerates the prototype and discards these edits.**
 - **Booking link**: the reveal shows a link, not an embedded widget. Only http(s) URLs pass the schema, so a stored
   `javascript:` address cannot reach an `href`.
 - **Reveal timeline**: the reveal gets the client's own date phrases ("mid-November", "the next two to three

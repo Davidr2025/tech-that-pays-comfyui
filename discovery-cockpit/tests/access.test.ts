@@ -343,9 +343,81 @@ describe("nothing is left unguarded", () => {
   });
 
   it("the client-facing pages stay public (they must never depend on a login)", () => {
-    for (const p of ["reveal/[sessionId]/page.tsx", "prototype/[sessionId]/page.tsx"]) {
-      const src = fs.readFileSync(path.join(root, "src/app", p), "utf8");
-      expect(/server\/auth|requireConsultant|currentConsultant/.test(src), `${p} must not use auth`).toBe(false);
+    const reveal = fs.readFileSync(path.join(root, "src/app/reveal/[sessionId]/page.tsx"), "utf8");
+    expect(/server\/auth|requireConsultant|currentConsultant|ownsSession/.test(reveal), "the reveal must not use auth").toBe(false);
+    // The prototype may ask whether the viewer is the owner (to show edit controls) but must never require a login.
+    const proto = fs.readFileSync(path.join(root, "src/app/prototype/[sessionId]/page.tsx"), "utf8");
+    expect(/requireConsultant|redirect\(/.test(proto), "the prototype must not require a login").toBe(false);
+    expect(proto).toMatch(/ownsSession\(/);
+  });
+});
+
+// ---------------------------------------------------------------------------------------------
+// The prototype: a public capability URL to read, owner-only to change.
+// ---------------------------------------------------------------------------------------------
+
+describe("prototype editing in accounts mode", () => {
+  let owner: { consultantId: string; token: string; sessionId: string; moduleId: string };
+  let stranger: { token: string };
+
+  beforeAll(async () => {
+    const { makeAssessmentSession } = await import("./helpers");
+    const { buildClientReview } = await import("@/server/review");
+    const s = await makeAssessmentSession("proto-access");
+    await prisma.consultant.update({ where: { id: s.consultantId }, data: { passwordHash: await hashPassword("a prototype owner passphrase") } });
+    await buildClientReview(s.id);
+    const { token } = await createLogin(s.consultantId);
+    const securityModule = await prisma.prototypeModule.findFirstOrThrow({ where: { sessionId: s.id, moduleType: "security" } });
+    owner = { consultantId: s.consultantId, token, sessionId: s.id, moduleId: securityModule.id };
+    stranger = await makeAccount("proto-stranger");
+  });
+
+  const page = async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: PrototypePage } = await import("@/app/prototype/[sessionId]/page");
+    return renderToStaticMarkup(await PrototypePage({ params: Promise.resolve({ sessionId: owner.sessionId }), searchParams: Promise.resolve({}) }));
+  };
+  const edit = async (who: { token: string } | null, body: unknown) => {
+    as(who);
+    const { POST } = await import("@/app/api/sessions/[id]/prototype/route");
+    return POST(req(`/api/sessions/${owner.sessionId}/prototype`, "POST", body), ctx({ id: owner.sessionId }));
+  };
+  const op = () => ({ op: "alert.add", moduleId: owner.moduleId, severity: "low", title: "Typed by whoever got in" });
+
+  it("the owner gets the controls on the page", async () => {
+    as(owner);
+    const html = await page();
+    for (const id of ["draft-approve", "finance-edit", "alert-add", "contact-add"]) expect(html, id).toContain(`data-testid="${id}"`);
+  });
+
+  it("a guest with the link reads the whole prototype and gets no controls", async () => {
+    as(null);
+    const html = await page();
+    expect(html).toContain("PROTOTYPE");
+    expect(html).toContain('data-testid="finance-line"');
+    for (const id of ["draft-approve", "draft-edit", "draft-reject", "finance-edit", "alert-add", "alert-remove", "contact-add", "contact-remove"]) {
+      expect(html, id).not.toContain(`data-testid="${id}"`);
     }
+  });
+
+  it("another signed-in consultant gets no controls either", async () => {
+    const html = (as(stranger), await page());
+    expect(html).toContain('data-testid="finance-line"');
+    expect(html).not.toContain('data-testid="draft-approve"');
+  });
+
+  it("the edit endpoint: owner 200, stranger 404, guest 401, and only the owner's change lands", async () => {
+    expect((await edit(stranger, op())).status).toBe(404);
+    expect((await edit(null, op())).status).toBe(401);
+    expect(await prisma.prototypeModule.findUniqueOrThrow({ where: { id: owner.moduleId } }).then((m) => JSON.stringify(m.data))).not.toContain("Typed by whoever got in");
+    expect((await edit(owner, op())).status).toBe(200);
+    expect(await prisma.prototypeModule.findUniqueOrThrow({ where: { id: owner.moduleId } }).then((m) => JSON.stringify(m.data))).toContain("Typed by whoever got in");
+  });
+
+  it("a cross-site edit is refused even with the owner's cookie", async () => {
+    as(owner);
+    const { POST } = await import("@/app/api/sessions/[id]/prototype/route");
+    const res = await POST(req("/x", "POST", op(), { origin: "https://evil.example" }), ctx({ id: owner.sessionId }));
+    expect(res.status).toBe(403);
   });
 });

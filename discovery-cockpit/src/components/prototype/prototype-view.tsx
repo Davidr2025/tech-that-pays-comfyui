@@ -3,34 +3,42 @@
 import { WorkflowDiagram } from "@/components/diagrams/workflow-diagram";
 import { accentOnWhite } from "@/lib/brand";
 import { readableTextColor } from "@/lib/color";
-import { PROTOTYPE_LABEL, type ModuleData, type PrototypeModuleView } from "@/lib/prototype/schema";
+import { PROTOTYPE_LABEL, type PrototypeModuleView } from "@/lib/prototype/schema";
 import { REVIEW_LABEL } from "@/lib/session-types";
 import type { PrototypePayload } from "@/server/prototype";
-import { ContentModule, FinanceModule, NurtureModule, SecurityModule } from "./modules";
+import { useState } from "react";
+import { ContentModule, FinanceModule, NurtureModule, SecurityModule, type EditOp } from "./modules";
 
-/** Module renderers by type. A stored module whose type has no renderer here is skipped. */
-const RENDERERS: { [K in ModuleData["type"]]: (props: { data: Extract<ModuleData, { type: K }>["data"] }) => React.ReactNode } = {
-  nurture: NurtureModule,
-  content: ContentModule,
-  finance: FinanceModule,
-  security: SecurityModule,
-};
-
-function renderModule(m: PrototypeModuleView) {
+function renderModule(m: PrototypeModuleView, canEdit: boolean, edit: (op: EditOp) => Promise<string | null>) {
   switch (m.module.type) {
     case "nurture":
-      return <RENDERERS.nurture data={m.module.data} />;
+      return <NurtureModule data={m.module.data} canEdit={canEdit} edit={edit} />;
     case "content":
-      return <RENDERERS.content data={m.module.data} />;
+      return <ContentModule data={m.module.data} canEdit={canEdit} edit={edit} />;
     case "finance":
-      return <RENDERERS.finance data={m.module.data} />;
+      return <FinanceModule data={m.module.data} canEdit={canEdit} edit={edit} />;
     case "security":
-      return <RENDERERS.security data={m.module.data} />;
+      return <SecurityModule data={m.module.data} canEdit={canEdit} edit={edit} />;
   }
 }
 
-export function PrototypeView({ payload }: { payload: PrototypePayload }) {
+export function PrototypeView({ payload, sessionId, canEdit = false }: { payload: PrototypePayload; sessionId?: string; canEdit?: boolean }) {
   const { header } = payload;
+  const [modules, setModules] = useState(payload.modules);
+  const editable = canEdit && Boolean(sessionId);
+
+  /** Sends one change to the server and swaps in the module it returns. Resolves with a message on failure. */
+  async function edit(moduleId: string, op: EditOp): Promise<string | null> {
+    try {
+      const res = await fetch(`/api/sessions/${sessionId}/prototype`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...op, moduleId }) });
+      const json = (await res.json().catch(() => ({}))) as { module?: PrototypeModuleView; error?: string };
+      if (!res.ok || !json.module) return json.error ?? "Could not save that change.";
+      setModules((all) => all.map((m) => (m.id === moduleId ? json.module! : m)));
+      return null;
+    } catch {
+      return "Could not reach the server.";
+    }
+  }
   const onBrand = readableTextColor(header.brandColor);
   const accent = accentOnWhite(header.accentColor, header.brandColor);
   const tools = payload.tools.length >= 3 ? payload.tools : null;
@@ -80,13 +88,13 @@ export function PrototypeView({ payload }: { payload: PrototypePayload }) {
         )}
 
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-2" data-testid="module-grid">
-          {payload.modules.map((m) => (
+          {modules.map((m) => (
             <section key={m.id} className="reveal-section min-w-0 rounded-lg border p-4" data-testid="module" data-module={m.module.type} aria-labelledby={`h-${m.id}`}>
               <h2 id={`h-${m.id}`} className="mb-2 flex items-center justify-between gap-2 text-base font-semibold">
                 {m.title}
                 <span className="rounded border px-1.5 py-0.5 text-[10px] font-bold tracking-widest text-slate-500">{PROTOTYPE_LABEL}</span>
               </h2>
-              {renderModule(m)}
+              {renderModule(m, editable, (op) => edit(m.id, op))}
             </section>
           ))}
         </div>

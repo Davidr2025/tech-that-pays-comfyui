@@ -14,6 +14,9 @@ import { z } from "zod";
 const example = z.literal(true);
 const money = z.number().finite().nonnegative();
 
+/** Limits for what a consultant can type into a prototype (also enforced when the edit is applied). */
+export const PROTOTYPE_LIMITS = { contacts: 50, alerts: 50, draftBody: 2000, label: 120, short: 60, detail: 300, amount: 1_000_000_000 } as const;
+
 export const nurtureSchema = z
   .object({
     summary: z.string(),
@@ -28,13 +31,16 @@ export const nurtureSchema = z
             temperature: z.enum(["hot", "warm", "cold"]),
             daysSinceContact: z.number().int().nonnegative(),
             nextAction: z.string(),
-            example,
+            /** True for rows the generator invented; false for a contact the consultant typed in. */
+            example: z.boolean(),
           })
           .strict(),
       )
-      .min(1),
+      .max(PROTOTYPE_LIMITS.contacts),
   })
   .strict();
+
+export const DRAFT_STATUSES = ["pending", "approved", "rejected"] as const;
 
 export const contentSchema = z
   .object({
@@ -42,7 +48,21 @@ export const contentSchema = z
     channels: z.array(z.string()).min(1),
     voice: z.string(),
     drafts: z
-      .array(z.object({ id: z.string(), channel: z.string(), topic: z.string(), body: z.string(), example }).strict())
+      .array(
+        z
+          .object({
+            id: z.string(),
+            channel: z.string(),
+            topic: z.string(),
+            body: z.string().max(PROTOTYPE_LIMITS.draftBody),
+            example,
+            /** A person approves or rejects each draft; nothing is published by default. */
+            status: z.enum(DRAFT_STATUSES).default("pending"),
+            /** True once a person has rewritten the generated text. */
+            edited: z.boolean().default(false),
+          })
+          .strict(),
+      )
       .min(1),
   })
   .strict();
@@ -62,8 +82,8 @@ export const financeSchema = z
             label: z.string(),
             actual: money,
             budget: money.refine((b) => b > 0, "a budget must be above zero"),
-            /** Where `actual` came from: said on the call, or an illustrative figure. */
-            source: z.enum(["stated", "example"]),
+            /** Where `actual` came from: said on the call, typed in by the consultant, or an illustrative figure. */
+            source: z.enum(["stated", "entered", "example"]),
           })
           .strict(),
       )
@@ -88,7 +108,7 @@ export const securitySchema = z
           })
           .strict(),
       )
-      .min(1),
+      .max(PROTOTYPE_LIMITS.alerts),
   })
   .strict();
 
@@ -131,6 +151,27 @@ export function parseModule(moduleType: string, data: unknown): ModuleData | nul
   if (!(moduleType in MODULE_SCHEMAS)) return null;
   const type = moduleType as ModuleType;
   return { type, data: MODULE_SCHEMAS[type].parse(data) } as ModuleData;
+}
+
+/**
+ * One honest sentence about where the finance actuals came from, worked out from the lines as they
+ * are NOW. It is computed (never stored), so an edit cannot leave it saying something false.
+ */
+export function financeProvenance(lines: { source: "stated" | "entered" | "example" }[]): string {
+  const n = lines.length;
+  const count = (s: "stated" | "entered" | "example") => lines.filter((l) => l.source === s).length;
+  const stated = count("stated");
+  const entered = count("entered");
+  const examples = count("example");
+  if (stated === n) return `All ${n} actuals come from your call.`;
+  if (entered === n) return `All ${n} actuals were entered for this review.`;
+  if (examples === n) return `These are example figures, not yours.`;
+  const parts = [
+    stated ? `${stated} of ${n} actuals come from your call` : null,
+    entered ? `${entered} ${entered === 1 ? "was" : "were"} entered` : null,
+    examples ? `${examples} ${examples === 1 ? "is an example" : "are examples"}` : null,
+  ].filter((p): p is string => p !== null);
+  return `${parts.join(", ")}.`;
 }
 
 export const PROTOTYPE_LABEL = "PROTOTYPE";

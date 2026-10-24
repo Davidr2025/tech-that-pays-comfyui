@@ -7,7 +7,6 @@
  * `source: "example"`) and the page says so. Output is validated against the strict schemas.
  */
 import type { Analysis } from "../mock-ai/types";
-import { formatMoney } from "../format";
 import { MODULE_SCHEMAS, MODULE_TITLES, type ModuleType } from "./schema";
 
 export interface PrototypeInput {
@@ -80,7 +79,7 @@ function nurture({ analysis, company }: PrototypeInput) {
   const basis = [
     lead ? `From the call: ${lower(lead.title)}.` : "No lead follow-up problem came up on the call, so rows follow a standard pipeline.",
     crm ? `Your CRM is ${crm}; actions point there.` : "No CRM was named on the call.",
-    "Rows are illustrative examples, not your real contacts.",
+    "Rows marked Example are illustrative, not your real contacts.",
   ];
   return {
     summary: `One list of who needs a reply, ranked by urgency${crm ? `, fed from ${crm}` : ""}. Each row carries the next action so nobody has to remember.`,
@@ -177,14 +176,10 @@ function finance({ analysis }: PrototypeInput) {
     { key: "payroll" as const, label: "Payroll", actual: f.payrollMonthly ?? Math.round(revenue * 0.45), budget: ceilTo((f.payrollMonthly ?? revenue * 0.45) * 1.03, 500), source: f.payrollMonthly !== null ? ("stated" as const) : ("example" as const) },
     { key: "overhead" as const, label: "Overhead (software and contractors)", actual: overheadActual > 0 ? overheadActual : Math.round(revenue * 0.06), budget: ceilTo((overheadActual > 0 ? overheadActual : revenue * 0.06) * 1.1, 500), source: overheadActual > 0 ? ("stated" as const) : ("example" as const) },
   ];
-  const stated = lines.filter((l) => l.source === "stated").length;
-  const provenance =
-    stated === lines.length
-      ? `All ${stated} actuals come from your call${f.receivables !== null ? ` (for example ${formatMoney(f.receivables)} outstanding)` : ""}.`
-      : `${stated} of ${lines.length} actuals come from your call; the rest are examples.`;
   return {
     period: "Current month",
-    summary: `What comes in, what is owed to you, and what goes out, on one screen. ${provenance}`,
+    // Where the actuals came from is worked out at render time (financeProvenance): it changes when figures are entered.
+    summary: "What comes in, what is owed to you, and what goes out, on one screen.",
     note: "Budgets are placeholders until you set your own. For receivables the budget is a target ceiling, not something you agreed.",
     lines,
   };
