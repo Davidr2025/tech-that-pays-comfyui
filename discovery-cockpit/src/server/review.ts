@@ -10,10 +10,12 @@ import { prisma } from "../lib/db";
 import { analyze } from "../lib/mock-ai/engine";
 import type { Analysis, Cue } from "../lib/mock-ai/types";
 import { buildRevealData } from "../lib/reveal/build";
+import { assertTransition, type SessionStatus } from "../lib/sessions";
+import { parseBrandColors } from "./clients";
 
 export class ReviewError extends Error {
   constructor(
-    public code: "NOT_FOUND" | "NO_TRANSCRIPT",
+    public code: "NOT_FOUND" | "NO_TRANSCRIPT" | "CONFLICT",
     message: string,
   ) {
     super(message);
@@ -77,10 +79,21 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     .map((s) => ({ speaker: s.speaker, text: s.text, order: s.order }));
   if (segments.length === 0) throw new ReviewError("NO_TRANSCRIPT", "Play or paste a transcript before building the review.");
 
+  try {
+    assertTransition(session.status as SessionStatus, "REVIEW");
+  } catch (err) {
+    throw new ReviewError("CONFLICT", err instanceof Error ? err.message : "This session cannot be reviewed.");
+  }
+
   const analysis = analyze(segments);
   const generatedAt = new Date();
+  const clientBrand = session.brandingMode === "CLIENT" ? parseBrandColors(session.client.brandColors) : null;
+  const branding = clientBrand
+    ? { primaryColor: clientBrand.primary, accentColor: clientBrand.accent ?? session.consultant.accentColor, logoUrl: null }
+    : { primaryColor: session.consultant.primaryColor, accentColor: session.consultant.accentColor, logoUrl: session.consultant.logoUrl };
   const revealData = buildRevealData({
     consultant: session.consultant,
+    branding,
     client: session.client,
     analysis,
     generatedAt,
@@ -105,7 +118,7 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     prisma.extraction.createMany({ data: extractionRows(sessionId, analysis) }),
     prisma.session.update({
       where: { id: sessionId },
-      data: { decisionReadiness: analysis.readiness.score, coaching: privateCoaching as unknown as Prisma.InputJsonValue },
+      data: { decisionReadiness: analysis.readiness.score, coaching: privateCoaching as unknown as Prisma.InputJsonValue, status: "REVIEW" },
     }),
     ...session.questions.map((q) => {
       const manual = q.isCovered && !q.coveredByAI;

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { jsonError, readBody } from "@/lib/api";
-import { buildClientReview, ReviewError } from "@/server/review";
+import { errorResponse, readBody } from "@/lib/api";
+import { buildClientReview } from "@/server/review";
 
 const body = z.object({ upTo: z.number().int().positive().optional() });
 
@@ -13,8 +13,6 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     const { revealPath } = await buildClientReview(id, { upTo: parsed.data.upTo });
     return NextResponse.json({ revealPath });
   } catch (err) {
-    if (err instanceof ReviewError) return jsonError(err.message, err.code === "NOT_FOUND" ? 404 : 400);
-    console.error(err);
-    return jsonError("Could not build the client review.", 500);
+    return errorResponse(err, "Could not build the client review.");
   }
 }

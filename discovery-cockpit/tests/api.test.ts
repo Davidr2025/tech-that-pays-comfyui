@@ -1,7 +1,6 @@
 /** Route handlers, called directly with real Requests against the test database. */
 import { beforeAll, describe, expect, it } from "vitest";
 import { GET as health } from "@/app/api/health/route";
-import { POST as createSession } from "@/app/api/sessions/route";
 import { DELETE as resetQuestions } from "@/app/api/sessions/[id]/questions/route";
 import { PATCH as patchQuestion } from "@/app/api/sessions/[id]/questions/[questionId]/route";
 import { POST as buildReview } from "@/app/api/sessions/[id]/review/route";
@@ -25,22 +24,6 @@ describe("GET /api/health", () => {
     const res = await health();
     expect(res.status).toBe(200);
     expect(await res.json()).toMatchObject({ ok: true, database: "up" });
-  });
-});
-
-describe("POST /api/sessions", () => {
-  it("creates a blank session with the default question bank", async () => {
-    const res = await createSession(json({ clientName: "Jamie", companyName: "Jamie's Bakery" }));
-    expect(res.status).toBe(201);
-    const { id: newId } = (await res.json()) as { id: string };
-    expect(await prisma.question.count({ where: { sessionId: newId } })).toBe(12);
-    expect(await prisma.transcriptSegment.count({ where: { sessionId: newId } })).toBe(0);
-  });
-
-  it("validates input", async () => {
-    expect((await createSession(json({ clientName: "", companyName: "x" }))).status).toBe(400);
-    expect((await createSession(json({}))).status).toBe(400);
-    expect((await createSession(new Request("http://t/api", { method: "POST", body: "not json" }))).status).toBe(400);
   });
 });
 

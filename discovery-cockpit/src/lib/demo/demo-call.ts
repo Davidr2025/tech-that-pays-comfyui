@@ -19,13 +19,16 @@ export const DEMO_CONSULTANT = {
   email: "avery@quinn-ops.example",
   businessName: "Quinn Operations Studio",
   tagline: "Practical systems for owner-run service businesses",
-  brandColor: "#0f766e",
+  primaryColor: "#0f766e",
+  accentColor: "#d97706",
+  calendarLink: "https://calendar.example/avery-quinn/30min",
 } as const;
 
 export const DEMO_CLIENT = {
   name: "Priya Nair",
   companyName: "Brightline Marketing",
   industry: "Marketing agency",
+  websiteUrl: "https://brightline.example/",
 } as const;
 
 export const DEMO_SESSION_TITLE = "Discovery call — Brightline Marketing";

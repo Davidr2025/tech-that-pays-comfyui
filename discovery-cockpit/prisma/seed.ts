@@ -29,6 +29,8 @@ async function main() {
   });
   await createDefaultQuestions(DEMO_IDS.session);
   await replaceTranscript(DEMO_IDS.session, demoTranscript());
+  // The transcript is staged, not started: the call only goes LIVE when the consultant opens it.
+  await prisma.session.update({ where: { id: DEMO_IDS.session }, data: { status: "SETUP", startedAt: null } });
 
   const segments = await prisma.transcriptSegment.count({ where: { sessionId: DEMO_IDS.session } });
   console.log(`Seeded demo consultant, client and session "${DEMO_IDS.session}" with ${segments} transcript segments.`);

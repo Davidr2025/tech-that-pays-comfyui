@@ -139,4 +139,48 @@ describe("usePlayer", () => {
     act(() => result.current.play());
     expect(result.current).toMatchObject({ status: "playing", playedCount: 0 });
   });
+
+  it("paces replay by real timestamps when the transcript has them", () => {
+    const stamped = [{ text: "a", startSec: 0 }, { text: "b", startSec: 10 }, { text: "c", startSec: 12 }];
+    const { result } = renderHook(() => usePlayer(stamped, 1));
+    act(() => result.current.play());
+    advance(450);
+    expect(result.current.playedCount).toBe(1);
+    advance(9_500); // 9.95s in: still waiting for the turn stamped 10s
+    expect(result.current.playedCount).toBe(1);
+    advance(600);
+    expect(result.current.playedCount).toBe(2);
+    advance(1_700); // 12.25s: the next turn is stamped 2s after the last (due at 12.4s)
+    expect(result.current.playedCount).toBe(2);
+    advance(300);
+    expect(result.current.playedCount).toBe(3);
+  });
+
+  it("runs stamped replay at the chosen speed", () => {
+    const stamped = [{ text: "a", startSec: 0 }, { text: "b", startSec: 20 }];
+    const { result } = renderHook(() => usePlayer(stamped, 4));
+    act(() => result.current.play());
+    advance(450 + 5_100);
+    expect(result.current.playedCount).toBe(2); // 20s / 4
+  });
+
+  it("falls back to the speaking-time estimate when only one side has a timestamp", () => {
+    const mixed = [{ text: "one two three four five", startSec: null }, { text: "b", startSec: 30 }];
+    const { result } = renderHook(() => usePlayer(mixed, 1));
+    act(() => result.current.play());
+    advance(450 + 2_100); // five words at 2.5 words per second
+    expect(result.current.playedCount).toBe(2);
+  });
+
+  it("live mode shows every typed line immediately and never lags", () => {
+    const { result, rerender } = renderHook(({ segs }) => usePlayer(segs, 1), { initialProps: { segs: [{ text: "one" }, { text: "two" }] } });
+    act(() => result.current.goLive());
+    expect(result.current).toMatchObject({ status: "live", playedCount: 2 });
+    rerender({ segs: [{ text: "one" }, { text: "two" }, { text: "three" }] });
+    expect(result.current.playedCount).toBe(3);
+    advance(5_000);
+    expect(result.current.status).toBe("live"); // nothing schedules or finishes in live mode
+    act(() => result.current.play());
+    expect(result.current).toMatchObject({ status: "playing", playedCount: 0 });
+  });
 });

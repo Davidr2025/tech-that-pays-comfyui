@@ -9,6 +9,7 @@
  * decisionReadiness, severity, buying signals, objections, suggested questions, quotes.
  */
 import { z } from "zod";
+import { isValidLogoUrl } from "../logo";
 
 const money = z.number().finite().nonnegative();
 
@@ -24,6 +25,9 @@ export const revealSchema = z
         businessName: z.string().min(1),
         tagline: z.string().nullable(),
         brandColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
+        accentColor: z.string().regex(/^#[0-9a-fA-F]{6}$/),
+        /** A validated data: URL (see src/lib/logo.ts), or null. Rendered only inside <img>. */
+        logoUrl: z.string().refine(isValidLogoUrl, "not a valid logo image").nullable(),
         clientName: z.string().min(1),
         clientCompany: z.string().min(1),
       })

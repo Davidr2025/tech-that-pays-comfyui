@@ -15,6 +15,22 @@ datasource db {
 
 enum SessionType {
   DISCOVERY
+  OPERATIONAL_ASSESSMENT
+  TECHNOLOGY_ASSESSMENT
+  COMBINED_ASSESSMENT
+}
+
+enum SessionStatus {
+  SETUP
+  LIVE
+  REVIEW
+  REVEALED
+  COMPLETED
+}
+
+enum BrandingMode {
+  CONSULTANT
+  CLIENT
 }
 
 enum Speaker {
@@ -36,7 +52,12 @@ model Consultant {
   email        String
   businessName String
   tagline      String?
-  brandColor   String    @default("#0f766e")
+  /// Logo as a small data: URL (png/jpeg/webp/svg), validated in src/lib/logo.ts.
+  logoUrl      String?
+  primaryColor String    @default("#0f766e")
+  accentColor  String    @default("#d97706")
+  /// Default booking link; a client can override it.
+  calendarLink String?
   clients      Client[]
   sessions     Session[]
   createdAt    DateTime  @default(now())
@@ -49,6 +70,10 @@ model Client {
   name         String
   companyName  String
   industry     String?
+  websiteUrl   String?
+  /// Brand colours: { primary, accent, source: "website" | "manual", detected: string[] }
+  brandColors  Json?
+  calendarLink String?
   sessions     Session[]
   createdAt    DateTime  @default(now())
 }
@@ -60,8 +85,13 @@ model Session {
   clientId     String
   client       Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
   type         SessionType @default(DISCOVERY)
+  /// Changes only through src/lib/sessions.ts, which enforces the allowed transitions.
+  status       SessionStatus @default(SETUP)
+  brandingMode BrandingMode  @default(CONSULTANT)
   title        String
   createdAt    DateTime    @default(now())
+  startedAt    DateTime?
+  endedAt      DateTime?
 
   // ---- PRIVATE (consultant-only). The reveal code path never selects these. ----
   internalNotes     String?
@@ -82,6 +112,8 @@ model TranscriptSegment {
   speaker   Speaker
   text      String
   order     Int
+  /// Seconds from the start of the call, when the source had timestamps (VTT/SRT, manual entry).
+  startSec  Int?
 
   @@unique([sessionId, order])
 }

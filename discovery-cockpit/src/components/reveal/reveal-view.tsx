@@ -3,6 +3,7 @@
  * fields of the allow-listed RevealData type, so it has nothing private to show.
  * (No hooks, no data fetching — keeps it renderable by tests and print-friendly.)
  */
+import { accentOnWhite } from "@/lib/brand";
 import { readableTextColor } from "@/lib/color";
 import { formatMoney, formatPeriod } from "@/lib/format";
 import type { RevealData } from "@/lib/reveal/schema";
@@ -26,26 +27,33 @@ export function RevealView({ data }: { data: RevealData }) {
   const { header, totals } = data;
   const date = new Date(data.generatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   const onBrand = readableTextColor(header.brandColor);
+  const accent = accentOnWhite(header.accentColor, header.brandColor);
 
   return (
     <article
       className="reveal-doc mx-auto max-w-3xl overflow-hidden rounded-lg border bg-white text-slate-900 shadow-sm"
-      style={{ ["--brand" as string]: header.brandColor }}
+      style={{ ["--brand" as string]: header.brandColor, ["--accent" as string]: accent }}
     >
-      <header className="px-8 py-7" style={{ backgroundColor: header.brandColor, color: onBrand }}>
-        <p className="text-xs font-medium uppercase tracking-widest opacity-80">Discovery Review</p>
-        <h1 className="mt-1 text-2xl font-bold">{header.businessName}</h1>
-        {header.tagline && <p className="mt-0.5 text-sm opacity-90">{header.tagline}</p>}
-        <p className="mt-4 text-sm opacity-90">
-          Prepared for {header.clientName}, {header.clientCompany} · {date}
-        </p>
+      <header className="flex items-start justify-between gap-6 px-8 py-7" style={{ backgroundColor: header.brandColor, color: onBrand }}>
+        <div className="min-w-0">
+          <p className="text-xs font-medium uppercase tracking-widest opacity-80">Discovery Review</p>
+          <h1 className="mt-1 text-2xl font-bold">{header.businessName}</h1>
+          {header.tagline && <p className="mt-0.5 text-sm opacity-90">{header.tagline}</p>}
+          <p className="mt-4 text-sm opacity-90">
+            Prepared for {header.clientName}, {header.clientCompany} · {date}
+          </p>
+        </div>
+        {header.logoUrl && (
+          // eslint-disable-next-line @next/next/no-img-element -- a validated data: URL; next/image adds nothing here
+          <img src={header.logoUrl} alt={`${header.businessName} logo`} className="h-14 max-w-[9rem] shrink-0 rounded bg-white object-contain p-1.5" />
+        )}
       </header>
 
       <div className="px-8 pb-8">
         <Section title="What We Heard">
           <p className="leading-relaxed">{data.summary}</p>
           {(data.timeline.deadline || data.timeline.window) && (
-            <dl className="avoid-break mt-4 flex flex-wrap gap-x-8 gap-y-2 rounded-md border px-4 py-3 text-sm" style={{ borderColor: "var(--brand)" }}>
+            <dl className="avoid-break mt-4 flex flex-wrap gap-x-8 gap-y-2 rounded-md border px-4 py-3 text-sm" style={{ borderColor: "var(--accent)" }}>
               {data.timeline.deadline && (
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-500">Target date</dt>
@@ -160,8 +168,8 @@ export function RevealView({ data }: { data: RevealData }) {
                   ))}
                 </ul>
               </div>
-              <div className="avoid-break rounded-md border p-4" style={{ borderColor: "var(--brand)" }}>
-                <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--brand)" }}>
+              <div className="avoid-break rounded-md border p-4" style={{ borderColor: "var(--accent)" }}>
+                <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide" style={{ color: "var(--accent)" }}>
                   Where we could get to
                 </h3>
                 <ul className="list-disc space-y-1.5 pl-5 text-sm">

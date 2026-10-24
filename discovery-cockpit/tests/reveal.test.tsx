@@ -6,14 +6,15 @@ import { analyze } from "@/lib/mock-ai/engine";
 import { buildRevealData } from "@/lib/reveal/build";
 import { computeTotals, revealSchema } from "@/lib/reveal/schema";
 
-const consultant = { name: "Avery Quinn", businessName: "Quinn Ops", tagline: null, brandColor: "#0f766e" };
+const consultant = { name: "Avery Quinn", businessName: "Quinn Ops", tagline: null };
+const branding = { primaryColor: "#0f766e", accentColor: "#d97706", logoUrl: null };
 const client = { name: "Priya", companyName: "Brightline" };
 const when = new Date("2026-01-15T12:00:00Z");
 
 const demoAnalysis = analyze(DEMO_SEGMENTS.map((s, order) => ({ ...s, order })));
 
 describe("buildRevealData", () => {
-  const data = buildRevealData({ consultant, client, analysis: demoAnalysis, generatedAt: when });
+  const data = buildRevealData({ consultant, branding, client, analysis: demoAnalysis, generatedAt: when });
 
   it("computes monthly and annual totals from the rows with a stated cost", () => {
     expect(data.totals).toEqual({ monthly: 1174, annual: 14088, toolsWithCost: 5, toolsTotal: 6 });
@@ -47,7 +48,7 @@ describe("buildRevealData", () => {
 
   it("words the summary correctly when every tool, or only some, has a cost", () => {
     expect(data.summary).toContain("Among the 5 tools with a stated cost, the subscriptions total about $1,174 per month ($14,088 per year)");
-    const one = buildRevealData({ consultant, client, analysis: analyze([{ speaker: "CLIENT", text: "Calendly is $50 a month.", order: 0 }]), generatedAt: when });
+    const one = buildRevealData({ consultant, branding, client, analysis: analyze([{ speaker: "CLIENT", text: "Calendly is $50 a month.", order: 0 }]), generatedAt: when });
     expect(one.summary).toContain("uses 1 tool. Their subscriptions total about $50 per month ($600 per year)");
     expect(renderToStaticMarkup(<RevealView data={one} />)).toContain("Totals include all 1 tool.");
   });
@@ -59,9 +60,34 @@ describe("buildRevealData", () => {
   });
 });
 
+describe("branding fields in the reveal", () => {
+  const data = buildRevealData({ consultant, branding, client, analysis: demoAnalysis, generatedAt: when });
+  const withHeader = (patch: object) => ({ ...data, header: { ...data.header, ...patch } });
+
+  it("accepts a validated logo data URL or none", () => {
+    expect(revealSchema.safeParse(withHeader({ logoUrl: "data:image/png;base64,iVBORw0KGgo=" })).success).toBe(true);
+    expect(revealSchema.safeParse(withHeader({ logoUrl: null })).success).toBe(true);
+  });
+
+  it.each(["https://evil.example/pixel.png", "javascript:alert(1)", "data:text/html;base64,PHNjcmlwdD4=", "data:image/gif;base64,R0lGOD=="])("rejects a hostile or unsupported logo: %s", (logoUrl) => {
+    expect(revealSchema.safeParse(withHeader({ logoUrl })).success).toBe(false);
+  });
+
+  it("rejects a malformed accent colour and unknown header fields", () => {
+    expect(revealSchema.safeParse(withHeader({ accentColor: "orange" })).success).toBe(false);
+    expect(revealSchema.safeParse(withHeader({ calendarLink: "https://x.example" })).success).toBe(false);
+  });
+
+  it("shows the logo only inside an <img>, with the business name as its alt text", () => {
+    const html = renderToStaticMarkup(<RevealView data={withHeader({ logoUrl: "data:image/png;base64,iVBORw0KGgo=" }) as typeof data} />);
+    expect(html).toMatch(/<img src="data:image\/png;base64,iVBORw0KGgo=" alt="Quinn Ops logo"/);
+    expect(renderToStaticMarkup(<RevealView data={data} />)).not.toContain("<img");
+  });
+});
+
 describe("totals integrity", () => {
   it("rejects a payload whose totals don't match its rows", () => {
-    const data = buildRevealData({ consultant, client, analysis: demoAnalysis, generatedAt: when });
+    const data = buildRevealData({ consultant, branding, client, analysis: demoAnalysis, generatedAt: when });
     expect(revealSchema.safeParse({ ...data, totals: { ...data.totals, monthly: 999 } }).success).toBe(false);
     expect(revealSchema.safeParse({ ...data, totals: { ...data.totals, annual: 1 } }).success).toBe(false);
   });
@@ -79,7 +105,7 @@ describe("totals integrity", () => {
 
 describe("RevealView", () => {
   it("shows the totals and every section for the demo call", () => {
-    const html = renderToStaticMarkup(<RevealView data={buildRevealData({ consultant, client, analysis: demoAnalysis, generatedAt: when })} />);
+    const html = renderToStaticMarkup(<RevealView data={buildRevealData({ consultant, branding, client, analysis: demoAnalysis, generatedAt: when })} />);
     for (const heading of ["What We Heard", "The Numbers You Mentioned", "Your Current Tools", "Where You Are Today vs. Where You Could Be"]) {
       expect(html).toContain(heading.replace("&", "&amp;"));
     }
@@ -93,7 +119,7 @@ describe("RevealView", () => {
   });
 
   it("says plainly when nothing was captured instead of inventing content", () => {
-    const empty = buildRevealData({ consultant, client, analysis: analyze([{ speaker: "CLIENT", text: "Hello there.", order: 0 }]), generatedAt: when });
+    const empty = buildRevealData({ consultant, branding, client, analysis: analyze([{ speaker: "CLIENT", text: "Hello there.", order: 0 }]), generatedAt: when });
     const html = renderToStaticMarkup(<RevealView data={empty} />);
     expect(html).toContain("No specific challenges were captured");
     expect(html).toContain("No dollar figures were mentioned");

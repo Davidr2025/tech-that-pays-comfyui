@@ -1,20 +1,18 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
-import { jsonError, readBody } from "@/lib/api";
+import { errorResponse, jsonError, readBody } from "@/lib/api";
+import { sessionCreateSchema } from "@/lib/validation";
+import { getConsultant } from "@/server/consultant";
 import { createSession } from "@/server/sessions";
 
-const body = z.object({
-  clientName: z.string().trim().min(1, "Client name is required.").max(120),
-  companyName: z.string().trim().min(1, "Company name is required.").max(120),
-});
-
 export async function POST(req: Request) {
-  const parsed = await readBody(req, body);
+  const parsed = await readBody(req, sessionCreateSchema);
   if ("error" in parsed) return parsed.error;
+  const consultant = await getConsultant();
+  if (!consultant) return jsonError("No consultant exists yet. Run `npm run db:seed`.", 409);
   try {
-    const session = await createSession(parsed.data);
+    const session = await createSession(consultant.id, parsed.data);
     return NextResponse.json({ id: session.id }, { status: 201 });
   } catch (err) {
-    return jsonError(err instanceof Error ? err.message : "Could not create the session.", 500);
+    return errorResponse(err, "Could not create the session.");
   }
 }

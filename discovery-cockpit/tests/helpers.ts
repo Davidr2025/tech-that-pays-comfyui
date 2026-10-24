@@ -8,7 +8,7 @@ let counter = 0;
 export async function makeDemoSession(label: string) {
   const n = `${label}-${Date.now()}-${counter++}`;
   const consultant = await prisma.consultant.create({
-    data: { name: "Test Consultant", email: `${n}@example.test`, businessName: "Test Studio", tagline: "Testing", brandColor: "#1d4ed8" },
+    data: { name: "Test Consultant", email: `${n}@example.test`, businessName: "Test Studio", tagline: "Testing", primaryColor: "#1d4ed8", accentColor: "#e11d48" },
   });
   const client = await prisma.client.create({
     data: { consultantId: consultant.id, name: "Pat Client", companyName: "Acme Heating" },

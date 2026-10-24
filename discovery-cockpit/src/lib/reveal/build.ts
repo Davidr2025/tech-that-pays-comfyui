@@ -3,7 +3,9 @@ import type { Analysis } from "../mock-ai/types";
 import { computeTotals, revealSchema, type RevealData } from "./schema";
 
 export interface RevealInput {
-  consultant: { name: string; businessName: string; tagline: string | null; brandColor: string };
+  consultant: { name: string; businessName: string; tagline: string | null };
+  /** Whose look the document wears: the consultant's, or the client's colours. */
+  branding: { primaryColor: string; accentColor: string; logoUrl: string | null };
   client: { name: string; companyName: string };
   analysis: Analysis;
   generatedAt: Date;
@@ -18,7 +20,7 @@ const unique = (items: string[]) => [...new Set(items)];
  * schema or this throws. Private analysis fields (readiness, signals, objections, quotes,
  * severity, next question, reflect-back) have no path into the output.
  */
-export function buildRevealData({ consultant, client, analysis, generatedAt }: RevealInput): RevealData {
+export function buildRevealData({ consultant, branding, client, analysis, generatedAt }: RevealInput): RevealData {
   const techStack = analysis.tech.map((t) => ({
     tool: t.tool,
     purpose: t.purpose,
@@ -68,7 +70,9 @@ export function buildRevealData({ consultant, client, analysis, generatedAt }: R
       consultantName: consultant.name,
       businessName: consultant.businessName,
       tagline: consultant.tagline,
-      brandColor: consultant.brandColor,
+      brandColor: branding.primaryColor,
+      accentColor: branding.accentColor,
+      logoUrl: branding.logoUrl,
       clientName: client.name,
       clientCompany: client.companyName,
     },

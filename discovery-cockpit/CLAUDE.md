@@ -31,8 +31,12 @@ behind an `AIProvider` interface.
 ## Conventions
 - Server components by default; client components only where interactivity requires it.
 - Money is stored as numbers in dollars; formatting happens at render time only.
-- Session status transitions (planned): SETUP -> LIVE -> REVIEW -> REVEALED -> COMPLETED, enforced
-  in one place (planned: `src/lib/sessions.ts`), not scattered across routes.
+- Session status transitions SETUP -> LIVE -> REVIEW -> REVEALED -> COMPLETED are enforced in one place,
+  `src/lib/sessions.ts`; server code calls `assertTransition`, never writes `status` unchecked. COMPLETED is final.
+- Transcript sources (demo, paste, upload, manual) all go through `POST /api/sessions/[id]/transcript`; parsing
+  lives in `src/lib/transcript.ts` and runs in the browser (preview) and on the server (the stored result).
+- Anything that fetches a user-supplied URL must go through `src/server/safe-fetch.ts`. Never call `fetch` on one directly.
+- User-supplied images are stored as validated `data:` URLs (`src/lib/logo.ts`) and rendered only inside `<img>`.
 - Question banks are data, not hard-coded in components: `src/lib/mock-ai/questions.ts`.
 - The demo call is data too: `src/lib/demo/demo-call.ts` (Demo Seed Pack). The seed script, the
   "Load Demo Call" button and the tests all read it, so they cannot drift.
@@ -58,3 +62,8 @@ keeps a second, different call as a regression fixture).
 - Exercise the real UI in a browser before declaring done: unit tests did not catch an emptied
   route file, the head-metadata leak, or the timer bug.
 - Do not tune an engine rule to one transcript: check every rule change against both fixtures.
+- A seed script that reuses an app function inherits its side effects (the staged demo came out "Live"): set the
+  state you actually mean.
+- Fire-and-forget requests that run as a page navigates away need `keepalive`.
+- Test hostile inputs against the real thing (a real local HTTP server for SSRF, real VTT exports for parsing),
+  and mutate the guard to prove the test can fail.

@@ -34,6 +34,43 @@ Brightline Marketing, a 9-person agency (20 segments, 772 words). Everything in 
 | `npm run db:seed` / `db:reset` | Re-seed the demo / wipe and re-migrate |
 | `npm run prisma -- <args>` | Prisma CLI with the default `DATABASE_URL` applied |
 
+## Pre-call setup
+
+- **Settings** (`/settings`): your name, business, tagline, booking link, primary and accent colours, and a
+  logo (PNG/JPEG/WebP/SVG under 150 KB, stored as a data URL and only ever shown inside an `<img>`).
+- **Clients** (`/clients`): contact, company, website, booking link, and optional brand colours. **Detect from
+  website** suggests colours from the page's `theme-color`, brand tokens and most-used colours; nothing is saved
+  until you accept, and you can always pick colours by hand.
+- **New session** (`/sessions/new`): choose the client, the type, and whose branding the review wears (yours or the
+  client's; switchable later from the cockpit). Only *Discovery call* is available: the three assessment types are
+  listed but disabled until assessment mode adds their question banks.
+- **Status** is `SETUP → LIVE → REVIEW → REVEALED → COMPLETED`, enforced in one place (`src/lib/sessions.ts`).
+  Loading a transcript sets LIVE (and discards any review); building the review sets REVIEW; *Open Client Reveal*
+  sets REVEALED; *Mark complete* sets COMPLETED, after which the transcript and review are locked.
+
+## Transcript sources
+
+One endpoint (`POST /api/sessions/[id]/transcript`), four sources:
+
+| Source | How | Notes |
+| --- | --- | --- |
+| **Demo** | *Load Demo Call* | the Demo Seed Pack call |
+| **Paste** | *Paste or upload* | labeled lines (`Consultant:`/`Client:`, `Name:`, `[Name] 10:01 AM: text`) or plain paragraphs |
+| **Upload** | *Paste or upload → Choose file* | `.txt`, `.vtt`, `.srt` (Zoom/Teams captions); real timestamps drive replay pacing |
+| **Manual** | *Type live* | type a line, press Enter; the speaker flips for you; lines are saved with timestamps |
+
+Real names in a file (Zoom exports use them) trigger **Which speaker is you?**, defaulting to the speaker that
+matches your name. Caption files with no names alternate turns by pause and warn you, with a **Swap** option if the
+guess is backwards. Demo, paste and upload *replace* the transcript and reset the question ticks; typed lines *add*.
+
+### Zoom and Google Meet
+
+There is no live connection to either. Use their transcripts after the call, or paste the in-meeting transcript as
+it grows. Zoom's cloud-recording transcript is a `.vtt` with speaker names; Meet's saved transcript is a Google Doc
+whose speaker labels and timestamps are inconsistent (copy it into the paste box). A live feed needs Zoom's
+Realtime Media Streams (gated, paid developer access) or a meeting-bot service; Google's Meet Media API is still a
+developer preview. See the project notes before building either.
+
 ## The privacy boundary (the product)
 
 The client must never see coaching, internal notes or decision readiness. It is enforced structurally,
@@ -108,12 +145,21 @@ Judgement calls worth knowing:
   is you. No labels: paragraphs alternate, starting with you.
 - **No auth.** This is a local single-user slice; the reveal URL is an unguessable id, not access control.
 
+## Fetching a client's website (security)
+
+Detecting brand colours makes the *server* fetch an address a user typed, which is a classic SSRF risk. The fetch
+(`src/server/safe-fetch.ts`) allows only public http(s) on ports 80/443, rejects credentials in URLs, checks the
+resolved address **at connect time** (so DNS tricks don't help), re-validates every redirect hop (max 4), caps size
+and time, asks for uncompressed text, and refuses non-text responses. `localhost`, private ranges, link-local and the
+cloud metadata address are refused. Tests run the guard against a real local server and fail if it is disabled.
+
 ## Known limits of the mock engine
 
 Rules are keyword-based, so they are deliberately transparent and sometimes blunt:
 a sentence matching two pain categories attributes the same quantified impact to both; time and counts
 read number words ("ten to twelve hours") but dollars must be digits (`$85`, `$4.5k`), not "eighty-five
-dollars" — a real speech-to-text feed needs a number-word normaliser; severity is a heuristic score
+dollars" — a real speech-to-text feed needs a number-word normaliser; a bare "by hand" is only read as a pain inside a sentence about reports ("12 hours a week on invoices by hand"
+is counted as lead-tracking, not manual work, unless it says re-entering or manual); severity is a heuristic score
 (`src/lib/mock-ai/engine.ts`, `extractPainPoints`); tool detection uses a fixed catalogue in
 `src/lib/mock-ai/tools.ts`. The engine re-analyses the whole transcript-so-far on each new segment, which
 is cheap here but conflicts with the pack's "incremental only" rule once a paid model is behind it. The engine sits behind a single
@@ -127,7 +173,8 @@ scripts/prisma.mjs Prisma CLI wrapper (default DATABASE_URL)
 src/lib/mock-ai/   engine + rule tables (pain, cues, tools, question bank)
 src/lib/reveal/    allow-list schema + payload builder
 src/lib/demo/      the fictitious demo call (shared by seed, UI and tests)
-src/server/        data access: sessions, questions, review (build), reveal (read)
+src/lib/           transcript parsers, brand-colour detection, session status machine, validation
+src/server/        data access: sessions, clients, consultant, questions, review (build), reveal (read), safe-fetch
 src/app/           pages + API route handlers
 src/components/    cockpit/, reveal/, ui/ (shadcn-style)
 tests/             vitest suites
