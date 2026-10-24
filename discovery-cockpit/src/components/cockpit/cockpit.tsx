@@ -18,6 +18,7 @@ import { DecisionFactsCard, NextQuestionCard, ObjectionsCard, PainPointsCard, Re
 import type { ImportRequest } from "./import-dialog";
 import { QuestionPanel, type QuestionRow } from "./question-panel";
 import { ReadinessGauge } from "./readiness-gauge";
+import { ShareDialog } from "./share-dialog";
 import { TalkRatioCard, TalkTimerCard } from "./talk-panel";
 import { TranscriptPanel, type PanelSegment } from "./transcript-panel";
 
@@ -239,6 +240,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
               </Link>
             </Button>
           )}
+          {revealPath && <ShareDialog sessionId={data.id} prototypePath={prototypePath} />}
           {prototypePath && (
             <Button asChild variant="outline">
               <Link href={prototypePath} target="_blank" data-testid="open-prototype-link">

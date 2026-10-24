@@ -98,7 +98,7 @@ describe("rendered prototype", () => {
   });
 
   it("the whole route (document head and body) is clean too", async () => {
-    const html = renderToStaticMarkup(await PrototypePage({ params: Promise.resolve({ sessionId }) }));
+    const html = renderToStaticMarkup(await PrototypePage({ params: Promise.resolve({ sessionId }), searchParams: Promise.resolve({}) }));
     const text = htmlToText(html);
     expect(text).toContain("PROTOTYPE");
     expect(findLeaks(text + JSON.stringify(prototypeMetadata), [...TEXT_BANNED, ...coachStrings, ...clientQuotes, "cockpit"])).toEqual([]);
@@ -111,7 +111,7 @@ describe("the boundary is enforced", () => {
     const row = await prisma.prototypeModule.findFirstOrThrow({ where: { sessionId, moduleType: "security" } });
     await prisma.prototypeModule.update({ where: { id: row.id }, data: { data: { ...(row.data as object), coaching: { reason: SENTINEL_COACHING } } } });
     await expect(getPrototype(sessionId)).rejects.toThrow();
-    const text = htmlToText(renderToStaticMarkup(await PrototypePage({ params: Promise.resolve({ sessionId }) })));
+    const text = htmlToText(renderToStaticMarkup(await PrototypePage({ params: Promise.resolve({ sessionId }), searchParams: Promise.resolve({}) })));
     expect(text).toContain("isn't available");
     expect(text).not.toContain(SENTINEL_COACHING);
     await prisma.prototypeModule.update({ where: { id: row.id }, data: { data: row.data as object } });
@@ -130,7 +130,7 @@ describe("the boundary is enforced", () => {
     const discovery = await makeDemoSession("proto-discovery");
     await buildClientReview(discovery.id);
     expect(await getPrototype(discovery.id)).toBeNull();
-    await expect(PrototypePage({ params: Promise.resolve({ sessionId: discovery.id }) })).rejects.toThrow(/NEXT_HTTP_ERROR_FALLBACK|NEXT_NOT_FOUND/);
+    await expect(PrototypePage({ params: Promise.resolve({ sessionId: discovery.id }), searchParams: Promise.resolve({}) })).rejects.toThrow(/NEXT_HTTP_ERROR_FALLBACK|NEXT_NOT_FOUND/);
     const unbuilt = await makeAssessmentSession("proto-unbuilt");
     expect(await getPrototype(unbuilt.id)).toBeNull();
   });

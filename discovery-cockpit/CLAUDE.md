@@ -45,6 +45,12 @@ behind an `AIProvider` interface.
 - Reveal estimates (`src/lib/reveal/roi.ts`) use only client-stated numbers plus two printed assumptions; anything
   derived must be re-checked in the schema's `superRefine` so tampering fails closed. Never sum figures that can
   overlap, and count one statement once (`hoursSource`).
+- Exports (`src/lib/reveal/export.ts`, `src/lib/email.ts`, `src/server/share.ts`) take only the validated
+  `RevealData`. Never give them a session, extraction or coaching object. HTML export: inline styles only, escape
+  every string. Email goes through `EmailProvider`; `mailtoHref` validates the recipient and drops optional
+  paragraphs to stay under ~1,900 characters.
+- Print: use `.avoid-break` on rows and cards, `.reveal-section` so headings stay with content, `print:hidden` on
+  controls, and `.keep-colors` on a link whose colours are part of its design (the global print rule strips link colour).
 - Prisma refuses `migrate reset` from an agent. Refresh demo data with `npm run db:seed` (it only recreates the demo
   records); do not work around the guard.
 - The demo call is data too: `src/lib/demo/demo-call.ts` (Demo Seed Pack). The seed script, the

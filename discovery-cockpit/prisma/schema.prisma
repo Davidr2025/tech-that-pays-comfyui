@@ -68,6 +68,8 @@ model Client {
   consultantId String
   consultant   Consultant @relation(fields: [consultantId], references: [id], onDelete: Cascade)
   name         String
+  /// Where the consultant's follow-up email is addressed. Never part of the client-facing review.
+  email        String?
   companyName  String
   industry     String?
   websiteUrl   String?

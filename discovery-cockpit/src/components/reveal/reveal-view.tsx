@@ -265,7 +265,7 @@ export function RevealView({ data }: { data: RevealData }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="booking-link"
-                  className="inline-block rounded-md px-4 py-2 text-sm font-semibold print:border print:bg-white"
+                  className="keep-colors inline-block rounded-md px-4 py-2 text-sm font-semibold"
                   style={{ backgroundColor: header.brandColor, color: onBrand }}
                 >
                   {data.booking.label}

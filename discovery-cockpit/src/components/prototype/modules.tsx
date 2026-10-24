@@ -35,7 +35,7 @@ export function NurtureModule({ data }: { data: NurtureData }) {
           const t = TEMP[c.temperature];
           const expanded = open === c.id;
           return (
-            <li key={c.id}>
+            <li key={c.id} className="avoid-break">
               <button
                 type="button"
                 aria-expanded={expanded}
@@ -90,7 +90,7 @@ export function ContentModule({ data }: { data: ContentData }) {
         {data.drafts.map((d) => {
           const st = state[d.id]!;
           return (
-            <li key={d.id} className="rounded-md border p-3" data-testid="draft" data-status={st.status}>
+            <li key={d.id} className="avoid-break rounded-md border p-3" data-testid="draft" data-status={st.status}>
               <div className="mb-1.5 flex flex-wrap items-center gap-2">
                 <span className="text-sm font-semibold">{d.topic}</span>
                 <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] text-slate-600">{d.channel}</span>
@@ -107,7 +107,7 @@ export function ContentModule({ data }: { data: ContentData }) {
               ) : (
                 <p className={cn("whitespace-pre-line text-sm leading-relaxed", st.status === "rejected" && "text-slate-400")}>{st.body}</p>
               )}
-              <div className="mt-2.5 flex flex-wrap gap-2">
+              <div className="mt-2.5 flex flex-wrap gap-2 print:hidden">
                 {st.editing ? (
                   <Button size="sm" onClick={() => patch(d.id, { editing: false })} data-testid="draft-save">
                     <Check /> Save edit
@@ -157,7 +157,7 @@ export function FinanceModule({ data }: { data: FinanceData }) {
           // A receivables "budget" is only a placeholder ceiling, so don't call it a budget overrun.
           const ceiling = l.key === "receivables";
           return (
-            <li key={l.key} data-testid="finance-line" data-key={l.key}>
+            <li key={l.key} className="avoid-break" data-testid="finance-line" data-key={l.key}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-3">
                 <span className="text-sm font-medium">{l.label}</span>
                 <span className="text-sm tabular-nums">
@@ -183,6 +183,7 @@ export function FinanceModule({ data }: { data: FinanceData }) {
         <Button
           size="sm"
           variant="outline"
+          className="print:hidden"
           onClick={() => {
             setGeneratedAt(new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }));
             setReportOpen(true);
@@ -251,7 +252,7 @@ export function SecurityModule({ data }: { data: SecurityData }) {
       </p>
       <ul className="divide-y rounded-md border" data-testid="security-feed">
         {data.feed.map((a) => (
-          <li key={a.id} className="px-3 py-2.5" data-testid="alert" data-level={a.severity}>
+          <li key={a.id} className="avoid-break px-3 py-2.5" data-testid="alert" data-level={a.severity}>
             <div className="flex flex-wrap items-center gap-2">
               <span className={cn("rounded border px-1.5 py-0.5 text-[11px] font-semibold", SEV[a.severity].cls)}>{SEV[a.severity].label}</span>
               <span className="text-sm font-medium">{a.title}</span>

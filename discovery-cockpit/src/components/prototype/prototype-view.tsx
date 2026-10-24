@@ -36,7 +36,7 @@ export function PrototypeView({ payload }: { payload: PrototypePayload }) {
   const tools = payload.tools.length >= 3 ? payload.tools : null;
 
   return (
-    <div className="mx-auto max-w-5xl text-slate-900" style={{ ["--brand" as string]: header.brandColor, ["--accent" as string]: accent }}>
+    <div className="mx-auto max-w-5xl text-slate-900 print:max-w-none" style={{ ["--brand" as string]: header.brandColor, ["--accent" as string]: accent }}>
       <div role="note" className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-md border-2 border-dashed px-4 py-2.5 text-sm" style={{ borderColor: "var(--accent)" }} data-testid="prototype-banner">
         <span className="rounded px-2 py-0.5 text-xs font-bold tracking-widest text-white" style={{ backgroundColor: "var(--accent)" }}>
           {PROTOTYPE_LABEL}
@@ -64,12 +64,12 @@ export function PrototypeView({ payload }: { payload: PrototypePayload }) {
             <h2 id="diagram-heading" className="mb-3 border-b pb-1 text-lg font-semibold" style={{ borderColor: "var(--brand)" }}>
               From scattered to connected
             </h2>
-            <div className="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-2">
-              <figure className="min-w-0 rounded-md border bg-amber-50/40 p-3">
+            <div className="grid grid-cols-[minmax(0,1fr)] gap-4 md:grid-cols-2 print:grid-cols-2">
+              <figure className="avoid-break min-w-0 rounded-md border bg-amber-50/40 p-3">
                 <figcaption className="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-800">Today</figcaption>
                 <WorkflowDiagram tools={tools} variant="tangled" label={`Today: ${tools.length} tools wired together by hand`} />
               </figure>
-              <figure className="min-w-0 rounded-md border p-3" style={{ borderColor: "var(--brand)" }}>
+              <figure className="avoid-break min-w-0 rounded-md border p-3" style={{ borderColor: "var(--brand)" }}>
                 <figcaption className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--brand)" }}>
                   Proposed
                 </figcaption>
@@ -81,7 +81,7 @@ export function PrototypeView({ payload }: { payload: PrototypePayload }) {
 
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-2" data-testid="module-grid">
           {payload.modules.map((m) => (
-            <section key={m.id} className="min-w-0 rounded-lg border p-4" data-testid="module" data-module={m.module.type} aria-labelledby={`h-${m.id}`}>
+            <section key={m.id} className="reveal-section min-w-0 rounded-lg border p-4" data-testid="module" data-module={m.module.type} aria-labelledby={`h-${m.id}`}>
               <h2 id={`h-${m.id}`} className="mb-2 flex items-center justify-between gap-2 text-base font-semibold">
                 {m.title}
                 <span className="rounded border px-1.5 py-0.5 text-[10px] font-bold tracking-widest text-slate-500">{PROTOTYPE_LABEL}</span>

@@ -80,8 +80,23 @@ export const consultantSchema = z.object({
   logoUrl: logoField,
 });
 
+export const optionalEmail = z
+  .string()
+  .trim()
+  .max(200)
+  .nullish()
+  .transform((v, ctx) => {
+    if (!v) return null;
+    if (!z.string().email().safeParse(v).success) {
+      ctx.addIssue({ code: "custom", message: "Enter a valid email address." });
+      return z.NEVER;
+    }
+    return v;
+  });
+
 export const clientSchema = z.object({
   name: z.string().trim().min(1, "The contact's name is required.").max(120),
+  email: optionalEmail,
   companyName: z.string().trim().min(1, "The company name is required.").max(120),
   industry: optionalText(120),
   websiteUrl: optionalUrl,

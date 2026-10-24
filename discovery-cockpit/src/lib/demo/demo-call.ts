@@ -26,6 +26,7 @@ export const DEMO_CONSULTANT = {
 
 export const DEMO_CLIENT = {
   name: "Priya Nair",
+  email: "priya@brightline.example",
   companyName: "Brightline Marketing",
   industry: "Marketing agency",
   websiteUrl: "https://brightline.example/",

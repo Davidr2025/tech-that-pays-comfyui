@@ -75,7 +75,13 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   per-module allow-list schemas applied on write and on read, a route that reads only `Report.revealData` and
   `PrototypeModule`, and its own sentinel/quote leak tests with negative controls. A stored module type nobody
   renders is skipped, so modules can be added or removed.
-- **Not built yet**: exports (email, Gamma), the Claude
+- **Share** (cockpit, once a review is built): a dialog with an email draft to the client, **Copy for Gamma**
+  (self-contained inline-styled HTML on the clipboard, plus a plain-text alternative), **Copy as text**, **Copy link**,
+  and PDFs of the review and the prototype. The email is a `mailto:` link behind an `EmailProvider` interface: it
+  opens *your* mail app, sends nothing itself, and cannot attach the PDF, so you attach it. Everything is built from
+  the validated reveal payload only. The recipient comes from the client's optional email field.
+- **Not built yet**: sending email from the app (SMTP), server-rendered PDFs (the PDF is the browser's Save as PDF),
+  an embedded booking widget (the review links to your booking page), the Claude
   provider, per-question notes/edit/add, and persisting the prototype's approve/edit/reject choices (they reset on
   reload, by design for now).
 
@@ -171,6 +177,11 @@ Judgement calls worth knowing:
   hourly value on the client, and are labelled as your assumption. Stated dollar figures are listed separately and
   never summed (they can overlap). Every number is re-derived from its rows when the report is read, so an edited
   payload fails closed.
+- **Exports**: the HTML for Gamma has no `<style>`, `<script>`, images or external references, and every string is
+  escaped; tests check the tags and attributes against a short allow-list. I could not test the paste into Gamma
+  itself, so how it renders there is unverified.
+- **PDF**: the review and prototype both have a `?print=1` view that opens the browser's print dialog. Interactive
+  controls (approve/edit/reject, Run Report) are hidden in print; modules flow across pages but rows stay whole.
 - **Booking link**: the reveal shows a link, not an embedded widget. Only http(s) URLs pass the schema, so a stored
   `javascript:` address cannot reach an `href`.
 - **Reveal timeline**: the reveal gets the client's own date phrases ("mid-November", "the next two to three

@@ -65,7 +65,8 @@
     break-after: avoid;
     page-break-after: avoid;
   }
-  a {
+  /* Links print as plain text, except a button whose colours are part of its design. */
+  a:not(.keep-colors) {
     color: inherit !important;
     text-decoration: none !important;
   }

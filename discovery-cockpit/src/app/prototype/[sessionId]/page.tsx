@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AutoPrint, RevealActions } from "@/components/reveal/reveal-actions";
 import { PrototypeView } from "@/components/prototype/prototype-view";
 import { getPrototype } from "@/server/prototype";
 
@@ -11,8 +12,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function PrototypePage({ params }: { params: Promise<{ sessionId: string }> }) {
+export default async function PrototypePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ sessionId: string }>;
+  searchParams: Promise<{ print?: string }>;
+}) {
   const { sessionId } = await params;
+  const { print } = await searchParams;
 
   let payload;
   try {
@@ -29,7 +37,8 @@ export default async function PrototypePage({ params }: { params: Promise<{ sess
   if (!payload) notFound();
 
   return (
-    <main className="bg-slate-100 px-4 py-8">
+    <main className="bg-slate-100 px-4 py-8 print:bg-white print:p-0">
+      {print === "1" ? <AutoPrint /> : <RevealActions printHref={`/prototype/${sessionId}?print=1`} />}
       <PrototypeView payload={payload} />
     </main>
   );

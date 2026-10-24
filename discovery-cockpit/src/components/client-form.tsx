@@ -12,6 +12,7 @@ import type { StoredBrandColors } from "@/lib/validation";
 
 export interface ClientValues {
   name: string;
+  email: string;
   companyName: string;
   industry: string;
   websiteUrl: string;
@@ -98,6 +99,9 @@ export function ClientForm({ clientId, initial }: { clientId?: string; initial: 
         <CardContent className="grid gap-4 sm:grid-cols-2">
           <Field label="Contact name">
             <Input id="name" value={v.name} onChange={(e) => set("name", e.target.value)} required />
+          </Field>
+          <Field label="Email" hint="Optional. Used only to address your follow-up email.">
+            <Input id="email" type="email" value={v.email} onChange={(e) => set("email", e.target.value)} placeholder="priya@brightline.example" />
           </Field>
           <Field label="Company">
             <Input id="companyName" value={v.companyName} onChange={(e) => set("companyName", e.target.value)} required />

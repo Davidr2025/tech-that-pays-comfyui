@@ -39,7 +39,7 @@ export default async function RevealPage({
 
   return (
     <main className="bg-slate-100 px-4 py-8 print:bg-white print:p-0">
-      {print === "1" ? <AutoPrint /> : <RevealActions sessionId={sessionId} />}
+      {print === "1" ? <AutoPrint /> : <RevealActions printHref={`/reveal/${sessionId}?print=1`} />}
       <RevealView data={data} />
     </main>
   );

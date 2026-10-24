@@ -33,6 +33,7 @@ export async function getClient(consultantId: string, id: string) {
   return {
     id: c.id,
     name: c.name,
+    email: c.email,
     companyName: c.companyName,
     industry: c.industry,
     websiteUrl: c.websiteUrl,
@@ -57,6 +58,7 @@ function clientData(consultantId: string, input: z.output<typeof clientSchema>) 
   return {
     consultantId,
     name: input.name,
+    email: input.email,
     companyName: input.companyName,
     industry: input.industry,
     websiteUrl: input.websiteUrl,

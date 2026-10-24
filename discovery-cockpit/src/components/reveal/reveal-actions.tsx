@@ -4,12 +4,12 @@ import { Printer } from "lucide-react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-/** Toolbar shown above the document on screen; hidden when printing. */
-export function RevealActions({ sessionId }: { sessionId: string }) {
+/** Toolbar shown above a client document on screen; hidden when printing. `printHref` is the document's ?print=1 view. */
+export function RevealActions({ printHref }: { printHref: string }) {
   return (
     <div className="mx-auto mb-4 flex max-w-3xl justify-end gap-2 print:hidden">
       <Button asChild>
-        <a href={`/reveal/${sessionId}?print=1`} target="_blank" rel="noreferrer">
+        <a href={printHref} target="_blank" rel="noreferrer">
           <Printer /> Download PDF
         </a>
       </Button>
