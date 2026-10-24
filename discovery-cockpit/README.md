@@ -7,8 +7,9 @@ vertical slice proving the core loop — live coaching for you, a clean review f
   panel (decision readiness, pain points, buying signals, objections, reflect-back, next question,
   talk timer, talk ratio).
 - **Client reveal** (`/reveal/[sessionId]`, client-safe): "What We Heard", pain points, every dollar the
-  client mentioned in context, a tech-stack table with monthly and annual totals, and a today-vs-future panel.
-  Print-optimised; **Download PDF** opens the print view.
+  client mentioned in context, a conservative **What This Could Be Worth** estimate, a tech-stack table with monthly
+  and annual totals, a today-vs-future panel, and **Next Steps** with a booking link (the client's own link, else
+  your default). Print-optimised; **Download PDF** opens the print view.
 - All "AI" is a deterministic, rule-based `MockAIEngine` (keywords, a dollar regex, tool-name matching).
   No network calls, no API keys.
 
@@ -74,7 +75,7 @@ Three assessment types (**operational**, **technology**, **combined**) alongside
   per-module allow-list schemas applied on write and on read, a route that reads only `Report.revealData` and
   `PrototypeModule`, and its own sentinel/quote leak tests with negative controls. A stored module type nobody
   renders is skipped, so modules can be added or removed.
-- **Not built yet**: the ROI panel and next steps/booking on the reveal, exports (email, Gamma), the Claude
+- **Not built yet**: exports (email, Gamma), the Claude
   provider, per-question notes/edit/add, and persisting the prototype's approve/edit/reject choices (they reset on
   reload, by design for now).
 
@@ -163,6 +164,15 @@ Judgement calls worth knowing:
   "plan"/"subscription", shown as "assumed monthly"). One-off amounts ("$2,400 in setup fees") are not
   assigned to tools. Annual/weekly bills are converted to monthly; annual totals use the true annual figure.
   Tools with no stated cost show "Not stated" and are excluded from totals.
+- **ROI estimate**: built only from figures the client stated. Hours use the low end of a range ("ten to twelve" is
+  10), one sentence is counted once even if it describes two problems (Cedar Ridge's "15 hours" feeds two
+  categories), and a team-wide admin figure is used only when no problem has its own hours. Per year = 48 working
+  weeks; "could be recovered" = 50%, both printed as assumptions. Dollars for hours appear only when you set an
+  hourly value on the client, and are labelled as your assumption. Stated dollar figures are listed separately and
+  never summed (they can overlap). Every number is re-derived from its rows when the report is read, so an edited
+  payload fails closed.
+- **Booking link**: the reveal shows a link, not an embedded widget. Only http(s) URLs pass the schema, so a stored
+  `javascript:` address cannot reach an `href`.
 - **Reveal timeline**: the reveal gets the client's own date phrases ("mid-November", "the next two to three
   weeks"), never the sentence they came from.
 - **Contextual follow-up beats the bank**: a counted-but-unpriced problem ("3–4 leads a month") makes "what is

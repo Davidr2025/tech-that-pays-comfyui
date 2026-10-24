@@ -11,8 +11,39 @@
 import { z } from "zod";
 import { isValidLogoUrl } from "../logo";
 import { SESSION_TYPES } from "../session-types";
+import { computeTimeEstimate } from "./roi";
 
 const money = z.number().finite().nonnegative();
+
+/** Only http(s) links may reach an href: a stored `javascript:` URL must fail the schema. */
+const webUrl = z.string().max(300).refine((u) => {
+  try {
+    const p = new URL(u);
+    return p.protocol === "https:" || p.protocol === "http:";
+  } catch {
+    return false;
+  }
+}, "not a web address");
+
+const roiSchema = z
+  .object({
+    time: z
+      .object({
+        sinks: z.array(z.object({ title: z.string(), hoursPerWeek: z.number().finite().positive() }).strict()).min(1),
+        hoursPerWeek: z.number().finite().positive(),
+        hoursPerYear: z.number().finite().nonnegative(),
+        recoverableHoursPerYear: z.number().finite().nonnegative(),
+        /** A consultant-set assumption, never a figure the client stated. */
+        hourlyValue: z.number().finite().positive().nullable(),
+        recoverableValue: money.nullable(),
+      })
+      .strict()
+      .nullable(),
+    /** Annual figures the client put on a problem, each shown separately (they may overlap). */
+    statedCosts: z.array(z.object({ title: z.string(), annualAmount: money, stated: z.string() }).strict()),
+    assumptions: z.array(z.string()),
+  })
+  .strict();
 
 export const REVEAL_PERIODS = ["month", "year", "week", "day", "hour", "unspecified"] as const;
 
@@ -63,12 +94,35 @@ export const revealSchema = z
         toolsTotal: z.number().int().nonnegative(),
       })
       .strict(),
+    /** Conservative, labelled estimates; null when the client gave no figures to build on. */
+    roi: roiSchema.nullable().default(null),
+    nextSteps: z.array(z.string()).max(6).default([]),
+    /** The consultant's (or the client-specific) booking page. */
+    booking: z.object({ url: webUrl, label: z.string().min(1) }).strict().nullable().default(null),
   })
   .strict()
   .superRefine((data, ctx) => {
     const expected = computeTotals(data.techStack);
     if (data.totals.monthly !== expected.monthly || data.totals.annual !== expected.annual) {
       ctx.addIssue({ code: "custom", path: ["totals"], message: "totals do not match the tech stack rows" });
+    }
+    if (data.roi) {
+      const t = data.roi.time;
+      if (!t && data.roi.statedCosts.length === 0) {
+        ctx.addIssue({ code: "custom", path: ["roi"], message: "an estimate needs a figure to stand on" });
+      }
+      if (t) {
+        const want = computeTimeEstimate(t.sinks, t.hourlyValue);
+        const consistent =
+          want !== null &&
+          want.hoursPerWeek === t.hoursPerWeek &&
+          want.hoursPerYear === t.hoursPerYear &&
+          want.recoverableHoursPerYear === t.recoverableHoursPerYear &&
+          want.recoverableValue === t.recoverableValue;
+        if (!consistent) {
+          ctx.addIssue({ code: "custom", path: ["roi", "time"], message: "time estimate does not follow from its rows" });
+        }
+      }
     }
     if (data.totals.toolsWithCost !== expected.toolsWithCost || data.totals.toolsTotal !== expected.toolsTotal) {
       ctx.addIssue({ code: "custom", path: ["totals"], message: "tool counts do not match the tech stack rows" });

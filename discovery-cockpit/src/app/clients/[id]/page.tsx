@@ -32,6 +32,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
           industry: client.industry ?? "",
           websiteUrl: client.websiteUrl ?? "",
           calendarLink: client.calendarLink ?? "",
+          hourlyValue: client.hourlyValue === null ? "" : String(client.hourlyValue),
           brand: client.brand,
         }}
       />

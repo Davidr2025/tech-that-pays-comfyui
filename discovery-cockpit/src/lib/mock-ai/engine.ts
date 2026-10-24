@@ -149,7 +149,7 @@ function collectEvidence(clientSegments: Segment[]): Map<string, Evidence> {
   return evidence;
 }
 
-function describeImpact(cat: PainCategory, features: Features[]): { text: string | null; quantified: boolean; topWeekly: number } {
+function describeImpact(cat: PainCategory, features: Features[]): { text: string | null; quantified: boolean; topWeekly: number; weeklyHours: number | null; hoursSource: string | null; annualAmount: number | null } {
   const times = features.map((f) => f.time).filter((t): t is TimeQty => t !== null);
   const counts = features.map((f) => f.count).filter((c): c is CountQty => c !== null);
   const moneys = features.flatMap((f) => f.money);
@@ -173,7 +173,15 @@ function describeImpact(cat: PainCategory, features: Features[]): { text: string
     : null;
 
   const text = cat.timeSink ? (timeText ?? countText ?? (cat.money ? moneyText : null)) : cat.money ? (moneyText ?? countText) : countText;
-  return { text, quantified: Boolean(timeText || countText || moneyText), topWeekly };
+  return {
+    text,
+    quantified: Boolean(timeText || countText || moneyText),
+    topWeekly,
+    // Only expose a number when it is the one the impact text states.
+    weeklyHours: cat.timeSink && bestTime && text === timeText && bestTime.weeklyLow !== null ? Math.round(bestTime.weeklyLow * 10) / 10 : null,
+    hoursSource: cat.timeSink && bestTime && text === timeText && bestTime.weeklyLow !== null ? bestTime.source : null,
+    annualAmount: text === moneyText && bestMoney ? Math.round(annualised(bestMoney)) : null,
+  };
 }
 
 function extractPainPoints(clientSegments: Segment[]): PainPoint[] {
@@ -201,6 +209,9 @@ function extractPainPoints(clientSegments: Segment[]): PainPoint[] {
         description: cat.description,
         impact: impact.text,
         quantified: impact.quantified,
+        weeklyHours: impact.weeklyHours,
+        hoursSource: impact.hoursSource,
+        annualAmount: impact.annualAmount,
         severity: severityFor(score),
         quote: first.sentence,
         segmentOrder: first.order,

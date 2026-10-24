@@ -74,6 +74,8 @@ model Client {
   /// Brand colours: { primary, accent, source: "website" | "manual", detected: string[] }
   brandColors  Json?
   calendarLink String?
+  /// Consultant's assumption: what an hour of this client's team time is worth, in whole dollars.
+  hourlyValue  Int?
   sessions     Session[]
   createdAt    DateTime  @default(now())
 }

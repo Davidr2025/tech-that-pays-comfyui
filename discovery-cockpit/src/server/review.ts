@@ -101,6 +101,8 @@ export async function buildClientReview(sessionId: string, opts: { upTo?: number
     analysis,
     generatedAt,
     kind: type,
+    hourlyValue: session.client.hourlyValue,
+    bookingUrl: session.client.calendarLink ?? session.consultant.calendarLink,
   });
   const prototype = isAssessment(type)
     ? generatePrototype({ analysis, company: session.client.companyName, industry: session.client.industry })

@@ -4,7 +4,7 @@ import { ClientForm } from "@/components/client-form";
 export default function NewClientPage() {
   return (
     <AppShell current="clients" title="Add a client">
-      <ClientForm initial={{ name: "", companyName: "", industry: "", websiteUrl: "", calendarLink: "", brand: null }} />
+      <ClientForm initial={{ name: "", companyName: "", industry: "", websiteUrl: "", calendarLink: "", hourlyValue: "", brand: null }} />
     </AppShell>
   );
 }

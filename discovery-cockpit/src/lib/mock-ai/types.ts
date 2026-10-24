@@ -20,6 +20,12 @@ export interface PainPoint {
   impact: string | null;
   /** True when the client put a number on it (time, money or volume). */
   quantified: boolean;
+  /** Weekly hours behind `impact` (bottom of any range), when the client gave a time figure for a time-sink problem. */
+  weeklyHours: number | null;
+  /** The sentence that figure came from; two problems sharing one sentence share one figure. */
+  hoursSource: string | null;
+  /** Annualised dollars behind `impact`, when the client gave a cost or loss figure. */
+  annualAmount: number | null;
   severity: Severity;
   /** The client's own words (consultant-only; never sent to the reveal). */
   quote: string;

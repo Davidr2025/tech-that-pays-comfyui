@@ -1,6 +1,7 @@
 import { formatMoney, joinList, pluralize } from "../format";
 import type { Analysis } from "../mock-ai/types";
 import type { SessionType } from "../session-types";
+import { computeTimeEstimate, RECOVERY_RATE, statedCostsFrom, timeSinksFrom, WEEKS_PER_YEAR } from "./roi";
 import { computeTotals, revealSchema, type RevealData } from "./schema";
 
 export interface RevealInput {
@@ -11,6 +12,10 @@ export interface RevealInput {
   analysis: Analysis;
   generatedAt: Date;
   kind?: SessionType;
+  /** The consultant's assumption for what an hour of the client's time is worth (whole dollars). */
+  hourlyValue?: number | null;
+  /** Where the client can book a follow-up: the client's own link, else the consultant's default. */
+  bookingUrl?: string | null;
 }
 
 const lowerFirst = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
@@ -22,7 +27,20 @@ const unique = (items: string[]) => [...new Set(items)];
  * schema or this throws. Private analysis fields (readiness, signals, objections, quotes,
  * severity, next question, reflect-back) have no path into the output.
  */
-export function buildRevealData({ consultant, branding, client, analysis, generatedAt, kind = "DISCOVERY" }: RevealInput): RevealData {
+/** Plain next steps drawn only from what the client said. Never exceeds the schema's limit of six. */
+function buildNextSteps(analysis: Analysis, consultantName: string): string[] {
+  const steps = ["Read through this summary and tell us anything we missed or got wrong."];
+  const top = analysis.painPoints[0];
+  if (top) steps.push(`Choose the first problem to fix. The conversation points to ${lowerFirst(top.title)}.`);
+  if (analysis.painPoints.some((p) => p.id === "tool_overlap")) {
+    steps.push("Review which of your tools are doing overlapping work before adding anything new.");
+  }
+  if (analysis.timeline.deadline) steps.push(`Work back from your ${analysis.timeline.deadline} date to set when the work should start.`);
+  steps.push(`Book a follow-up call with ${consultantName} to walk through a proposed plan.`);
+  return steps;
+}
+
+export function buildRevealData({ consultant, branding, client, analysis, generatedAt, kind = "DISCOVERY", hourlyValue = null, bookingUrl = null }: RevealInput): RevealData {
   const techStack = analysis.tech.map((t) => ({
     tool: t.tool,
     purpose: t.purpose,
@@ -65,6 +83,22 @@ export function buildRevealData({ consultant, branding, client, analysis, genera
     );
   }
 
+  const time = computeTimeEstimate(timeSinksFrom(analysis), hourlyValue);
+  const statedCosts = statedCostsFrom(analysis);
+  const assumptions = [
+    ...(time
+      ? [
+          "Hours use the low end of any range you gave, and each statement is counted once.",
+          `Hours per year assume ${WEEKS_PER_YEAR} working weeks.`,
+          `“Could be recovered” assumes automation returns about ${Math.round(RECOVERY_RATE * 100)}% of that time. It is a planning figure, not a promise.`,
+          hourlyValue !== null
+            ? `Dollar value uses ${formatMoney(hourlyValue)} per hour. That is an assumption, not a figure you stated.`
+            : "No hourly value was set, so time is not converted to dollars.",
+        ]
+      : []),
+    ...(statedCosts.length > 1 ? ["Stated costs are shown separately and not added together, because they may overlap."] : []),
+  ];
+
   return revealSchema.parse({
     version: 1,
     kind,
@@ -87,5 +121,8 @@ export function buildRevealData({ consultant, branding, client, analysis, genera
     moneyMentioned: analysis.money.map((m) => ({ amount: m.amount, period: m.period, context: m.context })),
     techStack,
     totals,
+    roi: time || statedCosts.length ? { time, statedCosts, assumptions } : null,
+    nextSteps: buildNextSteps(analysis, consultant.name),
+    booking: bookingUrl ? { url: bookingUrl, label: `Book a call with ${consultant.name}` } : null,
   });
 }

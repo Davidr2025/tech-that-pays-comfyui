@@ -55,6 +55,20 @@ export const logoField = z
   })
   .refine((v) => v === null || isValidLogoUrl(v));
 
+/** Whole dollars per hour, 1–2000. Empty becomes null; "$75" and "75" both work. */
+export const optionalHourlyValue = z
+  .union([z.number(), z.string()])
+  .nullish()
+  .transform((v, ctx) => {
+    if (v === null || v === undefined || v === "") return null;
+    const n = typeof v === "number" ? v : Number(v.replace(/[$,\s]/g, ""));
+    if (!Number.isInteger(n) || n < 1 || n > 2000) {
+      ctx.addIssue({ code: "custom", message: "Enter whole dollars per hour, between 1 and 2000." });
+      return z.NEVER;
+    }
+    return n;
+  });
+
 export const consultantSchema = z.object({
   name: z.string().trim().min(1, "Your name is required.").max(120),
   email: z.string().trim().email("Enter a valid email address.").max(200),
@@ -72,6 +86,7 @@ export const clientSchema = z.object({
   industry: optionalText(120),
   websiteUrl: optionalUrl,
   calendarLink: optionalUrl,
+  hourlyValue: optionalHourlyValue,
   brandColors: brandColorsSchema.nullish().transform((v) => v ?? null),
 });
 

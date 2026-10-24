@@ -107,6 +107,67 @@ export function RevealView({ data }: { data: RevealData }) {
           )}
         </Section>
 
+        {data.roi && (
+          <Section title="What This Could Be Worth">
+            <div className="space-y-4" data-testid="roi">
+              {data.roi.time && (
+                <div className="avoid-break rounded-md border p-4" style={{ borderColor: "var(--accent)" }}>
+                  <ul className="mb-3 divide-y text-sm">
+                    {data.roi.time.sinks.map((s) => (
+                      <li key={s.title} className="flex justify-between gap-4 py-1.5">
+                        <span>{s.title}</span>
+                        <span className="tabular-nums">{s.hoursPerWeek} hours per week</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <dl className="grid gap-3 sm:grid-cols-3">
+                    <div>
+                      <dt className="text-xs uppercase tracking-wide text-slate-500">You described</dt>
+                      <dd className="text-xl font-semibold tabular-nums" data-testid="roi-hours-year">
+                        {data.roi.time.hoursPerYear.toLocaleString("en-US")} hours a year
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs uppercase tracking-wide text-slate-500">Could be recovered (estimate)</dt>
+                      <dd className="text-xl font-semibold tabular-nums" data-testid="roi-recoverable">
+                        {data.roi.time.recoverableHoursPerYear.toLocaleString("en-US")} hours a year
+                      </dd>
+                    </div>
+                    {data.roi.time.recoverableValue !== null && (
+                      <div>
+                        <dt className="text-xs uppercase tracking-wide text-slate-500">Worth about (estimate)</dt>
+                        <dd className="text-xl font-semibold tabular-nums" data-testid="roi-value">
+                          {formatMoney(data.roi.time.recoverableValue)} a year
+                        </dd>
+                      </div>
+                    )}
+                  </dl>
+                </div>
+              )}
+              {data.roi.statedCosts.length > 0 && (
+                <div className="avoid-break">
+                  <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-slate-500">Dollar figures you tied to these problems</h3>
+                  <ul className="divide-y rounded-md border text-sm">
+                    {data.roi.statedCosts.map((c) => (
+                      <li key={c.title} className="flex flex-wrap justify-between gap-x-4 px-3 py-2">
+                        <span>
+                          {c.title} <span className="text-slate-500">(you said {c.stated})</span>
+                        </span>
+                        <span className="font-semibold tabular-nums">{formatMoney(c.annualAmount)} a year</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <ul className="list-disc space-y-1 pl-5 text-xs text-slate-500" data-testid="roi-assumptions">
+                {data.roi.assumptions.map((a) => (
+                  <li key={a}>{a}</li>
+                ))}
+              </ul>
+            </div>
+          </Section>
+        )}
+
         <Section title="Your Current Tools">
           {data.techStack.length === 0 ? (
             <Empty>No software tools were named in this conversation.</Empty>
@@ -187,6 +248,33 @@ export function RevealView({ data }: { data: RevealData }) {
             </div>
           )}
         </Section>
+
+        {(data.nextSteps.length > 0 || data.booking) && (
+          <Section title="Next Steps">
+            {data.nextSteps.length > 0 && (
+              <ol className="list-decimal space-y-1.5 pl-5 text-sm" data-testid="next-steps">
+                {data.nextSteps.map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ol>
+            )}
+            {data.booking && (
+              <div className="avoid-break mt-4">
+                <a
+                  href={data.booking.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="booking-link"
+                  className="inline-block rounded-md px-4 py-2 text-sm font-semibold print:border print:bg-white"
+                  style={{ backgroundColor: header.brandColor, color: onBrand }}
+                >
+                  {data.booking.label}
+                </a>
+                <p className="mt-1 hidden break-all text-xs text-slate-500 print:block">{data.booking.url}</p>
+              </div>
+            )}
+          </Section>
+        )}
 
         <footer className="mt-10 border-t pt-4 text-xs text-slate-500">
           Prepared by {header.consultantName}, {header.businessName} · {date}

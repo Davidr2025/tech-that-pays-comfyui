@@ -29,6 +29,8 @@ export const DEMO_CLIENT = {
   companyName: "Brightline Marketing",
   industry: "Marketing agency",
   websiteUrl: "https://brightline.example/",
+  /** The consultant's assumption, shown to the client labelled as one. */
+  hourlyValue: 60,
 } as const;
 
 export const DEMO_SESSION_TITLE = "Discovery call — Brightline Marketing";

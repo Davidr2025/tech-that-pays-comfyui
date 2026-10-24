@@ -42,6 +42,11 @@ behind an `AIProvider` interface.
   in `detectors.ts` (a test enforces both).
 - Prototype modules are data-driven: add a type in `src/lib/prototype/schema.ts` (strict schema + title), a builder in
   `generate.ts`, and a renderer. Invented rows must carry `example: true`; finance actuals say `stated` or `example`.
+- Reveal estimates (`src/lib/reveal/roi.ts`) use only client-stated numbers plus two printed assumptions; anything
+  derived must be re-checked in the schema's `superRefine` so tampering fails closed. Never sum figures that can
+  overlap, and count one statement once (`hoursSource`).
+- Prisma refuses `migrate reset` from an agent. Refresh demo data with `npm run db:seed` (it only recreates the demo
+  records); do not work around the guard.
 - The demo call is data too: `src/lib/demo/demo-call.ts` (Demo Seed Pack). The seed script, the
   "Load Demo Call" button and the tests all read it, so they cannot drift.
 - No `.env` is needed: `scripts/prisma.mjs` and `src/lib/db.ts` default `DATABASE_URL`. Use

@@ -14,8 +14,12 @@ export interface TimeQty {
   high: number | null;
   unit: "hours" | "days";
   per: string | null;
-  /** Hours per week, when the client gave a weekly (or monthly) rate. */
+  /** Hours per week, when the client gave a weekly (or monthly) rate. Uses the top of a range. */
   weekly: number | null;
+  /** The same rate using the bottom of a range: the conservative figure. */
+  weeklyLow: number | null;
+  /** The sentence this figure came from, so one statement is never counted twice. */
+  source: string;
 }
 export interface CountQty {
   low: number;
@@ -31,10 +35,11 @@ export function parseTime(sentence: string): TimeQty | null {
   const high = m[2] ? toNumber(m[2]) : null;
   const unit = m[3]!.toLowerCase().startsWith("d") ? "days" : "hours";
   const per = m[4]?.toLowerCase() ?? null;
-  const top = high ?? low;
-  const perWeek = unit === "days" ? top * 8 : top;
-  const weekly = per === "week" ? perWeek : per === "month" ? perWeek / 4.33 : null;
-  return { low, high, unit, per, weekly };
+  const toWeekly = (n: number) => {
+    const hours = unit === "days" ? n * 8 : n;
+    return per === "week" ? hours : per === "month" ? hours / 4.33 : null;
+  };
+  return { low, high, unit, per, weekly: toWeekly(high ?? low), weeklyLow: toWeekly(low), source: sentence };
 }
 
 export function parseCount(sentence: string): CountQty | null {

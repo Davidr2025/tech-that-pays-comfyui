@@ -16,6 +16,7 @@ export interface ClientValues {
   industry: string;
   websiteUrl: string;
   calendarLink: string;
+  hourlyValue: string;
   brand: StoredBrandColors | null;
 }
 
@@ -110,6 +111,14 @@ export function ClientForm({ clientId, initial }: { clientId?: string; initial: 
           <div className="sm:col-span-2">
             <Field label="Booking link" hint="Optional. Overrides your default link on this client's review.">
               <Input id="calendarLink" value={v.calendarLink} onChange={(e) => set("calendarLink", e.target.value)} placeholder="https://calendly.com/you/30min" />
+            </Field>
+          </div>
+          <div className="sm:col-span-2">
+            <Field
+              label="Value of an hour of their team's time ($)"
+              hint="Optional. Your assumption, used only to put a dollar value on hours the client says they lose. The review labels it as an assumption."
+            >
+              <Input id="hourlyValue" inputMode="numeric" value={v.hourlyValue} onChange={(e) => set("hourlyValue", e.target.value)} placeholder="60" />
             </Field>
           </div>
         </CardContent>

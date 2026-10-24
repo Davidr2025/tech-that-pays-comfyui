@@ -37,6 +37,7 @@ export async function getClient(consultantId: string, id: string) {
     industry: c.industry,
     websiteUrl: c.websiteUrl,
     calendarLink: c.calendarLink,
+    hourlyValue: c.hourlyValue,
     brand: parseBrandColors(c.brandColors),
     sessions: c.sessions.map((s) => ({ id: s.id, title: s.title, status: s.status })),
   };
@@ -60,6 +61,7 @@ function clientData(consultantId: string, input: z.output<typeof clientSchema>) 
     industry: input.industry,
     websiteUrl: input.websiteUrl,
     calendarLink: input.calendarLink,
+    hourlyValue: input.hourlyValue,
     brandColors: input.brandColors ?? undefined,
   };
 }
