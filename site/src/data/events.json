@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-25T14:21:54.022Z",
+  "updatedAt": "2026-10-25T18:50:28.288Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-4/",
-      "start": "2026-10-25T18:00:00.000Z",
-      "end": "2026-10-25T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Cookbook Club",
       "summary": "Connect with fellow foodies through our monthly cookbook club.",
@@ -121,6 +111,16 @@
       "end": "2026-10-31T18:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "River Mouth IV: The 4th Dimension",
+      "summary": "River Mouth IV: The 4th Dimension brings the bars, beats, and energy to Mississauga for one massive night of hip-hop culture. Headlined by hometown heavyweights The Indestructible RUNXGUN , the night features explosive live performances from artists across the GTA, exclusive debuts of brand-new music recorded at Metalworks Studios, and the return of the high-stakes River Mouth Cypher , where elite MCs battle for bragging rights and a cash prize.",
+      "venue": "FLWR Event Space",
+      "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
+      "start": "2026-11-01T18:00:00.000Z",
+      "end": "2026-11-01T22:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
