@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-24T22:50:29.600Z",
+  "updatedAt": "2026-10-25T00:20:39.634Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Video Game Live Expo (VGLX)",
-      "summary": "Calling all Pokémon Trainers! VGLX is packed with Pokémon activities all weekend long, from scavenger hunts and mini-games to crafts, photo ops, card collecting and more. Whether you want to catch ’em all, make something of your own or hunt for your next favourite card, there’s something for Pokémon fans of every age.",
-      "venue": "The International Centre, Hall 4",
-      "url": "https://www.visitmississauga.ca/event/video-game-live-expo/",
-      "start": "2026-10-24T10:00:00.000Z",
-      "end": "2026-10-25T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
@@ -121,6 +111,16 @@
       "end": "2026-10-31T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
+      "summary": "Join us for a captivating Bharatanatyam dance performance!",
+      "venue": "Meadowvale Library",
+      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2002964127624",
+      "start": "2026-10-31T18:00:00.000Z",
+      "end": "2026-10-31T18:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
