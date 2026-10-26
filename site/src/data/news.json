@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-10-26T04:50:29.746Z",
+  "updatedAt": "2026-10-26T09:03:02.316Z",
   "items": [
+    {
+      "title": "Construction waste illegally dumped twice at site of iconic Mississauga restaurant",
+      "url": "https://www.insauga.com/construction-waste-illegally-dumped-twice-at-site-of-iconic-mississauga-restaurant/",
+      "source": "insauga.com",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-10-26T05:00:56.000Z",
+      "summary": "Someone is dumping truckloads of construction waste at the site of a landmark Mississauga restaurant, and the property owner is determined to find out who is responsible. George Hantzakos, who owns the former Satellite restaurant on Lakeshore Road West near Southdown Road in Clarkson, says the property has been targeted twice in less than three weeks, leaving him with an expensive cleanup bill from the first incident and a fresh pile of rubble to deal with after the latest dumping. The most recent incident happened on Oct. 24, when a dump truck pulled into the parking lot and unloaded a pile of cinder blocks, bricks, broken concrete, metal rebar and what appeared to be remnants of a broken toilet. For the second time, construction waste was dumped at the former Satellite restaurant on Lakeshore Road West in Clarkson. Security camera footage obtained from a neighbouring restaurant shows the truck travelling westbound on Lakeshore Road West before stopping in front of the property, backing into the parking lot and unloading the debris. The truck then drove away westbound, with its dump bed apparently not fully lowered. m. Police have been notified, and he has been contacting neighbouring businesses in hopes of finding additional surveillance footage that could help identify the truck and determine where it came from. The latest dumping came shortly after Hantzakos paid a contractor $1,000 to remove a previous load of waste discovered on Oct. 8. Now, he is facing another cleanup and damage to the parking area."
+    },
     {
       "title": "No Injuries Reported as Fire Crews Extinguish Mississauga Apartment Blaze",
       "url": "https://www.insauga.com/fire-breaks-out-in-mississauga-apartment-unit-roads-closed/",
@@ -8,8 +16,7 @@
       "sourceUrl": "https://www.insauga.com",
       "publishedAt": "2026-10-26T01:40:27.000Z",
       "summary": "Insauga.com reports a fire broke out in a Mississauga apartment unit on Sunday, with crews called to the scene before the flames were extinguished. According to police, there are no reports of anyone being physically injured in the fire. The outlet reports Mississauga Fire and Emergency Services remained on scene afterward to investigate what caused the blaze. According to the outlet, several roads in the surrounding area were closed while crews worked, though residents living on Kaneff Crescent still had access to their street. Police are asking members of the public to avoid the area until the scene clears. The outlet reports the cause of the fire had not been released as of Sunday.",
-      "rewritten": true,
-      "rewrittenAt": "2026-10-26T04:51:26.456Z"
+      "rewritten": true
     },
     {
       "title": "Man Dies After Early-Morning Stabbing, Peel Police Say Attacker Fled Scene",
@@ -55,6 +62,30 @@
       "publishedAt": "2026-10-25T10:30:00.000Z",
       "summary": "Mississauga.com reports Ontario residents in 414 towns and cities, including Mississauga, head to the polls Monday, Oct. 26, to elect mayors, councillors and school board trustees. According to the outlet, a handful of municipalities skip the vote entirely because their councils are made up of representatives chosen at the lower-tier level rather than elected directly citywide. The outlet reports that while some municipalities have shifted entirely to phone-in or online voting, most Ontario communities still run their elections through traditional paper ballots cast at a polling station. Many of those communities also offer telephone, online or mail-in voting alongside the paper ballot option, according to the outlet. Mississauga.com reports the easiest way for a registered voter to confirm where to go is to check the voter information card mailed to them several weeks before election day, since anyone who voted in a past municipal election is likely already registered.",
       "rewritten": true
+    },
+    {
+      "title": "This Malton resident wants to change perceptions of the neighbourhood, one garden at a time",
+      "url": "https://www.mississauga.com/news/malton-neighbourhood-gardening-mississauga/article_fb8cbfb5-acdc-59f8-b9e1-879ed9d4c65f.html",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-10-25T10:15:00.000Z",
+      "summary": "In the next few years, Vergara hopes the community will become the pollinator haven of Mississauga. Grace Vergara, founder of The Malton Pollinator Haven, hopes that a few years from now, her neighbourhood is known as the pollinator haven of Mississauga. A Malton resident has launched a local environmental initiative, encouraging her neighbours to plant native, pollinator-friendly gardens wherever they can — in their backyard, balcony, planter or boulevard in front of their home. This, Grace Vergara says, is her way of giving back to the community she calls home. “This initiative is rooted in gratitude. I want to give back to this community and to this land that has given me so much opportunity and the way I know how to give back is through gardening,” Vergara said in an interview with Mississauga News. Launched this past August, Growing Together — The Malton Pollinator Haven (TMPH) is a grassroots, resident-led initiative. The idea, Vergara says, came together after she read the book “Nature’s Best Hope: A New Approach to Conservation That Starts in Your Yard,” which introduced her to the importance of Ontario native plants that support local ecosystems and pollinators like bees and butterflies. She was quick to acknowledge she didn’t do it alone, and that she wasn’t sure anyone would respond when she first reached out to the Toronto and Region Conservation Authority (TRCA), Blooming Boulevards and Ward 5 Coun. Natalie Hart. “I sent the emails and I wasn’t expecting anything,” she said. “I was like, OK, I’m going to throw this here. If they respond, great."
+    },
+    {
+      "title": "Car Insurance ON Mississauga",
+      "url": "https://rates.ca/insurance-quotes/auto/mississauga",
+      "source": "Rates.ca",
+      "sourceUrl": "https://rates.ca",
+      "publishedAt": "2026-10-25T09:49:32.000Z",
+      "summary": "Car Insurance ON Mississauga Rates.ca"
+    },
+    {
+      "title": "Voter turnout in Peel region tends to be low. Meet the students trying to change that",
+      "url": "https://www.cbc.ca/news/canada/toronto/voter-turnout-in-peel-region-tends-to-be-low-meet-the-students-trying-to-change-that-9.7394743?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-10-25T09:00:00.000Z",
+      "summary": "Voice the Vote, a student-led community initiative is working to address barriers to voting and civic engagement in hopes of reversing the trend of low voter turnout in Toronto, York and Peel regions in the upcoming municipal election."
     },
     {
       "title": "Coroner Sets November Date for Inquest Into 2020 Death of Jamal Francique",
