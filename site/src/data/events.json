@@ -1,7 +1,17 @@
 {
-  "updatedAt": "2026-10-26T13:05:16.361Z",
+  "updatedAt": "2026-10-26T16:58:47.738Z",
   "windowDays": 14,
   "items": [
+    {
+      "title": "The Other Side: Haunted Mississauga Revisited",
+      "summary": "Are you curious about tales from the other side? As the autumn air turns crisp, get into the holiday spirit and relish in local ghostly tales. This talk, presented by historian Matthew Wilkinson, will explore spooky happenings and unexplained phenomena from Mississauga's history. Drawing from the 2006 book “Haunted Mississauga” and research by Terry Boyle, Matthew will guide you through Mississauga’s eerie history and the ghostly legends that linger in our backyard.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/the-other-side-haunted-mississauga-revisited/",
+      "start": "2026-10-27T12:30:00.000Z",
+      "end": "2026-10-27T14:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
     {
       "title": "Cookbook Club",
       "summary": "Connect with fellow foodies through our monthly cookbook club.",
@@ -111,16 +121,6 @@
       "end": "2026-10-31T18:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "River Mouth IV: The 4th Dimension",
-      "summary": "River Mouth IV: The 4th Dimension brings the bars, beats, and energy to Mississauga for one massive night of hip-hop culture. Headlined by hometown heavyweights The Indestructible RUNXGUN , the night features explosive live performances from artists across the GTA, exclusive debuts of brand-new music recorded at Metalworks Studios, and the return of the high-stakes River Mouth Cypher , where elite MCs battle for bragging rights and a cash prize.",
-      "venue": "FLWR Event Space",
-      "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
-      "start": "2026-11-01T18:00:00.000Z",
-      "end": "2026-11-01T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
