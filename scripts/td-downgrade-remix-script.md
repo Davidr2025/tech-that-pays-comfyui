@@ -128,7 +128,7 @@ And the thing most people skip? Step four. Asking. It costs you nothing, and len
 ## SCENE 8 — Why now + End CTA + Comment bait
 [WORD-FOR-WORD]
 
-Here's why this matters right now. TD just told you where it thinks Ontario is headed. Lenders are reading the same outlook you are, and they're adjusting. The borrowers who look at their own situation now get to choose. The ones who wait for the next headline take what they're given.
+Here's why this matters right now. TD just told you where it thinks Ontario is headed. Lenders watch these forecasts too. The borrowers who look at their own situation now get to choose. The ones who wait for the next headline take what they're given.
 
 A forecast cut is not a reason to panic. It's a reason to look at your own situation clearly, today, while you still have choices.
 
