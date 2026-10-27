@@ -27,7 +27,7 @@ C: Split screen, worried homeowner vs David | "WHAT NOW?"
 
 ## FACT CHECK BEFORE RECORDING (not spoken)
 - [VERIFY] Confirm the date and Ontario-specific figures in TD Economics' latest Provincial Housing Outlook at economics.td.com. My web search could not confirm the October figures, so the script below states no numbers about the forecast.
-- [VERIFY] Insert David's real proof points where marked [DAVID: ...]. None were available to me, and I did not invent any.
+- No client story is included (David chose to skip it); no proof points were invented.
 
 ---
 
@@ -83,8 +83,6 @@ I want you to hear this clearly. That first renewal offer is a starting point, n
 Think about what the next five years look like if you sign the first letter. Same payment, same bank, same habit, and a rate you never questioned. Now think about the other version. You spend one week comparing offers. You ask your lender to match. You see the real numbers. And you walk into your new term knowing you got the best deal available, not the easiest one.
 
 Same house. Same income. One week of effort. That's the gap.
-
-[DAVID: insert one real, specific client renewal story here, with details anonymized. Do not use a made-up one.]
 
 And when the market gets uncertain, lenders compete harder for the borrowers they actually want. That's your leverage. Use it.
 
