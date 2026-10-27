@@ -106,7 +106,7 @@ The better question isn't, is this the bottom? It's, can I comfortably carry thi
 ## SCENE 6 — Mid-video CTA
 [WORD-FOR-WORD]
 
-If you're staring at a renewal or a purchase and you're not sure what the right move is, I put together a free checklist that walks you through exactly what to compare. The link's in the description.
+If you're staring at a renewal or a purchase and you're not sure what TD's outlook means for you, I'll review your situation with you. The link's in the description.
 
 ## SCENE 7 — The five-minute renewal plan
 [WORD-FOR-WORD]
@@ -128,13 +128,13 @@ And the thing most people skip? Step four. Asking. It costs you nothing, and len
 ## SCENE 8 — Why now + End CTA + Comment bait
 [WORD-FOR-WORD]
 
-Here's why this matters right now. Millions of Canadian mortgages are coming up for renewal over the next couple of years, and lenders know it. The borrowers who prepare get the best terms. The ones who wait for the letter take what they're given.
+Here's why this matters right now. TD just told you where it thinks Ontario is headed. Lenders are reading the same outlook you are, and they're adjusting. The borrowers who look at their own situation now get to choose. The ones who wait for the next headline take what they're given.
 
 A forecast cut is not a reason to panic. It's a reason to look at your own situation clearly, today, while you still have choices.
 
 So here's my ask. Don't let a headline decide your mortgage. Let your numbers decide it.
 
-If you want a second set of eyes on your renewal or your purchase, reach out. I'll go through your situation and show you where you stand. Details are in the description.
+If you want a second set of eyes on what TD's outlook means for your renewal or your purchase, I'll review your situation with you. Use the link in the description.
 
 And tell me in the comments: are you renewing soon, buying soon, or just watching? I read these.
 
