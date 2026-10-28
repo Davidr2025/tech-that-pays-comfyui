@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-28T16:37:48.093Z",
+  "updatedAt": "2026-10-28T20:51:51.665Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Cookbook Club",
-      "summary": "Connect with fellow foodies through our monthly cookbook club.",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-2002084694215",
-      "start": "2026-10-28T18:00:00.000Z",
-      "end": "2026-10-28T19:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Indoor Composting with Vermicompost",
       "summary": "Learn about indoor composting with vermicompost!",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
       "start": "2026-11-01T18:00:00.000Z",
       "end": "2026-11-01T22:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-6/",
+      "start": "2026-11-01T18:00:00.000Z",
+      "end": "2026-11-01T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
