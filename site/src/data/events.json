@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-29T13:03:32.045Z",
+  "updatedAt": "2026-10-29T16:51:04.216Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Startup Tour Mississauga",
-      "summary": "The 2026 Startup Canada Tour will be at the Living Arts Centre on October 29, 2026 As entrepreneurs navigate rising costs, emerging technologies, and an increasingly complex business landscape, this event is your go-to source for expert talks and networking to help you adapt, grow, and scale your business. Don't miss this incredible opportunity to take your business to the next level!",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/startup-tour-mississauga/",
-      "start": "2026-10-29T09:30:00.000Z",
-      "end": "2026-10-29T14:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Mississauga sBOOky Village",
       "summary": "Get ready for four days of frightfully fun fall festivities at Mississauga sBOOky Village ! Taking over Square One from October 29 to November 1, this Halloween and harvest-themed event features local vendors, delicious food, festive displays, family-friendly activities, a scavenger hunt, pumpkin carving, costume contests, and more. Soak up the seasonal atmosphere by day, then enjoy a Halloween DJ party after dark.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003607040594",
       "start": "2026-11-03T19:00:00.000Z",
       "end": "2026-11-03T20:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Lecture Me! Disabling Cities: Stories about Food, Barriers and Safety",
+      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
+      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/lecture-me-disabling-cities-stories-about-food-barriers-and-safety-tickets-1998486885071",
+      "start": "2026-11-04T00:00:00.000Z",
+      "end": "2026-11-04T01:15:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
