@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-28T20:51:51.665Z",
+  "updatedAt": "2026-10-29T00:50:55.020Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Indoor Composting with Vermicompost",
-      "summary": "Learn about indoor composting with vermicompost!",
-      "venue": "Woodlands Library",
-      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001085175628",
-      "start": "2026-10-28T21:30:00.000Z",
-      "end": "2026-10-28T23:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "Author Talks with Kelley Armstrong",
-      "summary": "Best selling author, Kelley Armstrong, will talk about her books and writing experiences.",
-      "venue": "",
-      "url": "https://www.eventbrite.ca/e/author-talks-with-kelley-armstrong-tickets-1996819459757",
-      "start": "2026-10-28T23:00:00.000Z",
-      "end": "2026-10-29T00:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Startup Tour Mississauga",
       "summary": "The 2026 Startup Canada Tour will be at the Living Arts Centre on October 29, 2026 As entrepreneurs navigate rising costs, emerging technologies, and an increasingly complex business landscape, this event is your go-to source for expert talks and networking to help you adapt, grow, and scale your business. Don't miss this incredible opportunity to take your business to the next level!",
@@ -121,6 +101,26 @@
       "end": "2026-11-01T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Bring Your Own Craft Club",
+      "summary": "Need some creative company? Come by our Bring Your Own Craft Club to connect with fellow makers and get a boost of motivation. Spend an afternoon socializing and tackling those unfinished projects. Come meet us at the Small Arms Building (in the south west corner at the blue couches across from the garage door by the main entrance, picture below) and enjoy the company of other crafters. Don’t have a project started yet?",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/bring-your-own-craft-club/",
+      "start": "2026-11-03T12:30:00.000Z",
+      "end": "2026-11-03T14:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Preserving the Harvest Naturally",
+      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
+      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
+      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003607040594",
+      "start": "2026-11-03T19:00:00.000Z",
+      "end": "2026-11-03T20:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
