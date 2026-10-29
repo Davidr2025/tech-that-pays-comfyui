@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T17:22:31.658Z",
+  "updatedAt": "2026-10-29T21:50:24.684Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,6 +9,26 @@
       "url": "https://www.visitmississauga.ca/event/mississauga-sbooky-village/",
       "start": "2026-10-29T17:00:00.000Z",
       "end": "2026-11-01T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "14th Annual Latin Festival",
+      "summary": "The Latin Festival is a vibrant two-day celebration showcasing the richness and diversity of Latin American heritage. Visitors can enjoy live Latin music, traditional folk dance performances, cultural workshops, and a variety of family-friendly activities. The festival will also feature community information tables highlighting local organizations, groups, and services, offering attendees valuable resources and opportunities to connect with the community.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/14th-annual-latin-festival/",
+      "start": "2026-10-30T17:00:00.000Z",
+      "end": "2026-10-31T21:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Big Monster Mash Dance Party",
+      "summary": "Get those costumes ready and dancing shoes on! Families are invited to kick off Halloween weekend at the Monster Mash Dance Party at Brightwater Pop-Up Park . Guests are encouraged to dress up as their favourite family-friendly monster and enjoy a high-energy, gym-style dance party inside a fully enclosed and heated tent.",
+      "venue": "Brightwater Pop-Up Park",
+      "url": "https://www.visitmississauga.ca/event/the-big-monster-mash-dance-party/",
+      "start": "2026-10-30T17:30:00.000Z",
+      "end": "2026-10-30T20:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -53,6 +73,16 @@
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
     {
+      "title": "The Great Pumpkin Patch",
+      "summary": "Celebrate Halloween at The Great Pumpkin Patch! 🎃 Families are invited to Port Credit for an afternoon of pumpkins, creativity, and Halloween-themed activities. Guests can select their favourite pumpkin from the pumpkin patch before heading into a fully heated tent to enjoy a variety of family-friendly experiences.",
+      "venue": "Brightwater Pop-Up Park",
+      "url": "https://www.visitmississauga.ca/event/the-great-pumpkin-patch/",
+      "start": "2026-10-31T14:30:00.000Z",
+      "end": "2026-10-31T17:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
       "venue": "Hyatt Place, Luxe Convention Centre",
@@ -73,6 +103,16 @@
       "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
+      "title": "Día de los Muertos Drag Brunch",
+      "summary": "Celebrate Día de los Muertos with an unforgettable afternoon of culture, entertainment, and community! Experience a spectacular live show featuring an incredible lineup of drag performers, including internationally acclaimed artists, fan favourites from the Drag Race franchise, and some of Canada's most celebrated drag talent. Enjoy dazzling performances, vibrant mariachi music, and a festive atmosphere that honours tradition through art, music, and self-expression.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/dia-de-los-muertos-drag-brunch/",
+      "start": "2026-11-01T11:00:00.000Z",
+      "end": "2026-11-01T13:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
       "title": "River Mouth IV: The 4th Dimension",
       "summary": "River Mouth IV: The 4th Dimension brings the bars, beats, and energy to Mississauga for one massive night of hip-hop culture. Headlined by hometown heavyweights The Indestructible RUNXGUN , the night features explosive live performances from artists across the GTA, exclusive debuts of brand-new music recorded at Metalworks Studios, and the return of the high-stakes River Mouth Cypher , where elite MCs battle for bragging rights and a cash prize.",
       "venue": "FLWR Event Space",
@@ -81,46 +121,6 @@
       "end": "2026-11-01T22:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-6/",
-      "start": "2026-11-01T18:00:00.000Z",
-      "end": "2026-11-01T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Bring Your Own Craft Club",
-      "summary": "Need some creative company? Come by our Bring Your Own Craft Club to connect with fellow makers and get a boost of motivation. Spend an afternoon socializing and tackling those unfinished projects. Come meet us at the Small Arms Building (in the south west corner at the blue couches across from the garage door by the main entrance, picture below) and enjoy the company of other crafters. Don’t have a project started yet?",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/bring-your-own-craft-club/",
-      "start": "2026-11-03T12:30:00.000Z",
-      "end": "2026-11-03T14:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Preserving the Harvest Naturally",
-      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
-      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
-      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003607040594",
-      "start": "2026-11-03T19:00:00.000Z",
-      "end": "2026-11-03T20:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "Lecture Me! Disabling Cities: Stories about Food, Barriers and Safety",
-      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
-      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/lecture-me-disabling-cities-stories-about-food-barriers-and-safety-tickets-1998486885071",
-      "start": "2026-11-04T00:00:00.000Z",
-      "end": "2026-11-04T01:15:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
