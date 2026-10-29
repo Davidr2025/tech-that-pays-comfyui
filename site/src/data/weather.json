@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-29T16:51:04.786Z",
+  "updatedAt": "2026-10-29T16:55:52.689Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
@@ -13,7 +13,7 @@
       "date": "2026-10-29",
       "max": 22,
       "min": 7,
-      "precipChance": 21,
+      "precipChance": 25,
       "text": "Fog",
       "icon": "🌫️"
     },
