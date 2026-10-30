@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-29T21:50:24.684Z",
+  "updatedAt": "2026-10-30T01:49:54.547Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga sBOOky Village",
-      "summary": "Get ready for four days of frightfully fun fall festivities at Mississauga sBOOky Village ! Taking over Square One from October 29 to November 1, this Halloween and harvest-themed event features local vendors, delicious food, festive displays, family-friendly activities, a scavenger hunt, pumpkin carving, costume contests, and more. Soak up the seasonal atmosphere by day, then enjoy a Halloween DJ party after dark.",
-      "venue": "Square One Shopping Centre, P6 Parking Lot",
-      "url": "https://www.visitmississauga.ca/event/mississauga-sbooky-village/",
-      "start": "2026-10-29T17:00:00.000Z",
-      "end": "2026-11-01T21:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "14th Annual Latin Festival",
       "summary": "The Latin Festival is a vibrant two-day celebration showcasing the richness and diversity of Latin American heritage. Visitors can enjoy live Latin music, traditional folk dance performances, cultural workshops, and a variety of family-friendly activities. The festival will also feature community information tables highlighting local organizations, groups, and services, offering attendees valuable resources and opportunities to connect with the community.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
       "start": "2026-11-01T18:00:00.000Z",
       "end": "2026-11-01T22:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-6/",
+      "start": "2026-11-01T18:00:00.000Z",
+      "end": "2026-11-01T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
