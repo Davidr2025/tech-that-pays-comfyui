@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-10-30T14:50:45.846Z",
+  "updatedAt": "2026-10-30T16:43:22.133Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 11,
-    "feelsLike": 7,
-    "text": "Mainly clear",
-    "icon": "🌤️"
+    "temp": 12,
+    "feelsLike": 8,
+    "text": "Overcast",
+    "icon": "☁️"
   },
   "days": [
     {
       "date": "2026-10-30",
       "max": 14,
       "min": 6,
-      "precipChance": 0,
+      "precipChance": 1,
       "text": "Overcast",
       "icon": "☁️"
     },
