@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-31T09:50:04.670Z",
+  "updatedAt": "2026-10-31T13:50:37.681Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Streetsville Spooktacular",
-      "summary": "Streetsville Spooktacular Presented by Amica Credit Mills Get ready for a spine-tingling good time! Streetsville Spooktacular is back with tricks, treats and plenty of frightfully fun Halloween activities for the whole family. Dress up in your Halloween best and stroll through the Village for trick-or-treating at participating businesses. Bring your own bag and get ready to fill it with plenty of sweet surprises.",
-      "venue": "Village of Streetsville",
-      "url": "https://www.visitmississauga.ca/event/streetsville-spooktacular-2/",
-      "start": "2026-10-31T10:00:00.000Z",
-      "end": "2026-10-31T13:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Halloween in the Village 2026",
       "summary": "Halloween in the Village is back on Saturday, October 31, 2026 , bringing an afternoon of family-friendly fun to Clarkson Village. Put on your favourite costume and join us for an exciting community celebration featuring: 🎃 Bouncy Castles 🚂 Trackless Train 🎡 Games 🎨 Face Painting 🎭 Live Performances 🍬 Tricks & Treats 👻 Plus a few spooky surprises that promise to be frightfully good!",
@@ -121,6 +111,16 @@
       "end": "2026-11-05T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "The Credits 2026: An Evening of Regency Elegance",
+      "summary": "Heritage Mississauga invites the community to The Credits 2026: An Evening of Regency Elegance , its annual awards gala celebrating the individuals, organizations, artists, and community leaders who contribute to shaping Mississauga’s story. Inspired by the world of Jane Austen and Bridgerton , the elegant evening will feature fine dining, entertainment, and the presentation of Heritage Mississauga’s prestigious Heritage Hero Awards .",
+      "venue": "Mississauga Grand Banquet and Event Centre",
+      "url": "https://www.visitmississauga.ca/event/the-credits-2026-an-evening-of-regency-elegance/",
+      "start": "2026-11-05T17:00:00.000Z",
+      "end": "2026-11-05T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
