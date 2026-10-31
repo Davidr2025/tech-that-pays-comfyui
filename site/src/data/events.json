@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-10-30T20:51:21.851Z",
+  "updatedAt": "2026-10-31T00:50:31.276Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "14th Annual Latin Festival",
-      "summary": "The Latin Festival is a vibrant two-day celebration showcasing the richness and diversity of Latin American heritage. Visitors can enjoy live Latin music, traditional folk dance performances, cultural workshops, and a variety of family-friendly activities. The festival will also feature community information tables highlighting local organizations, groups, and services, offering attendees valuable resources and opportunities to connect with the community.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/14th-annual-latin-festival/",
-      "start": "2026-10-30T17:00:00.000Z",
-      "end": "2026-10-31T21:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Scott Bradlee's Postmodern Jukebox – The Future Is Vintage World Tour",
-      "summary": "Postmodern Jukebox brings its signature vintage-inspired sound to the stage with The Future is Vintage Tour . Known for reimagining modern hits in classic jazz, swing, soul, and big band styles, the internationally acclaimed music collective delivers a high-energy live experience featuring talented singers, dancers, and musicians. Audiences can expect fresh takes on songs spanning multiple decades, from classic rock favourites to contemporary chart-toppers, movie themes, and more.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/scott-bradlees-postmodern-jukebox-the-future-is-vintage-world-tour/",
-      "start": "2026-10-30T20:00:00.000Z",
-      "end": "2026-10-30T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Streetsville Spooktacular",
       "summary": "Streetsville Spooktacular Presented by Amica Credit Mills Get ready for a spine-tingling good time! Streetsville Spooktacular is back with tricks, treats and plenty of frightfully fun Halloween activities for the whole family. Dress up in your Halloween best and stroll through the Village for trick-or-treating at participating businesses. Bring your own bag and get ready to fill it with plenty of sweet surprises.",
@@ -119,6 +99,26 @@
       "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003607040594",
       "start": "2026-11-03T19:00:00.000Z",
       "end": "2026-11-03T20:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Lecture Me! Disabling Cities: Stories about Food, Barriers and Safety",
+      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
+      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/lecture-me-disabling-cities-stories-about-food-barriers-and-safety-tickets-1998486885071",
+      "start": "2026-11-04T00:00:00.000Z",
+      "end": "2026-11-04T01:15:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Preserving the Harvest Naturally",
+      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
+      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
+      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003614611238",
+      "start": "2026-11-04T23:30:00.000Z",
+      "end": "2026-11-05T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
