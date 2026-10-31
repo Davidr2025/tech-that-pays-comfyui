@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-10-31T13:50:37.681Z",
+  "updatedAt": "2026-10-31T15:44:32.918Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Halloween in the Village 2026",
-      "summary": "Halloween in the Village is back on Saturday, October 31, 2026 , bringing an afternoon of family-friendly fun to Clarkson Village. Put on your favourite costume and join us for an exciting community celebration featuring: 🎃 Bouncy Castles 🚂 Trackless Train 🎡 Games 🎨 Face Painting 🎭 Live Performances 🍬 Tricks & Treats 👻 Plus a few spooky surprises that promise to be frightfully good!",
-      "venue": "",
-      "url": "https://www.visitmississauga.ca/event/halloween-in-the-village-2026/",
-      "start": "2026-10-31T11:00:00.000Z",
-      "end": "2026-10-31T14:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Great Pumpkin Patch",
       "summary": "Celebrate Halloween at The Great Pumpkin Patch! 🎃 Families are invited to Port Credit for an afternoon of pumpkins, creativity, and Halloween-themed activities. Guests can select their favourite pumpkin from the pumpkin patch before heading into a fully heated tent to enjoy a variety of family-friendly experiences.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/the-credits-2026-an-evening-of-regency-elegance/",
       "start": "2026-11-05T17:00:00.000Z",
       "end": "2026-11-05T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-7/",
+      "start": "2026-11-05T19:00:00.000Z",
+      "end": "2026-11-05T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
