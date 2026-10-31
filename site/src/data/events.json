@@ -1,37 +1,7 @@
 {
-  "updatedAt": "2026-10-31T15:44:32.918Z",
+  "updatedAt": "2026-10-31T19:51:09.160Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Great Pumpkin Patch",
-      "summary": "Celebrate Halloween at The Great Pumpkin Patch! 🎃 Families are invited to Port Credit for an afternoon of pumpkins, creativity, and Halloween-themed activities. Guests can select their favourite pumpkin from the pumpkin patch before heading into a fully heated tent to enjoy a variety of family-friendly experiences.",
-      "venue": "Brightwater Pop-Up Park",
-      "url": "https://www.visitmississauga.ca/event/the-great-pumpkin-patch/",
-      "start": "2026-10-31T14:30:00.000Z",
-      "end": "2026-10-31T17:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-5/",
-      "start": "2026-10-31T18:00:00.000Z",
-      "end": "2026-10-31T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
-      "summary": "Join us for a captivating Bharatanatyam dance performance!",
-      "venue": "Meadowvale Library",
-      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2002964127624",
-      "start": "2026-10-31T18:00:00.000Z",
-      "end": "2026-10-31T18:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Día de los Muertos Drag Brunch",
       "summary": "Celebrate Día de los Muertos with an unforgettable afternoon of culture, entertainment, and community! Experience a spectacular live show featuring an incredible lineup of drag performers, including internationally acclaimed artists, fan favourites from the Drag Race franchise, and some of Canada's most celebrated drag talent. Enjoy dazzling performances, vibrant mariachi music, and a festive atmosphere that honours tradition through art, music, and self-expression.",
@@ -121,6 +91,36 @@
       "end": "2026-11-05T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Illuminating the Stories of WWII: Movie Screening and Sculpture Talk",
+      "summary": "This Remembrance Day celebrate and reflect on the history, sacrifices and personal stories of Canadian soldiers and of Dutch civilians during the liberation of the Netherlands in World War II. Come enjoy this multifaceted evening, which includes a photo display, film screening and informative talk. Five photographs by Jason Van Bruggen from the 80 Years of Freedom Exhibition will be on view during this event. There will also be a screening of the film 80 Faces of Liberation also by Jason van Bruggen.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/illuminating-the-stories-of-wwii-movie-screening-and-sculpture-talk/",
+      "start": "2026-11-05T19:00:00.000Z",
+      "end": "2026-11-05T21:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-8/",
+      "start": "2026-11-06T19:00:00.000Z",
+      "end": "2026-11-06T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Mississauga Comic Expo",
+      "summary": "Enjoy an evening of board games, Dungeons & Dragons, Pokémon crafts, collectibles trading, a movie screening and superhero trivia.",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/mississauga-comic-expo-tickets-1998900793081",
+      "start": "2026-11-06T21:30:00.000Z",
+      "end": "2026-11-07T01:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
