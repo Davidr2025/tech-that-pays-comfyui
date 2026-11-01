@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-01T09:50:23.105Z",
+  "updatedAt": "2026-11-01T13:50:46.240Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Día de los Muertos Drag Brunch",
-      "summary": "Celebrate Día de los Muertos with an unforgettable afternoon of culture, entertainment, and community! Experience a spectacular live show featuring an incredible lineup of drag performers, including internationally acclaimed artists, fan favourites from the Drag Race franchise, and some of Canada's most celebrated drag talent. Enjoy dazzling performances, vibrant mariachi music, and a festive atmosphere that honours tradition through art, music, and self-expression.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/dia-de-los-muertos-drag-brunch/",
-      "start": "2026-11-01T11:00:00.000Z",
-      "end": "2026-11-01T13:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "River Mouth IV: The 4th Dimension",
       "summary": "River Mouth IV: The 4th Dimension brings the bars, beats, and energy to Mississauga for one massive night of hip-hop culture. Headlined by hometown heavyweights The Indestructible RUNXGUN , the night features explosive live performances from artists across the GTA, exclusive debuts of brand-new music recorded at Metalworks Studios, and the return of the high-stakes River Mouth Cypher , where elite MCs battle for bragging rights and a cash prize.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/mississauga-comic-expo-tickets-1998900793081",
       "start": "2026-11-06T21:30:00.000Z",
       "end": "2026-11-07T01:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Mississauga Comic Expo",
+      "summary": "Exhibitors, workshops, panels, cosplay shoots, tabletop board game demos, video game free-play sessions, presentations, and featured guests.",
+      "venue": "Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/mississauga-comic-expo-tickets-1998900404920",
+      "start": "2026-11-07T15:00:00.000Z",
+      "end": "2026-11-07T21:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
