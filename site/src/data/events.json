@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T16:48:48.108Z",
+  "updatedAt": "2026-11-01T20:50:38.132Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,16 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
       "start": "2026-11-01T18:00:00.000Z",
       "end": "2026-11-01T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-6/",
-      "start": "2026-11-01T18:00:00.000Z",
-      "end": "2026-11-01T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -121,6 +111,16 @@
       "end": "2026-11-07T21:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "CABINFEST 2026",
+      "summary": "This community fundraiser brings together great food, drinks, entertainment, and local spirit, with all proceeds supporting The Compass Food Bank .",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/cabinfest-2026/",
+      "start": "2026-11-07T18:30:00.000Z",
+      "end": "2026-11-07T18:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
