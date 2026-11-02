@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-01T20:50:38.132Z",
+  "updatedAt": "2026-11-02T00:50:33.199Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "River Mouth IV: The 4th Dimension",
-      "summary": "River Mouth IV: The 4th Dimension brings the bars, beats, and energy to Mississauga for one massive night of hip-hop culture. Headlined by hometown heavyweights The Indestructible RUNXGUN , the night features explosive live performances from artists across the GTA, exclusive debuts of brand-new music recorded at Metalworks Studios, and the return of the high-stakes River Mouth Cypher , where elite MCs battle for bragging rights and a cash prize.",
-      "venue": "FLWR Event Space",
-      "url": "https://www.visitmississauga.ca/event/river-mouth-iv-the-4th-dimension/",
-      "start": "2026-11-01T18:00:00.000Z",
-      "end": "2026-11-01T22:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Bring Your Own Craft Club",
       "summary": "Need some creative company? Come by our Bring Your Own Craft Club to connect with fellow makers and get a boost of motivation. Spend an afternoon socializing and tackling those unfinished projects. Come meet us at the Small Arms Building (in the south west corner at the blue couches across from the garage door by the main entrance, picture below) and enjoy the company of other crafters. Don’t have a project started yet?",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/cabinfest-2026/",
       "start": "2026-11-07T18:30:00.000Z",
       "end": "2026-11-07T18:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Great Toy Exchange",
+      "summary": "Do you have toys you want to get rid of? Maybe you're tripping over that lego or your kids aren't playing with those dolls anymore? Join The Great Toy Exchange in Streetsville! Give gently used toys a second life and connect with your local community. The Great Toy Exchange is a neighbourhood initiative designed to keep gently-used toys out of landfills, promote sustainability, and bring local families together. Locations : Myofascial Release Mississauga (Sunday, November 8 at 10AM-1PM) The Old Credit Brewing Co.",
+      "venue": "",
+      "url": "https://www.visitmississauga.ca/event/the-great-toy-exchange/",
+      "start": "2026-11-08T10:00:00.000Z",
+      "end": "2026-11-08T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
