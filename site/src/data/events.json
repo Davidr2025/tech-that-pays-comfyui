@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-03T19:51:30.813Z",
+  "updatedAt": "2026-11-03T23:50:37.160Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Preserving the Harvest Naturally",
-      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
-      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
-      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003607040594",
-      "start": "2026-11-03T19:00:00.000Z",
-      "end": "2026-11-03T20:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Lecture Me! Disabling Cities: Stories about Food, Barriers and Safety",
       "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
@@ -121,6 +111,16 @@
       "end": "2026-11-08T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Indoor Composting with Vermicompost",
+      "summary": "Learn about indoor composting with vermicompost!",
+      "venue": "Burnhamthorpe Library",
+      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001086790458",
+      "start": "2026-11-11T23:30:00.000Z",
+      "end": "2026-11-12T01:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
