@@ -4,7 +4,7 @@ import config from "../../../../../site.config.mjs";
 import places from "../../../../data/places.json";
 import claimedPlaces from "../../../../data/claimed-places.json";
 import listingCorrections from "../../../../data/listing-corrections.json";
-import { applyListingOverrides, withClaimed } from "../../../../lib/listing-data.mjs";
+import { applyListingOverrides, withClaimed, photoSrc } from "../../../../lib/listing-data.mjs";
 
 // Fully static — one prerendered claim page per business, generated at
 // build time from places.json, mirroring the business detail page route.
@@ -45,7 +45,7 @@ const web3formsReady = config.web3formsAccessKey && !config.web3formsAccessKey.s
     <div class="claim-current">
       <h3>Your current listing {b.claimed && <span class="verified-badge">✓ Verified</span>}</h3>
       <div class="claim-current-body">
-        {b.photo && <img class="claim-current-photo" src={b.photo} alt={b.name} />}
+        {b.photo && <img class="claim-current-photo" src={photoSrc(b.photo, base)} alt={b.name} />}
         <dl class="claim-current-facts">
           <div><dt>Name</dt><dd>{b.name}</dd></div>
           <div><dt>Category</dt><dd>{b.subcategory || cat.label}</dd></div>

@@ -11,3 +11,12 @@ export function withClaimed(business, claimedPlaces) {
   const claim = claimedPlaces.find((c) => c.id === business.id);
   return { ...business, claimed: Boolean(claim), claimedEmail: claim?.email || null };
 }
+
+// fetch-places.mjs stores photo as a path relative to public/ (e.g.
+// "images/places/<id>.jpg") so it needs the site's base prefix at render
+// time; older cached entries from before the local-photo-cache change may
+// still hold a full Google-hosted URL, which must be used as-is.
+export function photoSrc(photo, base) {
+  if (!photo) return null;
+  return /^https?:\/\//.test(photo) ? photo : `${base}${photo}`;
+}

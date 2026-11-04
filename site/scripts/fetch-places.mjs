@@ -1,3 +1,6 @@
+import { writeFileSync, mkdirSync, existsSync, readdirSync, unlinkSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import config from "../site.config.mjs";
 import { readData, writeData, log, warn } from "./lib/util.mjs";
 
@@ -6,6 +9,12 @@ import { readData, writeData, log, warn } from "./lib/util.mjs";
 //  - re-fetch only when the cache is older than places.cacheDays
 //    (or when run with --force), so quota is never spent on page loads
 const SEARCH_URL = "https://places.googleapis.com/v1/places:searchText";
+
+// Photos are downloaded once per refresh and committed as static assets
+// under public/images/places/ — see downloadPhoto() below for why.
+const PLACES_IMAGES_DIR = join(
+  dirname(fileURLToPath(import.meta.url)), "..", "public", "images", "places"
+);
 // NOTE on billing: rating/userRatingCount/regularOpeningHours/websiteUri
 // are all Enterprise-tier fields, so this request is already billed at the
 // Enterprise SKU ($35/1,000 calls, 1,000 free/month) — adding
@@ -41,16 +50,65 @@ async function searchText(apiKey, query, pageSize) {
   return json.places || [];
 }
 
-async function photoUrl(apiKey, photoName) {
+function extFromContentType(ct) {
+  if (ct?.includes("png")) return "png";
+  if (ct?.includes("webp")) return "webp";
+  return "jpg";
+}
+
+// Google's photo-media endpoint hands back a short-lived signed CDN URL
+// (lh3.googleusercontent.com/place-photos/...), not a stable permanent
+// link — it's meant to be used immediately, not cached for a month. Storing
+// that URL directly in places.json is what caused directory photos to go
+// dark well before the next monthly refresh. Download the actual bytes
+// once here instead and keep them as a local static asset, so the photo
+// never expires regardless of how old the rest of the cache gets.
+async function downloadPhoto(apiKey, photoName, placeId) {
   try {
-    const res = await fetch(
+    const metaRes = await fetch(
       `https://places.googleapis.com/v1/${photoName}/media?maxWidthPx=1200&skipHttpRedirect=true&key=${apiKey}`
     );
-    if (!res.ok) return null;
-    const json = await res.json();
-    return json.photoUri || null;
-  } catch {
+    if (!metaRes.ok) return null;
+    const { photoUri } = await metaRes.json();
+    if (!photoUri) return null;
+
+    const imgRes = await fetch(photoUri);
+    if (!imgRes.ok) return null;
+    const safeId = placeId.replace(/[^a-zA-Z0-9_-]/g, "");
+    const filename = `${safeId}.${extFromContentType(imgRes.headers.get("content-type"))}`;
+    mkdirSync(PLACES_IMAGES_DIR, { recursive: true });
+    writeFileSync(join(PLACES_IMAGES_DIR, filename), Buffer.from(await imgRes.arrayBuffer()));
+    return `images/places/${filename}`;
+  } catch (e) {
+    warn(`places: photo download failed for ${placeId}: ${e.message}`);
     return null;
+  }
+}
+
+/** Delete any locally-cached photo no longer referenced by the final
+ *  category list (dropped/excluded businesses), so storage doesn't grow
+ *  unbounded across monthly refreshes. */
+function cleanupOrphanedPhotos(categories) {
+  try {
+    if (!existsSync(PLACES_IMAGES_DIR)) return;
+    const expected = new Set();
+    for (const cat of categories) {
+      for (const b of cat.businesses) {
+        if (b.photo?.startsWith("images/places/")) {
+          expected.add(b.photo.slice("images/places/".length));
+        }
+      }
+    }
+    let removed = 0;
+    for (const file of readdirSync(PLACES_IMAGES_DIR)) {
+      if (!expected.has(file)) {
+        unlinkSync(join(PLACES_IMAGES_DIR, file));
+        removed++;
+      }
+    }
+    if (removed) log(`places: removed ${removed} orphaned cached photo(s)`);
+  } catch (e) {
+    warn(`places: photo cleanup failed: ${e.message}`);
   }
 }
 
@@ -80,7 +138,7 @@ function businessSlug(name, placeId) {
 }
 
 async function toBusiness(apiKey, p, subcategory) {
-  const photo = p.photos?.[0]?.name ? await photoUrl(apiKey, p.photos[0].name) : null;
+  const photo = p.photos?.[0]?.name ? await downloadPhoto(apiKey, p.photos[0].name, p.id) : null;
   const name = p.displayName?.text || "";
   return {
     id: p.id,
@@ -202,6 +260,7 @@ export async function fetchPlaces({ force = false } = {}) {
     warn("places: nothing fetched — keeping existing data");
     return false;
   }
+  cleanupOrphanedPhotos(categories);
   return writeData("places.json", {
     fetchedAt: new Date().toISOString(),
     sampleData: false,

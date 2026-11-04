@@ -4,7 +4,7 @@ import config from "../../site.config.mjs";
 import places from "../data/places.json";
 import featuredPlaces from "../data/featured-places.json";
 import claimedPlaces from "../data/claimed-places.json";
-import { withClaimed } from "../lib/listing-data.mjs";
+import { withClaimed, photoSrc } from "../lib/listing-data.mjs";
 
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -89,7 +89,7 @@ const fetched = places.fetchedAt
                   data-search={`${b.name} ${cat.label} ${g.label || ""} ${b.address || ""}`.toLowerCase()}
                 >
                   {b.featured && <span class="tag featured-tag">★ Featured</span>}
-                  {b.photo && <img class="photo" src={b.photo} alt={b.name} loading="lazy" />}
+                  {b.photo && <img class="photo" src={photoSrc(b.photo, base)} alt={b.name} loading="lazy" />}
                   <h3><a href={`${base}directory/${cat.slug}/${b.slug}/`}>{b.name}</a> {b.claimed && <span class="verified-badge">✓ Verified</span>}</h3>
                   {b.rating != null && (
                     <div class="rating">★ {b.rating.toFixed(1)} <span class="cnt">({b.reviews?.toLocaleString()} reviews)</span></div>

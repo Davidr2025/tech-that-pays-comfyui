@@ -4,7 +4,7 @@ import config from "../../../../site.config.mjs";
 import places from "../../../data/places.json";
 import claimedPlaces from "../../../data/claimed-places.json";
 import listingCorrections from "../../../data/listing-corrections.json";
-import { applyListingOverrides, withClaimed } from "../../../lib/listing-data.mjs";
+import { applyListingOverrides, withClaimed, photoSrc } from "../../../lib/listing-data.mjs";
 import { getCollection } from "astro:content";
 
 // Fully static — one prerendered page per business, generated at build
@@ -50,7 +50,7 @@ const description = `${b.name}: ${b.subcategory || cat.label} in ${config.city},
     )}
 
     <div class="biz-detail-layout">
-      {b.photo && <img class="biz-detail-hero" src={b.photo} alt={b.name} />}
+      {b.photo && <img class="biz-detail-hero" src={photoSrc(b.photo, base)} alt={b.name} />}
 
       <div class="biz-detail-body">
         {b.subcategory && <span class="tag">{b.subcategory}</span>}
