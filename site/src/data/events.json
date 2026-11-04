@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-03T23:50:37.160Z",
+  "updatedAt": "2026-11-04T02:19:12.287Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Lecture Me! Disabling Cities: Stories about Food, Barriers and Safety",
-      "summary": "Attend free monthly lectures by UTM faculty members as they highlight their research in a fun and approachable way.",
-      "venue": "Noel Ryan Auditorium, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/lecture-me-disabling-cities-stories-about-food-barriers-and-safety-tickets-1998486885071",
-      "start": "2026-11-04T00:00:00.000Z",
-      "end": "2026-11-04T01:15:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Preserving the Harvest Naturally",
       "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
@@ -121,6 +111,16 @@
       "end": "2026-11-12T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Seasons Christmas Show 2026",
+      "summary": "Step into a winter wonderland and kick off the holiday season at the Seasons Christmas Show 2026, taking place November 13-15 at the International Centre in Mississauga. Celebrating its 21st year, this beloved holiday tradition brings together everything that makes the season special, from festive décor and unique gifts to seasonal inspiration and family-friendly fun.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/seasons-christmas-show-2026/",
+      "start": "2026-11-13T10:00:00.000Z",
+      "end": "2026-11-15T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
