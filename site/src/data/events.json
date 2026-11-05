@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-11-05T18:38:51.163Z",
+  "updatedAt": "2026-11-05T22:50:33.116Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-7/",
-      "start": "2026-11-05T19:00:00.000Z",
-      "end": "2026-11-05T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Illuminating the Stories of WWII: Movie Screening and Sculpture Talk",
-      "summary": "This Remembrance Day celebrate and reflect on the history, sacrifices and personal stories of Canadian soldiers and of Dutch civilians during the liberation of the Netherlands in World War II. Come enjoy this multifaceted evening, which includes a photo display, film screening and informative talk. Five photographs by Jason Van Bruggen from the 80 Years of Freedom Exhibition will be on view during this event. There will also be a screening of the film 80 Faces of Liberation also by Jason van Bruggen.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/illuminating-the-stories-of-wwii-movie-screening-and-sculpture-talk/",
-      "start": "2026-11-05T19:00:00.000Z",
-      "end": "2026-11-05T21:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
@@ -119,6 +99,26 @@
       "url": "https://www.visitmississauga.ca/event/merry-market/",
       "start": "2026-11-14T11:00:00.000Z",
       "end": "2026-11-14T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-11/",
+      "start": "2026-11-14T18:00:00.000Z",
+      "end": "2026-11-14T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "THE iDENTiTY CRiSiS and Bangerz Brass",
+      "summary": "Get ready for an unforgettable night of live music at The Rec Room Square One as The iDENTiTY CRiSiS takes the stage live with Perfectly Ravishing . The evening also features co-headliners Bangerz Brass and special guest DJ Rich Sweet , bringing a high-energy mix of live entertainment, brass band favourites, and crowd-pleasing beats. Whether you're a longtime fan or looking for a fun night out in Mississauga, this dynamic lineup promises an exciting evening of local talent and great music.",
+      "venue": "The Rec Room",
+      "url": "https://www.visitmississauga.ca/event/the-identity-crisis-and-bangerz-brass/",
+      "start": "2026-11-14T19:00:00.000Z",
+      "end": "2026-11-14T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
