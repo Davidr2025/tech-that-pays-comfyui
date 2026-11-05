@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-04T23:15:28.636Z",
+  "updatedAt": "2026-11-05T02:24:30.814Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Preserving the Harvest Naturally",
-      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
-      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
-      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2003614611238",
-      "start": "2026-11-04T23:30:00.000Z",
-      "end": "2026-11-05T01:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "The Credits 2026: An Evening of Regency Elegance",
       "summary": "Heritage Mississauga invites the community to The Credits 2026: An Evening of Regency Elegance , its annual awards gala celebrating the individuals, organizations, artists, and community leaders who contribute to shaping Mississauga’s story. Inspired by the world of Jane Austen and Bridgerton , the elegant evening will feature fine dining, entertainment, and the presentation of Heritage Mississauga’s prestigious Heritage Hero Awards .",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/seasons-christmas-show-2026/",
       "start": "2026-11-13T10:00:00.000Z",
       "end": "2026-11-15T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-10/",
+      "start": "2026-11-13T19:00:00.000Z",
+      "end": "2026-11-13T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
