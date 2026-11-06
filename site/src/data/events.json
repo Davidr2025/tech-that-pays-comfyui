@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-06T17:29:34.655Z",
+  "updatedAt": "2026-11-06T21:50:26.644Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-8/",
-      "start": "2026-11-06T19:00:00.000Z",
-      "end": "2026-11-06T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Mississauga Comic Expo",
       "summary": "Enjoy an evening of board games, Dungeons & Dragons, Pokémon crafts, collectibles trading, a movie screening and superhero trivia.",
@@ -121,6 +111,16 @@
       "end": "2026-11-14T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
+      "summary": "Join us for a captivating Bharatanatyam dance performance!",
+      "venue": "Courtneypark Library",
+      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2003516232986",
+      "start": "2026-11-14T19:00:00.000Z",
+      "end": "2026-11-14T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
