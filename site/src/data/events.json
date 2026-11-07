@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T16:25:18.137Z",
+  "updatedAt": "2026-11-07T20:50:04.597Z",
   "windowDays": 14,
   "items": [
     {
@@ -11,16 +11,6 @@
       "end": "2026-11-07T21:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "CABINFEST 2026",
-      "summary": "This community fundraiser brings together great food, drinks, entertainment, and local spirit, with all proceeds supporting The Compass Food Bank .",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/cabinfest-2026/",
-      "start": "2026-11-07T18:30:00.000Z",
-      "end": "2026-11-07T18:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
     {
       "title": "The Great Toy Exchange",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2004313638046",
       "start": "2026-11-17T19:00:00.000Z",
       "end": "2026-11-17T20:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Midday Melodies: French Elegance & Spanish Colours",
+      "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
+      "venue": "Maker Stage, Hazel McCallion Central Library",
+      "url": "https://www.eventbrite.ca/e/midday-melodies-french-elegance-spanish-colours-tickets-2000438886560",
+      "start": "2026-11-18T17:00:00.000Z",
+      "end": "2026-11-18T18:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
