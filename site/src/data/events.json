@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-06T21:50:26.644Z",
+  "updatedAt": "2026-11-07T01:50:15.677Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga Comic Expo",
-      "summary": "Enjoy an evening of board games, Dungeons & Dragons, Pokémon crafts, collectibles trading, a movie screening and superhero trivia.",
-      "venue": "Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/mississauga-comic-expo-tickets-1998900793081",
-      "start": "2026-11-06T21:30:00.000Z",
-      "end": "2026-11-07T01:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Mississauga Comic Expo",
       "summary": "Exhibitors, workshops, panels, cosplay shoots, tabletop board game demos, video game free-play sessions, presentations, and featured guests.",
@@ -119,6 +109,16 @@
       "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2003516232986",
       "start": "2026-11-14T19:00:00.000Z",
       "end": "2026-11-14T19:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Preserving the Harvest Naturally",
+      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
+      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
+      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2004313638046",
+      "start": "2026-11-17T19:00:00.000Z",
+      "end": "2026-11-17T20:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
     }
