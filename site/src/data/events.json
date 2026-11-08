@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-11-08T16:40:04.396Z",
+  "updatedAt": "2026-11-08T20:50:39.079Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Great Toy Exchange",
-      "summary": "Do you have toys you want to get rid of? Maybe you're tripping over that lego or your kids aren't playing with those dolls anymore? Join The Great Toy Exchange in Streetsville! Give gently used toys a second life and connect with your local community. The Great Toy Exchange is a neighbourhood initiative designed to keep gently-used toys out of landfills, promote sustainability, and bring local families together. Locations : Myofascial Release Mississauga (Sunday, November 8 at 10AM-1PM) The Old Credit Brewing Co.",
-      "venue": "",
-      "url": "https://www.visitmississauga.ca/event/the-great-toy-exchange/",
-      "start": "2026-11-08T10:00:00.000Z",
-      "end": "2026-11-08T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-9/",
-      "start": "2026-11-08T18:00:00.000Z",
-      "end": "2026-11-08T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Indoor Composting with Vermicompost",
       "summary": "Learn about indoor composting with vermicompost!",
@@ -119,6 +99,26 @@
       "url": "https://www.visitmississauga.ca/event/the-perfect-bite-12/",
       "start": "2026-11-18T19:00:00.000Z",
       "end": "2026-11-18T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Preserving the Harvest Naturally",
+      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
+      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
+      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2004313876760",
+      "start": "2026-11-18T23:30:00.000Z",
+      "end": "2026-11-19T01:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "BFUTR 2026",
+      "summary": "November 19 @ 7:00 AM – 7:00 PM EST November 10 @ 9:00 AM – 7:00 PM EST BFUTR 2026 brings together technology professionals, industry leaders, employers and innovators for two days of conversations, career opportunities, networking and learning at the International Centre in Mississauga. Under this year’s theme, Reprogramming the Enterprise: Technology, Talent & Leadership , BFUTR will explore how emerging technologies, evolving talent strategies and new approaches to leadership are reshaping the future of work and business.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/bfutr-2026/",
+      "start": "2026-11-19T07:00:00.000Z",
+      "end": "2026-11-20T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
