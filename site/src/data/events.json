@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-07T20:50:04.597Z",
+  "updatedAt": "2026-11-08T00:50:12.029Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Mississauga Comic Expo",
-      "summary": "Exhibitors, workshops, panels, cosplay shoots, tabletop board game demos, video game free-play sessions, presentations, and featured guests.",
-      "venue": "Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/mississauga-comic-expo-tickets-1998900404920",
-      "start": "2026-11-07T15:00:00.000Z",
-      "end": "2026-11-07T21:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "The Great Toy Exchange",
       "summary": "Do you have toys you want to get rid of? Maybe you're tripping over that lego or your kids aren't playing with those dolls anymore? Join The Great Toy Exchange in Streetsville! Give gently used toys a second life and connect with your local community. The Great Toy Exchange is a neighbourhood initiative designed to keep gently-used toys out of landfills, promote sustainability, and bring local families together. Locations : Myofascial Release Mississauga (Sunday, November 8 at 10AM-1PM) The Old Credit Brewing Co.",
@@ -121,6 +111,16 @@
       "end": "2026-11-18T18:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-12/",
+      "start": "2026-11-18T19:00:00.000Z",
+      "end": "2026-11-18T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
