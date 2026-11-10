@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T20:43:10.660Z",
+  "updatedAt": "2026-11-10T00:50:46.592Z",
   "windowDays": 14,
   "items": [
     {
@@ -39,6 +39,16 @@
       "url": "https://www.visitmississauga.ca/event/merry-market/",
       "start": "2026-11-14T11:00:00.000Z",
       "end": "2026-11-14T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Reconnect Mississauga Fall Clothing Swap",
+      "summary": "It’s that time of year again! Reconnect Mississauga is hosting its Fall Clothing Swap on November 14th. Bring gently used clothes taking up valuable space in your closet and discover new-to-you pieces to refresh your wardrobe! There will be a mending station where you can learn about sewing on buttons, patches, and more. This event is a great opportunity to give clothing a second life, be kind to the planet, and connect with your neighbours. You’ll also have a chance to enter the raffle for a chance to win a gift bag from Refillery Market !",
+      "venue": "Meadowvale Community Church",
+      "url": "https://www.visitmississauga.ca/event/reconnect-mississauga-fall-clothing-swap/",
+      "start": "2026-11-14T11:00:00.000Z",
+      "end": "2026-11-14T13:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -111,16 +121,6 @@
       "end": "2026-11-19T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
-    },
-    {
-      "title": "BFUTR 2026",
-      "summary": "November 19 @ 7:00 AM – 7:00 PM EST November 10 @ 9:00 AM – 7:00 PM EST BFUTR 2026 brings together technology professionals, industry leaders, employers and innovators for two days of conversations, career opportunities, networking and learning at the International Centre in Mississauga. Under this year’s theme, Reprogramming the Enterprise: Technology, Talent & Leadership , BFUTR will explore how emerging technologies, evolving talent strategies and new approaches to leadership are reshaping the future of work and business.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/bfutr-2026/",
-      "start": "2026-11-19T07:00:00.000Z",
-      "end": "2026-11-20T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
