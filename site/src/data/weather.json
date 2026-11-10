@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-11-10T16:51:33.612Z",
+  "updatedAt": "2026-11-10T17:48:03.220Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 14,
+    "temp": 15,
     "feelsLike": 11,
     "text": "Clear",
     "icon": "☀️"
@@ -21,7 +21,7 @@
       "date": "2026-11-11",
       "max": 11,
       "min": 4,
-      "precipChance": 76,
+      "precipChance": 50,
       "text": "Light drizzle",
       "icon": "🌦️"
     },
