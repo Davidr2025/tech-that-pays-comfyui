@@ -322,6 +322,43 @@ resolved address **at connect time** (so DNS tricks don't help), re-validates ev
 and time, asks for uncompressed text, and refuses non-text responses. `localhost`, private ranges, link-local and the
 cloud metadata address are refused. Tests run the guard against a real local server and fail if it is disabled.
 
+## Live calls: Zoom, Google Meet, Teams
+
+The cockpit follows a real call as it happens. In the cockpit press **Connect meeting**:
+
+1. **Send a note-taker to the call** (needs `RECALL_API_KEY`, a Recall.ai key, and a public address for the app).
+   Paste the meeting link; a bot named "<you>'s note-taker" joins, and each finished sentence is posted to this
+   session. Admit the bot when the meeting asks. Works the same for Zoom, Google Meet, Teams and Webex because the bot
+   joins like a participant. Set `RECALL_REGION` if your Recall account is not in `us-west-2`, and
+   `RECALL_TRANSCRIPT=meeting_captions` to use the meeting's own captions instead of Recall's transcription.
+   **Not yet run against the real Recall service** (no key was available): the request and the event format were
+   written from Recall's public description and tested against a local stand-in.
+2. **A private link for any other tool.** "Create the link" gives a URL (shown once) that accepts
+   `POST {"speaker":"client","text":"…"}` or `{"lines":[…]}`. `speaker` is `consultant`/`client` or a person's name;
+   a name that matches yours is you, everyone else is the client. Add `?me=Your%20Meeting%20Name` if your name in the
+   meeting differs from your name in Settings.
+
+Either way the cockpit switches to Live and asks the server for new lines every 2 seconds, so coaching, the checklist
+and readiness update while you talk. Also still available with no service at all: **Type live** and the browser
+**microphone**.
+
+The link is a credential: 256 random bits, stored only as a hash, replaceable, revocable ("Turn it off"), rate-limited,
+and able to do one thing (append lines to that one session). **Tell the client the call is being transcribed**; in
+many places that is a legal requirement.
+
+## Hosting it (Vercel + Postgres)
+
+A host without a persistent disk cannot keep the SQLite file, so the app also runs on Postgres from the same schema:
+set `DATABASE_URL` to a `postgres://` URL and `scripts/prisma.mjs` generates a Postgres copy of the schema and uses
+`db push` (the files in `prisma/migrations` are SQLite's). The whole test suite passes on Postgres:
+`TEST_DATABASE_URL=postgres://… DATABASE_URL=postgres://… npm test`, then `npm run prisma -- generate` to go back.
+
+On Vercel: root directory `discovery-cockpit`, a Postgres database connected to the project (it provides
+`DATABASE_URL`), and `SIGNUP_CODE` set to a secret. The build runs `npm run vercel-build`. A hosted build always
+requires sign-in; the first account needs the sign-up code, after which sign-up closes (unless `ALLOW_SIGNUP=true`).
+A new account starts with the two demo calls staged. Known differences when hosted this way: no server-made PDFs (use
+the browser's Save as PDF), and rate limits are per server instance.
+
 ## Claude (optional, needs a key)
 
 Off by default. The rule-based engine stays the default, runs the demo and every test, and is what the app falls

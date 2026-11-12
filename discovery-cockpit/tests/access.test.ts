@@ -193,6 +193,9 @@ describe("one consultant cannot reach another's data", () => {
       ["POST status", (await mod("@/app/api/sessions/[id]/status/route")).POST!, "POST", { to: "COMPLETED" }, { id: alice.sessionId }],
       ["POST transcript", (await mod("@/app/api/sessions/[id]/transcript/route")).POST!, "POST", { mode: "demo" }, { id: alice.sessionId }],
       ["POST review", (await mod("@/app/api/sessions/[id]/review/route")).POST!, "POST", {}, { id: alice.sessionId }],
+      ["POST ingest", (await mod("@/app/api/sessions/[id]/ingest/route")).POST!, "POST", { action: "link" }, { id: alice.sessionId }],
+      ["GET ingest", (await mod("@/app/api/sessions/[id]/ingest/route")).GET!, "GET", undefined, { id: alice.sessionId }],
+      ["GET transcript", (await mod("@/app/api/sessions/[id]/transcript/route")).GET!, "GET", undefined, { id: alice.sessionId }],
       ["POST analysis", (await mod("@/app/api/sessions/[id]/analysis/route")).POST!, "POST", { upTo: 5 }, { id: alice.sessionId }],
       ["GET share", (await mod("@/app/api/sessions/[id]/share/route")).GET!, "GET", undefined, { id: alice.sessionId }],
       ["POST questions", (await mod("@/app/api/sessions/[id]/questions/route")).POST!, "POST", { text: "A planted question" }, { id: alice.sessionId }],
@@ -298,7 +301,7 @@ describe("nothing is left unguarded", () => {
   const rel = (f: string) => path.relative(path.join(root, "src/app"), f).split(path.sep).join("/");
 
   /** Deliberately reachable without a login. Adding to this list is a decision, and shows up in review. */
-  const PUBLIC_ROUTES = new Set(["api/health/route.ts", "api/auth/signup/route.ts", "api/auth/login/route.ts", "api/auth/logout/route.ts"]);
+  const PUBLIC_ROUTES = new Set(["api/ingest/[token]/route.ts", "api/health/route.ts", "api/auth/signup/route.ts", "api/auth/login/route.ts", "api/auth/logout/route.ts"]);
   const PUBLIC_PAGES = new Set(["login/page.tsx", "signup/page.tsx", "reveal/[sessionId]/page.tsx", "prototype/[sessionId]/page.tsx", "health/page.tsx"]);
 
   const routes = import.meta.glob("../src/app/api/**/route.ts");

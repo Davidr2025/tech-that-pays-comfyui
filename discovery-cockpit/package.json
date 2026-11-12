@@ -12,11 +12,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prisma": "node scripts/prisma.mjs",
-    "db:migrate": "node scripts/prisma.mjs migrate deploy",
+    "db:migrate": "node scripts/prisma.mjs deploy",
     "db:migrate:dev": "node scripts/prisma.mjs migrate dev",
     "db:seed": "node scripts/prisma.mjs db seed",
     "db:reset": "node scripts/prisma.mjs migrate reset --force",
     "setup": "npm run db:migrate && npm run db:seed",
+    "vercel-build": "node scripts/prisma.mjs generate && node scripts/prisma.mjs deploy && next build",
     "postinstall": "node scripts/prisma.mjs generate"
   },
   "dependencies": {

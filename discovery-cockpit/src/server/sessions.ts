@@ -100,13 +100,22 @@ export async function replaceTranscript(sessionId: string, segments: ParsedSegme
 export async function appendSegment(sessionId: string, seg: { speaker: "CONSULTANT" | "CLIENT"; text: string; startSec?: number | null }) {
   const { status, startedAt } = await currentStatus(sessionId);
   guard(status, "LIVE");
-  const last = await prisma.transcriptSegment.aggregate({ where: { sessionId }, _max: { order: true } });
-  const order = (last._max.order ?? -1) + 1;
-  const [created] = await prisma.$transaction([
-    prisma.transcriptSegment.create({ data: { sessionId, speaker: seg.speaker, text: seg.text, order, startSec: seg.startSec ?? null } }),
-    prisma.session.update({ where: { id: sessionId }, data: { status: "LIVE", startedAt: startedAt ?? new Date() } }),
-  ]);
-  return { order: created.order, speaker: created.speaker, text: created.text, startSec: created.startSec };
+  // Two lines can arrive at once (a typed line and a note-taker's): the unique (session, order) index makes the loser
+  // of that race fail, and it simply takes the next number.
+  for (let attempt = 0; ; attempt++) {
+    const last = await prisma.transcriptSegment.aggregate({ where: { sessionId }, _max: { order: true } });
+    const order = (last._max.order ?? -1) + 1;
+    try {
+      const [created] = await prisma.$transaction([
+        prisma.transcriptSegment.create({ data: { sessionId, speaker: seg.speaker, text: seg.text, order, startSec: seg.startSec ?? null } }),
+        prisma.session.update({ where: { id: sessionId }, data: { status: "LIVE", startedAt: startedAt ?? new Date() } }),
+      ]);
+      return { order: created.order, speaker: created.speaker, text: created.text, startSec: created.startSec };
+    } catch (err) {
+      const taken = err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002";
+      if (!taken || attempt >= 8) throw err;
+    }
+  }
 }
 
 /** The statuses a consultant may set directly. Everything else follows from their actions. */

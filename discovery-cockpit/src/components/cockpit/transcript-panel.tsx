@@ -10,6 +10,7 @@ import { formatClock } from "@/lib/format";
 import type { SpeakerKind } from "@/lib/mock-ai/types";
 import { cn } from "@/lib/utils";
 import { ImportDialog, type ImportRequest } from "./import-dialog";
+import { MeetingDialog } from "./meeting-dialog";
 import { MicControls } from "./mic-controls";
 
 export const SPEEDS = [1, 2, 4, 8] as const;
@@ -34,6 +35,7 @@ interface Props {
   onSkip: () => void;
   onImport: (req: ImportRequest) => Promise<string | null>;
   onGoLive: () => void;
+  sessionId: string;
   onAppend: (speaker: SpeakerKind, text: string) => Promise<string | null>;
   consultantName: string;
   locked: boolean;
@@ -77,6 +79,7 @@ export function TranscriptPanel(p: Props) {
           <Button size="sm" variant={live ? "secondary" : "outline"} onClick={p.onGoLive} disabled={p.busy || p.locked || live} data-testid="type-live-button">
             <Keyboard /> Type live
           </Button>
+          <MeetingDialog sessionId={p.sessionId} disabled={p.busy || p.locked} onConnected={p.onGoLive} />
         </div>
         {!live && (
           <div className="flex flex-wrap items-center gap-1.5">

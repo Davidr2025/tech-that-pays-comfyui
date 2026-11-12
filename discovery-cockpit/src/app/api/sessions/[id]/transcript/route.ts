@@ -65,3 +65,20 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     return errorResponse(err, "Could not load that transcript.");
   }
 }
+
+/** Lines added since the caller last looked (`?after=<how many it has>`): how the cockpit follows a live feed. */
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const denied = await guardSession(req, id);
+  if (denied) return denied;
+  const after = Number(new URL(req.url).searchParams.get("after") ?? "0");
+  if (!Number.isInteger(after) || after < 0) return jsonError("after must be a whole number.", 400);
+  const rows = await prisma.transcriptSegment.findMany({
+    where: { sessionId: id, order: { gte: after } },
+    orderBy: { order: "asc" },
+    take: 500,
+    select: { order: true, speaker: true, text: true, startSec: true },
+  });
+  const total = await prisma.transcriptSegment.count({ where: { sessionId: id } });
+  return NextResponse.json({ segments: rows, total });
+}

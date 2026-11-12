@@ -42,6 +42,26 @@ async function request<T>(url: string, method: string, body?: unknown, keepalive
   }
 }
 
+/** How often the cockpit asks the server for lines a note-taker has added. */
+export const LIVE_POLL_MS = 2000;
+
+/** Adds lines the list does not have yet (by position), keeping order. A line can arrive twice: typed here AND polled. */
+export function mergeSegments(have: PanelSegment[], more: PanelSegment[]): PanelSegment[] {
+  const seen = new Set(have.map((s) => s.order));
+  const fresh = more.filter((s) => !seen.has(s.order));
+  return fresh.length ? [...have, ...fresh].sort((a, b) => a.order - b.order) : have;
+}
+
+/**
+ * How many lines we hold from the start with none missing. The poll asks from here, NOT from the list's length: a
+ * typed line can come back numbered after a note-taker's line we have not fetched yet, and counting it would skip that one.
+ */
+export function contiguousCount(have: { order: number }[]): number {
+  let n = 0;
+  while (n < have.length && have[n]!.order === n) n++;
+  return n;
+}
+
 interface LoadResponse {
   segments: PanelSegment[];
   unattributed?: boolean;
@@ -214,10 +234,35 @@ export function Cockpit({ data }: { data: CockpitData }) {
     const startSec = Math.max(0, Math.round((Date.now() - liveStart.current) / 1000));
     const res = await request<{ segment: PanelSegment }>(`/api/sessions/${data.id}/transcript`, "POST", { mode: "append", speaker, text, startSec });
     if (!res.ok) return res.error;
-    setSegments((s) => [...s, res.data.segment]);
+    setSegments((s) => mergeSegments(s, [res.data.segment]));
     if (status !== "COMPLETED") setStatus("LIVE");
     return null;
   }
+
+  // ---- following a live feed: lines a note-taker posts arrive on the server, so ask for anything new ----
+  const haveRef = useRef(0);
+  haveRef.current = contiguousCount(segments);
+  const isLive = player.status === "live";
+  useEffect(() => {
+    if (!isLive || locked) return;
+    let stopped = false;
+    let busy = false;
+    const tick = async () => {
+      if (busy || stopped) return;
+      busy = true;
+      const res = await request<{ segments: PanelSegment[] }>(`/api/sessions/${data.id}/transcript?after=${haveRef.current}`, "GET");
+      busy = false;
+      if (stopped || !res.ok || res.data.segments.length === 0) return;
+      setSegments((s) => mergeSegments(s, res.data.segments));
+      setStatus((st) => (st === "COMPLETED" ? st : "LIVE"));
+    };
+    const id = setInterval(() => void tick(), LIVE_POLL_MS);
+    void tick();
+    return () => {
+      stopped = true;
+      clearInterval(id);
+    };
+  }, [isLive, locked, data.id]);
 
   // ---- build the client review, reveal it, finish ----
   const [building, setBuilding] = useState(false);
@@ -337,6 +382,7 @@ export function Cockpit({ data }: { data: CockpitData }) {
             onSkip={player.skipToEnd}
             onImport={importTranscript}
             onGoLive={goLive}
+            sessionId={data.id}
             onAppend={appendLine}
             consultantName={data.consultantName}
             locked={locked}

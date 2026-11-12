@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-export function AuthForm({ mode, canSignUp }: { mode: "login" | "signup"; canSignUp: boolean }) {
+export function AuthForm({ mode, canSignUp, needsCode = false }: { mode: "login" | "signup"; canSignUp: boolean; needsCode?: boolean }) {
   const router = useRouter();
-  const [v, setV] = useState({ name: "", businessName: "", email: "", password: "" });
+  const [v, setV] = useState({ name: "", businessName: "", email: "", password: "", code: "" });
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const set = (k: keyof typeof v, value: string) => setV((s) => ({ ...s, [k]: value }));
@@ -21,7 +21,7 @@ export function AuthForm({ mode, canSignUp }: { mode: "login" | "signup"; canSig
     setBusy(true);
     setError(null);
     try {
-      const body = signup ? v : { email: v.email, password: v.password };
+      const body = signup ? { name: v.name, businessName: v.businessName, email: v.email, password: v.password, ...(needsCode ? { code: v.code } : {}) } : { email: v.email, password: v.password };
       const res = await fetch(`/api/auth/${mode}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const json = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) setError(json.error ?? "Something went wrong.");
@@ -61,6 +61,11 @@ export function AuthForm({ mode, canSignUp }: { mode: "login" | "signup"; canSig
             <Field label="Password" hint={signup ? "At least 10 characters. A few random words is plenty." : undefined}>
               <Input id="password" type="password" value={v.password} onChange={(e) => set("password", e.target.value)} autoComplete={signup ? "new-password" : "current-password"} required />
             </Field>
+            {signup && needsCode && (
+              <Field label="Sign-up code" hint="The person who set up this server has it.">
+                <Input id="code" value={v.code} onChange={(e) => set("code", e.target.value)} autoComplete="off" required data-testid="signup-code" />
+              </Field>
+            )}
             {error && (
               <p role="alert" className="text-sm text-destructive" data-testid="auth-error">
                 {error}

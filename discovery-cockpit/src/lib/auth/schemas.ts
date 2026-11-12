@@ -9,6 +9,8 @@ export const signupSchema = z
     businessName: z.string().trim().min(1, "Your business name is required.").max(120),
     email,
     password: z.string().max(MAX_PASSWORD, `Keep it under ${MAX_PASSWORD} characters.`),
+    /** Required only when the server sets SIGNUP_CODE. */
+    code: z.string().max(200).optional(),
   })
   .strict();
 

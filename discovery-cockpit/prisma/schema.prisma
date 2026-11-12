@@ -150,6 +150,10 @@ model Session {
   liveState         Json?
   liveSeen          Int       @default(0)
   liveProvider      String?
+  /// SHA-256 of the secret in this session's live-ingest URL (a note-taker posts transcript lines to it). Null = off.
+  ingestTokenHash   String?   @unique
+  /// The meeting bot currently sent to this call, if any (Recall.ai bot id).
+  botId             String?
   // -------------------------------------------------------------------------------
 
   segments    TranscriptSegment[]

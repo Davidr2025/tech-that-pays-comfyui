@@ -4,6 +4,7 @@ import { authMode } from "@/lib/auth/mode";
 import { signupSchema } from "@/lib/auth/schemas";
 import { createLogin, signup } from "@/server/accounts";
 import { crossSite, setLoginCookie } from "@/server/auth";
+import { stageDemoFor } from "@/server/demo";
 
 export async function POST(req: Request) {
   if (authMode() === "local") return jsonError("This server runs without accounts.", 409);
@@ -12,6 +13,7 @@ export async function POST(req: Request) {
   if ("error" in parsed) return parsed.error;
   try {
     const consultant = await signup(parsed.data);
+    await stageDemoFor(consultant.id).catch((err) => console.error("Could not stage the demo sessions", err)); // a convenience, never a reason to fail sign-up
     const login = await createLogin(consultant.id);
     await setLoginCookie(login.token, login.expiresAt);
     return NextResponse.json({ ok: true }, { status: 201 });

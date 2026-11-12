@@ -3,7 +3,7 @@
  * login. `auth.ts` adds the cookie plumbing on top. A login is a random token in an httpOnly cookie;
  * only its SHA-256 is stored.
  */
-import { createHash, randomBytes } from "node:crypto";
+import { createHash, randomBytes, timingSafeEqual } from "node:crypto";
 import type { Consultant } from "@prisma/client";
 import { z } from "zod";
 import { prisma } from "../lib/db";
@@ -58,8 +58,17 @@ export async function revokeToken(token: string | undefined) {
   if (token) await prisma.authSession.deleteMany({ where: { tokenHash: sha256(token) } });
 }
 
+function sameSecret(a: string, b: string): boolean {
+  const x = createHash("sha256").update(a).digest();
+  const y = createHash("sha256").update(b).digest();
+  return timingSafeEqual(x, y);
+}
+
 export async function signup(input: z.output<typeof signupSchema>, env: Record<string, string | undefined> = process.env): Promise<Consultant> {
   if (!signupOpen(await hasOwner(), env)) throw new AuthError("FORBIDDEN", "Sign-up is closed on this server. Ask the owner for an account.");
+  // A server on the public web can require a code, so a stranger cannot claim the first (owner) account.
+  const code = env.SIGNUP_CODE?.trim();
+  if (code && !sameSecret(input.code?.trim() ?? "", code)) throw new AuthError("FORBIDDEN", "That sign-up code is not right.");
   const problem = passwordProblem(input.password, input.email);
   if (problem) throw new AuthError("INVALID", problem);
   if (await prisma.consultant.count({ where: { email: input.email } })) {

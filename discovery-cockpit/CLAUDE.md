@@ -103,6 +103,17 @@ interface (`src/lib/ai/types.ts`); the rule-based mock is the default.
 - Claude tests use `tests/stub-anthropic.ts` (a local Messages API). It proves the app's behaviour, not that the real
   service accepts the request; say so whenever you report on it.
 
+- Live ingest (`src/server/ingest.ts`, `src/lib/ingest.ts`): the ONLY public write route is `POST /api/ingest/[token]`.
+  The token is the credential (hash at rest, shown once, revocable); it may only append lines to its one session.
+  The cockpit follows a live feed by polling `GET …/transcript?after=N` where N is the count of lines held with NO gap
+  (`contiguousCount`), never the list length: a typed line can be numbered after a posted one not fetched yet.
+- Two databases, one schema: SQLite by default, Postgres when `DATABASE_URL` is a postgres URL (`scripts/prisma.mjs`
+  swaps the provider into `prisma/postgres/`, generated and git-ignored). Add a column = schema + a SQLite migration;
+  Postgres uses `db push`. After a Postgres run, `npm run prisma -- generate` restores the SQLite client (a wrong client
+  shows up as tests failing on every query).
+- Third-party services you cannot reach from the sandbox (Recall.ai) are written behind a small client with a
+  `*_BASE_URL` test override, tested against a local stand-in, and labelled UNVERIFIED in code, README and reports.
+
 ## Testing
 Run: `npm run typecheck && npm run lint && npm test`
 Must pass before any feature is called complete: the privacy tests (`tests/privacy.test.tsx`,

@@ -22,5 +22,5 @@ export default async function SignupPage() {
       </main>
     );
   }
-  return <AuthForm mode="signup" canSignUp />;
+  return <AuthForm mode="signup" canSignUp needsCode={Boolean(process.env.SIGNUP_CODE?.trim())} />;
 }

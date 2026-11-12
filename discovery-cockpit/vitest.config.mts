@@ -11,7 +11,8 @@ export default defineConfig({
   test: {
     environment: "node",
     // Tests never touch the dev database: they get their own file, migrated in global-setup.
-    env: { DATABASE_URL: `file:${path.resolve(root, "prisma", "test.db")}` },
+    // TEST_DATABASE_URL runs the same suite against another database (e.g. a local Postgres).
+    env: { DATABASE_URL: process.env.TEST_DATABASE_URL ?? `file:${path.resolve(root, "prisma", "test.db")}` },
     include: ["tests/**/*.test.{ts,tsx}"],
     globalSetup: ["tests/global-setup.ts"],
     // The privacy/integration tests share one SQLite file, so run test files serially.

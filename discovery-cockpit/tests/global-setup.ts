@@ -7,18 +7,20 @@ const root = path.resolve(__dirname, "..");
 /** Builds a fresh, fully migrated SQLite file for the test run. */
 export default function setup() {
   const dbFile = path.join(root, "prisma", "test.db");
-  for (const f of [dbFile, `${dbFile}-journal`]) fs.rmSync(f, { force: true });
+  const external = process.env.TEST_DATABASE_URL;
+  if (!external) for (const f of [dbFile, `${dbFile}-journal`]) fs.rmSync(f, { force: true });
 
-  const result = spawnSync("node", ["scripts/prisma.mjs", "migrate", "deploy"], {
+  const result = spawnSync("node", ["scripts/prisma.mjs", "deploy"], {
     cwd: root,
-    env: { ...process.env, DATABASE_URL: `file:${dbFile}` },
+    env: { ...process.env, DATABASE_URL: external ?? `file:${dbFile}` },
     encoding: "utf8",
   });
   if (result.status !== 0) {
-    throw new Error(`Could not migrate the test database:\n${result.stdout}\n${result.stderr}`);
+    throw new Error(`Could not prepare the test database:\n${result.stdout}\n${result.stderr}`);
   }
+  // A Postgres run generated a Postgres client; the caller regenerates the SQLite one afterwards (see README).
 
   return () => {
-    fs.rmSync(dbFile, { force: true });
+    if (!external) fs.rmSync(dbFile, { force: true });
   };
 }

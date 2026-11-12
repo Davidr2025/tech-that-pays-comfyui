@@ -2,6 +2,7 @@ node_modules/
 .next/
 *.tsbuildinfo
 prisma/*.db
+prisma/postgres/
 prisma/*.db-journal
 coverage/
 .env
