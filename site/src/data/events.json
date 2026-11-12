@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-11T21:50:34.531Z",
+  "updatedAt": "2026-11-12T01:50:29.595Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Indoor Composting with Vermicompost",
-      "summary": "Learn about indoor composting with vermicompost!",
-      "venue": "Burnhamthorpe Library",
-      "url": "https://www.eventbrite.ca/e/indoor-composting-with-vermicompost-tickets-2001086790458",
-      "start": "2026-11-11T23:30:00.000Z",
-      "end": "2026-11-12T01:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Seasons Christmas Show 2026",
       "summary": "Step into a winter wonderland and kick off the holiday season at the Seasons Christmas Show 2026, taking place November 13-15 at the International Centre in Mississauga. Celebrating its 21st year, this beloved holiday tradition brings together everything that makes the season special, from festive décor and unique gifts to seasonal inspiration and family-friendly fun.",
@@ -121,6 +111,16 @@
       "end": "2026-11-19T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "BFUTR 2026",
+      "summary": "November 19 @ 7:00 AM – 7:00 PM EST November 10 @ 9:00 AM – 7:00 PM EST BFUTR 2026 brings together technology professionals, industry leaders, employers and innovators for two days of conversations, career opportunities, networking and learning at the International Centre in Mississauga. Under this year’s theme, Reprogramming the Enterprise: Technology, Talent & Leadership , BFUTR will explore how emerging technologies, evolving talent strategies and new approaches to leadership are reshaping the future of work and business.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/bfutr-2026/",
+      "start": "2026-11-19T07:00:00.000Z",
+      "end": "2026-11-20T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
