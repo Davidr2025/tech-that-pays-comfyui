@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-11-12T18:17:13.692Z",
+  "updatedAt": "2026-11-12T18:46:25.047Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 7,
-    "feelsLike": 3,
-    "text": "Mainly clear",
-    "icon": "🌤️"
+    "feelsLike": 2,
+    "text": "Partly cloudy",
+    "icon": "⛅"
   },
   "days": [
     {
       "date": "2026-11-12",
       "max": 7,
-      "min": 1,
+      "min": 0,
       "precipChance": 48,
       "text": "Light drizzle",
       "icon": "🌦️"
