@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-11-13T17:43:48.404Z",
+  "updatedAt": "2026-11-13T21:50:27.401Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 4,
-    "feelsLike": -1,
+    "temp": 3,
+    "feelsLike": -2,
     "text": "Overcast",
     "icon": "☁️"
   },
@@ -19,9 +19,9 @@
     },
     {
       "date": "2026-11-14",
-      "max": 6,
+      "max": 7,
       "min": 1,
-      "precipChance": 16,
+      "precipChance": 10,
       "text": "Light drizzle",
       "icon": "🌦️"
     },
@@ -29,7 +29,7 @@
       "date": "2026-11-15",
       "max": 7,
       "min": 2,
-      "precipChance": 6,
+      "precipChance": 2,
       "text": "Overcast",
       "icon": "☁️"
     },

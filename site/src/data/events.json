@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T17:43:48.300Z",
+  "updatedAt": "2026-11-13T21:50:27.273Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,16 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/seasons-christmas-show-2026/",
       "start": "2026-11-13T10:00:00.000Z",
       "end": "2026-11-15T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-10/",
-      "start": "2026-11-13T19:00:00.000Z",
-      "end": "2026-11-13T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -121,6 +111,16 @@
       "end": "2026-11-20T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Newcomer Kitchen Canada: Three Cup King Oyster Mushrooms & Cucumber Salad",
+      "summary": "Join Newcomer Kitchen Canada for a workshop led by alumni of their Food Business Entrepreneurship Program.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/newcomer-kitchen-canada-three-cup-king-oyster-mushrooms-cucumber-salad-tickets-2002302630067",
+      "start": "2026-11-19T16:00:00.000Z",
+      "end": "2026-11-19T17:30:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
