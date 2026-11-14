@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-14T16:36:27.405Z",
+  "updatedAt": "2026-11-14T20:50:34.198Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-11/",
-      "start": "2026-11-14T18:00:00.000Z",
-      "end": "2026-11-14T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "THE iDENTiTY CRiSiS and Bangerz Brass",
       "summary": "Get ready for an unforgettable night of live music at The Rec Room Square One as The iDENTiTY CRiSiS takes the stage live with Perfectly Ravishing . The evening also features co-headliners Bangerz Brass and special guest DJ Rich Sweet , bringing a high-energy mix of live entertainment, brass band favourites, and crowd-pleasing beats. Whether you're a longtime fan or looking for a fun night out in Mississauga, this dynamic lineup promises an exciting evening of local talent and great music.",
@@ -21,16 +11,6 @@
       "end": "2026-11-14T23:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Celebrate Diwali: Bharatanatyam Dance Performance by AKnatyam",
-      "summary": "Join us for a captivating Bharatanatyam dance performance!",
-      "venue": "Courtneypark Library",
-      "url": "https://www.eventbrite.ca/e/celebrate-diwali-bharatanatyam-dance-performance-by-aknatyam-tickets-2003516232986",
-      "start": "2026-11-14T19:00:00.000Z",
-      "end": "2026-11-14T19:30:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
       "title": "Preserving the Harvest Naturally",
@@ -121,6 +101,26 @@
       "end": "2026-11-20T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Christmas Canadian Pet Expo",
+      "summary": "Get ready for a tail-wagging holiday celebration at the Christmas Canadian Pet Expo ! Bring your furry friends and experience a festive weekend packed with pet-friendly shopping, exciting demonstrations, interactive activities, and seasonal surprises. Browse hundreds of vendors featuring the latest pet products, discover unique holiday gifts, meet adorable animals, and enjoy entertainment for the whole family.",
+      "venue": "The International Centre",
+      "url": "https://www.visitmississauga.ca/event/christmas-canadian-pet-expo/",
+      "start": "2026-11-21T10:00:00.000Z",
+      "end": "2026-11-22T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Breakfast with Santa",
+      "summary": "A festive breakfast, a little Santa magic, and a chance to make the holidays brighter for local families.",
+      "venue": "Saucy Restaurant",
+      "url": "https://www.eventbrite.ca/e/breakfast-with-santa-tickets-2004492418784",
+      "start": "2026-11-21T13:30:00.000Z",
+      "end": "2026-11-21T14:15:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
