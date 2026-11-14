@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-14T14:50:45.276Z",
+  "updatedAt": "2026-11-14T16:36:27.405Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Merry Market",
-      "summary": "Give better gifts, get them now. Join hello happy hq for their 7th annual Merry Market in Mississauga at the historic Small Arms Inspection Building. Discover a curated collection of makers, curators and small businesses at their flagship holiday event and shop small this season. Join a workshop, warm up with a coffee, and savour local bites between shopping stops! Grab your pals and spend the day with us! hello happy is hosting a food drive during this event in collaboration with Compass Food Bank.",
-      "venue": "Small Arms Inspection Building",
-      "url": "https://www.visitmississauga.ca/event/merry-market/",
-      "start": "2026-11-14T11:00:00.000Z",
-      "end": "2026-11-14T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/an-evening-of-piano-a-city-in-tune-exhibition/",
       "start": "2026-11-20T19:00:00.000Z",
       "end": "2026-11-20T20:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Perfect Bite",
+      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
+      "venue": "Hyatt Place, Luxe Convention Centre",
+      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-13/",
+      "start": "2026-11-20T19:00:00.000Z",
+      "end": "2026-11-20T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
