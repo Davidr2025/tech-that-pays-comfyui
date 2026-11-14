@@ -1,6 +1,14 @@
 {
-  "updatedAt": "2026-11-14T06:50:37.195Z",
+  "updatedAt": "2026-11-14T10:50:51.158Z",
   "items": [
+    {
+      "title": "Ontario's Bill 140 raises concerns over landfill approvals, groundwater protection in Caledon, Ont.",
+      "url": "https://www.cbc.ca/news/canada/caledon-bill-140-landfills-groundwater-9.7421849?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-11-14T09:00:00.000Z",
+      "summary": "Ontario's proposed Bill 140 would remove a municipal support requirement for certain large landfills, prompting concerns about groundwater and the time available for Caledon's incoming council to respond."
+    },
     {
       "title": "Peel Police Launch Festive RIDE Checkstops Through New Year's Eve",
       "url": "https://www.insauga.com/holiday-checkstop-season-starts-in-mississauga-and-brampton/",
@@ -18,6 +26,14 @@
       "publishedAt": "2026-11-13T22:10:52.000Z",
       "summary": "According to insauga.com, Trixstar, the company behind the Great Outdoors Comedy Festival, made an assignment in bankruptcy effective Nov. 13, with MNP Ltd. named as trustee. The outlet reported ticket holders may never recover their money after waiting months for refunds from the festival's cancelled Mississauga debut, postponed just three days before it was set to begin in September. General admission tickets ranged from $39 to $99, while VIP Club tickets reached as much as $499 before fees, insauga.com said. Organizers said at the time they were exploring new dates and would follow up with ticket holders, but no replacement dates were ever announced, according to the outlet. Customers said they could not get answers despite repeated attempts to contact the company, insauga.com reported. With Trixstar now bankrupt, ticket claims must go through the trustee, the outlet said.",
       "rewritten": true
+    },
+    {
+      "title": "2026 Toronto Warriors vs Mississauga Chargers - Videos",
+      "url": "https://www.flohockey.tv/events/16108506-2026-haliburton-county-huskies-vs-mississauga-chargers/videos",
+      "source": "FloHockey",
+      "sourceUrl": "https://www.flohockey.tv",
+      "publishedAt": "2026-11-13T22:00:57.000Z",
+      "summary": "Replay: Home - 2026 Warriors vs Chargers | Oct 6 @ 9 AM"
     },
     {
       "title": "Councillor Sets Up Meetings as CAPREIT Pitches 150-Plus New Townhouses at Two Mississauga Sites",
@@ -47,6 +63,14 @@
       "rewritten": true
     },
     {
+      "title": "Parents of man shot dead by Peel police plead for answers at inquest: ‘We’re fighting for our child’",
+      "url": "https://www.thestar.com/news/gta/parents-of-man-shot-dead-by-peel-police-plead-for-answers-at-inquest-we-re-fighting-for-our-child/article_f07ed92a-9a93-4999-8a8d-db7cf8922f32.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-11-13T20:00:00.000Z",
+      "summary": ", was shot on Jan. 7, 2020, after Peel police went to a townhouse complex near Eglinton Avenue West and Winston Churchill Boulevard in Mississauga to arrest him for breach of his bail conditions. Ann-Marie White holds her late son Jamal Francique’s photo and sweater. He was shot and killed by Peel police on Jan. 7, 2020. Almost seven years after Jamal Francique Jr. was shot and killed near his Mississauga home by Peel police, a coroner’s inquest Friday heard from his parents, who pleaded for answers as to how an attempted arrest ended in their son’s death. , told the inquest through tears on its first day. -Const. Milan Ivkovic the evening of Jan. 7, 2020, after members of the Peel police street crime unit went to a townhouse complex, where Francique lived with his mother and younger brother, near Eglinton Avenue West and Winston Churchill Boulevard, to arrest him for breaching bail conditions. ” The public hearing, which is mandatory under the Coroners Act because of police involvement, is not a criminal proceeding. The province’s police watchdog, the Special Investigations Unit, cleared the officers of any criminal wrongdoing a year after the shooting."
+    },
+    {
       "title": "Major Roads and Bus Routes Come First as Mississauga Readies Winter Snow Crews",
       "url": "https://www.insauga.com/when-will-your-street-get-plowed-heres-how-mississauga-handles-winter-snow/",
       "source": "insauga.com",
@@ -74,13 +98,12 @@
       "rewritten": true
     },
     {
-      "title": "Hospitality Worker Collects $7-Million Lump Sum After Winning Daily Grand's Top Prize",
-      "url": "https://www.mississauga.com/news/mississauga-daily-grand-winner/article_77eaa378-a8f4-5736-a773-7cb5caee0f6b.html",
-      "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com",
-      "publishedAt": "2026-11-13T17:30:00.000Z",
-      "summary": "According to Mississauga.com, Mississauga hospitality worker James Lui-Yee won the Daily Grand's top prize of $1,000 a day for life, but chose the $7 million lump sum payout instead. The outlet reported the winning ticket was purchased at a Petro-Canada on Burnhamthorpe Road West. Lui-Yee said he did not check the ticket until two weeks after the draw and initially thought the Ontario Lottery and Gaming Corporation app had made an error. He said his heart raced once he manually confirmed his numbers matched the winning combination at the OLG Prize Centre in Toronto. Lui-Yee said he plans to seek financial advice before making major decisions, but hopes to buy a home, invest and travel to Greece, Portugal and Spain, Mississauga.com reported. He also looks forward to buying a new phone and an advanced chessboard, according to the outlet.",
-      "rewritten": true
+      "title": "Coroner's inquest begins in case of Mississauga man shot by police in 2020",
+      "url": "https://www.cbc.ca/news/canada/toronto/jamal-francique-coroners-inquest-start-9.7420863?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-11-13T17:43:13.000Z",
+      "summary": ", is underway on Friday. Jamal Francique, a 28-year-old Black man, was shot during an attempted arrest outside his home on Jan. 7, 2020, and died in hospital days later."
     }
   ]
 }
