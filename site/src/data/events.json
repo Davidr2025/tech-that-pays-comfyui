@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-13T21:50:27.273Z",
+  "updatedAt": "2026-11-14T01:50:39.324Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Seasons Christmas Show 2026",
-      "summary": "Step into a winter wonderland and kick off the holiday season at the Seasons Christmas Show 2026, taking place November 13-15 at the International Centre in Mississauga. Celebrating its 21st year, this beloved holiday tradition brings together everything that makes the season special, from festive décor and unique gifts to seasonal inspiration and family-friendly fun.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/seasons-christmas-show-2026/",
-      "start": "2026-11-13T10:00:00.000Z",
-      "end": "2026-11-15T17:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Merry Market",
       "summary": "Give better gifts, get them now. Join hello happy hq for their 7th annual Merry Market in Mississauga at the historic Small Arms Inspection Building. Discover a curated collection of makers, curators and small businesses at their flagship holiday event and shop small this season. Join a workshop, warm up with a coffee, and savour local bites between shopping stops! Grab your pals and spend the day with us! hello happy is hosting a food drive during this event in collaboration with Compass Food Bank.",
@@ -121,6 +111,16 @@
       "end": "2026-11-19T17:30:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Christmas in The Village",
+      "summary": "Christmas in the Village returns to Streetsville for its 11th annual holiday celebration! m. m. m. for a festive weekend filled with holiday cheer in the heart of historic Streetsville. The festivities begin Friday evening with live music from The Canadiana Band , followed by the beloved Tree Lighting Ceremony , hosted by CBC News Peel’s Nav Nanwa .",
+      "venue": "Streetsville Village Square",
+      "url": "https://www.visitmississauga.ca/event/christmas-in-the-village/",
+      "start": "2026-11-20T17:00:00.000Z",
+      "end": "2026-11-21T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
