@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T10:50:52.509Z",
+  "updatedAt": "2026-11-14T14:50:45.276Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,16 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/merry-market/",
       "start": "2026-11-14T11:00:00.000Z",
       "end": "2026-11-14T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Reconnect Mississauga Fall Clothing Swap",
-      "summary": "It’s that time of year again! Reconnect Mississauga is hosting its Fall Clothing Swap on November 14th. Bring gently used clothes taking up valuable space in your closet and discover new-to-you pieces to refresh your wardrobe! There will be a mending station where you can learn about sewing on buttons, patches, and more. This event is a great opportunity to give clothing a second life, be kind to the planet, and connect with your neighbours. You’ll also have a chance to enter the raffle for a chance to win a gift bag from Refillery Market !",
-      "venue": "Meadowvale Community Church",
-      "url": "https://www.visitmississauga.ca/event/reconnect-mississauga-fall-clothing-swap/",
-      "start": "2026-11-14T11:00:00.000Z",
-      "end": "2026-11-14T13:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/christmas-in-the-village/",
       "start": "2026-11-20T17:00:00.000Z",
       "end": "2026-11-21T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "An Evening of Piano: A City in Tune Exhibition",
+      "summary": "Experience an unforgettable evening of live music at the historic Adamson Estate, where the stories and artists featured in A City in Tune will come to life through a special after-hours performance. The evening will feature award-winning Mississauga vocalist Heather Christine and acclaimed Canadian pianist Bill King , whose talents and contributions to the music community make them ideal performers to celebrate the exhibition.",
+      "venue": "Adamson Estate",
+      "url": "https://www.visitmississauga.ca/event/an-evening-of-piano-a-city-in-tune-exhibition/",
+      "start": "2026-11-20T19:00:00.000Z",
+      "end": "2026-11-20T20:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
