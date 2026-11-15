@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-14T20:50:34.198Z",
+  "updatedAt": "2026-11-15T00:50:07.538Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "THE iDENTiTY CRiSiS and Bangerz Brass",
-      "summary": "Get ready for an unforgettable night of live music at The Rec Room Square One as The iDENTiTY CRiSiS takes the stage live with Perfectly Ravishing . The evening also features co-headliners Bangerz Brass and special guest DJ Rich Sweet , bringing a high-energy mix of live entertainment, brass band favourites, and crowd-pleasing beats. Whether you're a longtime fan or looking for a fun night out in Mississauga, this dynamic lineup promises an exciting evening of local talent and great music.",
-      "venue": "The Rec Room",
-      "url": "https://www.visitmississauga.ca/event/the-identity-crisis-and-bangerz-brass/",
-      "start": "2026-11-14T19:00:00.000Z",
-      "end": "2026-11-14T23:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Preserving the Harvest Naturally",
       "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
@@ -121,6 +111,16 @@
       "end": "2026-11-21T14:15:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Mississauga Santa Claus Parade 2026, presented by TD",
+      "summary": "Bundle up and get ready for one of Mississauga’s most magical holiday traditions! The Mississauga Santa Claus Parade returns to City Centre with dazzling illuminated floats, festive performers, marching bands playing your favourite holiday tunes, and of course, Santa Claus himself. \" , celebrates the special traditions, cultures, and festive moments that bring our community together throughout the season.",
+      "venue": "Mississauga Celebration Square",
+      "url": "https://www.visitmississauga.ca/event/mississauga-santa-claus-parade-2026-presented-by-td/",
+      "start": "2026-11-21T16:00:00.000Z",
+      "end": "2026-11-21T19:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
