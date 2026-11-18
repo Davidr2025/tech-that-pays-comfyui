@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-18T15:50:45.175Z",
+  "updatedAt": "2026-11-18T18:51:06.350Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Midday Melodies: French Elegance & Spanish Colours",
-      "summary": "Recharge your mind and soul with a cozy midday concert series - your perfect lunch hour escape.",
-      "venue": "Maker Stage, Hazel McCallion Central Library",
-      "url": "https://www.eventbrite.ca/e/midday-melodies-french-elegance-spanish-colours-tickets-2000438886560",
-      "start": "2026-11-18T17:00:00.000Z",
-      "end": "2026-11-18T18:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/orc-christmas-market/",
       "start": "2026-11-22T09:00:00.000Z",
       "end": "2026-11-22T13:30:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "CHOCOLA-TO",
+      "summary": "Calling all chocolate lovers! 🍫 Indulge your sweet tooth at CHOCOLA-TO , a delicious celebration of all things chocolate at the historic Small Arms Inspection Building. From handcrafted treats and gourmet creations to decadent desserts and unique chocolate-inspired products, this mouthwatering event is a dream come true for anyone who loves a little sweetness. Meet talented chocolatiers, discover local makers, sample irresistible creations, and shop for the perfect gift for the chocolate enthusiast in your life.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/chocola-to/",
+      "start": "2026-11-22T11:00:00.000Z",
+      "end": "2026-11-22T17:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
