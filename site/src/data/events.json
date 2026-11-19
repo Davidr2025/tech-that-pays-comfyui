@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-18T23:50:19.963Z",
+  "updatedAt": "2026-11-19T03:23:10.538Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Preserving the Harvest Naturally",
-      "summary": "Learn easy, natural ways to keep your harvest fresh and tasty.",
-      "venue": "Hazel McCallion Central Library, The Teaching Kitchen (4th floor)",
-      "url": "https://www.eventbrite.ca/e/preserving-the-harvest-naturally-tickets-2004313876760",
-      "start": "2026-11-18T23:30:00.000Z",
-      "end": "2026-11-19T01:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "The BFUTR Global Tech Summit 2026",
       "summary": "November 19 @ 7:00 AM – 7:00 PM EST November 20 @ 9:00 AM – 7:00 PM EST BFUTR 2026 brings together technology professionals, industry leaders, employers and innovators for two days of conversations, career opportunities, networking and learning at the International Centre in Mississauga. Under this year’s theme, Reprogramming the Enterprise: Technology, Talent & Leadership , BFUTR will explore how emerging technologies, evolving talent strategies and new approaches to leadership are reshaping the future of work and business.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/the-perfect-bite-14/",
       "start": "2026-11-22T18:00:00.000Z",
       "end": "2026-11-22T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "THE WAY",
+      "summary": "THE WAY is an immersive live music experience that brings together a diverse group of talented artists for an evening of cultural connection, creative expression, and genre-blending performances. Headlined by acclaimed guitarist and music producer Shallum Xavier, the concert showcases a unique fusion of Indian classical music, jazz, rock, pop, and folk influences, creating a soundscape that transcends traditional musical boundaries.",
+      "venue": "Unitarian Congregation of Mississauga",
+      "url": "https://www.visitmississauga.ca/event/the-way/",
+      "start": "2026-11-22T19:00:00.000Z",
+      "end": "2026-11-22T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
