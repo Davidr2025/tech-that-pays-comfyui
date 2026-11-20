@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T18:36:40.392Z",
+  "updatedAt": "2026-11-20T22:50:41.703Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,26 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/christmas-in-the-village/",
       "start": "2026-11-20T17:00:00.000Z",
       "end": "2026-11-21T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "An Evening of Piano: A City in Tune Exhibition",
-      "summary": "Experience an unforgettable evening of live music at the historic Adamson Estate, where the stories and artists featured in A City in Tune will come to life through a special after-hours performance. The evening will feature award-winning Mississauga vocalist Heather Christine and acclaimed Canadian pianist Bill King , whose talents and contributions to the music community make them ideal performers to celebrate the exhibition.",
-      "venue": "Adamson Estate",
-      "url": "https://www.visitmississauga.ca/event/an-evening-of-piano-a-city-in-tune-exhibition/",
-      "start": "2026-11-20T19:00:00.000Z",
-      "end": "2026-11-20T20:30:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-13/",
-      "start": "2026-11-20T19:00:00.000Z",
-      "end": "2026-11-20T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -121,6 +101,26 @@
       "end": "2026-11-25T20:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Author Talks with Susan Pimento",
+      "summary": "Susan Pimento discusses concepts and tools from her book 'Your Retirement Reset' in this online chat.",
+      "venue": "",
+      "url": "https://www.eventbrite.ca/e/author-talks-with-susan-pimento-tickets-1996820996353",
+      "start": "2026-11-26T00:00:00.000Z",
+      "end": "2026-11-26T01:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Christmas in the Village 2026",
+      "summary": "The holiday season begins in Clarkson Village with Christmas in the Village ! Join the community on November 26, 2026 , as Clarkson Village comes alive with sparkling lights, festive décor, and holiday cheer. Gather with family and friends for the official lighting of the Clarkson Village Christmas Tree and experience the warmth and excitement of this beloved holiday tradition.",
+      "venue": "Clarkson Community Church",
+      "url": "https://www.visitmississauga.ca/event/christmas-in-the-village-2026/",
+      "start": "2026-11-26T17:00:00.000Z",
+      "end": "2026-11-26T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
