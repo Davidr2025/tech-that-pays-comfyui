@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-19T23:53:20.226Z",
+  "updatedAt": "2026-11-20T03:11:26.659Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The BFUTR Global Tech Summit 2026",
-      "summary": "November 19 @ 7:00 AM – 7:00 PM EST November 20 @ 9:00 AM – 7:00 PM EST BFUTR 2026 brings together technology professionals, industry leaders, employers and innovators for two days of conversations, career opportunities, networking and learning at the International Centre in Mississauga. Under this year’s theme, Reprogramming the Enterprise: Technology, Talent & Leadership , BFUTR will explore how emerging technologies, evolving talent strategies and new approaches to leadership are reshaping the future of work and business.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/the-bfutr-global-tech-summit-2026/",
-      "start": "2026-11-19T07:00:00.000Z",
-      "end": "2026-11-20T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Christmas in The Village",
       "summary": "Christmas in the Village returns to Streetsville for its 11th annual holiday celebration! m. m. m. for a festive weekend filled with holiday cheer in the heart of historic Streetsville. The festivities begin Friday evening with live music from The Canadiana Band , followed by the beloved Tree Lighting Ceremony , hosted by CBC News Peel’s Nav Nanwa .",
@@ -121,6 +111,16 @@
       "end": "2026-11-24T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Cookbook Club",
+      "summary": "Connect with fellow foodies through our monthly cookbook club.",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-2004253432971",
+      "start": "2026-11-25T19:00:00.000Z",
+      "end": "2026-11-25T20:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
