@@ -1,59 +1,59 @@
 {
-  "updatedAt": "2026-11-20T07:50:49.569Z",
+  "updatedAt": "2026-11-20T11:50:39.647Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 10,
-    "feelsLike": 6,
+    "temp": 8,
+    "feelsLike": 4,
     "text": "Clear",
     "icon": "☀️"
   },
   "days": [
     {
       "date": "2026-11-20",
-      "max": 17,
-      "min": 6,
+      "max": 18,
+      "min": 5,
       "precipChance": 0,
-      "text": "Mainly clear",
-      "icon": "🌤️"
+      "text": "Partly cloudy",
+      "icon": "⛅"
     },
     {
       "date": "2026-11-21",
-      "max": 11,
-      "min": 4,
+      "max": 10,
+      "min": 1,
       "precipChance": 0,
       "text": "Fog",
       "icon": "🌫️"
     },
     {
       "date": "2026-11-22",
-      "max": 16,
-      "min": 6,
-      "precipChance": 13,
+      "max": 15,
+      "min": 7,
+      "precipChance": 5,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-11-23",
       "max": 12,
-      "min": 2,
-      "precipChance": 18,
+      "min": 3,
+      "precipChance": 20,
       "text": "Overcast",
       "icon": "☁️"
     },
     {
       "date": "2026-11-24",
-      "max": 3,
-      "min": -1,
-      "precipChance": 4,
-      "text": "Overcast",
-      "icon": "☁️"
+      "max": 4,
+      "min": 0,
+      "precipChance": 7,
+      "text": "Snow showers",
+      "icon": "🌨️"
     },
     {
       "date": "2026-11-25",
-      "max": 3,
+      "max": 4,
       "min": -1,
-      "precipChance": 9,
+      "precipChance": 12,
       "text": "Overcast",
       "icon": "☁️"
     }
