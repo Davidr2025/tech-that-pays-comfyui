@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T15:49:57.085Z",
+  "updatedAt": "2026-11-21T17:29:25.601Z",
   "windowDays": 14,
   "items": [
     {
@@ -11,16 +11,6 @@
       "end": "2026-11-22T16:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Breakfast with Santa",
-      "summary": "A festive breakfast, a little Santa magic, and a chance to make the holidays brighter for local families.",
-      "venue": "Saucy Restaurant",
-      "url": "https://www.eventbrite.ca/e/breakfast-with-santa-tickets-2004492420790",
-      "start": "2026-11-21T15:30:00.000Z",
-      "end": "2026-11-21T16:15:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
     },
     {
       "title": "Mississauga Santa Claus Parade 2026, presented by TD",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/the-nutcracker-3/",
       "start": "2026-11-28T14:00:00.000Z",
       "end": "2026-11-28T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Light Up The Port",
+      "summary": "Kick off the holiday season at Light Up the Port, a festive evening filled with holiday magic, family fun, and waterfront charm in Port Credit. Watch as the Christmas tree and iconic Port Credit Lighthouse light up the night, marking the start of the holiday season. Enjoy free photos with Santa, holiday crafts, festive entertainment, carollers, holiday characters, complimentary seasonal treats, and fun giveaways throughout the evening.",
+      "venue": "Port Credit Memorial Park",
+      "url": "https://www.visitmississauga.ca/event/light-up-the-port/",
+      "start": "2026-11-28T16:00:00.000Z",
+      "end": "2026-11-28T21:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
