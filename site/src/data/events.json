@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T17:29:25.601Z",
+  "updatedAt": "2026-11-21T21:49:46.015Z",
   "windowDays": 14,
   "items": [
     {
@@ -9,16 +9,6 @@
       "url": "https://www.visitmississauga.ca/event/christmas-canadian-pet-expo/",
       "start": "2026-11-21T10:00:00.000Z",
       "end": "2026-11-22T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "Mississauga Santa Claus Parade 2026, presented by TD",
-      "summary": "Bundle up and get ready for one of Mississauga’s most magical holiday traditions! The Mississauga Santa Claus Parade returns to City Centre with dazzling illuminated floats, festive performers, marching bands playing your favourite holiday tunes, and of course, Santa Claus himself. \" , celebrates the special traditions, cultures, and festive moments that bring our community together throughout the season.",
-      "venue": "Mississauga Celebration Square",
-      "url": "https://www.visitmississauga.ca/event/mississauga-santa-claus-parade-2026-presented-by-td/",
-      "start": "2026-11-21T16:00:00.000Z",
-      "end": "2026-11-21T19:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     },
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/light-up-the-port/",
       "start": "2026-11-28T16:00:00.000Z",
       "end": "2026-11-28T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Heart Comonos' 6th Annual Magical Holiday Season Celebration",
+      "summary": "Looking to kick off the holiday season with a little community spirit? Join Heart Comonos' 6th Annual Holiday Gathering , a free outdoor celebration bringing neighbours together for an evening of music, culture, warmth, and connection.",
+      "venue": "Heart Comonos",
+      "url": "https://www.visitmississauga.ca/event/heart-comonos-6th-annual-magical-holiday-season-celebration/",
+      "start": "2026-11-28T17:30:00.000Z",
+      "end": "2026-11-28T20:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
