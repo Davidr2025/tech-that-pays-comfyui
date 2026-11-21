@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-20T22:50:41.703Z",
+  "updatedAt": "2026-11-21T02:50:35.004Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Christmas in The Village",
-      "summary": "Christmas in the Village returns to Streetsville for its 11th annual holiday celebration! m. m. m. for a festive weekend filled with holiday cheer in the heart of historic Streetsville. The festivities begin Friday evening with live music from The Canadiana Band , followed by the beloved Tree Lighting Ceremony , hosted by CBC News Peel’s Nav Nanwa .",
-      "venue": "Streetsville Village Square",
-      "url": "https://www.visitmississauga.ca/event/christmas-in-the-village/",
-      "start": "2026-11-20T17:00:00.000Z",
-      "end": "2026-11-21T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Christmas Canadian Pet Expo",
       "summary": "Get ready for a tail-wagging holiday celebration at the Christmas Canadian Pet Expo ! Bring your furry friends and experience a festive weekend packed with pet-friendly shopping, exciting demonstrations, interactive activities, and seasonal surprises. Browse hundreds of vendors featuring the latest pet products, discover unique holiday gifts, meet adorable animals, and enjoy entertainment for the whole family.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/christmas-in-the-village-2026/",
       "start": "2026-11-26T17:00:00.000Z",
       "end": "2026-11-26T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "The Nutcracker",
+      "summary": "Make holiday magic unforgettable with The Nutcracker . Join us for a dazzling production of The Nutcracker , a beloved holiday ballet filled with wonder, imagination, and festive charm for audiences of all ages. Presented by Classical Arts Entertainment , this spectacular production showcases stunning hand-painted scenery, more than 200 exquisite costumes, and Tchaikovsky's timeless score, brought to life through cherished choreography.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/the-nutcracker-3/",
+      "start": "2026-11-28T14:00:00.000Z",
+      "end": "2026-11-28T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
