@@ -1,27 +1,7 @@
 {
-  "updatedAt": "2026-11-22T17:49:24.459Z",
+  "updatedAt": "2026-11-22T21:50:10.203Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-14/",
-      "start": "2026-11-22T18:00:00.000Z",
-      "end": "2026-11-22T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
-    {
-      "title": "THE WAY",
-      "summary": "THE WAY is an immersive live music experience that brings together a diverse group of talented artists for an evening of cultural connection, creative expression, and genre-blending performances. Headlined by acclaimed guitarist and music producer Shallum Xavier, the concert showcases a unique fusion of Indian classical music, jazz, rock, pop, and folk influences, creating a soundscape that transcends traditional musical boundaries.",
-      "venue": "Unitarian Congregation of Mississauga",
-      "url": "https://www.visitmississauga.ca/event/the-way/",
-      "start": "2026-11-22T19:00:00.000Z",
-      "end": "2026-11-22T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Perfect Bite",
       "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
@@ -119,6 +99,26 @@
       "url": "https://www.visitmississauga.ca/event/the-perfect-bite-16/",
       "start": "2026-11-29T18:00:00.000Z",
       "end": "2026-11-29T18:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Preserving Seasonal Food: Quick Pickling Workshop",
+      "summary": "Learn the fast-pickle method to reduce food waste, boost flavor, and enjoy fresh-tasting produce!",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/preserving-seasonal-food-quick-pickling-workshop-tickets-2005025266546",
+      "start": "2026-12-02T23:30:00.000Z",
+      "end": "2026-12-03T01:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Mississauga Festival of Trees: Holiday Market",
+      "summary": "Discover the unique holiday treasures at the stunning Small Arms Inspection Building, with delightful Holiday Market! Featuring 80+ local artisan and culinary vendors, this market promises a festive experience for all.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/mississauga-festival-of-trees-holiday-market/",
+      "start": "2026-12-04T17:30:00.000Z",
+      "end": "2026-12-06T17:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
