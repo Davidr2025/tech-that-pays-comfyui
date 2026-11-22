@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-21T21:49:46.015Z",
+  "updatedAt": "2026-11-22T01:49:54.089Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Christmas Canadian Pet Expo",
-      "summary": "Get ready for a tail-wagging holiday celebration at the Christmas Canadian Pet Expo ! Bring your furry friends and experience a festive weekend packed with pet-friendly shopping, exciting demonstrations, interactive activities, and seasonal surprises. Browse hundreds of vendors featuring the latest pet products, discover unique holiday gifts, meet adorable animals, and enjoy entertainment for the whole family.",
-      "venue": "The International Centre",
-      "url": "https://www.visitmississauga.ca/event/christmas-canadian-pet-expo/",
-      "start": "2026-11-21T10:00:00.000Z",
-      "end": "2026-11-22T16:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "ORC Christmas Market",
       "summary": "The Ontario Racquet Club Christmas Market is back! Join us for the 3rd Annual ORC Christmas Market for a festive day of holiday shopping, local finds, and seasonal cheer. We’re excited to welcome 45 local vendors offering handmade treasures, unique gifts, festive finds, and plenty of holiday inspiration. Whether you’re getting a head start on your Christmas shopping, looking for something special, or simply want to enjoy a festive morning out, there will be something for everyone!",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/heart-comonos-6th-annual-magical-holiday-season-celebration/",
       "start": "2026-11-28T17:30:00.000Z",
       "end": "2026-11-28T20:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Natalie G: Music Around The World 2",
+      "summary": "Audiences are invited to embark on a musical journey around the world as a professional 12-piece band, led by singer and multi-instrumentalist Natalie G, performs songs representing more than 10 countries. From the vibrant rhythms of Latin America to the soulful sounds of the Mediterranean and beloved European classics, the performance celebrates cultural diversity through music.",
+      "venue": "Living Arts Centre",
+      "url": "https://www.visitmississauga.ca/event/natalie-g-music-around-the-world-2/",
+      "start": "2026-11-28T18:30:00.000Z",
+      "end": "2026-11-28T20:15:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
