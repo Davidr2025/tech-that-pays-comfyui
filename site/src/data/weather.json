@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T01:49:54.328Z",
+  "updatedAt": "2026-11-22T02:13:02.317Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
@@ -19,7 +19,7 @@
     },
     {
       "date": "2026-11-22",
-      "max": 15,
+      "max": 14,
       "min": 2,
       "precipChance": 9,
       "text": "Fog",
