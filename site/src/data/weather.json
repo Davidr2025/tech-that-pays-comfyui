@@ -1,26 +1,26 @@
 {
-  "updatedAt": "2026-11-22T06:50:44.722Z",
+  "updatedAt": "2026-11-22T10:50:26.830Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
-    "temp": 4,
-    "feelsLike": 2,
+    "temp": 2,
+    "feelsLike": 0,
     "text": "Fog",
     "icon": "🌫️"
   },
   "days": [
     {
       "date": "2026-11-22",
-      "max": 15,
+      "max": 13,
       "min": 2,
-      "precipChance": 7,
+      "precipChance": 6,
       "text": "Fog",
       "icon": "🌫️"
     },
     {
       "date": "2026-11-23",
       "max": 10,
-      "min": 1,
+      "min": -1,
       "precipChance": 16,
       "text": "Overcast",
       "icon": "☁️"
@@ -29,7 +29,7 @@
       "date": "2026-11-24",
       "max": 4,
       "min": -1,
-      "precipChance": 16,
+      "precipChance": 11,
       "text": "Overcast",
       "icon": "☁️"
     },
@@ -37,7 +37,7 @@
       "date": "2026-11-25",
       "max": 5,
       "min": 0,
-      "precipChance": 1,
+      "precipChance": 2,
       "text": "Overcast",
       "icon": "☁️"
     },
@@ -45,7 +45,7 @@
       "date": "2026-11-26",
       "max": 5,
       "min": 3,
-      "precipChance": 55,
+      "precipChance": 59,
       "text": "Rain",
       "icon": "🌧️"
     },
