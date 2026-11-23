@@ -216,6 +216,24 @@
       "source": "City of Mississauga",
       "sourceUrl": "https://www.mississauga.ca/recreation-and-sports/locations/huron-park-recreation-centre/",
       "tag": "Free · Park"
+    },
+    {
+      "title": "Explore the heritage grounds and garden beds at Benares Historic House",
+      "summary": "A 19th century farm estate overlooking Lake Ontario in Clarkson, settled around 1836 by retired British army captain James Harris and his wife Elizabeth. The original house burned down in 1855 and was rebuilt the following year in the Georgian Revival style still standing today. The City of Mississauga allows self-guided visits to the outbuildings and historic garden beds at no charge, separate from the paid interior house tours.",
+      "venue": "Benares Historic House, 1507 Clarkson Road North, Clarkson",
+      "url": "https://www.mississauga.ca/arts-and-culture/locations/benares-historic-house/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/arts-and-culture/locations/benares-historic-house/",
+      "tag": "Free · Heritage"
+    },
+    {
+      "title": "Walk the loop trail around Lake Wabukayne",
+      "summary": "A 1.8-hectare stormwater pond in Meadowvale with a floating island at its centre, encircled by a walking path that connects to the wider trail network near Lake Aquitaine Park. The City of Mississauga counts dozens of plant and animal species around the water, including a butterfly garden along the shore.",
+      "venue": "Lake Wabukayne, 2610 Inlake Court, Meadowvale",
+      "url": "https://www.mississauga.ca/events-and-attractions/parks/lake-wabukayne/",
+      "source": "City of Mississauga",
+      "sourceUrl": "https://www.mississauga.ca/events-and-attractions/parks/lake-wabukayne/",
+      "tag": "Free · Trail"
     }
   ]
 }
