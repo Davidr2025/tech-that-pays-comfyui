@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T18:50:48.953Z",
+  "updatedAt": "2026-11-24T20:39:39.392Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
@@ -19,8 +19,8 @@
     },
     {
       "date": "2026-11-25",
-      "max": 3,
-      "min": -3,
+      "max": 4,
+      "min": -2,
       "precipChance": 0,
       "text": "Overcast",
       "icon": "☁️"

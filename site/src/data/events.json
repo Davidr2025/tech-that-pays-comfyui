@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-24T18:50:35.849Z",
+  "updatedAt": "2026-11-24T20:39:39.276Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Perfect Bite",
-      "summary": "The Perfect Bite , presented by Secret City in collaboration with Netflix , brings its sold-out murder mystery dinner experience to Mississauga, inspired by the thrilling world of Netflix's Glass Onion: A Knives Out Mystery. Step into an exclusive culinary event hosted by acclaimed Chef Maribelle Moore , where a delicious four-course meal quickly becomes the scene of a gripping mystery . Interact with live actors, uncover secrets, and become part of the story as the evening unfolds around you.",
-      "venue": "Hyatt Place, Luxe Convention Centre",
-      "url": "https://www.visitmississauga.ca/event/the-perfect-bite-15/",
-      "start": "2026-11-24T19:00:00.000Z",
-      "end": "2026-11-24T19:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Cookbook Club",
       "summary": "Connect with fellow foodies through our monthly cookbook club.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/mississauga-festival-of-trees-holiday-market/",
       "start": "2026-12-04T17:30:00.000Z",
       "end": "2026-12-06T17:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Our Favorite Things — The Christmas Edit",
+      "summary": "Our Favorite Things — The Christmas Edit , presented by The Craft Show, is coming to Meadowvale for a one-day holiday shopping event featuring a carefully curated collection of independent makers, artisans, food businesses and small brands. \"Our Favorite Things\" is thoughtfully curated to create an enjoyable Christmas shopping experience with variety across categories and fewer repetitive products.",
+      "venue": "Meadowvale Community Church",
+      "url": "https://www.visitmississauga.ca/event/our-favorite-things-the-christmas-edit/",
+      "start": "2026-12-05T11:00:00.000Z",
+      "end": "2026-12-05T16:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
