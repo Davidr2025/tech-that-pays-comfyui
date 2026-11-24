@@ -5,6 +5,7 @@
   "type": "module",
   "description": "David's private AI Vision Board — password-protected command center backed by the LSFG Coaching Airtable base.",
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
     "@vercel/edge": "^1.1.1"
   }
 }

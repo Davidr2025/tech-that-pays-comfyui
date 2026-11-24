@@ -44,6 +44,22 @@ source for them yet. Tell me what each one's real data lives in (a CRM? a
 spreadsheet? another Airtable base?) and that's a quick follow-up, the same
 way Mississauga Insider and Tech That Pays were built.
 
+## YouTube Research (`/youtube.html`)
+
+Velio-style outlier research for each of David's YouTube channels: about-to-explode and proven-outlier
+videos from channels he follows, trending title phrases, his own videos vs the originals they remix
+(with improvement suggestions), and a production queue that Claude fills with scripts in his voice.
+
+- **Data:** public YouTube Data API numbers, stored in **Neon Postgres** (`lib/yt/db.js`, tables `yt_*`),
+  not Airtable. It tracks thousands of videos and their view history, beyond Airtable's record and rate limits.
+- **API:** one function, `api/yt.js`, routed by `?r=/path`. No `vercel.json` changes.
+- **Refresh:** only when David presses Refresh (no cron). The browser sends channels in batches of 8 so each call stays short.
+  Recent uploads (30 days) refresh every time and each channel's older baseline at most weekly. About 1.4 API units per channel.
+- **Content machine:** `content_machine.py` on David's PC (outside this repo) calls `api/yt.js` with
+  `Authorization: Bearer $CONTENT_MACHINE_TOKEN`, which only reaches the production-queue / transcript routes.
+  When YouTube blocks caption downloads from Vercel, requests queue in `yt_transcript_requests` and the PC fills them.
+- **Env vars:** `DATABASE_URL` (added by the Neon integration), `YOUTUBE_API_KEY`, `CONTENT_MACHINE_TOKEN`.
+
 ## Deploying (the only non-code part)
 
 I can't click buttons in your Vercel or Airtable accounts for you — this is

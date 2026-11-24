@@ -12,6 +12,10 @@ export default async function middleware(request) {
 
   if (PUBLIC_PATHS.has(pathname)) return next();
 
+  // The content machine on David's PC has no browser cookie; it sends a bearer token instead.
+  // api/yt.js verifies that token itself and only allows a short list of routes with it.
+  if (pathname === "/api/yt" && /^Bearer\s+\S+/i.test(request.headers.get("authorization") || "")) return next();
+
   const authed = await requestIsAuthed(request, process.env.SESSION_SECRET);
 
   if (!authed) {

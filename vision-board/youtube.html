@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>YouTube Research — Vision Board</title>
+<style>
+:root{
+  --bg:#f6f5f3; --panel:#ffffff; --panel2:#fbfaf8; --fg:#1d1b19; --mut:#6f6a64; --faint:#a39e97;
+  --line:#e6e2dc; --acc:#e8590c; --acc-soft:#fff1e8; --ok:#2f9e44; --bad:#c92a2a;
+  --t1:#d9480f; --t2:#f76707; --t3:#f59f00; --t0:#868e96;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05); --r:12px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141312; --panel:#1d1b1a; --panel2:#232120; --fg:#f1efec; --mut:#a8a29b; --faint:#6f6a64;
+  --line:#2f2c2a; --acc:#ff7a33; --acc-soft:#33221a; --shadow:0 1px 2px rgba(0,0,0,.4);
+}}
+*{box-sizing:border-box} html,body{margin:0;height:100%}
+body{font:14px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);
+  display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:7px 12px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{border-color:var(--faint)} .btn.primary{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.btn.primary:hover{filter:brightness(1.07)} .btn.ghost{border-color:transparent;background:transparent}
+.btn.small{padding:4px 9px;font-size:12.5px} .btn:disabled{opacity:.5;cursor:default}
+.btn.danger{color:var(--bad)}
+input[type=text],input[type=search],textarea,select{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;outline:none;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--acc)}
+svg.i{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* sidebar */
+aside{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 18px 14px;font-weight:700;font-size:15px}
+.brand .logo{width:28px;height:28px;border-radius:8px;background:var(--acc);display:grid;place-items:center;color:#fff}
+.side-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:10px 18px 6px;font-weight:600}
+.ws-list{padding:0 10px;display:flex;flex-direction:column;gap:2px;overflow:auto}
+.ws{display:flex;align-items:center;gap:10px;padding:8px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+.ws:hover{background:var(--panel2)} .ws.active{background:var(--acc-soft);border-color:color-mix(in srgb,var(--acc) 30%,transparent)}
+.ws .av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;overflow:hidden}
+.ws .av img{width:100%;height:100%;object-fit:cover}
+.ws .nm{font-weight:600;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ws .meta{font-size:12px;color:var(--mut)}
+.add-ws{margin:6px 10px;justify-content:center;border-style:dashed;color:var(--mut)}
+.side-foot{margin-top:auto;padding:14px 18px;border-top:1px solid var(--line);font-size:12px;color:var(--mut)}
+.bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 2px} .bar>i{display:block;height:100%;background:var(--acc)}
+
+/* main */
+main{min-width:0;display:flex;flex-direction:column}
+.top{padding:20px 28px 0;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.top .who{display:flex;gap:14px;align-items:center;min-width:0;flex:1}
+.top .big-av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:20px;overflow:hidden;flex:none}
+.top .big-av img{width:100%;height:100%;object-fit:cover}
+.top h1{margin:0;font-size:21px;line-height:1.2;display:flex;align-items:center;gap:8px}
+.top .sub{color:var(--mut);font-size:13px;margin-top:2px}
+.top .sub a{color:var(--acc)}
+.top .act{display:flex;gap:8px;align-items:center}
+.job{font-size:12.5px;color:var(--mut);display:flex;align-items:center;gap:8px}
+.spin{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--acc);border-radius:50%;animation:sp 0.8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+.tabs{display:flex;gap:4px;padding:16px 28px 0;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{padding:9px 14px;border:none;background:none;color:var(--mut);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;gap:7px;align-items:center;white-space:nowrap}
+.tab:hover{color:var(--fg)} .tab.active{color:var(--fg);border-bottom-color:var(--acc)}
+.tab .ct{font-size:11.5px;background:var(--line);border-radius:10px;padding:0 7px;color:var(--mut);font-weight:600}
+.tab.active .ct{background:var(--acc);color:#fff}
+
+.filters{display:grid;grid-template-columns:minmax(220px,1.4fr) repeat(4,minmax(140px,1fr)) auto;gap:14px 18px;padding:16px 28px;align-items:end;
+  background:var(--panel2);border-bottom:1px solid var(--line)}
+.f label{display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;color:var(--mut);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.f label b{color:var(--fg);text-transform:none;letter-spacing:0;font-size:12.5px}
+.search{position:relative} .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--faint)}
+.search input{padding-left:32px}
+input[type=range]{width:100%;accent-color:var(--acc);height:20px;margin:0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{border:none;background:none;padding:7px 11px;color:var(--mut);font-weight:600;font-size:12.5px}
+.seg button.on{background:var(--fg);color:var(--bg)}
+.row2{display:flex;gap:10px;align-items:center;padding:12px 28px 0;flex-wrap:wrap;color:var(--mut);font-size:13px}
+.row2 select{width:auto;padding:5px 8px}
+.chipbtn{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:4px 11px;font-size:12.5px;color:var(--mut)}
+.chipbtn.on{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(305px,1fr));gap:18px;padding:16px 28px 40px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .12s,border-color .12s}
+.card:hover{transform:translateY(-2px);border-color:var(--faint)}
+.thumb{position:relative;aspect-ratio:16/9;background:var(--line);display:block;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;left:8px;top:8px;color:#fff;font-weight:800;font-size:13px;padding:3px 8px;border-radius:7px;display:flex;align-items:center;gap:4px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.badge svg{width:13px;height:13px;stroke-width:2.5}
+.b1{background:var(--t1)} .b2{background:var(--t2)} .b3{background:var(--t3)} .b0{background:var(--t0)}
+.dur{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.78);color:#fff;font-size:11.5px;font-weight:600;padding:1px 6px;border-radius:5px}
+.shorttag{position:absolute;right:8px;top:8px;background:#ff0033;color:#fff;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px}
+.savedtag{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.7);color:#ffd43b;padding:2px 5px;border-radius:5px;display:flex}
+.cb{padding:11px 13px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.ttl{font-weight:650;font-size:14.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.ttl:hover{color:var(--acc)}
+.chan{display:flex;align-items:center;gap:7px;color:var(--mut);font-size:12.5px;min-width:0}
+.chan img,.chan .ph{width:20px;height:20px;border-radius:50%;flex:none;background:var(--line)}
+.chan span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stats{display:flex;gap:6px;flex-wrap:wrap}
+.st{font-size:12px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--mut);white-space:nowrap}
+.st b{color:var(--fg);font-weight:650}
+.st.up b{color:var(--ok)} .st.down b{color:var(--bad)}
+.acts{display:flex;gap:4px;margin-top:auto;padding-top:4px;border-top:1px dashed var(--line)}
+.acts .btn{padding:5px 8px;font-size:12.5px;color:var(--mut)} .acts .btn:hover{color:var(--fg)}
+.acts .btn.on{color:#e67700}
+.acts .sp{flex:1}
+
+.empty{padding:70px 28px;text-align:center;color:var(--mut)}
+.empty h3{color:var(--fg);margin:0 0 6px;font-size:17px}
+.empty .btn{margin-top:14px}
+
+/* channels tab */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:18px 28px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.box h3{margin:0 0 4px;font-size:15px} .box p{margin:0 0 12px;color:var(--mut);font-size:13px}
+.box textarea{min-height:92px;resize:vertical}
+.inl{display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap}
+.note{font-size:12px;color:var(--faint)}
+.ctable{margin:0 28px 40px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ctable .hd{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.ctable .hd h3{margin:0;font-size:15px;flex:1}
+.ctable .hd input{max-width:260px}
+.crow{display:grid;grid-template-columns:36px minmax(0,2.2fr) 1fr 1fr 1fr 1.2fr 90px;gap:12px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:none} .crow.h{font-size:11.5px;color:var(--faint);text-transform:uppercase;font-weight:600;letter-spacing:.04em;padding:8px 14px}
+.crow img,.crow .ph{width:36px;height:36px;border-radius:50%;background:var(--line)}
+.crow .n{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .crow .hdl{font-size:12px;color:var(--mut)}
+.crow .num{font-variant-numeric:tabular-nums}
+
+/* trends */
+.trends{padding:18px 28px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.trend{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px;cursor:pointer;box-shadow:var(--shadow)}
+.trend:hover{border-color:var(--acc)}
+.trend .p{font-weight:700;font-size:15.5px;display:flex;justify-content:space-between;gap:8px}
+.trend .p span{color:var(--acc);font-size:13px}
+.trend .m{font-size:12.5px;color:var(--mut);margin:3px 0 6px}
+.trend .e{font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* drawer + modal */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;z-index:20}
+.scrim.on{display:block}
+.drawer{position:fixed;top:0;right:0;height:100vh;width:min(620px,100vw);background:var(--panel);z-index:21;transform:translateX(100%);transition:transform .2s;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.15)}
+.drawer.on{transform:none}
+.dr-h{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.dr-h .sp{flex:1}
+.dr-b{overflow:auto;padding:16px 18px 30px}
+.dr-b h2{margin:12px 0 4px;font-size:18px;line-height:1.3}
+.dr-b .thumb{border-radius:10px}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.m{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+.m .k{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.m .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.m .x{font-size:11.5px;color:var(--faint)}
+.script{white-space:pre-wrap;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:13.5px;line-height:1.6;max-height:none}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(480px,94vw);background:var(--panel);border-radius:14px;z-index:22;padding:20px;display:none;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.modal.on{display:block}
+.modal h3{margin:0 0 14px;font-size:17px}
+.modal .fld{margin-bottom:12px} .modal .fld label{display:block;font-weight:600;font-size:13px;margin-bottom:5px}
+.modal .fld .hint{font-size:12px;color:var(--faint);margin-top:4px}
+.modal .ft{display:flex;gap:8px;margin-top:16px} .modal .ft .sp{flex:1}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:9px;z-index:30;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2);max-width:90vw}
+
+/* my videos */
+.sumbar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px 28px 0}
+.sum{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow)}
+.sum .k{font-size:11.5px;color:var(--mut);text-transform:uppercase;font-weight:600;letter-spacing:.04em}
+.sum .v{font-size:22px;font-weight:750;font-variant-numeric:tabular-nums;margin-top:2px}
+.sum .x{font-size:12px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mvlist{padding:16px 28px 40px;display:flex;flex-direction:column;gap:12px}
+.mv{display:grid;grid-template-columns:200px minmax(0,1fr) 300px;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px;box-shadow:var(--shadow);align-items:start}
+.mv .thumb{border-radius:8px}
+.mv h4{margin:0 0 6px;font-size:15px;line-height:1.3}
+.mv .orig{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;font-size:12.5px}
+.mv .orig .row{display:flex;gap:8px;align-items:center}
+.mv .orig img{width:72px;border-radius:5px;aspect-ratio:16/9;object-fit:cover;flex:none}
+.mv .orig .t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;border-radius:20px;padding:2px 8px}
+.pill.good{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}
+.pill.bad{background:color-mix(in srgb,var(--bad) 13%,transparent);color:var(--bad)}
+.pill.neutral{background:var(--line);color:var(--mut)}
+/* compare */
+.cmpg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.cmpg .col h5{margin:0 0 6px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+.cmpg .col .thumb{border-radius:8px}
+.cmpg .col .tt{font-weight:650;margin:8px 0 2px;line-height:1.3}
+.ctab{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px}
+.ctab td{padding:7px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.ctab td:first-child{color:var(--mut)} .ctab td:not(:first-child){text-align:right;font-weight:600;width:30%}
+.ctab td.win{color:var(--ok)}
+.verdict{border-radius:10px;padding:12px 14px;font-weight:600;margin-top:14px}
+.verdict.good{background:color-mix(in srgb,var(--ok) 13%,transparent)} .verdict.bad{background:color-mix(in srgb,var(--bad) 11%,transparent)}
+.verdict.neutral{background:var(--panel2);border:1px solid var(--line)}
+.sug{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.sug .ar{flex:none;width:118px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--mut);padding-top:2px}
+.sug .lv{flex:none;width:8px;height:8px;border-radius:50%;margin-top:7px}
+.lv.high{background:var(--bad)} .lv.medium{background:var(--t2)} .lv.low{background:var(--t3)} .lv.check,.lv.info{background:var(--faint)}
+.hooks{display:grid;grid-template-columns:1fr 1fr;gap:10px} .hooks .script{font-size:12.5px}
+/* production */
+.howto{margin:16px 28px 0;background:var(--acc-soft);border:1px solid color-mix(in srgb,var(--acc) 30%,transparent);border-radius:var(--r);padding:12px 14px;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+.howto code{background:var(--panel);padding:1px 6px;border-radius:4px;font-size:12.5px}
+.kanban{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:14px;padding:16px 28px 40px;overflow-x:auto}
+.kcol{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:10px;min-height:200px}
+.kcol h4{margin:2px 4px 10px;font-size:13px;display:flex;justify-content:space-between;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.kcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow)}
+.kcard .thumb{aspect-ratio:16/9}
+.kcard .kb{padding:9px 10px;display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+.kcard .kt{font-weight:650;font-size:13.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.kcard .nt{color:var(--mut);font-style:italic}
+.kcard .ka{display:flex;gap:4px;flex-wrap:wrap}
+.fmt{font-size:10.5px;font-weight:800;letter-spacing:.05em;border-radius:4px;padding:1px 6px;background:var(--fg);color:var(--bg)}
+.fmt.short{background:#ff0033;color:#fff}
+
+@media (max-width:1100px){.mv{grid-template-columns:160px 1fr}.mv .orig{grid-column:1/-1}.sumbar{grid-template-columns:1fr 1fr}}
+@media (max-width:1100px){.filters{grid-template-columns:1fr 1fr 1fr}.filters .search{grid-column:1/-1}}
+@media (max-width:820px){
+  body{grid-template-columns:1fr} aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+  .ws-list{flex-direction:row;overflow-x:auto;padding-bottom:8px} .ws{flex:none} .side-foot{display:none}
+  .cols{grid-template-columns:1fr} .filters{grid-template-columns:1fr 1fr}
+  .crow{grid-template-columns:36px 1fr 80px 70px} .crow .hide-m{display:none}
+  .top,.tabs,.filters,.row2,.grid,.trends{padding-left:16px;padding-right:16px} .ctable{margin:0 16px 30px}
+}
+</style>
+</head>
+<body>
+<aside>
+  <div class="brand"><div class="logo"><svg class="i" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>YouTube Research</div>
+  <a class="btn ghost small" href="/board.html" style="margin:0 10px 6px;justify-content:flex-start;color:var(--mut)">← Vision Board</a>
+  <div class="side-label">Your channels</div>
+  <div class="ws-list" id="wsList"></div>
+  <button class="btn add-ws" id="addWs"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add a channel</button>
+  <div class="side-foot">
+    <div style="display:flex;justify-content:space-between"><span>YouTube API today</span><b id="qText">–</b></div>
+    <div class="bar"><i id="qBar" style="width:0"></i></div>
+    <div>Resets midnight Pacific</div>
+    <div id="sched" style="margin-top:10px"></div>
+    <button class="btn ghost small" style="margin-top:10px;padding-left:0;color:var(--mut)" onclick="fetch('/api/logout',{method:'POST'}).then(()=>location.href='/login.html')">Sign out</button>
+  </div>
+</aside>
+
+<main id="main"></main>
+
+<div class="scrim" id="scrim"></div>
+<div class="drawer" id="drawer"></div>
+<div class="modal" id="modal"></div>
+
+<script>
+const I = {
+  fire:'<path d="M12 2c1 3 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 1-3s-3 1-3 5a6 6 0 0 0 12 0c0-6-6-8-6-11z"/>',
+  trend:'<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+  star:'<path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"/>',
+  file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
+  ext:'<path d="M15 3h6v6M10 14L21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+  eyeoff:'<path d="M17.9 17.9A10 10 0 0 1 12 20c-7 0-10-8-10-8a18 18 0 0 1 5-5.9M9.9 4.2A9 9 0 0 1 12 4c7 0 10 8 10 8a18 18 0 0 1-2.2 3.2M1 1l22 22"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  refresh:'<path d="M21 12a9 9 0 1 1-2.6-6.4L21 8"/><path d="M21 3v5h-5"/>',
+  edit:'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  x:'<path d="M18 6L6 18M6 6l12 12"/>', dl:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+  copy:'<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+  users:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+  hash:'<path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/>', trash:'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>',
+  clap:'<path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8z"/><path d="M4 11l-.9-4 15.6-3.6.9 4z"/><path d="M8.5 6l2 3.8M13.5 4.9l2 3.8"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>',
+  cmp:'<path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M12 2v20"/>',
+  link:'<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', check:'<path d="M20 6L9 17l-5-5"/>',
+};
+const ic = (n, cls='i') => `<svg class="${cls}" viewBox="0 0 24 24">${I[n]}</svg>`;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt = n => { if (n == null || n === '') return '–'; n = +n; const a = Math.abs(n);
+  return a >= 1e9 ? (n/1e9).toFixed(1)+'B' : a >= 1e6 ? (n/1e6).toFixed(1)+'M' : a >= 1e4 ? Math.round(n/1e3)+'K' : a >= 1e3 ? (n/1e3).toFixed(1)+'K' : Math.round(n)+''; };
+const x1 = n => n == null ? '–' : (n >= 100 ? Math.round(n) : n >= 10 ? n.toFixed(0) : n.toFixed(1)) + '×';
+const ago = iso => { if (!iso) return 'never'; const s = (Date.now() - new Date(iso)) / 1000;
+  return s < 90 ? 'just now' : s < 3600 ? Math.round(s/60)+'m ago' : s < 86400 ? Math.round(s/3600)+'h ago' : Math.round(s/86400)+'d ago'; };
+const age = d => d < 1 ? Math.max(1, Math.round(d*24))+'h' : d < 60 ? Math.round(d)+'d' : Math.round(d/30)+'mo';
+const dur = s => { if (!s) return ''; const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60;
+  return (h ? h+':'+String(m).padStart(2,'0') : m) + ':' + String(x).padStart(2,'0'); };
+const tier = v => v >= 20 ? 'b1' : v >= 8 ? 'b2' : v >= 3 ? 'b3' : 'b0';
+const initials = s => (s||'?').split(/\s+/).map(w => w[0]).join('').slice(0,2).toUpperCase();
+
+async function api(path, opts = {}) {
+  const [p, qs] = path.split('?');
+  const r = await fetch('/api/yt?r=' + encodeURIComponent(p) + (qs ? '&' + qs : ''), { method: opts.method || 'GET',
+    headers: {'Content-Type':'application/json'}, body: opts.body ? JSON.stringify(opts.body) : undefined });
+  if (r.status === 401) { location.href = '/login.html'; throw new Error('Signed out'); }
+  const j = await r.json().catch(() => ({ error: 'Bad response' }));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+
+// Refresh runs from the browser in small batches so each server call stays short; progress shows in the header.
+async function refreshIds(ids, label = 'Refreshing') {
+  if (!ids || !ids.length) return;
+  if (st.job.running) return toast('A refresh is already running');
+  st.job = { running: true, message: `${label} 0/${ids.length} channels` }; renderJob();
+  let done = 0, err = null;
+  try {
+    for (let i = 0; i < ids.length; i += 8) {
+      await api('/refresh', { method: 'POST', body: { channel_ids: ids.slice(i, i + 8) } });
+      done = Math.min(ids.length, i + 8);
+      st.job.message = `${label} ${done}/${ids.length} channels`; renderJob();
+    }
+  } catch (e) { err = e.message; }
+  st.job = { running: false };
+  toast(err ? `Stopped after ${done} channels: ${err}` : `Updated ${done} channel(s)`, err ? 6000 : 3000);
+  await loadState(); await loadTab();
+}
+function toast(msg, ms = 3200) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.append(t);
+  setTimeout(() => t.remove(), ms);
+}
+
+// slider scales (log where it helps)
+const S = {
+  mult: { to: s => Math.pow(10, s/100*2), from: v => Math.log10(v)/2*100, show: v => v <= 1.01 ? 'Any' : x1(v) },
+  subs: { to: s => s >= 100 ? Infinity : Math.pow(10, 3 + s/100*4), from: v => v === Infinity ? 100 : (Math.log10(v)-3)/4*100, show: v => v === Infinity ? 'Any' : '≤ ' + fmt(v) },
+  views:{ to: s => s <= 0 ? 0 : Math.pow(10, 2 + s/100*5), from: v => v <= 0 ? 0 : (Math.log10(v)-2)/5*100, show: v => v <= 0 ? 'Any' : '≥ ' + fmt(v) },
+  age:  { to: s => +s, from: v => v, show: v => v >= 90 ? 'Any' : '≤ ' + v + ' days' },
+};
+const TAB_DEFAULTS = {
+  explode:  { minMult: 1, maxAge: 14, sort: 'explode_score' },
+  outliers: { minMult: 3, maxAge: 30, sort: 'multiplier' },
+  saved:    { minMult: 1, maxAge: 90, sort: 'saved' },
+};
+const SORTS = [['explode_score','Explode score'],['multiplier','Outlier ×'],['age_adj_multiplier','Age-adjusted ×'],
+  ['views','Views'],['views_per_sub','Views per sub'],['momentum','Momentum'],['recent_vph','Views/hour now'],['newest','Newest'],['engagement','Engagement']];
+
+const st = {
+  workspaces: [], wsId: +localStorage.wsId || null, tab: localStorage.tab || 'explode',
+  videos: [], transcripts: new Set(), topics: [], channels: [], job: {}, quota: {},
+  f: Object.assign({ q: '', format: 'long', minMult: 1, maxAge: 14, maxSubs: Infinity, minViews: 1000, sort: 'explode_score', showHidden: false }, {}),
+  chQ: '', loading: false, my: null, prod: [], schedule: {}, queued: 0,
+};
+const ws = () => st.workspaces.find(w => w.id === st.wsId);
+
+// ------------------------------------------------------------------ data
+async function loadState() {
+  const s = await api('/state');
+  st.workspaces = s.workspaces; st.quota = s.quota; st.queued = s.queued_scripts; st.pending = s.pending_transcripts;
+  if (!ws() && st.workspaces.length) st.wsId = st.workspaces[0].id;
+  renderSide(); renderJob();
+}
+async function loadTab() {
+  const w = ws(); if (!w) return render();
+  st.loading = true; render();
+  try {
+    if (st.tab === 'channels') st.channels = (await api(`/workspaces/${w.id}/channels`)).channels;
+    else if (st.tab === 'trends') st.topics = (await api(`/workspaces/${w.id}/topics?days=30`)).topics;
+    else if (st.tab === 'myvideos') { st.my = await api(`/workspaces/${w.id}/myvideos`); if (st.my.refresh) setTimeout(() => refreshIds(st.my.refresh, 'Pulling your videos'), 50); }
+    else if (st.tab === 'production') st.prod = (await api(`/production?workspace=${w.id}`)).items;
+    else { const r = await api(`/workspaces/${w.id}/videos?days=90`); st.videos = r.videos; st.transcripts = new Set(r.has_transcript); }
+  } catch (e) { toast(e.message); }
+  st.loading = false; render();
+}
+function setTab(t) {
+  st.tab = t; localStorage.tab = t;
+  if (TAB_DEFAULTS[t]) Object.assign(st.f, TAB_DEFAULTS[t]);
+  loadTab();
+}
+function setWs(id) { st.wsId = id; localStorage.wsId = id; renderSide(); loadTab(); }
+
+// ------------------------------------------------------------------ filtering
+function filtered(forTab = st.tab) {
+  const f = st.f, q = f.q.trim().toLowerCase();
+  let v = st.videos.filter(x =>
+    (f.showHidden || !x.hidden) &&
+    (f.format === 'both' || (f.format === 'short') === x.is_short) &&
+    x.age_days <= (f.maxAge >= 90 ? 1e9 : f.maxAge) &&
+    (x.subs || 0) <= f.maxSubs && x.views >= f.minViews && x.multiplier >= f.minMult &&
+    (!q || (x.title + ' ' + (x.channel || '') + ' ' + (x.handle || '')).toLowerCase().includes(q)));
+  if (forTab === 'explode') v = v.filter(x => x.explode_score != null && x.explode_score >= 1.5 && x.median_views >= 200);
+  if (forTab === 'outliers') v = v.filter(x => x.median_views >= 200);
+  if (forTab === 'saved') v = st.videos.filter(x => x.saved && (!q || x.title.toLowerCase().includes(q)));
+  const k = f.sort;
+  const val = x => k === 'newest' ? -x.age_days : k === 'saved' ? x.multiplier : (x[k] ?? -1);
+  return v.sort((a, b) => val(b) - val(a));
+}
+function counts() {
+  const save = st.tab; return { explode: filtered('explode').length, outliers: filtered('outliers').length, saved: st.videos.filter(x => x.saved).length };
+}
+
+// ------------------------------------------------------------------ render
+function avatar(w, cls) {
+  const t = w.my_channel && w.my_channel.thumb;
+  return `<div class="${cls}" style="background:${w.color || 'var(--acc)'}">${t ? `<img src="${esc(t)}" alt="">` : esc(initials(w.name))}</div>`;
+}
+function renderSide() {
+  document.getElementById('wsList').innerHTML = st.workspaces.map(w => `
+    <div class="ws ${w.id === st.wsId ? 'active' : ''}" data-ws="${w.id}">
+      ${avatar(w, 'av')}
+      <div style="min-width:0"><div class="nm">${esc(w.name)}</div><div class="meta">${w.channel_count} followed · ${w.saved_count} saved</div></div>
+    </div>`).join('');
+  const u = st.quota.used || 0, l = st.quota.limit || 10000;
+  document.getElementById('qText').textContent = `${fmt(u)} / ${fmt(l)}`;
+  document.getElementById('qBar').style.width = Math.min(100, u / l * 100) + '%';
+  document.getElementById('sched').innerHTML = `${ic('clock')}<span>Updates only when you press Refresh</span>`
+    + (st.pending ? `<div style="margin-top:6px;color:var(--acc)">${st.pending} script(s) waiting for your PC: tell Claude “fill my transcripts”</div>` : '');
+}
+function renderJob() {
+  const el = document.getElementById('job'); if (!el) return;
+  const j = st.job, w = ws();
+  el.innerHTML = j.running ? `<div class="spin"></div>${esc(j.message)}` : (w ? `Last scan ${ago(w.last_scan)}` : '');
+  const b = document.getElementById('scanBtn'); if (b) b.disabled = !!j.running;
+}
+
+function render() {
+  const m = document.getElementById('main'), w = ws();
+  if (!w) {
+    m.innerHTML = `<div class="empty" style="margin-top:12vh"><h3>Add your first YouTube channel</h3>
+      <div>Each of your channels gets its own niche, its own list of channels to follow, and its own video ideas.</div>
+      <button class="btn primary" onclick="wsModal()">${ic('users')}Add a channel</button></div>`;
+    return;
+  }
+  const c = st.videos.length ? counts() : { explode: '', outliers: '', saved: w.saved_count };
+  const mc = w.my_channel;
+  m.innerHTML = `
+    <div class="top">
+      <div class="who">${avatar(w, 'big-av')}
+        <div style="min-width:0"><h1>${esc(w.name)} <button class="btn ghost small" onclick="wsModal(${w.id})" title="Edit">${ic('edit')}</button></h1>
+        <div class="sub">${mc ? `<a href="https://www.youtube.com/channel/${esc(mc.id)}" target="_blank">${esc(mc.handle || mc.title)}</a> · ${fmt(mc.subs)} subs · ` : '<a href="#" onclick="wsModal(' + w.id + ');return false">Link your YouTube channel</a> · '}
+        ${esc(w.niche || 'No niche description yet')}</div></div>
+      </div>
+      <div class="act"><div class="job" id="job"></div>
+        <button class="btn primary" id="scanBtn" onclick="scanNow()" title="Pull live numbers for every channel in this workspace (about 2 API units per channel)">${ic('refresh')}Refresh</button></div>
+    </div>
+    <div class="tabs">
+      ${tabBtn('explode', 'fire', 'About to explode', c.explode)}
+      ${tabBtn('outliers', 'trend', 'Proven outliers', c.outliers)}
+      ${tabBtn('trends', 'hash', 'Trending topics')}
+      ${tabBtn('saved', 'star', 'Saved ideas', c.saved)}
+      ${tabBtn('myvideos', 'user', 'My videos')}
+      ${tabBtn('production', 'clap', 'Production', st.queued || undefined)}
+      ${tabBtn('channels', 'users', 'Channels I follow', w.channel_count)}
+    </div>
+    ${['explode','outliers','saved'].includes(st.tab) ? filtersHtml() : ''}
+    <div id="content">${st.loading ? `<div class="empty"><div class="spin" style="margin:auto"></div></div>` : contentHtml()}</div>`;
+  renderJob(); bindFilters();
+}
+const tabBtn = (id, icon, label, ct) => `<button class="tab ${st.tab === id ? 'active' : ''}" onclick="setTab('${id}')">${ic(icon)}${label}${ct !== undefined && ct !== '' ? `<span class="ct">${ct}</span>` : ''}</button>`;
+
+function filtersHtml() {
+  const f = st.f;
+  if (st.tab === 'saved') return `<div class="filters" style="grid-template-columns:1fr"><div class="f search">${ic('search')}<input type="search" id="fq" placeholder="Search saved ideas…" value="${esc(f.q)}"></div></div>`;
+  return `<div class="filters">
+    <div class="f"><label>Search</label><div class="search">${ic('search')}<input type="search" id="fq" placeholder="Title, topic or channel…" value="${esc(f.q)}"></div></div>
+    <div class="f"><label>Min outlier <b id="lb-mult">${S.mult.show(f.minMult)}</b></label><input type="range" id="fs-mult" min="0" max="100" value="${S.mult.from(f.minMult)}"></div>
+    <div class="f"><label>Video age <b id="lb-age">${S.age.show(f.maxAge)}</b></label><input type="range" id="fs-age" min="1" max="90" value="${f.maxAge}"></div>
+    <div class="f"><label>Channel size <b id="lb-subs">${S.subs.show(f.maxSubs)}</b></label><input type="range" id="fs-subs" min="0" max="100" value="${S.subs.from(f.maxSubs)}"></div>
+    <div class="f"><label>Min views <b id="lb-views">${S.views.show(f.minViews)}</b></label><input type="range" id="fs-views" min="0" max="100" value="${S.views.from(f.minViews)}"></div>
+    <div class="f"><label>Format</label><div class="seg">${[['long','Long'],['short','Shorts'],['both','Both']].map(([k,l]) => `<button class="${f.format===k?'on':''}" data-fmt="${k}">${l}</button>`).join('')}</div></div>
+  </div>
+  <div class="row2">Sort by <select id="fsort">${SORTS.map(([k,l]) => `<option value="${k}" ${f.sort===k?'selected':''}>${l}</option>`).join('')}</select>
+    <span style="flex:1"></span>
+    <button class="chipbtn ${f.maxSubs === 100000 ? 'on' : ''}" data-preset="small">Channels under 100K</button>
+    <button class="chipbtn ${f.showHidden ? 'on' : ''}" data-preset="hidden">Show hidden</button>
+    <button class="chipbtn" data-preset="reset">Reset filters</button>
+    <span id="rc"></span></div>`;
+}
+
+function contentHtml() {
+  const w = ws();
+  if (st.tab === 'channels') return channelsHtml();
+  if (st.tab === 'trends') return trendsHtml();
+  if (st.tab === 'myvideos') return myVideosHtml();
+  if (st.tab === 'production') return productionHtml();
+  if (!w.channel_count) return `<div class="empty"><h3>Follow some channels in this niche first</h3>
+    <div>Add competitors by link, or let it find channels by topic.</div><button class="btn primary" onclick="setTab('channels')">${ic('users')}Add channels to follow</button></div>`;
+  return cardsHtml(filtered());
+}
+
+function cardsHtml(list) {
+  setTimeout(() => { const rc = document.getElementById('rc'); if (rc) rc.textContent = `${list.length} videos`; });
+  if (!list.length) {
+    const msg = st.tab === 'saved' ? ['No saved ideas yet', 'Hit the star on any video to keep it here.']
+      : st.videos.length ? ['Nothing matches these filters', 'Try lowering the minimum outlier or widening the age.']
+      : ['No videos scanned yet', 'Press “Scan now” to pull the latest uploads from the channels you follow.'];
+    return `<div class="empty"><h3>${msg[0]}</h3><div>${msg[1]}</div></div>`;
+  }
+  const main = st.tab === 'explode' ? 'explode_score' : st.f.sort === 'explode_score' ? 'explode_score' : 'multiplier';
+  return `<div class="grid">${list.slice(0, 240).map(v => card(v, main)).join('')}</div>`;
+}
+
+function card(v, main) {
+  const score = v[main] ?? v.multiplier, flame = main === 'explode_score';
+  const mom = v.momentum == null ? '' : `<span class="st ${v.momentum >= 1 ? 'up' : 'down'}" title="Current views/hour vs its lifetime average">${v.momentum >= 1 ? '▲' : '▼'} <b>${v.momentum.toFixed(1)}×</b> pace</span>`;
+  return `<article class="card" data-id="${v.id}">
+    <a class="thumb" href="${esc(v.url)}" target="_blank" rel="noopener">
+      <img src="${esc(v.thumb || `https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`)}" loading="lazy" alt="">
+      <span class="badge ${tier(score)}" title="${flame ? 'Explode score' : 'Views vs channel median'}">${flame ? ic('fire') : ''}${x1(score)}</span>
+      ${v.is_short ? '<span class="shorttag">SHORT</span>' : ''}<span class="dur">${dur(v.duration)}</span>
+      ${v.saved ? `<span class="savedtag">${ic('star')}</span>` : ''}
+    </a>
+    <div class="cb">
+      <div class="ttl" onclick="openVideo('${v.id}')">${esc(v.title)}</div>
+      <div class="chan">${v.channel_thumb ? `<img src="${esc(v.channel_thumb)}" alt="" loading="lazy">` : '<i class="ph"></i>'}<span>${esc(v.channel)} · ${fmt(v.subs)} subs</span></div>
+      <div class="stats">
+        <span class="st"><b>${fmt(v.views)}</b> views</span>
+        <span class="st"><b>${age(v.age_days)}</b> old</span>
+        ${flame ? `<span class="st" title="Views ÷ channel median"><b>${x1(v.multiplier)}</b> outlier</span>` : `<span class="st" title="Typical video on this channel"><b>${fmt(v.median_views)}</b> typical</span>`}
+        ${v.views_per_sub != null ? `<span class="st"><b>${v.views_per_sub.toFixed(1)}</b> views/sub</span>` : ''}
+        ${mom}
+      </div>
+      <div class="acts">
+        <button class="btn" onclick="openVideo('${v.id}', true)" title="Get the script">${ic('file')}Script</button>
+        <button class="btn ${v.saved ? 'on' : ''}" onclick="toggleSave('${v.id}')" title="Save idea">${ic('star')}${v.saved ? 'Saved' : 'Save'}</button>
+        <button class="btn" onclick="produceModal('${v.id}')" title="Send to production: Claude rewrites it in your voice">${ic('clap')}Produce</button>
+        <span class="sp"></span>
+        <button class="btn" onclick="toggleHide('${v.id}')" title="${v.hidden ? 'Unhide' : 'Not interested'}">${ic('eyeoff')}</button>
+        <a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener" title="Open on YouTube">${ic('ext')}</a>
+      </div>
+    </div></article>`;
+}
+
+function trendsHtml() {
+  if (!st.topics.length) return `<div class="empty"><h3>No cross-channel trends yet</h3><div>Trends appear once 2+ channels you follow have outliers with the same phrase. Follow more channels or scan again.</div></div>`;
+  return `<div class="row2">Phrases in outlier titles (3×+) that are working on more than one channel in the last 30 days. Click one to see the videos.</div>
+  <div class="trends">${st.topics.map(t => `<div class="trend" data-phrase="${esc(t.phrase)}">
+    <div class="p">${esc(t.phrase)}<span>${t.score}</span></div>
+    <div class="m">${t.channels} channels · ${t.videos} outlier videos</div>
+    <div class="e">e.g. ${esc(t.example)}</div></div>`).join('')}</div>`;
+}
+
+function channelsHtml() {
+  const q = st.chQ.toLowerCase();
+  const list = st.channels.filter(c => !q || (c.title + ' ' + (c.handle || '')).toLowerCase().includes(q));
+  return `<div class="cols">
+    <div class="box"><h3>Add channels to follow</h3><p>Paste YouTube channel links, @handles, or any video link from the channel. One per line.</p>
+      <textarea id="addRefs" placeholder="@ragonasisterstv&#10;https://www.youtube.com/@mgthemortgageguy&#10;https://youtu.be/VIDEO_ID"></textarea>
+      <div class="inl"><button class="btn primary" id="addBtn">${ic('users')}Follow channels</button><span class="note">About 1 API unit per channel</span></div></div>
+    <div class="box"><h3>Find channels by topic</h3><p>Searches YouTube for the most-viewed recent videos on a topic and follows the channels that made them.</p>
+      <input type="text" id="discQ" placeholder="e.g. mortgage renewal 2027, AI agents, n8n automation">
+      <div class="inl"><select id="discDays" style="width:auto"><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="90">Last 90 days</option></select>
+        <select id="discFmt" style="width:auto"><option value="long">Long videos</option><option value="short">Shorts</option><option value="both">Both</option></select>
+        <button class="btn primary" id="discBtn">${ic('search')}Find channels</button></div>
+      <div class="note" style="margin-top:8px">Each search uses 100 of your 10,000 daily units, plus about 2 per new channel.</div></div>
+  </div>
+  <div class="ctable"><div class="hd"><h3>Following ${st.channels.length} channels</h3><input type="search" id="chQ" placeholder="Filter channels…" value="${esc(st.chQ)}"></div>
+    <div class="crow h"><span></span><span>Channel</span><span>Subscribers</span><span class="hide-m">Typical views</span><span class="hide-m">Videos tracked</span><span class="hide-m">Last scanned</span><span></span></div>
+    ${list.map(c => `<div class="crow">
+      ${c.thumb ? `<img src="${esc(c.thumb)}" alt="" loading="lazy">` : '<i class="ph"></i>'}
+      <div style="min-width:0"><a class="n" href="https://www.youtube.com/channel/${esc(c.id)}" target="_blank">${esc(c.title || c.id)}</a><div class="hdl">${esc(c.handle || '')}</div></div>
+      <span class="num">${fmt(c.subs)}</span><span class="num hide-m">${fmt(c.median_views)}</span>
+      <span class="num hide-m">${c.tracked_videos}</span><span class="hide-m" style="color:var(--mut)">${ago(c.scanned_at)}</span>
+      <button class="btn small danger" data-rm="${esc(c.id)}">${ic('x')}Remove</button></div>`).join('') || '<div class="empty" style="padding:30px">No channels yet.</div>'}
+  </div>`;
+}
+
+// ------------------------------------------------------------------ my videos
+const relPill = r => r == null ? '<span class="pill neutral">building baseline</span>'
+  : `<span class="pill ${r >= 1.5 ? 'good' : r >= 0.8 ? 'neutral' : 'bad'}" title="Views vs your typical video at the same age">${r >= 1 ? '▲' : '▼'} ${x1(r)} your normal</span>`;
+
+function myVideosHtml() {
+  const w = ws(), my = st.my;
+  if (!my) return '';
+  if (!my.linked) return `<div class="empty"><h3>Link your YouTube channel</h3><div>Then this tab tracks how every video of yours is doing, and compares each one with the video it was remixed from.</div>
+    <button class="btn primary" onclick="wsModal(${w.id})">${ic('link')}Link my channel</button></div>`;
+  if (my.scanning) return `<div class="empty"><div class="spin" style="margin:0 auto 10px"></div><h3>Pulling your videos…</h3><div>First time only. Refresh in a moment.</div></div>`;
+  if (!my.videos.length) return `<div class="empty"><h3>No public videos found on your channel yet</h3><div>Once you publish, they'll show up after the next daily update (or press Scan now).</div></div>`;
+  const s = my.summary;
+  return `<div class="sumbar">
+      <div class="sum"><div class="k">Videos</div><div class="v">${s.count}</div><div class="x">tracked on your channel</div></div>
+      <div class="sum"><div class="k">Total views</div><div class="v">${fmt(s.total_views)}</div><div class="x">${fmt(s.last30_views)} from the last 30 days</div></div>
+      <div class="sum"><div class="k">Typical video</div><div class="v">${fmt(s.median_views)}</div><div class="x">median views (long-form, 7d+)</div></div>
+      <div class="sum"><div class="k">Best performer</div><div class="v">${s.best ? (s.best.age_adj ? x1(s.best.age_adj) : fmt(s.best.views)) : '–'}</div><div class="x">${esc(s.best ? s.best.title : '')}</div></div>
+    </div>
+    <div class="mvlist">${my.videos.map(mvRow).join('')}</div>`;
+}
+function mvRow(v) {
+  let right;
+  if (v.links.length) right = v.links.map(l => `<div class="orig"><div style="font-weight:700;font-size:11.5px;color:var(--mut);text-transform:uppercase">Remixed from ${l.source === 'production' ? '(production)' : ''}</div>
+      <div class="row"><img src="${esc(l.original.thumb)}" alt=""><div style="min-width:0"><div class="t">${esc(l.original.title)}</div><div style="color:var(--mut)">${esc(l.original.channel)} · ${fmt(l.original.views)} views</div></div></div>
+      <div style="display:flex;gap:6px"><button class="btn small primary" onclick="openCompare('${v.id}','${l.original.id}')">${ic('cmp')}Compare</button>
+      <button class="btn small ghost" onclick="unlink('${v.id}','${l.original.id}')">Unlink</button></div></div>`).join('');
+  else if (v.suggested_original) right = `<div class="orig"><div style="font-weight:700;font-size:11.5px;color:var(--mut);text-transform:uppercase">Looks like a remake of</div>
+      <div class="t">${esc(v.suggested_original.title)}</div>
+      <div style="display:flex;gap:6px"><button class="btn small primary" onclick="linkVideos('${v.id}','${v.suggested_original.id}')">${ic('link')}Link &amp; compare</button>
+      <button class="btn small" onclick="linkModal('${v.id}')">Different video</button></div></div>`;
+  else right = `<div class="orig"><div>Did you remix this from someone else's video?</div><button class="btn small" onclick="linkModal('${v.id}')">${ic('link')}Link the original</button></div>`;
+  return `<div class="mv"><a class="thumb" href="${esc(v.url)}" target="_blank"><img src="${esc(v.thumb || v.hq_thumb)}" alt="" loading="lazy"><span class="dur">${dur(v.duration)}</span>${v.is_short ? '<span class="shorttag">SHORT</span>' : ''}</a>
+    <div style="min-width:0"><h4>${esc(v.title)}</h4>
+      <div style="margin-bottom:8px">${relPill(v.age_adj)}</div>
+      <div class="stats"><span class="st"><b>${fmt(v.views)}</b> views</span><span class="st"><b>${age(v.age_days)}</b> old</span>
+        ${v.gained_24h != null ? `<span class="st"><b>+${fmt(v.gained_24h)}</b> last 24h</span>` : ''}
+        <span class="st"><b>${v.engagement ?? '–'}%</b> engagement</span>
+        ${v.median_views ? `<span class="st"><b>${fmt(v.median_views)}</b> your typical</span>` : ''}</div></div>
+    <div>${right}</div></div>`;
+}
+async function linkVideos(mine, original) {
+  try { await api(`/workspaces/${st.wsId}/links`, { method: 'POST', body: { mine, original } }); closeAll(); await loadTab(); openCompare(mine, original); }
+  catch (e) { toast(e.message); }
+}
+async function unlink(mine, original) {
+  try { await api(`/workspaces/${st.wsId}/unlink`, { method: 'POST', body: { mine, original } }); loadTab(); } catch (e) { toast(e.message); }
+}
+function linkModal(mine) {
+  const m = document.getElementById('modal');
+  m.innerHTML = `<h3>Link the original video</h3><div class="fld"><label>Original video link</label>
+    <input type="text" id="lnk" placeholder="https://www.youtube.com/watch?v=…"><div class="hint">The video you based yours on. It doesn't have to be from a channel you follow.</div></div>
+    <div class="ft"><span class="sp"></span><button class="btn" onclick="closeAll()">Cancel</button><button class="btn primary" id="lnkGo">Link &amp; compare</button></div>`;
+  m.classList.add('on'); document.getElementById('scrim').classList.add('on'); document.getElementById('lnk').focus();
+  document.getElementById('lnkGo').onclick = () => linkVideos(mine, document.getElementById('lnk').value);
+}
+
+// ------------------------------------------------------------------ compare drawer
+async function openCompare(mine, orig, scripts = false) {
+  const d = document.getElementById('drawer');
+  d.innerHTML = `<div class="dr-h"><b>Yours vs the original</b><span class="sp"></span><button class="btn ghost" onclick="closeAll()">${ic('x')}</button></div>
+    <div class="dr-b"><div class="job"><div class="spin"></div>${scripts ? 'Pulling both scripts…' : 'Comparing…'}</div></div>`;
+  d.classList.add('on'); document.getElementById('scrim').classList.add('on'); document.getElementById('modal').classList.remove('on');
+  let c; try { c = await api(`/compare?mine=${mine}&orig=${orig}&scripts=${scripts ? 1 : 0}`); }
+  catch (e) { d.querySelector('.dr-b').innerHTML = `<div class="note" style="color:var(--bad)">${esc(e.message)}</div>`; return; }
+  const m = c.mine, o = c.original;
+  const row = (label, a, b, better) => { const win = better == null ? '' : better > 0 ? 'b' : better < 0 ? 'a' : '';
+    return `<tr><td>${label}</td><td class="${win === 'a' ? 'win' : ''}">${a}</td><td class="${win === 'b' ? 'win' : ''}">${b}</td></tr>`; };
+  const cmpN = (a, b) => (a == null || b == null) ? null : Math.sign(b - a);
+  const col = (v, label) => `<div class="col"><h5>${label}</h5><a class="thumb" href="${esc(v.url)}" target="_blank"><img src="${esc(v.hq_thumb)}" alt=""><span class="dur">${dur(v.duration)}</span></a>
+    <div class="tt">${esc(v.title)}</div><div class="note">${esc(v.channel || '')} · ${fmt(v.subs)} subs</div></div>`;
+  const t = c.title, s = c.script;
+  let scriptHtml = `<button class="btn" onclick="openCompare('${mine}','${orig}',true)">${ic('file')}Compare the scripts</button>
+    <div class="note" style="margin-top:6px">Pulls captions for both videos: word count, speaking pace, how much wording overlaps, and the two hooks side by side.</div>`;
+  if (s) {
+    const sm = s.mine || {}, so = s.original || {};
+    scriptHtml = `<table class="ctab"><tr><td></td><td>Original</td><td>Yours</td></tr>
+      ${row('Words', fmt(so.words), fmt(sm.words))}${row('Words per minute', so.wpm ?? '–', sm.wpm ?? '–', cmpN(so.wpm, sm.wpm))}
+      ${s.similarity != null ? `<tr><td>Wording shared with the original</td><td colspan="2">${Math.round(s.similarity * 100)}%</td></tr>` : ''}</table>
+      ${so.error || sm.error ? `<div class="note">${esc(so.error || '')} ${esc(sm.error || '')}</div>` : ''}
+      <div class="hooks"><div><h5 style="margin:6px 0">Original hook (first ~30s)</h5><div class="script">${esc(so.hook || '–')}</div></div>
+      <div><h5 style="margin:6px 0">Your hook</h5><div class="script">${esc(sm.hook || '–')}</div></div></div>`;
+  }
+  d.querySelector('.dr-b').innerHTML = `
+    <div class="verdict ${c.verdict.tone}">${esc(c.verdict.text)}</div>
+    <div class="cmpg">${col(o, 'Original')}${col(m, 'Yours')}</div>
+    <table class="ctab"><tr><td></td><td>Original</td><td>Yours</td></tr>
+      ${row('Views now', fmt(o.views), fmt(m.views))}
+      ${row(`Views at ${age(m.age_days)} old <span class="note">(original estimated)</span>`, fmt(c.original_views_at_my_age), fmt(m.views), cmpN(c.original_views_at_my_age, m.views))}
+      ${row('vs its channel\'s typical video', x1(o.multiplier), x1(m.multiplier), cmpN(o.multiplier, m.multiplier))}
+      ${row('vs typical at the same age', x1(o.age_adj), x1(m.age_adj), cmpN(o.age_adj, m.age_adj))}
+      ${row('Engagement (likes + comments)', (o.engagement ?? '–') + '%', (m.engagement ?? '–') + '%', cmpN(o.engagement, m.engagement))}
+      ${row('Like rate', (o.like_rate ?? '–') + '%', (m.like_rate ?? '–') + '%', cmpN(o.like_rate, m.like_rate))}
+      ${row('Comment rate', (o.comment_rate ?? '–') + '%', (m.comment_rate ?? '–') + '%', cmpN(o.comment_rate, m.comment_rate))}
+      ${row('Length', dur(o.duration), dur(m.duration))}
+      ${row('Title length', t.orig_len + ' chars', t.mine_len + ' chars')}
+      ${row('Channel size', fmt(o.subs), fmt(m.subs))}
+    </table>
+    <h3 style="font-size:15px;margin:18px 0 4px">What to improve</h3>
+    ${c.suggestions.map(x => `<div class="sug"><i class="lv ${x.level}"></i><div class="ar">${esc(x.area)}</div><div>${esc(x.text)}</div></div>`).join('')}
+    <h3 style="font-size:15px;margin:18px 0 6px">Titles</h3>
+    <div class="note">Shared keywords: ${t.shared.length ? esc(t.shared.join(', ')) : 'none'}${t.missing_from_mine.length ? ` · In the original but not yours: <b>${esc(t.missing_from_mine.join(', '))}</b>` : ''}</div>
+    <h3 style="font-size:15px;margin:18px 0 6px">Scripts</h3>${scriptHtml}
+    <div class="note" style="margin-top:16px">Click-through rate and watch time aren't public on YouTube, so these suggestions work from views, engagement, titles and captions.</div>`;
+}
+
+// ------------------------------------------------------------------ production
+const PSTAGES = [['queued', 'Waiting for script'], ['scripted', 'Script ready'], ['in_production', 'In production'], ['published', 'Published']];
+function productionHtml() {
+  const items = st.prod;
+  return `<div class="howto">${ic('clap')}<div>Hit <b>Produce</b> on any video to queue it here. Then, with this PC on, tell Claude <code>grab my scripts from the content machine</code>.
+    It pulls each queued video's script, rewrites it in your voice with your script skill, and puts it back here under <b>Script ready</b>.</div></div>
+    <div class="kanban">${PSTAGES.map(([k, label]) => { const list = items.filter(p => p.status === k);
+      return `<div class="kcol"><h4>${label}<span>${list.length}</span></h4>${list.map(pCard).join('') || '<div class="note" style="padding:6px">Nothing here</div>'}</div>`; }).join('')}</div>`;
+}
+function pCard(p) {
+  const s = p.source || {};
+  const acts = {
+    queued: `<button class="btn small" onclick="openProduction(${p.id})">${ic('file')}Source script</button>`,
+    scripted: `<button class="btn small primary" onclick="openProduction(${p.id})">${ic('file')}Open script</button><button class="btn small" onclick="setPStatus(${p.id},'in_production')">Start production</button>`,
+    in_production: `<button class="btn small" onclick="openProduction(${p.id})">${ic('file')}Script</button><button class="btn small primary" onclick="publishModal(${p.id})">${ic('check')}Published</button>`,
+    published: p.my_video ? `<button class="btn small primary" onclick="openCompare('${p.my_video.id}','${s.id}')">${ic('cmp')}Compare</button><button class="btn small" onclick="openProduction(${p.id})">Script</button>` : '',
+  }[p.status];
+  return `<div class="kcard"><a class="thumb" href="${esc(s.url || '#')}" target="_blank"><img src="${esc(s.thumb || '')}" alt="" loading="lazy">${s.multiplier ? `<span class="badge ${tier(s.multiplier)}">${x1(s.multiplier)}</span>` : ''}</a>
+    <div class="kb"><div style="display:flex;gap:6px;align-items:center"><span class="fmt ${p.format === 'short' ? 'short' : ''}">${p.format === 'short' ? 'SHORT' : 'LONG'}</span><span class="note">${ago(p.updated_at)}</span></div>
+      <div class="kt">${esc(s.title || 'Unknown video')}</div><div class="note">${esc(s.channel || '')} · ${fmt(s.views)} views</div>
+      ${p.notes ? `<div class="nt">“${esc(p.notes)}”</div>` : ''}
+      ${p.my_video ? `<div class="note">Yours: <a href="${esc(p.my_video.url)}" target="_blank" style="color:var(--acc)">${esc(p.my_video.title)}</a> · ${fmt(p.my_video.views)} views</div>` : ''}
+      <div class="ka">${acts}<span style="flex:1"></span><button class="btn small ghost" title="Remove" onclick="deleteProduction(${p.id})">${ic('trash')}</button></div></div></div>`;
+}
+function produceModal(vid) {
+  const v = st.videos.find(x => x.id === vid), m = document.getElementById('modal');
+  m.innerHTML = `<h3>Send to production</h3><div class="note" style="margin:-8px 0 12px">${esc(v ? v.title : vid)}</div>
+    <div class="fld"><label>Make it as a</label><div class="seg" id="pFmt"><button class="on" data-f="long">Long video</button><button data-f="short">Short</button></div></div>
+    <div class="fld"><label>Notes for the rewrite <span style="font-weight:400;color:var(--faint)">(optional)</span></label>
+      <textarea id="pNotes" rows="3" placeholder="e.g. Make it about Canadian renewals, use my 2026 client story, add a CTA to the free calculator"></textarea></div>
+    <div class="ft"><span class="sp"></span><button class="btn" onclick="closeAll()">Cancel</button><button class="btn primary" id="pGo">${ic('clap')}Add to queue</button></div>`;
+  m.classList.add('on'); document.getElementById('scrim').classList.add('on');
+  let f = 'long';
+  m.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { f = b.dataset.f; m.querySelectorAll('[data-f]').forEach(x => x.classList.toggle('on', x === b)); });
+  document.getElementById('pGo').onclick = async () => {
+    try { const r = await api(`/workspaces/${st.wsId}/production`, { method: 'POST', body: { video_id: vid, format: f, notes: document.getElementById('pNotes').value } });
+      closeAll(); toast(r.existing ? 'Already in the production queue' : 'Queued. Tell Claude: “grab my scripts from the content machine”', 5000); loadState();
+    } catch (e) { toast(e.message); }
+  };
+}
+async function setPStatus(id, status) { try { await api(`/production/${id}`, { method: 'PATCH', body: { status } }); loadState(); loadTab(); } catch (e) { toast(e.message); } }
+async function deleteProduction(id) { if (!confirm('Remove this from production?')) return; await api(`/production/${id}`, { method: 'DELETE' }); loadState(); loadTab(); }
+function publishModal(id) {
+  const m = document.getElementById('modal');
+  m.innerHTML = `<h3>Mark as published</h3><div class="fld"><label>Link to your published video</label><input type="text" id="pubUrl" placeholder="https://www.youtube.com/watch?v=…">
+    <div class="hint">It gets linked to the original, so you can compare how yours did under My videos.</div></div>
+    <div class="ft"><span class="sp"></span><button class="btn" onclick="closeAll()">Cancel</button><button class="btn primary" id="pubGo">Save</button></div>`;
+  m.classList.add('on'); document.getElementById('scrim').classList.add('on'); document.getElementById('pubUrl').focus();
+  document.getElementById('pubGo').onclick = async () => {
+    try { await api(`/production/${id}`, { method: 'PATCH', body: { my_video: document.getElementById('pubUrl').value } }); closeAll(); loadState(); loadTab(); toast('Published and linked for comparison'); }
+    catch (e) { toast(e.message); }
+  };
+}
+async function openProduction(id) {
+  const d = document.getElementById('drawer');
+  d.innerHTML = `<div class="dr-h"><b>Production</b><span class="sp"></span><button class="btn ghost" onclick="closeAll()">${ic('x')}</button></div><div class="dr-b"><div class="job"><div class="spin"></div>Loading…</div></div>`;
+  d.classList.add('on'); document.getElementById('scrim').classList.add('on');
+  let p; try { p = await api(`/production/${id}`); } catch (e) { d.querySelector('.dr-b').textContent = e.message; return; }
+  const s = p.source || {};
+  window._pdl = { mine: p.script ? `${s.title} (rewrite, ${p.format})\n\n${p.script}` : '', src: `${s.title}\n${s.channel}\n${s.url}\n\n${p.source_transcript || ''}` };
+  d.querySelector('.dr-b').innerHTML = `<div style="display:flex;gap:12px;align-items:center"><img src="${esc(s.thumb || '')}" style="width:140px;border-radius:8px" alt="">
+      <div><div style="font-weight:650">${esc(s.title || '')}</div><div class="note">${esc(s.channel || '')} · <span class="fmt ${p.format === 'short' ? 'short' : ''}">${p.format.toUpperCase()}</span></div>
+      ${p.notes ? `<div class="note" style="margin-top:4px">Notes: ${esc(p.notes)}</div>` : ''}</div></div>
+    <div style="display:flex;align-items:center;gap:8px;margin:18px 0 8px"><h3 style="margin:0;font-size:15px;flex:1">Your script</h3>
+      ${p.script ? `<button class="btn small" onclick="navigator.clipboard.writeText(_pdl.mine).then(()=>toast('Copied'))">${ic('copy')}Copy</button>
+      <button class="btn small primary" onclick="downloadText('${esc((s.title || 'script').replace(/[\\/:*?"<>|']+/g, '').slice(0, 60))} - my script.txt', _pdl.mine)">${ic('dl')}Download</button>` : ''}</div>
+    ${p.script ? `<div class="script">${esc(p.script)}</div>` : `<div class="note">Not written yet. Tell Claude <b>grab my scripts from the content machine</b> while this PC is on.</div>`}
+    <details style="margin-top:18px"><summary style="cursor:pointer;font-weight:600">Original video's script</summary>
+      <div style="margin:8px 0"><button class="btn small" onclick="downloadText('source.txt', _pdl.src)">${ic('dl')}Download</button></div>
+      <div class="script">${esc(p.source_transcript || p.transcript_error || '–')}</div></details>`;
+}
+function downloadText(name, text) {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' })); a.download = name; a.click();
+}
+
+// ------------------------------------------------------------------ events
+function bindFilters() {
+  const on = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
+  const refresh = () => { document.getElementById('content').innerHTML = contentHtml(); const c = counts();
+    document.querySelectorAll('.tab .ct')[0] && (document.querySelectorAll('.tab .ct')[0].textContent = c.explode);
+    document.querySelectorAll('.tab .ct')[1] && (document.querySelectorAll('.tab .ct')[1].textContent = c.outliers); };
+  on('fq', 'input', e => { st.f.q = e.target.value; refresh(); });
+  [['mult','minMult'],['age','maxAge'],['subs','maxSubs'],['views','minViews']].forEach(([k, key]) =>
+    on('fs-' + k, 'input', e => { st.f[key] = S[k].to(+e.target.value); document.getElementById('lb-' + k).textContent = S[k].show(st.f[key]); refresh(); }));
+  on('fsort', 'change', e => { st.f.sort = e.target.value; refresh(); });
+  document.querySelectorAll('[data-fmt]').forEach(b => b.onclick = () => { st.f.format = b.dataset.fmt; render(); });
+  document.querySelectorAll('[data-preset]').forEach(b => b.onclick = () => {
+    const p = b.dataset.preset;
+    if (p === 'small') st.f.maxSubs = st.f.maxSubs === 100000 ? Infinity : 100000;
+    if (p === 'hidden') st.f.showHidden = !st.f.showHidden;
+    if (p === 'reset') Object.assign(st.f, { q: '', format: 'long', maxSubs: Infinity, minViews: 1000, showHidden: false }, TAB_DEFAULTS[st.tab] || {});
+    render(); });
+  on('chQ', 'input', e => { st.chQ = e.target.value; const pos = e.target.selectionStart; render(); const el = document.getElementById('chQ'); el.focus(); el.setSelectionRange(pos, pos); });
+  on('addBtn', 'click', addChannels);
+  on('discBtn', 'click', discover);
+  on('discQ', 'keydown', e => { if (e.key === 'Enter') discover(); });
+  document.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => removeChannel(b.dataset.rm));
+  document.querySelectorAll('[data-phrase]').forEach(b => b.onclick = () => { setTab('outliers'); st.f.q = b.dataset.phrase; st.f.minMult = 1; });
+}
+document.getElementById('wsList').addEventListener('click', e => { const el = e.target.closest('[data-ws]'); if (el) setWs(+el.dataset.ws); });
+document.getElementById('addWs').onclick = () => wsModal();
+document.getElementById('scrim').onclick = closeAll;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+// ------------------------------------------------------------------ actions
+async function scanNow() {
+  try { const r = await api(`/workspaces/${st.wsId}/refresh-plan`); await refreshIds(r.channel_ids); } catch (e) { toast(e.message); }
+}
+async function addChannels() {
+  const refs = document.getElementById('addRefs').value; const b = document.getElementById('addBtn'); b.disabled = true;
+  try { const r = await api(`/workspaces/${st.wsId}/channels`, { method: 'POST', body: { refs } });
+    toast(`Following ${r.added} channel(s)` + (r.failed.length ? ` · couldn't find: ${r.failed.join(', ')}` : ''), 5000);
+    await loadState(); await loadTab(); await refreshIds(r.refresh, 'Pulling new channels'); } catch (e) { toast(e.message); b.disabled = false; }
+}
+async function discover() {
+  const query = document.getElementById('discQ').value.trim(); if (!query) return toast('Type a topic first');
+  const b = document.getElementById('discBtn'); b.disabled = true; toast(`Searching YouTube for “${query}”…`);
+  try { const r = await api(`/workspaces/${st.wsId}/discover`, { method: 'POST', body: { query, days: +document.getElementById('discDays').value, format: document.getElementById('discFmt').value } });
+    toast(`Found ${r.found} channels, ${r.added} new`); await loadState(); await loadTab(); await refreshIds(r.refresh, 'Pulling new channels');
+  } catch (e) { toast(e.message); b.disabled = false; }
+}
+async function removeChannel(id) {
+  const c = st.channels.find(x => x.id === id);
+  if (!confirm(`Stop following ${c ? c.title : id} in ${ws().name}?`)) return;
+  try { await api(`/workspaces/${st.wsId}/channels/${id}`, { method: 'DELETE' }); st.channels = st.channels.filter(x => x.id !== id);
+    ws().channel_count--; renderSide(); render(); } catch (e) { toast(e.message); }
+}
+async function toggleSave(id) {
+  const v = st.videos.find(x => x.id === id); if (!v) return;
+  try { await api(`/workspaces/${st.wsId}/${v.saved ? 'unsave' : 'saved'}`, { method: 'POST', body: { video_id: id } });
+    v.saved = !v.saved; ws().saved_count += v.saved ? 1 : -1; renderSide(); render(); if (document.getElementById('drawer').classList.contains('on')) openVideo(id);
+  } catch (e) { toast(e.message); }
+}
+async function toggleHide(id) {
+  const v = st.videos.find(x => x.id === id); if (!v) return;
+  try { await api(`/workspaces/${st.wsId}/${v.hidden ? 'unhide' : 'hide'}`, { method: 'POST', body: { video_id: id } });
+    v.hidden = !v.hidden; toast(v.hidden ? 'Hidden from this channel’s feed' : 'Unhidden'); render(); } catch (e) { toast(e.message); }
+}
+
+// ------------------------------------------------------------------ drawer (video detail + script)
+const scripts = {};
+function openVideo(id, wantScript = false) {
+  const v = st.videos.find(x => x.id === id); if (!v) return;
+  const d = document.getElementById('drawer');
+  const M = (k, val, x) => `<div class="m"><div class="k">${k}</div><div class="v">${val}</div>${x ? `<div class="x">${x}</div>` : ''}</div>`;
+  d.innerHTML = `<div class="dr-h"><button class="btn ${v.saved ? 'on' : ''}" onclick="toggleSave('${v.id}')">${ic('star')}${v.saved ? 'Saved' : 'Save idea'}</button>
+      <button class="btn" onclick="produceModal('${v.id}')">${ic('clap')}Send to production</button>
+      <a class="btn" href="${esc(v.url)}" target="_blank">${ic('ext')}Watch</a><span class="sp"></span>
+      <button class="btn ghost" onclick="closeAll()">${ic('x')}</button></div>
+    <div class="dr-b">
+      <a class="thumb" href="${esc(v.url)}" target="_blank"><img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt=""><span class="dur">${dur(v.duration)}</span></a>
+      <h2>${esc(v.title)}</h2>
+      <div class="chan" style="font-size:13.5px">${v.channel_thumb ? `<img src="${esc(v.channel_thumb)}" alt="">` : ''}<span>${esc(v.channel)} · ${fmt(v.subs)} subs · uploaded ${age(v.age_days)} ago</span></div>
+      <div class="mgrid">
+        ${M('Explode score', v.explode_score == null ? '–' : x1(v.explode_score), v.explode_score == null ? (v.age_days < .5 ? 'under 12h old' : 'older than 14 days') : 'age-adj × pace')}
+        ${M('Outlier', x1(v.multiplier), 'vs typical ' + fmt(v.median_views))}
+        ${M('Age-adjusted', x1(v.age_adj_multiplier), 'vs typical at this age')}
+        ${M('Views', fmt(v.views), fmt(v.lifetime_vph) + '/hr average')}
+        ${M('Pace now', v.recent_vph == null ? '–' : fmt(v.recent_vph) + '/hr', v.momentum == null ? 'needs 2 scans' : (v.momentum >= 1 ? 'speeding up ' : 'slowing ') + v.momentum.toFixed(2) + '×')}
+        ${M('Views / sub', v.views_per_sub == null ? '–' : v.views_per_sub.toFixed(2), 'engagement ' + (v.engagement ?? '–') + '%')}
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin:18px 0 8px"><h3 style="margin:0;font-size:15px;flex:1">Script</h3><span id="scrBtns"></span></div>
+      <div id="scr"><button class="btn primary" onclick="loadScript('${v.id}')">${ic('file')}Get the script</button>
+        <div class="note" style="margin-top:6px">Pulls the video's captions as text you can download and rewrite in your own words.</div></div>
+    </div>`;
+  d.classList.add('on'); document.getElementById('scrim').classList.add('on');
+  if (wantScript || scripts[id] || st.transcripts.has(id)) loadScript(id);
+}
+async function loadScript(id) {
+  const box = document.getElementById('scr'); if (!box) return;
+  if (!scripts[id]) {
+    box.innerHTML = `<div class="job"><div class="spin"></div>Fetching captions…</div>`;
+    let r;
+    try { r = await api(`/transcript/${id}`); }
+    catch (e) { box.innerHTML = `<div class="note" style="color:var(--bad)">${esc(e.message)}</div>`; return; }
+    if (r.error) { box.innerHTML = `<div class="note" style="color:var(--acc)">${esc(r.error)}</div>`; loadState(); return; }
+    scripts[id] = r; st.transcripts.add(id);
+  }
+  const t = scripts[id];
+  const words = t.text.split(/\s+/).length;
+  box.innerHTML = `<div class="note" style="margin-bottom:8px">${fmt(words)} words · about ${Math.max(1, Math.round(words / 150))} min spoken${t.lang && !t.lang.startsWith('en') ? ' · language: ' + esc(t.lang) : ''}</div><div class="script">${esc(t.text)}</div>`;
+  document.getElementById('scrBtns').innerHTML = `<button class="btn small" onclick="copyScript('${id}')">${ic('copy')}Copy</button>
+    <button class="btn small primary" onclick="downloadScript('${id}')">${ic('dl')}Download .txt</button>`;
+}
+function scriptText(id) { const t = scripts[id]; return `${t.title}\n${t.channel}\n${t.url}\n\n${t.text}\n`; }
+function copyScript(id) { navigator.clipboard.writeText(scriptText(id)).then(() => toast('Script copied')); }
+function downloadScript(id) {
+  const t = scripts[id], a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([scriptText(id)], { type: 'text/plain' }));
+  a.download = (t.title || id).replace(/[\\/:*?"<>|]+/g, '').slice(0, 80) + '.txt'; a.click();
+}
+
+// ------------------------------------------------------------------ workspace modal
+function wsModal(id) {
+  const w = id ? st.workspaces.find(x => x.id === id) : null, m = document.getElementById('modal');
+  m.innerHTML = `<h3>${w ? 'Edit channel' : 'Add one of your channels'}</h3>
+    <div class="fld"><label>Name</label><input type="text" id="mName" value="${esc(w ? w.name : '')}" placeholder="e.g. Limitless Mortgages"></div>
+    <div class="fld"><label>Your YouTube channel <span style="font-weight:400;color:var(--faint)">(optional)</span></label>
+      <input type="text" id="mMine" value="${esc(w && w.my_channel ? (w.my_channel.handle || w.my_channel.id) : '')}" placeholder="@yourhandle or channel link">
+      <div class="hint">Shows your subscriber count at the top.</div></div>
+    <div class="fld"><label>Niche</label><input type="text" id="mNiche" value="${esc(w ? w.niche || '' : '')}" placeholder="e.g. Canadian mortgages, renewals, first-time buyers"></div>
+    <div class="ft">${w ? `<button class="btn danger" onclick="deleteWs(${w.id})">${ic('trash')}Delete</button>` : ''}<span class="sp"></span>
+      <button class="btn" onclick="closeAll()">Cancel</button><button class="btn primary" id="mSave">${w ? 'Save' : 'Add channel'}</button></div>`;
+  m.classList.add('on'); document.getElementById('scrim').classList.add('on'); document.getElementById('mName').focus();
+  document.getElementById('mSave').onclick = async () => {
+    const body = { name: document.getElementById('mName').value, my_channel: document.getElementById('mMine').value, niche: document.getElementById('mNiche').value };
+    try {
+      let r;
+      if (w) r = await api(`/workspaces/${w.id}`, { method: 'PATCH', body });
+      else { r = await api('/workspaces', { method: 'POST', body }); st.wsId = r.id; localStorage.wsId = r.id; st.tab = 'channels'; }
+      closeAll(); await loadState(); await loadTab(); await refreshIds(r.refresh, 'Pulling your channel');
+    } catch (e) { toast(e.message); }
+  };
+}
+async function deleteWs(id) {
+  const w = st.workspaces.find(x => x.id === id);
+  if (!confirm(`Delete “${w.name}”? Its followed-channel list and saved ideas will be removed. Scanned video data is kept.`)) return;
+  await api(`/workspaces/${id}`, { method: 'DELETE' }); st.wsId = null; closeAll(); await loadState(); await loadTab();
+}
+function closeAll() { ['drawer', 'modal', 'scrim'].forEach(i => document.getElementById(i).classList.remove('on')); }
+
+// ------------------------------------------------------------------ boot
+if (TAB_DEFAULTS[st.tab]) Object.assign(st.f, TAB_DEFAULTS[st.tab]);
+loadState().then(loadTab).catch(e => { document.getElementById('main').innerHTML = `<div class="empty"><h3>Can't reach the server</h3><div>${esc(e.message)}</div></div>`; });
+setInterval(() => { if (!st.job.running) loadState(); }, 60000);
+</script>
+</body>
+</html>
