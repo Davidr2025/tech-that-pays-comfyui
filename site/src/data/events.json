@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-26T19:37:19.099Z",
+  "updatedAt": "2026-11-26T20:03:38.078Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Christmas in the Village 2026",
-      "summary": "The holiday season begins in Clarkson Village with Christmas in the Village ! Join the community on November 26, 2026 , as Clarkson Village comes alive with sparkling lights, festive décor, and holiday cheer. Gather with family and friends for the official lighting of the Clarkson Village Christmas Tree and experience the warmth and excitement of this beloved holiday tradition.",
-      "venue": "Clarkson Community Church",
-      "url": "https://www.visitmississauga.ca/event/christmas-in-the-village-2026/",
-      "start": "2026-11-26T17:00:00.000Z",
-      "end": "2026-11-26T20:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "The Nutcracker",
       "summary": "Make holiday magic unforgettable with The Nutcracker . Join us for a dazzling production of The Nutcracker , a beloved holiday ballet filled with wonder, imagination, and festive charm for audiences of all ages. Presented by Classical Arts Entertainment , this spectacular production showcases stunning hand-painted scenery, more than 200 exquisite costumes, and Tchaikovsky's timeless score, brought to life through cherished choreography.",
@@ -121,6 +111,16 @@
       "end": "2026-12-06T18:00:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Preserving Seasonal Food: Quick Pickling Workshop",
+      "summary": "Learn the fast-pickle method to reduce food waste, boost flavor, and enjoy fresh-tasting produce!",
+      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
+      "url": "https://www.eventbrite.ca/e/preserving-seasonal-food-quick-pickling-workshop-tickets-2005025460125",
+      "start": "2026-12-09T23:30:00.000Z",
+      "end": "2026-12-10T01:00:00.000Z",
+      "source": "Eventbrite",
+      "sourceUrl": "https://www.eventbrite.ca/"
     }
   ]
 }
