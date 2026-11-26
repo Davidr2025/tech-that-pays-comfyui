@@ -226,7 +226,7 @@ input[type=range]{width:100%;accent-color:var(--acc);height:20px;margin:0}
 <body>
 <aside>
   <div class="brand"><div class="logo"><svg class="i" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>YouTube Research</div>
-  <a class="btn ghost small" href="/board.html" style="margin:0 10px 6px;justify-content:flex-start;color:var(--mut)">← Vision Board</a>
+  <a class="btn" href="/board.html" style="margin:0 10px 8px;justify-content:center;font-weight:600">← Back to CEO Dashboard</a>
   <div class="side-label">Your channels</div>
   <div class="ws-list" id="wsList"></div>
   <button class="btn add-ws" id="addWs"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Add a channel</button>
@@ -422,6 +422,7 @@ function render() {
         ${esc(w.niche || 'No niche description yet')}</div></div>
       </div>
       <div class="act"><div class="job" id="job"></div>
+        <a class="btn" href="/board.html" title="Back to the CEO Dashboard">← CEO Dashboard</a>
         <button class="btn primary" id="scanBtn" onclick="scanNow()" title="Pull live numbers for every channel in this workspace (about 2 API units per channel)">${ic('refresh')}Refresh</button></div>
     </div>
     <div class="tabs">
