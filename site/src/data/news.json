@@ -1,6 +1,30 @@
 {
-  "updatedAt": "2026-11-26T16:50:45.345Z",
+  "updatedAt": "2026-11-26T19:37:17.759Z",
   "items": [
+    {
+      "title": "New e-bike rules in Ontario welcomed by Mississauga",
+      "url": "https://www.insauga.com/new-e-bike-rules-in-ontario-welcomed-by-mississauga/",
+      "source": "insauga.com",
+      "sourceUrl": "https://www.insauga.com",
+      "publishedAt": "2026-11-26T18:43:04.000Z",
+      "summary": "New rules governing the use of motorcycle-style e-bikes in Ontario will lead to safer streets, Mississauga’s mayor says. Ontario Transportation Minister Prabmeet Sarkaria announced Thursday that as of next May 1, drivers of motorcycle-style e-bikes must get a driver’s licence, registration and insurance in order to operate the vehicles on roads across the province. Sarkaria said vehicles that are operated like e-bikes but function more like motorcycles pose serious risks for pedestrians, riders, cyclists and drivers. Effective May 2027, e-bikes will be defined as having a bicycle-style frame, fully operable pedals and a maximum motor-assisted speed of 32 km/h. Anything above that, Sarkaria said, will be subject to the licence, registration and insurance rules, and will not be allowed in bike lanes. Penalties include fines of up to $2,500 and vehicle impoundment, the province said. The City of Mississauga has for the past two years grappled with the issue of danger on the streets caused by some e-scooter riders and, to a lesser degree, those who operate e-bikes. The matter was raised on several occasions during a series of mayoral debates in the recent municipal election. Mayor Alvin Tedjo applauded the provincial government’s move to change e-bike rules in Mississauga and across Ontario. “For years, Mississauga residents have been calling for stronger safety measures around e-bikes. I welcome today’s announcement … to introduce stricter regulations for motorcycle-style e-bikes,” Tedjo said in an online response to the beefed-up rules. “As our city grows and the way people get around continues to evolve, our safety measures need to keep up."
+    },
+    {
+      "title": "Anti-Black racism may have played a role in Jamal Francique's death, mother tells inquest",
+      "url": "https://www.cbc.ca/news/canada/toronto/jamal-francique-coroners-inquest-mother-racism-9.7437268?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-11-26T17:33:38.000Z",
+      "summary": ", told a coroner's inquest today she believes anti-Black racism played a role in her son's death."
+    },
+    {
+      "title": "2 arrested after investigation into series of home invasions across GTA: Peel police",
+      "url": "https://www.cbc.ca/news/canada/toronto/home-invasion-investigation-charges-laid-9.7437171?cmp=rss",
+      "source": "CBC Toronto",
+      "sourceUrl": "https://www.cbc.ca/news/canada/toronto",
+      "publishedAt": "2026-11-26T17:07:59.000Z",
+      "summary": "Two people have been charged as the result of an investigation into an alleged spree of home invasions, Peel Regional Police announced Thursday. Multiple charges related to the robberies, as well as illegal firearms, drugs and possession of child sexual abuse material have been laid, and police expect more arrests to come."
+    },
     {
       "title": "Port Credit's 130-Year-Old United Church Could Become City-Owned Event Venue",
       "url": "https://www.insauga.com/city-to-buy-united-church-with-over-130-year-history-in-mississauga/",
@@ -9,6 +33,14 @@
       "publishedAt": "2026-11-26T16:42:55.000Z",
       "summary": "According to insauga.com, the City of Mississauga is in the process of buying a more than 130-year-old United Church property at 151 Lakeshore Rd. W. in Port Credit, which has been listed for sale for nearly six months. Then-Mayor Carolyn Parrish announced in July that the city planned to turn the building into an event venue and a permanent home for the Canada Virtuoso Ensemble. The church, most recently known as Christ First United Church, amalgamated with the Clarkson Christ First United Church on Mazo Crescent in 2019 and moved its regular services there the same year. A Spanish-language congregation currently holds services in the Port Credit building on typical Sundays, according to a church spokesperson. The congregation is also planning a Candlelight Service at the Port Credit church in December, the spokesperson said.",
       "rewritten": true
+    },
+    {
+      "title": "A Path to Mississauga, Part 1: Tracing the Origins of Japanese Internment in Canada and Mississauga",
+      "url": "https://www.modernmississauga.com/main/2026/11/26/a-path-to-mississauga-part-1-tracing-the-origins-of-japanese-internment-in-canada-and-mississauga",
+      "source": "Modern Mississauga Media",
+      "sourceUrl": "https://www.modernmississauga.com",
+      "publishedAt": "2026-11-26T16:19:11.000Z",
+      "summary": "This is the first of a four-part article series that explores Japanese Canadian internment and connections to historic Mississauga during the Second World War. This series was researched and written by UTM graduate Darrion Singh as part of the Historical Studies Internship program through the University of Toronto Mississauga. INTERNMENT CAMP, ANGLER, ONTARIO, 1942, FROM THE NABETA FAMILY. On December 7, 1941, Canada declared war on Japan in response to the bombing of Hawaii’s Pearl Harbor. ” By February, fears of the Japanese presence in Canada culminated with the government invoking the War Measures Act, and by the 26th, Minister of Justice Louis St. Laurent authorized the start of Japanese expulsion from British Columbia. This article is the first of four documenting my internship with Heritage Mississauga. From September 2025 to March 2026, I worked on a project tracing historic Mississauga’s connection to Japanese internment. The series is titled “A Path to Mississauga,” and the four articles touch on the numerous challenges and successes encountered in my project. Through the series, I’ve also set out to focus on how Japanese Canadians remember their history, and there are numerous resources hyperlinked in various places. Of course, this internship would not be possible without the academic and professional support received, and I would like to thank Matthew Wilkinson and Madeleine Henry at Heritage Mississauga for their advice and guidance throughout the process. Additionally, I’d like to thank Professor Mairi Cowan and Shivani Mistry at the University of Toronto Mississauga, who were the academic and logistical coordinators behind the internship course. KO SAGAWA OUTSIDE BUNKHOUSE, HANCOCK WOODLANDS. Now, how do we explore Mississauga’s connection to a forced relocation thousands of kilometers west?"
     },
     {
       "title": "Credit Valley Conservation Warns of Unsafe Water Levels Ahead of Weekend Rain",
@@ -23,7 +55,7 @@
       "title": "Peel Inspectors Shut Down a Dundas Street Restaurant and Bakery",
       "url": "https://www.mississauga.com/news/mississauga-restaurant-inspection-results/article_82cc016b-0275-5048-bd62-4c22fbbf499c.html",
       "source": "Mississauga.com",
-      "sourceUrl": "https://www.mississauga.com/",
+      "sourceUrl": "https://www.mississauga.com",
       "publishedAt": "2026-11-26T16:15:00.000Z",
       "summary": "According to Peel Public Health, inspectors temporarily closed a Mississauga restaurant and bakery during a routine food safety inspection. Revrea's Grill & Bakeshop, located at 1057 Dundas St., was ordered to close when it was inspected on Nov. 25, the health unit says. Peel Public Health routinely checks local restaurants, cocktail bars, bakeries and takeout establishments to ensure compliance with the Health Protection and Promotion Act. A green pass indicates a business is meeting food safety and operational standards, according to the region of Peel. The health unit did not specify in its public summary what led inspectors to order the closure.",
       "rewritten": true
@@ -38,22 +70,36 @@
       "rewritten": true
     },
     {
-      "title": "Peel Police Set to Detail New Home Invasion Probe Tied to Luxury Vehicle Thefts",
-      "url": "https://www.insauga.com/home-invasions-target-luxury-cars-in-mississauga-brampton-and-across-gta-police/",
-      "source": "insauga.com",
-      "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-11-25T21:50:19.000Z",
-      "summary": "According to insauga.com, Peel police are set to release details of a new probe into home invasions across the GTA targeting luxury vehicles. Investigators say auto theft has dropped in Mississauga and Brampton in recent years, but it remains a top concern, especially when a home break-in is involved, since that puts residents at risk. The announcement follows a separate bust less than two weeks ago in which a dozen men face 231 combined charges over stolen luxury SUVs and other high-value vehicles taken from driveways across the GTA. Police say that ring moved the stolen vehicles out of Ontario within days, loading them into containers bound overseas from the Port of Montreal. The probe, led by Peel's commercial auto crime squad with the Canada Border Services Agency, turned up a broader criminal network across the region, investigators said.",
-      "rewritten": true
+      "title": "Peel police arrest two people after multiple home invasions across Toronto area",
+      "url": "https://www.thestar.com/news/ontario/peel-police-arrest-two-people-after-multiple-home-invasions-across-toronto-area/article_f7d9ebfb-96cf-56cb-9a4d-075bab0693f6.html",
+      "source": "Toronto Star",
+      "sourceUrl": "https://www.thestar.com",
+      "publishedAt": "2026-11-26T15:45:20.000Z",
+      "summary": "Peel regional police say they arrested and charged two people after a series of home invasions targeting luxury cars across the Greater Toronto Area. , public school. Peel regional police say they arrested and charged two people after a series of home invasions targeting luxury cars across the Greater Toronto Area. Investigators say they believe five home invasions between May 29 and June 2 were carried out by the same group of three to four suspects. They allege the suspects would forcibly enter homes in the early morning hours and demand vehicle keys from residents. Several vehicles, including BMW and Mercedes models, were stolen during the home invasions, but police say none of the victims were injured. Police say the investigation dubbed Project Twilight led to the arrests of a 22-year-old man and a 20-year-old woman on June 8, when officers found two illegal loaded firearms, ammunitions and fentanyl. Police say they believe the man was connected to other alleged crimes, including two tow truck arsons in Brampton."
     },
     {
-      "title": "Mississauga Councillor Says Malton Greenway Sees Eight Encampment Removals a Month",
-      "url": "https://www.insauga.com/city-looks-to-boost-safety-at-mississauga-park/",
+      "title": "5 home invasions in Mississauga, Brampton and Toronto lead to 2 arrests",
+      "url": "https://www.insauga.com/5-home-invasions-in-mississauga-brampton-and-toronto-lead-to-2-arrests/",
       "source": "insauga.com",
       "sourceUrl": "https://www.insauga.com",
-      "publishedAt": "2026-11-25T19:48:36.000Z",
-      "summary": "According to insauga.com, Mississauga council voted unanimously on Nov. 25 to study improvements for the Malton Greenway after Ward 5 Coun. Natalie Hart said years of neglect and encampments have left residents afraid to use the trail. Hart told council and city staff that the two-kilometre park and trail in the city's north end is meant to connect people but currently cannot be used safely. She said the area has seen more encampments than resident activity over the past couple of years, with crews now removing roughly eight encampments a month. Hart's motion directs city staff to explore options for cleaning up and improving safety along the greenway. The councillor pointed to an incident the same morning in which a parks crew was called to clear garbage illegally dumped behind a nearby mall.",
-      "rewritten": true
+      "publishedAt": "2026-11-26T15:17:06.000Z",
+      "summary": "Two people face numerous charges in the wake of a major investigation into five home invasions in Mississauga, Brampton and Toronto in which the culprits targeted luxury vehicles, police say. Investigators believe one of the suspects facing charges was also involved in two tow truck arsons in Brampton, Peel Regional Police said on Thursday. ” In each case, the culprits “forcibly entered residences in the early morning hours and demanded vehicle keys from occupants,” police said, adding several luxury vehicles, including BMW and Mercedes models, were either stolen or targeted during the home invasions. “Fortunately, none of the victims were physically injured,” police noted. Police subsequently launched an investigation dubbed Project Twilight, a coordinated probe involving members of Peel’s Central Robbery Bureau and “other specialized units” including officers with the Toronto Police Hold-Up Squad. Detectives arrested two suspects on June 8, police said this week, adding two loaded illegal firearms, ammunition and approximately 76 grams of suspected fentanyl were recovered at the same time. Neither suspect is legally authorized to acquire or possess firearms, police added."
+    },
+    {
+      "title": "Mississauga Real Estate Agent Joe Battaglia Wins 2026 Readers' Choice Diamond",
+      "url": "https://www.einpresswire.com/article/956066728/mississauga-real-estate-agent-joe-battaglia-wins-2026-readers-choice-diamond",
+      "source": "EIN Presswire",
+      "sourceUrl": "https://www.einpresswire.com",
+      "publishedAt": "2026-11-26T14:30:00.000Z",
+      "summary": "There were 1,170 press releases posted in the last 24 hours and 505,604 in the last 365 days. Joe Battaglia, Broker of Record of the #39 ranked REMAX Small Residential Team in Canada. , was Voted for Best Real Estate Agent in Mississauga in the 2026 Readers' Choice Awards presented by The Mississauga News. Joe Battaglia, a Mississauga real estate agent with REMAX Realty Specialists, received the Diamond award, the program's top community-voted ranking. , has been awarded Diamond status in the Best Real Estate Agent category of the 2026 Best of Mississauga Readers' Choice Awards. Diamond is the highest of the program's three placements, awarded to the business receiving the most votes in its category. The Readers' Choice Community Business Awards program is operated by Metroland Media Group Ltd. and runs across dozens of Ontario communities. Its outcome is determined entirely by the public. Residents nominate businesses in their own community, the five most-nominated businesses in each category advance to a voting round, and the three finishing highest are ranked Diamond, Platinum and Gold. No panel, jury or paid entry is involved at any stage, and Metroland reports the program draws more than 70,000 nominations and over half a million votes each year. That structure is what distinguishes the result from industry recognition. Most real estate awards measure sales volume or transaction counts, which reward scale. A community vote measures something else entirely: how many people were willing to put a name forward and return weeks later to vote for it."
+    },
+    {
+      "title": "Events this weekend in Mississauga area from Nov. 27–29",
+      "url": "https://www.mississauga.com/things-to-do/events-this-weekend-in-mississauga-area-from-nov-27-29/article_db2844eb-4577-5eff-a52a-21b4709c7ee8.html",
+      "source": "Mississauga.com",
+      "sourceUrl": "https://www.mississauga.com",
+      "publishedAt": "2026-11-26T12:30:00.000Z",
+      "summary": "Here’s what’s going on in Mississauga this weekend. Looking for something to do in the community? We’ve got you covered. For a full list of events please visit our Events This Weekend page. This story was automatically generated using data from the CitySpark events platform. We are not responsible or liable for errors and omissions in the event description, location or intended audience. If necessary, please contact the event organizer for additional information. Error! Sorry, there was an error processing your request. There was a problem with the recaptcha. Please try again. You may unsubscribe at any time. By signing up, you agree to our terms of use and privacy policy. This site is protected by reCAPTCHA and the Google privacy policy and terms of service apply."
     }
   ]
 }
