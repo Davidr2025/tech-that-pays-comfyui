@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-25T19:56:58.615Z",
+  "updatedAt": "2026-11-26T00:50:51.100Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "Cookbook Club",
-      "summary": "Connect with fellow foodies through our monthly cookbook club.",
-      "venue": "Hazel McCallion Central Library (Kitchen, Level 4)",
-      "url": "https://www.eventbrite.ca/e/cookbook-club-tickets-2004253432971",
-      "start": "2026-11-25T19:00:00.000Z",
-      "end": "2026-11-25T20:00:00.000Z",
-      "source": "Eventbrite",
-      "sourceUrl": "https://www.eventbrite.ca/"
-    },
     {
       "title": "Author Talks with Susan Pimento",
       "summary": "Susan Pimento discusses concepts and tools from her book 'Your Retirement Reset' in this online chat.",
@@ -119,6 +109,16 @@
       "url": "https://www.visitmississauga.ca/event/our-favorite-things-the-christmas-edit/",
       "start": "2026-12-05T11:00:00.000Z",
       "end": "2026-12-05T16:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
+    },
+    {
+      "title": "Needle Felting: Fluffy Sheep Ornament",
+      "summary": "Get into the winter holiday season and learn the art of needle felting, a magical craft where you transform soft wool into adorable, whimsical creations. Join fibre artist Cathy Disbrow as she shows you how to use special needles to turn wool into a sweet, fluffy sheep. Every participant will leave with a charming woolly keepsake ready to hang as an ornament or display on a tabletop. Materials are included in the price. You get 2 felting needles and wool. Foam felting pads are provided for participants to use during the workshop.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/needle-felting-fluffy-sheep-ornament/",
+      "start": "2026-12-05T13:30:00.000Z",
+      "end": "2026-12-05T16:30:00.000Z",
       "source": "Visit Mississauga",
       "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
