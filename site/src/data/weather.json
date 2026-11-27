@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-11-27T03:50:21.926Z",
+  "updatedAt": "2026-11-27T04:14:37.540Z",
   "source": "Open-Meteo",
   "sourceUrl": "https://open-meteo.com/",
   "current": {
     "temp": 1,
     "feelsLike": -4,
-    "text": "Heavy snow",
-    "icon": "❄️"
+    "text": "Snow",
+    "icon": "🌨️"
   },
   "days": [
     {
