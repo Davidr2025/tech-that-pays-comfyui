@@ -1,17 +1,7 @@
 {
-  "updatedAt": "2026-11-28T16:50:16.229Z",
+  "updatedAt": "2026-11-28T18:14:43.646Z",
   "windowDays": 14,
   "items": [
-    {
-      "title": "The Nutcracker",
-      "summary": "Make holiday magic unforgettable with The Nutcracker . Join us for a dazzling production of The Nutcracker , a beloved holiday ballet filled with wonder, imagination, and festive charm for audiences of all ages. Presented by Classical Arts Entertainment , this spectacular production showcases stunning hand-painted scenery, more than 200 exquisite costumes, and Tchaikovsky's timeless score, brought to life through cherished choreography.",
-      "venue": "Living Arts Centre",
-      "url": "https://www.visitmississauga.ca/event/the-nutcracker-3/",
-      "start": "2026-11-28T14:00:00.000Z",
-      "end": "2026-11-28T18:00:00.000Z",
-      "source": "Visit Mississauga",
-      "sourceUrl": "https://www.visitmississauga.ca/events/"
-    },
     {
       "title": "Light Up The Port",
       "summary": "Kick off the holiday season at Light Up the Port, a festive evening filled with holiday magic, family fun, and waterfront charm in Port Credit. Watch as the Christmas tree and iconic Port Credit Lighthouse light up the night, marking the start of the holiday season. Enjoy free photos with Santa, holiday crafts, festive entertainment, carollers, holiday characters, complimentary seasonal treats, and fun giveaways throughout the evening.",
@@ -121,6 +111,16 @@
       "end": "2026-12-10T01:00:00.000Z",
       "source": "Eventbrite",
       "sourceUrl": "https://www.eventbrite.ca/"
+    },
+    {
+      "title": "Leveling up Your Mocktail Skills: Mixology for a Creative Cause",
+      "summary": "Ready to take your mocktail-making skills to the next level? 🍹 Join Leveling Up Your Mocktail Skills: A Mixologist's Approach , a 90-minute interactive workshop designed for anyone looking to create sophisticated, alcohol-free beverages for entertaining, celebrations, or everyday enjoyment. Led by experienced mixologist Jo Yetter , participants will learn professional bartending techniques and explore how to build layered flavours, textures, and presentation elements that elevate mocktails beyond the ordinary.",
+      "venue": "Small Arms Inspection Building",
+      "url": "https://www.visitmississauga.ca/event/leveling-up-your-mocktail-skills-mixology-for-a-creative-cause/",
+      "start": "2026-12-11T19:30:00.000Z",
+      "end": "2026-12-11T21:00:00.000Z",
+      "source": "Visit Mississauga",
+      "sourceUrl": "https://www.visitmississauga.ca/events/"
     }
   ]
 }
